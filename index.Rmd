@@ -43,9 +43,7 @@ The Guide was created using [R Bookdown](https://bookdown.org/) and is licensed 
 ![](./images/index_contribute_editing_Github.jpg){width=40%}
 
 
-
 ![](./images/index_ccby_logo.png){width=20%}
 </center>
  
-
 `
