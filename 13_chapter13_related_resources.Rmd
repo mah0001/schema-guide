@@ -1,0 +1,104 @@
+---
+output: html_document
+---
+
+# Related resources {#chapter13}
+
+**Related resources** are not a specific type of data. They are resources of any type (data, document, web page, or any other type of resource that can be provided as an electronic file or a link) that can be attached as "related material" to a catalog entry. A schema that is intentionally kept very simple, based on the Dublin Core standard, is used to describe these resources. 
+
+In NADA:
+
+No need for detailed metadata here. Not a catalog entry, but a resource attached to a catalog entry. Note that a catalog entry can be an external resource, in which case a link will be provided. 
+If want to make it an entry: use the specific schema. If you want to make it an attachment to an entry, use the simple external resource schema. Note that external resources can be either files or links. In some cases, an entry in a catalog can be an external resource for another entry; in that case, document in detail, then provide link as external reource with basic metadata. 
+Example: 
+
+
+The metadata schemas presented in previous chapters are intended to document data of multiple types and analytical scripts. When published in a NADA catalog, these metadata will be made visible to the catalog users. But publishing metadata is not enough. In most cases, you will also want to made files (data files, documents, or others) accessible in your catalog. This means that these files will have to be uploaded on your web server, with some documentation. These "associated files" are what we call "external resources".
+
+For example, you may want to publish a list of tables in XLSX format together with a document; or publish the survey questionnaire, interviewer manual and report together with the data and codebook. A simple metadata schema is used to document such external resources. This schema is embedded in all other schemas to allow this addition of related materials that are not part of the dataset metadata but are important complements. (Note: a decision has to be made: should a resource be a catalog entry, or just an "attachment" - external resource - to an entry?)
+
+**`dctype`** *[Optional, Not Repeatable, String]* <br>
+This element defines the type of external resource. This element plays an important role in the cataloguing system (NADA), as it is used to determine where and how the resource will be published. In particular, attention must be paid to the type "Microdata file". The NADA catalog allows data to be published under different levels of accessibility: open data, direct access, public use files, licensed data, access in data enclave, or no access. Any external resource of type "Microdata File" will be made accessible under the selected access policy. The resource type must be selected from a controlled vocabulary:
+
+-**doc/adm**: Document, Administrative [doc/adm]
+-**doc/anl**: Document, Analytical [doc/anl]
+-**doc/oth**: Document, Other [doc/oth]
+-**doc/qst**: Document, Questionnaire [doc/qst]
+-**doc/ref**: Document, Reference [doc/ref]
+-**doc/rep**: Document, Report [doc/rep]
+-**doc/tec**: Document, Technical [doc/tec]
+-**aud**: Audio [aud]
+-**dat**: Database [dat] (not including microdata)
+-**map**: Map [map]
+-**dat/micro**: Microdata File [dat/micro]
+-**pic**: Photo / image [pic]
+-**prg**: Program / script [prg]
+-**tbl**: Table [tbl]
+-**vid**: Video [vid]
+-**web**: Web Site [web]
+
+**`dcformat`** *[Optional, Not Repeatable, String]* <br>
+Document file format. Use a controlled vocabulary.
+
+-**application/x-compressed** - Compressed, Generic
+-**application/zip** - Compressed, ZIP
+-**application/x-cspro** - Data, CSPro
+-**application/dbase** - Data, dBase
+-**application/msaccess** - Data, Microsoft Access
+-**application/x-sas** - Data, SAS
+-**application/x-spss** - Data, SPSS
+-**application/x-stata** - Data, Stata
+-**text** - Document, Generic
+-**text/html** - Document, HTML
+-**application/msexcel** - Document, Microsoft Excel
+-**application/mspowerpoint** - Document, Microsoft PowerPoint
+-**application/msword** - Document, Microsoft Word
+-**application/pdf** - Document, PDF
+-**application/postscript** - Document, Postscript
+-**text/plain** - Document, Plain
+-**text/wordperfect** - Document, WordPerfect
+-**image/gif** - Image, GIF
+-**image/jpeg** - Image, JPEG
+-**image/png** - Image, PNG
+-**image/tiff** - Image, TIFF
+
+**`title`** *[Required, Not Repeatable, String]* <br>
+The title of the resource.
+
+**`author`** *[Optional, Not Repeatable, String]* <br>
+The author(s) of the resource.
+
+**`dcdate`** *[Optional, Not Repeatable, String]* <br>
+The date the resource was produced or released (in ISO 8601 format YYYY-MM-DD or YYYY-MM or YYYY).
+
+**`country`** *[Optional, Not Repeatable, String]* <br>
+The country name.
+
+**`language`** *[Optional, Not Repeatable, String]* <br>
+The language name.
+
+**`contributor`** *[Optional, Not Repeatable, String]* <br>
+List of contributor (free text)
+
+**`publisher`** *[Optional, Not Repeatable, String]* <br>
+List of contributor (free text)
+
+**`rights`** *[Optional, Not Repeatable, String]* <br>
+The rights associated with the resource.
+
+**`description`** *[Optional, Not Repeatable, String]* <br>
+A brief description of the resource. Not the abstract (see next element)
+
+**`abstract`** *[Optional, Not Repeatable, String]* <br>
+For documents, and abstract
+
+**`toc`** *[Optional, Not Repeatable, String]* <br>
+Table of content (free text).
+
+**`filename`** *[Optional, Not Repeatable, String]* <br>
+Provide a file name or a URL. When publishing a resource to the catalog, make sure the filename includes a valid path or is stored in the default folder. 
+
+
+## Example of use of external resources
+
+

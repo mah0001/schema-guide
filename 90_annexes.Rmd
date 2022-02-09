@@ -1,0 +1,214 @@
+---
+output: html_document
+---
+
+# (APPENDIX) ANNEXES {-}
+
+# Annex 1: References and links {-}
+
+DOCUMENTS
+
+Asian Development Bank (ADB), April 2001
+MAPPING THE SPATIAL DISTRIBUTION OF POVERTY USING SATELLITE IMAGERY IN THAILAND
+https://www.adb.org/sites/default/files/publication/695616/mapping-poverty-satellite-imagery-thailand.pdf
+ISBN 978-92-9262-768-3 (print), 978-92-9262-769-0 (electronic), 978-92-9262-770-6 (ebook)
+Publication Stock No. TCS210112-2
+DOI: http://dx.doi.org/10.22617/TCS210112-2
+
+Balashankar et al, 2021
+https://arxiv.org/pdf/2111.15602.pdf
+Fine-grained prediction of food insecurity using news streams
+Ananth Balashankar, Lakshminarayanan Subramanian, and Samuel P. Fraiberger
+December 1, 2021
+
+"The Struggle for Integration and Harmonization of Social Statistics in
+a Statistical Agency - A Case Study of Statistics Canada"](https://www.ihsn.org/sites/default/files/resources/IHSN-WP004.pdf), 2010, by Gordon Priest
+
+["Relevant Search: With applications for Solr and Elasticsearch"](https://www.manning.com/books/relevant-search) (2016) by D. Turnbull and J. Berryman.
+
+Jurafsky, Daniel; H. James, Martin (2000)
+Speech and language processing : an introduction to natural language processing, computational linguistics, and speech recognition. Upper Saddle River, N.J.: Prentice Hall. ISBN 978-0-13-095069-7
+
+Tomas Mikolov, Kai Chen, Greg Corrado, Jeffrey Dean (2013)
+Efficient Estimation of Word Representations in Vector Space
+https://arxiv.org/abs/1301.3781
+
+
+
+LINKS
+
+WorldPop
+https://www.worldpop.org/
+
+Bookdown
+
+Brian Min and Zachary O'Keeffe, 2021
+http://www-personal.umich.edu/~brianmin/HREA/index.html
+
+NADA
+
+Guide GitHub
+
+DDI
+
+ISO 19139
+
+Dublin Core
+
+IPTC
+
+schema.org
+
+IHSN
+
+
+[ElasticSearch](https://github.com/elastic/elasticsearch) 
+[Milvus](https://milvus.io/))
+
+[Google's Search Engine Optimization (SEO) Starter Guide](https://developers.google.com/search/docs/beginner/seo-starter-guide)
+Get Bing's
+
+
+# Annex 2: Academic/scientific disciplines {-}
+
+https://en.wikipedia.org/wiki/List_of_academic_fields
+An academic discipline or field of study is known as a branch of knowledge. It is taught as an accredited part of higher education. There is no consensus on how some academic disciplines should be classified.
+
+ 1.	**Humanities**
+    - 1.1	Performing arts
+    - 1.2	Visual arts
+    - 1.3	History
+    - 1.4	Languages and literature
+    - 1.5	Law
+    - 1.6	Philosophy
+    - 1.7	Theology
+ 2. **Social Sciences**
+    - 2.1	Anthropology
+    - 2.2	Economics
+    - 2.3	Geography
+    - 2.4	Political science
+    - 2.5	Psychology
+    - 2.6	Sociology
+    - 2.7	Social Work
+ 3. **Natural Sciences**
+    - 3.1	Biology
+    - 3.2	Chemistry
+    - 3.3	Earth science
+    - 3.4	Space sciences
+    - 3.5	Physics
+ 4. **Formal Sciences**
+    - 4.1	Computer Science
+    - 4.2	Mathematics
+ 5. **Applied Sciences**
+    - 5.1	Business
+    - 5.2	Engineering and technology
+    - 5.3	Medicine and health
+    
+    
+# Annex 3: CESSDA topic classification {-}
+
+https://vocabularies.cessda.eu/vocabulary/TopicClassification
+Version 4.1
+Broader topic terms (in capital letters) should only be used
+if no narrower terms are applicable.
+
+   - **DEMOGRAPHY** 
+      - **Censuses**: Censuses Surveys of an entire population, as opposed to a sample survey. Often used for official enumerations of a population, usually including the collection of related demographic information. Note that in some countries censuses are not used as demographic information can be obtained from official registers.
+      - **Migration**: Includes immigration, emigration, internal migration as well as other types of geographical mobility. Immigration means coming to settle in another country than one's home country. Emigration means leaving one's home country to settle in another country. Migration is an umbrella term for both. Migration also includes internal migration, that is, movement of people within one country at different geographical levels.
+      - **Morbidity and mortality**: Morbidity refers to incidence of ill health in a population. Data may cover the incidence or morbidity rate of a medical condition. For example, the number of people who suffer from lung cancer in a country or a geographic area during a single year. Mortality data indicate the numbers of deaths in a population by place, time, cause, or type of individual etc. For example, maternal mortality rate, child mortality rate. Use note: Self-reported survey data on illnesses and medical conditions are indexed with HEALTH hierarchy topics.
+   - **ECONOMICS**
+      - **Consumption and consumer behavior**: Refers to the act of acquiring and/or using something to meet the needs and wants of a person, community or society. Data in this category include patterns of consumer behaviour, changes in them, and data on consumer ethics. For example, survey data on how often people buy certain items; when and where they shop; whether ethical considerations affect their consumer choices.
+      - **Economic conditions and indicators**: Economic indicators indicate in which direction an economy is headed and include, for example, GDP growth rate, employment, inflation and interest rate, consumer and investor activity, household debt. Use note: This topic is also used for economic conditions of individuals and households which are surveyed or registered.|
+      - **Economic policy, public expenditure and revenue**: Data on economic policy, including budget and fiscal policy, public expenditure and public revenue.
+      - **Economic systems and development**: Data covering capitalist, socialist and other economic systems and data on, for example, international development programs.|
+      - **Income, property and investment/saving**: Data on the accumulation of personal assets, including income, property, investments and savings.|
+   - **EDUCATION**
+      - **Compulsory and pre-school education**: Compulsory education refers to the period of education that is required of all persons living in a country and is imposed by law. Pre-school education refers to formal childcare and education given prior to compulsory education. This topic covers data relating to pre-school, primary and lower secondary stages of education, regardless of whether the data focuses on students, teachers, subjects or skills taught, facilities etc.|
+      - **Educational policy**: Discussions of policy and principles, and decisions made and principles adopted at national, regional or local level concerning education and its provision. Use note: For laws and regulations already implemented, use the topic 'Laws and regulations' as well.
+      - **Higher and further education**: Covers general education at ISCED levels 3-4 plus tertiary education, that is, upper secondary general education, and college, university of applied sciences, and university education. Includes data on students, teachers, subjects or skills taught, facilities etc.
+      - **Life-long/continuing education**: Refers to educational opportunities in varied forms provided for adults after they have left the formal education system. Adults may engage in such education to, for instance, improve their skills or qualifications, to retrain for a new line of work, or just to learn something new. Does not generally include education leading to a qualification, or employee training.
+      - **Vocational education and training**: Programmes that are designed for learners to acquire the knowledge, skills and competencies specific to a particular occupation, trade or class of occupations or trades. Vocational education may have work-based components. Covers vocational education at ISCED levels 3-4 and apprenticeships. Includes data on students, teachers, subjects or skills taught, facilities etc.
+      
+   - **HEALTH**	
+      - **Diet and nutrition**: Nutritional processes, eating patterns and practices, and measurable nutritional parameters such as body mass index (BMI), weight, vitamin levels.
+      - **Drug abuse, alcohol and smoking**: Data on drug and other substance abuse. Data on smoking and drinking habits. Use note: For data covering medicinal use of recreational drugs (such as medicinal use of cannabis), use 'Medication and treatment'.
+      - **General health and well-being**: Data on the general well-being or health status of an individual, group or population. May be objectively measured/observed or self-perceived. Well-being includes, for instance, physical and mental capacity or state, as well as social state.
+      - **Health care services and policies**: Quality and availability of services, associated facilities and personnel within health care. Health care economy and policy decisions and principles at national, regional or local level regarding health care. Use note: For laws and regulations already implemented, use the topic 'Laws and regulations' as well.
+      - **Medication and treatment**: Treatment of disease, or procedure/s of preventing it. Patient care at individual level. Research on medication and treatment of a disease. Data on, for instance, surgical procedures, rehabilitation, doctor consultation, physical therapy, musculoskeletal manipulations, care in hospital or home, psychotherapy, investigative techniques, medication.
+      - **Occupational health**: Data on occupational exposures and diseases, occupational safety, sick leave, work ability and disability, or work-related disability pension.
+      - **Physical fitness and exercise**: Data on people's general level of fitness, physical activity and exercise they take.
+      - **Public health**: Prevention and control of disease and disability, and the promotion of physical and mental health of the population on the international, national, state, or municipal level. For instance, health promotion, disease prevention, impact of public health programmes, managing local, national or global health issues, epidemiology of a disease, condition, or pathogen, or disease outbreak.
+      - **Reproductive health**: Reproductive process, function or system at any stage of life. Includes data on pregnancy, birth, family planning, contraception, abortion and menopause.
+      - **Signs and symptoms; pathological conditions**: Data on abnormal anatomical or physiological conditions, and objective or subjective manifestations of disease/symptoms, not classified as disease or syndrome (in which case 'Specific diseases, disorders or medical conditions' would be used). Includes clinical manifestations that can be objective when observed by a medical professional or subjective when perceived by the patient. E.g. pain, diarrhoea, rash, leg length inequality, insomnia, teeth grinding, inflammation, arrhythmia.
+      - **Specific diseases, disorders and medical conditions**: Data on specific, diagnosed diseases, disorders or syndromes (often classified in ICD-10 or its earlier versions). For example, medical research on infectious diseases or the causes of diabetes, or data on the physical and mental recovery of people who have had heart surgery.
+      - **Wounds and injurie**: Wounds and injuries, both physical and psychological, caused either by accidents or violence (through individual or group aggressive behavior). Use note: If work-related wounds or injuries, use 'Occupational health'.
+   - **HISTORY**
+      - **History**: Use note: In addition to this broader topic, use another topic for historical data. Example: for data on the working environments of family doctors in the 1960s, use HISTORY and 'Working conditions' plus 'Health care services and policies'. Use the HISTORY topic on its own only if a more specific topic cannot be found in this vocabulary.
+   - **HOUSING AND LAND USE**	
+      - **Housing**: Includes data measuring the standard of housing in a community, including social housing, as well as the availability and pricing of housing. Housing includes homes, second homes and holiday homes.
+      - **Land use and planning**: Includes both land use and land use planning. Land use planning refers to procedures carried out to ensure an optimal and sustainable use of land resources in rural and urban communities.
+   - **LABOR AND EMPLOYMENT**	
+      - **Employee training**: Internal corporate training and other employee training funded by the employer to increase employee skills and competence. Use note: Does not include apprenticeships, which are included in 'Vocational education and training'.
+      - **Employment**: Data on employment rate and statistics, labour market, job vacancies, job-seeking, job characteristics, employment of certain groups (e.g. youth or minority employment), employment services, career. Use note: For pay and remuneration use 'Working conditions'.
+      - **Labor and employment policy**: Data on employment policies relating to employment relations, the labour market and equality and discrimination at work; at national level policies include influencing the demand and supply of labour and the functioning of labour markets. Use note: For laws and regulations already implemented, use the topic 'Laws and regulations' as well.
+      - **Labor relations/conflict**: Relations between employers and employees.
+      - **Retirement**: Includes all patterns of retirement such as phased or flexible retirement, data on retirement age and early retirement.
+      - **Unemployment**: Data on unemployment rates and statistics, employment programmes and schemes, duration and frequency of unemployment, social and psychological impact of unemployment etc.
+      - **Working conditions**: The conditions under which employees work. For example, types of contract, working time (hours of work, rest periods, work schedules, overtime), pay and remuneration, physical aspects and mental demands of work, employee rights and responsibilities, workload, employee involvement in decision-making, leave entitlements, physical environment. Use note: For workplace safety issues, use also 'Occupational health'.
+   - **LAW, CRIME AND LEGAL SYSTEMS**	
+      - **Crime and law enforcement**: Data on crime, crime prevention, victims of crime, criminals, as well the police, secret service, correctional institutions (e.g. prisons, young people's correctional institutions), border control and customs. Also includes data on the staff and facilities of these agencies.
+      - **Legislation and legal systems**: Data on international or national legislation, administrative regulations, judiciary system (powers and activities of courts), alternative dispute resolution and restorative justice, punishments.
+   - **MEDIA, COMMUNICATION AND LANGUAGE**	
+      - **Information society**: The creation, distribution, use, integration and manipulation of information as a significant economic, political, and cultural activity. For instance, data relating to e-commerce, e-government, social media, mobile devices, access to and use of the Internet, e-privacy, information and library resources. Use note: For data on the actual technologies, use 'Information technology'.
+      - **Language and linguistics**: Data from linguistic studies, linguistic analysis and sociolinguistics, as well as data on language policies, people's language skills, languages spoken at work and at home, attitudes towards minority languages etc.
+      - **Media**: Data referring to any type of mass media. For example, printed or online newspapers, magazines, television and the radio. Use note: Social media are indexed with 'Information society'.
+      - **Public relations**: Measures adopted to enhance or preserve the image of individuals, companies, organisations, and governments for example by means of advertising, lobbying etc.
+   - **NATURAL ENVIRONMENT**	
+      - **Energy and natural resources**: Natural resources are assets such as land, forests, energy sources, water, minerals which exist naturally and can be used for economic production or consumption. Energy resources include fossil fuels such as oil, natural gas or coal, as well as nuclear, solar, tidal and wind or from living organisms that can be replaced.
+      - **Environment and conservation**: Covers issues of environmental degradation, pollution, environmental protection, climate change, flood prevention, soil erosion.
+      - **Natural landscapes**: Covers landscapes and elements of land that have not been directly changed by humans.
+      - **Plants and animals**: Covers domesticated, production and wild animals, as well as all types of plants (e.g. flowers, trees, moss, vegetables).
+   - **POLITICS**	
+      - **Conflict, security and peace**: Internal and international security and safety; internal and international conflicts; war and peace; national defense and defense forces (the army). Use note: The police are covered by 'Crime and law enforcement'.
+Politics.Elections	Elections	Data on elections, referendums, election campaigns, election results, candidates in elections, candidate selectors, election funding etc.
+      - **Government, political systems and organisations**: Issues relating to national, regional and local government, governing bodies (e.g. the Government, Parliament, local government bodies), public administration, other political organizations such as political parties. For example, data on government policies, political parties and their policies, political party leaders, trust in government bodies.
+      - **International politics and organisations**: Global governance, diplomacy, foreign policy, relations between countries, international organisations (e.g. the EU, WHO, UN, WTO), and international agreements.
+      - **Political behaviour and attitudes**: Data on party political attitudes, political engagement and participation in the political process, voting behaviour, satisfaction with government. Use note: For data on specific political doctrines, use 'Political ideology'.
+      - **Political ideology**: Ideas, ideals and theories on the ways governments and societies can be organised. Major political ideologies include anarchism, democracy, liberalism, conservatism etc.
+   - **PSYCHOLOGY**	
+   - **SCIENCE AND TECHNOLOGY**	
+      - **Biotechnology**: Data referring to the use of biomolecular and cellular processes to create new products and technological processes.
+      - **Information technology**: Information and communication technologies that are used in the home, workplace and other community setting. Use note: The use and impact of these technologies are covered by 'Information society'.
+   - **SOCIAL STRATIFICATION AND GROUPINGS**	
+      - **Children**: Use note: May need an additional topic, if children are studied from a particular aspect.
+      - **Elderly**: Use note: May need an additional topic, if the elderly are studied from a particular aspect.
+      - **Elites and leadership**: Issues related to the existence, roles and impact of elites in society, that is, individuals or groups who have a large amount of power or influence over society, politics, wealth etc, either through decisions they make or, for example, through ideas or feelings that they express or represent. Includes issues related to influential people in all spheres of society, for example, decision-makers in political life, political party leaders, influential artists, prominent mass or social media figures etc.
+      - **Equality, inequality and social exclusion**: Issues relating to whether all individuals or groups of individuals have the same status and opportunities in society. Equality can be studied, for example, in terms of education, (financial) assets or income, occupational position, power, prestige, conditions of work and leisure time, access to services, and social relations. Marginalization and social exclusion can be the result of systematic disadvantage in multiple areas of life, and people concerned may be deprived of rights, opportunities, resources and social integration. Examples of data: statistics on income equality; perceived group-focused discrimination (e.g. towards foreigners, the homeless, asylum seekers); perceived differences between men and women regarding opportunities for leading roles in politics; impact of parental unemployment on children's education level and social networks.
+      - **Family life and marriage**: Covers issues related to families, relatives, generations and household composition. For instance, data on child rearing, division of labor within the family, support provided for family members.
+      - **Gender and gender roles**: Gender identity; gendered representation (e.g. representation of genders in decision-making bodies, in media, in literature etc); social, cultural and psychological traits linked to males and females; women's studies; men's studies; expected behaviour and choices according to gender roles and the impact of such expectations.
+      - **Minorities**: Groups of individuals that differ from the majority of population in some way. Differentiating characteristics include, for instance, ethnicity, religion, health, sexual orientation, first language (mother tongue) and culture. Use note: For some minority issues, it may be useful to select additional topics such as 'Equality, inequality and social exclusion' or 'Language and linguistics'.
+      - **Social and occupational mobility**: Movement of individuals, families or groups of individuals in social and occupational status over time. The movement may be horizontal, that is, change in position within the range of same status, or vertical where individuals may move upwards or downwards in the status hierarchy. For example, labourers in declining industries may become labourers in some other industry (horizontal occupational mobility), or children in poor families may reach a higher social class than their parents (vertical inter-generational social mobility).
+      - **Youth	Use note: May need an additional topic, if young people are studied from a particular aspect.
+   - **SOCIAL WELFARE POLICY AND SYSTEMS**	
+      - **Social welfare policy**: Decisions made and principles adopted at national, regional or local level concerning social welfare, its funding and provision, for instance, who is entitled to what kind of social services and benefits and why, what is their level, and who can provide the services. For example, a policy that elderly people should remain in their homes for as long as possible, a policy relating to how long people can have an unemployment benefit. Use note: For laws and regulations already implemented, use the topic 'Laws and regulations' as well.
+      - **Social welfare systems/structures**: Issues related to the actual provision of social welfare, who provides social welfare services in practice and to what extent, how the actual services are structured. For example, questions on how a local government has organised services for the elderly.
+      - **Specific social services: use and availability**: For example, data on the extent people use specific social services, opinions on the adequacy, accessibility and availability of specific services, and general satisfaction with them. For example, questions on what services elderly respondents have used, or use statistics on particular services.
+   - **SOCIETY AND CULTURE**	
+      - **Community, urban and rural life**: Data related to different aspects of life in the community, or in urban and rural areas. Opinions on and images of the neighborhood, or of urban or rural areas. Services, facilities and business opportunities in the neighborhood.
+      - **Cultural activities and participation**: Active or passive participation in any kind of cultural activities, as well as opinions and perceptions of them.
+      - **Cultural and national identity**: Data on identity formation, who people feel they are and where they feel they belong in terms of nationality, locality, social class, generation, ethnicity, religion or any other social/cultural grouping. Also covers exclusion of self or others from those groups.
+      - **Leisure, tourism and sport**: Recreation patterns, leisure time activities and hobbies. Includes sports spectatorship, competition sports, and travel for leisure. Use note: For data on exercise for keeping fit, use 'Physical fitness and exercise'.
+      - **Religion and values**: Data which addresses questions of religious behavior, religious movements, spirituality, morality and other values.
+      - **Social behavior and attitudes**: Data on social behavior; social interaction and networks; social responsibilities; social norms and rules; and attitudes towards these issues.
+      - **Social change**: Data on changes in the society, including attitudinal changes.
+      - **Social conditions and indicators**: Covers all aspects of the quality of life and well-being of individuals and societies, as well as people's perceptions thereof. Use note: Depending on the aspect studied, 'General health and well-being', 'Equality, inequality and social exclusion' and 'Economic conditions and indicators', etc. may be relevant as well.
+      - **Time use**: Data on the amount of time spent by the population on various activities.
+   - **TRADE, INDUSTRY AND MARKETS**	
+      - **Agriculture and rural industry**: Data on agricultural production and all rural industries which include, for example, fisheries and forestry.
+      - **Business/industrial management and organization**: Data on industry and business such as management, productivity, growth and decline, organization structure, administration, investment in R&D, markets and market share.
+      - **Foreign trade**: Exchange of capital, goods, or services across international borders.
+   - **TRANSPORT AND TRAVEL**
+      - **Transport and travel**: Includes all types of goods transport as well as commuting, public transport (trains, buses, underground etc), and urban transport networks. Data on mobility habits, for example, cross-border shopping, routes and means used to access a location. Use note: For travel for leisure, use the topic 'Leisure, tourism and sport'.
+   - **OTHER**
+      - **Other**: Use if the topic is known, but not found in the list.
+
