@@ -123,7 +123,9 @@ A version statement for the metadata (DDI) document. Documenting a dataset is no
   > Example in R:  
 
     ```{r, eval=F, echo=T}
+    
     my_ddi <- list(
+      
       doc_desc = list(
         title = "Albania Living Standards Study 2012",
         idno = "DDI_WB_ALB_2012_LSMS_v02",
@@ -142,7 +144,9 @@ A version statement for the metadata (DDI) document. Documenting a dataset is no
           version_notes = "Version identical to Version 1.0 except for the Data Appraisal section which was added."
         )
       ),
+      
       # ... (other sections of the DDI)
+      
     )  
     ```
 
@@ -159,7 +163,18 @@ The title statement for the study.
 ![](./images/ReDoc_Microdata_04a.JPG){width=100%}
 <br>
     - **`idno`** *[DDI: \<IDNo>\ ; Required ; Not repeatable ; String]*  <br>
-    `idno` is a unique identification number used to identify the study (survey, census or other). A unique identifier will be required by any data catalog. It will allow users to cite the dataset properly. The recommended option is to obtain a [Digital Object Identifier (DOI)](https://www.doi.org/) for the study, which will ensure that the identifier is unique globally. Alternatively, it can be an identifier constructed by an organization using a consistent scheme. The scheme could for example be "catalog-country-study-year-version", where *`country`* is the 3-letter ISO country code, *`producer`* is the abbreviation of the producing agency, *`study`* is the study acronym, *`year`* is the reference year (or the year the study started), *`version`* is a version number. Using that scheme, the Uganda 2005 Demographic and Health Survey for example would have the following ID (where "WBML" stand for "World Bank Microdata Library"): WBML_UGA_DHS_2005_v01. Note that the schema allows you to provide more than one identifier for a same study ; a catalog-specific identifier is thus not incompatible with a globally unique identifier like a DOI.  @@@@@@@@@ where to put other ID?
+    `idno` is a unique identification number used to identify the study (survey, census or other). A unique identifier will be required by any data catalog. It will allow users to cite the dataset properly. The recommended option is to obtain a [Digital Object Identifier (DOI)](https://www.doi.org/) for the study, which will ensure that the identifier is unique globally. Alternatively, it can be an identifier constructed by an organization using a consistent scheme. The scheme could for example be "catalog-country-study-year-version", where *`country`* is the 3-letter ISO country code, *`producer`* is the abbreviation of the producing agency, *`study`* is the study acronym, *`year`* is the reference year (or the year the study started), *`version`* is a version number. Using that scheme, the Uganda 2005 Demographic and Health Survey for example would have the following ID (where "WBML" stand for "World Bank Microdata Library"): WBML_UGA_DHS_2005_v01. Note that the schema allows you to provide more than one identifier for a same study ; a catalog-specific identifier is thus not incompatible with a globally unique identifier like a DOI.  
+    
+    - **`identifiers`** *[DDI: \<@@@>\ ; Optional ; Repeatable]*  <br>
+    This repeatable element is used to enter identifiers (IDs) other than the catalog ID entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI). The ID entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`). 
+  <br>
+  ![](./images/ReDoc_documents_07.JPG){width=100%}
+  <br>    
+    - **`type`** *[Optional ; Not repeatable ; String]* <br>
+    The type of unique ID, e.g. "DOI".
+    - **`identifier`** *[Required ; Not repeatable ; String]* <br>
+    The identifier itself. <br>
+<br>
      
     - **`title`** *[DDI: \<titl>\ ; Required ; Not repeatable ; String]*  <br>
     Provide here the full authoritative title for the study. Use unique names for distinct studies. The title should indicate the time period covered. For example, in a country conducting monthly labor force surveys, the title of a study would be like "Labor Force Survey, December 2020". When a survey spans two years (for example, a household income and expenditure survey conducted over a period of 12 months from June 2020 to June 2021), the range of years can be provided in the title, for example "Household Income and Expenditure Survey 2020-2021". The title for a survey should be its official name as stated on the questionnaire or other study documents (report, etc.). As the study title is a proper noun, the first letter of each word should be capitalized (except for prepositions or other conjunctions). Including the country name in the title is optional (another metadata element is used to identify the reference country/ies).
@@ -170,10 +185,10 @@ The title statement for the study.
     Title = "[country] Universal Primary Education Project, Impact Evaluation Survey 2007" ; Subtitle = "Baseline"
     Note that this could also be entered as a title: title = "[country] Universal Primary Education Project, Impact Evaluation Survey 2007 - Baseline")
 
-    - **`alternate_title`** *[DDI: \<altTitl>\ ; Optional ; Not repeatable ; String]*  <br>
+    - **`alternate_title`** *[DDI: \<altTitl>\ ; Optional ; Not repeatable ; String]*  <br> 
     An alternative name used to refer to the study, such as an alias or an abbreviation. When an abbreviation is used, the study reference year(s) should be included in the `alternate_title`. For example, "DHS 2015" for the "Demographic and Health Survey 2005" or "HIES 2012-2013" for the "Household Income and Expenditure Survey 2012-2013"
     
-    - **`translated_title`** *[DDI: \<altTitl>\ ; Optional ; Not repeatable ; String]*  <br>
+    - **`translated_title`** *[DDI: \<altTitl>\ ; Optional ; Not repeatable ; String]*  <br>  
     In countries with more than one official language, a translation of the title may be provided. Likewise, the translated title may simply be a translation into English from a country's own language. Special characters should be properly displayed, such as accents and other stress marks or different alphabets.
 <br>
 
@@ -181,15 +196,21 @@ The title statement for the study.
 
   ```{r, eval=F, echo=T}
   my_ddi <- list(
+    
     # ... ,
+    
     study_desc = list(
       title_statement = list(
         idno = "ML_ALB_2012_LSMS_v02",
+        identifiers = list(
+          list(type = "DOI", identifier = "XXX-XXXX-XXX")
+        ),
         title = "Living Standards Study 2012",
         alternate_title = "LSMS 2012",
         translated_title = "Anketa e Matjes së Nivelit të Jetesës (AMNJ) 2012"
       )
     ),
+    
     # ...
   )  
   ```
@@ -209,17 +230,26 @@ The name and affiliation of the person, corporate body, or agency responsible fo
 
     ```{r, eval=F, echo=T}
     my_ddi <- list(
+      
       # ... ,
+      
       study_desc = list(
+        
         # ... ,
+        
         authoring_entity = list(
+          
           list(name = "National Statistics Office of Popstan (NSOP)", 
                affiliation = "Ministry of Planning"),
+          
           list(name = "Department of Public Health of Popstan (DPH)", 
                affiliation = "Ministry of Health")
+          
         ),
+        
         # ...
       )
+      
     )  
     ```
 
@@ -237,9 +267,12 @@ This element is used to acknowledge any other people and organizations that have
 
     ```{r, eval=F, echo=T}
     my_ddi <- list(
+      
       # ... ,
+      
       study_desc = list(
         # ... ,
+        
         oth_id = list(
           list(name = "John Doe", 
                role = "Technical advisor in sample design", 
@@ -247,7 +280,9 @@ This element is used to acknowledge any other people and organizations that have
           )
         ),
         # ...
+      
       )
+      
     )  
     ```
 
@@ -292,8 +327,11 @@ A production statement for the work at the appropriate level.
 
     ```{r, eval=F, echo=T}
     my_ddi <- list(
+      
       # ... ,
+      
       study_desc = list(
+        
         # ... ,
         
         production_statement = list(
@@ -330,15 +368,15 @@ A production statement for the work at the appropriate level.
           
         ),    
         # ...,    
+        
       )
       # ...
+      
     )
     ```
 
 - **`distribution_statement`** *[DDI: \<distStmt>\; Optional ; Not repeatable]* <br>
 A distribution statement for the study.
-<br>
-@@@@@@@ redo screenshot to include URI
 <br>
 ![](./images/ReDoc_Microdata_07.JPG){width=100%}
 <br>
@@ -350,7 +388,7 @@ A distribution statement for the study.
         The official abbreviation of the organization mentioned in `name`. 
         - **`affiliation`** *[DDI: \<distrbtr - affiliation>\ ; Optional ; Not repeatable ; String]* <br>
         The affiliation of the person or organization mentioned in `name`.<br>
-        - **`uri`** *[DDI: \<distrbtr - URI>\ ; Optional ; Not repeatable ; String]* <br>  @@@@@@@@@  add to schema
+        - **`uri`** *[DDI: \<distrbtr - URI>\ ; Optional ; Not repeatable ; String]* <br>  
         A URL to the ordering service or download facility on a Web site.<br><br>
 
     - **`contact`** *[DDI: \<contact>\ ;  Optional ; Repeatable]* <br>
@@ -361,7 +399,7 @@ A distribution statement for the study.
         The affiliation of the person or organization mentioned in `name`.
         - **`email`** *[DDI: \<contact - email>\ ; Optional ; Not repeatable ; String]* <br>
         An email address for the contact mentioned in `name`. <br>
-        - **`uri`** *[DDI: \<contact - URI>\ ; Optional ; Not repeatable ; String]* <br>  @@@@@@@@@  add to schema
+        - **`uri`** *[DDI: \<contact - URI>\ ; Optional ; Not repeatable ; String]* <br>  
         A URL to the contact.<br><br>
 
     - **`depositor`** *[DDI: \<depositr>\ ; Optional ; Repeatable]* <br>
@@ -372,7 +410,7 @@ A distribution statement for the study.
         The official abbreviation of the organization mentioned in `name`.
         - **`affiliation`** *[DDI: \<depositr - affiliation>\ ; Optional ; Not repeatable ; String]* <br>
         The affiliation of the person or organization mentioned in `name`.
-        - **`uri`** *[DDI: \<depositr - URI>\ ; Optional ; Not repeatable ; String]* <br>  @@@@@@@@@  add to schema
+        - **`uri`** *[DDI: \<depositr - URI>\ ; Optional ; Not repeatable ; String]* <br>  
         A URL to the depositor<br><br>
 
     - **`deposit_date`** *[DDI: \<depDate>\ ; Optional ; Not repeatable ; String]* <br>
@@ -479,20 +517,26 @@ The version statement should contain a version number followed by a version labe
 
     ```{r, eval=F, echo=T}
     my_ddi <- list(
-      doc_desc = list(
+      
         # ... 
-      ),
+
       study_desc = list(
+        
         # ... ,
+        
         version_statement = list(
           version = "Version 1.1",
           version_date = "2021-02-09",
           version_resp = "National Statistics Office, Data Processing unit",
           version_notes = "This dataset contains the edited version of the data that were used to produce the Final Survey Report. It is equivalent to version 1.0 of the dataset, except for the addition of an additional variable (variable weight2) containing a calibrated version of the original sample weights (variable weight)"
         ),
+        
         # ...
+        
       ),
+      
       # ...
+      
     )  
     ```
 
@@ -572,7 +616,7 @@ Provides structured information on the agency that authorized the study, the dat
     The date, preferably in ISO 8601 format (YYYY-MM-DD) when the authorization to conduct the study was granted.<br>
     - **`agency`** *[DDI: \<authorizingAgency>\ ; Optional ; Repeatable]* <br> 
     Identification of the agency that authorized the study.
-       - **`name`** *[DDI: \<authorizingAgency - @@@>\ ; Optional ; Not repeatable ; String]* <br>
+       - **`name`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
        Name of the agent or agency that authorized the study. 
        - **`affiliation`** *[DDI: \<authorizingAgency - affiliation>\ ; Optional ; Not repeatable ; String]* <br>
        The institutional affiliation of the authorizing agent or agency mentioned in `name`. 
@@ -1105,27 +1149,24 @@ Six staff members of the Statistics Office provided overall fieldwork coordinati
     ```
 
 <br>
-    - **`quality_statement`** *[DDI: \<qualityStatement>\ ; Optional ; Not Repeatable]* <br>    @@@@@@ Divide into standardsCompliance and otherQualityStatement and make repeatable
+    - **`quality_statement`** *[DDI: \<qualityStatement>\ ; Optional ; Not Repeatable]* <br>
     This section lists the specific standards complied with during the execution of this study, and provides the option to formulate a general statement on the quality of the data. Any known quality issue should be reported here. Such issues are better reported by the data producer or curator, not left to the secondary analysts to discover. Transparency in reporting quality issues will increase credibility and reputation of the data provider.
   <br>
   ![](./images/ReDoc_Microdata_17.JPG){width=100%}
   <br> 
   <br>
-       - **`standards_compliance`** *[DDI: \<standardsCompliance>\ ; Optional ; Repeatable ; String]* <br>    @@@ Create
-       A list of the quality standards complied with during the execution of the study.<br>
-          - **`standard_name`** *[DDI: \<standardsCompliance - standardName>\ ; Optional ; Not repeatable ; String]* <br>
+    - **`compliance_description`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
+    A statement on compliance with standard quality assessment procedures. The list of these standards can be documented in the next element, `standards`.
+    - **`standards`** *[DDI: \<standardsCompliance>\ ; Optional ; Repeatable]* <br>    
+       An itemized list of quality standards complied with during the execution of the study.<br>
+          - **`name`** *[DDI: \<standardsCompliance - standardName>\ ; Optional ; Not repeatable ; String]* <br>
           The name of the quality standard, if such a standard was used. Include the date when the standard was published, and the version of the standard with which the study is compliant, and the "URI" attribute includes . <br>
-          - **`standard_producer`** *[DDI: \<standardsCompliance - producer>\ ; Optional ; Not repeatable ; String]* <br>
-          The producer of the quality standard.
-          - **`standard_compliance_desc`** *[DDI: \<standardsCompliance - complianceDescription>\ ; Optional ; Not repeatable ; String]* <br>
-          Description of how the study complied with the standard mentioned in `standard_name`. 
-          - **`standard_compliance_uri`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>  @@@ Redo screenshot
-          The URI for the standard mentioned in `standard_name`. <br>
-<br>      
-       - **`other_quality_statement`** *[DDI: \<otherQualityStatement>\ ; Optional ; Not repeatable ; String]* <br>   @@@ make repeatable?
-       Any additional statement on the quality of the data, entered as free text. This can be independent of any particular quality standard. <br>
+          - **`producer`** *[DDI: \<standardsCompliance - producer>\ ; Optional ; Not repeatable ; String]* <br>
+          The producer of the quality standard mentined in `name`.
+    - **`other_quality_statement`** *[DDI: \<otherQualityStatement>\ ; Optional ; Not repeatable ; String]* <br>   
+    Any additional statement on the quality of the data, entered as free text. This can be independent of any particular quality standard.<br>
   
-> Example in R:
+> Example in R:   @@@ complete the example
 
     ```{r, eval=F, echo=T}
     my_ddi <- list(
@@ -1139,13 +1180,14 @@ Six staff members of the Statistics Office provided overall fieldwork coordinati
           
           quality_statement = list(
             
-             standards_compliance = list(
-               list(standard_name = "",
-                    standard_producer = "",
-                    standard_compliance_desc = "")
-               ),
+             compliance_description = "",
+            
+             standards = list(
+               list(name = "",
+                    producer = "")
+             ),
              
-             other_quality_statement = ""   @@@ Repeatable?
+             other_quality_statement = ""   
                
           ),
           
@@ -1220,7 +1262,6 @@ Six staff members of the Statistics Office provided overall fieldwork coordinati
     ```
 
 - **`study_development`** *[DDI: \<studyDevelopment>\ ; Optional ; Not repeatable]* <br>   
-@ redo screenshot
 <br>
 ![](./images/ReDoc_Microdata_19.JPG){width=100%}
 <br>
@@ -1242,18 +1283,14 @@ This section is used to describe the process that led to the production of the f
             Affiliation of the person or organization mentioned in `name`.<br>
             - **`role`** *[DDI: \<role>\ ; Optional ; Not repeatable ; String]* <br>
             Specific role (participation) of the person or organization mentioned in `name`.<br>
-        - **`resource`** *[DDI: \<resource>\ ; Optional ; Not Repeatable]* <br>  @@@@ check compliance with DDI
-        A description of the data sources and resources used to implement the activity.<br>
-            - **`data_source`** *[DDI: \<dataSrc>\ ; Optional ; Repeatable]* <br>
-            A list of datasets used as source for the study. This is a repeatable element; each source can be listed individually.<br>
-                - **`source`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
-                The name of the data source.<br>
-            - **`source_origin`** *[DDI: \<srcOrig>\ ; Optional ; Not repeatable ; String]* <br>
-            The origin of the resource.<br>
-            - **`source_char`** *[DDI: \<srcChar>\ ; Optional ; Not repeatable ; String]* <br>
-            @@@@@
-            - **`source_doc`** *[DDI: \<srcDocu>\ ; Optional ; Not repeatable ; String]* <br>
-            @@@@@
+        - **`resources`** *[DDI: \<resource>\ ; Optional ; Not Repeatable]* <br>  
+        A description of the data sources and other resources used to implement the activity.<br>
+            - **`name`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
+            The name of the resource.<br>
+            - **`origin`** *[DDI: \<srcOrig>\ ; Optional ; Not repeatable ; String]* <br>
+            The origin of the resource mentioned in `name`.<br>
+            - **`characteristics`** *[DDI: \<srcChar>\ ; Optional ; Not repeatable ; String]* <br>
+            The characteristics of the resource mentioned in `name`.
         - **`outcome`** *[DDI: \<outcome>\ ; Optional ; Not repeatable ; String]*  <br>
         Description of the main outcome of the activity.<br>
 
@@ -1271,35 +1308,58 @@ This section is used to describe the process that led to the production of the f
           
         study_development = list(
           
-          activity_type = "",
+          development_activity = list(
+            
+            list(
+                activity_type = "Questionnaire design and piloting",
+                activity_description = "",
+                participants = list(
+                  list(name = "",
+                       affiliation = "",
+                       role = ""),
+                  list(name = "",
+                       affiliation = "",
+                       role = ""),
+                  list(name = "",
+                       affiliation = "",
+                       role = "")
+                ),
+                resources = list(
+                  list(name = "",
+                       origin = "",
+                       characteristics = "")
+                ),
+                outcome = ""
+              ),
+            
+            list(
+                activity_type = "Interviewers training",
+                activity_description = "",
+                participants = list(
+                  list(name = "",
+                       affiliation = "",
+                       role = ""),
+                  list(name = "",
+                       affiliation = "",
+                       role = ""),
+                  list(name = "",
+                       affiliation = "",
+                       role = "")
+                ),
+                resources = list(
+                  list(name = "",
+                       origin = "",
+                       characteristics = "")
+                ),
+                outcome = ""
+              )
+            
+          )
           
-          activity_description = "",
-          
-          participants = list(
-            list(name = "",
-                 affiliation = "",
-                 role = ""),
-            list(name = "",
-                 affiliation = "",
-                 role = ""),
-            list(name = "",
-                 affiliation = "",
-                 role = "")
-          ),
-          
-          resource = list(
-            data_source=list(
-              source = ""),
-            source_origin = "",
-            source_char = "")
-          ),
-          
-          outcome = ""
-        
         ),
         
-      ),
       # ...
+      
     )
     ```
 
@@ -1329,14 +1389,14 @@ This section describes the methodology and processing involved in a study.<br>
           - **`role`** *[DDI: \<role>\ ; Optional ; Not repeatable ; String]* <br>
           The specific role of the person or agency mentioned in `name`.<br><br>
 
-       - **`collector_training`** *[DDI: \<collectorTraining>\ ; Optional ; Not Repeatable]* <br>  @@@@@@@@ make it repeatable
+       - **`collector_training`** *[DDI: \<collectorTraining>\ ; Optional ; Repeatable]* <br>  
        Describes the training provided to data collectors including interviewer training, process testing, compliance with standards etc. This set of elements is repeatable, to capture different aspects of the training process. 
        <br>
        ![](./images/ReDoc_Microdata_22a.JPG){width=100%}
        <br>
           - **`type`** *[DDI: \<collectorTraining - type>\ ; Optional ; Not repeatable ; String]* <br>
           The type of training being described. For example, "Training of interviewers", "Training of controllers", "Training of cartographers", "Training on the use of tablets for data collection", etc.<br>
-          - **`training`** *[DDI: \<*@@@>\ ; Optional ; Not repeatable ; String]* <br>
+          - **`training`** *[DDI: \<collectorTraining>\ ; Optional ; Not repeatable ; String]* <br>
           A brief description of the training. This may include information on the dates and duration, audience, location, content, trainers, issues, etc.<br>
             
        - **`frequency`** *[DDI: \<frequenc>\ ; Optional ; Not repeatable ; String]* <br>
@@ -1348,7 +1408,6 @@ In publications and reports, the description of sampling design often contains c
         
        - **`sample_frame`** *[DDI: \<sampleFrame>\ ; Optional ; Not Repeatable]* <br>
        A description of the sample frame used for identifying the population from which the sample was taken. For example, a telephone book may be a sample frame for a phone survey. Or the listing of enumeration areas (EAs) of a population census can provide a sample frame for a household survey. In addition to the name, label and text describing the sample frame, this structure lists who maintains the sample frame, the period for which it is valid, a use statement, the universe covered, the type of unit contained in the frame as well as the number of units available, the reference period of the frame and procedures used to update the frame.
-       @@@@@@@ redo screenshot if changes made
       <br>
       ![](./images/ReDoc_Microdata_23.JPG){width=100%}
       <br>
@@ -1387,11 +1446,14 @@ In publications and reports, the description of sampling design often contains c
         <br>
         Sometimes the reality of the field requires a deviation from the sampling design (for example due to difficulty to access to zones due to weather problems, political instability, etc). If for any reason, the sample design has deviated, this can be reported here. This element will provide information indicating the correspondence as well as the possible discrepancies between the sampled units (obtained) and available statistics for the population (age, sex-ratio, marital status, etc.) as a whole.<br>
 
-        - **`coll_mode`** *[DDI: \<collMode>\ ; Optional ; Repeatable ; String]* <br>   @@@ !! Make it repeatable in ReDoc
+        - **`coll_mode`** *[DDI: \<collMode>\ ; Optional ; Repeatable ; String]* <br>   
         <br>
         ![](./images/ReDoc_Microdata_23c.JPG){width=100%}
         <br>
-        The mode of data collection is the manner in which the interview was conducted or information was gathered. Ideally, a controlled vocabulary will be used to constrain the entries in this field (which could include items like "telephone interview", "face-to-face paper and pen interview", "face-to-face computer-assisted interviews (CAPI)", "mail questionnaire", "computer-aided telephone interviews (CATI)", "self-administered web forms", "measurement by sensor", and others. This is a repeatable field, as some data collection activities implement multi-mode data collection (for example, a population census can offer respondents the options to submit information via web forms, telephone interviews, mailed forms, or face-to-face interviews.<br>
+        The mode of data collection is the manner in which the interview was conducted or information was gathered. Ideally, a controlled vocabulary will be used to constrain the entries in this field (which could include items like "telephone interview", "face-to-face paper and pen interview", "face-to-face computer-assisted interviews (CAPI)", "mail questionnaire", "computer-aided telephone interviews (CATI)", "self-administered web forms", "measurement by sensor", and others. 
+<br>    
+        This is a <u>repeatable</u> field, as some data collection activities implement multi-mode data collection (for example, a population census can offer respondents the options to submit information via web forms, telephone interviews, mailed forms, or face-to-face interviews. Note that in the API description (see screenshot above), the element is described as having type "null", not {}. This is due to the fact that the element can be entered either as a list (repeatable element) or as a string.
+        <br>
 
         - **`research_instrument`** *[DDI: \<resInstru>\ ; Optional ; Not repeatable ; String]* <br>
         <br>
@@ -1401,12 +1463,6 @@ In publications and reports, the description of sampling design often contains c
            - List of questionnaires and short description of each (all questionnaires must be provided as External Resources) <br>
            - In what language(s) was/were the questionnaire(s) available? <br>
            - Information on the questionnaire design process (based on a previous questionnaire, based on a standard model questionnaire, review by stakeholders). If a document was compiled that contains the comments provided by the stakeholders on the draft questionnaire, or a report prepared on the questionnaire testing, a reference to these documents can be provided here. 
-           
-        - **`research_instrument_type`** *[DDI: \<resInstruType>\ ; Optional ; Not repeatable ; String]* <br>    @@@@ added ; not in ReDoc
-        <br>
-        ![](./images/ReDoc_Microdata_23e.JPG){width=100%}
-        <br>
-        This element allows for the use of a controlled vocabulary to specify the type of research instrument used for the data collection. "Structured" indicates an instrument in which all respondents are asked the same questions/tests, possibly with pre-coded answers. If a small portion of such a questionnaire includes open-ended questions, provide appropriate comments. "Semi-structured" indicates that the research instrument contains mainly open-ended questions. "Unstructured" indicates that in-depth interviews were conducted.
 
         - **`instru_development`** *[DDI: \<instrumentDevelopment>\ ; Optional ; Not repeatable ; String]* <br>
         <br>
@@ -1414,27 +1470,23 @@ In publications and reports, the description of sampling design often contains c
         <br>
         Describe any development work on the data collection instrument. This may include a description of the review process, standards followed, and a list of agencies/people consulted.<br>
         
-        - **`instru_development_type`** *[DDI: \<instrumentDevelopment - type>\ ; Optional ; Not repeatable ; String]* <br>   @@@ Make repeatable
+        - **`instru_development_type`** *[DDI: \<instrumentDevelopment - type>\ ; Optional ; Repeatable ; String]* <br>   
         <br>
         ![](./images/ReDoc_Microdata_23g.JPG){width=100%}
         <br>
-        The instrument development type, if a pre-defined list of options is available.
+        The instrument development type. This element will be used when a pre-defined list of options (controlled vocabulary) is available.
 
-        - **`sources`** *[DDI: \<sources>\ ; Optional ; Not Repeatable]* <br>   @@@ Must be made repeatable
+        - **`sources`** *[DDI: \<sources>\ ; Optional ; Repeatable]* <br>   
         A description of sources used for developing the methodology of the data collection.  
         <br>
         ![](./images/ReDoc_Microdata_24.JPG){width=100%}
-        <br>      
-            - **`data_source`** *[DDI: \<dataSrc>\ ; Optional ; Repeatable]* <br>
-            Used to list the book(s), article(s), serial(s), and/or machine-readable data file(s) -if any- that served as the source(s) of the data collection.
-                - **`source`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br> 
-                The name and other information on the source. For example, "United States Internal Revenue Service Quarterly Payroll File"<br>
-            - **`source_origin`** *[DDI: \<srcOrig>\ ; Optional ; Not repeatable ; String]* <br>
-            For historical materials, information about the origin(s) of the sources and the rules followed in establishing the sources should be specified. This may not be relevant to survey data.
-            - **`source_char`** *[DDI: \<srcChar>\ ; Optional ; Not repeatable ; String]* <br>
-            Assessment of characteristics and quality of source material. This may not be relevant to survey data. 
-            - **`source_doc`** *[DDI: \<srcDocu>\ ; Optional ; Not repeatable ; String]* <br>
-            Level of documentation of the original sources. This may not be relevant to survey data.<br>
+        <br>
+           - **`name`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br> 
+           The name and other information on the source. For example, "United States Internal Revenue Service Quarterly Payroll File"<br>
+           - **`origin`** *[DDI: \<srcOrig>\ ; Optional ; Not repeatable ; String]* <br>
+           For historical materials, information about the origin(s) of the sources and the rules followed in establishing the sources should be specified. This may not be relevant to survey data.
+           - **`characteristics`** *[DDI: \<srcChar>\ ; Optional ; Not repeatable ; String]* <br>
+           Assessment of characteristics and quality of source material. This may not be relevant to survey data. 
 <br>
         - **`coll_situation`** *[DDI: \<collSitu>\ ; Optional ; Not repeatable ; String]* <br>
         <br>
@@ -1637,25 +1689,28 @@ Sampling errors have been calculated for a select set of statistics (all of whic
     ```
 
 <br>
-    - **`study_class`** *[DDI: \<stdyClas>\ ; Optional ; Repeatable ; String]* <br>   @@@@@@@@ make it repeatable and redo screenshot
+    - **`study_class`** *[DDI: \<stdyClas>\ ; Optional ; Repeatable ; String]* <br>  
     <br>  
     ![](./images/ReDoc_Microdata_25a.JPG){width=100%}
     <br>
-    This element can be used to give the data archive's class or study status number, which indicates the processing status of the study. But it can also be used as an element to indicate the type of study, based on a controlled vocabulary. The element is repeatable, allowing one study to belong to more than one class.<br>
+    This element can be used to give the data archive's class or study status number, which indicates the processing status of the study. But it can also be used as an element to indicate the type of study, based on a controlled vocabulary. The element is repeatable, allowing one study to belong to more than one class. Note that in the API description (see screenshot above), the element is described as having type "null", not {}. This is due to the fact that the element can be entered either as a list (repeatable element) or as a string.<br>
 <br>
 <br>
-    - **`data_processing`** *[DDI: \<dataProcessing>\ ; Optional ; Repeatable]* <br> @@@@ Should be repeatable and type should be sub-element
+    - **`data_processing`** *[DDI: \<dataProcessing>\ ; Optional ; Repeatable]* <br>   @@@@ Improve definition of elements
     <br>  
     ![](./images/ReDoc_Microdata_25b.JPG){width=100%}
     <br>
-    This element is used to describe how data were electronically captured done (e.g., entered in the field, in a centralized manner by data entry clerks, captured electronically using tablets and a CAPI application, via web forms, etc.). Information on devices and software used for data capture can also be provided here. Other data processing procedures not captured elsewhere in the documentation can be described here (tabulation, etc.) <br>
+    This element is used to describe how data were electronically captured (e.g., entered in the field, in a centralized manner by data entry clerks, captured electronically using tablets and a CAPI application, via web forms, etc.). Information on devices and software used for data capture can also be provided here. Other data processing procedures not captured elsewhere in the documentation can be described here (tabulation, etc.) <br>
  <br>
-      - **`type`** *[DDI: \<dataProcessing - type>\ ; Optional ; Not repeatable ; String]* <br> @@@@@@@@@
+      - **`data_processing`** *[DDI: \<dataProcessing>\ ; Optional ; Repeatable ; String]*
+      A description of a data processing task. 
+      - **`source`** *[DDI: \<@@@>\ ; Optional ; Repeatable ; String]*
+      The source(s) used for the task.
+      - **`type`** *[DDI: \<dataProcessing - type>\ ; Optional ; Not repeatable ; String]* <br> 
       The type attribute supports better classification of this activity, including the optional use of a controlled vocabulary. The vocabulary could include options like "data capture", "data validation", "variable derivation", "tabulation", "data visualizations", anonymization", "documentation", etc.<br>
-      - **`description`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br> @@@@@@@@@ added
-      A description of the data processing referred to in `type`. 
+
 <br>
-    - **`coding_instructions`** *[DDI: \<codingInstructions>\ ; Optional ; Repeatable]* <br>  @@@@@@@@@@@@@@@@@ Must be repeatable in schema; redo screenshot
+    - **`coding_instructions`** *[DDI: \<codingInstructions>\ ; Optional ; Repeatable]* <br>   
     The `coding_instructions` elements can be used to describe specific coding instructions used in data processing, cleaning, or tabulation. Providing this information may however be complex and very tedious for datasets with a significant number of variables, where hundreds of commands are used to process the data. An alternative option, preferable in many cases, will be to publish reproducible data editing, tabulation and analysis scripts together with the data, as related resources.<br>
     <br>  
     ![](./images/ReDoc_Microdata_26.JPG){width=100%}
@@ -1912,7 +1967,7 @@ This section describes the access conditions and terms of use for the dataset. T
 
 ### Description of data files
 
-**`data_files`** *[DDI: \<fileDscr>\ ; Optional ; Repeatable]* <br>
+**`data_files`** *[DDI: \<fileDscr>\ ; Optional ; Repeatable]* <br>   
 The `data_files` section is the DDI section that contains the elements needed to describe each data file that form the study dataset. These are elements at the file level; it does not include the information at the variable level, which are contained in a separate section of the standard.
 <br>
 ![](./images/ReDoc_Microdata_30.JPG){width=100%}
@@ -1923,8 +1978,8 @@ The `data_files` section is the DDI section that contains the elements needed to
    - **`file_name`** *[DDI: \<fileName>\ ; Optional ; Not repeatable ; String]* <br>
    This is not the name of the electronic file (which is provided in the previous element). It is a short title (label) that will help distinguish a particular file/part from other files/parts in the dataset.<br>
 <br>
-   - **`file_type`** *[DDI: \<fileType>\ ; Optional ; Not repeatable ; String]* <br>   @@@@ Added - not in ReDoc ; redo screenshot
-   The type of data files. For example, raw data (ASCII), or software-dependent files such as SAS / Stata / SPSS data file, etc. Provide specific information (e.g. Stata 10 or Stata 15, SPSS Windows or SPSS Export, etc.)<br>
+   - **`file_type`** *[DDI: \<fileType>\ ; Optional ; Not repeatable ; String]* <br>   
+   The type of data files. For example, raw data (ASCII), or software-dependent files such as SAS / Stata / SPSS data file, etc. Provide specific information (e.g. Stata 10 or Stata 15, SPSS Windows or SPSS Export, etc.) Note that in an on-line catalog, data can be made available in multiple formats. In such case, the `file_type` element is not useful.<br>
 <br>
    - **`description`** *[DDI: \<fileDscr>\ ; Optional ; Not repeatable ; String]* <br>
    The `file_id` and `file_name` elements provide limited information on the content of the file. The `description` element is used to provide a more detailed description of the file content. This description should clearly distinguish collected variables and derived variables. It is also useful to indicate the availability in the data file of some particular variables such as the weighting coefficients. If the file contains derived variables, it is good practice to refer to the computer program that generated it. Information about the data file(s) that comprises a collection.<br>
@@ -2014,11 +2069,11 @@ All possible effort should thus be made to generate and publish detailed variabl
 
 A micro-dataset can contain many variables. Some survey datasets include hundreds or event thousands of variables. Documenting variables can thus be a tedious process. The use of a specialized DDI metadata editor can make this process considerably more efficient. Much of the variable-level metadata can indeed be automatically extracted from the electronic data files. Data files in Stata, SPSS or other common formats include variable names, variable and value labels, and in some cases notes that can be extracted. And the variable-level summary statistics that are part of the metadata can be generated from the data files. Further, software applications used for capturing data like [Survey Solutions](https://mysurvey.solutions/en/) from the World Bank or [CsPro](https://www.census.gov/data/software/cspro.html) from the US Census Bureau can export variable metadata, including the variable names, the variable and value labels, and possibly the formulation of questions and the interviewers instructions when the software is used for conducting computer assisted personal interviews (CAPI). Survey Solutions and CsPro can export metadata in multiple formats, including the DDI Codebook. Multiple options exist to make the documentation of variables efficient. As much as possible, tedious manual curation of variable-level information should be avoided.
 
-**`variables`** *[DDI: \<var>\ ; Optional ; Repeatable]* <br>    @@@ check https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/field_level_documentation.html - Are all useful elements included?
-
+**`variables`** *[DDI: \<var>\ ; Optional ; Repeatable]* <br>    
 The metadata elements we describe below apply independently to each variable in the dataset.
 <br>
 ![](./images/ReDoc_Microdata_31.JPG){width=100%}
+<br>
 <br>
    - **`file_id`** *[DDI: \<fileid>\ ; Required ; Not repeatable ; String]*<br>
    A dataset can be composed of multiple data files. The `file_id` is the name of the data file that contains the variable being documented. This file name should correspond to a `file_id` listed in the `data_file` section of the DDI.<br> 
@@ -2026,33 +2081,35 @@ The metadata elements we describe below apply independently to each variable in 
    A unique identifier given to the variable. This can be a system-generated ID, such as a sequential number within each data file. The `vid` is not the variable name.<br>
    - **`name`**  *[DDI: \<name>\ ; Required ; Not repeatable ; String]*<br>
    The name of the variable in the data file. The `name` should be entered exactly as found in the data file (not abbreviated or converted to upper or lower cases, as some software applications are case-sensitive). This information can be programmatically extracted from the data file. The variable name is limited to eight characters in some statistical analysis software such as SAS or SPSS.<br>
-   - **`labl`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
+   - **`labl`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]*<br>
    All variables should have a label that provides a short but clear indication of what the variable contains. Ideally, all variables in a data file will have a different label. File formats like Stata or SPSS often contain variable labels. Variable labels can also be found in data dictionaries in software applications like Survey Solutions or CsPro. Avoid using the question itself as a label (specific elements are available to capture the literal question text; see below). Think of a label as what you would want to see in a tabulation of the variables. Keep in mind that software applications like Stata and others impose a limit to the number of characters in a label (often, 80).<br>
    - **`var_intrvl`** *[DDI: \<intrvl>\ ; Optional ; Not repeatable ; String]*<br>
    This element indicates whether the intervals between values for the variable are `discrete` or `continuous`. <br>
    - **`var_dcml`** *[DDI: \<dcml>\ ; Optional ; Not repeatable ; String]*<br>
-   This element refers to the number of decimal points in the values of the variable. <br>
+   This element refers to the number of decimal points in the values of the variable.<br>
    - **`var_wgt`** *[DDI: \<wgt>\ ; Optional ; Not repeatable ; Numeric]*<br>
    This element, which applies to dataset from sample surveys, indicates whether the variable is a sample weight (value "1") or not (value "0). Sample weights play an important role in the calculation of summary statistics and sampling errors, and should therefore be flagged. <br>
-   - **`var_start_pos`** *[DDI: \<location StartPos>\ ; Optional ; Not repeatable ; Numeric]*<br>
-   The starting position of the variable when the data are saved in an ASCII fixed-format data file.<br>     
-   - **`var_end_pos`** *[DDI: \<location EndPos>\ ; Optional ; Not repeatable ; Numeric]* <br>
+   - **`loc_start_pos`** *[DDI: \<location StartPos>\ ; Optional ; Not repeatable ; Numeric]*<br>   
+   The starting position of the variable when the data are saved in an ASCII fixed-format data file. <br>     
+   - **`loc_end_pos`** *[DDI: \<location EndPos>\ ; Optional ; Not repeatable ; Numeric]*<br>  
    The end position of the variable when the data are saved in an ASCII fixed-format data file.<br>  
-   - **`var_width`** *[DDI: \<width>\ ; Optional ; Not repeatable ; Numeric]* <br>
+   - **`loc_width`** *[DDI: \<width>\ ; Optional ; Not repeatable ; Numeric]*<br>  
    The length of the variable (the maximum number of characters used for its values) in an ASCII fixed-format data file.<br> 
-   - **`var_imputation`** *[DDI: \<imputation>\ ; Optional ; Not repeatable ; String]* <br>    @@@ DDI separates derivation and imputation
-   Imputation is the process of estimating values for variables when a value is missin. The element is used to describe the procedure used to impute values when missing.<br>
-   - **`var_derivation`** *[DDI: \<derivation>\ ; Optional ; Not repeatable ; String]* <br>  @@@ separate imputation and derivation
+   - **`loc_rec_seg_no`** *[DDI: \<width>\ ; Optional ; Not repeatable ; Numeric]*<br>   
+   Record segment number, deck or card number the variable is located on.<br>
+   - **`var_imputation`** *[DDI: \<imputation>\ ; Optional ; Not repeatable ; String]*<br> 
+   Imputation is the process of estimating values for variables when a value is missing. The element is used to describe the procedure used to impute values when missing.<br>
+   - **`var_derivation`** *[DDI: \<derivation>\ ; Optional ; Not repeatable ; String]*<br>  
    Used only in the case of a derived variable, this element provides both a description of how the derivation was performed and the command used to generate the derived variable, as well as a specification of the other variables in the study used to generate the derivation. The `var_derivation` element is used to provide a brief description of this process. As full transparency in derivation processes is critical to build trust and ensure replicability or reproducibility, the information captured in this element will often not be sufficient. A reference to a document and/or computer program can in such case be provided in this element, and the document/scripts provided as external resources. For example, a variable "TOT_EXP" containing the annualized total household expenditure obtained from a household budget survey may be the result of a complex process of aggregation, de-seasonalization, and more. In such case, the information provided in the `var_derivation` element could be: "TOT_EXP was obtained by aggregating expenditure data on all goods and services, available in sections 4 to 6 of the household questionnaire. It contains imputed rental values for owner-occupied dwellings. The values have been deflated by a regional price deflator available in variable REG_DEF. All values are in local currency. Outliers have been fixed by imputation. Details on the calculations are available in Appendix 2 of the Report on Data Processing, and in the Stata program [generate_hh_exp_total.do]."<br>
-   - **`var_security`** *[DDI: \<security>\ ; Optional ; Not repeatable ; String]* <br>
+   - **`var_security`** *[DDI: \<security>\ ; Optional ; Not repeatable ; String]*<br>
    This element is used to provide information regarding levels of access, e.g., public, subscriber, need to know.<br>
-   - **`var_respunit`** *[DDI: \<respUnit>\ ; Optional ; Not repeatable ; String]* <br>
+   - **`var_respunit`** *[DDI: \<respUnit>\ ; Optional ; Not repeatable ; String]*<br>
    Provides information regarding who provided the information contained within the variable, e.g., head of household, respondent, proxy, interviewer.<br> 
-   - **`var_qstn_preqtxt`** *[DDI: \<preQTxt>\ ; Optional ; Not repeatable ; String]* <br>
+   - **`var_qstn_preqtxt`** *[DDI: \<preQTxt>\ ; Optional ; Not repeatable ; String]*<br>
     The pre-question texts are the instructions provided to the interviewers and printed in the questionnaire before the literal question. This does not apply to all variables. Do not confuse this with instructions provided in the interviewer's manual.<br> 
-   - **`var_qstn_qstnlit`** *[DDI: \<qstnLit>\ ; Optional ; Not repeatable ; String]* <br>
+   - **`var_qstn_qstnlit`** *[DDI: \<qstnLit>\ ; Optional ; Not repeatable ; String]*<br>
    The literal question is the full text of the questionnaire as the enumerator is expected to ask it when conducting the interview. This does not apply to all variables (it does not apply to derived variables).<br>
-   - **`var_qstn_postqtxt`** *[DDI: \<postQTxt>\ ; Optional ; Not repeatable ; String]* <br>
+   - **`var_qstn_postqtxt`** *[DDI: \<postQTxt>\ ; Optional ; Not repeatable ; String]*<br>
    The post-question texts are instructions provided to the interviewers, printed in the questionnaire after the literal question. Post-question can be used to enter information on skips provided in the questionnaire. This does not apply to all variables. Do not confuse this with instructions provided in the interviewer's manual. 
    <br>
    With the previous three elements, one should be able to understand how the question was formulated in a questionnaire. In the example below (extracted from the UNICEF [Malawi 2006 MICS](https://microdata.worldbank.org/index.php/catalog/1798) survey questionnaire), we find:<br> 
@@ -2062,11 +2119,11 @@ The metadata elements we describe below apply independently to each variable in 
       <br>
       ![](./images/ReDoc_Microdata_37.JPG){width=100%}
       <br>
-   - **`var_forward`** *[DDI: \<forward>\ ; Optional ; Not repeatable ; String]* <br>   @@@ to be added to schema
-   Contains a reference to IDs of possible following questions. This can be used to document forward skip instructions.<br>   
-   - **`var_backward`** *[DDI: \<backward>\ ; Optional ; Not repeatable ; String]* <br>  @@@ to be added to schema
+   - **`var_forward`** *[DDI: \<forward>\ ; Optional ; Not repeatable ; String]* <br>   
+   Contains a reference to the IDs of possible following questions. This can be used to document forward skip instructions.<br>   
+   - **`var_backward`** *[DDI: \<backward>\ ; Optional ; Not repeatable ; String]* <br>  
    Contains a reference to IDs of possible preceding questions. This can be used to document backward skip instructions.<br>
-   - **`var_qstn_ivulnstr`** *[DDI: \<ivuInstr>\ ; Optional ; Not repeatable ; String]* <br>   @@@ should be ivuinstr, not ivulnstr
+   - **`var_qstn_ivuinstr`** *[DDI: \<ivuInstr>\ ; Optional ; Not repeatable ; String]* <br>  
    Specific instructions to the individual conducting an interview. The content will typically be entered by copy/pasting instructions in the interviewer's manual (or in the CAPI application). In cases where the same instructions relate to multiple variables, repeat the same information in the metadata for all these variables.<br>
 <br>   
    - **`var_universe`** *[DDI: \<universe>\ ; Optional ; Not repeatable ; String]* <br>
@@ -2084,8 +2141,8 @@ The metadata elements we describe below apply independently to each variable in 
        The type of statistics being shown: mean, median, mode, valid cases, invalid cases, minimum, maximum, or standard deviation.<br>
        - **`value`** *[DDI: \<sumStat>\ ; Required ; Not repeatable ; Numeric]* <br>
        The value of the summary statistics mentioned in `type`.<br>
-       - **`wgtd`** *[DDI: \<sumStat wgtd>\ ; Required ; Not repeatable ; String]* <br>
-       Indicates whether the statistics reported in `value` are weighted or not (for variables in sample surveys).<br>
+       - **`wgtd`** *[DDI: \<sumStat wgtd>\ ; Required ; Not repeatable ; String]* <br>  
+       Indicates whether the statistics reported in `value` are weighted or not (for variables in sample surveys). Enter "weighted" if weighted, otherwise leave this element empty.<br>
 <br>       
    - **`var_txt`** *[DDI: \<txt>\ ; Optional ; Not repeatable ; String]* <br>
    This element provides a space to describe the variable in detail. Not all variables require a definition. <br>
@@ -2105,11 +2162,14 @@ The metadata elements we describe below apply independently to each variable in 
         The type of the summary statistic. This will usually be `freq` for frequency.<br>
         - **`value`** *[DDI: \<catStat>\ ; Required ; Not repeatable ; Numeric]* <br>
         The value of the summary statistic, for the corresponding `type`.<br>
-        - **`wgtd`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>   @@@ how is this stored? wgtd vs not_wgtd ??
-        Indicates whether the statistic reported in `value` are weighted or not (for variables in sample surveys).<br>
+        - **`wgtd`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>   
+        Indicates whether the statistic reported in `value` are weighted or not (for variables in sample surveys). Enter "weighted" if weighted, otherwise leave this element empty.<br>
 <br>   
-   - **`var_std_catgry`** *[DDI: \<stdCatgry>\ ; Optional ; Not repeatable]* <br>  @@@ add to schema and redo screenshot
+   - **`var_std_catgry`** *[DDI: \<stdCatgry>\ ; Optional ; Not repeatable]* <br>  
    This element is used to indicate that the codes used for a categorical variable are from a standard international or other classification, like COICOP, ISIC, ISO country codes, etc. <br> 
+   <br>
+   ![](./images/ReDoc_Microdata_33b.JPG){width=100%}
+   <br>
       - **`name`** *[DDI: \<ID>\ ; Required ; Not repeatable ; String]* <br>
       The name of the classification, e.g. "International Standard Industrial Classification of All Economic Activities (ISIC), Revision 4"<br>
       - **`source`** *[DDI: \<ID>\ ; Required ; Not repeatable ; String]* <br>
@@ -2121,8 +2181,8 @@ The metadata elements we describe below apply independently to each variable in 
    - **`var_codinstr`** *[DDI: \<codInstr>\ ; Optional ; Not repeatable ; String]* <br>
    The coder instructions for the variable. These are any special instructions to those who converted information from one form to another (e.g., textual to numeric) for a particular variable.<br>
 <br>
-   - **`var_concept`** *[DDI: \<concept>\ ; Optional ; Repeatable]* <br>  @@@@@@@@@@@ where is the definition?
-   The general subject to which the parent element may be seen as pertaining. This element serves the same purpose as the keywords and topic classification elements, but at the variable description level.<br> 
+   - **`var_concept`** *[DDI: \<concept>\ ; Optional ; Repeatable]* <br>  
+   The general subject to which the parent element may be seen as pertaining. This element serves the same purpose as the keywords and topic classification elements, but at the variable description level.<br>  
 <br>
 ![](./images/ReDoc_Microdata_34.JPG){width=100%}
 <br>
@@ -2133,16 +2193,17 @@ The metadata elements we describe below apply independently to each variable in 
      - **`uri`** *[DDI: \<vocabURI>\ ; Optional ; Not repeatable ; String]* <br>
      The location for the controlled vocabulary mentioned in `vocab'. <br>
 <br>     
-   - **`var_format`** *[DDI: \<varFormat>\ ; ]* <br>
+   - **`var_format`** *[DDI: \<varFormat>\ ; Optional ; Not repeatable]* <br>
    The technical format of the variable in question. 
    <br>
   ![](./images/ReDoc_Microdata_35.JPG){width=100%}
   <br> 
-      - **`type`** *[DDI: \<type>\ ; ]* <br>
-      Indicates if the variable is numeric, fixed string, dynamic string, or date. Numeric variables are used to store any number, integer or floating point (decimals). A fixed string variable has a predefined length (default length is 8 but it can range from 1 to 255 characters in length) which enables the publisher to handle this data type more efficiently. Dynamic string variables can be used to store open-ended questions.<br>
-      - **`name`** *[DDI: \<formatname>\ ; ]* <br>
-      In some cases may provide the name of the particular, proprietary format actually used.<br>
-      - **`value`** *[DDI: \<value>\ ; ]* <br>  @@@@@@@@@@@@@@ not in DDI - drop ?
+      - **`type`** *[DDI: \<type>\ ; Optional ; Not repeatable ; String]* <br>
+      Indicates if the variable is numeric, fixed string, dynamic string, or date. Numeric variables are used to store any number, integer or floating point (decimals). A fixed string variable has a predefined length which enables the publisher to handle this data type more efficiently. Dynamic string variables can be used to store open-ended questions.<br>
+      - **`name`** *[DDI: \<formatname>\ ; Optional ; Not repeatable ; String]* <br>
+      In some cases may provide the name of the particular, proprietary format used.<br>
+      - **`note`** *[DDI: \<value>\ ; Optional ; Not repeatable ; String]* <br>  
+      Additional information on the variable format. 
    - **`var_notes`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
    This element is provided to record any additional or auxiliary information related to the specific variable.<br>
 <br>
@@ -2177,6 +2238,7 @@ The metadata elements we describe below apply independently to each variable in 
            var_universe = "",
            var_sumstat = list(list(type = "", value = "", wgtd = "")),
            var_txt = "",
+           var_forward = "",
            var_catgry = list(list(value = "", 
                                   label = "", 
                                   stats = list(list(type = "", value = "", wgtd = ""),
@@ -2190,7 +2252,8 @@ The metadata elements we describe below apply independently to each variable in 
                                                list(type = "", value = "", wgtd = "")),
            var_std_catgry = list(),
            var_codinstr = "",
-           var_concept = list(list(title = "", vocab = "", uri = ""))
+           var_concept = list(list(title = "", vocab = "", uri = "")),
+           var_format = list(type = "numeric", name = "")
       ),
       
       list(file_id = "",
@@ -2233,9 +2296,9 @@ In a dataset, variables are grouped by data file. For the convenience of users, 
    - **`vgid`** *[DDI: \<varGrp - ID>\ ; Optional ; Not repeatable ; String]* <br>
    A unique identifier (within the DDI metadata file) for the variable group.<br>
    - **`variables`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
-   The list of variables (variable identifiers - `vid`) in the group. Enter a list with items separated by a space.<br>   @@@@@ check that it is `vid`, not `name`
+   The list of variables (variable identifiers - `vid`) in the group. Enter a list with items separated by a space, e.g. "V21 V22, V30".<br>
    - **`variable_groups`** *[DDI: \<@@@>\ ; Optional ; Not repeatable ; String]* <br>
-   The variable groups (`vgid`) that are embedded in this variable group. Enter a list with items separated by a space.<br>
+   The variable groups (`vgid`) that are embedded in this variable group. Enter a list with items separated by a space, e.g. "VG2, VG5".<br>
    - **`group_type`** *[DDI: \<varGrpType>\ ; Optional ; Subject ; Not Repeatable]* <br> 
    The type of grouping of the variables. A controlled vocabulary should be used. The DDI proposes the following vocabulary: {`section, multipleResp, grid, display, repetition, subject, version, iteration, analysis, pragmatic, record, file, randomized, other`}. A description of the groups can be found in [this document](https://zenodo.org/record/3823051/files/maddiewshop.pdf) by W. Thomas, W. Block, R. Wozniak and J. Buysse. <br>
    - **`label`** *[DDI: \<varGrpType - labl>\ ; Optional ; Not repeatable ; String]* <br>
@@ -2335,18 +2398,18 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
 
 ### Additional 
 
-**`additional`** *[Optional ; Not repeatable]*<br>   @@@@@@@@@@@ do screenshot
+**`additional`** *[Optional ; Not repeatable]*<br>
 The `additional` element is provided to allow users of the API to create their own elements and add them to the schema. It is not part of the DDI Codebook standard. All custom elements must be added within the `element` block; embedding them elsewhere in the schema would cause DDI schema validation to fail in NADA.<br>
 <br>
 ![](./images/ReDoc_Microdata_39a.JPG){width=100%}
 <br>
 
 
-## Generating DDI using specialized tools
+## Generating and publishing DDI metadata 
 
 The DDI-Codebook metadata standard provides multiple elements to describe the variables in detail. This includes elements that are usually not found in data dictionaries, like summary statistics. Generating this information and manually capturing it in a DDI-compliant metadata file could be tedious. Indeed, some datasets contains hundreds or even thousands of variables. Some of the metadata (list of variables, possibly variable and value labels, and summary statistics) can be automatically extracted from the data files. Specialized metadata editors, who can read the data files, extract metadata, and generate DDI-compliant output are thus the preferred option to document microdata. Other software have the capability to generate variable-level metadata in DDI-compliant, such as CsPro and Survey Solutions (CAPI applications). Stata and R scripts also provide solutions to generate variable-level metadata out of data files. We present some of these tools below.    
 
-### Nesstar Publisher (DDI metadata editor)
+### Using the Nesstar Publisher (DDI metadata editor)
 
 The Nesstar Publisher is a freeware application developed by the Norwegian Social Data (NSD) archive. It is a specialized DDI metadata editor, which generates metadata files compliant with the DDI-Codebook 1.n version. The application is not actively maintained anymore; it will not be made compatible with more recent versions of DDI-Codebook, and the application cannot import data files saved in recent format (for example, Stata files cannot be imported for versions beyond 12). The Nesstar Publisher remains, however, a popular application.
 
@@ -2378,7 +2441,7 @@ Once the documentation of the dataset is complete, the DDI file (extension .XML)
 The Nesstar Publisher provides numerous options to facilitate the process of documenting datasets (importing metadata from other studies, pre-filling the template with default values, and more). Refer to the application manual for more information.
 
 
-### World Bank Metadata Editor
+### Using the World Bank Metadata Editor
 
 The World Bank Metadata Editor was developed as a replacement for the Nesstar Publisher. It replicates many of the features of the Nesstar Publisher, but is compliant with the DDI-Codebook 2.5. It is an open source software. [@@@@@ not yet - wait for license] It uses R to read data files and generate summary statistics. It is thus able to import data in recent formats, and benefits from updates of R package Haven. It is a flexible application that can also accommodate other standards and schemas such as the Dublin Core (for documents) and the ISO 19139 (for geospatial data).
 
@@ -2399,17 +2462,19 @@ The World Bank Metadata Editor exports the metadata (for microdataset) in DDI-Co
 <br>
 
 
-### Generating and updating DDI metadata using R and Python
+### Using R or Python
 
 DDI-compliant metadata can also be generated and published in a NADA catalog programmatically. Programming languages like R and Python provides much flexibility to generate such metadata, including variable-level metadata. 
 
-We provide here and example where a dataset is available in Stata format. We use two data files from the Core Welfare Indicator Questionnaire (CWIQ) survey conducted in Liberia in 2007 (the full dataset has 12 data files; the extension of the script to the full dataset would be straightforward). One data file, named "sec abcde individual.dta", contains individual-level variables. The other data file, named "sec fgh household.dta", contains household-level variables. The content of the Stata files is as follows:
+We provide here and example where a dataset is available in Stata format. We use two data files from the Core Welfare Indicator Questionnaire (CWIQ) survey conducted in Liberia in 2007 (the full dataset has 12 data files; the extension of the script to the full dataset would be straightforward). One data file, named "sec_abcde_individual.dta", contains individual-level variables. The other data file, named "sec_fgh_ _household.dta", contains household-level variables. The content of the Stata files is as follows:
 
 <br>
 <center>
 ![](./images/CWIQ_Stata.JPG){width=80%}
 </center>
 <br>
+
+  > NOTE : When generating the variable-level metadata, we want to extract the value labels from the data files, keeping the original [code - value label] pairs as they are in the original dataset. For example, if the Stata dataset has codes 1 = Male and 2 = Female for variable *sex*, we do not want them to be changed for example to 1 = Female and 2 = Male by the data import process. The import process in R packages do not always maintain the code/label pairs; some convert categorical data into factors and assign codes and value labels independently from the original coding. 
 
 ```{r, eval=F, echo=T}
 
@@ -2428,72 +2493,139 @@ set_api_verbose(FALSE)
 # ----------------------------------------------------------------------------------
 
 id = "LBR_CWIQ_2007"
+
 setwd("D:/LBR_CWIQ_2007")
 
+thumb = "liberia_cwiq.JPG"  # This image will be used as a thumbnail
 
-# Generate variable-level metadata for the two data files
+# The literal questions are only found in a PDF file; we extract them.
+# If list of questions had been available in MS-Excel format of equivalent, we
+# would import it from that file.
+literal_questions = list(
+  b1 = "Is [NAME] male or female?",
+  b2 = "How long has [NAME] been away in the last 12 months?",
+  b3 = "What is [NAME]'s relationship to the head of household?",
+  b4 = "How old was [NAME] at last birthday?",
+  b5 = "What is [NAME]'s marital status?",
+  b6 = "Is [NAME]'s father alive?",
+  b7 = "Is [NAME]'s father living in the household?",
+  b8 = "Is [NAME]'s mother alive?",
+  b9 = "Is [NAME]'s mother living in the household?",
+  c1 = "Can [NAME] read and write in any language?",
+  c2 = "Has [NAME] ever attended school?",
+  c3 = "What is the highest grade [NAME] completed?",
+  c4 = "Did [NAME] attend school last year?",
+  c5 = "Is [NAME] currently in school?",
+  c6 = "What is the current grade [NAME] is attending?",
+  c7 = "Who runs the school [NAME] is attending?",
+  c8 = "Did [NAME] have any problems with school?",
+  c9 = "Why is [NAME] not currently in school?",
+  c10= "Why has [NAME] not started school?"
+  # Etc. (we do not include all questions in the example)
+)  
+
+# Generate file-level and variable-level metadata for the two data files
+
+list_data_files = c("sec_abcde_individual.dta", "sec_fgh_household.dta")
 
 list_var = list()
+list_df = list()
 vno = 1
-
-list_data_files = c("sec abcde individual.dta", "sec fgh household.dta")
+fno = 1
 
 for (datafile in list_data_files) {
-  data <- read_dta(datafile)
-}
-
-sec_fgh <- read_dta("sec fgh household.dta") 
-  # extract f1 label
-  f1val <- attr(sec_fgh$f1, 'labels')
-  f1val
-
-
-for (fid in list("", "")) {
   
-  vnames = names(data)
+  data <- read_dta(datafile)
+  
+  # Generate file-level metadata
+  
+  # Create a file identifier (sequential)
+  fid = paste0("F", str_pad(fno, 2, pad = "0"))
+  fno = fno + 1
+  
+  # Add core metadata
+  case_n = nrow(data)  # Nb of observations in the data file
+  var_n = length(data) # Nb of variables in the data file
+  df = list(file_id = fid, 
+            file_name = datafile, 
+            case_count = case_n, 
+            var_count = var_n)
+  list_df = list.append(list_df, df)
+  
+  # Generate variable-level metadata
+  
+  for(v in 1:length(data)) {
     
-  for (v in 1:length(data)) {
-    
+    # Create a variable identifier (sequential)
     vid = paste0("V", str_pad(vno, 4, pad = "0"))
+    vno = vno + 1
     
-    # Extract frequencies from data file 
-    # When value labels have alphanumeric characters and <= 100 values, or
-    # value labels are numeric but with no more than 20 different values)
+    # Variable name and literal question
+    vname = names(data[v])
+    question = as.character(literal_questions[vname])
+    if(is.null(question)) question = ""
+    
+    # Extract the variable label (trim leading and trailing white spaces)
+    var_lab <- trimws(attr(data[[v]], 'label'))
+    if(is.null(var_lab)) var_lab = ""
+    
+    # Variable-level summary statistics
+    vval = sum(!is.na(data[[v]]))
+    vmis = sum(is.na(data[[v]]))
+    vmin = as.character(min(data[[v]], na.rm = TRUE))
+    vmax = as.character(max(data[[v]], na.rm = TRUE))  
+    vstats = list(
+      list(type = "valid", value = vval),
+      list(type = "system missing", value = vmis),
+      list(type = "minimum", value = vmin),
+      list(type = "maximum", value = vmax)
+    )
+    
+    # Extract the (original) codes and value labels and calculate frequencies
     freqs = list()
-    tbl_v = as.data.frame(table(data[, v])) # Use first 2 labels to test
-    value_labels = paste(tbl_v[1,1], tbl_v[2,1])
-    if(grepl("[a-zA-Z]", value_labels) == TRUE | nrow(tbl_v) <= 20) { 
-      if (nrow(tbl_v) > 0 & nrow(tbl_v) <= 100) {
-        for (i in 1:nrow(tbl_v)) {
-          f = list(value = as.character(i), 
-                   labl = gsub("_", " ", as.character(tbl_v[i, 1])), 
-                   stats = list(list(type = "count", value = tbl_v[i, 2])))
-          freqs = list.append(freqs, f)             
-        }
+    val_lab <- attr(data[[v]], 'labels')
+    if(!is.null(val_lab) & typeof(data[[v]]) != "character") {
+      freq_tbl = table(data[[v]])
+      for (i in 1:length(val_lab)) {
+        f = list(value = as.character(val_lab[i]), 
+                 labl  = as.character(names(val_lab[i])), 
+                 stats = list(
+                   list(type = "count", 
+                        value = sum(data[[v]] == val_lab[i], na.rm = TRUE)
+                   )
+                 )
+        )
+        freqs = list.append(freqs, f)             
       }
-    }  
-
+    } 
+    
+    # Compile the variable-level metadata
     list_v = list(
       file_id = fid,
       vid = vid,
-      name = vnames[v],
-      labl = gsub("_", " ", vnames[v]),
+      name = vname,
+      labl = var_lab,
+      var_qstn_qstnlit = question,
+      var_sumstat = vstats,
       var_catgry = freqs)
     
+    # Add to the list of variables already documented    
     list_var = list.append(list_var, list_v)
-    
-    vno = vno + 1
     
   }
   
-}  
+}
 
-# Generate DDI-compliant metadata
+# Generate the DDI-compliant metadata
 
 cwiq_ddi_metadata <- list(
   
-  doc_desc = list(producers = list(list(name = "WB consultants")), 
-                  prod_date = "2008-02-19"),
+  doc_desc = list(
+    producers = list(
+      list(name = "WB consultants")
+    ), 
+    prod_date = "2008-02-19"
+  ),
   
   study_desc = list(
     
@@ -2502,17 +2634,24 @@ cwiq_ddi_metadata <- list(
       title = "Core Welfare Indicators Questionnaire 2007"
     ),
     
-    authoring_entity = list(list(name = "Liberia Institute of Statistics and Geo_Information Services")),
+    authoring_entity = list(
+      list(name = "Liberia Institute of Statistics and Geo_Information Services")
+    ),
     
     study_info = list(
       
-      coll_dates = list(list(start = "2007-08-06", end = "2007-09-22")),
+      coll_dates = list(
+        list(start = "2007-08-06", end = "2007-09-22")
+      ),
       
-      nation = list(list(name = "Liberia", abbreviation = "LBR")),
+      nation = list(
+        list(name = "Liberia", abbreviation = "LBR")
+      ),
       
-      abstract = "The Government of Liberia is committed to producing a PSRP. To do this, the GoL will need to undertake an analysis of qualitative and quantitative sources to understand the nature of poverty ('Where are we?'); to develop a macro-economic framework, and conduct broad based and participatory consultations to choose objectives, define and prioritize strategies ('Where do we want to go? How far can we get?); and to develop a monitoring and evaluation system ('How will we know when we get there?). The analysis of the nature of poverty, the Poverty Profile, will establish the overall rate of poverty incidence, identifying the poor in relation to their location, habits, occupations, means of access to and use of government services, and their living standards in regard to health, education, nutrition. Given the capacity constraints it has been agreed that this information will be collected in a single visit survey using the Core Welfare Indicators Questionnaire (CWIQ) survey with an additional module to cover household income, expenditure and consumption. This will provide information to estimate welfare levels & poverty incidence, which can be combined and analyzed with the sectoral information from the main CWIQ questionnaire. While countries with more capacity usually do a household income, expenditure and consumption survey over 12 months, the single visit approach has been used in a number of countries (mainly in West Africa) fairly successfully.",
+      abstract = "The Government of Liberia (GoL) is committed to producing a Poverty Reduction Strategy Paper (PSRP). To do this, the GoL will need to undertake an analysis of qualitative and quantitative sources to understand the nature of poverty ('Where are we?'); to develop a macro-economic framework, and conduct broad based and participatory consultations to choose objectives, define and prioritize strategies ('Where do we want to go? How far can we get?); and to develop a monitoring and evaluation system ('How will we know when we get there?). The analysis of the nature of poverty, the Poverty Profile, will establish the overall rate of poverty incidence, identifying the poor in relation to their location, habits, occupations, means of access to and use of government services, and their living standards in regard to health, education, nutrition. Given the capacity constraints it has been agreed that this information will be collected in a single visit survey using the Core Welfare Indicators Questionnaire (CWIQ) survey with an additional module to cover household income, expenditure and consumption. This will provide information to estimate welfare levels & poverty incidence, which can be combined and analyzed with the sectoral information from the main CWIQ questionnaire. While countries with more capacity usually do a household income, expenditure and consumption survey over 12 months, the single visit approach has been used in a number of countries (mainly in West Africa) fairly successfully.",
       
       geog_coverage = "National"
+      
     ),
     
     method = list(
@@ -2523,79 +2662,87 @@ cwiq_ddi_metadata <- list(
         
         sampling_procedure = "The CWIQ survey will be carried out on a sample of 3,600 randomly selected households located in 300 randomly selected clusters. This was the same basic sample used by the 2007 Liberian DHS. However, for Monrovia, a new listing was carried out and new EAs were chosen and the sampled households were chosen from that list. For rural areas, the same EAs were used but a new sample selection of housholds was drawn. Any household that may have participated in the LDHS was systematically eliminated. Twelve (12) households were selected in each of the 300 EA using systematic sampling. The total number of households and number of EAs sampled in each County are given in the table below. (More on the Sampling under the External Resources).",
         
-        coll_situation = "On the average, the interview process lasted about about 2 hours 45 minutes. The Income and Expenditure questionnaire alone took about 2 hours to complete. In many occasions, the questionnaire was completed in 2 sitting sessions.",
-        
-        data_processing = ""
+        coll_situation = "On average, the interview process lasted about about 2 hours 45 minutes. The Income and Expenditure questionnaire alone took about 2 hours to complete. In many occasions, the questionnaire was completed in 2 sitting sessions."
         
       )
+      
     )
+    
   ),
   
-  data_files = list(
-    
-    list(file_id = "f01", 
-         file_name = "sec abcde individual.dta",
-         description = "Data at the individual level from Section B-LIST OF HOUSEHOLD MEMBERS; Section C -EDUCATION; Section D -HEALTH; and Section E- EMPLOYMENT of the questionnaire.",
-         case_count = nrow(data1),
-         var_count = length(data1)),
-    
-    list(file_id = "f02",
-         file_name = "sec fgh household.dta",
-         description = "Data at the household level from Section F- HOUSEHOLD ASSETS; Section G -HOUSEHOLD AMENITIES; and Section H - DISPLACEMENT/FOODAID of the questionnaire.",
-         case_count = nrow(data2),
-         var_count = length(data2))
-    
-  ),  
+  # Information of data files
+  data_files = list_df,  
   
+  # Information on variables
   variables = list_var
   
 )
 
-# Publish the survey metadata
+# Publish the metadata in the NADA catalog
 
 microdata_add(
   idno = id,
   repositoryid = "central",
-  access_policy = "remote",
-  data_remote_url = "",
+  access_policy = "licensed",
   published = 1,
   overwrite = "yes",
   metadata = cwiq_ddi_metadata,
-  thumbnail = NULL
+  thumbnail = thumb
 )
 
 # Add links to data and documents
 
 external_resources_add(
-  title = "Liberia, CWIQ 2007, Dataset",
+  title = "Liberia, CWIQ 2007, Dataset in Stata 15 format",
   idno = id,
-  author = "",
   dcdate = "2007",
   language = "English",
   country = "Liberia",
-  dctype = "doc/mic",
-  file_path = "",
+  dctype = "dat/micro",
+  file_path = "LBR_CWIQ_2007_Stata15.zip",
+  description = "Liberia CWIQ dataset in Stata 15 format (2 data files)",
+  overwrite = "yes"
+)
+
+external_resources_add(
+  title = "Liberia, CWIQ 2007, Dataset in SPSS Windows format",
+  idno = id,
+  dcdate = "2007",
+  language = "English",
+  country = "Liberia",
+  dctype = "dat/micro",
+  file_path = "LBR_CWIQ_2007_Stata15.zip",
+  description = "Liberia CWIQ dataset in SPSS for Windows [.sav] format (2 data files)",
   overwrite = "yes"
 )
 
 external_resources_add(
   title = "CWIQ 2007 Questionnaire",
   idno = id,
-  author = "",
   dcdate = "2007",
   language = "English",
   country = "Liberia",
   dctype = "doc/ques",
-  file_path = "",
+  file_path = "LCWIQ2007_.pdf",
   overwrite = "yes"
 )
-
 ```
 
-After running the script, the metadata (and links) will be available in the NADA catalog.
+After running the script, the metadata (and links) are available in the NADA catalog.
 
 <br>
-![](./images/CWIQ_in_NADA.JPG){width=100%}
+![](./images/CWIQ_in_NADA_1.JPG){width=100%}
 <br>
 
+<br>
+![](./images/CWIQ_in_NADA_2.JPG){width=100%}
+<br>
+
+<br>
+![](./images/CWIQ_in_NADA_3.JPG){width=100%}
+<br>
+
+<br>
+![](./images/CWIQ_in_NADA_4.JPG){width=100%}
+<br>
 

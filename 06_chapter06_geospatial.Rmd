@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-#	Geographic datasets and services {#chapter06}
+#	Geographic data and services {#chapter06}
 
 <br>
 <center>
@@ -12,28 +12,28 @@ output: html_document
 
 ## Background 
 
-To make geographic information discoverable and to facilitate their dissemination and use, the ISO Technical Committee on Geographic Information/Geomatics (ISO/TC211) created a set of metadata standards to describe geographic **datasets** (ISO 19115), geographic **data structures** (ISO 19115-2 and 19110), and geographic **data services** (ISO 19119). The three standards have been "unified" in a common XML specification (ISO 19139). This set of standards, known as the ISO 19100 series, served as the cornerstone of multiple initiatives to improve the documentation and management of geographic information such as the [Open Geospatial Consortium (OGC)](https://www.ogc.org/), the [US Federal Geographic Data Committee (FDGC)](https://www.fgdc.gov/), the [European INSPIRE directive](https://inspire.ec.europa.eu), or more recently the [Research Data Alliance (RDA)](https://rd-alliance.org/), among others.
+To make geographic information discoverable and to facilitate their dissemination and use, the ISO Technical Committee on Geographic Information/Geomatics (ISO/TC211) created a set of metadata standards to describe geographic **datasets** (ISO 19115), geographic **data structures** (ISO 19115-2 / ISO 19110), and geographic **data services** (ISO 19119). These standards have been "unified" into a common XML specification (ISO 19139). This set of standards, known as the ISO 19100 series, served as the cornerstone of multiple initiatives to improve the documentation and management of geographic information such as the [Open Geospatial Consortium (OGC)](https://www.ogc.org/), the [US Federal Geographic Data Committee (FDGC)](https://www.fgdc.gov/), the [European INSPIRE directive](https://inspire.ec.europa.eu), or more recently the [Research Data Alliance (RDA)](https://rd-alliance.org/), among others.
 
-The ISO 19100 standards have been designed to cover the large scope of geographic information. The level of detail they provide goes beyond the needs of most data curators. What we present in this Guide is a subset of the standards, which focuses on what we consider as the core requirements to describe and catalog geospatial datasets and services. References and links to resources where more detailed information can be found are provided at the end of the chapter.
+The ISO 19100 standards have been designed to cover the large scope of geographic information. The level of detail they provide goes beyond the needs of most data curators. What we present in this Guide is a subset of the standards, which focuses on what we consider as the core requirements to describe and catalog geographic datasets and services. References and links to resources where more detailed information can be found are provided in appendix.
 
 ## Geographic information metadata standards
 
-Geographic information metadata standards cover three types of resources: i) datasets, ii) data structure definitions, and iii) data services. Each one of these three components is the object of a specific standard. To facilitate their implementation, a common XML specification (ISO 19139) covering the three standards has been developed.
+Geographic information metadata standards cover three types of resources: i) datasets, ii) data structure definitions, and iii) data services. Each one of these three components is the object of a specific standard. To support their implementation, a common XML specification (ISO 19139) covering the three standards has been developed. The geographic metadata standard is however, by far, the most complex and "specialized" of all schemas described in this Guide. Its use requires expertise not only in data documentation, but also in the use of geospatial data. We provide in this chapter some information that readers who are not familiar with geographic data may find useful to better understand the purpose and use of the geographic metadata standards.
 
 ### Documenting geographic datasets - The ISO 19115 standard
 
-Geographic **datasets** "identify and depict geographic locations, boundaries and characteristics of features on the surface of the earth. They include geographic coordinates (e.g., latitude and longitude) and data associated to geographic locations (...)". (Source: https://www.fws.gov/gis/)
+**Geographic datasets** "identify and depict geographic locations, boundaries and characteristics of features on the surface of the earth. They include geographic coordinates (e.g., latitude and longitude) and data associated to geographic locations (...)". (Source: https://www.fws.gov/gis/)
 
 The ISO 19115 standard defines the structure and content of the metadata to be used to document geographic datasets. The standard is split into two parts covering:
 
 1. **vector data** (ISO 19115-1), and 
 2. **raster data** including imagery and gridded data (ISO 19115-2). 
 
-*Vector* and *raster* spatial datasets are built with different structures and formats. The following summarizes how these two categories differ and how to handle them with the R software.
-
-**VECTOR DATA** ^[The descriptions of vector and raster data provided in this chapter are adapted from:
+*Vector* and *raster* spatial datasets are built with different structures and formats. The following summarizes how these two categories differ and how they can be processed using the R software. The descriptions of vector and raster data provided in this chapter are adapted from:
    - https://gisgeography.com/spatial-data-types-vector-raster/
    - https://datacarpentry.org/organization-geospatial/02-intro-vector-data/index.html]
+
+**Vector data** 
 
 Vector data are comprised of **points**, **lines**, and **polygons** (areas). 
 
@@ -42,9 +42,9 @@ A vector **point** is defined by a single x, y coordinate. Generally, vector poi
 Vector data are often provided in one of the following file formats:
 
    - ESRI Shapefile (actually a zip set of files; not standard and limited as it is based on an outdated DBF format, but still widely used);
-   - ESRI GeoDatabase file (not standard, but widely used);
+   - ESRI GeoDatabase file (not a standard format, but widely used);
    - GML: the Official OGC geospatial standard format, used by standard spatial data services;
-   - GeoPackage: the OGC recommended standard for handling vector data, which may replace the ESRI shapefile format;
+   - GeoPackage: the OGC recommended standard for handling vector data;
    - GeoJSON: another OGC standard, often used when a *service* is associated to the data;
    - KML/KMZ: [Keyhole Markup Language](https://en.wikipedia.org/wiki/Keyhole_Markup_Language), an XML notation for expressing geographic annotation and visualization within two-dimensional maps and three-dimensional Earth browsers;
    - CSV file: Comma-separated values files, with geometries provided in OGC Well-Known-Text (WKT);
@@ -71,15 +71,16 @@ The content of this map can be exported as an OSM file.
 Multiple applications will allow users to read and process OSM files, including open source software applications like [QGIS](https://www.qgis.org/en/site/) or the R packages [sf](https://cran.r-project.org/package=sf) and [osmdata](https://cran.r-project.org/web/packages/osmdata/vignettes/osmdata.html)
 
 ```{r, eval=F, echo=T}
-# Example of a R script that reads and show content of the map.osm file
+# Example of a R script that reads and shows the content of the map.osm file
+
 library(sf)
 
-#list the 'layers' contained in the osm file
+# List the layers contained in the OSM file
 lyrs <- st_layers("map.osm")
 
-#read layers as sf objects
-points <- st_read("map.osm", layer = "points")
-lines <- st_read("map.osm", layer = "lines")
+# Read the layers as sf objects
+points   <- st_read("map.osm", layer = "points")
+lines    <- st_read("map.osm", layer = "lines")
 polygons <- st_read("map.osm", layer = "multipolygons")
 ```
 
@@ -87,25 +88,29 @@ polygons <- st_read("map.osm", layer = "multipolygons")
 
 In this second example, we use the R `sf` (Simple Features) package to read a shape (vector) file of refugee camps in Bangladesh, downloaded from the Humanitarian [Data Exchange (HDX)](https://data.humdata.org) website:
 
-
 ```{r, eval=F, echo=T}
 
-# Load the sf package (https://r-spatial.github.io/sf/)
+# Load the sf package and utilities 
+
 library(sf)
 library(utils)
 
 # Download and unzip the shape file (published by HDX as a compressed zip format)
+
 setwd("E:/my_data")
 url <- "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/ace4b0a6-ef0f-46e4-a50a-8c552cfe7bf3/download/200908_rrc_outline_camp_al1.zip"
 download.file(url, destfile = "200908_RRC_Outline_Camp_AL1.zip")
 unzip("E:/my_data/200908_RRC_Outline_Camp_AL1.zip")
 
 # Read the file and display core information about its content
+
 al1 <- st_read("./200908_RRC_Outline_Camp_AL1/200908_RRC_Outline_Camp_AL1.shp")
 print(al1)
 plot(al1)
 
-# Output of 'print' command:
+# ------------------------------
+# Output of the 'print' command:
+# ------------------------------
 
 # Simple feature collection with 35 features and 14 fields
 # geometry type:  MULTIPOLYGON
@@ -146,19 +151,19 @@ plot(al1)
 
 ```
 
-This shows that the shape file contains 35 features (or "objects"; in this case each object represents a refugee camp) and 14 fields (attributes and variables; including information like the camp name, administrative region, surface area, and more) related to each object. 
+The output of the script shows that the shape file contains 35 features (or "objects"; in this case each object represents a refugee camp) and 14 fields (attributes and variables; including information like the camp name, administrative region, surface area, and more) related to each object. 
 
 The *geometry type* (multipolygon) and *dimension* (XY) provide information on the type of object. "All geometries are composed of points. Points are coordinates in a 2-, 3- or 4-dimensional space. All points in a geometry have the same dimensionality. In addition to X and Y coordinates, there are two optional additional dimensions:
 
-   - a Z coordinate, denoting altitude;
+   - a Z coordinate, denoting the altitude;
    - an M coordinate (rarely used), denoting some measure that is associated with the point, rather than with the feature as a whole (in which case it would be a feature attribute); examples could be time of measurement, or measurement error of the coordinates.
 
 The four possible cases then are:
 
-   - two-dimensional points refer to x and y, easting and northing, or longitude and latitude, refered to as XY
+   - two-dimensional points refer to x and y, easting and northing, or longitude and latitude, referred to as XY
    - three-dimensional points as XYZ
    - three-dimensional points as XYM
-   - four-dimensional points as XYZM (the third axis is Z, fourth M)
+   - four-dimensional points as XYZM (the third axis is Z, the fourth is M)
 
 The following seven simple feature types are the most common:
 
@@ -172,27 +177,24 @@ The following seven simple feature types are the most common:
 | MULTIPOLYGON       | set of polygons |
 | GEOMETRYCOLLECTION | set of geometries of any type except GEOMETRYCOLLECTION |
 
-The remaining geometries 10 are rarer : CIRCULARSTRING, COMPOUNDCURVE, CURVEPOLYGON, MULTICURVE, MULTISURFACE, CURVE, SURFACE, POLYHEDRALSURFACE, TIN, TRIANGLE 
-
-(see https://r-spatial.github.io/sf/articles/sf1.html)
+The remaining ten geometries are rarer : CIRCULARSTRING, COMPOUNDCURVE, CURVEPOLYGON, MULTICURVE, MULTISURFACE, CURVE, SURFACE, POLYHEDRALSURFACE, TIN, TRIANGLE (see https://r-spatial.github.io/sf/articles/sf1.html).
 
 The *geographic CRS* informs us on the coordinate reference system (CRS). Coordinates can only be placed on the Earth's surface when their CRS is known; this may be a spheroid CRS such as WGS 84, a projected, two-dimensional (Cartesian) CRS such as a UTM zone or Web Mercator, or a CRS in three-dimensions, or including time. In our example above, the CRS is the WGS 84 (World Geodetic System 84), a standard for use in cartography, geodesy, and satellite navigation including GPS.
 
 The *bbox* is the bounding box. 
 
-Information on a subset (top 10 - only 2 shown above) of the features is shown, with the list of the 14 available fields.  
-
+Information on a subset (top 10 - only 2 shown above) of the features is displayed in the output of the script, with the list of the 14 available fields.  
 The `plot(al1)` command in R produces a visualization of the numeric fields in the data file:
 
 <center>
 ![](./images/geospatial_plot_vector.JPG){width=100%}
 </center>
 
-All this information are important components of the metadata, which we will want to capture, enrich, and catalog (together with additional information) using the ISO metadata standard. "Enriching" (or "augmenting") the metadata will consist of providing more contextual information (who produced the data, when, why, etc.) and additional information on the features (e.g., what does the variable 'SMSD__Cnam' represent?). 
+All this information represents important components of the metadata, which we will want to capture, enrich, and catalog (together with additional information) using the ISO metadata standard. "Enriching" (or "augmenting") the metadata will consist of providing more contextual information (who produced the data, when, why, etc.) and additional information on the features (e.g., what does the variable 'SMSD__Cnam' represent?). 
 
-**RASTER DATA**
+**Raster data**
 
-Raster data are made up of pixels, also referred to as *grid cells*. Satellite imagery and other remote sensing data are raster datasets. Grid cells in raster data are usually regularly-spaced and square (but they don’t have to be). Data stored in a raster format is arranged in a grid without storing the coordinates of each cell (pixel). The coordinates of the corner points and the spacing of the grid can be used to calculate (rather than to store) the coordinates of each location in a grid.
+**Raster data** are made up of pixels, also referred to as *grid cells*. Satellite imagery and other remote sensing data are raster datasets. Grid cells in raster data are usually (but not necessarily) regularly-spaced and square. Data stored in a raster format is arranged in a grid without storing the coordinates of each cell (pixel). The coordinates of the corner points and the spacing of the grid can be used to calculate (rather than to store) the coordinates of each location in a grid.
 
 Any given pixel in a grid stores one or more values (in one or more bands). For example, each cell (pixel) value in a satellite image has a red, a green, and a blue value. Cells in raster data could represent anything from elevation, temperature, rainfall, land cover, population density, or others. (Source: https://worldbank.github.io/OpenNightLights/tutorials/mod2_1_data_overview.html) 
 
@@ -251,19 +253,25 @@ The first example below shows the spatial distribution of the Ethiopian populati
 
 ```{r, eval=F, echo=T}
 # Load the raster R package 
+
 library(raster)
 
 # Download a TIF file (spatial distribution of population, Ethiopia, 2020) - 62Mb
+
 setwd("E:/my_data")
 url <- "https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/maxar_v1/ETH/eth_ppp_2020_constrained.tif"
 file_name = basename(url)
 download.file(url, destfile = file_name, mode = 'wb')
 
 # Read the file and display core information about its content
+
 my_raster_file <- raster(file_name)
 print(my_raster_file)
 
-# Output of 'print' command:
+# ------------------------------
+# Output of the 'print' command:
+# ------------------------------
+
 # dimensions : 13893, 17983, 249837819  (nrow, ncol, ncell)
 # resolution : 0.0008333333, 0.0008333333  (x, y)
 # extent     : 32.99958, 47.98542, 3.322084, 14.89958  (xmin, xmax, ymin, ymax)
@@ -273,7 +281,7 @@ print(my_raster_file)
 # values     : 1.36248, 847.9389  (min, max)
 ```
 
-This shows that the TIF file contains one layer of cells, forming an image of 13,893 by 17,983 cells. It also provides information on the projection system (datum): WGS 84 (World Geodetic System 84). This information (and more) will be part of the ISO-compliant metadata we want to generate to document and catalog a raster dataset.   
+This output shows that the TIF file contains one layer of cells, forming an image of 13,893 by 17,983 cells. It also provides information on the projection system (datum): WGS 84 (World Geodetic System 84). This information (and more) will be part of the ISO-compliant metadata we want to generate to document and catalog a raster dataset.   
 
 **EXAMPLE 2**
 
@@ -293,15 +301,21 @@ contents <- get_bucket(bucket = 'globalnightlight', max = 10000)
 contents <- get_bucket_df(bucket = 'globalnightlight')
 
 # Access DMSP-OLS data for satellite F12 in 1995
-F12_1995 <- get_bucket(bucket = 'globalnightlight', prefix = "F121995")
+F12_1995 <- get_bucket(bucket = 'globalnightlight', 
+                       prefix = "F121995")
+
 # As data.frame, with all objects listed
-F12_1995_df <- get_bucket_df(bucket = 'globalnightlight', prefix = "F121995", max = Inf)
+F12_1995_df <- get_bucket_df(bucket = 'globalnightlight', 
+                             prefix = "F121995", 
+                             max = Inf)
 # Number of objects
 nrow(F12_1995_df) 
 
 # Save the object
 filename <- "F12199501140101.night.OIS.tir.co.tif"
-save_object(bucket = 'globalnightlight', object = "F121995/F12199501140101.night.OIS.tir.co.tif", file = filename)
+save_object(bucket = 'globalnightlight', 
+            object = "F121995/F12199501140101.night.OIS.tir.co.tif", 
+            file = filename)
 
 # Read it with raster package
 rs <- raster(filename)
@@ -320,13 +334,13 @@ More and more data are disseminated not in the form of datasets, but as data ser
 
 ### Unified metadata specification - The ISO/TS 19139 standard
 
-The three metadata standards previously described - ISO 19115 for vector and raster datasets, ISO 19110 for vector data structures, and ISO 19119 for data services, provide a set of concepts and definitions useful to describe the geographic information. But to facilitate their practical implementation, a digital specification, which will define how this information is stored and organized in an electronic metadata file, is required. The ISO/TS 19139 standard, an XML specification of the ISO 19115/10110/19119/, was created for that purpose.
+The three metadata standards previously described - ISO 19115 for vector and raster datasets, ISO 19110 for vector data structures, and ISO 19119 for data services, provide a set of concepts and definitions useful to describe the geographic information. To facilitate their practical implementation, a digital specification, which defines how this information is stored and organized in an electronic metadata file, is required. The ISO/TS 19139 standard, an XML specification of the ISO 19115/10110/19119/, was created for that purpose.
 
 The ISO/TS 19139 is a standard used worldwide to describe geographic information. It is the backbone for the implementation of [INSPIRE](https://inspire.ec.europa.eu/) dataset and service metadata in the European Union. It is supported by a wide range of tools, including desktop applications like [Quantum GIS](https://qgis.org/en/site/), [ESRI ArcGIS](https://www.arcgis.com/index.html)), and OGC-compliant metadata catalogs (e.g., [GeoNetwork](https://geonetwork-opensource.org/)) and geographic servers (e.g., [GeoServer](http://geoserver.org/)). 
 
 ISO 19139-compliant metadata can be generated and edited using specialized metadata editors such as [CatMDEdit](http://catmdedit.sourceforge.net/) or [QSphere](https://www.fgdc.gov/organization/working-groups-subcommittees/mwg/iso-metadata-editors-registry/qsphere), or using programmatic tools like Java Apache SIS or the R packages [geometa](https://cran.r-project.org/web/packages/geometa/index.html) and [geoflow](https://github.com/eblondel/geoflow), among others.
 
-The ISO 19139 specification is complex. To enable and simplify its use in our NADA cataloguing application, we produced a JSON version of (part of) the standard. We selected the elements we considered most relevant for our purpose, and organized them into the JSON schema described below. For data curators with limited expertise in XML and geospatial data documentation, this JSON schema will make the production of metadata compliant with the ISO 19139 standard easier. ^[The NADA cataloguing application also accepts ISO 19139 XML files generated by other applications as input.]
+The ISO 19139 specification is complex. To enable and simplify its use in our NADA cataloguing application, we produced a JSON version of (part of) the standard. We selected the elements we considered most relevant for our purpose, and organized them into the JSON schema described below. For data curators with limited expertise in XML and geographic data documentation, this JSON schema will make the production of metadata compliant with the ISO 19139 standard easier. 
 
 
 ## Schema description
@@ -335,19 +349,19 @@ The ISO 19139 specification is complex. To enable and simplify its use in our NA
 
 Geographic metadata (for both *datasets* and *services*) should include **core metadata properties**, and metadata **sections** aiming to describe specific aspect of the resource (e.g., resource identification or resource distribution).
 
-The content of some metadata elements (or 'metadata fields') is controlled by **codelists** (or **controlled vocabularies**). A codelist is a pre-defined set of values. The content of an element controlled by a codelist should be selected from that list. This may for example apply to the element "language", whose content should be selected from the ISO 639 list and codes codes for language names, instead of being free-text. The ISO 19139 suggests but does not impose codelists. It is highly recommended to make use of the suggested codelists (or of specific codelists that may be promoted by agencies or partnerships).
+The content of some metadata elements is controlled by **codelists** (or **controlled vocabularies**). A codelist is a pre-defined set of values. The content of an element controlled by a codelist should be selected from that list. This may for example apply to the element "language", whose content should be selected from the ISO 639 list and codes codes for language names, instead of being free-text. The ISO 19139 suggests but does not impose codelists. It is highly recommended to make use of the suggested codelists (or of specific codelists that may be promoted by agencies or partnerships).
 
-Some metadata elements (referred to as *common elements*) of the ISO 19139 can be repeated in different parts of the metadata. For example, a standard set of fields is provided to describe a `contact`, or a `citation`, or a `file format`. Such common elements can be used in multiple locations of a metadata file (e.g., to provide information on who the contact person is for information on data quality, on data access, on data documentation, etc.) 
+Some metadata elements (referred to as *common elements*) of the ISO 19139 can be repeated in different parts of a metadata file. For example, a standard set of fields is provided to describe a `contact`, a `citation`, or a `file format`. Such common elements can be used in multiple locations of a metadata file (e.g., to provide information on who the contact person is for information on data quality, on data access, on data documentation, etc.) 
 
 In the following sections, we first present the **common elements**, then the elements that form the **core metadata properties** (information on the metadata themselves), followed by the elements from the main **metadata sections** used to describe the data, and finally the **features catalog** elements which are used to document attributes and variables related to vector data (ISO 19110).
 
-### Common elements
+### Common sets of elements
 
-Common elements are blocks of metadata fields that can appear in multiple locations of a metadata file. For example, information on `contact` person(s) or organization(s) may have to be provided in the section of the file where we document the production and maintenance of the data, where we document the production and maintenance of the metadata, where we document the distribution and terms of use of the data, etc. Other types of common elements include online resources, file formats, citations, keywords, and constraints.  
+Common elements are blocks of metadata fields that can appear in multiple locations of a metadata file. For example, information on `contact` person(s) or organization(s) may have to be provided in the section of the file where we document the production and maintenance of the data, where we document the production and maintenance of the metadata, where we document the distribution and terms of use of the data, etc. Other types of common elements include online and offline resources, file formats, citations, keywords, constraints, and extent. We describe these sets of elements below.  
 
 #### Contact / Responsible party
 
-The ISO 19139 specification provides a structured set of metadata elements to describe a contact. A contact is the party (person or organization) responsible for a specific task. The following set of elements can be used to describe a *contact*:
+The ISO 19139 specification provides a structured set of metadata elements to describe a **contact**. A contact is the party (person or organization) responsible for a specific task. The following set of elements can be used to describe a contact:
 
 | Element            | Description                                                  |
 | ------------------ | ------------------------------------------------------------ |
@@ -364,20 +378,20 @@ The ISO 19139 specification provides a structured set of metadata elements to de
 
 #### Online resource 
 
-An **online resource** is a common set of elements frequently used in the geospatial schema. It can be used for example to provide a link to an organization website, to a data file or document, etc. An online resource is described with the following properties:
+An **online resource** is a common set of elements frequently used in the geographic data/services schema. It can be used for example to provide a link to an organization website, to a data file or to a document, etc. An online resource is described with the following properties:
 
 | Element       | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
-| `linkage`     | URL of the online resource. In case of a geospatial standard data services, only the <u>base URL</u> should be provided, without any service parameter. |
-| `name`        | Name of the online resource. In case of a geospatial standard data services, this should be filled with the identifier of the resource as published in the service. Example, for an OGC Web Map Service (WMS), we will use the layer name. |
+| `linkage`     | URL of the online resource. In case of a geographic standard data services, only the <u>base URL</u> should be provided, without any service parameter. |
+| `name`        | Name of the online resource. In case of a geographic standard data services, this should be filled with the identifier of the resource as published in the service. Example, for an OGC Web Map Service (WMS), we will use the layer name. |
 | `description` | Description of the online resource                           |
-| `protocol`    | Web protocol used to get the resource, e.g., FTP, HTTP. In case of a basic HTTP, the ISO 19139 suggests the value 'WWW:LINK-1.0-http--link'. For geospatial standard data services, it is recommended to fill this element with the appropriate protocol identifier. For an OGC Web Map Service (WMS) link for example, use 'OGC:WMS-1.1.0-http-get-map' |
+| `protocol`    | Web protocol used to get the resource, e.g., FTP, HTTP. In case of a basic HTTP, the ISO 19139 suggests the value 'WWW:LINK-1.0-http--link'. For geographic standard data services, it is recommended to fill this element with the appropriate protocol identifier. For an OGC Web Map Service (WMS) link for example, use 'OGC:WMS-1.1.0-http-get-map' |
 | `function`    | Function (purpose) of the online resource.                 |
 
 
 #### Offline resource (Medium)
 
-An **offline resource** (medium) is a common set of elements that can be used to describe a physical resource to distribute a dataset, e.g., a DVD or a CD. A `medium` is described with the following properties:
+An **offline resource** (medium) is a common set of elements that can be used to describe a physical resource used to distribute a dataset, e.g., a DVD or a CD-ROM. A `medium` is described with the following properties:
 
 | Element       | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
@@ -391,7 +405,7 @@ An **offline resource** (medium) is a common set of elements that can be used to
 
 #### File format
 
-The table below lists the ISO 19139 elements used to document a **file format**. A format is defined at a minimum by its `name`. It is also recommended to provide a `version`, and possibly a format `specification`. 
+The table below lists the ISO 19139 elements used to document a **file format**. A format is defined at a minimum by its `name`. It is also recommended to provide a `version`, and possibly a format `specification`. It is good practice to provide a standardized format name, using the file's *mime type*, e.g., `text/csv`, `image/tiff`. A list of available mime types is available from the [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) website.
 
 | Element                      | Description                                       |
 | ---------------------------- | ------------------------------------------------- |
@@ -402,12 +416,10 @@ The table below lists the ISO 19139 elements used to document a **file format**.
 | `fileDecompressionTechnique` | Technique for file decompression (if applicable)  |
 | `FormatDistributor`          | <u>Contact</u>(s) responsible of the distribution |
 
-It is good practice to provide a standardized format name, using the file's *mime type*, e.g., `text/csv`, `image/tiff`. A list of available mime types is available from the [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml) website.
-
 
 #### Citation
 
-The `citation` is another common element that can be used in various parts of a geographic metadata file. Citations are used to provide clear and detailed information on external resources related to the dataset or service being documented. A citation can be defined using the following set of (mostly optional) elements:
+The **citation** is another common element that can be used in various parts of a geographic metadata file. Citations are used to provide detailed information on external resources related to the dataset or service being documented. A citation can be defined using the following set of (mostly optional) elements:
 
 | Element                 | Description                                                  |
 | ----------------------- | ------------------------------------------------------------ |
@@ -436,20 +448,18 @@ The `citation` is another common element that can be used in various parts of a 
 
 #### Keywords
 
-Keywords contribute significantly to making a resource more discoverable. Entering a list of relevant keywords is therefore highly recommended. Keywords can, but do not have to be selected from a controlled list (thesaurus). Keywords are documented using the following elements:
+**Keywords** contribute significantly to making a resource more discoverable. Entering a list of relevant keywords is therefore highly recommended. Keywords can, but do not have to be selected from a controlled vocabulary (thesaurus). Keywords are documented using the following elements:
 
 | Element         | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | `type`          | Keywords type. The ISO 19139 provides a recommended controlled vocabulary with the following options: {`dataCenter`, `discipline`, `place`, `dataResolution`, `stratum`, `temporal`, `theme`, `dataCentre`, `featureType`, `instrument`, `platform`, `process`, `project`, `service`, `product`, `subTopicCategory`} |
-| `keyword`       | The keyword itself. When possible, existing vocabularies should be preferred to writing free-text keywords. An example of global vocabulary is the [*Global Change Master Directory*](http://vocab.nerc.ac.uk/collection/P04/current/) that could be a valuable source to reference data domains / disciplines.
+| `keyword`       | The keyword itself. When possible, existing vocabularies should be preferred to writing free-text keywords. An example of global vocabulary is the [*Global Change Master Directory*](http://vocab.nerc.ac.uk/collection/P04/current/) that could be a valuable source to reference data domains / disciplines, or the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/).
 | `thesaurusName` | A reference to a thesaurus (if applicable) from which the keywords are extracted. The thesaurus itself should then be documented as a <u>citation</u>. |
 
 
-#### Constraints
+#### Constraints   @@@@ not clear. where is the element useLimitations? ... what are the elements used in the schema?
 
-The `constraints` common set of elements will be used to document *legal* and *security* constraints associated with the documented dataset or data service. 
-
-Both types of constraints have one property in common, `useLimitation`, used to describe the use limitation(s) as free text. 
+The **constraints** common set of elements will be used to document *legal* and *security* constraints associated with the documented dataset or data service. Both types of constraints have one property in common, `useLimitation`, used to describe the use limitation(s) as free text. 
 
 In addition to the `useLimitation` element, **legal constraints** (`legalConstraints`) can be described using the following three metadata elements:
 
@@ -475,7 +485,7 @@ In addition to the `useLimitation` element, **security constraints** (`securityC
 
 #### Extent
 
-The extent defines the boundaries of the dataset in space (horizontally and vertically) and in time. The ISO 19139 standard defines the `extent` as follows:
+The **extent** defines the boundaries of the dataset in space (horizontally and vertically) and in time. The ISO 19139 standard defines the extent as follows:
 
  Element       | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
@@ -489,7 +499,7 @@ The extent defines the boundaries of the dataset in space (horizontally and vert
 
 ### Core metadata properties
 
-A set of elements is provided in the ISO 19139 to document the core properties of the <u>metadata</u> (not the data). With a few exceptions, these elements apply to both datasets and data services. The table below summarizes these elements and their applicability. A description of the elements follows.
+A set of elements is provided in the ISO 19139 to document the core properties of the <u>metadata</u> (not the data). With a few exceptions, these elements apply to the metadata related to datasets and data services. The table below summarizes these elements and their applicability. A description of the elements follows.
 
 | Property                  | Description                                                  | Used in *dataset metadata*      | Used in *service metadata*      |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------- | ------------------------------- |
@@ -512,7 +522,7 @@ A set of elements is provided in the ISO 19139 to document the core properties o
 
 #### File identifier (`fileIdentifier`)
 
-The `fileIdentifier` only applies to **dataset** resources. The `fileIdentifier` must provide a unique and persistent identifier for the dataset. A common approach consists in building a _semantic identifier_, constructed by concatenating some owner and data characteristics. Although this approach offers the advantages of readability of the identifier, it may not guarantee its global uniqueness and its persistence in time. The use of time periods and/or geographic extents as components of a file identifier is not recommended, as these elements may evolve over time. The use of random identifiers such as the Universally Unique Identifiers (UUID) is sometimes suggested as an alternative, but this approach is also not recommended. The use of [Digital Object Identifiers](https://www.doi.org/) (DOI) as global and unique file identifiers is recommended. 
+The `fileIdentifier` only applies to **dataset** resources (not to services). The `fileIdentifier` must provide a unique and persistent identifier for the dataset. A common approach consists in building a _semantic identifier_, constructed by concatenating some owner and data characteristics. Although this approach offers the advantages of readability of the identifier, it may not guarantee its global uniqueness and its persistence in time. The use of time periods and/or geographic extents as components of a file identifier is not recommended, as these elements may evolve over time. The use of random identifiers such as the Universally Unique Identifiers (UUID) is sometimes suggested as an alternative, but this approach is also not recommended. The use of [Digital Object Identifiers](https://www.doi.org/) (DOI) as global and unique file identifiers is recommended. 
 
 #### Language (`language`)
 
@@ -520,7 +530,7 @@ The metadata language refers to the main language used in the metadata. The reco
 
 #### Character set (`characterSet`)
 
-The character set encoding of the metadata description. The best practice is to use the `utf8` encoding codelist value (UTF-8 encoding). It is capable of encoding all 1,112,064 valid character code points in Unicode, a standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems. The World Wide Web Consortium recommends UTF-8 as the default encoding in XML and HTML. UTF-8 is by far the most common encoding for the World Wide Web. Many text editors will provide you with an option to save your metadata (text) files in UTF-8, which will often be the default option (see below the example of Notepad++ and R Studio).
+The character set encoding of the metadata description. The best practice is to use the `utf8` encoding codelist value (UTF-8 encoding). It is capable of encoding all valid character code points in Unicode, a standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems. The World Wide Web Consortium recommends UTF-8 as the default encoding in XML and HTML. UTF-8 is the most common encoding for the World Wide Web. Many text editors will provide you with an option to save your metadata (text) files in UTF-8, which will often be the default option (see below the example of Notepad++ and R Studio).
 
 <center>
 ![](./images/geospatial_encoding_utf8.JPG){width=100%}
@@ -528,9 +538,7 @@ The character set encoding of the metadata description. The best practice is to 
 
 #### Parent Identifier (`parentIdentifier`)
 
-A geospatial data resource can be a subset of a larger dataset. For example, an aquatic species distribution map can be part of a data collection covering all species, or the 2010 population census dataset of a country can be part of a dataset that includes all population censuses for that country since 1900. In such case, the _parent identifier_ metadata element can be used to identify this higher-level resource. As for the `fileIdentifier`, the `parentIdentifier` must be a unique identifier persistent in time. In a data catalog, a `parentIdentifier` will allow the user to move from one dataset to another.
-
-The `parentIdentifier` is generally applied to *datasets*, although it may in some cases be used in *data services* descriptions.
+A geographic data resource can be a subset of a larger dataset. For example, an aquatic species distribution map can be part of a data collection covering all species, or the 2010 population census dataset of a country can be part of a dataset that includes all population censuses for that country since 1900. In such case, the _parent identifier_ metadata element can be used to identify this higher-level resource. As for the `fileIdentifier`, the `parentIdentifier` must be a unique identifier persistent in time. In a data catalog, a `parentIdentifier` will allow the user to move from one dataset to another. The `parentIdentifier` is generally applied to *datasets*, although it may in some cases be used in *data services* descriptions.
 
 #### Hierarchy level(s) (`hierarchyLevel`)
 
@@ -538,7 +546,7 @@ The `parentIdentifier` is generally applied to *datasets*, although it may in so
 ![](./images/ReDoc_geospatial_02.JPG){width=100%}
 </center>
 
-The `hierarchylevel` defines the scope of the resource. It indicates whether the resource is a collection, a dataset, a series, a service, or another type of resource. The ISO 19139 provides a controlled vocabulary for this element. It is recommended but not mandatory to make use of it. The most relevant levels for the purpose of cataloguing geospatial data and services are **dataset** (for both raster and vector data), **service** (a capability which a service provider entity makes available to a service user entity through a set of interfaces that define a behavior), and **series**. `Series` will be used when the data represent an ordered succession, in time or in space; this will typically apply to time series, but it can also be used to describe other types of series (e.g., a series of ocean water temperatures collected at a succession of depths).
+The `hierarchylevel` defines the scope of the resource. It indicates whether the resource is a collection, a dataset, a series, a service, or another type of resource. The ISO 19139 provides a controlled vocabulary for this element. It is recommended but not mandatory to make use of it. The most relevant levels for the purpose of cataloguing geographic data and services are **dataset** (for both raster and vector data), **service** (a capability which a service provider entity makes available to a service user entity through a set of interfaces that define a behavior), and **series**. `Series` will be used when the data represent an ordered succession, in time or in space; this will typically apply to time series, but it can also be used to describe other types of series (e.g., a series of ocean water temperatures collected at a succession of depths).
 
 The recommended controlled vocabulary for `hierarchylevel` includes: `{dataset, series, service, attribute, attributeType, collectionHardware, collectionSession, nonGeographicDataset, dimensionGroup, feature, featureType, propertyType, fieldSession, software, model, tile, initiative, stereomate, sensor, platformSeries, sensorSeries, productionSeries, transferAggregate, otherAggregate}`
 
@@ -552,7 +560,7 @@ The `contact` element is a common element described in the ***common elements***
 
 #### Date stamp (`dateStamp`)
 
-The date stamp associated to the metadata. The metadata date stamp may be automatically filled by metadata editors, and will ideally use the standard ISO 8601 date format: YYYY-MM-DD.
+The date stamp associated to the metadata. The metadata date stamp may be automatically filled by metadata editors, and will ideally use the standard ISO 8601 date format: YYYY-MM-DD (possibly with a time).
 
 <center>
 ![](./images/ReDoc_geospatial_04.JPG){width=100%}
@@ -582,7 +590,7 @@ A unique resource identifier for the dataset, such as a web link that uniquely i
 
 #### Locale(s) (`locale`)
 
-The ISO standard allows the metadata to be provided in multiple languages in one same XML file. The (simplified) JSON schema we developed to document geospatial data does not allow multilingual metadata files. We will therefore ignore this element (at least for now).
+The ISO standard allows the metadata to be provided in multiple languages in one same XML file. The (simplified) JSON schema we developed to document geographic data does not allow multilingual metadata files. We will therefore ignore this element (at least for now).
 
 <center>
 ![](./images/ReDoc_geospatial_05.JPG){width=100%}
@@ -591,7 +599,7 @@ The ISO standard allows the metadata to be provided in multiple languages in one
 
 ### Main metadata sections
 
-Geospatial data can be diverse and complex. Users need detailed information to discover data and to use them in an informed and responsible manner. The core of the information on data will be provided in various *sections* of the metadata file. This will include information on the type of data, on the coordinate system being used, on the scope and coverage of the data, on the format and location of the data, on possible quality issues that users need to be aware of, and more. The table below summarizes the main metadata *sections*, by order of appearance in the ISO 19139 specification. 
+Geographic data can be diverse and complex. Users need detailed information to discover data and to use them in an informed and responsible manner. The core of the information on data will be provided in various *sections* of the metadata file. This will include information on the type of data, on the coordinate system being used, on the scope and coverage of the data, on the format and location of the data, on possible quality issues that users need to be aware of, and more. The table below summarizes the main metadata *sections*, by order of appearance in the ISO 19139 specification. 
 
 | Section                     | Description                                                  | Usability in *dataset metadata* | Usability in *service metadata* |
 | --------------------------- | ------------------------------------------------------------ | ------------------------------- | ------------------------------- |
@@ -605,7 +613,7 @@ Geospatial data can be diverse and complex. Users need detailed information to d
 
 These sections are described in more detail below. 
 
-#### Spatial Representation (`spatialRepresentationInfo`)
+#### Spatial representation (`spatialRepresentationInfo`)
 
 <center>
 ![](./images/ReDoc_geospatial_06.JPG){width=100%}
@@ -622,8 +630,7 @@ Information on the spatial representation is critical to properly describe a geo
 
   In the case of an homogeneous geometry type, a single `geometricObjects`element can be defined. For complex geometries (mixture of various geometry types), one `geometricObjects` element will be defined for each geometry type. 
 
-  
-- The **grid spatial representation** describes gridded data using the following three properties:
+- The **grid spatial representation** describes gridded (raster) data using the following three properties:
 
   - **Number of dimensions** (`numberOfDimensions`) in the grid.
   - **Axis dimension properties** (`axisDimensionProperties`): a list of each dimension including, for each dimension:
@@ -639,7 +646,7 @@ Information on the spatial representation is critical to properly describe a geo
     In the Ethiopia population density file we used as an example of raster data, the types of dimensions will be row and column as the file is a spatial 2D raster. If we had a data with elevation or time dimensions, we would use respectively "vertical" and "time" dimension as name types.
     - The dimension size (`dimensionSize`): the length of the dimension.
     - The dimension resolution: a resolution number associated to a unit of measurement. This is the resolution of the grid cell dimension. For example:
-    - for longitude/latitude dimensions, and a grid at 1deg x 5deg, the 'row' dimemsion will have a resolution of 1 deg, and the 'column' dimension will have a resolution of 5 deg 
+    - for longitude/latitude dimensions, and a grid at 1deg x 5deg, the 'row' dimension will have a resolution of 1 deg, and the 'column' dimension will have a resolution of 5 deg 
        - for a "vertical" dimension, this will represent the elevation step. For example, the vertical resolution of the mean Ozone concentration between 40m and 50m altitude at a location of longitude x/ latitude y would be 10 m.
        - similar: in case of a spatial-temporal grid, the "time" resolution will represent the time lag (e.g., 1 year, 1 month, 1 week, etc.) between two measures.
     - **Cell geometry type** (`cellGeometry`): The type of geometry used for grid cells. Possible values are: `{point, area, voxel, stratum}` Most "grids" are commonly area-based, but in principle a grid goes beyond this and the grid cells can target a point, an area, or a volume.
@@ -675,12 +682,12 @@ The following ESRI projections could be relevant, in particular those in support
 
 #### Identification (`identificationInfo`)
 
-The Identification information (`identificationInfo`) is where the citation elements of the resource will be provided. This may include descriptive information like `title`, `abstract`, `purpose`, `keywords`, etc., and identification of the parties/contact(s) associated with the resource, such as the *owner*, *publisher*, *co-authors*, etc. Providing and publishing detailed information in these elements will contribute significantly to improving the discoverability of the data. 
+The **identification information** (`identificationInfo`) is where the citation elements of the resource will be provided. This may include descriptive information like `title`, `abstract`, `purpose`, `keywords`, etc., and identification of the parties/contact(s) associated with the resource, such as the *owner*, *publisher*, *co-authors*, etc. Providing and publishing detailed information in these elements will contribute significantly to improving the discoverability of the data. 
 
 The identification of a resource includes elements that are common to both *datasets* and *data services*, and others that are specific to the type of resource. The following table summarizes the **identification elements** that can be used for *dataset*, *service*, or both.
 
 
-**Common identification elements**
+**Identification elements applicable to datasets and data services**
 
 The following metadata elements apply to resources of type **dataset** and **service**.
 
@@ -741,7 +748,7 @@ Aggregation information
 </center>
 
 
-**Data-specific identification elements**
+**Identification elements applicable to datasets**
 
 The following metadata elements are specific to resources of type **dataset**.
 
@@ -760,7 +767,7 @@ The following metadata elements are specific to resources of type **dataset**.
 </center>
 
 
-**Service-specific identification elements**
+**Identification elements applicable to data services**
 
 The following metadata elements are specific to resources of type **service**.
 
@@ -784,7 +791,7 @@ The following metadata elements are specific to resources of type **service**.
 
 ##### Service operation 
 
-A service operation metadata is described with the following properties:
+A data service operation is described with the following metadata elements:
 
 | Element                | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
@@ -854,7 +861,7 @@ The distribution information documents who is the actual *distributor* of the re
 
 #### Data quality (`dataQualityInfo`)
 
-Information on the quality of the data, particularly useful to ensure proper use of the data by secondary analysts, is documented in the section `dataQualityInfo` using three main metadata elements:
+Information on the quality of the data will be useful to secondary analysts, to ensure proper use of the data. Data quality is documented in the section `dataQualityInfo` using three main metadata elements:
 
 | Element   | Description                                                  |
 | --------- | ------------------------------------------------------------ |
@@ -956,31 +963,31 @@ Each feature attribute, i.e. column that is a member of the vector data structur
 | `listedValue`          | List of controlled value(s) used in the attribute member. Each value corresponds to an object compound by 1) a `label`, 2) a `code` (as contained in the dataset), 3) a `definition`. This element will be used when the feature member relates to reference datasets, such as code lists or registers. e.g., list of countries, land cover types, etc. |
 
 
-### Provenance
+## Provenance
 
 <br>
 ![](./images/ReDoc_geospatial_33.JPG){width=100%}
 <br>
 
 **`provenance`** *[Optional ; Repeatable]* <br>
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been done to the harvested metadata. These elements are NOT part of the ISO 19139 metadata standard.
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been done to the harvested metadata. These elements are NOT part of the ISO 19139 metadata standard.<br>
    - **`origin_description`** *[Required ; Not repeatable]* <br>
-   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  
+   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  <br>
       - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-      The date and time the metadata were harvested, in ISO 8601 format.
+      The date and time the metadata were harvested, in ISO 8601 format.<br>
       - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Study Description / Title Statement section) will be modified when published in a new catalog.
+      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Study Description / Title Statement section) will be modified when published in a new catalog.<br>
       - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-      The URL from where the metadata were harvested.
+      The URL from where the metadata were harvested.<br>
       - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.
+      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
       - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-      The datestamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).
+      The datestamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
       - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-      @@@@@@@ 
+      @@@@@@@ <br>
 
 
-### tags
+## Tags
 
 - **`tags`** *[Optional ; Repeatable]* <br>
 Tags provides easy way to include custom-facets in NADA. Should consider using one or multiple controlled vocabulary(ies). See section 1.7 for more on the importance and use of tags and tag_groups in data catalogs.
@@ -993,21 +1000,22 @@ Tags provides easy way to include custom-facets in NADA. Should consider using o
     A user-defined group to which the tag belongs. Grouping tags allows implementation of controlled facets (filters) in data catalogs.
 
 
-### Additional 
+## Additional 
 
-**`additional`** *[Optional ; Not repeatable]*<br>   @@@@@@@@@@@ do screenshot
-The `additional` element is provided to allow users of the API to create their own elements and add them to the schema. It is not part of the DDI Codebook standard. All custom element must be added within the `element` block; embedding them elsewhere in the schema would cause DDI schema validation to fail in NADA.
+**`additional`** *[Optional ; Not repeatable]*<br>   
+The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
 <br>
 ![](./images/ReDoc_geospatial_35.JPG){width=100%}
 <br>
 
 
-## Examples
-
+## Complete examples
 
 ### Example 1 (vector - shape files): Bangladesh, Outline of camps of Rohingya refugees in Cox's Bazar, January 2021 
 
-This spatial database contains the outline of the camps, settlements, and sites where Rohingya refugees are staying in Cox's Bazar, Bangladesh. It was extracted from the Humanitarian Data Exchange website on March 3, 2021. See https://data.humdata.org/dataset/outline-of-camps-sites-of-rohingya-refugees-in-cox-s-bazar-bangladesh
+In this first example, we use a geographic dataset that contains the outline of Rohingya refugee camps, settlements, and sites in Cox's Bazar, Bangladesh. The dataset was imported from the [Humanitarian Data Exchange website](https://data.humdata.org/dataset/outline-of-camps-sites-of-rohingya-refugees-in-cox-s-bazar-bangladesh) on March 3, 2021. 
+
+We include in the metadata a simple description of the features (variables) contained in the shape files. This information will significantly increase data discoverability, as it provide information of the content of the data files (which is not described elsewhere in the metadata). 
 
 <center>
 ![](./images/geospatial_example_script_OCHA_BGD.JPG){width=100%}
@@ -1019,550 +1027,785 @@ This spatial database contains the outline of the camps, settlements, and sites 
 
 ```{r, eval=F, echo=T}
 library(nadar)
-library(readr)
-library(readxl)
-library(writexl)
+library(readr)     @@@@ used?
+library(readxl)    @@@@ used?
+library(writexl)   @@@@ used?
 library(sf)
 
-base_path = "C:/Users/wb147665/OneDrive - WBG/_OD" 
-data_path = paste0(base_path, "./FCV-DATA/HDX/GEO_COX/Data")
-setwd(data_path)
-thumb = paste0(base_path, "/FCV-DATA/HDX/GEO_COX/shape_camps.JPG")
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-# --------------------------------------------------------------------------------------
-# Load API credentials and catalog URL
-my_keys <- read.csv("C:/Users/wb147665/OneDrive - WBG/_OD/ADMIN/OD_API_keys.csv", 
-                    header=F, stringsAsFactors=F)
-my_key  <- my_keys[17,1]
-set_api_key(my_key)
-catalog_url <- "http://wbgmsmcro001:89/index.php/api"
-set_api_url(catalog_url)
-set_verbose(FALSE)
-# --------------------------------------------------------------------------------------
+setwd("C:/my_geo_data/") 
 
-# Download data files
-# -------------------
-urls <- list("https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/7cec91fb-d0a8-4781-9f8d-9b69772ef2fd/download/210118_rrc_geodata_al1al2al3.gdb.zip",
-             "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/ace4b0a6-ef0f-46e4-a50a-8c552cfe7bf3/download/200908_rrc_outline_camp_al1.zip",
-             "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/bd5351e7-3ffc-4eaa-acbc-c6d917b5549c/download/200908_rrc_outline_camp_al1.kmz",
-             "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/9d5693ec-eeb8-42ed-9b65-4c279f523276/download/200908_rrc_outline_block_al2.zip",
-             "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/ed119ae4-b13d-4473-9afe-a8c36e07870b/download/200908_rrc_outline_block_al2.kmz",
-             "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/0d2d87ae-52a5-4dca-b435-dcd9c617b417/download/210118_rrc_outline_subblock_al3.zip",
-             "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/6286c4a5-d2ab-499a-b019-a7f0c327bd5f/download/210118_rrc_outline_subblock_al3.kmz")
+thumb = "shape_camps.JPG"
+
+# Download the data files (if not already downloaded)
+# Note: the data are frequently updated; the links below may have become invalid.
+# Visit: https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd for an update.
+
+base_url = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/"
+urls <- list(
+  paste0(base_url, "7cec91fb-d0a8-4781-9f8d-9b69772ef2fd/download/210118_rrc_geodata_al1al2al3.gdb.zip"),
+  paste0(base_url, "ace4b0a6-ef0f-46e4-a50a-8c552cfe7bf3/download/200908_rrc_outline_camp_al1.zip"),
+  paste0(base_url, "bd5351e7-3ffc-4eaa-acbc-c6d917b5549c/download/200908_rrc_outline_camp_al1.kmz"),
+  paste0(base_url, "9d5693ec-eeb8-42ed-9b65-4c279f523276/download/200908_rrc_outline_block_al2.zip"),
+  paste0(base_url, "ed119ae4-b13d-4473-9afe-a8c36e07870b/download/200908_rrc_outline_block_al2.kmz"),
+  paste0(base_url, "0d2d87ae-52a5-4dca-b435-dcd9c617b417/download/210118_rrc_outline_subblock_al3.zip"),
+  paste0(base_url, "6286c4a5-d2ab-499a-b019-a7f0c327bd5f/download/210118_rrc_outline_subblock_al3.kmz")
+)  
 
 for(url in urls) {
   f <- basename(url) 
-  if (!file.exists(f)) {
-    download.file(url, destfile=f, mode="wb")
-  }
+  if (!file.exists(f)) download.file(url, destfile=f, mode="wb")
 }
 
-geo_id = "BGD_2021_COX_CAMPS_GEO_OUTLINE"
-GEO <- list(
-  dataset_metadata = list(
-  fileIdentifier = geo_id,
-  language = "eng",
-	characterSet = "utf8",
-	hierarchyLevel = "dataset",
-  contact = list(
-    list(
-			organisationName = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
-			contactInfo = list(
-			address = list(
-			country = "Bangladesh"
-		),
-				onlineResource = list(
-					linkage = "https://www.humanitarianresponse.info/en/operations/bangladesh/",
-					name = "Website"
-				)
-			),
-			role = "owner"
-		)
-	),
-	dateStamp = "2021-01-20",
-	metadataStandardName = "ISO 19115:2003/19139",
-	# spatialRepresentationInfo
-	spatialRepresentationInfo = list(
-		#al1
-		list(
-			vectorSpatialRepresentationInfo = list(
-				topologyLevel = "geometryOnly",
-				geometricObjects = list(
-					geometricObjectType = "surface",
-					geometricObjectCount = "" #to be replaced by the number of features
-				)
-			)
-		),
-		# al2
-		list(
-			vectorSpatialRepresentationInfo = list(
-				topologyLevel = "geometryOnly",
-				geometricObjects = list(
-					geometricObjectType = "surface",
-					geometricObjectCount = "" #to be replaced by the number of features
-				)
-			)
-		),
-		# al3
-		list(
-			vectorSpatialRepresentationInfo = list(
-				topologyLevel = "geometryOnly",
-				geometricObjects = list(
-					geometricObjectType = "surface",
-					geometricObjectCount = "" #to be replaced by the number of features
-				)
-			)
-		)
-	),
-	#referenceSystemInfo
-	referenceSystemInfo = list(
-		list(
-			code = "4326", 
-			codeSpace = "EPSG"
-		)
-	),
-	#identificationInfo
+# Unzip and read the shape files to extract information
+# The object contain the number of features, layers, geodetic CRS, etc.
+
+unzip("200908_rrc_outline_camp_al1.zip", exdir = "AL1")
+al1 <- st_read("./AL1/200908_RRC_Outline_Camp_AL1.shp")
+
+unzip("200908_rrc_outline_block_al2.zip", exdir = "AL2")
+al2 <- st_read("./AL2/200908_RRC_Outline_Block_AL2.shp")
+
+unzip("210118_rrc_outline_subblock_al3.zip", exdir = "AL3")
+al3 <- st_read("./AL3/210118_RRC_Outline_SubBlock_AL3.shp")
+
+# ---------------
+
+id = "BGD_2021_COX_CAMPS_GEO_OUTLINE"
+
+my_geo_metadata <- list(
+  
+  metadata_information = list(
+    title = "(Demo) Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
+    producers = list(list(name = "NADA team")),
+    production_date = "2022-02-18"
+  ),
+  
+  description = list(
+    
+    idno = id,
+    
+    language = "eng",
+    
+    characterSet = list(codeListValue = "utf8"),
+    
+    hierarchyLevel = list("dataset"),
+    
+    contact = list(
+      list(
+        organisationName = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
+        contactInfo = list(
+          address = list(country = "Bangladesh"),
+          onlineResource = list(
+            linkage = "https://www.humanitarianresponse.info/en/operations/bangladesh/",
+            name = "Website"
+          )
+        ),
+        role = "owner"
+      )
+    ),
+
+    dateStamp = "2021-01-20",
+      
+    metadataStandardName = "ISO 19115:2003/19139",
+      
+    spatialRepresentationInfo = list(
+      
+      # File 200908_rrc_outline_camp_al1.zip
+      list(
+        vectorSpatialRepresentationInfo = list(
+          topologyLevel = "geometryOnly",
+          geometricObjects = list(
+            geometricObjectType = "surface",
+            geometricObjectCount = "35" 
+          )
+        )
+      ),
+      
+      # File 200908_rrc_outline_block_al2.zip
+      list(
+        vectorSpatialRepresentationInfo = list(
+          topologyLevel = "geometryOnly",
+          geometricObjects = list(
+            geometricObjectType = "surface",
+            geometricObjectCount = "173" 
+          )
+        )
+      ),
+      
+      # File 210118_rrc_outline_subblock_al3.zip
+      list(
+        vectorSpatialRepresentationInfo = list(
+          topologyLevel = "geometryOnly",
+          geometricObjects = list(
+            geometricObjectType = "surface",
+            geometricObjectCount = "967" 
+          )
+        )
+      )
+      
+    ),
+    
+    referenceSystemInfo = list(
+      list(code = "4326", codeSpace = "EPSG"),
+      list(code = "84",   codespace = "WGS")
+    ),
+    
     identificationInfo = list(
-		citation = list(
-			title="Bangladesh, Outline of camps of Rohingya refugees in Cox's Bazar, January 2021",
-			date=list(list(date="2021-01-20", type= "creation")),
-			citedResponsibleParty = list(
-				list(
-					organisationName = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
-					contactInfo = list(
-						address = list(
-							country = "Bangladesh"
-						),
-						onlineResource = list(
-							linkage = "https://www.humanitarianresponse.info/en/operations/bangladesh/",
-							name = "Website"
-						)
-					),
-					role = "owner"
-				)
-			)
-		),
-		abstract = "These polygons were digitized through a comnibination of methodologies, originally using VHR satellite imagery and GPS points collected in the field, verified and amended according to Site Management Sector, RRRC, Camp in Charge (CiC) officers inputs, with technical support from other partners.",
-		purpose = "",
-		credit = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
-		status = "completed",
-		pointOfContact = list(
-			organisationName = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
-			contactInfo = list(
-				address = list(
-					country = "Bangladesh"
-				),
-				onlineResource = list(
-					linkage = "https://www.humanitarianresponse.info/en/operations/bangladesh/",
-					name = "Website"
-				)
-			),
-			role = "pointOfContact"
-		),
-		resourceMaintenance = list(
-			list(
-				maintenanceOrUpdateFrequency="asNeeded"
-			)
-		),
-		graphicOverview = list(),
-		resourceFormats = list(
-			list(name = "application/zip", specification = "ESRI Shapefile (zipped)", FormatDistributor = list(organisationName = "ESRI")),
-			list(name = "application/vnd.google-earth.kmz", specification = "KMZ file", FormatDistributor = list(organisationName = "Google")),
-			list(name = "ESRI Geodatabase", FormatDistributor = list(organisationName = "ESRI"))
-		),
-		descriptiveKeywords = list(
-			list(
-				type = "theme",
-				keyword = list("Refugee camp", "forced displacement", "Rohingya")
-			)
-		),	
-		resourceConstraints = list(
-			list(
-				legalConstraints = list(
-					accessConstraints = "unrestricted",
-					useConstraints = "licenceUnrestricted",
-					uselimitation = list("License: http://creativecommons.org/publicdomain/zero/1.0/legalcode")
-				)
-			)
-		),
-		spatialRepresentationType = "vector",
-		language = "eng",
-		characterSet = "",
-		topicCategory = "structure",
-		extent = list(
-			geographicElement = list(
-				list(
-					geographicBoundingBox = list(
-						southBoundLongitude = 20.91856,  @@@@@@@@@@ all Longitude?
-						westBoundLongitude = 92.12973,
-						northBoundLongitude = 21.22292,
-						eastBoundLongitude = 92.26863
-					)
-				)
-			)
-		),
-		supplementalInformation = ""
+      
+      list(
+        
+        citation = list(
+          title = "Bangladesh, Outline of camps of Rohingya refugees in Cox's Bazar, January 2021",
+          date = list(
+            list(date = "2021-01-20", type = "creation")
+          ),
+          citedResponsibleParty = list(
+            list(
+              organisationName = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
+              contactInfo = list(
+                address = list(country = "Bangladesh"),
+                onlineResource = list(
+                  linkage = "https://www.humanitarianresponse.info/en/operations/bangladesh/",
+                  name = "Website"
+                )
+              ),
+              role = "owner"
+            )
+          )
+        ),
+
+        abstract = "These polygons were digitized through a combination of methodologies, originally using VHR satellite imagery and GPS points collected in the field, verified and amended according to Site Management Sector, RRRC, Camp in Charge (CiC) officers inputs, with technical support from other partners.",
+        
+        purpose = "Inform the UNHCR operations (and other support agencies') in refugee camps in Cox's Bazar.",
+        
+        credit = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
+        
+        status = "completed",
+        
+        pointOfContact = list(
+          list(
+            organisationName = "Site Management Sector, RRRC, Inter Sector Coordination Group (ISCG)",
+            contactInfo = list(
+              address = list(country = "Bangladesh"),
+              onlineResource = list(
+                linkage = "https://www.humanitarianresponse.info/en/operations/bangladesh/",
+                name = "Website"
+              )
+            ),
+            role = "pointOfContact"
+          )  
+        ),
+        
+        resourceMaintenance = list(
+          list(maintenanceOrUpdateFrequency = "asNeeded")
+        ),
+        
+        graphicOverview = list(    # @@@@@@@@@@@@
+          list(fileName = "",
+               fileDescription = "",
+               fileType = "")
+        ),
+        
+        resourceFormats = list(
+          list(name = "application/zip", 
+               specification = "ESRI Shapefile (zipped)", 
+               FormatDistributor = list(organisationName = "ESRI")
+          ),
+          list(name = "application/vnd.google-earth.kmz", 
+               specification = "KMZ file", 
+               FormatDistributor = list(organisationName = "Google")
+          ),
+          list(name = "ESRI Geodatabase", 
+               FormatDistributor = list(organisationName = "ESRI")
+          )
+        ),
+        
+        descriptiveKeywords = list(
+          list(keyword = "refugee camp"), 
+          list(keyword = "forced displacement"),
+          list(keyword = "rohingya")
+        ),
+    
+        resourceConstraints = list(
+          list(
+            legalConstraints = list(
+              uselimitation = list("License: http://creativecommons.org/publicdomain/zero/1.0/legalcode"),
+              accessConstraints = list("unrestricted"),
+              useConstraints = list("licenceUnrestricted")
+            )
+          )
+        ),
+        
+        extent = list(
+          geographicElement = list(
+            list(
+              geographicBoundingBox = list(
+                southBoundLatitude = 20.91856,  
+                westBoundLongitude = 92.12973,
+                northBoundLatitude = 21.22292,
+                eastBoundLongitude = 92.26863
+              )
+            )
+          )
+        ),
+        
+        spatialRepresentationType = "vector",
+        
+        language = list("eng")
+      
+      )
+    
     ),
+    
     distributionInfo = list(
-		distributionFormat = list(
-			list(name = "application/zip", 
-			     specification = "ESRI Shapefile (zipped)", 
-			     FormatDistributor = list(organisationName = "ESRI")),
-			list(name = "application/vnd.google-earth.kmz", 
-			     specification = "KMZ file", 
-			     FormatDistributor = list(organisationName = "Google")),
-			list(name = "ESRI Geodatabase", 
-			     FormatDistributor = list(organisationName = "ESRI"))
-		),
-		distributor = list(
-			list(
-				organisationName = "OCHA", 
-				contactInfo = list(
-					onlineResource = list(
-						linkage = "https://data.humdata.org/dataset/outline-of-camps-sites-of-rohingya-refugees-in-cox-s-bazar-bangladesh",
-						name = "Website"
-					)
-				)
-			)
-		),
-		transferOptions = list(
-			list(
-				onLine = list(
-					list(
-						linkage="https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/7cec91fb-d0a8-4781-9f8d-9b69772ef2fd/download/210118_rrc_geodata_al1al2al3.gdb.zip",
-						name="210118_RRC_GeoData_AL1,AL2,AL3.gdb.zip",
-						description="This zipped geodatabase file (GIS) contains the Camp boundary (Admin level-1) and and camp-block boundary (admin level-2 or camp sub-division) and sub-block boundary of Rohingya refugee camps and administrative level-3 or sub block division of Camp 1E-1W, Camp 2E-2W, Camp 8E-8W, Camp 4 Extension, Camp 3-7, Camp 9-20, and Camp 21-27 in Cox's Bazar, Bangladesh. Updated: January 20, 2021",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/ace4b0a6-ef0f-46e4-a50a-8c552cfe7bf3/download/200908_rrc_outline_camp_al1.zip",
-						name="200908_RRC_Outline_Camp_AL1.zip",
-						description="This zipped shape file (GIS) contains the Camp boundary (Admin level-1) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/bd5351e7-3ffc-4eaa-acbc-c6d917b5549c/download/200908_rrc_outline_camp_al1.kmz",
-						name="200908_RRC_Outline_Camp_AL1.kmzKMZ",
-						description="This kmz file (Google Earth) contains the Camp boundary (Admin level-1) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/9d5693ec-eeb8-42ed-9b65-4c279f523276/download/200908_rrc_outline_block_al2.zip",
-						name="200908_RRC_Outline_Block_AL2.zip",
-						description="This zipped shape file (GIS) contains the camp-block boundary (admin level-2 or camp sub-division) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/ed119ae4-b13d-4473-9afe-a8c36e07870b/download/200908_rrc_outline_block_al2.kmz",
-						name="200908_RRC_Outline_Block_AL2.kmzKMZ",
-						description="This kmz file (Google Earth) contains the camp-block boundary (admin level-2 or camp sub-division) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/0d2d87ae-52a5-4dca-b435-dcd9c617b417/download/210118_rrc_outline_subblock_al3.zip",
-						name="210118_RRC_Outline_SubBlock_AL3.zip",
-						description="This zipped shape file (GIS) contains the camp-sub-block (Admin level-3) of Camp 1E-1W, Camp 2E-2W, Camp 8E-8W, Camp 4 Extension, Camp 3-7, Camp 9-20, and Camp 21-27 in Cox's Bazar, Bangladesh. Updated: January 20, 2021",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/6286c4a5-d2ab-499a-b019-a7f0c327bd5f/download/210118_rrc_outline_subblock_al3.kmz",
-						name="210118_RRC_Outline_SubBlock_AL3.kmzKMZ",
-						description="This kmz file (Google Earth) contains the camp-sub-block (Admin level-3) of Camp 1E-1W, Camp 2E-2W, Camp 8E-8W, Camp 4 Extension, Camp 3-7, Camp 9-20, and Camp 21-27 in Cox's Bazar, Bangladesh. Updated: January 20, 2021",
-						protocol = "WWW:LINK-1.0-http--link"
-					)
-				)
-			)
-		)
+      
+      distributionFormat = list(
+        list(name = "application/zip", 
+             specification = "ESRI Shapefile (zipped)", 
+             FormatDistributor = list(organisationName = "ESRI")
+        ),
+        list(name = "application/vnd.google-earth.kmz", 
+             specification = "KMZ file", 
+             FormatDistributor = list(organisationName = "Google")
+        ),
+        list(name = "ESRI Geodatabase", 
+             FormatDistributor = list(organisationName = "ESRI")
+        )
+      ),
+      
+      distributor = list(
+        list(
+          organisationName = "United Nations Office for the Coordination of Humanitarian Affairs (OCHA)", 
+          contactInfo = list(
+            onlineResource = list(
+              linkage = "https://data.humdata.org/dataset/outline-of-camps-sites-of-rohingya-refugees-in-cox-s-bazar-bangladesh",
+              name = "Website"
+            )
+          )
+        )
+      )#,
+      
+      # transferOptions = list(
+      #   list(
+      #     onLine = list(   # @@@@@@@@ / use external resources schema?
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/7cec91fb-d0a8-4781-9f8d-9b69772ef2fd/download/210118_rrc_geodata_al1al2al3.gdb.zip",
+      #         name = "210118_RRC_GeoData_AL1,AL2,AL3.gdb.zip",
+      #         description = "This zipped geodatabase file (GIS) contains the Camp boundary (Admin level-1) and and camp-block boundary (admin level-2 or camp sub-division) and sub-block boundary of Rohingya refugee camps and administrative level-3 or sub block division of Camp 1E-1W, Camp 2E-2W, Camp 8E-8W, Camp 4 Extension, Camp 3-7, Camp 9-20, and Camp 21-27 in Cox's Bazar, Bangladesh. Updated: January 20, 2021",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/ace4b0a6-ef0f-46e4-a50a-8c552cfe7bf3/download/200908_rrc_outline_camp_al1.zip",
+      #         name = "200908_RRC_Outline_Camp_AL1.zip",
+      #         description = "This zipped shape file (GIS) contains the Camp boundary (Admin level-1) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/bd5351e7-3ffc-4eaa-acbc-c6d917b5549c/download/200908_rrc_outline_camp_al1.kmz",
+      #         name = "200908_RRC_Outline_Camp_AL1.kmzKMZ",
+      #         description = "This kmz file (Google Earth) contains the Camp boundary (Admin level-1) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/9d5693ec-eeb8-42ed-9b65-4c279f523276/download/200908_rrc_outline_block_al2.zip",
+      #         name = "200908_RRC_Outline_Block_AL2.zip",
+      #         description = "This zipped shape file (GIS) contains the camp-block boundary (admin level-2 or camp sub-division) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/ed119ae4-b13d-4473-9afe-a8c36e07870b/download/200908_rrc_outline_block_al2.kmz",
+      #         name = "200908_RRC_Outline_Block_AL2.kmzKMZ",
+      #         description = "This kmz file (Google Earth) contains the camp-block boundary (admin level-2 or camp sub-division) of Rohinya refugees in Cox's Bazar, Bangladesh. Updated: September 8, 2020",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/0d2d87ae-52a5-4dca-b435-dcd9c617b417/download/210118_rrc_outline_subblock_al3.zip",
+      #         name = "210118_RRC_Outline_SubBlock_AL3.zip",
+      #         description = "This zipped shape file (GIS) contains the camp-sub-block (Admin level-3) of Camp 1E-1W, Camp 2E-2W, Camp 8E-8W, Camp 4 Extension, Camp 3-7, Camp 9-20, and Camp 21-27 in Cox's Bazar, Bangladesh. Updated: January 20, 2021",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/1a67eb3b-57d8-4062-b562-049ad62a85fd/resource/6286c4a5-d2ab-499a-b019-a7f0c327bd5f/download/210118_rrc_outline_subblock_al3.kmz",
+      #         name = "210118_RRC_Outline_SubBlock_AL3.kmzKMZ",
+      #         description = "This kmz file (Google Earth) contains the camp-sub-block (Admin level-3) of Camp 1E-1W, Camp 2E-2W, Camp 8E-8W, Camp 4 Extension, Camp 3-7, Camp 9-20, and Camp 21-27 in Cox's Bazar, Bangladesh. Updated: January 20, 2021",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       )
+      #     )
+      #   )
+      # )
+      
     ),
-	# dataQualityInfo
-	# The camps are continuously expanding, and Camp Boundaries are structured around the GoB, RRRC official governance structure of the camps, taking into account the potential new land allocation. The database is kept as accurate as possible, given these challenges."
+
     dataQualityInfo = list(
-		scope = "dataset", 
-		lineage = list(
-			statement = "Data management workflow",
-			processStep = list(
-				list(
-					description = "description of step 1",
-					rationale = "rationale of step 1"
-				),
-				list(
-					description = "description of step 2",
-					rationale = "rationale of step 2"
-				)
-			)
-		)
-	),
-	# metadataMaintenance
-	metadataMaintenance = list(
-		maintenanceAndUpdateFrequency = "asNeeded"
-	)
+      list(
+        scope = "dataset", 
+        lineage = list(
+          statement = "The camps are continuously expanding, and Camp Boundaries are structured around the GoB, RRRC official governance structure of the camps, taking into account the potential new land allocation. The database is kept as accurate as possible, given these challenges."
+        )
+      )  
+    ),
+    
+    metadataMaintenance = list(maintenanceAndUpdateFrequency = "asNeeded"),
+    
+    feature_catalogue = list(
+      
+      name = "Feature Catalogue dataset xxxxx",
+      scope = list("3 shape files: al1, al2, al3"),
+    
+      featureType = list(
+        list(
+          typeName =  "",
+          definition = "",
+          carrierOfCharacteristics = list(
+            list(
+              memberName = 'District',
+              definition = 'Cox s Bazar'
+            ),
+            list(
+              memberName = 'Upazila',
+              definition = 'Teknaf, Ukhia',
+            ),
+            list(
+              memberName = 'Settlement',
+              definition = 'Collective site; Collective site with host community',
+            ),
+            list(
+              memberName = 'Union',
+              definition = 'Baharchhara; Nhilla; Palong Khali; Raja Palong; Whykong',
+            ),
+            list(
+              memberName = 'Name_Alias',
+              definition = 'Alikhali; Bagghona-Putibonia; Camp 20 Extension; 
+                            Camp 4; Camp 4 Extension; Chakmarkul; Choukhali; 
+                            Hakimpara; Jadimura; Jamtoli-Baggona; Jomer Chora; 
+                            Kutupalong RC; Modur Chora; Nayapara; Nayapara RC; 
+                            Shamlapur; Tasnimarkhola; Tasnimarkhola-Burmapara; 
+                            Unchiprang'
+            ),
+            list(
+              memberName = 'SSID',
+              definition = 'CXB-017 to CXB-235',
+            ),
+            list(
+              memberName = 'SMSD__Cnam',
+              definition = 'Camp 01E; Camp 01W; Camp 02E; Camp 02W; Camp 03; Camp 04;
+                            Camp 04X; Camp 05; Camp 06; Camp 07; Camp 08E; Camp 08W;
+                            Camp 09; Camp 10; Camp 11; Camp 12; Camp 13; Camp 14;
+                            Camp 15; Camp 16; Camp 17; Camp 18; Camp 19; Camp 20;
+                            Camp 20X; Camp 21; Camp 22; Camp 23; Camp 24; Camp 25;
+                            Camp 26; Camp 27; Camp KRC; Camp NRC; Choukhali',
+            ),
+            list(
+              memberName = 'NPM_Name',
+              definition = 'Camp 01E; Camp 01W; Camp 02E; Camp 02W; Camp 03; 
+                            Camp 04; Camp 04 Extension; Camp 05; Camp 06; ; Camp 07; 
+                            Camp 08E; Camp 08W; Camp 09; Camp 10; Camp 11; Camp 12; 
+                            Camp 13  Camp 14 (Hakimpara); Camp 15 (Jamtoli); 
+                            Camp 16 (Potibonia); Camp 17; Camp 18; Camp 19; Camp 20; 
+                            Camp 20 Extension; Camp 21 (Chakmarkul); Camp 22 (Unchiprang); 
+                            Camp 23 (Shamlapur); Camp 24 (Leda); Camp 25 (Ali Khali); 
+                            Camp 26 (Nayapara); Camp 27 (Jadimura); Choukhali; 
+                            Kutupalong RC; Nayapara RC',
+            ),
+            list(
+              memberName = 'Area_Acres',
+              definition = 'Area in acres',
+            ),
+            list(
+              memberName = 'PeriMe_Met',
+              definition = 'Perimeter in meters',
+            ),
+            list(
+              memberName = 'Camp_Name',
+              definition = 'Camp 10; Camp 11; Camp 12; Camp 13; Camp 14; Camp 15; 
+                            Camp 16; Camp 17; Camp 18; Camp 19; Camp 1E; Camp 1W; 
+                            Camp 20 Camp 20 Extension; Camp 21; Camp 22; Camp 23; 
+                            Camp 24; Camp 25; Camp 26; Camp 27; Camp 2E; Camp 2W; 
+                            Camp 3; Camp 4; Camp 4 Extension; Camp 5; Camp 6; 
+                            Camp 7; Camp 8E; Camp 8W; Camp 9; Choukhali; 
+                            Kutupalong RC; Nayapara RC',
+            ),
+            list(
+              memberName = 'Area_SqM',
+              definition = 'Area in square km',
+            ),
+            list(
+              memberName = 'Latitude'
+            ),
+            list(
+              memberName = 'Longitude'
+            ),
+            list(
+              memberName = 'geometry'
+            )
+            #,
+            #... al2, al3  @@@@@@@@@ complete
+          )
+        )
+      )
+    )
+
   )
-)
+  
+)  
+
 
 # Publish in NADA catalog
-geospatial_add(idno = geo_id, 
-               metadata = GEO, 
-               repositoryid = "central", 
-               published = 1, 
-               thumbnail = thumb, 
-               overwrite = "yes")
+
+geospatial_add(
+  idno = id, 
+  metadata = my_geo_metadata, 
+  repositoryid = "central", 
+  published = 1, 
+  thumbnail = thumb, 
+  overwrite = "yes"
+)
+
+# Add a link to HDX as an external resource
+
+external_resources_add(
+  title = "Humanitarian Data Exchange website",
+  idno = id,
+  dctype = "web",
+  file_path = "https://data.humdata.org/",
+  overwrite = "yes"
+)
+
 ```
+
+**The result in NADA**
+
+After running the script, the data and metadata will be available in NADA.
+
+<br>
+![](./images/geo_example1_in_nada.JPG){width=100%}
+<br>
+
 
 **Generating the metadata using Python**
 
 
-**The result in NADA**
+
 
 
 ### Example 2 (vector, CSV data): Syria Refugee Sites (OCHA)
 
-The "Syria Refugee Sites" dataset contains verified data about the geographic location (point geometry), name, and operational status of refugee sites hosting Syrian refugees in Turkey, Jordan, and Iraq. Only refugee sites operated by the United Nations High Commissioner for Refugees (UNHCR) or the Government of Turkey are included. 
-https://data.humdata.org/dataset/syria-refugee-sites
-CSV and TSV and XLSX files
+The [Syria Refugee Sites](https://data.humdata.org/dataset/syria-refugee-sites) dataset used as a second example contains verified data about the geographic location (point geometry), name, and operational status of refugee sites hosting Syrian refugees in Turkey, Jordan, and Iraq. Only refugee sites operated by the United Nations High Commissioner for Refugees (UNHCR) or the Government of Turkey are included. Data are provided as CSV, TSV and XLSX files. This example demonstrates the use of the ISO 19115 standard.
 
 ----------
 **Generating the metadata using R**
 ----------
 
 ```{r, eval=F, echo=T}
-#Example ISO 19115 dataset metadata
-#dataset: Syria Refugees Sites
-setwd("D:/Downloads")
-options(stringsAsFactors = FALSE)
-#read data
+
+library(nadar)
 library(sf)
 library(sp)
-download.file("https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/cc3e9e48-e363-404e-948b-e42d13c316d9/download/syria_refugeesites_2016jan21_hiu_dos.csv", destfile = "syria_refugeesites_2016jan21_hiu_dos.csv", mode = "wb")
-sf <- st_read("syria_refugeesites_2016jan21_hiu_dos.csv")
+
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
+
+setwd("C:/my_geo_data/") 
+
+options(stringsAsFactors = FALSE)
+
+# Download and read the data file
+
+url = "https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/cc3e9e48-e363-404e-948b-e42d13c316d9/download/syria_refugeesites_2016jan21_hiu_dos.csv"
+data_file = basename(url)
+if(!file.exists(data_file)) download.file(url, destfile = data_file, mode = "wb")
+
+sf <- st_read(data_file)
 sp <- as.data.frame(sf)
 sp$Long <- as(sp$Long, "numeric")
-sp$Lat <- as(sp$Lat, "numeric")
+sp$Lat  <- as(sp$Lat,  "numeric")
 coordinates(sp) <- c("Long", "Lat")
 proj4string(sp) <- CRS("+init=epsg:4326")
 
-geo_id <- "syria_refugees_sites"
+# Generate the metadata
 
-GEO <- list(
-  dataset_metadata = list(
-    fileIdentifier = geo_id,
+id <- "EX2_SYR_REFUGEE_SITES"
+
+my_geo_data <- list(
+  
+  metadata_information = list(
+    title = "(Demo) Syria, Refugee Sites",
+    producers = list(
+      list(name = "NADA team")
+    ),
+    production_date = "2022-02-18"
+  ),
+
+  description = list(
+    
+    idno = id,
+    
     language = "eng",
-	characterSet = "utf8",
-	hierarchyLevel = "dataset",
+    
+    characterSet = list(codeListValue = "utf8"),
+    
+    hierarchyLevel = list("dataset"),
+    
     contact = list(
-        list(
-			individualName ="Humanitarian Information Unit",
-			organisationName = "U.S. Department of State - Humanitarian Information Unit",
-			contactInfo = list(
-				address = list(
-					electronicEmailAddress = "HIU_DATA@state.gov"
-				),
-				onlineResource = list(
-					linkage = "http://hiu.state.gov/",
-					name = "Website"
-				)
-			),
-			role = "pointOfContact"
-		)
-	),
-	dateStamp = "2018-06-18",
-	metadataStandardName = "ISO 19115:2003/19139",
-	# spatialRepresentationInfo
-	spatialRepresentationInfo = list(
-		list(
-			vectorSpatialRepresentation = list(
-				topologyLevel = "geometryOnly",
-				geometricObjects = list(
-					list(
-						geometricObjectType = "point",
-						geometricObjectCounty = nrow(sp)
-					)
-				)
-			)
-		)
-	),
-	# referenceSystemInfo
-	referenceSystemInfo = list(
-		list(
-			code = "4326", 
-			codeSpace = "EPSG"
-		)
-	),
-	# identificationInfo
+      list(
+        organisationName = "U.S. Department of State - Humanitarian Information Unit",
+        contactInfo = list(
+          address = list(electronicEmailAddress = "HIU_DATA@state.gov"),
+          onlineResource = list(linkage = "http://hiu.state.gov/", name = "Website")
+        ),
+        role = "pointOfContact"
+      )
+    ),
+    
+    dateStamp = "2018-06-18",
+  
+    metadataStandardName = "ISO 19115:2003/19139",
+    
+    spatialRepresentationInfo = list(
+      list(
+        vectorSpatialRepresentation = list(
+          topologyLevel = "geometryOnly",
+          geometricObjects = list(
+            list(
+              geometricObjectType = "point",
+              geometricObjectCounty = nrow(sp)
+            )
+          )
+        )
+      )
+    ),
+    
+    referenceSystemInfo = list(
+      list(code = "4326", codeSpace = "EPSG")
+    ),
+    
     identificationInfo = list(
-		citation = list(
-			title="Syria Refugee Sites",
-			alternateTitle="",
-			date=list(list(date="2016-01-14", type= "creation"), list(date="2016-02-04", type="publication")),
-			identifier = geo_id,
-			citedResponsibleParty = list(
-				list(
-					individualName ="Humanitarian Information Unit",
-					organisationName = "U.S. Department of State - Humanitarian Information Unit",
-					contactInfo = list(
-						address = list(
-							electronicEmailAddress = "HIU_DATA@state.gov"
-						),
-						onlineResource = list(
-							linkage = "http://hiu.state.gov/",
-							name = "Website"
-						)
-					),
-					role = "owner"
-				)
-			)
-		),
-		abstract = "The \"Syria Refugee Sites\" dataset is compiled by the U.S. Department of State, Humanitarian Information Unit (INR/GGI/HIU). This dataset contains open source derived data about the geographic location (point geometry), name, and operational status of refugee sites hosting Syrian refugees in Turkey, Jordan, and Iraq. Only refugee sites operated by the United Nations High Commissioner for Refugees (UNHCR) or the Government of Turkey are included. Compiled by the U.S Department of State, Humanitarian Information Unit (HIU), each attribute in the dataset (including name, location, and status) is verified against multiple sources. The name and status are obtained from UN and AFAD reporting and the UNHCR data portal (accessible at http://data.unhcr.org/syrianrefugees/regional.php). The locations are obtained from both the U.S. Department of State, PRM and the National Geospatial-Intelligence Agency's GEOnet Names Server (GNS) (accessible at http://geonames.nga.mil/ggmagaz/). The name and status for each refugee site is verified with PRM.  Locations are verified using high-resolution commercial satellite imagery and/or known areas of population. Additionally, all data is checked against various news sources. The data contained herein is entirely unclassified and is current as of 14 January 2016. The data is updated as needed.",
-		purpose = "The \"Syria Refugee Sites\" dataset contains verified data about the refugee sites hosting Syrian refugees in Turkey, Jordan, and Iraq. This file is compiled by the U.S Department of State, Humanitarian Information Unit (HIU) and is used in the production of the unclassified \"Syria: Numbers and Locations of Syrian Refugees\" map product (accessible at https://hiu.state.gov/Pages/MiddleEast.aspx). The data contained herein is entirely unclassified and is current as of 14 January 2016.",
-		credit = "U.S. Department of State - Humanitarian Information Unit",
-		status = "onGoing",
-		pointOfContact = list(
-			list(
-				individualName ="Humanitarian Information Unit",
-				organisationName = "U.S. Department of State - Humanitarian Information Unit",
-				contactInfo = list(
-					address = list(
-						electronicEmailAddress = "HIU_DATA@state.gov"
-					),
-					onlineResource = list(
-						linkage = "http://hiu.state.gov/",
-						name = "Website"
-					)
-				),
-				role = "pointOfContact"
-			)
-		),
-		resourceMaintenance = list(
-			list(
-				maintenanceOrUpdateFrequency="fortnightly"
-			)
-		),
-		graphicOverview = list(),
-		resourceFormats = list(
-			list(name = "text/csv", specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files"),
-			list(name = "text/tab-separated-values", specification = "Tab-Separated Values (CSV)"),
-			list(name = "xlsx", specification = "Microsoft Excel (XLSX)")
-		),
-		descriptiveKeywords = list(
-			list(
-				type = "theme",
-				keyword = list("Middle East", "Refugees", "Displacement", "Refugee Camps", "UNHCR")
-			),
-			list(
-				type = "place",
-				keyword = list("Syria", "Turkey", "Lebanon", "Jordan", "Iraq", "Egypt")
-			)
-		),	
-		resourceConstraints = list(
-			list(
-				legalConstraints = list(
-					accessConstraints = "unrestricted",
-					useConstraints = "licenceUnrestricted",
-					uselimitation = list(
-						"License: Creative Commons Attribution 4.0 International License"
-					)
-				)
-			),
-			list(
-				securityConstraints = list(
-					classification = "unclassified",
-					handlingDescription = "All data contained herein are strictly unclassified with no restrictions on distribution. Accuracy of geographic data is not assured by the U.S. Department of State."
-				)
-			)
-		),
-		spatialRepresentationType = "vector",
-		language = "eng",
-		characterSet = "utf8",
-		topicCategory = list("society"),
-		extent = list(
-			geographicElement = list(
-				list(
-					geographicBoundingBox = list(
-						southBoundLongitude = bbox(sp)[2,1],
-						westBoundLongitude = bbox(sp)[1,1],
-						northBoundLongitude = bbox(sp)[2,2],
-						eastBoundLongitude = bbox(sp)[1,2]
-					)
-				)
-			)
-		),
-		supplementalInformation = ""
+      
+      list(
+
+        citation = list(
+          title = "Syria Refugee Sites",
+          date = list(
+            list(date = "2016-01-14", type = "creation"),
+            list(date = "2016-02-04", type = "publication")
+          ),
+          identifier = list(authority = "IHSN", code = id),
+          citedResponsibleParty = list(
+            list(
+              individualName = "Humanitarian Information Unit",
+              organisationName = "U.S. Department of State - Humanitarian Information Unit",
+              contactInfo = list(
+                address = list(
+                  electronicEmailAddress = "HIU_DATA@state.gov"
+                ),
+                onlineResource = list(
+                  linkage = "http://hiu.state.gov/",
+                  name = "Website"
+                )
+              ),
+              role = "owner"
+            )
+          )
+        ),
+        
+        abstract = "The 'Syria Refugee Sites' dataset is compiled by the U.S. Department of State, Humanitarian Information Unit (INR/GGI/HIU). This dataset contains open source derived data about the geographic location (point geometry), name, and operational status of refugee sites hosting Syrian refugees in Turkey, Jordan, and Iraq. Only refugee sites operated by the United Nations High Commissioner for Refugees (UNHCR) or the Government of Turkey are included. Compiled by the U.S Department of State, Humanitarian Information Unit (HIU), each attribute in the dataset (including name, location, and status) is verified against multiple sources. The name and status are obtained from UN and AFAD reporting and the UNHCR data portal (accessible at http://data.unhcr.org/syrianrefugees/regional.php). The locations are obtained from both the U.S. Department of State, PRM and the National Geospatial-Intelligence Agency's GEOnet Names Server (GNS) (accessible at http://geonames.nga.mil/ggmagaz/). The name and status for each refugee site is verified with PRM.  Locations are verified using high-resolution commercial satellite imagery and/or known areas of population. Additionally, all data is checked against various news sources. The data contained herein is entirely unclassified and is current as of 14 January 2016. The data is updated as needed.",
+
+        purpose = "The 'Syria Refugee Sites' dataset contains verified data about the refugee sites hosting Syrian refugees in Turkey, Jordan, and Iraq. This file is compiled by the U.S Department of State, Humanitarian Information Unit (HIU) and is used in the production of the unclassified 'Syria: Numbers and Locations of Syrian Refugees' map product (accessible at https://hiu.state.gov/Pages/MiddleEast.aspx). The data contained herein is entirely unclassified and is current as of 14 January 2016.",
+
+        credit = "U.S. Department of State - Humanitarian Information Unit",
+
+        status = "onGoing",
+        
+        pointOfContact = list(
+          list(
+            individualName = "Humanitarian Information Unit",
+            organisationName = "U.S. Department of State - Humanitarian Information Unit",
+            contactInfo = list(
+              address = list(electronicEmailAddress = "HIU_DATA@state.gov"),
+              onlineResource = list(linkage = "http://hiu.state.gov/", name = "Website")
+            ),
+            role = "pointOfContact"
+          )
+        ),
+        
+        resourceMaintenance = list(
+          list(maintenanceOrUpdateFrequency = "fortnightly")
+        ),
+        
+        # graphicOverview = list(),
+        
+        resourceFormat = list(
+          list(
+            name = "text/csv",
+            specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files"
+          ),
+          list(
+            name = "text/tab-separated-values",
+            specification = "Tab-Separated Values (CSV)"
+          ),
+          list(
+            name = "xlsx",
+            specification = "Microsoft Excel (XLSX)"
+          )
+        ),
+        
+        descriptiveKeywords = list(
+          list(type = "theme", keyword = "Middle East"),
+          list(type = "theme", keyword = "Refugees"),
+          list(type = "theme", keyword = "Displacement"),
+          list(type = "theme", keyword = "Refugee Camps"),
+          list(type = "theme", keyword = "UNHCR"),
+          list(type = "place", keyword = "Syria"),
+          list(type = "place", keyword = "Turkey"),
+          list(type = "place", keyword = "Lebanon"),
+          list(type = "place", keyword = "Jordan"),
+          list(type = "place", keyword = "Iraq"),
+          list(type = "place", keyword = "Egypt")
+        ),
+
+        resourceConstraints = list(
+          list(
+            legalConstraints = list(
+              uselimitation = list("License: Creative Commons Attribution 4.0 International License"),
+              accessConstraints = list("unrestricted"),
+              useConstraints = list("licenceUnrestricted")
+            )
+          ),
+          list(
+            securityConstraints = list(
+              classification = "unclassified",
+              handlingDescription = "All data contained herein are strictly unclassified with no restrictions on distribution. Accuracy of geographic data is not assured by the U.S. Department of State."
+            )
+          )
+        ),
+        
+        extent = list(
+          geographicElement = list(
+            list(
+              geographicBoundingBox = list(
+                southBoundLatitude = bbox(sp)[2,1],
+                westBoundLongitude = bbox(sp)[1,1],
+                northBoundLatitude = bbox(sp)[2,2],
+                eastBoundLongitude = bbox(sp)[1,2]
+              )
+            )
+          )
+        ),
+
+        spatialRepresentationType = "vector",
+
+        language = list("eng"),
+
+        characterSet = list(
+          list(codeListValue = "utf8")
+        ),
+
+        topicCategory = list("society")
+      
+      )  
+
     ),
+    
     distributionInfo = list(
-		distributionFormat = list(
-			list(name = "text/csv", specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files"),
-			list(name = "text/tab-separated-values", specification = "Tab-Separated Values (CSV)"),
-			list(name = "xlsx", specification = "Microsoft Excel (XLSX)")
-		),
-		distributor = list(
-			list(
-				individualName ="Humanitarian Information Unit",
-				organisationName = "U.S. Department of State - Humanitarian Information Unit",
-				contactInfo = list(
-					address = list(
-						electronicEmailAddress = "HIU_DATA@state.gov"
-					),
-					onlineResource = list(
-						linkage = "http://hiu.state.gov/",
-						name = "Website"
-					)
-				),
-				role = "distributor"
-			)
-		),
-		transferOptions = list(
-			list(
-				onLine = list(
-					list(
-						linkage="https://data.humdata.org/dataset/syria-refugee-sites",
-						name="Source metadata (HTML View)",
-						protocol="WWW:LINK-1.0-http--link",
-						"function" = "Information"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/cc3e9e48-e363-404e-948b-e42d13c316d9/download/syria_refugeesites_2016jan21_hiu_dos.csv",
-						name="syria_refugeesites_2016jan21_hiu_dos.csv",
-						description="Data download (CSV)",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/42f7884c-f54d-478c-a970-623945740e5d/download/syria_refugeesites_2016jan21_hiu_dos.tsv",
-						name="syria_refugeesites_2016jan21_hiu_dos.tsv",
-						description="Data download (TSV)",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/59660c9a-e41a-4d54-bfc2-dd8fd1032c97/download/syria_refugeesites_2016jan21_hiu_dos.xlsx",
-						name="syria_refugeesites_2016jan21_hiu_dos.xlsx",
-						description="Data download (TSV)",
-						protocol = "WWW:LINK-1.0-http--link"
-					)
-				)
-			)
-		)
+      
+      distributionFormat = list(
+        list(
+          name = "text/csv", 
+          specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files"
+        ),
+        list(
+          name = "text/tab-separated-values", 
+          specification = "Tab-Separated Values (CSV)"
+        ),
+        list(
+          name = "xlsx", 
+          specification = "Microsoft Excel (XLSX)"
+        )
+      ),
+      
+      distributor = list(
+        list(
+          individualName = "Humanitarian Information Unit",
+          organisationName = "U.S. Department of State - Humanitarian Information Unit",
+          contactInfo = list(
+            address = list(electronicEmailAddress = "HIU_DATA@state.gov"),
+            onlineResource = list(linkage = "http://hiu.state.gov/", name = "Website")
+          ),
+          role = "distributor"
+        )
+      ) #,
+      
+      # transferOptions = list(
+      #   list(
+      #     onLine = list(
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/syria-refugee-sites",
+      #         name = "Source metadata (HTML View)",
+      #         protocol = "WWW:LINK-1.0-http--link",
+      #         "function" = "Information"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/cc3e9e48-e363-404e-948b-e42d13c316d9/download/syria_refugeesites_2016jan21_hiu_dos.csv",
+      #         name = "syria_refugeesites_2016jan21_hiu_dos.csv",
+      #         description = "Data download (CSV)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/42f7884c-f54d-478c-a970-623945740e5d/download/syria_refugeesites_2016jan21_hiu_dos.tsv",
+      #         name = "syria_refugeesites_2016jan21_hiu_dos.tsv",
+      #         description = "Data download (TSV)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.humdata.org/dataset/ff383a8b-396a-4d78-b403-687b0a783769/resource/59660c9a-e41a-4d54-bfc2-dd8fd1032c97/download/syria_refugeesites_2016jan21_hiu_dos.xlsx",
+      #         name = "syria_refugeesites_2016jan21_hiu_dos.xlsx",
+      #         description = "Data download (TSV)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       )
+      #     )
+      #   )
+      # )
+      
     ),
-	
-	# dataQualityInfo
+
     dataQualityInfo = list(
-		scope = "dataset", 
-		lineage = list(
-			statement = "Methodology: Compiled by the U.S Department of State, Humanitarian Information Unit (INR/GGI/HIU), each attribute in the dataset (including name, location, and status) is verified against multiple sources. The name and status are obtained from the UNHCR data portal (accessible at http://data.unhcr.org/syrianrefugees/regional.php). The locations are obtained from the U.S. Department of State, Bureau of Population, Refugees, and Migration (PRM) and the National Geospatial-Intelligence Agency's GEOnet Names Server (GNS) (accessible at http://geonames.nga.mil/ggmagaz/). The name and status for each refugee site is verified with PRM. Locations are verified using high-resolution commercial satellite imagery and/or known areas of population. Additionally, all data is checked against various news sources.",
-			processStep = list()
-		)
-	),
-	# metadataMaintenance
-	metadataMaintenance = list(
-		maintenanceAndUpdateFrequency = "fortnightly"
-	)
+      list(
+        scope = "dataset",
+        lineage = list(
+          statement = "Methodology: Compiled by the U.S Department of State, Humanitarian Information Unit (INR/GGI/HIU), each attribute in the dataset (including name, location, and status) is verified against multiple sources. The name and status are obtained from the UNHCR data portal (accessible at http://data.unhcr.org/syrianrefugees/regional.php). The locations are obtained from the U.S. Department of State, Bureau of Population, Refugees, and Migration (PRM) and the National Geospatial-Intelligence Agency's GEOnet Names Server (GNS) (accessible at http://geonames.nga.mil/ggmagaz/). The name and status for each refugee site is verified with PRM. Locations are verified using high-resolution commercial satellite imagery and/or known areas of population. Additionally, all data is checked against various news sources."
+        )
+      )
+    ),
+
+    metadataMaintenance = list(maintenanceAndUpdateFrequency = "fortnightly")
+    
   )
+  
 )
 
 # Publish in NADA catalog
-geospatial_add(idno = geo_id, 
-               metadata = GEO, 
-               repositoryid = "central", 
-               published = 1, 
-               thumbnail = NULL, 
-               overwrite = "yes")
+
+geospatial_add(
+  idno = id, 
+  metadata = my_geo_data, 
+  repositoryid = "central", 
+  published = 1, 
+  thumbnail = NULL, 
+  overwrite = "yes"
+)
 ```
 
 
@@ -1578,76 +1821,61 @@ geospatial_add(idno = geo_id,
 
 ### Example 3 (vector, with Feature Catalogue) - The GDIS (beta) dataset
 
-This example includes a section describing the feature catalog (ISO 19110). Documenting features contained in datasets makes the metadata richer and more discoverable. It is recommended to provide such information, which can easily be extracted from shape files and others (we could have included such a section in example N).
+This example demonstrates the use of the ISO 19115 (geographic dataset) and ISO 19110 (feature catalogue). Documenting features contained in datasets makes the metadata richer and more discoverable. It is recommended to provide such information, which can easily be extracted from shape files and others. The dataset used for the example is the [Geocoded Disasters (GDIS) Dataset, v1 (1960-2018)](https://beta.sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018) 
 
 
 ```{r, eval=F, echo=T}
 
-#Example ISO 19115 dataset metadata + ISO 19110 feature catalogue
-#dataset: Geocoded Disasters (GDIS) Dataset, v1 (1960-2018)
-#URL: https://beta.sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018
-
 library(nadar)
 library(sf)
 
-base_path = "C:/Users/wb575476/OneDrive - WBG/Documents/10_DECAT Tasks/FCV_data_platform/" 
-data_path = paste0(base_path, "Working/GDIS")
-setwd(data_path)
-
-# --------------------------------------------------------------------------------------
-# Load API key required to publish data and metadata in the database
-API_info <- read.csv(paste0(base_path, "API_info.csv"), header=F, stringsAsFactors=F)
-api_key <- API_info[1, 2]
-set_api_key(api_key)
-# Set catalog URL
-catalog_url <- API_info[1, 1]
-set_api_url(catalog_url)
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
 set_api_verbose(FALSE)
-# --------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 
-options(stringsAsFactors = FALSE)
+setwd("C:/my_geo_data/") 
 
-#CSV locations
-#library(readr)
-# filename = "pend-gdis-1960-2018-disasterlocations.csv"
-# GDIS_disasterlocations = st_read(filename, options=c("X_POSSIBLE_NAMES=longitude","Y_POSSIBLE_NAMES=latitude"))
-# df = as.data.frame(GDIS_disasterlocations)
-# column_names =colnames(df)[!colnames(df)%in%c("geometry","centroid")]
-# exclude_listed_values_for = c("longitude", "latitude") #exclude ISO 19110 listed values for these columns
+thumb = "disaster.JPG"
 
-#Full data
+# Load the dataset (2 Gb) to extract some information
+
 load("pend-gdis-1960-2018-disasterlocations.rdata")
 data = GDIS_disasterlocations
 df = as.data.frame(GDIS_disasterlocations)
-column_names =colnames(df)[!colnames(df)%in%c("geometry","centroid")]
+column_names = colnames(df)[!colnames(df) %in% c("geometry","centroid")]
 exclude_listed_values_for = c("longitude", "latitude") #exclude ISO 19110 listed values for these columns
 
-#geo_id <- "10.7927/zz3b-8y61"
-geo_id <- "GDIS_TEST_01"
-geo_title = "Geocoded Disasters (GDIS) Dataset"
+# Generate the metadata 
 
-GEO <- list(
-  type = "dataset",
+id <- "GDIS_TEST_01"
+
+ttl = "Geocoded Disasters (GDIS) Dataset, v1 (1960–2018)"
+
+my_geo_data <- list(
   
-  #Dataset metadata (ISO 19115/19139)
-  dataset_metadata = list(
-    fileIdentifier = geo_id,
-    language = list(
-      list(
-        language = "eng"
-      )
+  metadata_information = list(
+    title = ttl,
+    idno = id,
+    producers = list(
+      list(name = "NADA team")
     ),
+    production_date = "2022-02-18",
+    version = "v1.0 2022-02"
+  ),
+
+  description = list(
+  
+    idno = id,
+    language = "English",
     characterSet = list(
-      #list(
-        codeListValue = "utf8",
-        codeList = "http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode"
-      #)
+      codeListValue = "utf8",
+      codeList = "http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode"
     ),
-    hierarchyLevel = list(
-      list(
-        hierarchyLevel = "dataset"
-      )
-    ),
+    hierarchyLevel = list("dataset"),
     contact = list(
       list(
         organisationName = "NASA Socioeconomic Data and Applications Center (SEDAC)",
@@ -1668,8 +1896,8 @@ GEO <- list(
     ),
     dateStamp = "2021-03-10",
     metadataStandardName = "ISO 19115:2003/19139",
+    dataSetURI = "https://beta.sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018",
     
-    #spatialRepresentationInfo
     spatialRepresentationInfo = list(
       list(
         vectorSpatialRepresentation = list(
@@ -1684,27 +1912,21 @@ GEO <- list(
       )
     ),
     
-    #referenceSystemInfo
     referenceSystemInfo = list(
-      list(
-        code = "4326", 
-        codeSpace = "EPSG"
-      )
+      list(code = "4326", codeSpace = "EPSG")
     ),
     
-    #identificationInfo
     identificationInfo = list(
       list(
         citation = list(
-          title= geo_title,
-          alternateTitle="",
-          date=list(list(date="2021-03-10", type= "publication")),
-          identifier = list(
-            identifier = geo_id
+          title = ttl,
+          date = list(
+            list(date = "2021-03-10", type = "publication")
           ),
+          identifier = list(authority= "DOI", code = "10.7927/zz3b-8y61"),
           citedResponsibleParty = list(
             list(
-              individualName ="Rosvold, E., and H. Buhaug",
+              individualName = "Rosvold, E., and H. Buhaug",
               role = "owner"
             )
           ),
@@ -1738,142 +1960,113 @@ GEO <- list(
           )
         ),
         resourceMaintenance = list(
-          list(
-            maintenanceOrUpdateFrequency="asNeeded"
-          )
+          list(maintenanceOrUpdateFrequency = "asNeeded")
         ),
         graphicOverview = list(
-          list(fileName = "https://sedac.ciesin.columbia.edu/downloads/maps/pend/pend-gdis-1960-2018/sedac-logo.jpg", fileDescription = "Geocoded Disasters (GDIS) Dataset", fileType = "image/jpeg")
+          list(
+            fileName = "https://sedac.ciesin.columbia.edu/downloads/maps/pend/pend-gdis-1960-2018/sedac-logo.jpg", 
+            fileDescription = "Geocoded Disasters (GDIS) Dataset", 
+            fileType = "image/jpeg"
+          )
         ),
-        resourceFormats = list(
-          list(name = "OpenFileGDB", specification = "ESRI - GeoDatabase"),
-          list(name = "text/csv", specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files"),
-          list(name = "application/geopackage+sqlite3", specification = "http://www.geopackage.org/spec/")
+        resourceFormat = list(
+          list(
+            name = "OpenFileGDB", 
+            specification = "ESRI - GeoDatabase"
+          ),
+          list(
+            name = "text/csv", 
+            specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files"
+          ),
+          list(
+            name = "application/geopackage+sqlite3", 
+            specification = "http://www.geopackage.org/spec/"
+          )
         ),
         descriptiveKeywords = list(
-          list(
-            type = list(
-              list(
-                type = "theme"
-              )
-            ),
-            thesaurusName = list(
-              title = "SEDAC Theme"
-            ),
-            keyword = list("dataset")
-          ),
-          list(
-            type = list(
-              list(
-                type = "theme"
-              )
-            ),
-            thesaurusName = list(
-              title = "Data Granularity"
-            ),
-            keyword = list("Global")
-          ),
-          list(
-            type = list(
-              list(
-                type = "theme"
-              )
-            ),
-            thesaurusName = list(
-              title = "ISO Topic"
-            ),
-            keyword = list("Climatology", "Meteorology", "Atmosphere")
-          ),
-          list(
-            type = list(
-              list(
-                type = "theme"
-              )
-            ),
-            thesaurusName = list(
-              title = "GCMD Science Keywords, Version 8.6"
-            ),
-            keyword = list(
-              "EARTH SCIENCE > HUMAN DIMENSIONS > NATURAL HAZARDS > DROUGHTS",
-              "EARTH SCIENCE > HUMAN DIMENSIONS > NATURAL HAZARDS > EARTHQUAKES",
-              "EARTH SCIENCE > HUMAN DIMENSIONS > NATURAL HAZARDS > FLOODS",
-              "EARTH SCIENCE > HUMAN DIMENSIONS > NATURAL HAZARDS > LANDSLIDES",
-              "EARTH SCIENCE > HUMAN DIMENSIONS > NATURAL HAZARDS > TROPICAL CYCLONES > CYCLONES",
-              "EARTH SCIENCE > HUMAN DIMENSIONS > NATURAL HAZARDS > VOLCANIC ERUPTIONS"
-            )
-          ),
-          list(
-            type = list(
-              list(
-                type = "place"
-              )
-            ),
-            thesaurusName = list(
-              title = "CIESIN Location Terms, version 3.0"
-            ),
-            keyword = list("Global")
-          )
-        ),	
+          list(type = "theme", keyword = "climatology"),
+          list(type = "theme", keyword = "meteorology"),
+          list(type = "theme", keyword = "atmosphere"),
+          list(type = "theme", keyword = "earth science", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "human dimension", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "natural hazard", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "drought", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "earthquake", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "flood", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "landslides", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "tropical cyclones", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "cyclones", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6"),
+          list(type = "theme", keyword = "volcanic eruption", 
+               thesaurusName = "GCMD Science Keywords, Version 8.6")
+        ),
         resourceConstraints = list(
           list(
             legalConstraints = list(
-              accessConstraints = list("unrestricted"),
-              useConstraints = list("licenceUnrestricted"),
               uselimitation = list(
                 "This work is licensed under the Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0). Users are free to use, copy, distribute, transmit, and adapt the work for commercial and non-commercial purposes, without restriction, as long as clear attribution of the source is provided.",
                 "Recommended citation: Rosvold, E.L., Buhaug, H. GDIS, a global dataset of geocoded disaster locations. Scientific Data 8, 61 (2021). https://doi.org/10.1038/s41597-021-00846-6."
-              )
+              ),
+              accessConstraints = list("unrestricted"),
+              useConstraints = list("licenceUnrestricted")
             )
           )
         ),
-        spatialRepresentationType = "vector",
-        language = list(
-          list(
-            codeListValue = "eng",
-            codeList = "http://www.loc.gov/standards/iso639-2/",
-            codeSpace = "ISO 639-2"
-          )
+        extent = list(
+          geographicElement = list(
+            list(
+              geographicBoundingBox = list(
+                westBoundLongitude = -180,
+                eastBoundLongitude = 180,
+                southBoundLatitude = -58,
+                northBoundLatitude = 90
+              )
+            )
+          )#, 
+          # temporalElement = list(
+          #   list(
+          #     extent = list(
+          #       TimePeriod = list(
+          #         beginPosition = "1960-01-01",
+          #         endPosition = "2018-12-31"
+          #       )
+          #     )
+          #   )
+          # )
         ),
+        spatialRepresentationType = "vector",
+        language = list("eng"),
         characterSet = list(
           list(
             codeListValue = "utf8",
             codeList = "http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_CharacterSetCode"
           )
-        ),
-        topicCategory = list("society"),
-        
-        extent = list(
-          geographicElement = list(
-            list(
-              geographicBoundingBox = list(
-                southBoundLongitude = -58,
-                westBoundLongitude = -180,
-                northBoundLongitude = 90,
-                eastBoundLongitude = 180
-              )
-            )
-          ),
-          temporalElement = list(
-            list(
-              extent = list(
-                TimePeriod = list(
-                  beginPosition = "1960-01-01",
-                  endPosition = "2018-12-31"
-                )
-              )
-            )
-          )
-        ),
-        supplementalInformation = ""
+        )
       )
     ),
     
     distributionInfo = list(
+      
       distributionFormat = list(
-        list(name = "OpenFileGDB", specification = "ESRI - GeoDatabase", fileDecompressionTechnique = "Unzip"),
-        list(name = "text/csv", specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files", fileDecompressionTechnique = "Unzip"),
-        list(name = "application/geopackage+sqlite3", specification = "http://www.geopackage.org/spec/", fileDecompressionTechnique = "Unzip")
+        list(name = "OpenFileGDB", 
+             specification = "ESRI - GeoDatabase", 
+             fileDecompressionTechnique = "Unzip"),
+        list(name = "text/csv", 
+             specification = "RFC4180 -  Common Format and MIME Type for Comma-Separated Values (CSV) Files", 
+             fileDecompressionTechnique = "Unzip"),
+        list(name = "application/geopackage+sqlite3", 
+             specification = "http://www.geopackage.org/spec/", 
+             fileDecompressionTechnique = "Unzip")
       ),
+      
       distributor = list(
         list(
           organisationName = "NASA Socioeconomic Data and Applications Center (SEDAC)",
@@ -1891,88 +2084,86 @@ GEO <- list(
           ),
           role = "pointOfContact"
         )
-      ),
-      transferOptions = list(
-        list(
-          onLine = list(
-            list(
-              linkage="https://beta.sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018",
-              name="Source metadata (HTML View)",
-              protocol="WWW:LINK-1.0-http--link",
-              "function" = "Information"
-            ),
-            list(
-              linkage="https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-gdb.zip",
-              name="pend-gdis-1960-2018-disasterlocations-gdb.zip",
-              description="Data download (Geodatabase)",
-              protocol = "WWW:LINK-1.0-http--link"
-            ),
-            list(
-              linkage="https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-gpkg.zip",
-              name="pend-gdis-1960-2018-disasterlocations-gpkg.zip",
-              description="Data download (GeoPackage)",
-              protocol = "WWW:LINK-1.0-http--link"
-            ),
-            list(
-              linkage="https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-csv.zip",
-              name="pend-gdis-1960-2018-disasterlocations-csv.zip",
-              description="Data download (CSV)",
-              protocol = "WWW:LINK-1.0-http--link"
-            ),
-            list(
-              linkage="https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-priogrid-key-csv.zip",
-              name="pend-gdis-1960-2018-priogrid-key-csv.zip",
-              description="Data download (CSV)",
-              protocol = "WWW:LINK-1.0-http--link"
-            ),
-            list(
-              linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-rdata.zip",
-              name = "pend-gdis-1960-2018-disasterlocations-rdata.zip",
-              description = "Data download (RData)",
-              protocol = "WWW:LINK-1.0-http--link"
-            ),
-            list(
-              linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-replicationcode-r.zip",
-              name = "pend-gdis-1960-2018-replicationcode-r.zip",
-              description = "Source code (R)",
-              protocol = "WWW:LINK-1.0-http--link"
-            ),
-            list(
-              linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-codebook.pdf",
-              name = "pend-gdis-1960-2018-codebook.pdf",
-              description = "Codebook (PDF)",
-              protocol = "WWW:LINK-1.0-http--link"
-            )
-          )
-        )
-      )
+      )#,
+      
+      # transferOptions = list(
+      #   list(
+      #     onLine = list(
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018",
+      #         name = "Source metadata (HTML View)",
+      #         protocol = "WWW:LINK-1.0-http--link",
+      #         "function" = "Information"
+      #       ),
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-gdb.zip",
+      #         name = "pend-gdis-1960-2018-disasterlocations-gdb.zip",
+      #         description = "Data download (Geodatabase)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-gpkg.zip",
+      #         name = "pend-gdis-1960-2018-disasterlocations-gpkg.zip",
+      #         description = "Data download (GeoPackage)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-csv.zip",
+      #         name = "pend-gdis-1960-2018-disasterlocations-csv.zip",
+      #         description="Data download (CSV)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-priogrid-key-csv.zip",
+      #         name = "pend-gdis-1960-2018-priogrid-key-csv.zip",
+      #         description = "Data download (CSV)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-disasterlocations-rdata.zip",
+      #         name = "pend-gdis-1960-2018-disasterlocations-rdata.zip",
+      #         description = "Data download (RData)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-replicationcode-r.zip",
+      #         name = "pend-gdis-1960-2018-replicationcode-r.zip",
+      #         description = "Source code (R)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://beta.sedac.ciesin.columbia.edu/downloads/data/pend/pend-gdis-1960-2018/pend-gdis-1960-2018-codebook.pdf",
+      #         name = "pend-gdis-1960-2018-codebook.pdf",
+      #         description = "Codebook (PDF)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       )
+      #     )
+      #   )
+      # )
     ),
     
-    #dataQualityInfo
     dataQualityInfo = list(
       list(
         scope = "dataset",
         lineage = list(
-          statement = "CIESIN follows procedures designed to ensure that data disseminated by CIESIN are of reasonable quality. If, despite these procedures, users encounter apparent errors or misstatements in the data, they should contact SEDAC User Services at +1 845-365-8920 or via email at ciesin.info@ciesin.columbia.edu. Neither CIESIN nor NASA verifies or guarantees the accuracy, reliability, or completeness of any data provided. CIESIN provides this data without warranty of any kind whatsoever, either expressed or implied. CIESIN shall not be liable for incidental, consequential, or special damages arising out of the use of any data provided by CIESIN.",
-          processStep = list()
+          statement = "CIESIN follows procedures designed to ensure that data disseminated by CIESIN are of reasonable quality. If, despite these procedures, users encounter apparent errors or misstatements in the data, they should contact SEDAC User Services at +1 845-365-8920 or via email at ciesin.info@ciesin.columbia.edu. Neither CIESIN nor NASA verifies or guarantees the accuracy, reliability, or completeness of any data provided. CIESIN provides this data without warranty of any kind whatsoever, either expressed or implied. CIESIN shall not be liable for incidental, consequential, or special damages arising out of the use of any data provided by CIESIN."
         )
       )
     ),
     
-    #metadataMaintenance
     metadataMaintenance = list(
       maintenanceAndUpdateFrequency = "asNeeded"
     )
+  
   ),
-  
-  
-  #FEATURE CATALOGUE (ISO 19110/19139)
+
+  # Feature catalog (ISO 19110/19139)
   
   feature_catalogue = list(
-    name = sprintf("%s - Feature Catalogue", geo_title),
+    name = sprintf("%s - Feature Catalogue", ttl),
     featureType = list(
       list(
-        typeName =  geo_title,
+        typeName =  ttl,
         definition = "Disaster locations",
         code = "pend-gdis-1960-2018-disasterlocations",
         isAbstract = FALSE,
@@ -1998,8 +2189,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA01', # short for Disaster Feature Attribute 01
             valueType = switch(class(df[,'id']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'country',
@@ -2007,8 +2197,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA02',
             valueType = switch(class(df[,'country']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'iso3',
@@ -2016,8 +2205,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA03',
             valueType = switch(class(df[,'iso3']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'gwno',
@@ -2025,8 +2213,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA04',
             valueType = switch(class(df[,'gwno']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'geo_id',
@@ -2034,8 +2221,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA05',
             valueType = switch(class(df[,'geo_id']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'geolocation',
@@ -2043,8 +2229,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA06',
             valueType = switch(class(df[,'geolocation']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'level',
@@ -2052,8 +2237,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA07',
             valueType = switch(class(df[,'level']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'adm1',
@@ -2061,8 +2245,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA08',
             valueType = switch(class(df[,'adm1']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'adm2',
@@ -2070,8 +2253,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA09',
             valueType = switch(class(df[,'adm2']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'location',
@@ -2079,8 +2261,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA10',
             valueType = switch(class(df[,'location']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'historical',
@@ -2088,8 +2269,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA11',
             valueType = switch(class(df[,'historical']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'hist_country',
@@ -2097,8 +2277,7 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA12',
             valueType = switch(class(df[,'hist_country']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           ),
           list(
             memberName = 'disastertype',
@@ -2156,28 +2335,41 @@ GEO <- list(
             cardinality = list(lower = 1, upper = 1),
             code = 'DFA14',
             valueType = switch(class(df[,'disasterno']), "character" = "xs:string", "integer" = "xs:int", "numeric" = "xs:decimal", "xs:string"),
-            valueMeasurementUnit = 'NA',
-            listedValue = list()
+            valueMeasurementUnit = 'NA'
           )
+        
         )
       )
     )
   )
 )
 
+# Publish in NADA catalog
 
-# sink("json-output.txt")
-# cat(toJSON(GEO, auto_unbox = TRUE))
-# sink()
+geospatial_add(
+  idno = id, 
+  metadata = my_geo_data, 
+  repositoryid = "central", 
+  published = 1, 
+  thumbnail = thumb, 
+  overwrite = "yes")
 
-# Publish in catalog
-x<-geospatial_add(idno=geo_id, metadata=GEO, repositoryid="central", published=1, thumbnail=NULL, overwrite="yes")
+# Add links as external resources
+
+external_resources_add(
+  idno = id,
+  dctype = "web",
+  title = "Website: Geocoded Disasters (GDIS) Dataset, v1 (1960–2018)",
+  file_path = "https://beta.sedac.ciesin.columbia.edu/data/set/pend-gdis-1960-2018",
+  overwrite = "yes"
+)
+
 ```
 
 
 ### Example 4 (raster): Spatial distribution of the Ethiopian population in 2020 
 
-This first example makes use of elements from the ISO 19115 to document a dataset generated by the WorldPop program using data from multiple sources and machine learning models. "WorldPop develops peer-reviewed research and methods for the construction of open and high-resolution geospatial data on population distributions, demographic and dynamics, with a focus on low and middle income countries." As of March 1st, 2021 WorldPop was publishing over 44,600 datasets on its website. See https://www.worldpop.org/project/categories?id=3.
+This fourth example makes use of elements from the ISO 19115 to document a dataset generated by the WorldPop program using data from multiple sources and machine learning models. "WorldPop develops peer-reviewed research and methods for the construction of open and high-resolution geospatial data on population distributions, demographic and dynamics, with a focus on low and middle income countries." As of March 1st, 2021 WorldPop was publishing over 44,600 datasets on its website. See https://www.worldpop.org/project/categories?id=3.
 
 <center>
 ![](./images/geospatial_example_script_worldpop_00.JPG){width=100%}
@@ -2195,258 +2387,284 @@ The selected example represents the spatial distribution of the Ethiopian popula
 ----------
 
 ```{r, eval=F, echo=T}
-# Dataset: The spatial distribution of population in 2020, Ethiopia
 
+library(nadar)
 library(raster)
 
-setwd("...")
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-#read data to inherit data properties
-download.file("https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/maxar_v1/ETH/eth_ppp_2020_constrained.tif", 
-              destfile = "eth_ppp_2020_constrained.tif", 
-              mode = "wb")
+setwd("C:/my_geo_data/") 
+
+# Download and read the dataset 
+
+url = "https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/maxar_v1/ETH/eth_ppp_2020_constrained.tif"
+filename = basename(url)
+if(!file.exists(filename)) download.file(url, destfile = filename, mode = "wb")
 ras <- raster("eth_ppp_2020_constrained.tif")
 
-# A DOI exists, we will use it as file identifier
-doi <- "10.5258/SOTON/WP00682"
-thumb <- "https://www.worldpop.org/tabs/gdata/img/49635/eth_ppp_100m_Constrained_Maxar_2020_Image.png"
+id <- "WP_ETH_POP"
+thumb <- "ethiopia_pop.JPG"
 
-# We generate the ISO-compliant (ISO 19115) metadata
+# Generate the metadata
 
-GEO <- list(
+my_geo_data <- list(
   
-  dataset_metadata = list(
-    fileIdentifier = doi,
+  metadata_information = list(
+    title = "(Demo) Ethiopia Gridded Population 2020 (WorldPop)",
+    producers = list(list(name = "NADA team")),
+    production_date = "2022-02-18"
+  ),
+  
+  description = list(
+    
+    idno = id,
     language = "eng",
-  	characterSet = "utf8",
-  	hierarchyLevel = "dataset",
+    characterSet = list(codeListValue = "utf8"),
+    hierarchyLevel = list("dataset"),
     contact = list(
       list(organisationName = "World Pop - School of Geography and Environmental Science, University of Southampton",
-		      contactInfo = list(
-			      onlineResource = list(
-				      linkage = "https://www.worldpop.org/",
-				      name = "Website"
-			      )
-		  ),
-			role = "pointOfContact"
-		)
-	),
-	
-	dateStamp = "2020-09-20",
-	metadataStandardName = "ISO 19115:2003/19139",
-	
-	# spatialRepresentationInfo
-	
-	spatialRepresentationInfo = list(
-		list(
-			gridSpatialRepresentationInfo = list(
-				numberOfDimensions = 2L,
-				axisDimensionproperties = list(
-					list(
-						dimensionName = "row",
-						dimensionSize = dim(ras)[1]
-					),
-					list(
-						dimensionName = "column",
-						dimensionSize = dim(ras)[2]
-					)
-				),
-				cellGeometry = "area"
-			)
-		)
-	),
-	
-	# referenceSystemInfo
-	
-	referenceSystemInfo = list(
-		list(
-			code = "4326", 
-			codeSpace = "EPSG"
-		)
-	),
-	
-	# identificationInfo
-	
-  identificationInfo = list(
-  		citation = list(
-  			title="Ethiopia population 2020",
-  			alternateTitle="Estimated total number of people per grid-cell at a resolution of 3 arc-seconds (approximately 100m at the equator)",
-  			date=list(list(date="2020-09-12", type= "creation")),
-  			identifier = doi,
-  			citedResponsibleParty = list(
-  				list(
-  					organisationName = "World Pop - School of Geography and Environmental Science, University of Southampton",
-  					contactInfo = list(
-  						onlineResource = list(
-  							linkage = "https://www.worldpop.org/",
-  							name = "Website"
-  						)
-  					),
-  					role = "owner"
-  				)
-  			)
-  		),
-		abstract = "The spatial distribution of population in 2020, Ethiopia",
-		purpose = "",
-		credit = "World Pop - School of Geography and Environmental Science, University of Southampton",
-		status = "completed",
-		pointOfContact = list(
-			list(
-				organisationName = "World Pop - School of Geography and Environmental Science, University of Southampton",
-				contactInfo = list(
-					onlineResource = list(
-						linkage = "https://www.worldpop.org/",
-						name = "Website"
-					)
-				),
-				role = "pointOfContact"
-			)
-		),
-		resourceMaintenance = list(
-			list(
-				maintenanceOrUpdateFrequency="notPlanned"
-			)
-		),
-		graphicOverview = list(
-			list(
-				fileName = thumb,
-				fileDescription = "Ethiopia population 2020"
-			)
-		),
-		resourceFormats = list(
-			list(name = "image/tiff", specification = "GeoTIFF")
-		),
-		descriptiveKeywords = list(
-			list(
-				type = "theme",
-				keyword = list("population", "density", "Ethiopia")
-			),
-			list(
-				type = "place",
-				keyword = list("Ethiopia")
-			)
-		),	
-		resourceConstraints = list(
-			list(
-				legalConstraints = list(
-					accessConstraints = "unrestricted",
-					useConstraints = "licenceUnrestricted",
-					uselimitation = list(
-						"License: Creative Commons Attribution 4.0 International License",
-						"Recommended citation: Bondarenko M., Kerr D., Sorichetta A., and Tatem, A.J. 2020. Census/projection-disaggregated gridded population datasets for 51 countries across sub-Saharan Africa in 2020 using building footprints. WorldPop, University of Southampton, UK. doi:10.5258/SOTON/WP00682"
-					)
-				)
-			)
-		),
-		spatialRepresentationType = "grid",
-		spatialResolution = list(
-			value = 3, uom = "arc_second"	
-		),
-		language = "eng",
-		characterSet = "utf8",
-		topicCategory = list("society"),
-		extent = list(
-			geographicElement = list(
-				list(
-					geographicBoundingBox = list(
-						southBoundLongitude = bbox(ras)[2,1],
-						westBoundLongitude  = bbox(ras)[1,1],
-						northBoundLongitude = bbox(ras)[2,2],
-						eastBoundLongitude  = bbox(ras)[1,2]
-					)
-				)
-			)
-		),
-		supplementalInformation = "References:
-- Stevens FR, Gaughan AE, Linard C, Tatem AJ (2015) Disaggregating Census Data for Population Mapping Using Random
-Forests with Remotely-Sensed and Ancillary Data. PLoS ONE 10(2): e0107042. https://doi.org/10.1371/journal.pone.0107042
-- WorldPop (www.worldpop.org - School of Geography and Environmental Science, University of Southampton; Department
-of Geography and Geosciences, University of Louisville; Departement de Geographie, Universite de Namur) and Center for
-International Earth Science Information Network (CIESIN), Columbia University (2018). Global High Resolution Population
-Denominators Project - Funded by The Bill and Melinda Gates Foundation (OPP1134076).
-- Dooley, C. A., Boo, G., Leasure, D.R. and Tatem, A.J. 2020. Gridded maps of building patterns throughout sub-Saharan
-Africa, version 1.1. University of Southampton: Southampton, UK. Source of building footprints \"Ecopia Vector Maps
-Powered by Maxar Satellite Imagery\"Â© 2020. doi:10.5258/SOTON/WP00677
-- Bondarenko M., Nieves J. J., Stevens F. R., Gaughan A. E., Tatem A. and Sorichetta A. 2020. wpgpRFPMS: Random Forests
-population modelling R scripts, version 0.1.0. University of Southampton: Southampton, UK.
-https://dx.doi.org/10.5258/SOTON/WP00665
-- Ecopia.AI and Maxar Technologies. 2020. Digitize Africa data. http://digitizeafrica.ai"
+           contactInfo = list(
+             onlineResource = list(
+               linkage = "https://www.worldpop.org/", name = "Website"
+             )
+           ),
+           role = "pointOfContact"
+      )
     ),
+    
+    dateStamp = "2020-09-20",
+    metadataStandardName = "ISO 19115:2003/19139",
+    
+    spatialRepresentationInfo = list(
+      
+      list(
+        gridSpatialRepresentationInfo = list(
+          numberOfDimensions = 2L,
+          axisDimensionproperties = list(
+            list(
+              dimensionName = "row", dimensionSize = dim(ras)[1]
+            ),
+            list(
+              dimensionName = "column", dimensionSize = dim(ras)[2]
+            )
+          ),
+          cellGeometry = "area"
+        )
+      )
+      
+    ),
+    
+    referenceSystemInfo = list(
+      list(code = "4326", codeSpace = "EPSG")
+    ),
+    
+    identificationInfo = list(
+      
+      list(
+        
+        citation = list(
+          title = "Ethiopia population 2020",
+          alternateTitle = "Estimated total number of people per grid-cell at a resolution of 3 arc-seconds (approximately 100m at the equator)",
+          date=list(
+            list(date = "2020-09-12", type = "creation")
+          ),
+          identifier = list(authority = "DOI", code = id),
+          citedResponsibleParty = list(
+            list(
+              organisationName = "World Pop - School of Geography and Environmental Science, University of Southampton",
+              contactInfo = list(
+                onlineResource = list(
+                  linkage = "https://www.worldpop.org/",
+                  name = "Website"
+                )
+              ),
+              role = "owner"
+            )
+          )
+        ),
+
+        abstract = "The spatial distribution of population in 2020, Ethiopia",
+        
+        credit = "World Pop - School of Geography and Environmental Science, University of Southampton",
+        
+        status = "completed",
+        
+        pointOfContact = list(
+          list(
+            organisationName = "World Pop - School of Geography and Environmental Science, University of Southampton",
+            contactInfo = list(
+              onlineResource = list(
+                linkage = "https://www.worldpop.org/",
+                name = "Website"
+              )
+            ),
+            role = "pointOfContact"
+          )
+        ),
+        
+        resourceMaintenance = list(
+          list(maintenanceOrUpdateFrequency = "notPlanned")
+        ),
+        
+        graphicOverview = list(
+          list(fileName = thumb, fileDescription = "Ethiopia population 2020")
+        ),
+        
+        resourceFormat = list(
+          list(name = "image/tiff", specification = "GeoTIFF")
+        ),
+        
+        descriptiveKeywords = list(
+          list(type = "theme", keyword = "population density"),
+          list(type = "theme", keyword = "gridded population"),
+          list(type = "place", keyword = "Ethiopia")
+        ),	
+        
+        resourceConstraints = list(
+          list(
+            legalConstraints = list(
+              accessConstraints = list("unrestricted"),
+              useConstraints = list("licenceUnrestricted"),
+              uselimitation = list(
+                "License: Creative Commons Attribution 4.0 International License",
+                "Recommended citation: Bondarenko M., Kerr D., Sorichetta A., and Tatem, A.J. 2020. Census/projection-disaggregated gridded population datasets for 51 countries across sub-Saharan Africa in 2020 using building footprints. WorldPop, University of Southampton, UK. doi:10.5258/SOTON/WP00682"
+              )
+            )
+          )
+        ),
+        
+        extent = list(
+          geographicElement = list(
+            list(
+              geographicBoundingBox = list(
+                southBoundLatitude = bbox(ras)[2,1],
+                westBoundLongitude = bbox(ras)[1,1],
+                northBoundLatitude = bbox(ras)[2,2],
+                eastBoundLongitude = bbox(ras)[1,2]
+              )
+            )
+          )
+        ),
+        
+        spatialRepresentationType = "grid",
+        
+        #spatialResolution = list(value = 3, uom = "arc_second"),
+        
+        language = list("eng"),
+        
+        characterSet = list(
+          list(codeListValue = "utf8")
+        ),
+        
+        topicCategory = list("society"),
+
+        supplementalInformation = "References:
+          - Stevens FR, Gaughan AE, Linard C, Tatem AJ (2015) Disaggregating Census Data for Population Mapping Using Random Forests with Remotely-Sensed and Ancillary Data. PLoS ONE 10(2): e0107042. https://doi.org/10.1371/journal.pone.0107042
+          - WorldPop (www.worldpop.org - School of Geography and Environmental Science, University of Southampton; Department of Geography and Geosciences, University of Louisville; Departement de Geographie, Universite de Namur) and Center for International Earth Science Information Network (CIESIN), Columbia University (2018). Global High Resolution Population Denominators Project - Funded by The Bill and Melinda Gates Foundation (OPP1134076).
+          - Dooley, C. A., Boo, G., Leasure, D.R. and Tatem, A.J. 2020. Gridded maps of building patterns throughout sub-Saharan Africa, version 1.1. University of Southampton: Southampton, UK. Source of building footprints \"Ecopia Vector Maps Powered by Maxar Satellite Imagery\"Â© 2020. doi:10.5258/SOTON/WP00677
+          - Bondarenko M., Nieves J. J., Stevens F. R., Gaughan A. E., Tatem A. and Sorichetta A. 2020. wpgpRFPMS: Random Forests population modelling R scripts, version 0.1.0. University of Southampton: Southampton, UK. https://dx.doi.org/10.5258/SOTON/WP00665
+          - Ecopia.AI and Maxar Technologies. 2020. Digitize Africa data. http://digitizeafrica.ai"
+    
+      )  
+    ),
+    
     distributionInfo = list(
-		distributionFormat = list(
-			list(name = "image/tiff", specification = "GeoTIFF")
-		),
-		distributor = list(
-			list(
-				organisationName = "World Pop - School of Geography and Environmental Science, University of Southampton",
-				contactInfo = list(
-					onlineResource = list(
-						linkage = "https://www.worldpop.org/",
-						name = "Website"
-					)
-				),
-				role = "distributor"
-			)
-		),
-		transferOptions = list(
-			list(
-				onLine = list(
-					list(
-						linkage="https://www.worldpop.org/geodata/summary?id=49635",
-						name="Source metadata (HTML View)",
-						protocol="WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://www.worldpop.org/ajax/pdf/summary?id=49635",
-						name="Source metadata (PDF)",
-						protocol="WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage="https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/maxar_v1/ETH/eth_ppp_2020_constrained.tif",
-						name="eth_ppp_2020_constrained.tif",
-						description="Data download (GeoTIFF)",
-						protocol = "WWW:LINK-1.0-http--link"
-					)
-				)
-			)
-		)
+      
+      distributionFormat = list(
+        list(name = "image/tiff", specification = "GeoTIFF")
+      ),
+      distributor = list(
+        list(
+          organisationName = "World Pop - School of Geography and Environmental Science, University of Southampton",
+          contactInfo = list(
+            onlineResource = list(
+              linkage = "https://www.worldpop.org/",
+              name = "Website"
+            )
+          ),
+          role = "distributor"
+        )
+      )#,
+      
+      # transferOptions = list(    @@@ Use DC external resources?
+      #   list(
+      #     onLine = list(
+      #       list(
+      #         linkage = "https://www.worldpop.org/geodata/summary?id=49635",
+      #         name = "Source metadata (HTML View)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://www.worldpop.org/ajax/pdf/summary?id=49635",
+      #         name = "Source metadata (PDF)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/maxar_v1/ETH/eth_ppp_2020_constrained.tif",
+      #         name = "eth_ppp_2020_constrained.tif",
+      #         description = "Data download (GeoTIFF)",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       )
+      #     )
+      #   )
+      # )
+      
     ),
-
-	# dataQualityInfo
-
-  dataQualityInfo = list(
-		scope = "dataset", 
-		lineage = list(
-			statement = "Data management workflow",
-			processStep = list(
-				list(
-					description = "This dataset was produced based on the 2020 population census/projection-based estimates for 2020 (information and sources of the input population data can be found here). Building footprints were provided by the Digitize Africa project of Ecopia.AI and Maxar Technologies (2020) and gridded building patterns derived from the datasets produced by Dooley et al. 2020. Geospatial covariates representing factors related to population distribution, were obtained from the \"Global High Resolution Population Denominators Project\" (OPP1134076)",
-					rationale = "Source data acquisition"
-				),
-				list(
-					description = "The mapping approach is the Random Forests-based dasymetric redistribution developed by Stevens et al. (2015). The disaggregation was done by Maksym Bondarenko (WorldPop) and David Kerr (WorldPop), using the Random Forests population modelling R scripts (Bondarenko et al., 2020), with oversight from Alessandro Sorichetta (WorldPop).",
-					rationale = "Mapping"
-				)
-			)
-		)
-	),
-
-	# metadataMaintenance
-
-	metadataMaintenance = list(
-		maintenanceAndUpdateFrequency = "notPlanned"
-	)
+    
+    dataQualityInfo = list(
+      
+      list(
+        scope = "dataset", 
+        lineage = list(
+          statement = "Data management workflow",
+          processStep = list(
+            list(
+              description = "This dataset was produced based on the 2020 population census/projection-based estimates for 2020 (information and sources of the input population data can be found here). Building footprints were provided by the Digitize Africa project of Ecopia.AI and Maxar Technologies (2020) and gridded building patterns derived from the datasets produced by Dooley et al. 2020. Geospatial covariates representing factors related to population distribution, were obtained from the \"Global High Resolution Population Denominators Project\" (OPP1134076)",
+              rationale = "Source data acquisition"
+            ),
+            list(
+              description = "The mapping approach is the Random Forests-based dasymetric redistribution developed by Stevens et al. (2015). The disaggregation was done by Maksym Bondarenko (WorldPop) and David Kerr (WorldPop), using the Random Forests population modelling R scripts (Bondarenko et al., 2020), with oversight from Alessandro Sorichetta (WorldPop).",
+              rationale = "Mapping"
+            )
+          )
+        )
+      )
+      
+    ),
+    
+    metadataMaintenance = list(maintenanceAndUpdateFrequency = "notPlanned")
+    
   )
+  
 )
 
 # Publish the metadata in a NADA catalog
 
-geospatial_add(idno = doi, 
-               metadata = GEO, 
-               repositoryid = "central", 
-               published = 1, 
-               thumbnail = thumb, 
-               overwrite = "yes")
+geospatial_add(
+  idno = id, 
+  metadata = my_geo_data, 
+  repositoryid = "central", 
+  published = 1, 
+  thumbnail = thumb, 
+  overwrite = "yes"
+)
+
+# Add a link to WorldPop website as an external resource
+
+external_resources_add(
+  idno = id,
+  dctype = "web",
+  title = "WorldPop website",
+  file_path = "https://www.worldpop.org/",
+  overwrite = "yes"
+)
+
 ```
 
 ----------
@@ -2461,7 +2679,7 @@ geospatial_add(idno = doi,
 
 ### Example 5 (service): The United Nations Geospatial website
 
-The previous three examples documented geographic datasets (ISO 19115). In this fourth example, we document a **geographic service** using elements from the ISO 19119 standard. The service described in this example is the United Nations Geospatial website.
+The previous four examples documented geographic datasets (ISO 19115). In this fourth example, we document a **geographic service** using elements from the ISO 19119 standard. The service described in this example is the [United Nations Clear Map application](https://geoservices.un.org/Html5Viewer/index.html?viewer=clearmap) from [United Nations Geospatial](https://www.un.org/geospatial/).
 
 <center>
 ![](./images/geospatial_example_script_UN.JPG){width=100%}
@@ -2472,252 +2690,318 @@ The previous three examples documented geographic datasets (ISO 19115). In this 
 ----------
 
 ```{r, eval=F, echo=T}
-GEO <- list(
+
+library(nadar)
+
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
+
+setwd("C:/my_geo_data/") 
+
+thumb = "un_clear_map.JPG"
+
+id = "UN_GEO_CLEAR-MAP"
+
+my_geo_service <- list(
   
-  service_metadata = list(
+  metadata_information = list(
+    idno = id,
+    title = "United Nations Geospatial, Clear Map",
+    producers = list(
+      list(name = "NADA team")
+    ),
+    production_date = "2022-02-18",
+    version = "v1.0 2022-02"
+  ),
+  
+  description = list(
+    
+    idno = id,
     language = "eng",
-	characterSet = "utf8",
-	hierarchyLevel = "dataset",
+    characterSet = list(codeListValue = "utf8"),
+    hierarchyLevel = list("service"),
     contact = list(
-			list(
-				organisationName = "United Nations Geospatial",
-				contactInfo = list(
-					address = list(
-						electronicEmailAddress = "gis@un.org"
-					),
-					onlineResource = list(
-						linkage = "https://www.un.org/geospatial",
-						name = "Website"
-					)
-				),
-				role = "owner"
-			)
-		)
-	),
-	dateStamp = "2019-08-19",
-	metadataStandardName = "ISO 19119:2005/19139",
-  
-	# referenceSystemInfo
-  
-	referenceSystemInfo = list(
-		list(code = "3857", codeSpace = "EPSG")
-	),
-  
-	# identificationInfo
-  
+      list(
+        organisationName = "United Nations Geospatial",
+        contactInfo = list(
+          address = list(
+            electronicEmailAddress = "gis@un.org"
+          ),
+          onlineResource = list(
+            linkage = "https://www.un.org/geospatial",
+            name = "Website"
+          )
+        ),
+        role = "owner"
+      )
+    ),
+    dateStamp = "2022-02-22",
+    metadataStandardName = "ISO 19119:2005/19139",
+    
+    referenceSystemInfo = list(
+      list(code = "3857", codeSpace = "EPSG")
+    ),
+    
     identificationInfo = list(
-		citation = list(
-			title="United Nations Clear Map - OGC Web Map Service",
-			date=list(
-				list(date="2019-08-19", type= "creation"),
-				list(data="2020-03-19", type="lastUpdate")
-			),
-			citedResponsibleParty = list(
-				list(
-					organisationName = "United Nations Geospatial",
-					contactInfo = list(
-						address = list(
-							electronicEmailAddress = "gis@un.org"
-						),
-						onlineResource = list(
-						  linkage = "https://www.un.org/geospatial",
-							name = "Website"
-						)
-					),
-					role = "owner"
-				)
-			)
-		),
-		abstract = "The United Nations Clear Map (hereinafter 'Clear Map') is a background reference web mapping service produced to facilitate 'the issuance of any map at any duty station, including dissemination via public electronic networks such as Internet' and 'to ensure that maps meet publication standards and that they are not in contravention of existing United Nations policies' in accordance with the in the Administrative Instruction on 'Regulations for the Control and Limitation of Documentation - Guidelines for the Publication of Maps' of 20 January 1997 (http://undocs.org/ST/AI/189/Add.25/Rev.1).",
-		purpose = "Clear Map is created for the use of the United Nations Secretariat and community.  All departments, offices and regional commissions of the United Nations Secretariat including offices away from Headquarters using Clear Map remain bound to the instructions as contained in the Administrative Instruction and should therefore seek clearance from the UN Geospatial Information Section (formerly Cartographic Section) prior to the issuance of their thematic maps using Clear Map as background reference.",
-		credit = "Produced by: United Nations Geospatial Contributor: UNGIS, UNGSC, Field Missions CONTACT US: Feedback is appreciated and should be sent directly to: Email:Clearmap@un.org / gis@un.org (UNCLASSIFIED) (c) UNITED NATIONS 2018",
-		status = "onGoing",
-		pointOfContact = list(
-			list(
-				organisationName = "United Nations Geospatial",
-				contactInfo = list(
-					address = list(electronicEmailAddress = "gis@un.org"),
-					onlineResource = list(linkage = "https://www.un.org/geospatial", name = "Website")
-				),
-				role = "pointOfContact"
-			)
-		),
-		resourceMaintenance = list(
-			list(maintenanceOrUpdateFrequency="asNeeded")
-		),
-		graphicOverview = list(
-			list(
-				fileName = "https://geoportal.dfs.un.org/arcgis/sharing/rest/content/items/6f4eb9e136ee43758a62f587ceb0da01/info/thumbnail/thumbnail1567157577600.png",
-				fileDescription = "Service overview",
-				fileType = "image/png"
-			)
-		),
-		resourceFormats = list(
-			list(name = "PNG32"),
-			list(name = "PNG24"),
-			list(name = "PNG"),
-			list(name = "JPG"),
-			list(name = "DIB"),
-			list(name = "TIFF"),
-			list(name = "EMF"),
-			list(name = "PS"),
-			list(name = "PDF"),
-			list(name = "GIF"),
-			list(name = "SVG"),
-			list(name = "SVGZ"),
-			list(name = "BMP")
-		),
-		descriptiveKeywords = list(
-			list(
-				type = "theme",
-				keyword = list("WMS", "Clear Map", "United Nations", "Clear", "Authoritative", "Members", "Boundaries")
-			)
-		),	
-		resourceConstraints = list(
-			list(
-				legalConstraints = list(
-					accessConstraints = "unrestricted",
-					useConstraints = "licenceUnrestricted",
-					uselimitation = list("The designations employed and the presentation of material on this map do not imply the expression of any opinion whatsoever on the part of the Secretariat of the United Nations concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries.
-Final boundary between the Republic of Sudan and the Republic of South Sudan has not yet been determined.
-Final status of the Abyei area is not yet determined.
-* Dotted line represents approximately the Line of Control in Jammu and Kashmir agreed upon by India and Pakistan. The final status of Jammu and Kashmir has not yet been agreed upon by the parties.
-** Chagos Archipelago appears without prejudice to the question of sovereignty.
-*** A dispute exists between the Governments of Argentina and the United Kingdom of Great Britain and Northern Ireland concerning sovereignty over the Falkland Islands (Malvinas).")
-				)
-			)
-		),
-		serviceType = "OGC:WMS",
-		serviceTypeVersion = "1.1.0",
-		topicCategory = list("boundaries","oceans"),
-		extent = list(
-			geographicElement = list(
-				list(
-					geographicBoundingBox = list(
-						southBoundLongitude = -1.4000299034940418e7,
-						westBoundLongitude  = -1.40477223188626e7,
-						northBoundLongitude =  2.149247026187029e7,
-						eastBoundLongitude  =  1.367128649366541e7
-					)
-				)
-			)
-		)
+      
+      list(
+        citation = list(
+          title = "United Nations Clear Map - OGC Web Map Service",
+          date = list(
+            list(date = "2019-08-19", type = "creation"),
+            list(date = "2020-03-19", type ="lastUpdate")
+          ),
+          citedResponsibleParty = list(
+            list(
+              organisationName = "United Nations Geospatial",
+              contactInfo = list(
+                address = list(electronicEmailAddress = "gis@un.org"),
+                onlineResource = list(
+                  linkage = "https://www.un.org/geospatial",
+                  name = "Website"
+                )
+              ),
+              role = "owner"
+            )
+          )
+        ),
+        
+        abstract = "The United Nations Clear Map (hereinafter 'Clear Map') is a background reference web mapping service produced to facilitate 'the issuance of any map at any duty station, including dissemination via public electronic networks such as Internet' and 'to ensure that maps meet publication standards and that they are not in contravention of existing United Nations policies' in accordance with the in the Administrative Instruction on 'Regulations for the Control and Limitation of Documentation - Guidelines for the Publication of Maps' of 20 January 1997 (http://undocs.org/ST/AI/189/Add.25/Rev.1).",
+        purpose = "Clear Map is created for the use of the United Nations Secretariat and community.  All departments, offices and regional commissions of the United Nations Secretariat including offices away from Headquarters using Clear Map remain bound to the instructions as contained in the Administrative Instruction and should therefore seek clearance from the UN Geospatial Information Section (formerly Cartographic Section) prior to the issuance of their thematic maps using Clear Map as background reference.",
+        credit = "Produced by: United Nations Geospatial Contributor: UNGIS, UNGSC, Field Missions CONTACT US: Feedback is appreciated and should be sent directly to: Email:Clearmap@un.org / gis@un.org (UNCLASSIFIED) (c) UNITED NATIONS 2018",
+        status = "onGoing",
+        
+        pointOfContact = list(
+          list(
+            organisationName = "United Nations Geospatial",
+            contactInfo = list(
+              address = list(electronicEmailAddress = "gis@un.org"),
+              onlineResource = list(linkage = "https://www.un.org/geospatial", name = "Website")
+            ),
+            role = "pointOfContact"
+          )
+        ),
+        
+        resourceMaintenance = list(
+          list(maintenanceOrUpdateFrequency = "asNeeded")
+        ),
+        
+        graphicOverview = list(
+          list(
+            fileName = "https://geoportal.dfs.un.org/arcgis/sharing/rest/content/items/6f4eb9e136ee43758a62f587ceb0da01/info/thumbnail/thumbnail1567157577600.png",
+            fileDescription = "Service overview",
+            fileType = "image/png"
+          )
+        ),
+        
+        resourceFormat = list(
+          list(name = "PNG32"),
+          list(name = "PNG24"),
+          list(name = "PNG"),
+          list(name = "JPG"),
+          list(name = "DIB"),
+          list(name = "TIFF"),
+          list(name = "EMF"),
+          list(name = "PS"),
+          list(name = "PDF"),
+          list(name = "GIF"),
+          list(name = "SVG"),
+          list(name = "SVGZ"),
+          list(name = "BMP")
+        ),
+        
+        descriptiveKeywords = list(
+          list(type = "theme", keyword = "wms"),
+          list(type = "theme", keyword = "united nations"),
+          list(type = "theme", keyword = "global boundaries"),
+          list(type = "theme", keyword = "ocean coastline"),
+          list(type = "theme", keyword = "authoritative")
+        ),	
+        
+        resourceConstraints = list(
+          list(
+            legalConstraints = list(
+              uselimitation = list("The designations employed and the presentation of material on this map do not imply the expression of any opinion whatsoever on the part of the Secretariat of the United Nations concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries.
+                Final boundary between the Republic of Sudan and the Republic of South Sudan has not yet been determined.
+                Final status of the Abyei area is not yet determined.
+                * Dotted line represents approximately the Line of Control in Jammu and Kashmir agreed upon by India and Pakistan. The final status of Jammu and Kashmir has not yet been agreed upon by the parties.
+                ** Chagos Archipelago appears without prejudice to the question of sovereignty.
+                *** A dispute exists between the Governments of Argentina and the United Kingdom of Great Britain and Northern Ireland concerning sovereignty over the Falkland Islands (Malvinas)."),
+              accessConstraints = list("unrestricted"),
+              useConstraints = list("licenceUnrestricted")
+            )
+          )
+        ),
+        
+        extent = list(
+          geographicElement = list(
+            list(
+              geographicBoundingBox = list(
+                southBoundLongitude = -1.4000299034940418,
+                westBoundLongitude  = -1.40477223188626,
+                northBoundLongitude =  2.149247026187029,
+                eastBoundLongitude  =  1.367128649366541
+              )
+            )
+          )
+        ),
+        
+        topicCategory = list("boundaries", "oceans"),
+        
+        serviceIdentification = list(
+          serviceType = "OGC:WMS",
+          serviceTypeVersion = "1.1.0"
+        )
+      )
     ),
+    
     distributionInfo = list(
-		distributionFormat = list(
-			list(name = "PNG32"),
-			list(name = "PNG24"),
-			list(name = "PNG"),
-			list(name = "JPG"),
-			list(name = "DIB"),
-			list(name = "TIFF"),
-			list(name = "EMF"),
-			list(name = "PS"),
-			list(name = "PDF"),
-			list(name = "GIF"),
-			list(name = "SVG"),
-			list(name = "SVGZ"),
-			list(name = "BMP")
-		),
-		distributor = list(
-			list(
-				organisationName = "United Nations Geospatial",
-				contactInfo = list(
-					address = list(electronicEmailAddress = "gis@un.org"),
-					onlineResource = list(
-						linkage = "https://www.un.org/geospatial",
-						name = "Website"
-					)
-				),
-				role = "owner"
-			)
-		),
-		transferOptions = list(
-			list(
-				onLine = list(
-					list(
-						linkage = "https://geoportal.dfs.un.org/arcgis/home/item.html?id=541557fd0d4d42efb24449be614e6887",
-						name = "Original metadata",
-						description = "Original metadata from UN ClearMap portal",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage = "https://geoportal.dfs.un.org/arcgis/sharing/rest/content/items/541557fd0d4d42efb24449be614e6887/data",
-						name = "UN ClearMap WMS map service user guide",
-						description = "How to import and use WMS services of the UN Clear map",
-						protocol = "WWW:LINK-1.0-http--link"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Dark/MapServer?service=WMS",
-						name = "ClearMap_Dark",
-						description = "ClearMap Dark WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Gray/MapServer?service=WMS",
-						name = "ClearMap_Gray",
-						description = "ClearMap Gray WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Imagery/MapServer?service=WMS",
-						name = "ClearMap_Imagery",
-						description = "ClearMap Imagery WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Plain/MapServer?service=WMS",
-						name = "ClearMap_Plain",
-						description = "ClearMap Plain WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Topo/MapServer?service=WMS",
-						name = "ClearMap_Topo",
-						description = "ClearMap Topo WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebDark/MapServer?service=WMS",
-						name = "ClearMap_WebDark",
-						description = "ClearMap WebDark WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebGray/MapServer?service=WMS",
-						name = "ClearMap_WebGray",
-						description = "ClearMap WebGray WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebPlain/MapServer?service=WMS",
-						name = "ClearMap_WebPlain",
-						description = "ClearMap WebPlain WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					),
-					list(
-						linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebTopo/MapServer?service=WMS",
-						name = "ClearMap_WebTopo",
-						description = "ClearMap WebTopo WMS",
-						protocol = "OGC:WMS-1.1.0-http-get-map"
-					)
-				)
-			)
-		)
+      
+      distributionFormat = list(
+        list(name = "PNG32"),
+        list(name = "PNG24"),
+        list(name = "PNG"),
+        list(name = "JPG"),
+        list(name = "DIB"),
+        list(name = "TIFF"),
+        list(name = "EMF"),
+        list(name = "PS"),
+        list(name = "PDF"),
+        list(name = "GIF"),
+        list(name = "SVG"),
+        list(name = "SVGZ"),
+        list(name = "BMP")
+      ),
+      
+      distributor = list(
+        list(
+          organisationName = "United Nations Geospatial",
+          contactInfo = list(
+            address = list(electronicEmailAddress = "gis@un.org"),
+            onlineResource = list(
+              linkage = "https://www.un.org/geospatial",
+              name = "Website"
+            )
+          ),
+          role = "owner"
+        )
+      )
+      #,
+      
+      # transferOptions = list(
+      #   list(
+      #     onLine = list(
+      #       list(
+      #         linkage = "https://geoportal.dfs.un.org/arcgis/home/item.html?id=541557fd0d4d42efb24449be614e6887",
+      #         name = "Original metadata",
+      #         description = "Original metadata from UN ClearMap portal",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://geoportal.dfs.un.org/arcgis/sharing/rest/content/items/541557fd0d4d42efb24449be614e6887/data",
+      #         name = "UN ClearMap WMS map service user guide",
+      #         description = "How to import and use WMS services of the UN Clear map",
+      #         protocol = "WWW:LINK-1.0-http--link"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Dark/MapServer?service=WMS",
+      #         name = "ClearMap_Dark",
+      #         description = "ClearMap Dark WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Gray/MapServer?service=WMS",
+      #         name = "ClearMap_Gray",
+      #         description = "ClearMap Gray WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Imagery/MapServer?service=WMS",
+      #         name = "ClearMap_Imagery",
+      #         description = "ClearMap Imagery WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Plain/MapServer?service=WMS",
+      #         name = "ClearMap_Plain",
+      #         description = "ClearMap Plain WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_Topo/MapServer?service=WMS",
+      #         name = "ClearMap_Topo",
+      #         description = "ClearMap Topo WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebDark/MapServer?service=WMS",
+      #         name = "ClearMap_WebDark",
+      #         description = "ClearMap WebDark WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebGray/MapServer?service=WMS",
+      #         name = "ClearMap_WebGray",
+      #         description = "ClearMap WebGray WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebPlain/MapServer?service=WMS",
+      #         name = "ClearMap_WebPlain",
+      #         description = "ClearMap WebPlain WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       ),
+      #       list(
+      #         linkage = "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebTopo/MapServer?service=WMS",
+      #         name = "ClearMap_WebTopo",
+      #         description = "ClearMap WebTopo WMS",
+      #         protocol = "OGC:WMS-1.1.0-http-get-map"
+      #       )
+      #     )
+      #   )
+      # )
+      
     ),
-
-	# dataQualityInfo
-
-    dataQualityInfo = list(),
-
-	# metadataMaintenance
-
-	metadataMaintenance = list(maintenanceAndUpdateFrequency = "asNeeded")
+  
+    metadataMaintenance = list(maintenanceAndUpdateFrequency = "asNeeded")
+  
+  )  
+  
 )
 
 # Publish in a NADA catalog 
 
-# @@@@@@@@@
+geospatial_add(
+  idno = id, 
+  metadata = my_geo_service, 
+  repositoryid = "central", 
+  published = 1, 
+  thumbnail = thumb, 
+  overwrite = "yes"
+)
+
+# Add links as external resources
+
+external_resources_add(
+  title = "United Nations Clear Map application",
+  idno = id,
+  dctype = "web",
+  file_path = "https://www.un.org/geospatial/",
+  overwrite = "yes"
+)
+
+external_resources_add(
+  title = "United Nations Geospatial website",
+  idno = id,
+  dctype = "web",
+  file_path = "https://geoservices.un.org/Html5Viewer/index.html?viewer=clearmap",
+  overwrite = "yes"
+)
 
 ```
 
@@ -2726,30 +3010,16 @@ Final status of the Abyei area is not yet determined.
 **Generating the metadata using Python**
 ----------
 
+[to do]
 
 ----------
 **The result in NADA**
 ----------
 
 
-## Useful tools  @@@@@@@@@@
+## Useful tools  
 
-The ISO standard is complex. Many nested elements. Using R or Python is convenient, but not forgiving. Using an editor or other solutions to generate the ISO-compliant metadata is a good option when there is no need for automation. We only mention open source tools. Even when using R or Python, some ackages can be handy.
+The ISO standard is complex and contains many nested elements. Using R or Python to generate the metadata is a convenient and powerful option, although it requires much attention to avoid errors. The [geometa R package](https://cran.r-project.org/web/packages/geometa/index.html) can be used to facilitate the process of documenting datasets using R.
 
-Editors
-
-R packages
-sf
-raster
-geometa
-nadar
-
-Python libraries
-rasterio
-
-
-Others
-
-
-QGIS
+Using a specialized metadata editor to generate the ISO-compliant metadata is a good alternative for those who have limited expertise in R or Python. The [GeoNetwork editor](https://geonetwork-opensource.org/) provides such a solution.   
 

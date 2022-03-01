@@ -64,6 +64,15 @@ The schema includes two elements that are not metadata, but parameters used when
 <br>
     - **`idno`** *[Required ; Not repeatable ; String]* <br>
     A unique identifier of the database. For example, the World Bank's World Development Indicators database, version of April 2020, could have `idno` = "WB_WDI_APR_2020".
+    - **`identifiers`** *[Optional ; Repeatable]* <br>
+    This element is used to enter database identifiers (IDs) other than the catalog ID entered in `idno`. It can for example be a Digital Object Identifier (DOI). The `idno` can be repeated here (`idno` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
+  <br>
+  ![](./images/ReDoc_documents_07.JPG){width=100%}
+  <br>    
+      - **`type`** *[Optional ; Not repeatable ; String]* <br>
+      The type of unique ID, e.g. "DOI".
+      - **`value`** *[Required ; Not repeatable ; String]* <br>
+      The identifier itself.<br>
     - **`title`** *[Required ; Not repeatable ; String]* <br>
     The title is the name by which the database is formally known. It is good practice to include the year of production in the title (and possibly the month, or quarter, if a new version of the database is released more than once a year). For example, "World Development Indicators, April 2020".  
     - **`sub_title`** *[Optional ; Not repeatable ; String]* <br>
@@ -74,20 +83,20 @@ The schema includes two elements that are not metadata, but parameters used when
     The title of the database in a secondary language (if more than one other language, they may be entered as one string, as this element is not repeatable).<br><br>
 
 - **`authoring_entity`** *[Optional ; Repeatable]* <br>
-This set of five elements is used to identify the organization(s) or person(s) who are the main producers/curators of the database.
+This set of five elements is used to identify the organization(s) or person(s) who are the main producers/curators of the database. Note that a similar element is available at the indicator/series level.
 <br>
 ![](./images/ReDoc_ts_database_04.JPG){width=100%}
 <br>
     - **`name`** *[Optional ; Not repeatable ; String]* <br>
     The name of the person or organization who maintains the contents of the database (back-end). Write the name in full (use the element `abbreviation` to capture the acronym of the organization, if relevant). 
-    - **`role`** *[Optional ; Not repeatable ; String]* <br>
-    If the database has more than one authoring entity, this field is used to specify the specific role of the entity mentioned in `name`. 
     - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
     The affiliation of the person or organization mentioned in `name`.  
     - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
     Abbreviated name (acronym) of the organization mentioned in `name`.
     - **`email`** *[Optional ; Not repeatable ; String]* <br>
-    The public email contact of the person or organizations mentioned in `name`. It is good practice to provide a service account email address, not a personal one.<br><br>
+    The public email contact of the person or organizations mentioned in `name`. It is good practice to provide a service account email address, not a personal one.
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    A link (URL) to the website of the entity mentioned in `name`. <br><br>
 
 - **`abstract`** *[Optional ; Not repeatable ; String]* <br>
 <br>
@@ -287,11 +296,11 @@ An itemized list of person(s) and/or organization(s) other than sponsors and con
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     Website URL or email of the person or organization being recognized or acknowledged for supporting the database.
     
-- **`acknowledgment_statement`** *[Optional ; Not repeatable ; String]*<br>  @@@@@@ Add it to the schema
+- **`acknowledgment_statement`** *[Optional ; Not repeatable ; String]*<br>
 <br>
 ![](./images/ReDoc_ts_database_24.JPG){width=100%}
 <br>
-An overall statement of acknowledgment, which can be used as an alternative (or supplement) to the itemized list described in `acknowledgments`.<br><br>
+An overall statement of acknowledgment, which can be used as an alternative (or supplement) to the itemized list provided in `acknowledgments`.<br><br>
 
 - **`contacts`** *[Optional ; Repeatable]* <br>
 The contacts element provides the public interface for questions associated with the development and maintenance of the database. There could be various contacts provided depending upon the organization.  
@@ -410,7 +419,6 @@ wdi_database <- list(
     ),
     
     authoring_entity = list(name = "Development Data Group", 
-                            role = "Producer", 
                             affiliation = "The World Bank Group"),
     
     abstract = "The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.",
@@ -505,8 +513,7 @@ wdi_database: {
     },
     
     "authoring_entity" : {"name" : "Development Data Group", 
-                            "role" : "Producer", 
-                            "affiliation" : "The World Bank Group"},
+                          "affiliation" : "The World Bank Group"},
     
     abstract = "The World Development Indicators is a compilation of relevant, high-quality, and internationally comparable statistics about global development and the fight against poverty. The database contains 1,400 time series indicators for 217 economies and more than 40 country groups, with data for many indicators going back more than 50 years.",
     
@@ -703,9 +710,19 @@ The unit of measurement. Note that in many databases the measurement unit will b
    - GDP per capita (current US$)
    - GDP per capita (current LCU)
    - Population density (people per sq. km of land area)
-In such case, the name of the series should not be changed, but the measurement unit may be extracted from it and stored in element `measurement_unit`.   
+In such case, the name of the series should not be changed, but the measurement unit may be extracted from it and stored in element `measurement_unit`.
 <br>
-   
+ 
+- **`dimensions`** *[Optional ; Repeatable]* <br>  
+An indicator or time series can be made available at different levels of disaggregation. For example, an indicator containing estimates of the "Population" of a country by year can be available by sex. The data curators in such case will have two options: (i) create and document three separate indicators, namely "Population, Total", "Population, Female", and "Population, Male"; or create a single indicator "Population" and attach a *dimension* "sex" to it, with values "Total", "Female", and "Male". The `dimensions` are features (or "variables") that define the different levels of disaggregation within an indicator/series. The element `dimensions` is used to provide an itemized list of disaggregations that correspond exactly to the published data. Note that when an indicator is available at two "non-overlapping" levels of disaggregation, it should be split into two indicators. For example, if the Population indicator is available by male/female and by urban/rural, but not by male/urban/male/rural/female urban/female rural, it should be treated as two separate indicators ("Population by sex" with dimension sex = "male / female" and "Population by area of residence" with dimension area = "urban / rural".) Note also that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented.<br>
+<br>
+![](./images/ReDoc_ts_series_08b.JPG){width=100%}
+<br>
+   - **`label`** *[Required ; Not repeatable ; String]* <br>
+   The label of the disaggregation level, for example "sex", or "urban/rural".
+   - **`description`** *[Optional ; Not repeatable ; String]* <br>
+   A description of the disaggregation level (for example, if the label was "age group", the description can provide detailed information on the age groups, e.g. "The age groups in the database are 0-14, 15-49, 50-64, and 65+ years old".)<br>
+
 - **`periodicity`** *[Optional ; Not repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_ts_series_09.JPG){width=100%}
@@ -945,8 +962,24 @@ Increasingly, data are made accessible via Application Programming Interfaces (A
     - **`description`** *[Optional ; Not repeatable ; String]* <br>
     This element will not contain the API documentation itself, but information on what documentation is available.
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-    Te URL of the API documentation.<br><br>
- 
+    The URL of the API documentation.<br><br>
+    
+- **`authoring_entity`** *[Optional ; Repeatable]* <br>
+This set of five elements is used to identify the organization(s) or person(s) who are the main producers/curators of the indicator. Note that a similar element is provided at the database level. The authoring_entity for the indicator can be different from the authoring_entity of the database. For example, the World Bank is the authoring entity for the World Development Indicators database, which contains indicators obtained from the International Monetary Fund, World Health Organization, and other organizations that are thus the authoring entitis for specific indicators.  
+<br>
+![](./images/ReDoc_ts_database_36b.JPG){width=100%}
+<br>
+    - **`name`** *[Optional ; Not repeatable ; String]* <br>
+    The name of the person or organization who is responsible for the production of the indicator or series. Write the name in full (use the element `abbreviation` to capture the acronym of the organization, if relevant). 
+    - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
+    The affiliation of the person or organization mentioned in `name`.  
+    - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
+    Abbreviated name (acronym) of the organization mentioned in `name`.
+    - **`email`** *[Optional ; Not repeatable ; String]* <br>
+    The public email contact of the person or organizations mentioned in `name`. It is good practice to provide a service account email address, not a personal one.
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    A link (URL) to the website of the entity mentioned in `name`. <br><br>
+
 - **`sources`** *[Optional ; Not repeatable ; String]* <br>
 This element provides information on the source(s) of data that were used to generate the indicator. A source can refer to an organization (e.g., "Source: World Health Organization"), or to a dataset (e.g., for a national poverty headcount indicator, the sources will likely be a list of sample household surveys). In `sources`, we are mainly interested in the latter. When a series in a database is a series extracted from another database (e.g., when the World Bank World Development Indicators include a series from the World Health Organization in its database), the source organization should be mentioned in the `authoring_entity` element of the schema. The `sources` element is a repeatable element. In international databases where series cover many countries, a series may have a large number of sources (for example, the World Bank poverty headcount data are extracted from hundreds of different national household surveys). The content of this element can thus be quite large. This information is however useful, as it contributes to establish the traceability and credibility of the data.  
     <br>
@@ -1106,7 +1139,7 @@ The `lda_topics` element includes the following metadata fields. An example in R
 
 <br>
 
-- **`embeddings`** *[Optional ; Repeatable]* <br>    @@@@ Rename "word_vectors" to "embeddings" in schema
+- **`embeddings`** *[Optional ; Repeatable]* <br>
   In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings and their use in implementation of semantic search tools. Word embedding models convert text (words, phrases, documents) into large-dimension numeric vectors (e.g., a vector of 100 or 200 numbers) that are representative of the semantic content of the text. The vectors are generated by submitting a text to a pre-trained word embedding model (possibly via an API). 
   
   The word vectors do not have to be stored in the series/indicator metadata to be exploited by search engines. When a semantic search tool is implemented in a catalog, the vectors will be stored in a database end processed by a tool like Milvus. A metadata element is however provided to store the vectors for preservation and sharing purposes. This block of metadata elements is repeatable, allowing multiple vectors to be stored. When using vectors in a search engine, it is critical to only use vectors generated by one same model. 
@@ -1123,14 +1156,14 @@ The `lda_topics` element includes the following metadata fields. An example in R
     - **`vector`** *[Required ; Not repeatable ; @@@@]* 
     The numeric vector representing the series metadata. <br><br>
 
-- **`series_groups`** *[Optional ; Repeatable]* <br>   @@@@@@@@@@ Add group description then redo screenshot
+- **`series_groups`** *[Optional ; Repeatable]* <br>
 This element allows organizing indicators and series by thematic or other groups. These groups are "virtual" and do not affect the data. One indicator/series can belong to more than one group. 
     <br>
     ![](./images/ReDoc_ts_series_47.JPG){width=100%}
     <br>
     - **`name`** *[Optional ; Not repeatable ; String]* <br>
     The name of the series group.<br>
-    - **`description`** *[Optional ; Not repeatable ; String]* <br>   @@@ to be added to the schema
+    - **`description`** *[Optional ; Not repeatable ; String]* <br>   
     A brief description of the series group.<br>
     - **`version`** *[Optional ; Not repeatable ; String]* <br>
     The version of the grouping.<br>
@@ -1140,24 +1173,24 @@ This element allows organizing indicators and series by thematic or other groups
 ### Provenance
 
 **`provenance`** *[Optional ; Repeatable]* <br>
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata.
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata.<br>
 <br>
 ![](./images/ReDoc_ts_series_55.JPG){width=100%}
 <br>
    - **`origin_description`** *[Required ; Not repeatable]* <br>
-   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  
+   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  <br>
       - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-      The date and time the metadata were harvested, entered in ISO 8601 format.
+      The date and time the metadata were harvested, entered in ISO 8601 format.<br>
       - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Document Description / Title Statement section) will be modified when published in a new catalog.
+      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Document Description / Title Statement section) will be modified when published in a new catalog.<br>
       - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-      The URL from where the metadata were harvested.
+      The URL from where the metadata were harvested.<br>
       - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.
+      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
       - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).
+      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
       - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-      @@@@@@@ 
+      @@@@@@@ <br>
 
 ### Tags
 
@@ -1178,9 +1211,11 @@ The `additional` element allows data curators to add their own metadata elements
   <br>
 
 
-## Generating compliant metadata
+## Generating and publishing compliant metadata - Complete example
 
 We use a series from the World Bank's World Development Indicators (WDI 2021) as an example: the series ["Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)"](https://databank.worldbank.org/source/millennium-development-goals/Series/SI.POV.DDAY)
+
+> Note that we only show how metadata are generated and published in a NADA catalog. We do not demonstrate the (optional) publishing of the underlying data in a MongoDB database, which makes the data accessible via API and allows activation of data visualizations in the NADA catalog. This is covered in the NADA documentation.
 
 ### Using R 
 
@@ -1200,36 +1235,45 @@ setwd("C:/my_indicators/")
 
 thumb = "poverty.JPG"   # To be used as thumbnail in the data catalog
 
+# Document the database (WDI)
+
 db_id = "WB_WDI_2021_09_15"  # The WDI database identifier
 
-
-# Document the database (core information on the WDI)
-
 wdi_database <- list(
-  database_description = list(    
+  
+  database_description = list(
+    
     title_statement = list(
       idno = db_id,
       title = "World Development Indicators 2021",
       alternate_title = "WDI 2021"
     ),
-    authoring_entity = list(name = "Development Data Group", 
-                            role = "Producer", 
-                            affiliation = "The World Bank Group"),
+    
+    authoring_entity = list(
+      list(name = "Development Data Group", 
+           role = "Producer", 
+           affiliation = "The World Bank Group")
+    ),
+    
     update_frequency = "Quarterly",
+    
     access_options = list(
       list(type = "API",   
            uri = "https://datahelpdesk.worldbank.org/knowledgebase/articles/889386"),
-      list(type = "Bulk",  
+      list(type = "Bulk download",  
            uri = "https://data.worldbank.org/data-catalog/world-development-indicators"),
-      list(type = "Query", 
-           uri = "http://databank.worldbank.org/data/source/world-development-indicators")),    
+      list(type = "Query interface", 
+           uri = "http://databank.worldbank.org/data/source/world-development-indicators")
+    )
+    
   ) 
+  
 )
 
-# Document the series
+# Document the indicator (Poverty headcount ratio at $1.90 a day)
 
 this_series = list(
-
+  
   metadata_creation = list(
     producers = list(
       list(name = "Development Data Group",
@@ -1237,7 +1281,8 @@ this_series = list(
            affiliation = "World Bank",
            role = "Metadata curation")
     ),  
-    prod_date = "2021-10-15"
+    prod_date = "2021-10-15",
+    version = "Example v 1.0"
   ),
   
   series_description = list(
@@ -1269,20 +1314,20 @@ this_series = list(
            name = "Economics, Consumption and consumer behaviour",
            vocabulary = "",
            uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
-       list(id = "2",
+      list(id = "2",
            name = "Economics, Economic conditions and indicators",
            vocabulary = "CESSDA Version 4.1",
            uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
-       list(id = "3",
+      list(id = "3",
            name = "Economics, Economic systems and development",
            vocabulary = "CESSDA Version 4.1",
            uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
-       list(id = "4",
+      list(id = "4",
            name = "Social stratification and groupings, Equality, inequality and social exclusion",
            vocabulary = "CESSDA Version 4.1",
            uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification")
     ),
-
+    
     relevance = "The World Bank Group is committed to reducing extreme poverty to 3 percent or less, globally, by 2030. Monitoring poverty is important on the global development agenda as well as on the national development agenda of many countries. The World Bank produced its first global poverty estimates for developing countries for World Development Report 1990: Poverty (World Bank 1990) using household survey data for 22 countries (Ravallion, Datt, and van de Walle 1991). Since then there has been considerable expansion in the number of countries that field household income and expenditure surveys. The World Bank's Development Research Group maintains a database that is updated annually as new survey data become available (and thus may contain more recent data or revisions) and conducts a major reassessment of progress against poverty every year. PovcalNet is an interactive computational tool that allows users to replicate these internationally comparable $1.90, $3.20 and $5.50 a day global, regional and country-level poverty estimates and to compute poverty measures for custom country groupings and for different poverty lines. The Poverty and Equity Data portal provides access to the database and user-friendly dashboards with graphs and interactive maps that visualize trends in key poverty and inequality indicators for different regions and countries. The country dashboards display trends in poverty measures based on the national poverty lines alongside the internationally comparable estimates, produced from and consistent with PovcalNet.",
     
     time_periods = list(list(start = "1960", end = "2020")),
@@ -1347,26 +1392,26 @@ this_series = list(
   
 )
 
+# Publish the metadata in NADA, with a link to the WDI website
 
-# Publish the metadata in NADA with a link to the WDI website:
+  # Database-level metadata
+  timeseries_database_add(idno = db_id, 
+                          published = 1, 
+                          overwrite = "yes", 
+                          metadata = wdi_database)
+  
+  # Indicator-level metadata
+  timeseries_add(
+    idno = this_series$series_description$idno, 
+    repositoryid = "central", 
+    published = 1, 
+    overwrite = "yes", 
+    metadata = this_series, 
+    thumbnail = thumb
+  )
 
-# Database-level metadata
-timeseries_database_add(idno = db_id, 
-                        published = 1, 
-                        overwrite = "yes", 
-                        metadata = wdi_database)
-
-#Indicator-level metadata
-timeseries_add(
-  idno = this_series$series_description$idno, 
-  repositoryid = "central", 
-  published = 1, 
-  overwrite = "yes", 
-  metadata = this_series, 
-  thumbnail = thumb
-)
-
-# Add link as an external resource
+# Add a link to the WDI website as an external resource
+  
 external_resources_add(
   title = "World Development Indicators website",
   idno = this_series$series_description$idno,
@@ -1374,7 +1419,6 @@ external_resources_add(
   file_path = "https://datatopics.worldbank.org/world-development-indicators/",
   overwrite = "yes"
 )
-
 ```
 
 After uploading the above metadata, and activating some visualization widgets, the result in NADA will be as follows (not all metadata displayed here; see https://nada-demo.ihsn.org/index.php/catalog/study/SI.POV.DDAY for the full view): 
@@ -1392,12 +1436,8 @@ After uploading the above metadata, and activating some visualization widgets, t
 
 The equivalent in Python of the R script provided above is as follows.
 
-@@@@@@@@
-
 ```
-
-# Same example in Python
-
+# Same example in Python @@@@@@@@
 ```
 
 

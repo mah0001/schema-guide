@@ -12,33 +12,27 @@ output: html_document
 
 ## Rationale
 
-Documenting, cataloguing and disseminating **data** has the potential to increase the volume and diversity of data analysis. There is also much value in documenting, cataloguing and disseminating **data processing and analysis scripts**. Technological solutions such as GitHub, Jupyter Notebooks or Jupiter Lab facilitate the preservation, versioning, and sharing of code, and enable collaborative work around data analysis. And coding style guides contribute to foster usability, adaptability, and reproducibility of code.[^6] But these solutions do not fully address the issue of cataloguing and discoverability of data processing and analysis programs and scripts. We propose --as a complement to existing solutions-- a metadata schema to document data analysis projects and scripts. The production of structured metadata will contribute not only to discoverability, but also to the reproducibility, replicability, and auditability of data analytics. 
+Documenting, cataloguing and disseminating **data** has the potential to increase the volume and diversity of data analysis. There is also much value in documenting, cataloguing and disseminating **data processing and analysis scripts**. Technological solutions such as GitHub, [Jupyter Notebooks or Jupiter Lab](https://jupyter.org/) facilitate the preservation and sharing of code, and enable collaborative work around data analysis. Coding style guides like the [Google style guides](https://google.github.io/styleguide/) and the [Guide to Reproducible Code in Ecology and Evolution](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf) by the British Ecological Society, contribute to foster the usability, adaptability, and reproducibility of code. But these tools and guidelines do not fully address the issue of cataloguing and discoverability of the data processing and analysis programs and scripts. We propose --as a complement to collaboration tools and style guides-- a metadata schema to document data analysis projects and scripts. The production of structured metadata will contribute not only to discoverability, but also to the reproducibility, replicability, and auditability of data analytics. 
 
 There are multiple reasons to make reproducibility, replicability, and auditability of data analytics a component of a data dissemination system. This will:  
 
-   -	Improve the **quality of research and analytical work**. Public scrutiny enables contestability and independent quality control of the output of research and analytical work; these are strong incentives for additional rigor in data analysis. 
-   -	Allow the **re-purposing or expansion of analytical work** by the research community, thereby increasing the relevance, utility and value of both the data and of the analytical work. 
+   -	Improve the **quality of research and analysis**. Public scrutiny enables contestability and independent quality control of the output of research and analysis; these are strong incentives for additional rigor in data analysis. 
+   -	Allow the **re-purposing or expansion of analysis** by the research community, thereby increasing the relevance, utility and value of both the data and of the analytical work. 
    -	Strengthen the **reputation and credibility** of the analysis. 
    -	Provide students and peers with rich **training materials**.  
    -	In some cases, satisfy a **requirement** imposed by peer reviewed journals or financial sponsors of research activities. For example, the [Data and Policy Code of the American Economic Association](https://www.aeaweb.org/journals/policies/data-code) (accessed on June 29, 2020), states that *It is the policy of the American Economic Association to publish papers only if the data and code used in the analysis are clearly and precisely documented, and access to the data and code is clearly and precisely documented and is non-exclusive to the authors. Authors of accepted papers that contain empirical work, simulations, or experimental work must provide, prior to acceptance, information about the data, programs, and other details of the computations sufficient to permit replication, as well as information about access to data and programs.* 
    -	Contribute to **assuring the fairness of policy advice and interventions** resulting from data analysis. Data analysis may be used to identify or target the beneficiaries of policies and programs, or may contribute otherwise to the design and implementation of development policies and projects. By doing so, they also contribute to identifying populations to be excluded from these interventions. Errors and biases may be introduced in analysis by accidental or intentional human errors, by the algorithms themselves, or they can result from flaws in the data. The analysis that informs such projects and policies should therefore be made auditable and contestable, i.e. documented and published. 
 
-[^6] To make code usable, good practice in code writing should be applied. This is outside the scope of this guide, but we recommend the following references:
-  - [Google style guides](https://google.github.io/styleguide/) for multiple programming languages: 
-  - [A Guide to Reproducible Code in Ecology and Evolution](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf) by the British Ecological Society 
-
 
 ## Motivation for open analytics
 
-[Stodden et al (2013)](http://stodden.net/icerm_report.pdf) [^7] make a useful distinction between five levels of research openness:
+[Stodden et al (2013)](http://stodden.net/icerm_report.pdf) make a useful distinction between five levels of research openness:
 
 1.	**Reviewable research**. The descriptions of the research methods can be independently assessed, and the results judged credible. This includes both traditional peer review and community review and does not imply reproducibility. 
 2.	**Replicable research**. Tools are made available that would allow one to duplicate the results of the research, for example by running the authors' code to produce the plots shown in the publication. (Here tools might be limited in scope, e.g., only essential data or executables, and might only be made available to referees or only upon request.)
 3.	**Confirmable research**. The main conclusions of the research can be attained independently without the use of software provided by the author. (But using the complete description of algorithms and methodology provided in the publication and any supplementary materials.)
 4.	**Auditable research**. Sufficient records (including data and software) have been archived so that the research can be defended later if necessary or differences between independent confirmations resolved. The archive might be private. 
 5.	**Open or Reproducible research**. This is auditable research made openly available. This comprised well-documented and fully open code and data that are publicly available that would allow one to (a) fully audit the computational procedure, (b) replicate and also independently reproduce the results of the research, and (c) extend the results or apply the method to new problems.
-
-[^7]: V. Stodden et al. 2013. "[Setting the Default to Reproducible - Reproducibility in Computational and Experimental Mathematics](http://stodden.net/icerm_report.pdf)".
 
 
 ## Schema description
@@ -50,7 +44,7 @@ To make data processing and analysis scripts more discoverable and usable, we pr
 ### Document description
 
 **`doc_desc`** *[Optional ; Not repeatable]* <br>
-The document description is a description of the metadata file being generated. It is basically the metadata about the metadata file. This block is optional.It is used to document the research project metadata (not the project itself). This information is not needed to document the project; it only provides information, useful for archiving purposes, on the process of generating the project metadata. The information it contains are typically useful to a catalog administrator; they are not useful to the public and do not need to be displayed in the publicly-available catalog interface. This block is optional. It is recommended to enter at least the identification of the metadata producer, her/his affiliation, and the date the metadata were created. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so the metadata produced by one organization can be found in other data centers (complying with standards and schema is precisely intended to facilitate interoperability of catalogs and automated information sharing). Keeping track of who documented a resource is thus useful.
+The document description is a description of the metadata file being generated. It provides metadata about the metadata. This block is optional. It is used to document the research project metadata (not the project itself). This information is not needed to document the project; it only provides information, useful for archiving purposes, on the process of generating the project metadata. The information it contains are typically useful to a catalog administrator; they are not useful to the public and do not need to be displayed in the publicly-available catalog interface. This block is optional. It is recommended to enter at least the identification of the metadata producer, her/his affiliation, and the date the metadata were created. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so the metadata produced by one organization can be found in other data centers (complying with standards and schema is precisely intended to facilitate inter-operability of catalogs and automated information sharing). Keeping track of who documented a resource is thus useful.
 
 ![](./images/ReDoc_scripts_02.JPG){width=100%}
 
@@ -73,7 +67,7 @@ A list of producers <u>of the metadata</u> (who may be but do not have to be the
    This attribute is used to distinguish different stages of involvement in the metadata production process.  <br><br>
 
 - **`prod_date`** *[Optional ; Not Repeatable ; String]* <br> 
-The date the metadata on this project was produced (not distributed or archived), preferably in ISO format (YYYY-MM-DD or YYY-MM).
+The date the metadata on this project was produced (not distributed or archived), preferably in ISO 8601 format (YYYY-MM-DD or YYY-MM).
 
 - **`version`** *[Optional ; Not Repeatable ; String]* <br>
 Documenting a research project is not a trivial exercise. It may happen that, having identified errors or omissions in the metadata or having received suggestions for improvement, a new version of the metadata is produced. This element is used to identify and describe the current version of the metadata. It is good practice to provide a version number, and information on what distinguishes this version from the previous one(s) if relevant. 
@@ -81,7 +75,7 @@ Documenting a research project is not a trivial exercise. It may happen that, ha
   > Example
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       doc_desc = list(
         idno = "META_RP_001", 
         producers = list(
@@ -108,29 +102,41 @@ The *title_statement* is a group of five elements, two of them mandatory.
 
    - **`idno`** *[Required ; Not Repeatable ; String]* <br>
    A unique identifier to the project. Define and use a consistent scheme to use. Avoid including spaces in the ID.  The ID number of a research project is a unique number that is used to identify a particular project. This ID number is a vital reference. A research project can be the formal cause of a survey, scripts, tables and knowledge products. Do not include spaces in the idno element. Use a system that guarantees uniqueness of the ID (DOI, own reference number).
+   - **`identifiers`** *[Optional ; Repeatable]*  <br> 
+   This repeatable element is used to enter identifiers (IDs) other than the `idno` entered in the `title_statement`. It can for example be a Digital Object Identifier (DOI). Note that the identifier entered in `idno` can (and in some cases should) be repeated here. The element `idno` does not provide a `type` parameter; repeating it in this section makes it possible to add that information. 
+      - **`type`** *[Optional ; Not repeatable ; String]* <br>
+      The type of unique ID, e.g. "DOI".
+      - **`identifier`** *[Required ; Not repeatable ; String]* <br>
+      The identifier itself. <br>
    - **`title`** *[Required ; Not Repeatable ; String]* <br>
     The title is the official name of the project as it may be stated in reports, papers or other documents. The title will in most cases be identical to the Document Title (see above). The title may correspond to the title of an academic paper, of a project impact evaluation, etc. Pay attention to capitalization in the title.
    - **`sub_title`** *[Optional ; Not Repeatable ; String]*  <br>
-   Subtitle is optional and rarely used. A short subtitle for the project. Often the sub title is used to qualify the title or rephrase the title. 
-    - **`alternate_title`** *[Optional ; Not Repeatable ; String]* <br>
-    An alternate title of the project. This would be any alternate title that would help discover the research project. In countries with more than one official language, a translation of the title may be provided. Likewise, the translated title may simply be a translation into English from a country's own language.  
+   Subtitle is optional and rarely used. A short subtitle for the project. Often the sub title is used to qualify the title or rephrase the title.    - **`alternate_title`** *[Optional ; Not Repeatable ; String]* <br>
+   An alternate title of the project. This would be any alternate title that would help discover the research project. In countries with more than one official language, a translation of the title may be provided. Likewise, the translated title may simply be a translation into English from a country's own language.  
    - **`abbreviated_title`** *[Optional ; Not Repeatable ; String]* <br>
    An abbreviated version of the title of the project. Some projects may be referred to using a short name.    
    - **`translated_title`** *[Optional ; Not Repeatable ; String]* <br>
-   A translated version of the title (this will be used for example when a catalog documents all entries in English, but wants to preserve the title of a project in its original language when the original language is not English).  
+   A translated version of the title (this will be used for example when a catalog documents all entries in English, but wants to preserve the title of a project in its original language when the original language is not English).
 
-   > Example
+<br>
+
+   > Example in R:
   
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
+        
       	title_statement = list(
       		idno = "RR_WB_2020_001",
+      		identifiers = list(
+      	    list(type = "DOI", identifier = "XXX-XXX-XXXX")
+      	  ),
       		date = "2020",
       		title = "Predicting Food Crises - Econometric Model"
-      		),
-      		# ...
+      	),
+
+      	# ...
       ),
       # ...
     )
@@ -140,24 +146,28 @@ The *title_statement* is a group of five elements, two of them mandatory.
 The abstract should provide a clear summary of the purposes, objectives and content of the project. An abstract can make reference to the various outputs associated with the research project. 
 ![](./images/ReDoc_scripts_04.JPG){width=100%}
 
-	> Example:
+	> Example in R (extracted from https://microdata.worldbank.org/index.php/catalog/4218):
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
-    		abstract = "",
+        
+    		abstract = "Food price inflation is an important metric to inform economic policy but traditional sources of consumer prices are often produced with delay during crises and only at an aggregate level. This may poorly reflect the actual price trends in rural or poverty-stricken areas, where large populations reside in fragile situations.
+This data set includes food price estimates and is intended to help gain insight in price developments beyond what can be formally measured by traditional methods. The estimates are generated using a machine-learning approach that imputes ongoing subnational price surveys, often with accuracy similar to direct measurement of prices. The data set provides new opportunities to investigate local price dynamics in areas where populations are sensitive to localized price shocks and where traditional data are not available.",
+
     		# ...
       ),
       # ...
     )
     ```
 
-
 - **`review_board`** *[Optional ; Non repeatable ; String]* <br>
 Information on whether and when the project was submitted, reviewed, and approved by an institutional review board (or independent ethics committee, ethical review board (ERB), research ethics board, or equivalent).
+<br>
 ![](./images/ReDoc_scripts_05.JPG){width=100%}
+<br>
 
 - **`output`** *[Optional ; Repeatable]* <br>
 This element will describe and reference all substantial/intended products of the research project, which may include publications, reports, websites, datasets, interactive applications, presentations, visualizations, and others. An output may also be referred to as a "deliverable". 
@@ -179,33 +189,36 @@ The `output` is a repeatable block of seven elements, used to document all outpu
    - **`uri`** *[Optional ; Non repeatable]* <br>
    A link where the output or information on the output can be found. 
    - **`doi`** *[Optional ; Non repeatable]*v
-   Digital Object Identifier of the output, if available.  <br><br>
+   Digital Object Identifier (DOI) of the output, if available. <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
     		output = list(
+    		  
     		  list(type = "working paper",
-    		       title = "",
-    		       authors = "",
-    		       description = "",
-    		       abstract = "",
-    		       uri = ""),
+    		       title = "Estimating Food Price Inflation from Partial Surveys",
+    		       authors = "Andrée, B. P. J.",
+    		       description = "World Bank Policy Research Working Paper",
+    		       abstract = "The traditional consumer price index is often produced at an aggregate level, using data from few, highly urbanized, areas. As such, it poorly describes price trends in rural or poverty-stricken areas, where large populations may reside in fragile situations. Traditional price data collection also follows a deliberate sampling and measurement process that is not well suited for monitoring during crisis situations, when price stability may deteriorate rapidly. To gain real-time insights beyond what can be formally measured by traditional methods, this paper develops a machine-learning approach for imputation of ongoing subnational price surveys. The aim is to monitor inflation at the market level, relying only on incomplete and intermittent survey data. The capabilities are highlighted using World Food Programme surveys in 25 fragile and conflict-affected countries where real-time monthly food price data are not publicly available from official sources. The results are made available as a data set that covers more than 1200 markets and 43 food types. The local statistics provide a new granular view on important inflation events, including the World Food Price Crisis of 2007–08 and the surge in global inflation following the 2020 pandemic. The paper finds that imputations often achieve accuracy similar to direct measurement of prices. The estimates may provide new opportunities to investigate local price dynamics in markets where prices are sensitive to localized shocks and traditional data are not available.",
+    		       uri = "http://hdl.handle.net/10986/36778"),
+    		       
     		  list(type = "dataset",
-    		       title = "",
-    		       authors = "",
+    		       title = "Monthly food price estimates",
+    		       authors = "Andrée, B. P. J.",
     		       description = "A dataset of derived data, published as open data",
-    		       uri = ""),
-    		  list(type = "presentation",
-    		       title = "",
-    		       authors = "",
-    		       description = "A MS-Powerpoint presentation used to present the project results at the conference X on [date]",
-    		       uri = ""),
+    		       abstract = "Food price inflation is an important metric to inform economic policy but traditional sources of consumer prices are often produced with delay during crises and only at an aggregate level. This may poorly reflect the actual price trends in rural or poverty-stricken areas, where large populations reside in fragile situations.
+This data set includes food price estimates and is intended to help gain insight in price developments beyond what can be formally measured by traditional methods. The estimates are generated using a machine-learning approach that imputes ongoing subnational price surveys, often with accuracy similar to direct measurement of prices. The data set provides new opportunities to investigate local price dynamics in areas where populations are sensitive to localized price shocks and where traditional data are not available."
+    		       uri = "https://microdata.worldbank.org/index.php/catalog/4218"),
+    		       doi = "https://doi.org/10.48529/2ZH0-JF55")
+    		
     		),
+      
     		# ...
       )
       # ...
@@ -222,21 +235,22 @@ The *`approval_process`* is a group of six elements used to describe the formal 
    - **`approval_authority`** *[Optional ; Non repeatable]* <br>
    Identification of the person(s) or organization(s) whose approval was required or sought. 
    - **`submission_date`** *[Optional ; Non repeatable]* <br>
-   Date in ISO format (YYYY-MM-DD) the project (or a component of it) was submitted for approval. 
+   The date, entered in ISO 8601 format (YYYY-MM-DD), when the project (or a component of it) was submitted for approval. 
    - **`reviewer`** *[Optional ; Non repeatable]* <br>
    Identification of the reviewer(s). 
    - **`review_status`** *[Optional ; Non repeatable]* <br>
    Status of approval. 
    - **`approval_date`** *[Optional ; Non repeatable]* <br>
-   Date the approval was formally received, preferably in ISO format (YYYY-MM-DD). <br><br>
+   Date the approval was formally received, preferably entered in ISO 8601 format (YYYY-MM-DD). <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
     		approval_process = list(
     		  
     		  list(approval_phase = "Authorization to conduct the survey",
@@ -245,12 +259,12 @@ The *`approval_process`* is a group of six elements used to describe the formal 
     		       review_status = "Approved (permission No ABC123)",
     		       approval_date = "2020-04-30"),
     		  
-    		  list(approval_phase = "Review of research output and authorization to publish ",
-    		       approval_authority = "",
-    		       submission_date = "",
-    		       reviewer = "",
+    		  list(approval_phase = "Review of research output and authorization to publish",
+    		       approval_authority = "Internal Ethics Board, [Organization]",
+    		       submission_date = "2021-07-15",
     		       review_status = "Approved",
     		       approval_date = "2021-10-30")
+    		  
     		),
     		# ...
       )
@@ -274,17 +288,19 @@ A block of two elements describing the language(s) of the project. At least one 
    - **`code`** *[Optional ; Not repeatable ; String]* <br>
    The code of the language. Numeric codes must be entered as strings. <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
     		languages = list(
     		  list(name = "English", code = "EN"),
     		  list(name = "French",  code = "FR")
     		),
+    		
     		# ...
       )
       # ...
@@ -292,7 +308,7 @@ A block of two elements describing the language(s) of the project. At least one 
     ```
 
 - **`production_date`** <br> 
-Date in ISO format (YYYY-MM-DD) the project was completed (this refers to the version that is being documented and released.)
+The date in ISO 8601 format (YYYY-MM-DD) the project was completed (this refers to the version that is being documented and released.)
 <br>
 ![](./images/ReDoc_scripts_10.JPG){width=100%}
 <br>
@@ -305,51 +321,57 @@ This repeatable block of four elements is used to list and describe the successi
    - **`version`** *[Optional ; Not repeatable ; String]* <br>
    A label describing the version. For example, "Version 1.2" *[String]*
    - **`version_date`** *[Optional ; Not repeatable ; String]* <br>
-   Date (in ISO format, YYYY-MM-DD) the version was released *[String]*
+   Date (in ISO 8601 format, YYYY-MM-DD) the version was released *[String]*
    - **`version_resp`** *[Optional ; Not repeatable ; String]* <br>
    Person(s) or organization(s) responsible for this version. *[String]*
    - **`version_notes`** *[Optional ; Not repeatable ; String]* <br>
    Additional information on the version if any; it is good practice to describe what distinguishes this version from the previous one(s). The version must be entered as a string, even when composed only of numbers. <br><br>
   
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         version_statement = list(
-          list(version = "", 
-               version_date = "",
-               version_resp = "",
-               version_notes)
-        ),    
+          
+          list(version = "v1.0", 
+               version_date = "2021-12-27",
+               version_resp = "University of Popstan, Department of Economics",
+               version_notes = "First version approved for open dissemination")
+          
+        ), 
+        
       # ...
     )  
     ```
 
-- **`errata`** *[Optional ; Repeatable]* <br>   @@@@@@@@@@@@ make it repeatable in schema
+- **`errata`** *[Optional ; Repeatable]* <br>   
 This field is used to list and describe errata.
 <br>
 ![](./images/ReDoc_scripts_12.JPG){width=100%}
 <br>
-   - **`erratum_date`** *[Optional ; Not repeatable ; String]* <br>
-   Date (in ISO format, YYYY-MM-DD) the erratum was released.
-   - **`erratum_description`** *[Optional ; Not repeatable ; String]* <br>
+   - **`date`** *[Optional ; Not repeatable ; String]* <br>
+   Date (in ISO 8601 format, YYYY-MM-DD) the erratum was released.
+   - **`description`** *[Optional ; Not repeatable ; String]* <br>
    Description of the error(s) and measures taken to address it/them. <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         errata = list(
-          list(erratum_date = "", 
-               erratum_description = ""
+          list(date = "2021-10-30", 
+               description = "Outliers in the data for Afghanistan resulted in unrealistic model estimates of the food prices for January 2020. In the latest version of the 'model.R' script, outliers are detected and dropped from the input data file. The published dataset has been updated."
           )
         ),
+        
         # ...
       )
     )  
@@ -363,59 +385,58 @@ This element is used to document the life cycle of the research project, from it
    - **`name`**: *[Optional ; Not repeatable ; String]* <br>
    This is a header for the phase of the process. 
    - **`date_start`** *[Optional ; Not repeatable ; String]* <br>
-   Date the phase started (preferably in ISO format, YYYY-MM-DD)
+   Date the phase started (preferably in ISO 8601 format, YYYY-MM-DD)
    - **`description`** *[Optional ; Not repeatable ; String]* <br>
    A brief description of the phase. <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         process = list(
-          list(name = "Production of the concept note and decision meeting", 
-               date_start = "",
-               date_end = "",
-               description = ""
+          
+          list(name = "Presentation of the concept note at the Review Committee decision meeting", 
+               date_start = "2018-02-23",
+               date_end = "2018-02-23",
+               description = "Presentation of the research objectives and method by the primary investigator to the Review Committee, which resulted in the approval of the concept note."
           ),
+          
           list(name = "Fundraising", 
-               date_start = "",
-               date_end = "",
-               description = ""
+               date_start = "2018-02-24",
+               date_end = "2018-02-30",
+               description = "Discussion with project sponsors, and conclusion of the funding agreement."
           ),
-          list(name = "Establishing the partnership", 
-               date_start = "",
-               date_end = "",
-               description = ""
-          ),
+          
           list(name = "Data acquisition and analytics", 
-               date_start = "",
-               date_end = "",
-               description = ""
+               date_start = "2018-03-15",
+               date_end = "2019-01-30",
+               description = "Implementation of web scraping, then data analysis"
           ),  
+          
           list(name = "Working paper", 
-               date_start = "",
-               date_end = "",
-               description = ""
+               date_start = "2019-01-30",
+               date_end = "2019-02-25",
+               description = "Production (and copy editing) of the working paper"
           ),
+          
           list(name = "Presentation to conferences", 
-               date_start = "",
-               date_end = "",
-               description = ""
+               date_start = "2019-04-12",
+               date_end = "2019-04-12",
+               description = "Presentation of the paper by the primary investigator at the ... conference, London"
           ),
+          
           list(name = "Curation and dissemination of data and code", 
-               date_start = "",
-               date_end = "",
-               description = ""
-          ),
-          list(name = "Closing the project", 
-               date_start = "",
-               date_end = "",
-               description = ""
+               date_start = "2019-02-25",
+               date_end = "2019-03-18",
+               description = "Data and script documentation, and publishing in the National Microdata Library"
           )
+          
         ),
+        
         # ...
       )
     )  
@@ -429,37 +450,41 @@ This section will identify the person(s) and/or organization(s) in charge of the
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   Name of the person or organization responsible for the research project.
   - **`role`** *[Optional ; Not repeatable ; String]* <br>
-  Specific role of the person or organization.  
+  Specific role of the person or organization mentioned in `name`.  
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-  Agency or organization affiliation of the author/primary investigator.
+  Agency or organization affiliation of the author/primary investigator mentioned in `name`.
   - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
-  Abbreviation used to identify the agency stated under 'affiliation' 
+  Abbreviation used to identify the agency stated under `affiliation`. 
   - **`email`** *[Optional ; Not repeatable ; String]* <br>
   Depending on the agency policies, a researcher may provide a personal email or an agency email to field inquires related to the project. 
   - **`author_id`** *[Optional ; Repeatable]* <br>
-  A block of two elements used to provide unique identifiers of the authors, as provided by different registers of researchers. For example, this can be an ORCID number (ORCID is a non-profit organization supported by a global community of member organizations, including research institutions, publishers, funders, professional associations, service providers, and other stakeholders in the research ecosystem.) 
+  A block of two elements used to provide unique identifiers of the authors, as provided by different registers of researchers. For example, this can be an ORCID number (ORCID is a non-profit organization supported by a global community of member organizations, including research institutions, publishers, sponsors, professional associations, service providers, and other stakeholders in the research ecosystem.) 
      - **`type`** *[Optional ; Not repeatable ; String]* <br>
-     The type of ID; example, "ORCID". 
+     The type of ID; for example, "ORCID". 
      - **`id`** *[Required ; Not repeatable ; String]* <br>
-     ID number/code, entered as a string variable. Unique identifier of an author<br><br>
+     A unique identification number/code for the authoring entity, entered as a string variable.<br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         authoring_entity = list(
+          
           list(name = "", 
                role = "",
                affiliation = "",
                email = "",
                author_id = list(
                  list(type = "", id = "ORCID")
-               )   
+              )   
           )
+          
         ),
+        
         # ...
       )
     )  
@@ -474,21 +499,22 @@ This section will identify the person(s) and/or organization(s) in charge of the
    - **`role`**  *[Optional ; Not repeatable ; String]* <br>
    Title of the person (if any) responsible for the work's substantive and intellectual content.
    - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-   Agency or organization affiliation of the contributor
+   Agency or organization affiliation of the contributor.
    - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
-   Abbreviation used to identify the agency stated under 'affiliation' 
+   Abbreviation used to identify the agency stated under `affiliation`. 
    - **`email`** *[Optional ; Not repeatable ; String]* <br>
    Depending on the agency policies, a researcher may provide a personal email or an agency email to field inquires related to the project.  
    - **`url`** *[Optional ; Not repeatable ; String]* <br>
-   This is the URL that provides information on the contributor or its affiliate <br><br>
+   Thhe URL that provides information on the contributor or its affiliate <br><br>
 
-	  > Example:
+	  > Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         contributors = list(
           list(name = "", 
                role = "",
@@ -496,6 +522,7 @@ This section will identify the person(s) and/or organization(s) in charge of the
                email = ""
           )
         ),
+        
         # ...
       )
     )  
@@ -506,34 +533,38 @@ This section will identify the person(s) and/or organization(s) in charge of the
   ![](./images/ReDoc_scripts_15.JPG){width=100%}
   <br>
    - **`name`** *[Optional ; Not repeatable ; String]* <br>
-   Funding Agency/Sponsor 
+   Name of the funding agency/sponsor. 
    - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
-   Abbreviation of the funding/sponsoring agency 
+   Abbreviation of the funding/sponsoring agency. 
    - **`role`** *[Optional ; Not repeatable ; String]* <br>
-   Role of the funding/sponsoring agency     
+   Specific role of the funding/sponsoring agency.     
    - **`grant_no`** *[Optional ; Not repeatable ; String]* <br> 
-   Grant or award number 
+   Grant or award number. 
 
-	  > Example:
+	  > Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         sponsors = list(
-          list(name = "", 
-               abbr = "",
-               role = "",
-               grant_no = ""
+          
+          list(name = "ABC Foundation", 
+               abbr = "ABCF",
+               role = "Purchase of the data",
+               grant_no = "ABC_001_XYZ"
           ),
           
-          list(name = "", 
-               abbr = "",
-               role = "",
-               grant_no = ""
+          list(name = "National Research Foundation", 
+               abbr = "NRF",
+               role = "Funding of staff and research assistant costs, and variable costs for participation in conferences",
+               grant_no = "NRF_G01"
           )
+          
         ),
+        
         # ...
       )
     )  
@@ -547,7 +578,7 @@ A list of persons and/or organizations in charge of curating the resources assoc
    - **`name`** *[Optional ; Not repeatable ; String]* <br>
    The name of the person or organization.  
    - **`role`** *[Optional ; Not repeatable ; String]* <br>
-   The specific role of the person or orhanization in the curation of the project resources.
+   The specific role of the person or organization in the curation of the project resources.
    - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
    The affiliation of the person or organization.
    - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
@@ -558,33 +589,36 @@ A list of persons and/or organizations in charge of curating the resources assoc
    A link to the website of the person or organization. 
    <br><br>
 
-	  > Example:
+	  > Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         curators = list(
-          list(name = "", 
-               role = "",
-               affiliation = "",
-               email = "",
-               url = ""
+          
+          list(name = "National Data Archive of Popstan", 
+               role = "Documentation, preservation and dissemination of the data and reproducible code",
+               email = "helpdesk@nda. ...",
+               url = "popstan_nda,org"
           )
+          
         ),
+        
         # ...
       )
     )  
     ```
 
-- **`reviews_comments`** *[Optional ; Repeatable]* <br>   @@@@@ move this block?
-Many research projects will be subject to a review process, which may happen at different stages of the project implementation (from design to review of the final output). This block is intended to document the comments received by reviewers during this process. It is a repeatable block of metadata elements, which cabn be used to document comments with a fine granularity. 
+- **`reviews_comments`** *[Optional ; Repeatable]* <br>   
+Many research projects will be subject to a review process, which may happen at different stages of the project implementation (from design to review of the final output). This block is intended to document the comments received by reviewers during this process. It is a repeatable block of metadata elements, which can be used to document comments with a fine granularity. 
   <br>
   ![](./images/ReDoc_scripts_17.JPG){width=100%}
   <br>
    - **`comment_date`** *[Optional ; Not repeatable ; String]* <br>
-   The date the comment was provided, in ISO format (YYYY-MM-DD).
+   The date the comment was provided, in ISO 8601 format (YYYY-MM-DD or YYYY-MM).
    - **`comment_by`** *[Optional ; Not repeatable ; String]* <br>
    The name of the person or organization that provided the comment. 
    - **`comment_description`** *[Optional ; Not repeatable ; String]* <br>
@@ -593,10 +627,10 @@ Many research projects will be subject to a review process, which may happen at 
    The response provided by teh research team/person to the comment, in its original formulation or in a summary version.
    <br><br>
 
-	  > Example:
+	  > Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
@@ -625,10 +659,10 @@ An alternative to this field is the `acknowledgment_statement` field (see below)
    - **`role`** *[Optional ; Not repeatable ; String]* <br>
    A brief description of the role of the person or agency that is being recognized or acknowledged for supporting the project.<br><br>
 
-	  > Example:
+	  > Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
@@ -651,6 +685,18 @@ An alternative to this field is the `acknowledgment_statement` field (see below)
 This field is used to provide acknowledgments in the form of an unstructured text. An alternative to this field is the *acknowledgments* field which provides a solution to itemize the acknowledgments. 
 ![](./images/ReDoc_scripts_18b.JPG){width=100%}
 
+- **`disclaimer`** *[Optional ; Not repeatable ; String]* <br>  
+Disclaimers limit the responsibility or liability of the publishing organization or researchers associated with the research project. Disclaimers assure that any research in the public domain produced by an organization has limited repercussions to the publishing organization. A disclaimer is intended to prevent liability from any effects occurring as a result of the acts or omissions in the research. 
+![](./images/ReDoc_scripts_36.JPG){width=100%} 
+
+- **`confidentiality`** *[Optional ; Not repeatable ; String]* <br>  
+A confidentiality statement binds the publisher to ethical considerations regarding the subjects of the research. In most cases, the individual identity of an individual that is the subject of research can not be released and special effort is required to assure the preservation of privacy.
+![](./images/ReDoc_scripts_37.JPG){width=100%} 
+
+- **`citation_requirement`** *[Optional ; Not repeatable ; String]* <br>  
+The citation requirement is specific to the output and is a preferred shorthand or means to refer to the publication or published good.
+![](./images/ReDoc_scripts_38.JPG){width=100%} 
+
 - **`related_projects`** *[Optional ; Repeatable]* <br>
 The objective of this block is to provide links (URLs) to other, related projects which can be documented and disseminated in the same catalog or any other location on the internet.
   <br>
@@ -663,10 +709,10 @@ The objective of this block is to provide links (URLs) to other, related project
    - **`note`** *[Optional ; Not repeatable ; String]* <br>
    A brief description or other relevant information on the related project. <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
@@ -688,68 +734,87 @@ The geographic areas covered by the project. When the project relates to one or 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the geographic area.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
-  The code of the geographic area. Use ISO country codes and names. 
+  The code of the geographic area. For countries, it is recommended to use the [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) country codes and names. 
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   The type of geographic area.
   <br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         geographic_units = list(
           list(name = "India",     code = "IND", type = "Country"),
-          list(name = "New Delhi", type = "City"),
-          list(name = "Kerala",    type = "State"),
+          list(name = "New Delhi",               type = "City"),
+          list(name = "Kerala",                  type = "State"),
           list(name = "Nepal",     code = "NPL", type = "Country"),
-          list(name = "Kathmandu", type = "City")
+          list(name = "Kathmandu",               type = "City")
         ),
+        
         # ...
       )
     )  
     ```
 
 - **`keywords`** *[Optional ; Repeatable]* <br>
-Can be controlled vocabulary; rarely use a hierarchical structure (not much use pf parent_id element; see *topics* field for an example of its use.) <br>
-Can also be free - not from controlled vocabulary. In such case only enter *name*. Can mix both. <br>
-As part of enhancing discoverability of research, keyword searches are useful. Keyword searches are community based and agreed terms that are used to tag a table. These keywords are associated with agreed thesauri or vocabulary that links all similarly tagged tables together.
-
+  <br>
   ![](./images/ReDoc_scripts_21.JPG){width=100%}
+  <br>    
+A list of keywords that provide information on the core scope and objectives of the research project. Keywords provide a convenient solution to improve the discoverability of the research, as it allows terms and phrases not found elsewhere in the metadata to be indexed and to make a project discoverable by text-based search engines. A controlled vocabulary will preferably be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list provided here can combine keywords from multiple controlled vocabularies, and user-defined keywords.  
+    - **`name`** *[Required ; Not repeatable ; String]* <br>
+    The keyword itself.
+    - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
+    The controlled vocabulary (including version number or date) from which the keyword is extracted, if any.
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    The URL of the controlled vocabulary from which the keyword is extracted, if any.<br><br>
 
-   - **`name`** *[Optional ; Not repeatable ; String]* <br>
-   
-   - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
-   
-   - **`uri`** *[Optional ; Not repeatable ; String]*: <br><br>
+  > Example in R:
 
-	> Example:
-
-    ```{r, eval=F, echo=T}
-    my_script = list(
+  ```{r, eval=F, echo=T}
+    my_project <- list(
       # ... ,
       project_desc = list(
-    		# ... ,
+        # ... ,
+        
         keywords = list(
-          list(name = "", vocabulary = "", uri = ""),
-          list(name = "", vocabulary = "", uri = ""),
-          list(name = ""),
-          list(name = ""),
-          list(name = "")
+        
+          list(name = "Migration", 
+               vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+          
+          list(name = "Migrants", 
+               vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+          
+          list(name = "Refugee", 
+               vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+               
+          list(name = "Conflict"),
+          list(name = "Asylum seeker"),
+          list(name = "Forced displacement"),
+          list(name = "Forcibly displaced"),
+          list(name = "Internally displaced population (IDP)"),
+          list(name = "Population of concern (PoC)")
+          list(name = "Returnee")
+          list(name = "UNHCR")
         ),
+        
         # ...
-      )
+      ),
+      # ... 
     )  
-    ```
+  ```  
 
 - **`themes`** *[Optional ; Repeatable]* <br>
-A list of themes covered by the document. A controlled vocabulary will preferably be used. Note that `themes` will rarely be used as the elements `topics` and `disciplines` are more appropriate for most uses. 
-
+  <br>
   ![](./images/ReDoc_scripts_22.JPG){width=100%}
-
-This is a block of five fields:
+  <br> 
+A list of themes covered by the research project. A controlled vocabulary will preferably be used. Note that `themes` will rarely be used as the elements `topics` and `disciplines` are more appropriate for most uses. This is a block of five fields:
     - **`id`** *[Optional ; Not repeatable ; String]* <br>
     The ID of the theme, taken from a controlled vocabulary.
     - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -761,90 +826,119 @@ This is a block of five fields:
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     The URL to the controlled vocabulary used, if any. <br>
 
-	> Example:
-
-    ```{r, eval=F, echo=T}
-    my_script = list(
-      # ... ,
-      project_desc = list(
-    		# ... ,
-        themes = list(
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = ""),
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = ""),
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = "")
-        ),
-        # ...
-      )
-    )  
-    ```
-
 - **`topics`** *[Optional ; Repeatable]* <br>
-Information on the topics covered in the document. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary. 
-
+  <br>
   ![](./images/ReDoc_scripts_23.JPG){width=100%}
-
+  <br> 
+Information on the topics covered in the research project. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary. 
 This element is a block of five fields: 
     - **`id`** *[Optional ; Not repeatable ; String]* <br>
-    The ID of the topic, taken from a controlled vocabulary.
+    The identifier of the topic, taken from a controlled vocabulary.
     - **`name`** *[Required ; Not repeatable ; String]* <br>
     The name (label) of the topic, preferably taken from a controlled vocabulary.
     - **`parent_id`** *[Optional ; Not repeatable ; String]* <br>
-    The parent ID of the topic (ID of the item one level up in the hierarchy), if a hierarchical controlled vocabulary is used.
+    The parent identifier of the topic (identifier of the item one level up in the hierarchy), if a hierarchical controlled vocabulary is used.
     - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
     The name (including version number) of the controlled vocabulary used, if any.
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     The URL to the controlled vocabulary used, if any. <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
+      
       project_desc = list(
     		# ... ,
+
         topics = list(
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = ""),
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = ""),
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = "")
+          
+          list(name = "Demography.Migration", 
+               vocabulary = "CESSDA Topic Classification", 
+               uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
+          list(name = "Demography.Censuses", 
+               vocabulary = "CESSDA Topic Classification", 
+               uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
+          list(id = "F22", 
+               name = "International Migration", 
+               parent_id = "F2 - International Factor Movements and International Business", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "O15", 
+               name = "Human Resources - Human Development - Income Distribution - Migration", 
+               parent_id = "O1 - Economic Development", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "O12", 
+               name = "Microeconomic Analyses of Economic Development", 
+               parent_id = "O1 - Economic Development", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "J61", 
+               name = "Geographic Labor Mobility - Immigrant Workers", 
+               parent_id = "J6 - Mobility, Unemployment, Vacancies, and Immigrant Workers", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J")
         ),
+        
         # ...
       )
     )  
     ```
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>
-Information on the academic disciplines related to the content of the document. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
-
+  <br>
   ![](./images/ReDoc_scripts_24.JPG){width=100%}
-
+  <br> 
+Information on the academic disciplines related to the content of the research project. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
 This is a block of five elements: 
     - **`id`** *[Optional ; Not repeatable ; String]* <br>
-    The ID of the discipline, taken from a controlled vocabulary.
+    The identifier of the discipline, taken from a controlled vocabulary.
     - **`name`** *[Optional ; Not repeatable ; String]* <br>
     The name (label) of the discipline, preferably taken from a controlled vocabulary.
     - **`parent_id`** *[Optional ; Not repeatable ; String]* <br>
-    The parent ID of the discipline (ID of the item one level up in the hierarchy), if a hierarchical controlled vocabulary is used.
+    The parent identifier of the discipline (identifier of the item one level up in the hierarchy), if a hierarchical controlled vocabulary is used.
     - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
     The name (including version number) of the controlled vocabulary used, if any.
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     The URL to the controlled vocabulary used, if any.<br><br>
 
-	> Example:
-
-    ```{r, eval=F, echo=T}
-    my_script = list(
+  > Example in R: 
+    
+  ```{r, eval=F, echo=T}
+    my_project <- list(
       # ... ,
+      
       project_desc = list(
-    		# ... ,
+        # ... ,  
+        
         disciplines = list(
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = ""),
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = ""),
-          list(id = "", name = "", parent_id = "", vocabulary = "", uri = "")
+          
+          list(name = "Economics", 
+               vocabulary = "Wikipedia List of academic fields (as of 21 June 2021)", 
+               uri = "https://en.wikipedia.org/wiki/List_of_academic_fields"),
+               
+          list(name = "Agricultural economics", 
+               vocabulary = "Wikipedia List of academic fields (as of 21 June 2021)", 
+               uri = "https://en.wikipedia.org/wiki/List_of_academic_fields"),
+          
+          list(name = "Econometrics", 
+               vocabulary = "Wikipedia List of academic fields (as of 21 June 2021)", 
+               uri = "https://en.wikipedia.org/wiki/List_of_academic_fields")
+               
         ),
+        
         # ...
-      )
+      ),
+      # ... 
     )  
-    ```
+  ```
 
 - **`repository_uri`** In the process of producing the outputs of the research project, a researcher may want to share their source code for transparency and replicability. This repository provides information for finding the repository where the source code is kept. 
 
@@ -857,48 +951,59 @@ This is a block of five elements:
    - **`uri`** *[Required ; Not repeatable ; String]* <br>
    URI of the project source code/script repository <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
+      
       project_desc = list(
     		# ... ,
+        
         repository_uri = list(
-          list(name = "", type = "", uri = "")
+          list(name = "A comparative assessment of machine learning classification algorithms applied to poverty prediction", 
+               type = "GitHub public repo", 
+               uri = "https://github.com/worldbank/ML-classification-algorithms-poverty")
         ),
+        
         # ...
       )
     )  
     ```
 
-- **`license`** *[Optional ; Repeatable ; String]* <br>
-Two optional elements, but al least one is required. Preferably both.
+- **`license`** *[Optional ; Repeatable]* <br>
+Information on the license(s) attached to the research project resources, which defines their terms of use. 
+    - **`name`** *[Required ; Not repeatable ; String]* <br>
+    The name of the license.
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    The URL of the license, where detailed information on the license can be obtained.
+    <br>
+    ![](./images/ReDoc_scripts_26.JPG){width=100%}
+    <br>
+    
+  > Example in R:
 
-  <br>
-  ![](./images/ReDoc_scripts_26.JPG){width=100%}
-  <br>
-  
-   - **`name`** *[Optional ; Not repeatable ; String]* <br>
-   
-   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-   <br>
-
-	> Example:
-
-    ```{r, eval=F, echo=T}
-    my_script = list(
+  ```{r, eval=F, echo=T}
+    my_project <- list(
       # ... ,
       project_desc = list(
-    		# ... ,
+        # ... ,
+        
         license = list(
+        
           list(name = "Attribution 4.0 International (CC BY 4.0)", 
                uri  = "https://creativecommons.org/licenses/by/4.0/")
+               
         ),
+        
         # ...
-      )
+      ),
+      # ... 
     )  
-    ```
+  ```
+- **`copyright`** *[Optional ; Not repeatable ; String]* <br>   
+Information on the copyright, if any, that applies to the research project metadata.
+![](./images/ReDoc_scripts_35.JPG){width=100%}
 
 - **`technology_environment`** *[Optional ; Not repeatable ; String]* <br>
 This field is used to provide a description (as detailed as possible) of the computational environment under which the scripts were implemented and are expected to be reproducible. A substantial challenge in reproducing analyses is installing and configuring the web of dependencies of specific versions of various analytical tools. Virtual machines (a computer inside a computer) enable you to efficiently share your entire computational environment with all the dependencies intact. (https://ropensci.github.io/reproducibility-guide/sections/introduction/) 
@@ -921,71 +1026,84 @@ A list of analytic, statistical, econometric, machine learning methods used in t
    Any additional information on the method.
    <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         methods = list(
+          
           list(name = "linear regression", 
-               note = "Implemented using R package 'stats'")
+               note = "Implemented using R package 'stats'"),
+          
           list(name = "random forest", 
                note = "Used for both regression and classification"),
+          
           list(name = "lasso regression (least asolute shrinkage and selection operator)", 
                note = "Implemented using R package glmnet"),
+          
           list(name = "gradient boosting machine (GBM)"),
+          
           list(name = "cross validation"),
+          
           list(name = "mean square error, quadratic loss, L2 loss", 
                note = "Loss functions used to fit models")
+          
         ),
+        
         # ...
       )
     )  
     ```
 
 - **`software`** *[Optional ; Repeatable]* <br>
-This field is used to list the software and the specialized packages and libraries that were used to inplement the project and that are required to reproduce the scripts. The libraries that are loaded by the scripts (e.g., by the R *require* or *library* command) are included (not all their own dependencies, which will be assumed to be installed automatically).
+This field is used to list the software and the specialized packages and libraries that were used to implement the project and that are required to reproduce the scripts. The libraries that are loaded by the scripts (e.g., by the R *require* or *library* command) are included (not all their own dependencies, which will be assumed to be installed automatically).
   <br>
-  ![](./images/ReDoc_scripts_29.JPG){width=100%} @@@@@@ REDO CSCREENSHOT AFTER ADDING ELEMENTS
+  ![](./images/ReDoc_scripts_29.JPG){width=100%} @@@@@@ REDO SCREENSHOT AFTER ADDING MISSING ELEMENTS
   <br>
    - **`name`** *[Required ; Not repeatable ; String]* <br>
    The name of the software. 
    - **`version`** *[Optional ; Not repeatable ; String]* <br>
    The version of the software. 
-   - **`library`** *[Optional ; Repeatable]* <br>
-   A repeatable block of two elements used to describe the libraries/packages (dependencies) needed to reproduce the scripts. @@@@@@@@@
+   - **`library`** *[Optional ; Repeatable]* <br>  @@@@@@@@@ some elements to be added to the schema
+   A repeatable block of two elements used to describe the libraries/packages (dependencies) needed to reproduce the scripts. 
 				- **`name`** *[Required ; Not repeatable ; String]* <br>
-				Name of the package or library (this can be an R package, a Python Library, a Stata ADO file, or equivalent) 
+				Name of the package or library (this can be an R package, a Python Library, a Stata ADO package, or equivalent) 
 				- **`version`** *[Optional ; Not repeatable ; String]* <br>
 				Version of the package/library.
 				- **`note`** *[Optional ; Not repeatable ; String]* <br>
+				Any additional information on the package/library.
 				<br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         software = list(
-          list(name = "R", 
+          
+          list(name    = "R", 
                version = "4.0.2",
                library = list(name = "caret",   version = "6.0-86"),
                          list(name = "dplyr",   version = "1.0.2"),
                          list(name = "ggplot2", version = "3.3.3")),
           
-           list(name = "Stata", 
-               version = "15",
-               library = list(name = "", version = "", note = "Available from RePec website")),
+          list(name    = "Stata", 
+               version = "15"),
           
-            list(name = "Python", 
+          list(name    = "Python", 
                version = "3.7 (Anaconda install)",
                library = list(name = "pandas",       version = "1.2.0"),
                          list(name = "scikit-learn", version = "0.22"))
+          
         ),
+        
         # ...
       )
     )  
@@ -1011,7 +1129,7 @@ This field is used to describe the scripts written by the project authors. All s
 			- **`role`** *[Optional ; Not repeatable ; String]* <br>
 			Specific role of the person or organization in the production of the script. 
    - **`date`** [Optional ; Not repeatable ; String]* <br>
-   Date the script was produced, in ISO format (YYYY-MM-DD) 
+   Date the script was produced, in ISO 8601 format (YYYY-MM-DD) 
    - **`format`** *[Optional ; Not repeatable ; String]* <br>
    File format 
    - **`software`** *[Optional ; Not repeatable ; String]* <br>
@@ -1027,7 +1145,7 @@ This field is used to describe the scripts written by the project authors. All s
    - **`source_code_repo`** *[Optional ; Not repeatable ; String]* <br>
    Repository (e.g. GitHub repo) where the script has been published. 
    - **`notes`** *[Optional ; Not repeatable ; String]* <br>
-   ANy additional information on the script.
+   Any additional information on the script.
    - **`license`** *[Optional ; Not repeatable]* <br>
       License, if any, under which the script is published.
 			- **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -1035,59 +1153,68 @@ This field is used to describe the scripts written by the project authors. All s
 			- **`uri`** *[Optional ; Not repeatable ; String]* <br>
 			License URI <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         scripts = list(
-          list(file_name = "", 
+          
+          list(file_name = "00_script.R", 
+               zip_package = "all_scripts.zip", 
+               title = "Project X - Master script", 
+               authors = list(name = "John Doe", 
+                              abbr = "JD", 
+                              role = "Writing, testing and documenting the script"),
+               date = "2020-12-27",
+               format = "R script",
+               software = "R x64 4.0.2",
+               description = "Master script for automated reproduction of the analysis. Calls all other scripts in proper sequence to reproduce the full analysis.",
+               methods = "box-cox transformation of data",
+               dependencies = "",
+               instructions = "",
+               source_code_repo = "",
+               notes = "",
+               license = list(name = "CC BY 4.0", 
+                              uri = "https://creativecommons.org/licenses/by/4.0/deed.ast")),
+          
+          list(file_name = "01_regression.R", 
+               zip_package = "", 
+               title = "Charts and maps", 
+               authors = list(name = "", 
+                              abbr = "", 
+                              role = ""),
+               date = "",
+               format = "R script",
+               software = "R",
+               description = "This script runs all linear regressions and PCA presented in the working paper.",
+               methods = "linear regression; principal component analysis",
+               dependencies = "",
+               instructions = "",
+               source_code_repo = "",
+               notes = "",
+               license = list(name = "CC BY 4.0", 
+                              uri = "https://creativecommons.org/licenses/by/4.0/deed.ast")),
+          
+          list(file_name = "02_visualization", 
                zip_package = "", 
                title = "", 
-               authors = list(name = "", abbr = "", role = ""),
+               authors = list(name = "", 
+                              abbr = "", 
+                              role = ""),
                date = "",
                format = "",
                software = "",
                description = "",
-               methods = "",
-               dependencies = "",
                instructions = "",
                source_code_repo = "",
                notes = "",
                license = list(name = "CC BY 4.0", 
                               uri = "https://creativecommons.org/licenses/by/4.0/deed.ast")),
           
-          list(file_name = "", 
-               zip_package = "", 
-               title = "Charts and maps", 
-               authors = list(name = "", abbr = "", role = ""),
-               date = "",
-               format = "R script",
-               software = "R",
-               description = "This script generates all charts and maps found in the working paper (using R ggplot2 and ggmap packages)",
-               methods = "Line charts, choropleth maps, ",
-               dependencies = "",
-               instructions = "",
-               source_code_repo = "",
-               notes = "",
-               license = list(name = "CC BY 4.0", 
-                              uri = "https://creativecommons.org/licenses/by/4.0/deed.ast")),
-          
-            list(file_name = "", 
-               zip_package = "", 
-               title = "Shape files for choropleth maps", 
-               authors = list(name = "", abbr = "", role = ""),
-               date = "",
-               format = "Shape files",
-               software = "",
-               description = "",
-               instructions = "",
-               source_code_repo = "",
-               notes = "",
-               license = list(name = "CC BY 4.0", 
-                              uri = "https://creativecommons.org/licenses/by/4.0/deed.ast")),
         ),
         # ...
       )
@@ -1100,7 +1227,7 @@ An overall statement on the data used in the project. A separate field is provid
   ![](./images/ReDoc_scripts_31.JPG){width=100%} 
 
 - **`datasets`** *[Optional ; Repeatable]* <br>
-This field is used to provide an itemized list of datasets used in the project. The data are not documented here (specific metadata are available for documenting data of different types, like the DDI for microdata, the ISO19139 for geospatial, etc.)
+This field is used to provide an itemized list of datasets used in the project. The data are not documented here (specific metadata are available for documenting data of different types, like the DDI for microdata, the ISO 19139 for geographic datasets, etc.)
   <br>
   ![](./images/ReDoc_scripts_31a.JPG){width=100%} 
   <br>
@@ -1120,28 +1247,25 @@ This field is used to provide an itemized list of datasets used in the project. 
     The URI where the dataset (or a detailed description of it) can be obtained.
     <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         datasets = list(
-          list(name = "", 
-               idno = "", 
-               note = "", 
-               access_type = "", 
-               license = "", 
-               license_uri = "", 
-               uri = ""),
-          list(name = "", 
-               idno = "", 
-               note = "", 
-               access_type = "", 
-               license = "", 
-               license_uri = "", 
-               uri = "")
+          
+          list(name = "Multiple Indicator Cluster Survey 2019, Round 6, Chad", 
+               idno = "TCD_2019_MICS_v01_M", 
+               uri  = "https://microdata.worldbank.org/index.php/catalog/4150"),
+          
+          list(name = "World Bank Group Country Survey 2018, Chad", 
+               idno = "TCD_2018_WBCS_v01_M", 
+               access_type = "Public access", 
+               uri = "https://microdata.worldbank.org/index.php/catalog/3058")
+          
         ),
         # ...
       )
@@ -1164,125 +1288,68 @@ The contacts element provides the public interface for questions associated with
    - **`phone`** *[Optional ; Not repeatable ; String]* <br>
    Phone number of the responsible institution or division of the research project or output. <br><br>
 
-	> Example:
+	> Example in R:
 
     ```{r, eval=F, echo=T}
-    my_script = list(
+    my_project = list(
       # ... ,
       project_desc = list(
     		# ... ,
+        
         contacts = list(
-          list(name = "", affiliation = "", role = "", uri = "")
+          
+          list(name = "Data helpdesk", 
+               affiliation = "National Data Center", 
+               role = "Support to data users", 
+               uri = "helpdesk@ndc. ...")
         ),
+        
         # ...
       )
     )  
     ```
 
-- **`provenance`** *[Optional ; Repeatable]* <br>
-The use of APIs makes it possible for data catalogs to harvest information from each other (keeping in mind that what is technically possible does is not necessarily legally and ethically doable). When information is harvested from external sources to be re-published, the `provenance` of the data and/or metadata should be recorded if only for administrative and archiving purposes. Some of this information may also be made visible to users of the data catalog, to inform them of the source of the information they are searching or browsing. The `provenance` block contains metadata elements that are used for this purpose.
+**`provenance`** *[Optional ; Repeatable]* <br>
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. 
   <br>
   ![](./images/ReDoc_scripts_33.JPG){width=100%} 
   <br>
-    - **`harvest_date`** *[Optional ; Not repeatable ; String]* <br>
-    The data (in ISO format, YYYY-MM-DD) when the information was harvested.
-    - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-    A boolean variable indicating whether the harvested information was used as-is, or was altered before being ingested in the destination catalog.
-    - **`base_url`** *[Optional ; Not repeatable ; String]* <br>
-    The URL of the site from which the information was harvested.
-    - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-    The unique identifier of the entry in the source catalog.
-    - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-    A datestamp (in UTC date format) of the metadata disseminated by the originating repository.
-    - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-    The namespace URI of the metadata format of the harvested entry. 
+   - **`origin_description`** *[Required ; Not repeatable]* <br>
+   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  <br>
+      - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
+      The date and time the metadata were harvested, entered in ISO 8601 format.<br>
+      - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
+      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Document Description / Title Statement section) will be modified when published in a new catalog.<br>
+      - **`base_url`** *[Required ; Not repeatable ; String]* <br>
+      The URL from where the metadata were harvested.<br>
+      - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
+      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
+      - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
+      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
+      - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
+      @@@@@@@ <br>
 
-- **`tags`** *[Optional ; Repeatable]* <br> 
-Tags provides easy way to include custom-facets in NADA. Should consider using one or multiple controlled vocabulary(ies). See section 1.7 for more on the importance and use of tags and tag_groups in data catalogs.
+- **`tags`** *[Optional ; Repeatable]* <br>
+As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
   <br>
-  ![](./images/ReDoc_scripts_34.JPG){width=100%} 
+  ![](./images/ReDoc_scripts_34.JPG){width=100%}  
   <br>
     - **`tag`** *[Required ; Not repeatable ; String]* <br>
     A user-defined tag.
     - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
-    A user-defined group to which the tag belongs. Grouping tags allows implementation of controlled facets (filters) in data catalogs.
+    A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
 
-	> Example:
-
-    ```{r, eval=F, echo=T}
-    my_script = list(
-      # ... ,
-      project_desc = list(
-    		# ... ,
-        tags = list(
-          list(tag = "", tag_group = ""),
-          list(tag = "", tag_group = ""),
-          list(tag = "", tag_group = ""),
-          list(tag = "", tag_group = "")
-        ),
-        # ...
-      )
-    )  
-    ```
-
-- **`copyright`** *[Optional ; Not repeatable ; String]* <br>
-Information on the copyright, if any, that applies to the research project metadata.
-![](./images/ReDoc_scripts_35.JPG){width=100%}
-
-- **`disclaimer`** *[Optional ; Not repeatable ; String]* <br>
-Disclaimers limit the responsibility or liability of the publishing organization or researchers associated with the research project. Disclaimers assure that any research in the public domain produced by an organization has limited repercussions to the publishing organization. A disclaimer is intended to prevent liability from any effects occurring as a result of the acts or omissions in the research. 
-![](./images/ReDoc_scripts_36.JPG){width=100%} 
-
-- **`confidentiality`** *[Optional ; Not repeatable ; String]* <br>
-A confidentiality statement binds the publisher to ethical considerations regarding the subjects of the research. In most cases, the individual identity of an individual that is the subject of research can not be released and special effort is required to assure the preservation of privacy.
-![](./images/ReDoc_scripts_37.JPG){width=100%} 
-
-- **`citation_requirement`** *[Optional ; Not repeatable ; String]* <br>
-The citation requirement is specific to the output and is a preferred shorthand or means to refer to the publication or published good.
-![](./images/ReDoc_scripts_38.JPG){width=100%} 
-
-	> Example:
-
-    ```{r, eval=F, echo=T}
-    my_script = list(
-      # ... ,
-      project_desc = list(
-    		# ... ,
-        copyright = "",
-        disclaimer = "",
-        confidential "",
-        citation_requirement = ""
-      )
-    )  
-    ```
-
-**`provenance`** *[Optional ; Repeatable]* <br>   @@@@@@ add to ReDoc
-<br>
-![](./images/ReDoc_@@@@.JPG){width=100%}
-<br>
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been done to the harvested metadata. 
-   - **`origin_description`** *[Required ; Not repeatable]* <br>
-   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  
-      - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-      The date and time the metadata were harvested, in ISO 8601 format.
-      - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Study Description / Title Statement section) will be modified when published in a new catalog.
-      - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-      The URL from where the metadata were harvested.
-      - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.
-      - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-      The datestamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).
-      - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-      @@@@@@@ 
-
-
-- **`additional`**  @@@@@@@@@@@@@@@@@
-
+**`additional`** *[Optional ; Not repeatable]*<br>   @@@@ add this to the schema and do screenshot
+The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
+  <br>
+  ![](./images/ReDoc_scripts_34b.JPG){width=100%}
+  <br>
 
 ## Generating compliant metadata
 
-Example description.
+For this example of documentation and publishing of reproducible research, we use the [Replication data for: Does Elite Capture Matter? Local Elites and Targeted Welfare Programs in Indonesia](https://www.openicpsr.org/openicpsr/project/116471/version/V1/view;jsessionid=31C3E76620D0DDD1CABADAA263A1E491) published in the OpenICPSR website. The primary investigators for the project were Vivi Alatas, Abhijit Banerjee, Rema Hanna, Benjamin A. Olken, Ririn Purnamasari, and Matthew Wai-Poi.
+
+"A service of the Inter-university Consortium for Political and Social Research (ICPSR), openICPSR is a self-publishing repository for social, behavioral, and health sciences research data. openICPSR is particularly well-suited for the deposit of replication data sets for researchers who need to publish their raw data associated with a journal article so that other researchers can replicate their findings." (from [OpenICPSR website](https://www.openicpsr.org/openicpsr/about))
 
 ### Full example, using R 
 
@@ -1293,337 +1360,389 @@ library(httr)
 library(dplyr)
 library(nadar)
 
-setwd( )
+# ----credentials and catalog URL --------------------------------------------------
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-script <- list(
+setwd("C:\my_project")       
+thumb = "elite_capture.JPG"  # Will be used as thumbnail in the data catalog
+
+id = "IDN_2019_ECTWP_v01_RR" 
+
+# Generate the metadata
+
+my_project_metadata <- list(
   
-# Document description
-# --------------------
+  # Information on metadata production
   
-repositoryid  = "central",
-published     = 1,
+  doc_desc = list(
+    
+    producers = list(
+      list(name = "OD", affiliation = "National Data Center")
+    ),
+    
+    prod_date = "2022-01-15"
+    
+  ),
   
-# Project description
-# -------------------
+  # Documentation of the research project, and scripts
   
-project_desc = list(
-  
-  title_statement = list(idno = "IDN_2019_ECTWP_v01_RR",
-                         titl = "Does Elite Capture Matter? Local Elites and Targeted Welfare Programs in Indonesia (reproducible scripts)"),
+  project_desc = list(
+    
+    title_statement = list(
+      idno  = id,
+      title = "Does Elite Capture Matter? Local Elites and Targeted Welfare Programs in Indonesia",
+      sub_title = "Reproducible scripts"
+    ),
+    
+    production_date = list("2019"),
+    
+    geographic_units = list(
+      list(name="Indonesia", code="IDN", type="Country")
+    ),
+    
+    authoring_entity   = list(
       
-  production_date = list("2019"),
-          
-  geographic_units = list(list(name="Indonesia", code="IDN", type="Country")),
-
-  authoring_entity = list(list(name         = "Vivi Alatas", 
-                               role         = "Primary investigator",
-                               affiliation  = "World Bank",
-                               email        = "valatas@worldbank.org"),
-                          
-                          list(name         = "Abhijit Banerjee", 
-                               role         = "Primary investigator",
-                               affiliation  = "Department of Economics, MIT",
-                               email        = "banerjee@mit.edu"),
-                          
-                          list(name         = "Rema Hanna", 
-                               role         = "Primary investigator",
-                               affiliation  = "Harvard Kennedy School",
-                               email        = "rema_hanna@hks.harvard.edu"),
-                          
-                          list(name         = "Benjamin A. Olken", 
-                               role         = "Primary investigator",
-                               affiliation  = "Department of Economics, MIT",
-                               email        = "bolken@mit.edu"),
-                          
-                          list(name         = "Ririn Purnamasari", 
-                               role         = "Primary investigator",
-                               affiliation  = "World Bank",
-                               email        = "rpurnamasari@worldbank.org"),
-                          
-                          list(name         = "Matthew Wai-Poi", 
-                               role         = "Primary investigator",
-                               affiliation  = "World Bank",
-                               email        = "mwaipoi@worldbank.org")),
-                          
-  abstract = "This paper investigates how elite capture affects the welfare gains from targeted government transfer programs in Indonesia, using both a high-stakes field experiment that varied the extent of elite influence 
-			and nonexperimental data on a variety of existing government programs. 
-			While the relatives of those holding formal leadership positions are 
-			more likely to receive benefits in some programs, we argue that the 
-			welfare consequences of elite capture appear small: eliminating elite 
-			capture entirely would improve the welfare gains from these programs 
-			by less than one percent.",
-        
-  keywords = list(list(name="proxy-means test (PMT)"),
-                  list(name="experimental design")),
-
-  topics = list(list(id="D72", name="Political Processes: Rent-seeking, Lobbying, Elections, Legislatures, and Voting Behavior", 
-			               vocabulary="JEL codes", uri="https://www.aeaweb.org/econlit/jelCodes.php"), 
-     list(id="H53", name="National Government Expenditures and Welfare Programs", 
-     vocabulary="JEL codes", uri="https://www.aeaweb.org/econlit/jelCodes.php"),
-     list(id="I38", name="Welfare, Well-Being, and Poverty: Government Programs; Provision and Effects of Welfare Programs", 
-     vocabulary="JEL codes", uri="https://www.aeaweb.org/econlit/jelCodes.php"), 
-     list(id="O15", name="Economic Development: Human Resources; Human Development; Income Distribution; Migration", 
-     vocabulary="JEL codes", uri="https://www.aeaweb.org/econlit/jelCodes.php"), 
-     list(id="O17", name="Formal and Informal Sectors; Shadow Economy Institutional Arrangements", 
-     vocabulary="JEL codes", uri="https://www.aeaweb.org/econlit/jelCodes.php")), 
-     output_types = list(list(type  = "Article", 
-                              title = "Does Elite Capture Matter Local Elites and Targeted Welfare Programs in Indonesia",
-                              description = "AEA Papers and Proceedings 2019, 109: 334-339", 
-                              uri         = "https://doi.org/10.1257/pandp.20191047",
-                              doi         = "10.1257/pandp.20191047"),
-                         list(type   = "Working Paper", 
-                              title       = "Does Elite Capture Matter? Local Elites and Targeted Welfare Programs in Indonesia",
-                              description = "NBER Working Paper No. 18798, February 2013", 
-                              uri         = "https://www.nber.org/papers/w18798",
-                              doi         = "")),
-          
-  version_statement = list(version = "1.0", version_date  = "2019"),  
-        
-  language = list(list(name = "English", code = "EN")),   
-
-  methods = list(list(name="linear regression with large dummy-variable set (areg)"),
-                 list(name="probit regression"),
-                 list(name="Test linear hypotheses after estimation")),
-        
-  software  = list(list(name    = "Stata", version = "14")),
-          
-  reproduction_instructions = "The master do file should run start to finish in less than five minutes from the master do file '0MASTER 20190918.do'. 
-				     Original data is in data-PUBLISH/originaldata and is all that 
-				     is needed to run the code; all data in data-PUBLISH/codeddata 
-				     is created from the coding do files. All results are then 
-				     created and saved in output-PUBLISH/tables.
-                                       Key Subfolders:
-                                       1. code-PUBLISH: This folder contains all relevant code. 
-					The master do file is located here ('0Master20190918.do') as well 
-					as the two folders that are necessary for the creation of 
-					datasets/coding ('coding_matching' folder) and for the 
-					analysis/table creation ('analysis' folder). 
-					Users should update the directory on the master file to reflect the 
-					location of the directory on their computers once downloaded. 
-					Following that, all the data and output files needed to replicate 
-					the main findings of the paper (Tables 1A-1D, Table 2 and the 4 
-					Appendix Tables) will be generated. The sub do files provide 
-					specific notes on the variables created where relevant.
-                                       2. data-PUBLISH: This folder contains all relevant .dta files. 
-					The first folder, 'original data' contains the 'Baseline' folder 
-					that has the original baseline survey information. 
-				  	Under 'original data' you will also find the 'Others' folder with 
-				         the randomization results, the 2008 PPLS data and the PODES 2008 
-					village level administrative data. The 'Endline2' folder contains 
-					the endline survey information. These datasets have been modified 
-					only to mask sensitive information. Finally, the 'codeddata' folder 
-					that stores intermediate datasets that are created through the 
-					sub 'coding_matching' do files.
-                                       3. log-PUBLISH: This folder contains the latest log file. When users 
-				        run the master do file, a new log file will automatically be created 
-				        and stored here.
-                                       4. output-PUBLISH: This folder contains all the tables of the main 
-				        paper and appendix. When users run the master do file, these tables 
-				        will be automatically overwritten.",
-          
-          confidentiality   = "The published materials do not contain confidential information.",
-          
-          datasets     = list(list(name="Village survey (original data; baseline)", 
-                                   idno="", 
-                                   note="Stata 14 data files", 
-                                   access_type="Public", 
-                                   uri="https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
-
-                              list(name="Village survey (original data; endline)", 
-                                   idno="", 
-                                   note="Stata 14 data files", 
-                                   access_type="Public", 
-                                   uri="https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
-                              
-                              list(name="Randomization data", 
-                                   idno="", 
-                                   note="Stata 14 data files", 
-                                   access_type="Public", 
-                                   uri="https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
-                              
-                              list(name="2008 PPLS", 
-                                   idno="", 
-                                   note="Stata 14 data files", 
-                                   access_type="Public", 
-                                   uri="https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
-                              
-                              list(name="2008 PODES - Village level administrative data", 
-                                   idno="", 
-                                   note="Stata 14 data files", 
-                                   access_type="Public", 
-                                   uri="https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
-                              
-                              list(name="Coded data (intermediary data files generated by the scripts)", 
-                                   idno="", 
-                                   note="Stata 14 data files", 
-                                   access_type="Public", 
-                                   uri="https://www.openicpsr.org/openicpsr/project/119802/version/V1/view")),
-
-          sponsors = list(list(name="Australian Aid (World Bank Trust Fund)",
-                               abbr="AusAID",
-                               grant_no="",
-                               role="Financial support"),
-                          list(name="3ie",
-                               abbr="",
-                               grant_no="OW3.1055",
-                               role="Financial support"),
-                          list(name="NIH",
-                               abbr="",
-                               grant_no="P01 HD061315",
-                               role="Financial support")),
-          
-          acknowledgements = list(list(name    = "Jurist Tan, Talitha Chairunissa, Amri Ilmma, 
-                                                  Chaeruddin Kodir, He Yang, and Gabriel Zucker",
-                                       role    = "Research assistance"),
-                                  list(name    = "Scott Guggenheim",
-                                       role    = "Provided comments"),
-                                  list(name    = "Mitra Samya, BPS, TNP2K, and SurveyMeter",
-                                       role    = "Field cooperation")),
-          
-          disclaimer = "You acknowledge that the original collector of the data, ICPSR, and the relevant funding agency bear no responsibility for use of the data or for interpretations 
-       or inferences based upon such uses.",
-
-          scripts = list(list(file_name   = "0MASTER-20190918.do",
-                              zip_package = "119802-V1.zip",
-                              title       = "Master Stata do file",
-                              authors     = list(list(name="Rema Hanna, Ben Olken (PIs) and 
-                                                 Sam Solomon (RA)")),
-                              format      = "Stata do file",
-                              software    = "Stata 14",
-                              description = "Master do file; this script calls all do files required to 
-					  replicate the output from start to finish (in no more than 
-					  a few minutes)",
-                              notes       = "Original data is in data-PUBLISH/originaldata and is all that 
-					  is needed to run the code; all data in data-PUBLISH/codeddata 
-					  is created from the coding do files. All results are then created 
-					  and saved in output-PUBLISH/tables."),
-
-                         list(file_name        = "coding baseline.do",
-                              title            = "coding baseline variables",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Coding/matching script 1/7"),
-                         
-                         list(file_name        = "coding suseti pmt.do",
-                              title            = "coding pmt",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Coding/matching script 2/7"),
-                         
-                         list(file_name        = "coding elite relation.do",
-                              title            = "coding additional variables for analysis",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Coding/matching script 3/7"),
-                         
-                         list(file_name        = "matching hybrid.do",
-                              title            = "matching baseline survey data and matching results",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Coding/matching script 4/7; Generates poverty density measure"),
-                         
-                         list(file_name        = "coding existing social programs.do",
-                              title            = "coding existing social programs",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Coding/matching script 5/7"),
-                         
-                         list(file_name        = "coding kitchen-sink variables.do",
-                              title            = "coding miscellaneous variables",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Coding/matching script 6/7"),
-                         
-                         list(file_name        = "coding_partV_hybrid.do",
-                              title            = "coding for part V of analysis plan",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Coding/matching script 7/7"),
-                         
-                         list(file_name        = "0 Table 1AB.do",
-                              title            = "Table 1: formal vs. informal elites - Panels A and B: historical benefits",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Analysis script 1/7"),
-
-                         list(file_name        = "0 Table 1CD.do",
-                              title            = "Table 1: formal vs. informal elites - Panels C and D: PKH Experiment",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Analysis script 2/7"),
-                         
-                         list(file_name        = "0 Table 2 Appendix Table 3.do",
-                              title            = "Table 7: Social welfare simulations",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Analysis script 3/7"),
-                         
-                         list(file_name        = "0 Appendix Table 1A.do",
-                              title            = "Table 2A: Elite capture in historical programs",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Analysis script 4/7"),
-                         
-                         list(file_name        = "0 Appendix Table 1B.do",
-                              title            = "Table 2B: Elite capture in PKH experiment",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Analysis script 5/7"),
-                         
-                         list(file_name        = "0 Appendix Table 2.do",
-                              title            = "Appendix Table 12: Probit Model from Table 7",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Analysis script 6/7"),
-                         
-                         list(file_name        = "0 Appendix Table 4.do",
-                              title            = "Appendix Table 13: Social welfare simulations -- 
-					       PKH - Additional model from Table 7",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata do file",
-                              software         = "Stata 14",
-                              description      = "Analysis script 7/7"),
-                         
-                         list(file_name        = "master_log_09182019.smcl",
-                              title            = "Log file - Run of master do file",
-                              zip_package      = "119802-V1.zip",
-                              format           = "Stata log file",
-                              software         = "Stata 14",
-                              description      = "Latest log file obtained by running the master do file"))
+      list(name        = "Vivi Alatas", 
+           role        = "Primary investigator",
+           affiliation = "World Bank",
+           email       = "valatas@worldbank.org"),
+      
+      list(name        = "Abhijit Banerjee", 
+           role        = "Primary investigator",
+           affiliation = "Department of Economics, MIT",
+           email       = "banerjee@mit.edu"),
+      
+      list(name        = "Rema Hanna", 
+           role        = "Primary investigator",
+           affiliation = "Harvard Kennedy School",
+           email       = "rema_hanna@hks.harvard.edu"),
+      
+      list(name        = "Benjamin A. Olken", 
+           role        = "Primary investigator",
+           affiliation = "Department of Economics, MIT",
+           email       = "bolken@mit.edu"),
+      
+      list(name        = "Ririn Purnamasari", 
+           role        = "Primary investigator",
+           affiliation = "World Bank",
+           email       = "rpurnamasari@worldbank.org"),
+      
+      list(name        = "Matthew Wai-Poi", 
+           role        = "Primary investigator",
+           affiliation = "World Bank",
+           email       = "mwaipoi@worldbank.org")
+      
+    ),
+    
+    abstract = "This paper investigates how elite capture affects the welfare gains from targeted government transfer programs in Indonesia, using both a high-stakes field experiment that varied the extent of elite influence and nonexperimental data on a variety of existing government programs. While the relatives of those holding formal leadership positions are more likely to receive benefits in some programs, we argue that the welfare consequences of elite capture appear small: eliminating elite capture entirely would improve the welfare gains from these programs by less than one percent.",
+    
+    keywords = list(
+      list(name="proxy-means test (PMT)"),
+      list(name="experimental design")
+    ),
+    
+    topics = list(
+      
+      list(id="D72", 
+           name = "Political Processes: Rent-seeking, Lobbying, Elections, Legislatures, and Voting Behavior", 
+           vocabulary = "JEL codes", 
+           uri = "https://www.aeaweb.org/econlit/jelCodes.php"), 
+      
+      list(id = "H53", 
+           name = "National Government Expenditures and Welfare Programs", 
+           vocabulary = "JEL codes", 
+           uri = "https://www.aeaweb.org/econlit/jelCodes.php"),
+      
+      list(id = "I38", 
+           name = "Welfare, Well-Being, and Poverty: Government Programs; Provision and Effects of Welfare Programs", 
+           vocabulary = "JEL codes", 
+           uri = "https://www.aeaweb.org/econlit/jelCodes.php"), 
+      
+      list(id = "O15", 
+           name = "Economic Development: Human Resources; Human Development; Income Distribution; Migration", 
+           vocabulary = "JEL codes", 
+           uri = "https://www.aeaweb.org/econlit/jelCodes.php"), 
+      
+      list(id = "O17", 
+           name = "Formal and Informal Sectors; Shadow Economy Institutional Arrangements", 
+           vocabulary = "JEL codes", 
+           uri = "https://www.aeaweb.org/econlit/jelCodes.php")
+      
+    ),
+    
+    output_types = list(
+      
+      list(type  = "Article", 
+           title = "Does Elite Capture Matter Local Elites and Targeted Welfare Programs in Indonesia",
+           description = "AEA Papers and Proceedings 2019, 109: 334-339", 
+           uri = "https://doi.org/10.1257/pandp.20191047",
+           doi = "10.1257/pandp.20191047"),
+      
+      list(type = "Working Paper", 
+           title = "Does Elite Capture Matter? Local Elites and Targeted Welfare Programs in Indonesia",
+           description = "NBER Working Paper No. 18798, February 2013", 
+           uri = "https://www.nber.org/papers/w18798")
+      
+    ),
+    
+    version_statement = list(version = "1.0", version_date  = "2019"),  
+    
+    language = list(
+      list(name = "English", code = "EN")
+    ),   
+    
+    methods = list(
+      list(name = "linear regression with large dummy-variable set (areg)"),
+      list(name = "probit regression"),
+      list(name = "Test linear hypotheses after estimation")
+    ),
+    
+    software  = list(
+      list(name= "Stata", version = "14")
+    ),
+    
+    reproduction_instructions = "The master do file should run start to finish in less than five minutes from the master do file '0MASTER 20190918.do'. Original data is in data-PUBLISH/originaldata and is all that is needed to run the code; all data in data-PUBLISH/codeddata is created from the coding do files. All results are then created and saved in output-PUBLISH/tables.
+  
+      Key Subfolders:
+      1. code-PUBLISH: This folder contains all relevant code. The master do file is located here ('0Master20190918.do') as well as the two folders that are necessary for the creation of datasets/coding ('coding_matching' folder) and for the analysis/table creation ('analysis' folder). Users should update the directory on the master file to reflect the location of the directory on their computers once downloaded. Following that, all the data and output files needed to replicate the main findings of the paper (Tables 1A-1D, Table 2 and the 4 Appendix Tables) will be generated. The sub do files provide specific notes on the variables created where relevant.
+      2. data-PUBLISH: This folder contains all relevant .dta files. The first folder, 'original data' contains the 'Baseline' folder that has the original baseline survey information. Under 'original data' you will also find the 'Others' folder with the randomization results, the 2008 PPLS data and the PODES 2008 village level administrative data. The 'Endline2' folder contains the endline survey information. These datasets have been modified only to mask sensitive information. Finally, the 'codeddata' folder that stores intermediate datasets that are created through the sub 'coding_matching' do files.
+      3. log-PUBLISH: This folder contains the latest log file. When users run the master do file, a new log file will automatically be created and stored here.
+      4. output-PUBLISH: This folder contains all the tables of the main paper and appendix. When users run the master do file, these tables will be automatically overwritten.",
+    
+    confidentiality = "The published materials do not contain confidential information.",
+    
+    datasets = list(
+      
+      list(name = "Village survey (original data; baseline)", 
+           idno = "", 
+           note = "Stata 14 data files", 
+           access_type = "Public", 
+           uri = "https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
+      
+      list(name = "Village survey (original data; endline)", 
+           idno = "", 
+           note = "Stata 14 data files", 
+           access_type = "Public", 
+           uri = "https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
+      
+      list(name = "Randomization data", 
+           idno = "", 
+           note = "Stata 14 data files", 
+           access_type = "Public", 
+           uri = "https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
+      
+      list(name = "2008 PPLS", 
+           idno = "", 
+           note = "Stata 14 data files", 
+           access_type = "Public", 
+           uri = "https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
+      
+      list(name = "2008 PODES - Village level administrative data", 
+           idno = "", 
+           note = "Stata 14 data files", 
+           access_type = "Public", 
+           uri = "https://www.openicpsr.org/openicpsr/project/119802/version/V1/view"),
+      
+      list(name = "Coded data (intermediary data files generated by the scripts)", 
+           idno = "", 
+           note = "Stata 14 data files", 
+           access_type = "Public", 
+           uri = "https://www.openicpsr.org/openicpsr/project/119802/version/V1/view")
+      
+    ),
+    
+    sponsors = list(
+      
+      list(name="Australian Aid (World Bank Trust Fund)",
+           abbr="AusAID",
+           role="Financial support"),
+      
+      list(name="3ie",
+           grant_no="OW3.1055",
+           role="Financial support"),
+      
+      list(name="NIH",
+           grant_no="P01 HD061315",
+           role="Financial support")
+      
+    ),
+    
+    acknowledgements = list(
+      
+      list(name = "Jurist Tan, Talitha Chairunissa, Amri Ilmma, Chaeruddin Kodir, He Yang, and Gabriel Zucker",
+           role    = "Research assistance"),
+      
+      list(name    = "Scott Guggenheim",
+           role    = "Provided comments"),
+      
+      list(name    = "Mitra Samya, BPS, TNP2K, and SurveyMeter",
+           role    = "Field cooperation")
+      
+    ),
+    
+    disclaimer = "Users acknowledge that the original collector of the data, ICPSR, and the relevant funding agency bear no responsibility for use of the data or for interpretations or inferences based upon such uses.",
+    
+    scripts = list(
+      
+      list(file_name   = "0MASTER-20190918.do",
+           zip_package = "119802-V1.zip",
+           title       = "Master Stata do file",
+           authors     = list(list(name="Rema Hanna, Ben Olken (PIs) and Sam Solomon (RA)")),
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Master do file; this script calls all do files required to replicate the output from start to finish (in no more than a few minutes)",
+           notes       = "Original data is in data-PUBLISH/originaldata and is all that is needed to run the code; all data in data-PUBLISH/codeddata is created from the coding do files. All results are then created and saved in output-PUBLISH/tables."),
+      
+      list(file_name   = "coding baseline.do",
+           title       = "coding baseline variables",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Coding/matching script 1/7"),
+      
+      list(file_name   = "coding suseti pmt.do",
+           title       = "coding pmt",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Coding/matching script 2/7"),
+      
+      list(file_name   = "coding elite relation.do",
+           title       = "coding additional variables for analysis",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Coding/matching script 3/7"),
+      
+      list(file_name   = "matching hybrid.do",
+           title       = "matching baseline survey data and matching results",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Coding/matching script 4/7; Generates poverty density measure"),
+      
+      list(file_name   = "coding existing social programs.do",
+           title       = "coding existing social programs",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Coding/matching script 5/7"),
+      
+      list(file_name   = "coding kitchen-sink variables.do",
+           title       = "coding miscellaneous variables",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Coding/matching script 6/7"),
+      
+      list(file_name   = "coding_partV_hybrid.do",
+           title       = "coding for part V of analysis plan",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Coding/matching script 7/7"),
+      
+      list(file_name   = "0 Table 1AB.do",
+           title       = "Table 1: formal vs. informal elites - Panels A and B: historical benefits",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Analysis script 1/7"),
+      
+      list(file_name   = "0 Table 1CD.do",
+           title       = "Table 1: formal vs. informal elites - Panels C and D: PKH Experiment",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Analysis script 2/7"),
+      
+      list(file_name   = "0 Table 2 Appendix Table 3.do",
+           title       = "Table 7: Social welfare simulations",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Analysis script 3/7"),
+      
+      list(file_name   = "0 Appendix Table 1A.do",
+           title       = "Table 2A: Elite capture in historical programs",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Analysis script 4/7"),
+      
+      list(file_name   = "0 Appendix Table 1B.do",
+           title       = "Table 2B: Elite capture in PKH experiment",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Analysis script 5/7"),
+      
+      list(file_name   = "0 Appendix Table 2.do",
+           title       = "Appendix Table 12: Probit Model from Table 7",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Analysis script 6/7"),
+      
+      list(file_name   = "0 Appendix Table 4.do",
+           title       = "Appendix Table 13: Social welfare simulations -- PKH - Additional model from Table 7",
+           zip_package = "119802-V1.zip",
+           format      = "Stata do file",
+           software    = "Stata 14",
+           description = "Analysis script 7/7"),
+      
+      list(file_name   = "master_log_09182019.smcl",
+           title       = "Log file - Run of master do file",
+           zip_package = "119802-V1.zip",
+           format      = "Stata log file",
+           software    = "Stata 14",
+           description = "Latest log file obtained by running the master do file")
     )
+    
+  )
+  
 )
 
-# --------------------------------------------------------------------------------------
-# Publish the project metadata in the catalog
-# --------------------------------------------------------------------------------------
 
-set_api_key("...")            # API key - not shared
-set_api_url("http://...")     # Catalog URL
-thumb <- "elite_capture.JPG"  # Thumbnail used in online catalog
+# Publish the project metadata in the NADA catalog
 
-script_add (idno="TEST_001 ", 
-            metadata=script, 
-            repositoryid="central", 
-            published=1, 
-            thumbnail = thumb, 
-            overwrite="yes")
+script_add(idno = id, 
+           metadata = my_project_metadata, 
+           repositoryid = "central", 
+           published = 1, 
+           thumbnail = thumb, 
+           overwrite = "yes")
+
+
+# Add links to ICPSROpen website and AEA website as external resources:
+
+external_resources_add(
+  title = "Elite Capture Paper (Alatas et Al., 2019) - Project page - OpenICPSR",
+  idno = id,
+  dctype = "web",
+  file_path = "https://www.openicpsr.org/openicpsr/project/116471/version/V1/view;jsessionid=31C3E76620D0DDD1CABADAA263A1E491",
+  overwrite = "yes"
+)
+
+external_resources_add(
+  title = "American Economic Association (AEA) paper: Does Elite Capture Matter? Local Elites and Targeted Welfare Programs in Indonesia",
+  idno = id,
+  dctype = "doc/anl",
+  file_path = "https://www.aeaweb.org/articles?id=10.1257/pandp.20191047",
+  overwrite = "yes"
+)
+
 ```
 
-What we get in NADA:
-[screenshots]
+The metadata and all resources (script files, etc.) are now available in the NADA catalog.  @@@@@ redo screenshot when displays external resources
+
+<br>
+![](./images/script_example1_nada.JPG)  
+<br>
 
 
 ### Full example, using Python 

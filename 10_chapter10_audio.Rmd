@@ -1,10 +1,10 @@
 ---
   output: html_document
 ---
-  
-  @@@@@@@@@ resequence ReDoc
 
 # Audio {#chapter10}
+
+@@@@ Do all screenshots
 
 <br>
 <center>
@@ -14,23 +14,35 @@
   
 The schema we propose to document audio recordings is a combination of elements from the [Dublin Core Metadata Initiative](https://dublincore.org/) and from the [AudioObject (from schema.org)](https://schema.org/AudioObject) schemas. 
 
-The Dublin Core is a generic and versatile standard, which we use (in an augmented form) for the documentation of Documents (Chapter 4), Images (Chapter 9), and Videos (chapter 11). It contains 15 core elements, to which we added a selection of elements from AudioObject. We also ensure that the structure of our audio schema is, as much as possible, consistent with other schemas described in this Guide. We included the elements `keywords`, `topics`, `tags` also found in the schemas used to document microdata, documents, time series, tables, images, videos, and scripts.  
+The Dublin Core is a generic and versatile standard, which we use (in an augmented form) for the documentation of Documents (Chapter 4), Images (Chapter 9), and Videos (chapter 11). It contains 15 core elements, to which we added a selection of elements from VideoObject. We also included the elements `keywords`, `topics`, `tags`, `provenance` and `additional` that are found in other schemas documented in the Guide.   
 
 This schema is not intended to document and publish metadata specific to recordings of music. For that purpose, a specialized standard like the [MEAD (Media Enrichment and Description)](https://kb.ddex.net/pages/viewpage.action?pageId=13470928) is more suitable. The schema we propose is intended to be used for archiving and cataloguing any type of audio file, such as recording of interviews, jingles, radio announcements, and others. The schema is kept simple, but it contains the elements needed to document the resources and their content in a way that will foster their discoverability in data catalogs. Compliance with AudioObject elements contributes to search engine optimization, as search engines like Google, Bing and others "reward" metadata published in formats compatible with the schema.org recommendations.
 
-When published in a NADA catalog, the metadata will appear in a specific tab. 
+When published in a NADA catalog, the metadata will appear in a specific tab.  @@@ Add Audio" to NADA tabs
 
 <br>
-  ![](./images//@@@.JPG){width=100%}
+  ![](./images/audio_tab_NADA.JPG){width=100%}
 <br>
+  
+## Augmenting audio metadata
+
+Audio recordings typically come with limited metadata. To make them more discoverable, a transcription of the recording can be generated, stored, and indexed in the catalog. This will significantly increase the discoverability of the resource, and offer the possibility to apply semantic searchability on audio metadata. Machine learning solutions are available to automatically generate transcriptions at a very low cost. Tools like [Amazon Transcribe](https://aws.amazon.com/transcribe/), [Google Speech-to-Text](https://cloud.google.com/speech-to-text?hl=en), or [Microsoft Azure's Speech to Text](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/#overview) can reliably convert spoken audio (from audio or video files) to text. The metadata schema we propose includes an element `transcription` that can store transcriptions (and possibly their automatically-generated translations) in the audio recording metadata. Word embedding models and topic models can be applied to the transcriptions to further augment the metadata. 
+
   
 ## Schema description 
   
-  The first block of metadata elements, `metadata_information`, is used to document the metadata (not the audio file itself). This provides information useful for archiving purposes. This block is optional. It is recommended however to enter at least the identification and affiliation of the metadata producer, and the date of creation of the metadata. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so metadata produced by one organization can be found in other data centers. 
+The first three elements of the schema (`repositoryid`, `published`, and `overwrite`) are not part of the audio metadata. They are parameters used to indicate how the audio recording metadata will be published in a NADA catalog. 
+
+   - **`repositoryid`** identifies the collection in which the metadata will be published. By default, the metadata will be published in the central catalog. To publish them in a collection, the collection must have been previously created in NADA. 
+
+   - **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished). This value must be set to 1 (published) to make the metadata visible.
+
+   - **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same audio recording can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that an audio recording will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element `audio_description > idno` is the same.
 
 **`metadata_information`** *[Optional ; Not Repeatable]*
+The metadata information set is used to document the video <u>metadata</u> (not the audio file itself). This provides information useful for archiving purposes. This block is optional. It is recommended however to enter at least the identification and affiliation of the metadata producer, and the date of creation of the metadata. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so metadata produced by one organization can be found in other data centers. 
   <br>
-  ![](./images/@@@@_01.JPG){width=100%}
+  ![](./images/ReDoc_audio_01.JPG){width=100%}
   <br>
   - **`title`** *[Optional ; Not Repeatable ; String]* <br>
   The title of the audio recording.<br>
@@ -52,117 +64,156 @@ When published in a NADA catalog, the metadata will appear in a specific tab.
    Version of the metadata (not version of the table).<br>
 
 **`audio_description`** *[Required ; Not Repeatable]* <br>
-  The `audio_description` section contains all elements that will be used to describe the audio recording and its content. These are the elements that will be indexed and made searchable in data catalogs.
+The `audio_description` section contains all elements that will be used to describe the audio recording and its content. These are the elements that will be indexed and made searchable in data catalogs.
 
 - **`idno`** *[Mandatory, Not Repeatable ; String]* <br>
   <br>
-  ![](./images/@@@.JPG){width=100%}
+  ![](./images/ReDoc_audio_02.JPG){width=100%}
   <br>
   `idno` is a unique identification number that is used to uniquely identify an audio recording. Such a unique identifier will be required by any data catalog. It will also help users of the data cite the audio file properly. The best option is to obtain a [Digital Object Identifier (DOI)](https://www.doi.org/) for the recording, as it will ensure that the ID is unique globally. Alternatively, it can be an ID constructed by an organization using a consistent scheme. Note that the schema allows you to provide more than one ID for an audio recording (see the `other_ids` field described below). This element maps to the "identifier" element in the Dublin Core. 
 
-- **`id_numbers`** *[Optional ; Repeatable]* <br>  @@@@@@@@@ add in ReDoc
-<br>
-  ![](./images/@@@@_03.JPG){width=100%}
-<br>
-  This element is used to enter document ID others than the archive catalog ID (i.e. other than the `idno` element described above). It can for example be a Digital Object Identifier (DOI), if the DOI was not used in `idno`.
-- **`type`** *[Optional ; Not repeatable ; String]* <br>
-  The type of unique ID.
-- **`value`** *[Required ; Not repeatable ; String]* <br>
-  The ID <br><br>
+- **`identifiers`** *[Optional ; Repeatable]* <br>  
+   <br>
+   ![](./images/ReDoc_audio_03.JPG){width=100%}
+   <br>
+   This element is used to enter video identifiers other than the `idno` element described above). It can for example be a Digital Object Identifier (DOI). Note that the identifier entered in `idno` can be repeated here, allowing to attach a "type" attribute to it.
+      - **`type`** *[Optional ; Not repeatable ; String]* <br>
+      The type of unique identifier, e.g., "DOI".
+      - **`value`** *[Required ; Not repeatable ; String]* <br>
+      The identifier. <br><br>
   
   - **`title`** *[Required ; Not repeatable ; String]* <br>
   <br>
-  ![](./images/@@@@.JPG){width=100%}
+  ![](./images/ReDoc_audio_04.JPG){width=100%}
 <br>
   The title of the audio recording. This element maps to the element *caption* in AudioObject. 
 
 - **`alt_title`** *[Optional ; Not repeatable ; String]* <br>
   <br>
-  ![](./images/@@@@_05.JPG){width=100%}
+  ![](./images/ReDoc_audio_05.JPG){width=100%}
 <br>
-  An alias for the item title. This element maps to the element *alternateName* in AudioObject.
+  An alias for the audio recording title. This element maps to the element *alternateName* in AudioObject.
 
 - **`description`** *[Optional ; Not repeatable ; String]* <br>
   <br>
-  ![](./images/@@@@_06.JPG){width=100%}
+  ![](./images/ReDoc_audio_06.JPG){width=100%}
 <br>
   A summary of the audio recording, usually about a paragraph long (around 150 to 250 words). This element maps to the element *abstract* in AudioObject.
 
 - **`genre`** *[Optional ; Repeatable ; String]* <br>
   <br>
-  ![](./images/@@@@_07.JPG){width=100%}
+  ![](./images/ReDoc_audio_07.JPG){width=100%}
 <br>
-  Genre of the creative work, broadcast channel or group. This is a AudioObject element.
+  Genre of the audio recording, broadcast channel or group. This is a AudioObject element. A controlled vocabulary can be used.
 
-- **`keywords`** *[Optional ; Repeatable]* <br>  @@@@@@@@@@@ Not structured in ReDoc
-<br>
-  ![](./images/@@@@_08.JPG){width=100%}
-<br>
-  Words or phrases that describe salient aspects of the audio recording. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
-  - **`keyword`** *[Required ; String ; Non repeatable]* <br>
-  Keyword (or phrase). Keywords summarize the content or subject matter of the audio recording. 
-- **`vocab`** *[Optional ; Not repeatable ; String]* <br>
-  Controlled vocabulary from which the keyword is extracted, if any. The "vocab" attribute is provided for specification of the controlled vocabulary in use, e.g., the [Library of Congress Subject Headings (LCSH)](https://www.loc.gov/aba/cataloging/subject/).  
-- **`uri`** *[Optional ; Not repeatable ; String]* <br>
-  URI of the controlled vocabulary used, if any.
+- **`keywords`** *[Optional ; Repeatable]* <br>  
+   <br>
+   ![](./images/ReDoc_audio_08.JPG){width=100%}
+   <br>
+   A list of keywords that provide information on the core content of the audio recording. Keywords provide a convenient solution to improve the discoverability of the audio recording, as it allows terms and phrases not found elsewhere in the audio recording metadata to be indexed and to make the audio recording discoverable by text-based search engines. A controlled vocabulary will preferably be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list can combine keywords from multiple controlled vocabularies, and user-defined keywords.  
+      - **`name`** *[Required ; Not repeatable ; String]* <br>
+      The keyword itself.
+      - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
+      The controlled vocabulary (including version number or date) from which the keyword is extracted, if any.
+      - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+      The URL of the controlled vocabulary from which the keyword is extracted, if any.<br><br>
 
-> Example:
-  
-  ```{r, eval=F, echo=T}
-  my_audio <- list(
-    # ... 
-    audio_description = list(
+     > Example in R:
+
+ ```{r, eval=F, echo=T}
+    my_audio <- list(
       # ... ,
-      keywords = list(
-        list(keyword = "",
-             vocab = "",
-             uri = ""),
-        list(keyword = "",
-             vocab = "",
-             uri = "")
+      audio_description = list(
+        # ... ,
+        
+        keywords = list(
+          list(name = "Migration", vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+          list(name = "Migrants", vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+          list(name = "Refugee", vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+               
+          list(name = "Forced displacement"),
+          list(name = "Internally displaced population (IDP)")
+        ),
+        
+        # ...
       ),
-      # ...
-    ),
-    # ...    
-  )          
-  ```
+      # ... 
+    )  
+  ```  
 
-- **`topics`** *[Optional ; Repeatable]* <br>
-  <br>
-  ![](./images/@@@@_09.JPG){width=100%}
-<br>
-  The classification field indicates the broad substantive topic(s) that the audio recording cover. A topic classification facilitates referencing and searches in electronic survey catalogs. <br>
-  - **`topic`** *[Required ; Not repeatable]* <br>
-  Topics should be selected from a standard thesaurus, preferably an international, multilingual thesaurus, such as the thesaurus used by the [Council of European Social Science Data Archives (CESSDA)](https://vocabularies.cessda.eu/vocabulary/TopicClassification). 
-- **`vocab`** *[Required ; Not repeatable]* <br>
-  The `vocab` attribute is provided for specification of the controlled vocabulary in use.
-- **`uri`** *[Required ; Not repeatable]* <br>
-  URI of the controlled vocabulary used, if any. 
+- **`topics`** *[Optional ; Repeatable]* <br>   
+   <br>
+   ![](./images/ReDoc_audio_09.JPG){width=100%}
+   <br>
+Information on the topics covered in the audio recording. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary. 
+This element is a block of five fields: 
+    - **`id`** *[Optional ; Not repeatable ; String]* <br>
+    The identifier of the topic, taken from a controlled vocabulary.
+    - **`name`** *[Required ; Not repeatable ; String]* <br>
+    The name (label) of the topic, preferably taken from a controlled vocabulary.
+    - **`parent_id`** *[Optional ; Not repeatable ; String]* <br>
+    The parent identifier of the topic (identifier of the item one level up in the hierarchy), if a hierarchical controlled vocabulary is used.
+    - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
+    The name (including version number) of the controlled vocabulary used, if any.
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    The URL to the controlled vocabulary used, if any. <br><br>
 
-> Example:
-  
+  > Example in R:
+
   ```{r, eval=F, echo=T}
-my_audio <- list(
-  metadata_information = list(
-    # ... 
-  ),
-  audio_description = list(
-    # ... ,
-    topics = list(
-      list(topic = "",
-           vocab = "",
-           uri = ""),
-      list(topic = "",
-           vocab = "",
-           uri = "")
-    ),
-    # ...
-  ) 
+    my_audio <- list(
+      # ... ,
+      audio_description = list(
+        # ... ,
+        
+        topics = list(
+        
+          list(name = "Demography.Migration", 
+               vocabulary = "CESSDA Topic Classification", 
+               uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
+          list(name = "Demography.Censuses", 
+               vocabulary = "CESSDA Topic Classification", 
+               uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
+          list(id = "F22", 
+               name = "International Migration", 
+               parent_id = "F2 - International Factor Movements and International Business", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "O15", 
+               name = "Human Resources - Human Development - Income Distribution - Migration", 
+               parent_id = "O1 - Economic Development", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "O12", 
+               name = "Microeconomic Analyses of Economic Development", 
+               parent_id = "O1 - Economic Development", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "J61", 
+               name = "Geographic Labor Mobility - Immigrant Workers", 
+               parent_id = "J6 - Mobility, Unemployment, Vacancies, and Immigrant Workers", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J")
+               
+        ),
+        
+        # ...
+      ),
+    )  
+  
   ```
   
-  - **`persons`** *[Optional ; Repeatable]* <br>
+- **`persons`** *[Optional ; Repeatable]* <br>
     <br>
-    ![](./images/@@@@_10.JPG){width=100%}
+    ![](./images/ReDoc_audio_10.JPG){width=100%}
   <br>
     A list of persons who appear in the audio recording.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -170,7 +221,7 @@ my_audio <- list(
   - **`role`** *[Optional ; Not repeatable, String]* <br>
     The role of the person.
   
-  > Example:
+  > Example in R:
     
     ```{r, eval=F, echo=T}
   my_audio <- list(
@@ -179,91 +230,91 @@ my_audio <- list(
     ),
     audio_description = list(
       # ... ,
+      
       persons = list(
         list(name = "John Smith",
              role = "Keynote speaker"),
         list(name = "Jane Doe",
              role = "Debate moderator")
       ),
+      
       # ...
     ) 
     ```
     <br>
     - **`main_entity`** *[Optional ; Not repeatable ; String]* <br> 
       <br>
-      ![](./images/@@@@_11.JPG){width=100%}
+      ![](./images/ReDoc_audio_11.JPG){width=100%}
     <br>
       Indicates the primary entity described in the audio recording. This element maps to the element `mainEntity` in AudioObject. 
     
     - **`date_created`** *[Optional, Not Repeatable ; String]* <br>
       <br>
-      ![](./images/@@@@_12.JPG){width=100%}
+      ![](./images/ReDoc_audio_12.JPG){width=100%}
     <br>
       The date the audio recording was created. It is recommended to enter the date in the ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). The date the audio recording is created refers to the date that the audio recording was produced and considered ready for dissemination. 
     
     - **`date_published`** *[Optional, Not Repeatable ; String]* <br>
       <br>
-      ![](./images/@@@@_13.JPG){width=100%}
+      ![](./imagesReDoc_audio_13.JPG){width=100%}
     <br>
       The date the audio recording was published. It is recommended to use the ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). 
     
     - **`version`** *[Optional, Not Repeatable ; String]* <br>
       <br>
-      ![](./images/@@@@_14.JPG){width=100%}
+      ![](./images/ReDoc_audio_14.JPG){width=100%}
     <br>
       The version of the audio recording refers to the published version of the audio recording.
-    
-    - **`ref_country`** *[Optional ; Repeatable]* <br>   @@@@@@@@@ `country` in ReDoc
-    <br>
-      ![](./images/@@@@_15.JPG){width=100%}
-    <br>
-      The list of countries (or regions) covered by the audio recording, if applicable. This refers to the <u>content</u> of the audio recording, not to the country where the audio recording was released. This is a repeatable block of two elements:
-      - **`name`** *[Required ; Not repeatable ; String]* <br>
-      The country/region name. Note that many organizations have their own policies on the naming of countries, which data curators will have to comply with.
-    - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
-      In the field "Abbreviation", we recommend that you enter the 3-letter ISO code of the country. 
-    - **`code`** *[Optional ; Not repeatable ; String]* <br>
-      The country/region code (entered as a string, even for numeric codes). It is recommended to use a standard list of countries and regions, such as the ISO country list (ISO 3166).
 
-    - **`content_location`** *[Optional ; Not repeatable ; String]* <br> 
-      <br>
-      ![](./images/@@@@_16.JPG){width=100%}
+    - **`status`** *[Optional ; Not repeatable, String]* <br> 
     <br>
-      The location depicted or described in the video. This element maps to the element `contentLocation` in AudioObject. This element complements the `ref_country` element. It can be used to qualify the geographic coverage of the video, in the form of a free text.
+    ![](./images/ReDoc_audio_30.JPG){width=100%}
+    <br>
+    The status of the audio recording in terms of its stage in a lifecycle. Example terms include `{Incomplete, Draft, Published, Obsolete}`. Some organizations define a set of terms for the stages of their publication lifecycle. This element maps to the element *creativeWorkStatus* in AudioObject.   
     
+    - **`ref_country`** *[Optional ; Repeatable]* <br>  
+    <br>
+      ![](./images/ReDoc_audio_15.JPG){width=100%}
+    <br>
+   The list of countries (or regions) covered by the audio recording, if applicable. This refers to the <u>content</u> of the audio recording, not to the country where the recording was released. This is a repeatable block of two elements:
+      - **`name`** *[Required ; Not repeatable ; String]* <br>
+      The country/region name. Note that many organizations have their own policies on the naming of countries/regions/economies/territories, which data curators will have to comply with.
+      - **`code`** *[Optional ; Not repeatable ; String]* <br>
+      The country/region code (entered as a string, even for numeric codes). It is recommended to use a standard list of countries and regions, such as the ISO country list ([ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)).
+
     - **`spatial_coverage`** *[Optional ; Not repeatable ; String]* <br> 
       <br>
-      ![](./images/@@@@_17.JPG){width=100%}
+      ![](./images/ReDoc_audio_17.JPG){width=100%}
     <br>
-      The spatial coverage indicates the place(s) which are the focus of the content of the audio recording, if any.   
+      The spatial coverage indicates the place(s) which are the focus of the content of the audio recording, if any. This field complements the `ref_country` element and allows for more specificity to be provided.  
     
     - **`content_reference_time`** *[Optional ; Not repeatable ; String]* <br>
       <br>
-      ![](./images/@@@@_18.JPG){width=100%}
+      ![](./images/ReDoc_audio_18.JPG){width=100%}
     <br>
-      The specific time (date / time) described by the audio recording, for works that emphasize a particular moment within an event. This element maps to the element `contentReferenceTime` in AudioObject. 
+      The specific time (date/time) described by the audio recording, for works that emphasize a particular moment within an event. This element maps to the element `contentReferenceTime` in AudioObject. 
     
     - **`temporal_coverage`** *[Optional ; Not repeatable ; String]* <br>
       <br>
-      ![](./images/@@@@_19.JPG){width=100%}
+      ![](./images/ReDoc_audio_19.JPG){width=100%}
     <br>
-      Indicates the period that the audio recording applies to, i.e. that it describes, either as a DateTime or as a textual string indicating a time period in ISO 8601 time interval format. This element maps to the element `temporalCoverage` in AudioObject.
+      Indicates the period that the audio recording describes, either as a DateTime or as a textual string indicating a time period in ISO 8601 time interval format. This element maps to the element `temporalCoverage` in AudioObject.
     
     - **`recorded_at`** *[Optional ; Not repeatable ; String]* <br>
       <br>
-      ![](./images/@@@@_20.JPG){width=100%}
+      ![](./images/ReDoc_audio_20.JPG){width=100%}
     <br>
-      The event where the audio was recorded. The audio recording may capture all or part of that event. This element maps to the element `recordedAt` in AudioObject schema. 
+      The event where the audio was recorded. The audio recording may capture all or part of that event. This element maps to the element `recordedAt` in the AudioObject schema. 
     
     - **`audience`** *[Optional ; Not repeatable ; String]* <br>
       <br>
-      ![](./images/@@@@_21.JPG){width=100%}
+      ![](./images/ReDoc_audio_21.JPG){width=100%}
     <br>
-      (AudioObject) : A description of the intended audience, i.e. a group for whom something was created.
+      A description of the intended audience, i.e. a group for whom the audio recording was created.
     
-    - **`bbox`** *[Optional ; Repeatable]* <br>   @@@@@@@ Not in ReDoc
+    - **`bbox`** *[Optional ; Repeatable]* <br>   
     <br>
-      ![](./images/@@@@_22.JPG){width=100%}
+      ![](./images/ReDoc_audio_22.JPG){width=100%}
     <br>
       This element is used to define one or multiple bounding box(es), which are the (rectangular) fundamental geometric description of the geographic coverage of the audio recording. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the audio's geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. 
       - **`west`** *[Required ; Not repeatable ; String]* <br>
@@ -275,31 +326,31 @@ my_audio <- list(
       - **`north`** *[Required ; Not repeatable ; String]* <br>
       North latitude of the box
 
-   - **`languages`** *[Optional, Repeatable]* <br>   @@@@@@@@ Language / not repeatable in ReDoc
+   - **`languages`** *[Optional, Repeatable]* <br>   
    <br>
-   ![](./images/@@@@_23.JPG){width=100%}
+   ![](./images/ReDoc_audio_23.JPG){width=100%}
    <br>
    Most audio recording will only be provided in one language. This is however a repeatable field, to allow for more than one language to be listed. For the language code, ISO codes will preferably be used. The language refers to the language in which the audio recording is published. 
-       - **`name`** *[Mandatory, Not repeatable ; String]* <br>
-       Enter the full name of the language(s) that apply for which the audio recording is provided. It is recommended to enter the name of the language as listed in the [ISO 639 standardized nomenclature of languages](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).  
-       - **`code`** *[Optional, Not repeatable ; String]* <br>
-       It is recommended to make use of the 2-character ISO 639 code. 
+      - **`name`** *[Optional ; Not repeatable ; String]* <br>
+      The name of the language.
+      - **`code`** *[Optional ; Not repeatable ; String]* <br>
+      The code of the language. The use of [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) (the alpha-3 code in Codes for the representation of names of languages) is recommended. Numeric codes must be entered as strings. <br><br>
     
    - **`creator`** *[Optional, Not repeatable ; String]* <br>	
    <br>
-   ![](./images/@@@@_24.JPG){width=100%}
+   ![](./images/ReDoc_audio_24.JPG){width=100%}
    <br>
-   Organization or person who created/authored the audio recording. 
+   The organization or person who created/authored the audio recording. 
 
    - **`production_company`** *[Optional, Not repeatable ; String]* <br> 
    <br>
-   ![](./images/@@@@_25.JPG){width=100%}
+   ![](./images/ReDoc_audio_25.JPG){width=100%}
    <br>
-   The production company or studio responsible for the item. This element maps to the element *productionCompany* in AudioObject.
+   The production company or studio responsible for the recording. This element maps to the element *productionCompany* in AudioObject.
 
-   - **`contributors`** *[Optional, Repeatable]* <br> @@@@@@@@@@@@ not structured in ReDoc
+   - **`contributors`** *[Optional, Repeatable]* <br> 
    <br>
-   ![](./images/@@@@_26.JPG){width=100%}
+   ![](./images/ReDoc_audio_26.JPG){width=100%}
    <br>
    Identifies the person(s) and/or organization(s) who contributed to the production of the audio recording. The `role` attribute allows defining what the specific contribution of the identified person or organization was. <br>
       - **`name`** *[Optional, Not Repeatable ; String]* <br>
@@ -313,28 +364,30 @@ my_audio <- list(
       - **`uri`** *[Optional, Not Repeatable ; String]* <br>
       A URI (link to a website, or email address) for the contributor. <br><br>
 
-    > Example:
+    > Example in R:
 
     ```{r, eval=F, echo=T}
     my_audio = list(
       # ... ,
       audio_description = list(
             # ... ,
+        
             contributors = list(
               list(name         = "",
-              affiliation  = "",
-              abbreviation = "",
-              role         = "",
-              uri          = "")
+                   affiliation  = "",
+                   abbreviation = "",
+                   role         = "",
+                   uri          = "")
             ),  
+            
             # ...
       )
     )
     ```
 
-   - **`publisher`** *[Optional, Not repeatable]* <br>   @@@@@@@@@@ Not structured in ReDoc
+   - **`publisher`** *[Optional, Not repeatable]* <br>
    <br>
-   ![](./images/@@@@_27.JPG){width=100%}
+   ![](./images/ReDoc_audio_27.JPG){width=100%}
    <br>
    The entity responsible for publishing the video. 
       - **`name`** *[Optional, Not Repeatable ; String]* <br>
@@ -348,13 +401,14 @@ my_audio <- list(
       - **`uri`** *[Optional, Not Repeatable ; String]* <br>
       A URI (link to a website, or email address) of the publisher. <br><br>
 
-    > Example:
+    > Example in R:
 
     ```{r, eval=F, echo=T}
     my_audio = list(
       # ... ,
       audio_description = list(
             # ... ,
+        
             publisher = list(
               name = "",
               affiliation = "",
@@ -362,16 +416,23 @@ my_audio <- list(
               role = "",
               uri = ""
             ),  
+            
             # ...
       )
     )
     ```
 
-   - **`funder`** *[Optional ; Repeatable]* <br> 
+   - **`repository`** *[Optional ; Not repeatable ; String]* <br>
    <br>
-   ![](./images/@@@@_28.JPG){width=100%}
+   ![](./images/ReDoc_audio_27b.JPG){width=100%}
    <br>
-   This element is used to list the sponsors of the audio recording. If different funding agencies sponsored different stages of the production process, use the "role" attribute to distinguish them.
+   The name of the repository (organization).
+   
+   - **`funders`** *[Optional ; Repeatable]* <br> 
+   <br>
+   ![](./images/ReDoc_audio_28.JPG){width=100%}
+   <br>
+   This element is used to list the funders (sponsors) of the audio recording. If different funding agencies sponsored different stages of the production process, use the "role" attribute to distinguish them.
       - **`name`** *[Required ; Not repeatable ; String]* <br>
       The name of the sponsor (person or organization)
       - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
@@ -383,129 +444,128 @@ my_audio <- list(
         
    - **`translators`** *[Optional ; Repeatable]* <br>
    <br>
-   ![](./images/@@@@_29.JPG){width=100%}
+   ![](./images/ReDoc_audio_29.JPG){width=100%}
    <br>
    Organization or person who adapted the audio recording to different languages. This element maps to the element *translator* in AudioObject.
       - **`first_name`** *[Optional ; Not repeatable ; String]* <br>
-      The first name of the translator
+      The first name of the translator.
       - **`initial`** *[Optional ; Not repeatable ; String]* <br>
-      The initials of the translator
+      The initials of the translator.
       - **`last_name`** *[Optional ; Not repeatable ; String]* <br>
-      The last name of the translator
+      The last name of the translator.
       - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-      The affiliation of the translator <br><br>
-    
-   - **`status`** *[Optional ; Not repeatable, String]* <br> 
-   <br>
-   ![](./images/@@@@_30.JPG){width=100%}
-   <br>
-   The status of the audio recording in terms of its stage in a lifecycle. Example terms include `{Incomplete, Draft, Published, Obsolete}`. Some organizations define a set of terms for the stages of their publication lifecycle. This element maps to the element *creativeWorkStatus* in AudioObject. 
+      The affiliation of the translator. <br><br>
 
    - **`is_based_on`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_31.JPG){width=100%}
+   ![](./images/ReDoc_audio_31.JPG){width=100%}
    <br>
-   A resource from which this work is derived or from which it is a modification or adaption. This element maps to the element *isBasedOn* in AudioObject. 
+   A resource from which this audio recording is derived or from which it is a modification or adaption. This element maps to the element *isBasedOn* in AudioObject. 
      
    - **`is_part_of`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_32.JPG){width=100%}
+   ![](./images/ReDoc_audio_32.JPG){width=100%}
    <br>
    Indicates another audio recording (or other type of resource, like a video) that this audio recording is part of. This element maps to the element *isPartOf* in AudioObject. 
 
    - **`relation`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_33.JPG){width=100%}
+   ![](./images/ReDoc_audio_33.JPG){width=100%}
    <br>
    Defines, as a free text field, the relation between the audio recording being documented and other resources. This is a Dublin Core element.
 
    - **`audio_provider`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_34.JPG){width=100%}
+   ![](./images/ReDoc_audio_34.JPG){width=100%}
    <br>
    The person or organization who provides the audio recording. This element maps to the element *provider* in AudioObject. 
 
    - **`audio_url`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_35.JPG){width=100%}
+   ![](./images/ReDoc_audio_35.JPG){width=100%}
    <br>
    URL of the audio recording. This element maps to the element *url* in AudioObject.
 
    - **`embed_url`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_36.JPG){width=100%}
+   ![](./images/ReDoc_audio_36.JPG){width=100%}
    <br>
    A URL pointing to a player for a specific audio file. This element maps to the element *embedUrl* in AudioObject.
 
-   - **`encodingFormat`**  *[Optional ; Not repeatable, String]* <br>
+   - **`encoding_format`**  *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_37.JPG){width=100%}
+   ![](./images/ReDoc_audio_37.JPG){width=100%}
    <br>
-   The media type typically expressed using a MIME format. This element is a AudioObject element and maps to the element *format* of the Dublin Core.
+   The media type typically expressed using a MIME format. This element maps to the *encodingFormat* element of the AudioObject schema and to the *format* element of the Dublin Core.
+   
+   - **`media`** *[Optional ; Repeatable]* <br>   @@@@@@ Not in ReDoc      
+   A description of the media on which the recording is stored (other than the online file format); e,g., "CD-ROM". 
 
    - **`duration`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_38.JPG){width=100%}
+   ![](./images/ReDoc_audio_38.JPG){width=100%}
    <br>
    The duration of the audio recording in ISO 8601 date format. This element is a AudioObject element.
 
-   ISO 8601 durations are expressed using the following format, where (n) is replaced by the value for each of the date and time elements that follow the (n):
+   ISO 8601 durations are expressed using the following format, where (n) is replaced by the value for each of the date and time elements that <u>follows</u> the (n). For example: (3)H means 3 hours. 
 
-   P(n)Y(n)M(n)DT(n)H(n)M(n)S
+   **`P(n)Y(n)M(n)DT(n)H(n)M(n)S`**
 
     Where:
     
-       - P is the Period designator and is always placed at the beginning of the duration
-       - (n)Y represents the number of years
-       - (n)M represents the number of months
-       - (n)W represents the number of weeks
-       - (n)D represents the number of days
-       - T is the Time designator and always precedes the time components
-       - (n)H represents the number of hours
-       - (n)M represents the number of minutes
-       - (n)S represents the number of seconds
+       - P is the **Period designator** and is always placed at the beginning of the duration
+         - (n)Y represents the number of years
+         - (n)M represents the number of months
+         - (n)W represents the number of weeks
+         - (n)D represents the number of days
+       - T is the **Time designator** and always precedes the time components
+         - (n)H represents the number of hours
+         - (n)M represents the number of minutes
+         - (n)S represents the number of seconds
 
    For example, **P1Y2M20DT3H30M8S** represents a duration of one year, two months, twenty days, three hours, thirty minutes, and eight seconds.
 
    Date and time elements including their designator may be omitted if their value is zero, and lower-order elements may also be omitted for reduced precision. For example, "P23DT23H" and "P4Y" are both acceptable duration representations.
 
-   As *M* can represent both Month and Minutes, the time designator *T* is used. For example, "P1M" is a one-month duration and "PT1M" is a one-minute duration.
-
-   This information on the ISO 8601 was adapted from [wikipedia](https://en.wikipedia.org/wiki/ISO_8601) where more detailed information can be found.
-
    - **`rights`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_39.JPG){width=100%}
+   ![](./images/ReDoc_audio_39.JPG){width=100%}
    <br>
    A textual description of the rights associated to the audio recording. If a copyright is available, the three following elements will be used instead of this element. 
 
-   - **`copyrightHolder`** *[Optional ; Not repeatable, String]* <br>
+   - **`copyright_holder`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_40.JPG){width=100%}
+   ![](./images/ReDoc_audio_40.JPG){width=100%}
    <br>
-   The party holding the legal copyright to the audio recording. This element is a AudioObject element.
+   The party holding the legal copyright to the audio recording. This element maps to the *copyrightHolder* element of the AudioObject schema.
 
-   - **`copyrightNotice`** *[Optional ; Not repeatable, String]* <br>
+   - **`copyright_notice`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_41.JPG){width=100%}
+   ![](./images/ReDoc_audio_41.JPG){width=100%}
    <br>
-   Text of a notice appropriate for describing the copyright aspects of the audio recording, ideally indicating the owner of the copyright. This element is a AudioObject element.
+   Text of a notice appropriate for describing the copyright aspects of the audio recording, ideally indicating the owner of the copyright. This element maps to the *copyrightNotice* element of the AudioObject schema
 
-   - **`copyrightYear`** *[Optional ; Not repeatable, String]* <br>
+   - **`copyright_year`** *[Optional ; Not repeatable, String]* <br>
    <br>
-   ![](./images/@@@@_42.JPG){width=100%}
+   ![](./images/ReDoc_audio_42.JPG){width=100%}
    <br>
-   The year during which the claimed copyright for the audio recording was first asserted. This element is a AudioObject element.
+   The year during which the claimed copyright for the audio recording was first asserted. This element maps to the *copyrightYear* element of the AudioObject schema.
 
-   - **`creditText`** *[Optional ; Not repeatable, String]* <br>   @@@@@@ Not in ReDoc
+   - **`credit_text`** *[Optional ; Not repeatable, String]* <br>  
    <br>
-   ![](./images/@@@@_43.JPG){width=100%}
+   ![](./images/ReDoc_audio_43.JPG){width=100%}
    <br>
-   This element that can be used to credit the person(s) and/or organization(s) associated with a published audio recording. This element is a AudioObject element.
-
-   - **`transcript`** *[Optional ; Repeatable]* <br>   @@@@@@ Not in ReDoc
+   This element that can be used to credit the person(s) and/or organization(s) associated with a published audio recording. This element maps to the *creditText* element of the AudioObject schema.
+   
+   - **`citation`** *[Optional ; Not repeatable, String]* <br>  
    <br>
-   ![](./images/@@@@.JPG){width=100%}
+   ![](./images/ReDoc_audio_43b.JPG){width=100%}
+   <br>
+   This element provides a required or recommended citation of the audio file.
+   
+   - **`transcript`** *[Optional ; Repeatable]* <br>   
+   <br>
+   ![](./images/ReDoc_audio_44.JPG){width=100%}
    <br>
    The transcript of the audio recording content, provided as a text. Note that if the text is very long, an alternative is to save it in a separate text file and to make it available in a data catalog as an external resource.
       - **`language`** *[Optional ; Not repeatable ; String]* <br>   
@@ -513,11 +573,11 @@ my_audio <- list(
       - **`text`** *[Optional ; Not repeatable ; String]* <br>   
       The transcript itself.
 
-   - **`album`** *[Optional ; Repeatable]* <br>   @@@@@@ Not in ReDoc
+   - **`album`** *[Optional ; Repeatable]* <br>   
    <br>
-   ![](./images/@@@@_44.JPG){width=100%}
+   ![](./images/ReDoc_audio_45.JPG){width=100%}
    <br>
-   When an audio recording is published in a catalog containing many other audio recording, it may be desirable to organize them by album. Albums are collections of audio recording organized by theme, period, location, or other criteria. One audio recording can belong to more than one album. Albums are "virtual collections". 
+   When an audio recording is published in a catalog containing many other audio recording, it may be desirable to organize them by album. Albums are collections of audio recording organized by theme, period, location, author, or other criteria. One audio recording can belong to more than one album. Albums are "virtual collections". 
       - **`name`** *[Optional ; Not Repeatable ; String]* <br>
       The name (label) of the album. 
       - **`description`** *[Optional ; Not Repeatable ; String]* <br>
@@ -529,37 +589,38 @@ my_audio <- list(
 
    - **`provenance`** *[Optional ; Repeatable]* <br>  
    <br>
-   ![](./images/@@@@_43.JPG){width=100%}  
+   ![](./images/ReDoc_audio_46.JPG){width=100%}  
    <br>
-   Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been done to the harvested metadata. These elements are NOT part of the IPTC or DCMI metadata standard.
+   Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been done to the harvested metadata. These elements are NOT part of the IPTC or DCMI metadata standard.<br>
      - **`origin_description`** *[Required ; Not repeatable]* <br>
-     The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  
+     The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.<br>  
         - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-        The date and time the metadata were harvested, in ISO 8601 format.
+        The date and time the metadata were harvested, in ISO 8601 format.<br>
         - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-        A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Study Description / Title Statement section) will be modified when published in a new catalog.
+        A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Study Description / Title Statement section) will be modified when published in a new catalog.<br>
         - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-        The URL from where the metadata were harvested.
+        The URL from where the metadata were harvested.<br>
         - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-        The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.
+        The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
         - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-        The datestamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).
+        The datestamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
         - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-        @@@@@@@ 
+        @@@@@@@ <br>
 
-   - **`tags`** *[Optional ; Repeatable]* <br>
-   Tags provides easy way to include custom-facets in data catalogs. 
+   - **`tags`** *[Optional ; Repeatable]* <br>        
+     As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
   <br>
-  ![](./images/@@@@_44.JPG){width=100%}  
+  ![](./images/ReDoc_audio_47.JPG){width=100%}  
   <br>
-      - `tag` *[Required ; Not repeatable ; String]* <br>
-      The tag.
-      - `tag_group` *[Optional ; Not repeatable ; String]* <br>
-      The tag group (tag groups are used to organize tags in facets in data catalogs).<br>
-      
-   - **`additional`**
+    - **`tag`** *[Required ; Not repeatable ; String]* <br>
+    A user-defined tag.
+    - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
+    A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
+
+   - **`additional`** *[Optional ; Not repeatable]*<br>
+   The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
   <br>
-  ![](./images/@@@@_45.JPG){width=100%}  
+  ![](./images/ReDoc_audio_48.JPG){width=100%} 
   <br>
 
 
@@ -572,13 +633,16 @@ my_audio <- list(
 
 library(nadar)
 
-setwd("E:\my_documents")
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-# Set API key and URL
-set_api_key("my_api_key")                                # Enter a valid API key
-set_api_url("http://my_catalog.ihsn.org/index.php/api/") # Provide the NADA catalog URL
-
-thumb = "vdo_001.jpg"
+setwd("E:\my_recordings")
+thumb = "audio_001.jpg"
 
 # Generate the metadata
 my_audio = list(
@@ -594,38 +658,63 @@ my_audio = list(
   ),
   
   audio_description = list(
+    
       idno = "AUDIO_001",
-      title = "",
-      alt_title = "",
-      date_published = "",
-      description = "",
-      genre = "",
+      
+      title = "Interview of the prime minister of Popstan on the 2020 Population and Housing Census",
+      date_published = "2020-01-15",
+      
+      description = "Recording of an interview of the prime minister of Popstan by the Popstan Broadcast Corporation (broadcasted on 2020-01-15) about the June 2020 Population and Housing Census.",
+      genre = "Interview",
+      
       persons = list(
-        list(name = "", role = ""),
-        list(name = "", role = "")
+        list(name = "Mr. John Elected", 
+             role = "Prime Minister, Popstan"),
+        list(name = "Ms. Jane Star", 
+             role = "Interviewer, Popstan Broadcast Corporation (PBC)")
       ),  
+      
       main_entity = "",
+      
       ref_country = list(
-         list(name = "", code = "")
+         list(name = "Popstan", code = "POP")
       ),   
-      content_location = "",
-      content_reference_time = "",
+      
+      topics
+      keywords
+      
+      
+      content_location = "PBC Studio",
+      
+      content_reference_time = "2020-06",
+      
       languages = list(
         list(name = "English", code = "EN")
       ),
+      
       creator = "",
+      
       audio_url = "",
+      
       embed_url = ""
-      duration = ""  
+      
+      duration = "PT35M20S"   # 35 minutes, 20 seconds
+      
   )
   
 )
 
 # Publish in NADA catalog
-audio_add(idno = id, published = 1, overwrite = "yes", metadata = my_audio, thumbnail = thumb)
+
+audio_add(idno = id, 
+          published = 1, 
+          overwrite = "yes", 
+          metadata = my_audio, 
+          thumbnail = thumb)
 
 ```
 
+@@@ Result in NADA (screenshots)
 
 ### In Python
 

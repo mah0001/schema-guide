@@ -122,7 +122,7 @@ This section contains the metadata elements that describe the table itself. Not 
    ![](./images/ReDoc_Table_03.JPG){width=100%}
    <br>
    - **`idno`** *[Required, Not Repeatable, String]* <br>
-   A unique identifier to the table. Do not include spaces in the `idno`. This identifier must be unique to the catalog in which the table will be published. Some organizations have their own system to assign unique identifiers to tables. Ideally, an identifier that guarantees uniqueness globally will be used, such as a Digital Object Identifier (DOI) or an ISBN number. Note that a table may have more than one identifier. In such case, the element `idno` (as a non-repeatable element) will contain the main identifier (as selected as the "reference" one by the catalog administrator). The other identifiers will be provided in the element `id_numbers` (see below).<br>
+   A unique identifier to the table. Do not include spaces in the `idno`. This identifier must be unique to the catalog in which the table will be published. Some organizations have their own system to assign unique identifiers to tables. Ideally, an identifier that guarantees uniqueness globally will be used, such as a Digital Object Identifier (DOI) or an ISBN number. Note that a table may have more than one identifier. In such case, the element `idno` (as a non-repeatable element) will contain the main identifier (as selected as the "reference" one by the catalog administrator). The other identifiers will be provided in the element `identifiers` (see below).<br>
     - **`table_number`** *[Optional, Not Repeatable, String]* <br>
     The table number. The table number will usually begin with the word “Table” followed by a numeric identifier such as: Table 1 or Table 2.1 etc. Different publications may use different ways to reference a table. This is particularly the case for publications that are part of a standard survey program and have well-defined table templates. The following are different ways to number a table:
     
@@ -165,7 +165,7 @@ This section contains the metadata elements that describe the table itself. Not 
     
     ```
 
-- **`id_numbers`** *[Optional ; Repeatable]* <br>
+- **`identifiers`** *[Optional ; Repeatable]* <br>
 This element is used to enter document identifiers other than the catalog identifier entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI). The identifier entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
     <br>
     ![](./images/ReDoc_Table_04.JPG){width=100%}
@@ -182,7 +182,7 @@ This element is used to enter document identifiers other than the catalog identi
       # ... ,
       table_description = list(
             # ... ,
-            id_numbers = list(
+            identifiers = list(
               type  = "DOI",
               value = "XXX.XXX.XXXX"
             ),
@@ -627,21 +627,24 @@ The element provides information on the unit(s) of observations that correspond 
     )
     ```
 
-- **`data_sources`** *[Optional, Repeatable]* <br>     @@@@ redo screenshot; has more elements than shown
+- **`data_sources`** *[Optional, Repeatable]* <br>     
 The data sources are often cited in the footnote section of a table. The `name`, `source_id`, and `link` elements are optional, but at least one of them must be provided.
+  <br>
+  ![](./images/ReDoc_Table_15.JPG){width=100%}
+  <br>
     - **`name`** *[Optional, Not repeatable, String]* <br>
     The name (title) of the data source. For example, a table data may be extracted from the "Population Census 2020".  
     - **`abbreviation`** *[Optional, Not repeatable, String]* <br>
     The abbreviation (acronym) of the data source. 
-    - **`source_id`** *[Optional, Not repeatable, String]*  @@@@@@@@@@ added - need new screenshot
+    - **`source_id`** *[Optional, Not repeatable, String]*  
     A unique identifier for the source, such as a Digital Object Identifier (DOI).
-    - **`link`** *[Optional, Not repeatable, String]* <br>
-    A link (URL) to the source dataset. 
     - **`note`** *[Optional, Not repeatable, String]* <br>
     A note that describes how the source was used, possibly mentioning issues in the use of the source.
+    - **`uri`** *[Optional, Not repeatable, String]* <br>
+    A link (URL) to the source dataset.
     <br>
 
-    ![](./images/ReDoc_Table_15.JPG){width=100%}
+    
 
   > Example in R: 
 
@@ -786,6 +789,20 @@ A description of the geographic levels for which data are presented in the table
     )
     ```
 
+- **`bbox`** *[Optional ; Repeatable]* <br>
+Bounding boxes are typically used for geographic datasets to indicate the geographic coverage of the data, but can be provided for tables as well, although this will rarely be done. A geographic bounding box defines a rectangular geographic area.
+<br>
+![](./images/ReDoc_Table_19b.JPG){width=100%}
+<br>
+    - **`west`** *[Required ; Not repeatable ; String]* <br>
+    Western geographic parameter of the bounding box.
+    - **`east`** *[Required ; Not repeatable ; String]* <br>
+    Eastern geographic parameter of the bounding box.
+    - **`south`** *[Required ; Not repeatable ; String]* <br>
+    Southern geographic parameter of the bounding box.
+    - **`north`** *[Required ; Not repeatable ; String]* <br>
+    Northern geographic parameter of the bounding box.
+
 - **`languages`** *[Optional, Repeatable]* <br>
 Most tables will only be provided in one language. This is however a repeatable field, to allow for more than one language to be listed.
     <br>
@@ -913,7 +930,7 @@ A list of keywords that provide information on the core content of the table. Ke
     ``` 
 
  
-- **`themes`** *[Optional ; Repeatable]* <br>  @@@@@@@@@@@ redo screenshot - incomplete
+- **`themes`** *[Optional ; Repeatable]* <br>
   <br>
   ![](./images/ReDoc_Table_24.JPG){width=100%}
   <br> 
@@ -981,7 +998,7 @@ This element is a block of five fields:
   
   ```
 
-- **`disciplines`** *[Optional ; Repeatable]* <br>   @@@@@ some missing elements in ReDoc; add then redo screenshot
+- **`disciplines`** *[Optional ; Repeatable]* <br>   
   <br>
   ![](./images/ReDoc_Table_26.JPG){width=100%}
   <br> 
@@ -1149,7 +1166,7 @@ A published table may be protected through a confidentiality agreement between t
 ![](./images/ReDoc_Table_29c.JPG){width=100%}
 <br>
 
-- **`sdc`** *[Optional, Not repeatable, String]* <br>  @@@@@@@@@@@@ add to the schema; do screenshot
+- **`sdc`** *[Optional, Not repeatable, String]* <br>  
 Information on statistical disclosure control measures applied to the table. This can include cell suppression, or other techniques. Specialized packages have been developed for this purpose, like [*sdcTable: Methods for Statistical Disclosure Control in Tabular Data*](https://cran.r-project.org/web/packages/sdcTable/index.html) and https://cran.r-project.org/web/packages/sdcTable/sdcTable.pdf <br>
 The information provided here should be such that it does not provide intruders with useful information for reverse-engineering the protection measures applied to the table.
 <br>
@@ -1233,21 +1250,21 @@ If the table has a relation to other resources (e.g., it is a subset of another 
 <br>
 ![](./images/ReDoc_Table_35.JPG){width=100%}
 <br>
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. 
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
    - **`origin_description`** *[Required ; Not repeatable]* <br>
-   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  
+   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.<br>
       - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-      The date and time the metadata were harvested, entered in ISO 8601 format.
+      The date and time the metadata were harvested, entered in ISO 8601 format.<br>
       - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Table Description / Title Statement section) will be modified when published in a new catalog.
+      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Table Description / Title Statement section) will be modified when published in a new catalog.<br>
       - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-      The URL from where the metadata were harvested.
+      The URL from where the metadata were harvested.<br>
       - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.
+      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
       - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).
+      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
       - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-      @@@@@@@ 
+      @@@@@@@ <br>
 
 ### Tags
 
@@ -1272,7 +1289,7 @@ The `additional` element allows data curators to add their own metadata elements
 
 ## Complete examples
 
-We provide here examples of documentation of actual tables, and their publishing in a NADA catalog. We use the R package NADAR and the Python library PyNada to publish metadata in the catalog.
+We provide here examples of documentation of actual tables, and their publishing in a NADA catalog. We use the R package NADAR and the Python library PyNada to publish metadata in the catalog. The example only demonstrate the production and publishing of table metadata. We do not show in the example how the **data** can also be published in a NADA database (MongoDB), to be made available via API. The use of the data API is covered in the NADA documentation. 
 
 ### Example 1 
 
@@ -1297,13 +1314,13 @@ set_api_verbose(FALSE)
 
 setwd("C:/my_tables/")
 
+id = "TBL_EXAMPLE_01"
 thumb = "household_pic.JPG"   # To be used as thumbnail in the data catalog
-
 
 # Document the table
 
 my_table_hh4 <- list(
-
+  
   metadata_information = list(
     idno = "META_TBL_EXAMPLE-01",
     producers = list(
@@ -1315,7 +1332,7 @@ my_table_hh4 <- list(
   table_description = list(
     
     title_statement = list(
-      idno = "TBL_EXAMPLE-01",
+      idno = id,
       table_number = "Table HH-4",
       title = "Households by Size: 1960 to Present",
       sub_title = "(Numbers in thousands, except for averages)"
@@ -1335,7 +1352,7 @@ my_table_hh4 <- list(
     
     table_columns = list(
       list(label = "Year"),
-      list(label = "All households (number)")
+      list(label = "All households (number)"),
       list(label = "Number of people: One"),
       list(label = "Number of people: Two"),
       list(label = "Number of people: Three"),
@@ -1363,14 +1380,14 @@ my_table_hh4 <- list(
       
       list(number = "4", 
            text = "The 2014 CPS ASEC included redesigned questions for income and health insurance coverage. All of the approximately 98,000 addresses were selected to receive the improved set of health insurance coverage items. The improved income questions were implemented using a split panel design.  Approximately 68,000 addresses were selected to receive a set of income questions similar to those used in the 2013 CPS ASEC. The remaining 30,000 addresses were selected to receive the redesigned income questions. The source of data for this table is the CPS ASEC sample of 98,000 addresses.")
-    
+      
     ),
     
     table_series = list(
-        list(name = "Historical Households Tables",
-             maintainer = "United States Census Bureau",
-             uri = "https://www.census.gov/data/tables/time-series/demo/families/households.html",
-             description = "Tables on households generated from the Current Population Survey")
+      list(name = "Historical Households Tables",
+           maintainer = "United States Census Bureau",
+           uri = "https://www.census.gov/data/tables/time-series/demo/families/households.html",
+           description = "Tables on households generated from the Current Population Survey")
     ),
     
     statistics = list(
@@ -1391,7 +1408,7 @@ my_table_hh4 <- list(
     ),
     
     universe = list(
-        value = "US resident population"
+      list(value = "US resident population")
     ),
     
     ref_country = list(
@@ -1414,26 +1431,27 @@ my_table_hh4 <- list(
     topics = list(
       list(
         id = "1",
-        name = "Demography.Censuses",
+        name = "Demography - Censuses",
         parent_id = "Demography",
         vocabulary = "CESSDA Controlled Vocabulary for CESSDA Topic Classification v. 3.0 (2019-05-20)",
         uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification?v=3.0"
       )
     ),
-
+    
     contacts = list(
       list(name = "Fertility and Family Statistics Branch",
            affiliation = "US Census Bureau",
            telephone = "+1 - 301-763-2416",
            uri = "ask.census.gov")
     )
+    
+  )
+
+)    
   
-)
+# Publish the table in a NADA catalog
 
-
-# Publish the table in a NADA catalog with a link to US Bucen website
-
-table_add(idno = my_table_hh4$table_description$title_statement$idno, 
+table_add(idno = id, 
           metadata = my_table_hh4, 
           repositoryid = "central", 
           published = 1, 
@@ -1444,7 +1462,7 @@ table_add(idno = my_table_hh4$table_description$title_statement$idno,
 
 external_resources_add(
   title = "Historical Households Tables (US Bucen web page)",
-  idno = my_table_hh4$table_description$title_statement$idno,
+  idno = id,
   dctype = "web",
   file_path = "https://www.census.gov/data/tables/time-series/demo/families/households.html",
   overwrite = "yes"
@@ -1452,8 +1470,11 @@ external_resources_add(
 
 ```
 
-The result in NADA will look like (not full metadata displayed):
-@@@@ add screenshots
+The result in NADA will be as follows (only part of metadata displayed):
+
+<br>
+![](./images/table_example_01_US_BUCEN_nada1.JPG){width=100%}
+<br>
 
 
 **Using Python**
@@ -1495,42 +1516,48 @@ library(jsonlite)
 library(httr)
 library(rlist)
 
-# Set API key (stored in a CSV file; not to be entered in clear) and catalog URL
-
-my_keys <- read.csv("C:/CONFIDENTIAL/my_keys.csv", header=F, stringsAsFactors=F)
-set_api_key(my_keys[5,1])  # Assuming the key is in cell A5
-set_api_url("http://nada-demo.ihsn.org/index.php/api/") 
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
 set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-thumb_file <- "E:/demo_nada_files/UC013/WB_country_profiles_WLD.jpg"
+setwd("C:/my_tables/")
+
+thumb_file <- "WB_country_profiles_WLD.jpg"
 
 src_data <- "World Bank, World Development Indicators database - WDI Central, 2021"
 
 # The tables contain data extracted from WDI time series. We identified these 
 # series ID and we list them here in their order of appearance in the table. 
-# We then use the WDI API to retrieve information on the series (name, label, 
-# definition) to be included in the published metadata. 
 
-tbl_wdi_indicators = list("SP.POP.TOTL", "SP.POP.GROW", "AG.SRF.TOTL.K2", "EN.POP.DNST",
-                  "SI.POV.NAHC", "SI.POV.DDAY", "NY.GNP.ATLS.CD", "NY.GNP.PCAP.CD",
-                  "NY.GNP.MKTP.PP.CD", "NY.GNP.PCAP.PP.CD", "SI.DST.FRST.20",
-                  "SP.DYN.LE00.IN", "SP.DYN.TFRT.IN", "SP.ADO.TFRT", "SP.DYN.CONU.ZS",
-                  "SH.STA.BRTC.ZS", "SH.DYN.MORT", "SH.STA.MALN.ZS", "SH.IMM.MEAS",
-                  "SE.PRM.CMPT.ZS", "SE.PRM.ENRR", "SE.SEC.ENRR", "SE.ENR.PRSC.FM.ZS",
-                  "SH.DYN.AIDS.ZS", "AG.LND.FRST.K2", "ER.PTD.TOTL.ZS", 
-                  "ER.H2O.FWTL.ZS", "SP.URB.GROW", "EG.USE.PCAP.KG.OE", 
-                  "EN.ATM.CO2E.PC", "EG.USE.ELEC.KH.PC", "NY.GDP.MKTP.CD", 
-                  "NY.GDP.MKTP.KD.ZG", "NY.GDP.DEFL.KD.ZG", "NV.AGR.TOTL.ZS", 
-                  "NV.IND.TOTL.ZS", "NE.EXP.GNFS.ZS", "NE.IMP.GNFS.ZS",
-                  "NE.GDI.TOTL.ZS", "GC.REV.XGRT.GD.ZS", "GC.NLD.TOTL.GD.ZS", 
-                  "FS.AST.DOMS.GD.ZS", "GC.TAX.TOTL.GD.ZS", "MS.MIL.XPND.GD.ZS",
-                  "IT.CEL.SETS.P2", "IT.NET.USER.ZS", "TX.VAL.TECH.MF.ZS", 
-                  "IQ.SCI.OVRL", "TG.VAL.TOTL.GD.ZS", "TT.PRI.MRCH.XD.WD", 
-                  "DT.DOD.DECT.CD", "DT.TDS.DECT.EX.ZS", "SM.POP.NETM", 
-                  "BX.TRF.PWKR.CD.DT", "BX.KLT.DINV.CD.WD", "DT.ODA.ODAT.CD")
+tbl_wdi_indicators = list(
+  "SP.POP.TOTL", "SP.POP.GROW", "AG.SRF.TOTL.K2", "EN.POP.DNST",
+  "SI.POV.NAHC", "SI.POV.DDAY", "NY.GNP.ATLS.CD", "NY.GNP.PCAP.CD",
+  "NY.GNP.MKTP.PP.CD", "NY.GNP.PCAP.PP.CD", "SI.DST.FRST.20",
+  "SP.DYN.LE00.IN", "SP.DYN.TFRT.IN", "SP.ADO.TFRT", "SP.DYN.CONU.ZS",
+  "SH.STA.BRTC.ZS", "SH.DYN.MORT", "SH.STA.MALN.ZS", "SH.IMM.MEAS",
+  "SE.PRM.CMPT.ZS", "SE.PRM.ENRR", "SE.SEC.ENRR", "SE.ENR.PRSC.FM.ZS",
+  "SH.DYN.AIDS.ZS", "AG.LND.FRST.K2", "ER.PTD.TOTL.ZS", 
+  "ER.H2O.FWTL.ZS", "SP.URB.GROW", "EG.USE.PCAP.KG.OE", 
+  "EN.ATM.CO2E.PC", "EG.USE.ELEC.KH.PC", "NY.GDP.MKTP.CD", 
+  "NY.GDP.MKTP.KD.ZG", "NY.GDP.DEFL.KD.ZG", "NV.AGR.TOTL.ZS", 
+  "NV.IND.TOTL.ZS", "NE.EXP.GNFS.ZS", "NE.IMP.GNFS.ZS",
+  "NE.GDI.TOTL.ZS", "GC.REV.XGRT.GD.ZS", "GC.NLD.TOTL.GD.ZS", 
+  "FS.AST.DOMS.GD.ZS", "GC.TAX.TOTL.GD.ZS", "MS.MIL.XPND.GD.ZS",
+  "IT.CEL.SETS.P2", "IT.NET.USER.ZS", "TX.VAL.TECH.MF.ZS", 
+  "IQ.SCI.OVRL", "TG.VAL.TOTL.GD.ZS", "TT.PRI.MRCH.XD.WD", 
+  "DT.DOD.DECT.CD", "DT.TDS.DECT.EX.ZS", "SM.POP.NETM", 
+  "BX.TRF.PWKR.CD.DT", "BX.KLT.DINV.CD.WD", "DT.ODA.ODAT.CD"
+)
 
 rows = list()
 defs = list()
+
+# We then use the WDI API to retrieve information on the series (name, label, 
+# definition) to be included in the published metadata. 
 
 for(s in tbl_wdi_indicators) {
   
@@ -1546,7 +1573,7 @@ for(s in tbl_wdi_indicators) {
   
   indic_lbl = s_metadata$value[s_metadata$id=="IndicatorName"]
   indic_def = s_metadata$value[s_metadata$id=="Longdefinition"]
-
+  
   this_row = list(var_name = s, dataset = src_data, label = indic_lbl)
   rows = list.append(rows, this_row)
   
@@ -1571,7 +1598,7 @@ publish_country_profile <- function(country_name, country_code) {
                       country_name, " - 2021")
   citation  <- paste("World Bank,", tbl_title, 
                      ", https://datacatalog.worldbank.org/dataset/country-profiles, accessed on [date]")
-
+  
   # Generate the schema-compliant metadata
   
   my_tbl <- list(
@@ -1672,15 +1699,15 @@ publish_country_profile <- function(country_name, country_code) {
         list(id = "6", name = "Natural Environment", 
              vocabulary = "CESSDA", 
              uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
-        list(id = "7", name = "Social Welfare Policy And Systems", 
+        list(id = "7", name = "Social Welfare Policy and Systems", 
              vocabulary = "CESSDA", 
              uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
-        list(id = "8", name = "Trade Industry And Markets", 
+        list(id = "8", name = "Trade Industry and Markets", 
              vocabulary = "CESSDA", 
              uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
         list(id = "9", name = "Economic development")
       ),
-
+      
       definitions = defs,
       
       license  = list(
@@ -1702,7 +1729,7 @@ publish_country_profile <- function(country_name, country_code) {
   )  
   
   # Publish the table in the NADA catalog
-
+  
   table_add(idno = my_tbl$table_description$title_statement$idno, 
             metadata = my_tbl, 
             repositoryid = "central", 
@@ -1723,12 +1750,10 @@ publish_country_profile <- function(country_name, country_code) {
 }
 
 # --------------------------------------------------------------------------
-# Run the function in a loop to publish selected tables 
+# We run the function in a loop to publish the selected tables 
 # --------------------------------------------------------------------------
 
-# List of regions and countries (and corresponding codes)
-# We also include the geographic area type.
-# We only include here a subset of geographies for which the table is available.
+# List of countries/regions
 
 geo_list <- list(
   list(name = "World",                        code = "WLD", area = "World"),
@@ -1747,7 +1772,7 @@ geo_list <- list(
   list(name = "Pakistan",                     code = "PAK", area = "Country"),
   list(name = "Sri Lanka",                    code = "LKA", area = "Country"))
 
-# Loop through the list to publish the tables
+# Loop through the list of countries/region to publish the tables
 
 for(i in 1:length(geo_list)) {
   area <- as.character(geo_list[[i]][3])
@@ -1790,27 +1815,26 @@ library(nadar)
 library(readxl)
 library(rlist)
 
-setwd("C:/Users/wb147665/OneDrive - WBG/_OD/SCHEMA_GUIDE/MISC")
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-# --------------------------------------------------------------------------
-# Catalog administrator credentials
-# --------------------------------------------------------------------------
+setwd("C:/my_tables/")
 
-# Set catalog URL - The on-line catalog where the tables will be published
-catalog_url <- "http://my_NADA_catalog/index.php/api"
-set_api_url(catalog_url)
-# Enter an API key that provides administrator access to the catalog
-# We read it from an external file to keep it confidential. 
-my_keys <- read.csv("C:/myfolder/my_API_keys.csv", header=F, stringsAsFactors=F)
-my_key  <- my_keys[17,1]
-set_api_key(my_key)
+thumb = "SDGs.jpg"
+
+id = "TBL_EXAMPLE-03"
 
 # ---------------------------------------------------------------------------
 # We read the MS-Excel file and extract the list of countries and definitions
 # ---------------------------------------------------------------------------
 
 # We generate the list of countries
-df <- read_xlsx("WV.2_Global_goals_ending_poverty_and_improving_lives.xlsx", 
+df <- read_xlsx("WV2_Global_goals_ending_poverty_and_improving_lives.xlsx", 
                 range = "A5:A230")
 ctry_list <- list()
 for(i in 1:nrow(df)) {
@@ -1818,12 +1842,14 @@ for(i in 1:nrow(df)) {
   ctry_list <- list.append(ctry_list, c)
 }
 
-# We extract the definitions found in the table; note that we could have 
-# instead copy/pasted the definitions. For example, the command line:
-#    list(name = as.character(df[1,1]),  definition = as.character(df[3,1]))
-# is the same as:
-#    list(name = "Income share held by lowest 20%",
-#         definition = "Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.")
+# We extract the definitions found in the table.  
+# Note that we could have instead copy/pasted the definitions. 
+# For example, the command line:
+#   list(name = as.character(df[1,1]), definition = as.character(df[3,1]))
+# is equivalent to:
+#   list(name = "Income share held by lowest 20%",
+#        definition = "Percentage share of income or consumption is the share that accrues to subgroups of population indicated by deciles or quintiles. Percentage shares by quintile may not sum to 100 because of rounding.")
+
 df <- read_xlsx("WV2_Global_goals_ending_poverty_and_improving_lives.xlsx", 
                 range = "A241:A340", col_names = FALSE)
 
@@ -1841,7 +1867,7 @@ def_list = list(
   list(name = as.character(df[92,1]), definition = as.character(df[94,1]))
 )  
 
-# We can now generate the table metadata
+# We generate the table metadata
 
 my_tbl <- list(
   
@@ -1856,7 +1882,7 @@ my_tbl <- list(
   table_description = list(
     
     title_statement = list(
-      idno = "TBL_EXAMPLE-03",
+      idno = id,
       table_number = "WV.2",
       title = "Global Goals: Ending Poverty and Improving Lives"
     ),
@@ -1893,13 +1919,14 @@ my_tbl <- list(
     table_series = list(
       list(name = "World Development Indicators - World View",
            description = "World Development Indicators includes data spanning up to 56 years-from 1960 to 2016. World view frames global trends with indicators on population, population density, urbanization, GNI, and GDP. As in previous years, the World view online tables present indicators measuring the world's economy and progress toward improving lives, achieving sustainable development, providing support for vulnerable populations, and reducing gender disparities. Data on poverty and shared prosperity are now in a separate section, while highlights of progress toward the Sustainable Development Goals are now presented in the companion publication, Atlas of Sustainable Development Goals 2017.
-                          The global highlights in this section draw on the six themes of World Development Indicators:
-                          -Poverty and shared prosperity, which presents indicators that measure progress toward the World Bank Group's twin goals of ending extreme poverty by 2030 and promoting shared prosperity in every country.
-                          -People, which showcases indicators covering education, health, jobs, social protection, and gender and provides a portrait of societal progress across the world.
-                          -Environment, which presents indicators on the use of natural resources, such as water and energy, and various measures of environmental degradation, including pollution, deforestation, and loss of habitat, all of which must be considered in shaping development strategies.
-                          -Economy, which provides a window on the global economy through indicators that describe the economic activity of the more than 200 countries and territories that produce, trade, and consume the world's output.
-                          -States and markets, which encompasses indicators on private investment and performance, financial system development, quality and availability of infrastructure, and the role of the public sector in nurturing investment and growth.
-                          -Global links, which presents indicators on the size and direction of the flows and links that enable economies to grow, including measures of trade, remittances, equity, and debt, as well as tourism and migration.",
+           
+  The global highlights in this section draw on the six themes of World Development Indicators:
+  - Poverty and shared prosperity, which presents indicators that measure progress toward the World Bank Group's twin goals of ending extreme poverty by 2030 and promoting shared prosperity in every country.
+  - People, which showcases indicators covering education, health, jobs, social protection, and gender and provides a portrait of societal progress across the world.
+  - Environment, which presents indicators on the use of natural resources, such as water and energy, and various measures of environmental degradation, including pollution, deforestation, and loss of habitat, all of which must be considered in shaping development strategies.
+  - Economy, which provides a window on the global economy through indicators that describe the economic activity of the more than 200 countries and territories that produce, trade, and consume the world's output.
+  - States and markets, which encompasses indicators on private investment and performance, financial system development, quality and availability of infrastructure, and the role of the public sector in nurturing investment and growth.
+  - Global links, which presents indicators on the size and direction of the flows and links that enable economies to grow, including measures of trade, remittances, equity, and debt, as well as tourism and migration.",
            uri = "http://wdi.worldbank.org/tables",
            maintainer = "World Bank, Development Data Group (DECDG)")
     ),
@@ -1977,19 +2004,38 @@ my_tbl <- list(
 )  
 
 # We publish the table in the catalog
-table_add(idno = my_tbl$table_description$title_statement$idno, 
+
+table_add(idno = id, 
           metadata = my_tbl, 
           repositoryid = "central", 
           published = 1, 
           overwrite = "yes",
-          thumbnail = "SDGs.jpg")
+          thumbnail = thumb)
 
-# We add external resources and publish them 
-# (The MS-Excel and PDF versions of the table)
+# We add the MS-Excel and PDF versions of the table as external resources
 
+external_resources_add(
+  title = "Global Goals: Ending Poverty and Improving Lives (in MS-Excel format)",
+  idno = id,
+  dctype = "tbl",
+  file_path = "WV2_Global_goals_ending_poverty_and_improving_lives.xlsx",
+  overwrite = "yes"
+)
 
-
+external_resources_add(
+  title = "Global Goals: Ending Poverty and Improving Lives (in PDF format)",
+  idno = id,
+  dctype = "tbl",
+  file_path = "WV2_Global_goals_ending_poverty_and_improving_lives.pdf",
+  overwrite = "yes"
+)
 ```
+
+The table will now be available in the NADA catalog.
+
+<center>
+![](./images/Table_Example03_in_NADA.JPG){width=100%}
+</center>
 
 > Using Python
 
@@ -1997,22 +2043,7 @@ table_add(idno = my_tbl$table_description$title_statement$idno,
 #Python script
 ```
 
-**The result in NADA**
-
-<center>
-![](./images/Table_Example03_in_NADA.JPG){width=100%}
-</center>
 
 
-
-## References
-
-   -https://www.emathzone.com/tutorials/basic-statistics/construction-of-statistical-table.html#:~:text=Only%20the%20first%20letter%20of,must%20be%20written%20in%20lowercase.&text=The%20horizontal%20headings%20and%20sub,written%20is%20called%20the%20stub.
-   -https://www.preservearticles.com/articles/parts-of-a-statistical-table/3767
-   -https://www.coursehero.com/file/p7rj052/Major-Functional-Parts-of-Statistical-Table-a-Table-Number-Each-table-must-be/
-   -https://labwrite.ncsu.edu/res/gh/gh-tables.html
-   -https://www.csprousers.org/help/CSPro/parts_of_a_table.html (added this)
-   -https://www.vedantu.com/commerce/tabulation(added this)
-   -https://apastyle.apa.org/style-grammar-guidelines/tables-figures/tables (example of specific publications styles for a table)
 
 

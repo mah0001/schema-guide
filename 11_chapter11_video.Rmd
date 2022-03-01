@@ -2,17 +2,15 @@
 output: html_document
 ---
 
-@@@@@@@@@ resequence ReDoc
-
 # Videos {#chapter11}
 
 <center>
 ![](./images/movie_logo.JPG){width=25%}  
 </center>
 
-The schema we propose is a combination of elements from the [Dublin Core Metadata Initiative](https://dublincore.org/) and from the [VideoObject (from schema.org)](https://schema.org/VideoObject) schemas. The schema is very similar to the schema used for audio files (see chapter 10). 
+The schema we propose to document video files is a combination of elements extracted from the [Dublin Core Metadata Initiative](https://dublincore.org/) (DCMI) and from the [VideoObject (from schema.org)](https://schema.org/VideoObject) schemas. This schema is very similar to the schema we proposed for audio files (see chapter 10). 
 
-The Dublin Core is a generic and versatile standard, which we use (in an augmented form) for the documentation of 8Documents* (Chapter 4), *Images* (Chapter 9), and *Audio* files (chapter 10). It contains 15 core elements, to which we added a selection of elements from VideoObject. We also ensure that the structure of our video schema is, as much as possible, consistent with other schemas described in this Guide. We included the elements `keywords`, `topics`, `tags` also found in the schemas used to document microdata, documents, time series, tables, images, and scripts.  
+The Dublin Core is a generic and versatile standard, which we also use (in an augmented form) for the documentation of *Documents* (Chapter 4), *Images* (Chapter 9), and *Audio* files (chapter 10). It contains 15 core elements, to which we added a selection of elements from VideoObject. We also included the elements `keywords`, `topics`, `tags`, `provenance` and `additional` that are found in other schemas documented in the Guide. 
 
 The resulting metadata schema is simple, but it contains the elements needed to document the resources and their content in a way that will foster their discoverability in data catalogs. Compliance with the VideoObject elements contributes to search engine optimization, as search engines like Google, Bing and others "reward" metadata published in formats compatible with the schema.org recommendations. 
 
@@ -20,24 +18,36 @@ The resulting metadata schema is simple, but it contains the elements needed to 
 ![](./images/ReDoc_videos_00.JPG){width=100%}
 <br>
 
-When published in a NADA catalog, the metadata will appear in a specific tab. 
+When published in a NADA catalog, the metadata related to video files will appear in a specific tab. 
 
 <br>
 ![](./images/Video_NADA_tabs.JPG){width=100%}
 <br>
 
+## Augmenting video metadata
+
+Videos typically come with limited metadata. To make them more discoverable, a transcription of the video content can be generated, stored, and indexed in the catalog. This will significantly increase the discoverability of the resource, and offer the possibility to apply semantic searchability on video metadata. Machine learning solutions are available to automatically generate transcriptions at a very low cost. Tools like [Amazon Transcribe](https://aws.amazon.com/transcribe/), [Google Speech-to-Text](https://cloud.google.com/speech-to-text?hl=en), or [Microsoft Azure's Speech to Text](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/#overview) can reliably convert spoken audio (from audio or video files) to text. The metadata schema we propose includes an element `transcription` that can store transcriptions (and possibly their automatically-generated translations) in the video metadata. Word embedding models and topic models can be applied to the transcriptions to further augment the metadata. 
+
 ## Schema description 
 
-The first block of metadata elements, `metadata_information`, is used to document the metadata (not the video itself). This provides information useful for archiving purposes. This block is optional. It is recommended however to enter at least the identification and affiliation of the metadata producer, and the date of creation of the metadata. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so metadata produced by one organization can be found in other data centers. 
+The first three elements of the schema (`repositoryid`, `published`, and `overwrite`) are not part of the video metadata. They are parameters used to indicate how the video metadata will be published in a NADA catalog. 
+
+   - **`repositoryid`** identifies the collection in which the metadata will be published. By default, the metadata will be published in the central catalog. To publish them in a collection, the collection must have been previously created in NADA. 
+
+   - **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished). This value must be set to 1 (published) to make the metadata visible.
+
+   - **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same video can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that a video will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element `video_description > idno` is the same.
+
 
 **`metadata_information`** *[Optional ; Not Repeatable]*
+The metadata information set is used to document the video <u>metadata</u> (not the video itself). This provides information useful for archiving purposes. This set is optional. It is recommended however to enter at least the identification and affiliation of the metadata producer, and the date of creation of the metadata. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so metadata produced by one organization can be found in other data centers. 
   <br>
   ![](./images/ReDoc_videos_01.JPG){width=100%}
   <br>
    - **`title`** *[Optional ; Not Repeatable ; String]* <br>
    The title of the video.<br>
    - **`idno`** *[Optional ; Not Repeatable ; String]* <br> 
-   A unique identifier for the metadata document (unique in the catalog; ideally also unique globally). This is different from the video unique ID (see `idno` element in section *video_description* below), although it is good practice to generate IDs that would maintain an easy connection between the metadata IDNO and the video IDNO.<br>
+   A unique identifier for the metadata document (unique in the catalog; ideally also unique globally). This is different from the video unique ID (see `idno` element in section *video_description* below), although it is good practice to generate identifiers that would maintain an easy connection between the metadata `idno` element and the video `idno` found under `video_description` (see below).<br>
    - **`producers`** *[Optional ; Repeatable]* <br>
    This refers to the producer(s) of the metadata, NOT to the producer(s) of the video. This could for example be the data curator in a data center.<br>
       - **`name`** *[Optional ; Not repeatable ; String]* <br> 
@@ -54,23 +64,23 @@ The first block of metadata elements, `metadata_information`, is used to documen
    Version of the metadata (not version of the table).<br>
 
 **`video_description`** *[Required ; Not Repeatable]* <br>
-The `video_description` section contains all elements that will be used to describe the video and its content. These are the elements that will be indexed and made searchable in data catalogs.
+The `video_description` section contains all elements that will be used to describe the video and its content. These are the elements that will be indexed and made searchable when published in a data catalog.
 
    - **`idno`** *[Mandatory, Not Repeatable ; String]* <br>
    <br>
    ![](./images/ReDoc_videos_02.JPG){width=100%}
    <br>
-   `idno` is a unique identification number that is used to uniquely identify a video. Such a unique identifier will be required by any data catalog. It will also help users of the data cite the video properly. The best option is to obtain a [Digital Object Identifier (DOI)](https://www.doi.org/) for the video, as it will ensure that the ID is unique globally. Alternatively, it can be an ID constructed by an organization using a consistent scheme. Note that the schema allows you to provide more than one ID for a video (see the `other_ids` field described below). This element maps to the “identifier” element in the Dublin Core. 
+   `idno` is an identification number that is used to uniquely identify a video in a catalog. It will also help users of the data cite the video properly. The best option is to obtain a [Digital Object Identifier (DOI)](https://www.doi.org/) for the video, as it will ensure that the ID is unique globally. Alternatively, it can be an identifier constructed by an organization using a consistent scheme. Note that the schema allows you to provide more than one identifier for a video (see `identifiers` below). This element maps to the “identifier” element in the Dublin Core. 
 
-   - **`id_numbers`** *[Optional ; Repeatable]* <br>  @@@@@@@@@ add in ReDoc
+   - **`identifiers`** *[Optional ; Repeatable]* <br>  
    <br>
    ![](./images/ReDoc_videos_03.JPG){width=100%}
    <br>
-   This element is used to enter document ID others than the archive catalog ID (i.e. other than the `idno` element described above). It can for example be a Digital Object Identifier (DOI), if the DOI was not used in `idno`.
+   This element is used to enter video identifiers other than the `idno` element described above). It can for example be a Digital Object Identifier (DOI). Note that the identifier entered in `idno` can be repeated here, allowing to attach a "type" attribute to it.
       - **`type`** *[Optional ; Not repeatable ; String]* <br>
-      The type of unique ID.
+      The type of unique identifier, e.g., "DOI".
       - **`value`** *[Required ; Not repeatable ; String]* <br>
-      The ID <br><br>
+      The identifier. <br><br>
 
    - **`title`** *[Required ; Not repeatable ; String]* <br>
    <br>
@@ -82,114 +92,164 @@ The `video_description` section contains all elements that will be used to descr
    <br>
    ![](./images/ReDoc_videos_05.JPG){width=100%}
    <br>
-   An alias for the item title. This element maps to the element *alternateName* in VideoObject.
+   An alias for the video title. This element maps to the element *alternateName* in VideoObject.
 
    - **`description`** *[Optional ; Not repeatable ; String]* <br>
    <br>
    ![](./images/ReDoc_videos_06.JPG){width=100%}
    <br>
-   A summary of the video, usually about a paragraph long (around 150 to 250 words). This element maps to the element *abstract* in VideoObject.
+   A brief description of the video, typically about a paragraph long (around 150 to 250 words). This element maps to the element *abstract* in VideoObject.
 
    - **`genre`** *[Optional ; Repeatable ; String]* <br>
    <br>
    ![](./images/ReDoc_videos_07.JPG){width=100%}
    <br>
-   Genre of the creative work, broadcast channel or group. This is a VideoObject element.
+   The genre of the video, broadcast channel or group. This is a VideoObject element. A controlled vocabulary can be used.
 
-   - **`keywords`** *[Optional ; Repeatable]* <br>  @@@@@@@@@@@ Not structured in ReDoc
+   - **`keywords`** *[Optional ; Repeatable]* <br>  
    <br>
    ![](./images/ReDoc_videos_08.JPG){width=100%}
    <br>
-   Words or phrases that describe salient aspects of the video. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
-      - **`keyword`** *[Required ; String ; Non repeatable]* <br>
-      Keyword (or phrase). Keywords summarize the content or subject matter of the video. 
-      - **`vocab`** *[Optional ; Not repeatable ; String]* <br>
-      Controlled vocabulary from which the keyword is extracted, if any. The "vocab" attribute is provided for specification of the controlled vocabulary in use, e.g., the [Library of Congress Subject Headings (LCSH)](https://www.loc.gov/aba/cataloging/subject/).  
+   A list of keywords that provide information on the core content of the video. Keywords provide a convenient solution to improve the discoverability of the video, as it allows terms and phrases not found elsewhere in the video metadata to be indexed and to make the video discoverable by text-based search engines. A controlled vocabulary will preferably be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list can combine keywords from multiple controlled vocabularies, and user-defined keywords.  
+      - **`name`** *[Required ; Not repeatable ; String]* <br>
+      The keyword itself.
+      - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
+      The controlled vocabulary (including version number or date) from which the keyword is extracted, if any.
       - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-      URI of the controlled vocabulary used, if any.
+      The URL of the controlled vocabulary from which the keyword is extracted, if any.<br><br>
 
-     > Example:
+     > Example in R:
 
-    ```{r, eval=F, echo=T}
+ ```{r, eval=F, echo=T}
     my_video <- list(
-      # ... 
+      # ... ,
       video_description = list(
         # ... ,
+        
         keywords = list(
-          list(keyword = "",
-               vocab = "",
-               uri = ""),
-          list(keyword = "",
-               vocab = "",
-                uri = "")
-           ),
-        # ...
+        
+          list(name = "Migration", 
+               vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+          
+          list(name = "Migrants", 
+               vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+          
+          list(name = "Refugee", 
+               vocabulary = "Unesco Thesaurus (June 2021)", 
+               uri = "http://vocabularies.unesco.org/browser/thesaurus/en/page/concept427"),
+               
+          list(name = "Forced displacement"),
+          
+          list(name = "Internally displaced population (IDP)")
+        
         ),
-      # ...    
-    )          
-    ```
+        
+        # ...
+      ),
+      # ... 
+    )  
+  ```  
 
-   - **`topics`** *[Optional ; Repeatable]* <br>
+   - **`topics`** *[Optional ; Repeatable]* <br>   
    <br>
    ![](./images/ReDoc_videos_09.JPG){width=100%}
    <br>
-   The classification field indicates the broad substantive topic(s) that the video cover. A topic classification facilitates referencing and searches in electronic survey catalogs. <br>
-      - **`topic`** *[Required ; Not repeatable]* <br>
-      Topics should be selected from a standard thesaurus, preferably an international, multilingual thesaurus, such as the thesaurus used by the [Council of European Social Science Data Archives (CESSDA)](https://vocabularies.cessda.eu/vocabulary/TopicClassification). 
-      - **`vocab`** *[Required ; Not repeatable]* <br>
-      The `vocab` attribute is provided for specification of the controlled vocabulary in use.
-      - **`uri`** *[Required ; Not repeatable]* <br>
-      URI of the controlled vocabulary used, if any. 
-   
-     > Example:
-    
-    ```{r, eval=F, echo=T}
+Information on the topics covered in the video. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary. This element is a block of five fields:<br> 
+    - **`id`** *[Optional ; Not repeatable ; String]* <br>
+    The identifier of the topic, taken from a controlled vocabulary.<br>
+    - **`name`** *[Required ; Not repeatable ; String]* <br>
+    The name (label) of the topic, preferably taken from a controlled vocabulary.<br>
+    - **`parent_id`** *[Optional ; Not repeatable ; String]* <br>
+    The parent identifier of the topic (identifier of the item one level up in the hierarchy), if a hierarchical controlled vocabulary is used.<br>
+    - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
+    The name (including version number) of the controlled vocabulary used, if any.<br>
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    The URL to the controlled vocabulary used, if any. <br><br>
+
+  > Example in R:
+
+  ```{r, eval=F, echo=T}
     my_video <- list(
-      metadata_information = list(
-        # ... 
-      ),
+      # ... ,
       video_description = list(
         # ... ,
+        
         topics = list(
-          list(topic = "",
-               vocab = "",
-               uri = ""),
-          list(topic = "",
-               vocab = "",
-               uri = "")
-          ),
-      # ...
-    ) 
-    ```
+        
+          list(name = "Demography.Migration", 
+               vocabulary = "CESSDA Topic Classification", 
+               uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
+          list(name = "Demography.Censuses", 
+               vocabulary = "CESSDA Topic Classification", 
+               uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
+          list(id = "F22", 
+               name = "International Migration", 
+               parent_id = "F2 - International Factor Movements and International Business", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "O15", 
+               name = "Human Resources - Human Development - Income Distribution - Migration", 
+               parent_id = "O1 - Economic Development", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "O12", 
+               name = "Microeconomic Analyses of Economic Development", 
+               parent_id = "O1 - Economic Development", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
+          list(id = "J61", 
+               name = "Geographic Labor Mobility - Immigrant Workers", 
+               parent_id = "J6 - Mobility, Unemployment, Vacancies, and Immigrant Workers", 
+               vocabulary = "JEL Classification System", 
+               uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J")
+               
+        ),
+        
+        # ...
+      ),
+    )  
+  ```
 
    - **`persons`** *[Optional ; Repeatable]* <br>
    <br>
    ![](./images/ReDoc_videos_10.JPG){width=100%}
    <br>
-   A list of persons who appear in the video.
+   A list of persons who appear in the video.<br>
       - **`name`** *[Required ; Not repeatable ; String]* <br>
-      The name of the person.
+      The name of the person.<br>
       - **`role`** *[Optional ; Not repeatable, String]* <br>
-      The role of the person.
-   
-     > Example:
+      The role of the person mentioned in `name`.<br>
+<br>   
+
+  > Example in R:
     
-    ```{r, eval=F, echo=T}
-    my_video <- list(
-      metadata_information = list(
-        # ... 
+  ```{r, eval=F, echo=T}
+  my_video <- list(
+    metadata_information = list(
+      # ... 
+    ),
+    video_description = list(
+      # ... ,
+      
+      persons = list(
+        
+        list(name = "John Smith",
+             role = "Keynote speaker"),
+        
+        list(name = "Jane Doe",
+             role = "Debate moderator")
+        
       ),
-      video_description = list(
-        # ... ,
-        persons = list(
-          list(name = "John Smith",
-               role = "Keynote speaker"),
-          list(name = "Jane Doe",
-               role = "Debate moderator")
-          ),
-      # ...
-    ) 
-    ```
+    # ...
+  ) 
+  ```
 
    - **`main_entity`** *[Optional ; Not repeatable ; String]* <br> 
    <br>
@@ -215,30 +275,42 @@ The `video_description` section contains all elements that will be used to descr
    <br>
    The version of the video refers to the published version of the video.
 
-   - **`ref_country`** *[Optional ; Repeatable]* <br>   @@@@@@@@@ `country` in ReDoc
+   - **`status`** *[Optional ; Not repeatable, String]* <br> 
+   <br>
+   ![](./images/ReDoc_videos_30.JPG){width=100%}
+   <br>
+   The status of the video in terms of its stage in a lifecycle. A controlled vocabulary should be used. Example terms include {`Incomplete, Draft, Published, Obsolete`}. Some organizations define a set of terms for the stages of their publication lifecycle. This element maps to the element *creativeWorkStatus* in VideoObject. 
+   
+   - **`country`** *[Optional ; Repeatable]* <br>   
    <br>
    ![](./images/ReDoc_videos_15.JPG){width=100%}
    <br>
    The list of countries (or regions) covered by the video, if applicable. This refers to the <u>content</u> of the video, not to the country where the video was released. This is a repeatable block of two elements:
-       - **`name`** *[Required ; Not repeatable ; String]* <br>
-       The country/region name. Note that many organizations have their own policies on the naming of countries, which data curators will have to comply with.
-       - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
-       In the field "Abbreviation", we recommend that you enter the 3-letter ISO code of the country. 
-       - **`code`** *[Optional ; Not repeatable ; String]* <br>
-       The country/region code (entered as a string, even for numeric codes). It is recommended to use a standard list of countries and regions, such as the ISO country list (ISO 3166).
+      - **`name`** *[Required ; Not repeatable ; String]* <br>
+      The country/region name. Note that many organizations have their own policies on the naming of countries/regions/economies/territories, which data curators will have to comply with.
+      - **`code`** *[Optional ; Not repeatable ; String]* <br>
+      The country/region code (entered as a string, even for numeric codes). It is recommended to use a standard list of countries and regions, such as the ISO country list ([ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)).
 
-   - **`content_location`** *[Optional ; Not repeatable ; String]* <br> 
-   <br>
-   ![](./images/ReDoc_videos_16.JPG){width=100%}
-   <br>
-   The location depicted or described in the video. This element maps to the element `contentLocation` in VideoObject. This element complements the `ref_country` element. It can be used to qualify the geographic coverage of the video, in the form of a free text.
-
-   - **`spatial_coverage`** *[Optional ; Not repeatable ; String]* <br> @@@@@@@@ keep?
+   - **`spatial_coverage`** *[Optional ; Not repeatable ; String]* <br> 
    <br>
    ![](./images/ReDoc_videos_17.JPG){width=100%}
    <br>
-   Indicates the place(s) which are the focus of the video.  
+   Indicates the place(s) which are depicted or described in the video. This element maps to the element `contentLocation` in VideoObject. This element complements the `ref_country` element. It can be used to qualify the geographic coverage of the video, in the form of a free text. 
 
+   - **`bbox`** *[Optional ; Repeatable]* <br>   
+   <br>
+   ![](./images/ReDoc_videos_22.JPG){width=100%}
+   <br>
+   This element is used to define one or multiple bounding box(es), which are the (rectangular) fundamental geometric description of the geographic coverage of the video. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the video's geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. 
+      - **`west`** *[Required ; Not repeatable ; String]* <br>
+      West longitude of the box
+      - **`east`** *[Required ; Not repeatable ; String]* <br>
+      East longitude of the box
+      - **`south`** *[Required ; Not repeatable ; String]* <br>
+      South latitude of the box
+      - **`north`** *[Required ; Not repeatable ; String]* <br>
+      North latitude of the box
+      
    - **`content_reference_time`** *[Optional ; Not repeatable ; String]* <br>
    <br>
    ![](./images/ReDoc_videos_18.JPG){width=100%}
@@ -255,51 +327,37 @@ The `video_description` section contains all elements that will be used to descr
    <br>
    ![](./images/ReDoc_videos_20.JPG){width=100%}
    <br>
-   This element maps to the element `recordedAt` in VideoObject schema. The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
+   This element maps to the element `recordedAt` in VideoObject schema. It identifies the event where the video was recorded (e.g., a conference, or a demonstration). 
 
    - **`audience`** *[Optional ; Not repeatable ; String]* <br>
    <br>
    ![](./images/ReDoc_videos_21.JPG){width=100%}
    <br>
-   (VideoObject) : A description of the intended audience, i.e. a group for whom something was created.
+   A brief description of the intended audience of the video, i.e. the group for whom it was created.
 
-   - **`bbox`** *[Optional ; Repeatable]* <br>   @@@@@@@ Not in ReDoc
-   <br>
-   ![](./images/ReDoc_videos_22.JPG){width=100%}
-   <br>
-   This element is used to define one or multiple bounding box(es), which are the (rectangular) fundamental geometric description of the geographic coverage of the video. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the video's geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. 
-      - **`west`** *[Required ; Not repeatable ; String]* <br>
-      West longitude of the box
-      - **`east`** *[Required ; Not repeatable ; String]* <br>
-      East longitude of the box
-      - **`south`** *[Required ; Not repeatable ; String]* <br>
-      South latitude of the box
-      - **`north`** *[Required ; Not repeatable ; String]* <br>
-      North latitude of the box
-
-   - **`languages`** *[Optional, Repeatable]* <br>   @@@@@@@@ Language / not repeatable in ReDoc
+   - **`language`** *[Optional, Repeatable]* <br>   
    <br>
    ![](./images/ReDoc_videos_23.JPG){width=100%}
    <br>
-   Most videos will only be provided in one language. This is however a repeatable field, to allow for more than one language to be listed. For the language code, ISO codes will preferably be used. The language refers to the language in which the video is published. 
-       - **`name`** *[Mandatory, Not repeatable ; String]* <br>
-       Enter the full name of the language(s) that apply for which the video is provided. It is recommended to enter the name of the language as listed in the [ISO 639 standardized nomenclature of languages](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).  
-       - **`code`** *[Optional, Not repeatable ; String]* <br>
-       It is recommended to make use of the 2-character ISO 639 code. 
+   Most videos will only be provided in one language. This is however a repeatable field, to allow for more than one language to be listed. For the language code, ISO codes will preferably be used. The language refers to the language in which the video is published. This is a block of two elements (at least one must be provided for each language):
+      - **`name`** *[Optional ; Not repeatable ; String]* <br>
+      The name of the language.
+      - **`code`** *[Optional ; Not repeatable ; String]* <br>
+      The code of the language. The use of [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) (the alpha-3 code in Codes for the representation of names of languages) is recommended. Numeric codes must be entered as strings. <br><br>
     
-   - **`creator`** *[Optional, Not repeatable ; String]* <br>	
+   - **`creator`** *[Optional, Not repeatable ; String]* <br>	 
    <br>
    ![](./images/ReDoc_videos_24.JPG){width=100%}
    <br>
    Organization or person who created/authored the video. 
 
-   - **`production_company`** *[Optional, Not repeatable ; String]* <br> 
+   - **`production_company`** *[Optional, Not repeatable ; String]* <br>   
    <br>
    ![](./images/ReDoc_videos_25.JPG){width=100%}
    <br>
    The production company or studio responsible for the item. This element maps to the element *productionCompany* in VideoObject.
 
-   - **`contributors`** *[Optional, Repeatable]* <br> @@@@@@@@@@@@ not structured in ReDoc
+   - **`contributors`** *[Optional, Repeatable]* <br> 
    <br>
    ![](./images/ReDoc_videos_26.JPG){width=100%}
    <br>
@@ -309,12 +367,13 @@ The `video_description` section contains all elements that will be used to descr
       - **`affiliation`** *[Optional, Not Repeatable ; String]* <br>
       The affiliation of the contributor. 
       - **`abbreviation`** *[Optional, Not Repeatable ; String]* <br>
-      The abbreviation for the institution which has been listed as the affiliation of the contributor.         - **`role`** *[Optional, Not Repeatable ; String]* <br>
+      The abbreviation for the institution which has been listed as the affiliation of the contributor.         
+      - **`role`** *[Optional, Not Repeatable ; String]* <br>
       The specific role of the contributor. This could for example be "Cameraman", "Sound engineer", etc.
       - **`uri`** *[Optional, Not Repeatable ; String]* <br>
       A URI (link to a website, or email address) for the contributor. <br><br>
 
-    > Example:
+    > Example in R:
 
     ```{r, eval=F, echo=T}
     my_video = list(
@@ -322,99 +381,83 @@ The `video_description` section contains all elements that will be used to descr
       video_description = list(
             # ... ,
             contributors = list(
-              list(name         = "",
-              affiliation  = "",
-              abbreviation = "",
-              role         = "",
-              uri          = "")
+              list(
+                name         = "",
+                affiliation  = "",
+                abbreviation = "",
+                role         = "",
+                uri          = "")
             ),  
             # ...
       )
     )
     ```
 
-   - **`publisher`** *[Optional, Not repeatable]* <br>   @@@@@@@@@@ Not structured in ReDoc
+   - **`publisher`** *[Optional, Not repeatable ; String]* <br>   
    <br>
    ![](./images/ReDoc_videos_27.JPG){width=100%}
    <br>
-   The entity responsible for publishing the video. 
-      - **`name`** *[Optional, Not Repeatable ; String]* <br>
-      The name of the publisher (person or organization). 
-      - **`affiliation`** *[Optional, Not Repeatable ; String]* <br>
-      The affiliation of the publisher. 
-      - **`abbreviation`** *[Optional, Not Repeatable ; String]* <br>
-      The abbreviation for the institution which has been listed as the affiliation of the publisher.
-      - **`role`** *[Optional, Not Repeatable ; String]* <br>
-      The specific role of the publisher (this element is unlikely to be used).
-      - **`uri`** *[Optional, Not Repeatable ; String]* <br>
-      A URI (link to a website, or email address) of the publisher. <br><br>
 
-    > Example:
+    > Example in R:
 
     ```{r, eval=F, echo=T}
     my_video = list(
       # ... ,
       video_description = list(
             # ... ,
-            publisher = list(
-              name = "",
-              affiliation = "",
-              abbreviation = "",
-              role = "",
-              uri = ""
-            ),  
+            publisher = "@@@@@",
             # ...
       )
     )
     ```
 
-   - **`funder`** *[Optional ; Repeatable]* <br> 
+   - **`repository`** *[Optional ; Not repeatable ; String]* <br>
+   <br>
+   ![](./images/ReDoc_audio_27b.JPG){width=100%}
+   <br>
+   The name of the repository (organization).
+
+   - **`funders`** *[Optional ; Repeatable]* <br> ("funder" in ReDoc; fix and redo screenshot)
    <br>
    ![](./images/ReDoc_videos_28.JPG){width=100%}
    <br>
-   This element is used to list the sponsors of the video. If different funding agencies sponsored different stages of the production process, use the "role" attribute to distinguish them.
+   This element is used to list the funder/sponsors of the video. If different funding agencies financed different stages of the production process, use the "role" attribute to distinguish them.
       - **`name`** *[Required ; Not repeatable ; String]* <br>
       The name of the sponsor (person or organization)
       - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
       The abbreviation (acronym) of the sponsor.
       - **`grant`** *[Optional ; Not repeatable ; String]* <br>
-      The grant number.
+      The grant (or contract) number.
       - **`role`** *[Optional ; Not repeatable ; String]* <br>
       The specific role of the sponsor.
         
-   - **`translators`** *[Optional ; Repeatable]* <br>
+   - **`translators`** *[Optional ; Repeatable]* <br>   
    <br>
    ![](./images/ReDoc_videos_29.JPG){width=100%}
    <br>
    Organization or person who adapted the video to different languages. This element maps to the element *translator* in VideoObject.
       - **`first_name`** *[Optional ; Not repeatable ; String]* <br>
-      The first name of the translator
+      The first name of the translator.
       - **`initial`** *[Optional ; Not repeatable ; String]* <br>
-      The initials of the translator
+      The initials of the translator.
       - **`last_name`** *[Optional ; Not repeatable ; String]* <br>
-      The last name of the translator
+      The last name of the translator.
       - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-      The affiliation of the translator <br><br>
-    
-   - **`status`** *[Optional ; Not repeatable, String]* <br> 
-   <br>
-   ![](./images/ReDoc_videos_30.JPG){width=100%}
-   <br>
-   The status of the video in terms of its stage in a lifecycle. Example terms include Incomplete, Draft, Published, Obsolete. Some organizations define a set of terms for the stages of their publication lifecycle. This element maps to the element *creativeWorkStatus* in VideoObject. 
+      The affiliation of the translator. <br><br>
 
    - **`is_based_on`** *[Optional ; Not repeatable, String]* <br>
    <br>
    ![](./images/ReDoc_videos_31.JPG){width=100%}
    <br>
-   A resource from which this work is derived or from which it is a modification or adaption. This element maps to the element *isBasedOn* in VideoObject. 
-     
+   A resource from which this video is derived or from which it is a modification or adaption. This element maps to the element *isBasedOn* in VideoObject. 
+   
    - **`is_part_of`** *[Optional ; Not repeatable, String]* <br>
    <br>
    ![](./images/ReDoc_videos_32.JPG){width=100%}
    <br>
    Indicates another video that this video is part of. This element maps to the element *isPartOf* in VideoObject. 
 
-   - **`relation`** *[Optional ; Not repeatable, String]* <br>
+   - **`relation`** *[Optional ; Not repeatable, String]* <br>   @@@@ Added ("relations" in ReDoc; fix and redo screenshot)
    <br>
    ![](./images/ReDoc_videos_33.JPG){width=100%}
    <br>
@@ -432,39 +475,39 @@ The `video_description` section contains all elements that will be used to descr
    <br>
    URL of the video. This element maps to the element *url* in VideoObject.
 
-   - **`embed_url`** *[Optional ; Not repeatable, String]* <br>
+   - **`embed_url`** *[Optional ; Not repeatable, String]* <br>  @@@@ how not to include the embedded image in the Guide?
    <br>
    ![](./images/ReDoc_videos_36.JPG){width=100%}
    <br>
-   A URL pointing to a player for a specific video. This element maps to the element *embedUrl* in VideoObject.
+   A URL pointing to a player for a specific video. This element maps to the element *embedUrl* in VideoObject. For example, "<iframe width="560" height="315" src="https://www.youtube.com/embed/7Aif1xjstws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>"
+   @@@@@@@@@ Provide a description of what this is, and how to get that content. 
 
-   - **`encodingFormat`**  *[Optional ; Not repeatable, String]* <br>
+   - **`encoding_format`**  *[Optional ; Not repeatable, String]* <br> 
    <br>
    ![](./images/ReDoc_videos_37.JPG){width=100%}
    <br>
-   The media type typically expressed using a MIME format. This element is a VideoObject element and maps to the element *format* of the Dublin Core.
+   The video file format, typically expressed using a MIME format. This element corresponds to the "encodingFormat" element of VideoObject and maps to the element *format* of the Dublin Core.
 
    - **`duration`** *[Optional ; Not repeatable, String]* <br>
    <br>
    ![](./images/ReDoc_videos_38.JPG){width=100%}
    <br>
-   The duration of the item (movie, audio recording, event, etc.) in ISO 8601 date format. This element is a VideoObject element.
+   The duration of the item (movie, audio recording, event, etc.) in ISO 8601 format. This element is a VideoObject element. 
+   
+   ISO 8601 durations are expressed using the following format, where (n) is replaced by the value for each of the date and time elements that <u>follows</u> the (n). For example: (3)H means 3 hours. 
 
-   ISO 8601 durations are expressed using the following format, where (n) is replaced by the value for each of the date and time elements that follow the (n):
+   **`P(n)Y(n)M(n)DT(n)H(n)M(n)S`**
 
-   P(n)Y(n)M(n)DT(n)H(n)M(n)S
-
-    Where:
-    
-       - P is the Period designator and is always placed at the beginning of the duration
-       - (n)Y represents the number of years
-       - (n)M represents the number of months
-       - (n)W represents the number of weeks
-       - (n)D represents the number of days
-       - T is the Time designator and always precedes the time components
-       - (n)H represents the number of hours
-       - (n)M represents the number of minutes
-       - (n)S represents the number of seconds
+  Where:<br>
+   - P is the **Period designator** and is always placed at the beginning of the duration<br>
+     - (n)Y represents the number of years<br>
+     - (n)M represents the number of months<br>
+     - (n)W represents the number of weeks<br>
+     - (n)D represents the number of days<br>
+   - T is the **Time designator** and always precedes the time components<br>
+     - (n)H represents the number of hours<br>
+     - (n)M represents the number of minutes<br>
+     - (n)S represents the number of seconds<br>
 
    For example, **P1Y2M20DT3H30M8S** represents a duration of one year, two months, twenty days, three hours, thirty minutes, and eight seconds.
 
@@ -480,41 +523,53 @@ The `video_description` section contains all elements that will be used to descr
    <br>
    A textual description of the rights associated to the video. If a copyright is available, the three following elements will be used instead of this element. 
 
-   - **`copyrightHolder`** *[Optional ; Not repeatable, String]* <br>
+   - **`copyright_holder`** *[Optional ; Not repeatable, String]* <br>
    <br>
    ![](./images/ReDoc_videos_40.JPG){width=100%}
    <br>
-   The party holding the legal copyright to the video. This element is a VideoObject element.
+   The party holding the legal copyright to the video. This element corresponds to the "copyrightHolder" element of VideoObject.
 
-   - **`copyrightNotice`** *[Optional ; Not repeatable, String]* <br>
+   - **`copyright_notice`** *[Optional ; Not repeatable, String]* <br>
    <br>
    ![](./images/ReDoc_videos_41.JPG){width=100%}
    <br>
-   Text of a notice appropriate for describing the copyright aspects of the video, ideally indicating the owner of the copyright. This element is a VideoObject element.
+   Text of a notice appropriate for describing the copyright aspects of the video, ideally indicating the owner of the copyright. This element corresponds to the "copyrightNotice" element of VideoObject.
 
-   - **`copyrightYear`** *[Optional ; Not repeatable, String]* <br>
+   - **`copyright_year`** *[Optional ; Not repeatable, String]* <br>
    <br>
    ![](./images/ReDoc_videos_42.JPG){width=100%}
    <br>
-   The year during which the claimed copyright for the video was first asserted. This element is a VideoObject element.
+   The year during which the claimed copyright for the video was first asserted. This element corresponds to the "copyrightYear" element of VideoObject.
 
-   - **`creditText`** *[Optional ; Not repeatable, String]* <br>   @@@@@@ Not in ReDoc
+   - **`credit_text`** *[Optional ; Not repeatable, String]* <br>   
    <br>
    ![](./images/ReDoc_videos_43.JPG){width=100%}
    <br>
-   This element that can be used to credit the person(s) and/or organization(s) associated with a published video. This element is a VideoObject element.
-
-   - **`transcript`** *[Optional ; Not repeatable, String]* <br>   @@@@@@ Not in ReDoc
+   This element can be used to credit the person(s) and/or organization(s) associated with a published video. This element corresponds to the "creditText" element of VideoObject.
+   
+   - **`citation`** *[Optional ; Not repeatable, String]* <br>   
    <br>
-   ![](./images/@@@@.JPG){width=100%}
+   ![](./images/ReDoc_audio_43b.JPG){width=100%}
+   <br>
+   This element provides a required or recommended citation of the audio file.
+
+   - **`transcript`** *[Optional ; Repeatable, String]* <br>   
+   <br>
+   ![](./images/ReDoc_audio_43c.JPG){width=100%}
    <br>
    The transcript of the video content, provided as a text. Note that if the text is very long, an alternative is to save it in a separate text file and to make it available in a data catalog as an external resource.
       - **`language`** *[Optional ; Not repeatable ; String]* <br>   
       The language of the transcript.
       - **`text`** *[Optional ; Not repeatable ; String]* <br>   
       The transcript itself.
+      
+   - **`media`** *[Optional ; Repeatable ; String]* <br>        
+   <br>
+   ![](./images/ReDoc_videos_43d.JPG){width=100%}
+   <br>
+   A description of the media on which the recording is stored (other than the online file format); e,g., "CD-ROM".    
 
-   - **`album`** *[Optional ; Repeatable]* <br>   @@@@@@ Not in ReDoc
+   - **`album`** *[Optional ; Repeatable]* <br>  
    <br>
    ![](./images/ReDoc_videos_44.JPG){width=100%}
    <br>
@@ -532,35 +587,36 @@ The `video_description` section contains all elements that will be used to descr
    <br>
    ![](./images/ReDoc_videos_43.JPG){width=100%}  
    <br>
-   Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been done to the harvested metadata. These elements are NOT part of the IPTC or DCMI metadata standard.
+   Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been done to the harvested metadata. These elements are NOT part of the IPTC or DCMI metadata standard.<br>
      - **`origin_description`** *[Required ; Not repeatable]* <br>
-     The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  
+     The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested. <br> 
         - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-        The date and time the metadata were harvested, in ISO 8601 format.
+        The date and time the metadata were harvested, in ISO 8601 format.<br>
         - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-        A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Study Description / Title Statement section) will be modified when published in a new catalog.
+        A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Study Description / Title Statement section) will be modified when published in a new catalog.<br>
         - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-        The URL from where the metadata were harvested.
+        The URL from where the metadata were harvested.<br>
         - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-        The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.
+        The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
         - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-        The datestamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).
+        The datestamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
         - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-        @@@@@@@ 
+        @@@@@@@ <br>
 
    - **`tags`** *[Optional ; Repeatable]* <br>
-   Tags provides easy way to include custom-facets in data catalogs. 
+   As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
   <br>
   ![](./images/ReDoc_videos_44.JPG){width=100%}  
   <br>
-      - `tag` *[Required ; Not repeatable ; String]* <br>
-      The tag.
-      - `tag_group` *[Optional ; Not repeatable ; String]* <br>
-      The tag group (tag groups are used to organize tags in facets in data catalogs).<br>
-      
-   - **`additional`**
+    - **`tag`** *[Required ; Not repeatable ; String]* <br>
+    A user-defined tag.
+    - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
+    A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
+
+   - **`additional`** *[Optional ; Not repeatable]*<br>
+   The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
   <br>
-  ![](./images/ReDoc_videos_45.JPG){width=100%}  
+  ![](./images/ReDoc_videos_45.JPG){width=100%} 
   <br>
 
 
@@ -573,59 +629,100 @@ The `video_description` section contains all elements that will be used to descr
 
 library(nadar)
 
-setwd("E:\my_documents")
+# ----------------------------------------------------------------------------------
+# Enter credentials (API confidential key) and catalog URL
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-# Set API key and URL
-set_api_key("my_api_key")                                # Enter a valid API key
-set_api_url("http://my_catalog.ihsn.org/index.php/api/") # Provide the NADA catalog URL
+setwd("C:/my_videos")
+
+id = "MDA_VDO_001"
 
 thumb = "vdo_001.jpg"
 
 # Generate the metadata
+
 my_video = list(
   
   metadata_information = list(
     title = "Mogadishu, Somalia: A Call for Help",
-    idno = "MDA_VDO_001",
+    idno = id,
     producers = list(
-      list(name = "Olivier Dupriez", 
-           affiliation = "My Data Archive")
+      list(name = "John Doe", affiliation = "National Library")
     ),
     production_date = "2021-09-03"
   ),
   
   video_description = list(
-      idno = "VDO_001",
-      title = "Mogadishu, Somalia: A Call for Help",
-      alt_title = "Somalia: Guterres in Mogadishu",
-      date_published = "2011-09-01",
-      description = "During a landmark visit, the UN High Commissioner for Refugees calls on the international community to rapidly increase aid to Somalia.",
-      genre = "Documentary",
-      persons = list(
-        list(name = "António Guterres", role = "High Commissioner for Refugees"),
-        list(name = "Fadhumo", role = "Somali internally displaced person (IDP)")
-      ),  
-      main_entity = "United Nations High Commission for Refugees (UNHCR), the UN Refugee Agency",
-      ref_country = list(
-         list(name = "Somalia", code = "SOM")
-      ),   
-      content_location = "Mogadishu, Somalia",
-      content_reference_time = "2011-09",
-      languages = list(
-        list(name = "English", code = "EN")
-      ),
-      creator = "United Nations High Commission for Refugees (UNHCR)",
-      video_url = "https://www.youtube.com/watch?v=7Aif1xjstws",
-      embed_url = '<iframe width="560" height="315" src="https://www.youtube.com/embed/7Aif1xjstws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-      duration = "PT2M14S"  # 2 minutes and 14 seconds
+    
+    idno = id,
+    
+    title = "Mogadishu, Somalia: A Call for Help",
+    
+    alt_title = "Somalia: Guterres in Mogadishu",
+    
+    date_published = "2011-09-01",
+    
+    description = "During a landmark visit, the United Nations High Commissioner for Refugees calls on the international community to rapidly increase aid to Somalia.",
+    
+    genre = "Documentary",
+    
+    persons = list(
+      list(name = "António Guterres", role = "High Commissioner for Refugees"),
+      list(name = "Fadhumo", role = "Somali internally displaced person (IDP)")
+    ),
+    
+    main_entity = "United Nations High Commission for Refugees (UNHCR), the UN Refugee Agency",
+    
+    country = list(
+      list(name = "Somalia", code = "SOM")
+    ),
+    
+    spatial_coverage = "Mogadishu, Somalia",
+    
+    content_reference_time = "2011-09",
+    
+    languages = list(
+      list(name = "English", code = "EN")
+    ),
+    
+    creator = "United Nations High Commission for Refugees (UNHCR)",
+    
+    video_url = "https://www.youtube.com/watch?v=7Aif1xjstws",
+    
+    embed_url = '<iframe width="560" height="315" src="https://www.youtube.com/embed/7Aif1xjstws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+    
+    duration = "PT2M14S"  # 2 minutes and 14 seconds
+    
   )
   
 )
 
-# Publish in NADA catalog
-video_add(idno = id, published = 1, overwrite = "yes", metadata = my_video, thumbnail = thumb)
+# Publish in the NADA catalog
+
+video_add(idno = id, 
+          published = 1, 
+          overwrite = "yes", 
+          metadata = my_video, 
+          thumbnail = thumb)
 
 ```
+
+In NADA, the video will now appear in the "All" tab and in the "Videos" tab. 
+
+  <br>
+  ![](./images/video_in_NADA.JPG){width=100%} 
+  <br>
+  
+If the `embed_url` element was provided, the video can be played within the NADA page. 
+@@@@ provide some additional information: what are the conditions to make a video playable from NADA; what if not in YouTube?
+
+  <br>
+  ![](./images/video_in_NADA_2.JPG){width=100%} 
+  <br>
 
 
 ### In Python

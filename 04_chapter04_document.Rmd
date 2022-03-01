@@ -136,7 +136,7 @@ The `title_statement` is a required group of five elements, two of which are req
    ![](./images/ReDoc_documents_03.JPG){width=100%}
    <br>
     - **`idno`** *[Required ; Not repeatable ; String]* <br>
-    A unique identifier to the document. Do not include spaces in the `idno`. This identifier must be unique to the catalog in which the document will be published. Some organizations have their own system to assign unique identifiers to documents. Ideally, an identifier that guarantees uniqueness globally will be used, such as a Digital Object Identifier (DOI) or an ISBN number. Note that a document may have more than one identifier. In such case, the element `idno` (as a non-repeatable element) will contain the main identifier (as selected as the "reference" one by the catalog administrator). The other identifiers will be provided in the element `id_numbers` (see below).
+    A unique identifier to the document. Do not include spaces in the `idno`. This identifier must be unique to the catalog in which the document will be published. Some organizations have their own system to assign unique identifiers to documents. Ideally, an identifier that guarantees uniqueness globally will be used, such as a Digital Object Identifier (DOI) or an ISBN number. Note that a document may have more than one identifier. In such case, the element `idno` (as a non-repeatable element) will contain the main identifier (as selected as the "reference" one by the catalog administrator). The other identifiers will be provided in the element `identifiers` (see below).
     - **`title`** *[Required ; Not repeatable ; String]* <br>
     The title of the document. Pay attention to the use of capitalization in the title, to ensure consistency across documents listed in your catalog. Corresponds to BibTex element *title*. 
     - **`sub_title`** *[Optional ; Not repeatable ; String]* <br>
@@ -267,8 +267,8 @@ In R, this will be captured as follows:
   )  
   ```
 
-- **`id_numbers`** *[Optional ; Repeatable]*   
-This element is used to enter document identifiers (IDs) other than the catalog ID entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI), an International Standard Book Number (ISBN), or an International Standard Serial Number (ISSN). The ID entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI, ISBN, ISSN, or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`). Note that `doi` is a BibTex element, which can be extracted from `id_numbers` if a DOI was included in the metadata.
+- **`identifiers`** *[Optional ; Repeatable]*   
+This element is used to enter document identifiers (IDs) other than the catalog ID entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI), an International Standard Book Number (ISBN), or an International Standard Serial Number (ISSN). The ID entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI, ISBN, ISSN, or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`). Note that `doi` is a BibTex element, which can be extracted from `identifiers` if a DOI was included in the metadata.
   <br>
   ![](./images/ReDoc_documents_07.JPG){width=100%}
   <br>    
@@ -291,7 +291,7 @@ This element is used to enter document identifiers (IDs) other than the catalog 
 
         # ... ,
         
-        id_numbers = list(
+        identifiers = list(
           list(type = "ISSN",           value = "0163-5085"),
           list(type = "ISBN softcover", value = "978-1-4648-1328-3"),
           list(type = "ISBN hardcover", value = "978-1-4648-1342-9"),
@@ -664,7 +664,7 @@ The bibliographic citation provides relevant information about the author and th
    The citation in the style mentioned in `style`.
   <br>
   
-  
+  <br>
   > Example in R
   
   The example below shows how the bibliographic citation for an article published in [Econometrica](https://onlinelibrary.wiley.com/doi/abs/10.1111/1468-0262.00167) can be provided in three different formats. 
@@ -703,7 +703,6 @@ The bibliographic citation provides relevant information about the author and th
 -------
 
 The elements that follow are bibliographic elements that correspond to BibTex fields. Note that some of the BibTex elements are found elsewhere in the schema (namely `type`, `authors`, `editors`, `year` and `month`, `isbn`, `issn` and `doi`); when constructing a bibliographic citation, these external elements will have to be included as relevant. The description of the bibliographic fields listed below was adapted from [Wikipedia's description of BibTex](https://en.wikipedia.org/wiki/BibTeX). 
-@@@@@@
     <br>
     ![](./images/ReDoc_documents_10.JPG){width=100%}  
     <br>
@@ -761,7 +760,7 @@ The elements that are required to form a complete bibliographic citation depend 
   An annotation. This element will not be used by standard bibliography styles like the MLA, APA or Chicago, but may be used by others that produce an annotated bibliography.
 
   - **`booktitle`** *[Optional ; Not repeatable ; String]* <br>
-  Title of a book, part of which is being cited. 
+  Title of a book, part of which is being cited. If you are documenting the book itself, this element will not be used; it is only used when <u>part of a book</u> is being documented. 
 
   - **`crossref`** *[Optional ; Not repeatable ; String]* <br>
   The catalog identifier ("database key") of another catalog entry being cross referenced. This element may be used when multiple entries refer to a same publication, to avoid duplication. 
@@ -822,7 +821,7 @@ Information on translators, for publications that are translations of publicatio
     The affiliation of the translator. <br><br>
 
 - **`contributors`** *[Optional ; Repeatable]* <br>
-These elements are used to acknowledge contributions to the production of the document, other than the ones for which speccific metadata elements are provided (like `autors` or `translators`).
+These elements are used to acknowledge contributions to the production of the document, other than the ones for which specific metadata elements are provided (like `autors` or `translators`).
   <br>
   ![](./images/ReDoc_documents_12b.JPG){width=100%}
   <br> 
@@ -1042,32 +1041,39 @@ This element is a block of five fields:
         # ... ,
         
         topics = list(
+        
           list(name = "Demography.Migration", 
                vocabulary = "CESSDA Topic Classification", 
                uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
           list(name = "Demography.Censuses", 
                vocabulary = "CESSDA Topic Classification", 
                uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification"),
+          
           list(id = "F22", 
                name = "International Migration", 
                parent_id = "F2 - International Factor Movements and International Business", 
                vocabulary = "JEL Classification System", 
                uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
           list(id = "O15", 
                name = "Human Resources - Human Development - Income Distribution - Migration", 
                parent_id = "O1 - Economic Development", 
                vocabulary = "JEL Classification System", 
                uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
           list(id = "O12", 
                name = "Microeconomic Analyses of Economic Development", 
                parent_id = "O1 - Economic Development", 
                vocabulary = "JEL Classification System", 
                uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J"),
+          
           list(id = "J61", 
                name = "Geographic Labor Mobility - Immigrant Workers", 
                parent_id = "J6 - Mobility, Unemployment, Vacancies, and Immigrant Workers", 
                vocabulary = "JEL Classification System", 
                uri = "https://www.aeaweb.org/econlit/jelCodes.php?view=jel#J")
+               
         ),
         
         # ...
@@ -1211,7 +1217,7 @@ We present in chapter 12 a metadata schema intended to document reproducible res
   <br>
 We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 <br>
-Once an LDA topic model has been trained, it can be used to infer the topic composition of any document. This inference will then provide the share that each topic represents in the document. The sum of all represented topics is 1 (100%). 
+Once an LDA topic model has been trained, it can be used to infer the topic composition of any document. This inference will then provide the share that each topic represents in the document. The sum of all represented topics is 1 (100%).<br> 
 <br>
 The metadata element `lda_topics` is provided to allow data curators to store information on the inferred topic composition of the documents listed in a catalog. Sub-elements are provided to describe the topic model, and the topic composition.
 
@@ -1366,21 +1372,21 @@ The information provided by LDA models can be used to build a "filter by topic c
 <br>
 
 **`provenance`** *[Optional ; Repeatable]* <br>
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. 
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
    - **`origin_description`** *[Required ; Not repeatable]* <br>
-   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  
+   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested. <br> 
       - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-      The date and time the metadata were harvested, entered in ISO 8601 format.
+      The date and time the metadata were harvested, entered in ISO 8601 format.<br>
       - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Document Description / Title Statement section) will be modified when published in a new catalog.
+      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Document Description / Title Statement section) will be modified when published in a new catalog.<br>
       - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-      The URL from where the metadata were harvested.
+      The URL from where the metadata were harvested.<br>
       - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.
+      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
       - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).
+      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
       - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-      @@@@@@@ 
+      @@@@@@@ <br>
 
 - **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
@@ -1423,7 +1429,14 @@ This document is the World Bank Policy Working Paper No 9412, titled "[Predictin
 
 library(nadar)
 
-setwd("C:\my_folder")
+# ----------------------------------------------------------------------------------
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
+
+setwd("C:/my_folder")
 doc_file <- "WB_PRWP_9412_Food_Crises.pdf"
 
 id <- "WB_WPS9412"  
@@ -1439,65 +1452,67 @@ example_1 <- list(
     
     date_published = "2020-09",
     
-    authors = list(list(last_name = "Andrée", first_name = "Bo Pieter Johannes", 
-                        affiliation = "World Bank",
-                        author_id = list(list(type = "ORCID", id = "0000-0002-8007-5007"))),
-                   list(last_name = "Chamorro", first_name = "Andres", 
-                        affiliation = "World Bank"),
-                   list(last_name = "Kraay", first_name = "Aart",   
-                        affiliation = "World Bank"),
-                   list(last_name = "Spencer", first_name = "Phoebe", 
-                        affiliation = "World Bank"),
-                   list(last_name = "Wang", first_name = "Dieter", 
-                        affiliation = "World Bank",
-                        author_id = list(list(type = "ORCID", id = "0000-0003-1287-332X"))),
-    
+    authors = list(
+      list(last_name = "Andrée", first_name = "Bo Pieter Johannes", 
+           affiliation = "World Bank",
+           author_id = list(list(type = "ORCID", id = "0000-0002-8007-5007"))),
+      list(last_name = "Chamorro", first_name = "Andres", 
+           affiliation = "World Bank"),
+      list(last_name = "Kraay", first_name = "Aart",   
+           affiliation = "World Bank"),
+      list(last_name = "Spencer", first_name = "Phoebe", 
+           affiliation = "World Bank"),
+      list(last_name = "Wang", first_name = "Dieter", 
+           affiliation = "World Bank",
+           author_id = list(list(type = "ORCID", id = "0000-0003-1287-332X")))
+    ),
+                   
     journal   = "World Bank Policy Research Working Paper",
     number    = "9412",
     publisher = "World Bank",
-    
-    ref_country =  list(list(name="Afghanistan",      code="AFG"),
-                        list(name="Burkina Faso",     code="BFA"),
-                        list(name="Chad",             code="TCD"),
-                        list(name="Congo, Dem. Rep.", code="COD"),
-                        list(name="Ethiopia",         code="ETH"),
-                        list(name="Guatemala",        code="GTM"),
-                        list(name="Haiti",            code="HTI"),
-                        list(name="Kenya",            code="KEN"),
-                        list(name="Malawi",           code="MWI"),
-                        list(name="Mali",             code="MLI"),
-                        list(name="Mauritania",       code="MRT"),
-                        list(name="Mozambique",       code="MOZ"),
-                        list(name="Niger",            code="NER"),
-                        list(name="Nigeria",          code="NGA"),
-                        list(name="Somalia",          code="SOM"),
-                        list(name="South Sudan",      code="SSD"),
-                        list(name="Sudan",            code="SDN"),
-                        list(name="Uganda",           code="UGA"),
-                        list(name="Yemen, Rep.",      code="YEM"),
-                        list(name="Zambia",           code="ZMB"),
-                        list(name="Zimbabwe",         code="ZWE")),
-    
-    abstract = "Globally, more than 130 million people are estimated to be in food crisis. These humanitarian disasters are associated with severe impacts on livelihoods that can reverse years of development gains. 
-The existing outlooks of crisis-affected populations rely on expert assessment of evidence and are limited in their temporal frequency and ability to look beyond several months. 
-This paper presents a statistical forecasting approach to predict the outbreak of food crises with sufficient lead time for preventive action. 
-Different use cases are explored related to possible alternative targeting policies and the levels at which finance is typically unlocked. 
-The results indicate that, particularly at longer forecasting horizons, the statistical predictions compare favorably to expert-based outlooks. 
-The paper concludes that statistical models demonstrate good ability to detect future outbreaks of food crises and that using statistical forecasting approaches may help increase lead time for action.",
-    
+     
+    ref_country =  list(
+      list(name="Afghanistan",      code="AFG"),
+      list(name="Burkina Faso",     code="BFA"),
+      list(name="Chad",             code="TCD"),
+      list(name="Congo, Dem. Rep.", code="COD"),
+      list(name="Ethiopia",         code="ETH"),
+      list(name="Guatemala",        code="GTM"),
+      list(name="Haiti",            code="HTI"),
+      list(name="Kenya",            code="KEN"),
+      list(name="Malawi",           code="MWI"),
+      list(name="Mali",             code="MLI"),
+      list(name="Mauritania",       code="MRT"),
+      list(name="Mozambique",       code="MOZ"),
+      list(name="Niger",            code="NER"),
+      list(name="Nigeria",          code="NGA"),
+      list(name="Somalia",          code="SOM"),
+      list(name="South Sudan",      code="SSD"),
+      list(name="Sudan",            code="SDN"),
+      list(name="Uganda",           code="UGA"),
+      list(name="Yemen, Rep.",      code="YEM"),
+      list(name="Zambia",           code="ZMB"),
+      list(name="Zimbabwe",         code="ZWE")
+    ),
+     
+    abstract = "Globally, more than 130 million people are estimated to be in food crisis. These humanitarian disasters are associated with severe impacts on livelihoods that can reverse years of development gains. The existing outlooks of crisis-affected populations rely on expert assessment of evidence and are limited in their temporal frequency and ability to look beyond several months. This paper presents a statistical forecasting approach to predict the outbreak of food crises with sufficient lead time for preventive action. Different use cases are explored related to possible alternative targeting policies and the levels at which finance is typically unlocked. The results indicate that, particularly at longer forecasting horizons, the statistical predictions compare favorably to expert-based outlooks. The paper concludes that statistical models demonstrate good ability to detect future outbreaks of food crises and that using statistical forecasting approaches may help increase lead time for action.",
+     
     languages = list(list(name="English", code="EN")),
-    
+     
     reproducibility = list(
       statement = "The code and data needed to reproduce the analysis are openly available.",
       links = list(
         list(uri="http://fcv.ihsn.org/catalog/study/RR_WLD_2020_PFC_v01", 
              description= "Source code"),
         list(uri="http://fcv.ihsn.org/catalog/study/WLD_2020_PFC_v01_M",  
-             description= "Dataset")))
+             description= "Dataset")
+      )
+    )
+    
   )
-
-)
-
+  
+)  
+  
 # Publish the metadata in NADA
 document_add(idno = id, 
              metadata = example_1, 
@@ -1514,13 +1529,21 @@ external_resources_add(
   file_path = "http://hdl.handle.net/10986/34510",
   overwrite = "yes"
 )
-
-
 ```
+
+The document will now be available in the NADA catalog.
+
+<br>
+![](./images/document_example_01_nada.JPG)
+<br>
 
 #### Using Python
 
+The Python equivalent of the R script presented above is as follows.
+
 ```{python eval=F, echo=T}
+
+# @@@ Script not tested yet
 
 import pynada as nada
 import inspect
@@ -1645,7 +1668,6 @@ pdf_file = "WB_PRWP_9412_Food_Crises.pdf"
 thumbnail_path = nada.pdf_to_thumbnail(pdf_file, page_no=1)
 nada.upload_thumbnail(dataset_id, thumbnail_path)
 
-
 ```
 
 
@@ -1667,7 +1689,14 @@ This example documents the World Bank World Development Report (WDR) 2019 titled
 
 library(nadar)
 
-setwd("C:\my_folder")
+# ----------------------------------------------------------------------------------
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
+
+setwd("C:/my_folder")
 doc_file <- "2019-WDR-Report.pdf"
 
 id <- "WB_WDR2019"  
@@ -1690,16 +1719,16 @@ example_2 = list(
     ),
     production_date = "2020-12-27"
   ),
-  
+
   document_description = list(
     
     title_statement = list(
       idno = id,
       title = "The Changing Nature of Work",
-      sub-title = "World Development Report 2019",
+      sub_title = "World Development Report 2019",
       abbreviated_title = "WDR 2019"
     ),
-    
+
     authors = list(
       list(first_name = "Rong",      last_name = "Chen",      affiliation = "World Bank"),
       list(first_name = "Davida",    last_name = "Connon",    affiliation = "World Bank"),
@@ -1714,7 +1743,7 @@ example_2 = list(
     date_created = "2019",
     date_published = "2019",
     
-    id_numbers = list(
+    identifers = list(
       list(type = "ISSN",           value = "0163-5085"),
       list(type = "ISBN softcover", value = "978-1-4648-1328-3"),
       list(type = "ISBN hardcover", value = "978-1-4648-1342-9"),
@@ -1722,66 +1751,64 @@ example_2 = list(
       list(type = "DOI softcover",  value = "10.1596/978-1-4648-1328-3"),   
       list(type = "DOI hardcover",  value = "10.1596/978-1-4648-1342-9")
     ),
-
+    
     type = "book",
     
     description = "The World Development Report (WDR) 2019: The Changing Nature of Work studies how the nature of work is changing as a result of advances in technology today. Fears that robots will take away jobs from people have dominated the discussion over the future of work, but the World Development Report 2019 finds that on balance this appears to be unfounded. Work is constantly reshaped by technological progress. Firms adopt new ways of production, markets expand, and societies evolve. Overall, technology brings opportunity, paving the way to create new jobs, increase productivity, and deliver effective public services. Firms can grow rapidly thanks to digital transformation, expanding their boundaries and reshaping traditional production patterns. The rise of the digital platform firm means that technological effects reach more people faster than ever before. Technology is changing the skills that employers seek. Workers need to be better at complex problem-solving, teamwork and adaptability. Digital technology is also changing how people work and the terms on which they work. Even in advanced economies, short-term work, often found through online platforms, is posing similar challenges to those faced by the world’s informal workers. The Report analyzes these changes and considers how governments can best respond. Investing in human capital must be a priority for governments in order for workers to build the skills in demand in the labor market. In addition, governments need to enhance social protection and extend it to all people in society, irrespective of the terms on which they work. To fund these investments in human capital and social protection, the Report offers some suggestions as to how governments can mobilize additional revenues by increasing the tax base.",
     
     toc_structured = list(
-       list(id = "00",                   name = "Overview"),
-       list(id = "01", parent_id = "00", name = "Changes in the nature of work"),
-       list(id = "02", parent_id = "00", name = "What can governments do?"),
-       list(id = "03", parent_id = "00", name = "Organization of this study"),
-       list(id = "10",                   name = "1. The changing nature of work"),
-       list(id = "11", parent_id = "10", name = "Technology generates jobs"),
-       list(id = "12", parent_id = "10", name = "How work is changing"),
-       list(id = "13", parent_id = "10", name = "A simple model of changing work"),
-       list(id = "20",                   name = "2. The changing nature of firms"),
-       list(id = "21", parent_id = "20", name = "Superstar firms"),
-       list(id = "22", parent_id = "20", name = "Competitive markets"),
-       list(id = "23", parent_id = "20", name = "Tax avoidance"),       
-       list(id = "30",                   name = "3. Building human capital"),
-       list(id = "31", parent_id = "30", name = "Why governments should get involved"),
-       list(id = "32", parent_id = "30", name = "Why measurement helps"),
-       list(id = "33", parent_id = "30", name = "The human capital project"), 
-       list(id = "40",                   name = "4. Lifelong learning"),
-       list(id = "41", parent_id = "40", name = "Learning in early childhood"),
-       list(id = "42", parent_id = "40", name = "Tertiary education"),
-       list(id = "43", parent_id = "40", name = "Adult learning outside the workplace"),
-       list(id = "50",                   name = "5. Returns to work"),
-       list(id = "51", parent_id = "50", name = "Informality"),
-       list(id = "52", parent_id = "50", name = "Working women"),
-       list(id = "53", parent_id = "50", name = "Working in agriculture"),  
-       list(id = "60",                   name = "6. Strengthening social protection"),
-       list(id = "61", parent_id = "60", name = "Social assistance"),
-       list(id = "62", parent_id = "60", name = "Social insurance"),
-       list(id = "63", parent_id = "60", name = "Labor regulation"),       
-       list(id = "70",                   name = "7. Ideas for social inclusion"),
-       list(id = "71", parent_id = "70", name = "A global 'New Deal'"),
-       list(id = "72", parent_id = "70", name = "Creating a new social contract"),
-       list(id = "73", parent_id = "70", name = "Financing social inclusion")
-      ),
-    
-    abstract = "Fears that robots will take away jobs from people have dominated the discussion over the future of work, but the World Development Report 2019 finds that on balance this appears to be unfounded. Instead, technology is bringing opportunity, paving the way to create new jobs, increase productivity, and improve public service delivery.
-The nature of work is changing.
+      list(id = "00",                   name = "Overview"),
+      list(id = "01", parent_id = "00", name = "Changes in the nature of work"),
+      list(id = "02", parent_id = "00", name = "What can governments do?"),
+      list(id = "03", parent_id = "00", name = "Organization of this study"),
+      list(id = "10",                   name = "1. The changing nature of work"),
+      list(id = "11", parent_id = "10", name = "Technology generates jobs"),
+      list(id = "12", parent_id = "10", name = "How work is changing"),
+      list(id = "13", parent_id = "10", name = "A simple model of changing work"),
+      list(id = "20",                   name = "2. The changing nature of firms"),
+      list(id = "21", parent_id = "20", name = "Superstar firms"),
+      list(id = "22", parent_id = "20", name = "Competitive markets"),
+      list(id = "23", parent_id = "20", name = "Tax avoidance"),       
+      list(id = "30",                   name = "3. Building human capital"),
+      list(id = "31", parent_id = "30", name = "Why governments should get involved"),
+      list(id = "32", parent_id = "30", name = "Why measurement helps"),
+      list(id = "33", parent_id = "30", name = "The human capital project"), 
+      list(id = "40",                   name = "4. Lifelong learning"),
+      list(id = "41", parent_id = "40", name = "Learning in early childhood"),
+      list(id = "42", parent_id = "40", name = "Tertiary education"),
+      list(id = "43", parent_id = "40", name = "Adult learning outside the workplace"),
+      list(id = "50",                   name = "5. Returns to work"),
+      list(id = "51", parent_id = "50", name = "Informality"),
+      list(id = "52", parent_id = "50", name = "Working women"),
+      list(id = "53", parent_id = "50", name = "Working in agriculture"),  
+      list(id = "60",                   name = "6. Strengthening social protection"),
+      list(id = "61", parent_id = "60", name = "Social assistance"),
+      list(id = "62", parent_id = "60", name = "Social insurance"),
+      list(id = "63", parent_id = "60", name = "Labor regulation"),       
+      list(id = "70",                   name = "7. Ideas for social inclusion"),
+      list(id = "71", parent_id = "70", name = "A global 'New Deal'"),
+      list(id = "72", parent_id = "70", name = "Creating a new social contract"),
+      list(id = "73", parent_id = "70", name = "Financing social inclusion")
+    ),
+
+    abstract = "Fears that robots will take away jobs from people have dominated the discussion over the future of work, but the World Development Report 2019 finds that on balance this appears to be unfounded. Instead, technology is bringing opportunity, paving the way to create new jobs, increase productivity, and improve public service delivery. The nature of work is changing.
 Firms can grow rapidly thanks to digital transformation, which blurs their boundaries and challenges traditional production patterns.
 The rise of the digital platform firm means that technological effects reach more people faster than ever before.
 Technology is changing the skills that employers seek. Workers need to be good at complex problem-solving, teamwork and adaptability.
 Technology is changing how people work and the terms on which they work. Even in advanced economies, short-term work, often found through online platforms, is posing similar challenges to those faced by the world’s informal workers.
-What can governments do?
-The 2019 WDR suggests three solutions:
+What can governments do? The 2019 WDR suggests three solutions:
 1 - Invest in human capital especially in disadvantaged groups and early childhood education to develop the new skills that are increasingly in demand in the labor market, such as high-order cognitive and sociobehavioral skills
 2 - Enhance social protection to ensure universal coverage and protection that does not fully depend on having formal wage employment
 3 - Increase revenue mobilization by upgrading taxation systems, where needed, to provide fiscal space to finance human capital development and social protection.",
-
+    
     ref_country = list(
       list(name = "World", code = "WLD")
     ),
-
+    
     spatial_coverage = "Global",
-
+    
     publication_frequency = "Annual",
-
+    
     languages = list(
       list(name = "English",   code = "EN"),
       list(name = "Chinese",   code = "ZH"),
@@ -1793,18 +1820,18 @@ The 2019 WDR suggests three solutions:
       list(name = "Russian",   code = "RU"),
       list(name = "Serbian",   code = "SR")
     ),
-
+    
     license = list(
       list(name = "Creative Commons Attribution 3.0 IGO license (CC BY 3.0 IGO)", 
            uri = "http://creativecommons.org/licenses/by/3.0/igo")
     ),
-
+    
     bibliographic_citation = list(
       list(citation = " World Bank. 2019. World Development Report 2019: The Changing Nature of Work. Washington, DC: World Bank. doi:10.1596/978-1-4648-1328-3. License: Creative Commons Attribution CC BY 3.0 IGO")
     ),
-
+    
     series = "World Development Report",
-
+    
     contributors = list(
       list(first_name  = "Simeon", last_name = "Djankov",
            affiliation = "World Bank", role = "WDR Director"),
@@ -1815,14 +1842,14 @@ The 2019 WDR suggests three solutions:
       list(first_name  = "Consuelo Jurado", last_name = "Tan",
            affiliation = "World Bank", role = "Program Assistant")
     ),
-
+    
     publisher = "World Bank Publications",
     publisher_address = "The World Bank Group, 1818 H Street NW, Washington, DC 20433, USA",
-
+    
     contacts = list(
       list(name = "World Bank Publications", email = "pubrights@worldbank.org")
     ),
-
+    
     topics = list(
       list(name = "Labour And Employment - Employee Training", 
            vocabulary = "CESSDA Topic Classification", 
@@ -1837,11 +1864,13 @@ The 2019 WDR suggests three solutions:
            vocabulary = "CESSDA Topic Classification", 
            uri = "https://vocabularies.cessda.eu/vocabulary/TopicClassification")
     ),
-
+    
     disciplines = list(
-      list(name = "Economics"))
-
+      list(name = "Economics")
+    )
+    
   )
+  
 )
 
 # Publish the metadata in NADA
@@ -1857,7 +1886,7 @@ document_add(idno = id,
 
 external_resources_add(
   title = "The Changing Nature of Work",
-  description = "Links to the PDF report in all available languages"
+  description = "Links to the PDF report in all available languages",
   idno = id,
   dctype = "doc/anl",
   language = "English, Chinese, Arabic, French, Spanish, Italian, Bulgarian, Russian, Serbian",
@@ -1921,10 +1950,19 @@ external_resources_add(
 )
 ```
 
+The document is now available in the NADA catalog.
+<br>
+![](./images/document_example_02_nada.JPG)
+<br>
 
-#### Using Python   @@@@@@@@@@@  edit to match R code
+
+#### Using Python   
+
+The Python equivalent of the R script presented above is as follows.
 
 ```{python eval=F, echo=T}
+
+# @@@ Script not tested yet - must be edited to match the R script
 
 import pynada as nada
 import inspect
@@ -2027,7 +2065,7 @@ The 2019 WDR suggests three solutions:
 
   'date_published': "2019",
   
-  'id_numbers': [
+  'identifiers': [
       {'type': "ISSN",           'value': "0163-5085"},
       {'type': "ISBN softcover", 'value': "978-1-4648-1328-3"},
       {'type': "ISBN hardcover", 'value': "978-1-4648-1342-9"},
@@ -2106,7 +2144,7 @@ The 2019 WDR suggests three solutions:
 ```
 
 
-### Example 3: List of documents
+### Example 3: Importing from a list of documents
 
 In this example we take a different use case. We assume that a list of publications is available as a CSV file. Each row in this file describes one publication, with the following columns containing the metadata (with no missing information for the required elements):
 
@@ -2130,59 +2168,72 @@ The R (or Python) script reads the CSV file. The listed documents are downloaded
 ```{r, eval=F, echo=T}
 
 library(nadar)
+library(stringr)
+library(rlist)
 library(countrycode) # Will be used to automatically add ISO country codes
 
-setwd("C:\my_folder")
+# ----------------------------------------------------------------------------------
+my_keys <- read.csv("C:/confidential/my_API_keys.csv", header=F, stringsAsFactors=F)
+set_api_key("my_keys[1,1")  
+set_api_url("https://.../index.php/api/") 
+set_api_verbose(FALSE)
+# ----------------------------------------------------------------------------------
 
-# Set API key and URL
+# Read the CSV file containing the information (metadata) on the 5 documents
 
-set_api_key("my_api_key")  # Enter a valid API key
-set_api_url("http://my_catalog.ihsn.org/index.php/api/") # Catalog URL
-
+setwd("C:/my_folder")
 # Read the file containing information on the 5 documents
-
 doc_list <- read.csv("my_list_of_documents.csv", stringsAsFactors = FALSE)
 
 # Generate the metadata for each document in the list, and publish in NADA
 
 for(i in 1:nrow(doc_list)) {
-
+  
   # Download the file if not already done
   url <- doc_list$URL_pdf[i]
   pdf_file  <- basename(doc_list$URL_pdf[i])
   if(!file.exists(pdf_file)) download.file(url, pdf_file, mode = "wb")
-
+  
   # Map the available metadata elements to the schema
   id        <- doc_list$ID[i]
   title     <- doc_list$title[i]
   date      <- as.character(doc_list$date_published[i])
   abstract  <- doc_list$abstract[i]
   type      <- doc_list$type[i]
-  # Split authors list an generate a list compliant with the schema
+  
+  # Split the authors' list an generate a list compliant with the schema
   list_authors <- doc_list$authors[i]
   list_authors <- str_split(list_authors, ";")
   authors = list()
-  for n in 1:length(list_authors[[1]]) {
+  for(n in 1:length(list_authors[[1]])) {
     author = trimws(list_authors[[1]][n])
-    last_first = str_split(author, ",")
-    a_l = list(last_name  = trimws(last_first[[1]][1]), 
-               first_name = trimws(last_first[[1]][2]))
+    if("," %in% author) {  # If we have last name and first name
+      last_first = str_split(author, ",")
+      a_l = list(last_name  = trimws(last_first[[1]][1]), 
+                 first_name = trimws(last_first[[1]][2]))
+    } else {   # E.g., when author is an organization
+      a_l = list(last_name  = author, first_name = "")
+    }  
     authors = list.append(authors, a_l)
   }
-  # Split country list an generate a list compliant with the schema
+  
+  # Split the country list an generate a list compliant with the schema
   list_countries <- doc_list$country[i]
   list_countries <- str_split(list_countries, ";")
   countries = list()
-  for n in 1:length(list_countries[[1]]) {
+  for(n in 1:length(list_countries[[1]])) {
     country = trimws(list_countries[[1]][n])
-    c_code = countrycode(country, origin = 'country.name', destination = 'iso3c')
-    if(country == "World") c_code = "WLD"
+    if(country == "World"){
+      c_code = "WLD"
+    } else {
+      c_code = countrycode(country, origin = 'country.name', destination = 'iso3c')
+    }
     if(is.na(c_code)) c_code = ""
     c_l = list(name = country, code = c_code)
     countries = list.append(countries, c_l)
   }
-
-  # Generate and publish the metadata for the document in NADA, and add a link
+  
+  # Capture the cover page as JPG, and generate the full document metadata 
   
   thumb <- gsub(".pdf", ".jpg", pdf_file)
   capture_pdf_cover(pdf_file)   # To be used as thumbnail
@@ -2197,14 +2248,16 @@ for(i in 1:nrow(doc_list)) {
     )
   )
   
-  # Publish metadata 
-  document_add(idno = id, 
-               published = 1, 
-               overwrite = "yes", 
-               metadata = this_document, 
+  # Publish the metadata in NADA
+  
+  document_add(idno = id,
+               published = 1,
+               overwrite = "yes",
+               metadata = this_document,
                thumbnail = thumb)
-
+  
   # Add a link to the document
+  
   external_resources_add(
     title = as.character(this_document$document_description$title_statement[1]),
     idno = id,
@@ -2212,14 +2265,17 @@ for(i in 1:nrow(doc_list)) {
     file_path = url,
     overwrite = "yes"
   )
-
+  
 }
+
 ```
 
 
 #### Using Python
 
 ```{python eval=F, echo=T}
+
+# @@@ Script not tested yet
 
 import pynada as nada
 import pandas as pd

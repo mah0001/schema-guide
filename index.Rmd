@@ -1,5 +1,5 @@
 --- 
-title: "Metadata Schemas for Improved Data Discoverability and Usability"
+title: "[DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability"
 author: "Olivier Dupriez and Mehmood Asghar"
 date: "`r Sys.Date()`"
 knit: bookdown::render_book
@@ -26,7 +26,7 @@ graphics: yes
 
 The objective of the Guide is to promote the use of rich and structured metadata to improve data discoverability, accessibility, usability, and use. Although the volume and diversity of data made available to the research community are growing fast, many valuable datasets remain under-exploited. To foster their (responsible) use, data must be made easy to locate, access, and analyze in compliance with legal and ethical principles. The discoverability and usability of data depend largely on the quality of the associated metadata, which itself can be increased when metadata standards and schemas are adopted. This Guide is primarily intended to advocate for, and facilitate, the adoption of such standards and schemas. It was written as a companion to other tools and guidelines, including the open-source [NADA cataloguing](http://nada.ihsn.org/) application and the related R package NADAR and Python library PyNADA. The relevancy and use of standards and schemas is however not limited to these specific solutions.
 
-The Guide was written by Olivier Dupriez (Lead Statistician, World Bank) and Mehmood Asghar (Senior Data Engineer, World Bank). Kamwoo Lee (Data Scientist, World Bank) produced multiple examples of the use of metadata schemas included in the Guide; he also played a critical role in the testing of the schemas and led the development of PyNADA. Matthew Welch (Senior Economist-Statistician, World Bank) provided comments on the Guide. Thijs Benschop (Data Scientist, World Bank) contributed to the development of NADAR. Emmanuel Blondel (Consultant) contributed much of chapter 6. Geoffrey Greenwell (Consultant) provided input to chapter 8. Tefera Bekele Degefu and Cathrine Machingauta (Data SCientists, World Bank) participated in the testing of the schemas and packages.
+The Guide was written by Olivier Dupriez (Lead Statistician, World Bank) and Mehmood Asghar (Senior Data Engineer, World Bank). Kamwoo Lee (Data Scientist, World Bank) produced multiple examples of the use of metadata schemas included in the Guide; he also played a critical role in the testing of the schemas and led the development of PyNADA. Matthew Welch (Senior Economist-Statistician, World Bank) provided comments on the Guide. Thijs Benschop (Data Scientist, World Bank) contributed to the development of NADAR. Emmanuel Blondel (Consultant) contributed much of chapter 6. Geoffrey Greenwell (Consultant) provided input to chapter 8. Tefera Bekele Degefu and Cathrine Machingauta (Data Scientists, World Bank) participated in the testing of the schemas and packages.
 
 The production of the Guide and related tools has been made possible by financial contributions from the following sponsors:
 
@@ -43,7 +43,9 @@ The Guide was created using [R Bookdown](https://bookdown.org/) and is licensed 
 ![](./images/index_contribute_editing_Github.jpg){width=40%}
 
 
+
 ![](./images/index_ccby_logo.png){width=20%}
 </center>
  
+
 `
