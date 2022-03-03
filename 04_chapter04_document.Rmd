@@ -1373,6 +1373,9 @@ The information provided by LDA models can be used to build a "filter by topic c
 
 **`provenance`** *[Optional ; Repeatable]* <br>
 Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
+  <br>
+  ![](./images/ReDoc_documents_19a.JPG){width=100%}
+  <br>
    - **`origin_description`** *[Required ; Not repeatable]* <br>
    The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested. <br> 
       - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
@@ -1400,9 +1403,7 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
 
 **`additional`** *[Optional ; Not repeatable]*<br>
 The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
-  <br>
-  ![](./images/ReDoc_documents_19a.JPG){width=100%}
-  <br>
+
 
 
 ## Complete examples
