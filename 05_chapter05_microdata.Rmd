@@ -73,7 +73,7 @@ The DDI-Codebook also provides a solution to describe OLAP cubes, which we do no
 
 The `provenance`, `tags`, and `additional` sections are not part of the DDI standard. The `provenance` section allows data curators to store information on harvested metadata; the `tags` is a section common to all schemas (with the exception of the *external resources* schema), which provides a flexible solution to generate customized facets in data catalogs. The `additional` section allows data curators to supplement the DDI standard with their own metadata elements, without breaking compliance with the DDI. 
 
-> NOTE: Each metadata element in the DDI standard has a name. In our JSON version of the standard, we do not make use of the exact same names. We adapted some of them for clarity. For example, we renamed the DDI element `titlStmt` as `title_statement`. In the documentation below, we provide the equivalence between the original element name and the name we use. The original name will be indicated as follows: `title_statement` *[DDI: \<titlStmt>\]*. JSON files created using our adapted version of the DDI can be exported as a DDI 2.5 compliant and validated XML file using R or Python scripts provided in the NADAR package and PyNADA library.
+> NOTE: Each metadata element in the DDI standard has a name. In our JSON version of the standard, we do not make use of the exact same names. We adapted some of them for clarity. For example, we renamed the DDI element `titlStmt` as `title_statement`. The mapping between the DDI Codebook 2.5 standard and the elements in our schema is provided in appendix. JSON files created using our adapted version of the DDI can be exported as a DDI 2.5 compliant and validated XML file using R or Python scripts provided in the NADAR package and PyNADA library.
 
 The documentation of the schema starts with a few elements which are not metadata elements, but are used to control how the metadata are published in a NADA catalog. These fields are only used when metadata are published using tools like R (NADAR) or Python (PyNADA) and the NADA API.
 
@@ -2188,8 +2188,8 @@ The metadata elements we describe below apply independently to each variable in 
      - **`title`** *[Optional ; Not repeatable ; String]* <br>
      The name (label) of the concept.     
      - **`vocab`** *[Optional ; Not repeatable ; String]* <br>
-     The controlled vocabulary, if any, from which the concept `title' was taken. 
-     - **`uri`** *[DDI: \<vocabURI>\ ; Optional ; Not repeatable ; String]* <br>
+     The controlled vocabulary, if any, from which the concept `title' was taken. <br> 
+     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
      The location for the controlled vocabulary mentioned in `vocab'. <br>
 <br>     
    - **`var_format`** *[Optional ; Not repeatable]* <br>
