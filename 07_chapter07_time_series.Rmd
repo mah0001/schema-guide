@@ -222,8 +222,18 @@ Themes provide a general idea of the research that might guide the creation and/
        - **`uri`** *[DDI: \<vocabURI>\ ; Optional ; Not repeatable ; String]* <br>
        The URI of the controlled vocabulary used, if any.
 
+- **`ref_country`** *[Optional ; Repeatable]* <br>   @@@@@ do screenshot
+A list of countries for which data are available in the database. This element is somewhat redundant with the next element (`geographic_units`) which may also contain a list of countries. Identifying geographic areas of type "country" is important to enable filters and facets in data catalogs (country names are among the most frequent queries submitted to catalogs).
+<br>
+![](./images/ReDoc_ts_database_17a.JPG){width=100%} @@@
+<br>
+    - **`name`** *[Required ; Not repeatable ; String]* <br>
+    The name of the country.
+    - **`code`** *[Optional ; Not repeatable ; String]* <br>
+    The code of the country. The use of the [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) codes is recommended. 
+    
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
-A list of geographic units (regions, countries, states, provinces, etc.) for which data are available in the database.
+A list of geographic units (regions, countries, states, provinces, etc.) for which data are available in the database. This list is not limited to countries; it can contain sub-national areas, supra-national regions, or non-administrative area names. The `typ` element is used to indicate the type of geographic area. Countries may, but do not have to be repeated here if provided in the eleement `ref_country`.
 <br>
 ![](./images/ReDoc_ts_database_17.JPG){width=100%}
 <br>
@@ -666,6 +676,12 @@ A unique identifier (ID) for the series. Most agencies and databases will have a
     - Extensions (2 digits each) <br>
 For example, the series with identifier "DT.DIS.PRVT.CD" is the series containing data on "External debt disbursements by private creditors in current US dollars" (for more information, see [*How does the World Bank code its indicators?*]( https://datahelpdesk.worldbank.org/knowledgebase/articles/201175-how-does-the-world-bank-code-its-indicators).<br>
 
+- **`doi`** *[Optional ; Not repeatable ; String]* <br>  @@@@ do screenshot
+<br>
+![](./images/ReDoc_ts_series_03b.JPG){width=100%}
+<br>
+A Digital Object Identifier (DOI) for the the series. 
+
 - **`name`** *[Required ; Not repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_ts_series_04.JPG){width=100%}
@@ -889,6 +905,16 @@ The time period covers the entire span of data available for the series. The tim
     - **`end`** *[Required ; Not repeatable ; String]* <br>
     The end date is the latest date for which an estimate for the indicator is available. The end date should be entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).<br><br>
 
+- **`ref_country`** *[Optional ; Repeatable]* <br>   @@@@@ do screenshot
+A list of countries for which data are available in the series. This element is somewhat redundant with the next element (`geographic_units`) which may also contain a list of countries. Identifying geographic areas of type "country" is important to enable filters and facets in data catalogs (country names are among the most frequent queries submitted to catalogs).
+<br>
+![](./images/ReDoc_ts_series_27a.JPG){width=100%} @@@@@
+<br>
+    - **`name`** *[Required ; Not repeatable ; String]* <br>
+    The name of the country.
+    - **`code`** *[Optional ; Not repeatable ; String]* <br>
+    The code of the country. The use of the [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) codes is recommended. 
+    
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
 List of geographic units (regions, countries, states, provinces, etc.) for which data are available for the series.
     <br>
@@ -1047,19 +1073,21 @@ This element allows to reference indicators that are often associated with the i
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     A link to the related indicator.<br><br>
 
-- **`compliance`** *[Optional ; Repeatable]* <br>
+- **`compliance`** *[Optional ; Repeatable]* <br>  @@@@ redo screenshot
 For some indicators, international standards have been established. This is for example the case of indicators like the unemployment or unemployment rate, for which the International Conference of Labour Statisticians defines the standards concepts and methods. The `compliance` element is used to document the compliance of a series with one or multiple national or international standards.  
     <br>
     ![](./images/ReDoc_ts_series_43.JPG){width=100%}
     <br>
     - **`standard`** *[Optional ; Not repeatable ; String]* <br>
     The name of the standard that the series complies with. This name will ideally include a label and a version or a date. For example: "International Standard Industrial Classification of All Economic Activities (ISIC) Revision 4, published in 2007"
-    - **`organization`** *[Optional ; Not repeatable ; String]* <br>
+    - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
+    The acronym of the standard that the series complies with.
+    - **`custodian`** *[Optional ; Not repeatable ; String]* <br>
     The organization that maintains the standard that is being used for compliance. For example: "United Nations Statistics Division".
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     A link to a public website site where information on the compliance standard can be obtained. For example: "https://unstats.un.org/unsd/classifications/Family/Detail/27<br><br>
 
-- **`framework`** *[Optional ; Repeatable]* <br>
+- **`framework`** *[Optional ; Repeatable]* <br>   @@@@ redo screenshot
 Some national, regional, and international agencies develop monitoring frameworks, with goals, targets, and indicators. Some well-known examples are the [Millennium Development Goals](https://www.un.org/millenniumgoals/) and the [Sustainable Development Goals](https://sdgs.un.org/goals) which establish international goals for human development, or the World Summit for Children (1990) which set international goals in the areas of child survival, development and protection, supporting sector goals such as women’s health and education, nutrition, child health, water and sanitation, basic education, and children in difficult circumstances. The `framework` element is used to link an indicator or series to the framework, goal, and target associated with it. 
     <br>
     ![](./images/ReDoc_ts_series_44.JPG){width=100%}
@@ -1068,6 +1096,8 @@ Some national, regional, and international agencies develop monitoring framework
     The name of the framework. 
     - **`description`** *[Optional ; Not repeatable ; String]*<br>
     A brief description of the framework. 
+    - **`custodian`** *[Optional ; Not repeatable ; String]*<br>
+    The name of the organization that is the official custodian of the framework.
     - **`goal_id`** *[Optional ; Not repeatable ; String]*<br>
     The identifier of the Goal that the indicator or series is associated with.
     - **`goal_name`** *[Optional ; Not repeatable ; String]*<br>
