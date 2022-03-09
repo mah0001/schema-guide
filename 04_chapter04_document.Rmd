@@ -165,7 +165,7 @@ The `title_statement` is a required group of five elements, two of which are req
     )  
     ```
 
-- **`authors`** *[Optional ; Repeatable]* <br> 
+- **`authors`** *[Optional ; Repeatable]* <br>    @@@@ redo screenshot (with full_name element
 The authors should be listed in the same order as they appear in the source itself, which is not necessarily alphabetical. If necessary, the elements contained in this block can be used to generate a BibTex-compliant *author* field (in BibTex, the field `author` contains the name(s) of the author(s), separated by *and* when the document has more than one author.)
   <br>
   ![](./images/ReDoc_documents_11.JPG){width=100%}
@@ -183,8 +183,9 @@ The authors should be listed in the same order as they appear in the source itse
      - **`type`** *[Optional ; Not repeatable ; String]* <br>
      The type of ID, i.e. the identification of the registry that assigned the author's identifier, e.g. "ORCID". <br>
      - **`id`** *[Optional ; Not repeatable ; String]* <br>
-     The ID of the author in the registry mentioned in `type`.
-  <br>
+     The ID of the author in the registry mentioned in `type`.<br>
+  - **`full_name`** *[Optional ; Not repeatable ; String]* <br>
+  The full name of the author. This element should only be used when the first and last name of an author cannot be distinguished, i.e. when elements `first_name` and `last_name` cannot be filled out. This element can also be used when the author of a document is an organization or other type of entity.<br>   
 
   <br>
   > Example in R:
