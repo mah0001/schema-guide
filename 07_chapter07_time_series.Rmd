@@ -57,7 +57,7 @@ The schema includes two elements that are not metadata, but parameters used when
 **`metadata_information`** *[Optional, Not Repeatable]* <br>
 The set of elements in `metadata_information` is used to provide information on the production of the database metadata. This information is used mostly for administrative purposes by data curators and catalog administrators. It is not useful to data users.
 <br>
-![](./images/ReDoc_ts_database_03.JPG){width=100%}
+![](./images/ReDoc_ts_database_01.JPG){width=100%}
 <br>
     - **`title`** *[Optional ; Not repeatable ; String]* <br>
     The title of the metadata document containing the database metadata.
