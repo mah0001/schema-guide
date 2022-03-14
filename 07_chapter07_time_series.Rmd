@@ -46,8 +46,6 @@ An indicator or time series is documented using the **time series /indicators** 
 
 The **database** schema is used to document the database that contains the time series, not to document the indicators or /series. 
 
-![](./images/ReDoc_ts_database_01.JPG){width=100%}
-
 The schema includes two elements that are not metadata, but parameters used when publishing the metadata in a catalog:
 
 - **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished). This value must be set to 1 (published) to make the metadata visible. Note that the database metadata will only be shown in NADA in association with the metadata of an indicator. 
@@ -56,6 +54,30 @@ The schema includes two elements that are not metadata, but parameters used when
 <br>
 - **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same database can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that a database will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element  `database_description > title_statement > idno` is the same.
 
+**`metadata_information`** *[Optional, Not Repeatable]* <br>
+The set of elements in `metadata_information` is used to provide information on the production of the database metadata. This information is used mostly for administrative purposes by data curators and catalog administrators. It is not useful to data users.
+<br>
+![](./images/ReDoc_ts_database_03.JPG){width=100%}
+<br>
+    - **`title`** *[Optional ; Not repeatable ; String]* <br>
+    The title of the metadata document containing the database metadata.
+    - **`idno`** *[Required ; Not repeatable ; String]* <br>
+    A unique identifier of the database metadata document. It can be for example the identifier of the database preceded by a prefix identifying the metadata producer.
+    - **`producers`** *[Optional ; Repeatable]* <br>
+    A list and description of the producers of the database metadata (not the producers of the database).
+       - **`name`** *[Optional ; Not repeatable ; String]* <br>
+       The name of the person or organization who produced the metadata (or contributed to its production).
+       - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
+       The abbreviation (aconym) of the organization mentioned in `name`.
+       - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
+       The affiliation of the person or organization mentioned in `name`.
+       - **`role`** *[Optional ; Not repeatable ; String]* <br>
+       The specific role of the person or organization mentioned in `name` in the production of the metadata.
+    - **`prod_date`** *[Optional ; Not repeatable ; String]* <br>
+    The date when the metadata was produced, preferably entered in ISO 8601 format (YYYY-MM-DD).
+    - **`version`** *[Optional ; Not repeatable ; String]* <br>
+    The version of the metadata (not the version of the database).
+    
 **`database_description`** *[Required, Not Repeatable]* <br>
 
 - **`title_statement`** *[Required, Not Repeatable]* <br>
@@ -130,7 +152,7 @@ This is the date the database was created. The date should be entered in ISO 860
 - **`date_published`** <br>
 This is the date the database was made public. The date should be entered in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY). 
 
-- **`version`** *[Optional, Repeatable]* <br>
+- **`version`** *[Optional ; Repeatable]* <br>
 A database rarely remains static; it will be regularly updated and upgraded. The `version` element is a compound element and contains important information regarding the updating of the database. This includes any extension of the database (adding new series data), appending existing data, correcting existing data, etc. 
 <br>
 ![](./images/ReDoc_ts_database_10.JPG){width=100%}
@@ -210,7 +232,7 @@ Themes provide a general idea of the research that might guide the creation and/
     - **`uri`** <br>
     A link to the controlled vocabulary mentioned in field `vocabulary'.<br><br>
 
-    - **`keywords`** *[DDI: \<keyword>\ ; Optional ; Repeatable]* <br>
+- **`keywords`** *[DDI: \<keyword>\ ; Optional ; Repeatable]* <br>
     Words or phrases that describe salient aspects of a data collection's content. This can be used for building keyword indexes and for classification and retrieval purposes. Keywords can be selected from a standard thesaurus, preferably an international, multilingual thesaurus. The list of keywords can include keywords extracted from one or more controlled vocabularies and user-defined keywords. <br>
 <br>
 ![](./images/ReDoc_ts_database_16.JPG){width=100%}
@@ -222,10 +244,10 @@ Themes provide a general idea of the research that might guide the creation and/
        - **`uri`** *[DDI: \<vocabURI>\ ; Optional ; Not repeatable ; String]* <br>
        The URI of the controlled vocabulary used, if any.
 
-- **`ref_country`** *[Optional ; Repeatable]* <br>   @@@@@ do screenshot
+- **`ref_country`** *[Optional ; Repeatable]* <br>   
 A list of countries for which data are available in the database. This element is somewhat redundant with the next element (`geographic_units`) which may also contain a list of countries. Identifying geographic areas of type "country" is important to enable filters and facets in data catalogs (country names are among the most frequent queries submitted to catalogs).
 <br>
-![](./images/ReDoc_ts_database_17a.JPG){width=100%} @@@
+![](./images/ReDoc_ts_database_17a.JPG){width=100%} 
 <br>
     - **`name`** *[Required ; Not repeatable ; String]* <br>
     The name of the country.
@@ -676,7 +698,7 @@ A unique identifier (ID) for the series. Most agencies and databases will have a
     - Extensions (2 digits each) <br>
 For example, the series with identifier "DT.DIS.PRVT.CD" is the series containing data on "External debt disbursements by private creditors in current US dollars" (for more information, see [*How does the World Bank code its indicators?*]( https://datahelpdesk.worldbank.org/knowledgebase/articles/201175-how-does-the-world-bank-code-its-indicators).<br>
 
-- **`doi`** *[Optional ; Not repeatable ; String]* <br>  @@@@ do screenshot
+- **`doi`** *[Optional ; Not repeatable ; String]* <br>  
 <br>
 ![](./images/ReDoc_ts_series_03b.JPG){width=100%}
 <br>
@@ -753,7 +775,6 @@ The base period for the series. This field will only apply to series that requir
 
 - **`definition_short`** *[Optional ; Not repeatable ; String]* <br>
 A short definition of the series. The short definition captures the essence of the series.<br>
-
 <br>
 ![](./images/ReDoc_ts_series_11.JPG){width=100%}
 <br>
@@ -905,10 +926,10 @@ The time period covers the entire span of data available for the series. The tim
     - **`end`** *[Required ; Not repeatable ; String]* <br>
     The end date is the latest date for which an estimate for the indicator is available. The end date should be entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).<br><br>
 
-- **`ref_country`** *[Optional ; Repeatable]* <br>   @@@@@ do screenshot
+- **`ref_country`** *[Optional ; Repeatable]* <br>   
 A list of countries for which data are available in the series. This element is somewhat redundant with the next element (`geographic_units`) which may also contain a list of countries. Identifying geographic areas of type "country" is important to enable filters and facets in data catalogs (country names are among the most frequent queries submitted to catalogs).
 <br>
-![](./images/ReDoc_ts_series_27a.JPG){width=100%} @@@@@
+![](./images/ReDoc_ts_series_27a.JPG){width=100%} 
 <br>
     - **`name`** *[Required ; Not repeatable ; String]* <br>
     The name of the country.
@@ -1073,7 +1094,7 @@ This element allows to reference indicators that are often associated with the i
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     A link to the related indicator.<br><br>
 
-- **`compliance`** *[Optional ; Repeatable]* <br>  @@@@ redo screenshot
+- **`compliance`** *[Optional ; Repeatable]* <br>  
 For some indicators, international standards have been established. This is for example the case of indicators like the unemployment or unemployment rate, for which the International Conference of Labour Statisticians defines the standards concepts and methods. The `compliance` element is used to document the compliance of a series with one or multiple national or international standards.  
     <br>
     ![](./images/ReDoc_ts_series_43.JPG){width=100%}
@@ -1087,7 +1108,7 @@ For some indicators, international standards have been established. This is for 
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     A link to a public website site where information on the compliance standard can be obtained. For example: "https://unstats.un.org/unsd/classifications/Family/Detail/27<br><br>
 
-- **`framework`** *[Optional ; Repeatable]* <br>   @@@@ redo screenshot
+- **`framework`** *[Optional ; Repeatable]* <br>   
 Some national, regional, and international agencies develop monitoring frameworks, with goals, targets, and indicators. Some well-known examples are the [Millennium Development Goals](https://www.un.org/millenniumgoals/) and the [Sustainable Development Goals](https://sdgs.un.org/goals) which establish international goals for human development, or the World Summit for Children (1990) which set international goals in the areas of child survival, development and protection, supporting sector goals such as women’s health and education, nutrition, child health, water and sanitation, basic education, and children in difficult circumstances. The `framework` element is used to link an indicator or series to the framework, goal, and target associated with it. 
     <br>
     ![](./images/ReDoc_ts_series_44.JPG){width=100%}
@@ -1120,7 +1141,6 @@ Some national, regional, and international agencies develop monitoring framework
     A link to a website providing detailed information on the framework, its goals, targets, and indicators.
     - **`notes`** *[Optional ; Not repeatable ; String]*<br>
     Any additional information on the relationship between the indicator/series and the framework.
-
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
   <br>
