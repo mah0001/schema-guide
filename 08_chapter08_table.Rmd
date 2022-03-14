@@ -72,6 +72,9 @@ The `metadata_information` block is used to document the table metadata (not the
 - **`idno`** *[Optional, Not Repeatable, String]* <br> 
 A unique identifier for the metadata document (the *metadata document* is the JSON file containing the table metadata). This is different from the table unique identifier (see section `title_statement` below), although the same identifier can be used, and it is good practice to generate IDs that would maintain an easy connection between the metadata IDNO and the table IDNO. For example, if the unique ID of the table is "TBL_0001", the IDNO in the metadata_information could be "META_TBL_001".
 
+- **`title`** *[Optional, Not Repeatable, String]* <br>
+The title of the metadata document (not necessarily the title of the table).
+
 - **`producers`** *[Optional, Repeatable]* <br>
 This refers to the producer(s) of the table <u>metadata</u>, not to the producer(s) of the table. This could for example be the data curator in a data center. Four elements can be used to provide information on the metadata producer(s):
 
@@ -84,7 +87,7 @@ This refers to the producer(s) of the table <u>metadata</u>, not to the producer
    - **`role`** *[Optional, Not Repeatable, String]* <br>
    The specific role of the metadata producer/curator mentioned in `name` (applicable when more than one person was involved in the production of the metadata).
 
-- **`production_date`** *[Optional, Not Repeatable, String]* <br>
+- **`prod_date`** *[Optional, Not Repeatable, String]* <br>   @@@ redo screenshot
 The date the metadata (not the table) was produced. The date will preferably be entered in ISO 8601 format (YYYY-MM-DD).
 
 - **`version`** *[Optional, Not Repeatable, String]* <br>
