@@ -141,10 +141,11 @@ The `title_statement` is a required group of five elements, two of which are req
     The title of the document. Pay attention to the use of capitalization in the title, to ensure consistency across documents listed in your catalog. Corresponds to BibTex element *title*. 
     - **`sub_title`** *[Optional ; Not repeatable ; String]* <br>
     The document sub-title, if any. 
-    - **`alternate_title`** *[Optional ; Not repeatable ; String]* <br>
     An alternate title of the document (this could possibly be a translated version of the original title). 
-    - **`abbreviated_title`** *[Optional ; Not repeatable ; String]* <br>
-    An abbreviated version of the title of the document. Some documents may be referred to using a short name. For example, the World Bank's *World Development Report* is often referred to as the *WDR*. <br><br>
+    - **`alternate_title`** *[Optional ; Not repeatable ; String]* <br>
+    An alternate version of the title, possibly an abbreviated version. For example, the World Bank's *World Development Report* is often referred to as the *WDR*; the alternate title for the "World Development Report 2021" could then be "WDR 2021". <br>
+    - **`translated_title`** *[Optional ; Not repeatable ; String]* <br>
+    A translation of the title of the document.<br>
     
     > Example in R:
   
@@ -157,7 +158,8 @@ The `title_statement` is a required group of five elements, two of which are req
           idno = "978-1-4648-1342-9",
           title = "The Changing Nature of Work",
           sub-title = "World Development Report 2019",
-          abbreviated_title = "WDR 2019"
+          alternate_title = "WDR 2019",
+	  translated_title = "Rapport dur le Développement dans le Monde 2019"
         ),
         
         # ...
@@ -1211,6 +1213,46 @@ We present in chapter 12 a metadata schema intended to document reproducible res
       # ... 
     )        
   ```
+  
+### Provenance
+
+<br>
+![](./images/ReDoc_documents_18b.JPG){width=100%}
+<br>
+
+**`provenance`** *[Optional ; Repeatable]* <br>
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
+  <br>
+  ![](./images/ReDoc_documents_19a.JPG){width=100%}
+  <br>
+   - **`origin_description`** *[Required ; Not repeatable]* <br>
+   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested. <br> 
+      - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
+      The date and time the metadata were harvested, entered in ISO 8601 format.<br>
+      - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
+      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Document Description / Title Statement section) will be modified when published in a new catalog.<br>
+      - **`base_url`** *[Required ; Not repeatable ; String]* <br>
+      The URL from where the metadata were harvested.<br>
+      - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
+      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
+      - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
+      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
+      - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
+      @@@@@@@ <br>
+
+### Tags
+
+- **`tags`** *[Optional ; Repeatable]* <br>
+As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
+  <br>
+  ![](./images/ReDoc_documents_19.JPG){width=100%}  
+  <br>
+    - **`tag`** *[Required ; Not repeatable ; String]* <br>
+    A user-defined tag.
+    - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
+    A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
+    
+### LDA topics
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
   <br>
@@ -1271,8 +1313,7 @@ The image below provides an example of topics extracted from a document from the
 
 <br>
 
-  > Example in R:
-  
+  > Example in R:  
 
   ```{r, eval=F, echo=T}
   
@@ -1344,7 +1385,8 @@ The information provided by LDA models can be used to build a "filter by topic c
 </center>
 <br>
 
-
+ ### Embeddings
+ 
 - **`embeddings`** *[Optional ; Repeatable]* <br>
   In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings and their use in implementation of semantic search tools. Word embedding models convert text (words, phrases, documents) into large-dimension numeric vectors (e.g., a vector of 100 or 200 numbers) that are representative of the semantic content of the text. The vectors are generated by submitting a text to a pre-trained word embedding model (possibly via an API). These vector representations can be used to identify semantically-closed documents, by calculating the distance between vectors and identifying the closest ones, as shown in the example below.  
   <br>
@@ -1364,47 +1406,12 @@ The information provided by LDA models can be used to build a "filter by topic c
     - **`vector`** *[Required ; Not repeatable ; Object]* @@@@@@@@ do not offer options
     The numeric vector representing the document, provided as an object (array or string). <br><br>
     [1,4,3,5,7,9]
+   
 
-
-### Provenance
-
-<br>
-![](./images/ReDoc_documents_18b.JPG){width=100%}
-<br>
-
-**`provenance`** *[Optional ; Repeatable]* <br>
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
-  <br>
-  ![](./images/ReDoc_documents_19a.JPG){width=100%}
-  <br>
-   - **`origin_description`** *[Required ; Not repeatable]* <br>
-   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested. <br> 
-      - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
-      The date and time the metadata were harvested, entered in ISO 8601 format.<br>
-      - **`altered`** *[Optional ; Not repeatable ; Boolean]* <br>
-      A boolean variable ("true" or "false"; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element `idno` in the Document Description / Title Statement section) will be modified when published in a new catalog.<br>
-      - **`base_url`** *[Required ; Not repeatable ; String]* <br>
-      The URL from where the metadata were harvested.<br>
-      - **`identifier`** *[Optional ; Not repeatable ; String]* <br>
-      The unique dataset identifier (`idno` element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The `identifier` element in `provenance` is used to maintain traceability.<br>
-      - **`date_stamp`** *[Optional ; Not repeatable ; String]* <br>
-      The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
-      - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
-      @@@@@@@ <br>
-
-- **`tags`** *[Optional ; Repeatable]* <br>
-As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
-  <br>
-  ![](./images/ReDoc_documents_19.JPG){width=100%}  
-  <br>
-    - **`tag`** *[Required ; Not repeatable ; String]* <br>
-    A user-defined tag.
-    - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
-    A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
+### Additional fields
 
 **`additional`** *[Optional ; Not repeatable]*<br>
 The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
-
 
 
 ## Complete examples
