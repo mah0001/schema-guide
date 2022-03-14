@@ -1216,15 +1216,11 @@ We present in chapter 12 a metadata schema intended to document reproducible res
   
 ### Provenance
 
+**`provenance`** *[Optional ; Repeatable]* <br>
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
 <br>
 ![](./images/ReDoc_documents_18b.JPG){width=100%}
 <br>
-
-**`provenance`** *[Optional ; Repeatable]* <br>
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
-  <br>
-  ![](./images/ReDoc_documents_19a.JPG){width=100%}
-  <br>
    - **`origin_description`** *[Required ; Not repeatable]* <br>
    The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested. <br> 
       - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
