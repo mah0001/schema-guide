@@ -102,9 +102,11 @@ Solr: https://solr.apache.org/
 WorldPop: https://www.worldpop.org/
 
 
+# Annex 2: Mapping of the microdata schema to DDI Codebook XML tags {-}
 
+[to do]
 
-# Annex 2: Academic/scientific disciplines {-}
+# Annex 3: Academic/scientific disciplines {-}
 
 https://en.wikipedia.org/wiki/List_of_academic_fields
 An academic discipline or field of study is known as a branch of knowledge. It is taught as an accredited part of higher education. There is no consensus on how some academic disciplines should be classified.
@@ -140,7 +142,7 @@ An academic discipline or field of study is known as a branch of knowledge. It i
     - 5.3	Medicine and health
     
     
-# Annex 3: CESSDA topic classification {-}
+# Annex 4: CESSDA topic classification {-}
 
 https://vocabularies.cessda.eu/vocabulary/TopicClassification
 Version 4.1
