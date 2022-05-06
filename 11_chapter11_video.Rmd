@@ -26,7 +26,21 @@ When published in a NADA catalog, the metadata related to video files will appea
 
 ## Augmenting video metadata
 
-Videos typically come with limited metadata. To make them more discoverable, a transcription of the video content can be generated, stored, and indexed in the catalog. This will significantly increase the discoverability of the resource, and offer the possibility to apply semantic searchability on video metadata. Machine learning solutions are available to automatically generate transcriptions at a very low cost. Tools like [Amazon Transcribe](https://aws.amazon.com/transcribe/), [Google Speech-to-Text](https://cloud.google.com/speech-to-text?hl=en), or [Microsoft Azure's Speech to Text](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/#overview) can reliably convert spoken audio (from audio or video files) to text. The metadata schema we propose includes an element `transcription` that can store transcriptions (and possibly their automatically-generated translations) in the video metadata. Word embedding models and topic models can be applied to the transcriptions to further augment the metadata. 
+Videos typically come with limited metadata. To make them more discoverable, a transcription of the video content can be generated, stored, and indexed in the catalog. The metadata schema we propose includes an element `transcription` that can store transcriptions (and possibly their automatically-generated translations) in the video metadata. Word embedding models and topic models can be applied to the transcriptions to further augment the metadata. This will significantly increase the discoverability of the resource, and offer the possibility to apply semantic searchability on video metadata. 
+
+Machine learning speech-to-text solutions are available (although not for all languages) to automatically generate transcriptions at a low cost. This includes commercial applications like Microsoft Azure's (https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/), Google Cloud (https://cloud.google.com/speech-to-text), Amazon Transcribe (https://aws.amazon.com/transcribe/pricing/), or IBM Watson (https://www.ibm.com/cloud/watson-speech-to-text). Open source solutions in Python also exist. 
+
+Transcriptions of videos published on Youtube are available on-line (the example below was extracted from https://www.youtube.com/watch?v=Axs8NPVYmms).
+   
+   <br>
+   ![](./images/ReDoc_videos_47.JPG){width=100%}
+   <br>
+      
+Note that some care must be taken when adding automatic speech transcriptions into your metadata, as the transcriptions are not always perfect and may return unexpected results. This will be the case when the sound quality is low, or when the video includes sections in an unknown language (see the example below, of a video in English that includes a brief segmnent in Somali; the speech-to-text algorithm may in such case attempt to transcribe text it does not recognize, returning invalid information).   
+   
+   <br>
+   ![](./images/ReDoc_videos_48.JPG){width=100%}
+   <br>
 
 ## Schema description 
 
@@ -586,18 +600,6 @@ Users of the video may need further clarification and information. This section 
       The language of the transcript.
       - **`text`** *[Optional ; Not repeatable ; String]* <br>   
       The transcript itself. Adding the transcript in the metadata will make the video much more discoverable, as the content of the transcription can be indexed in catalogs.
-      
-   Multiple *speech-to-text* solutions exist (although not for all languages) to automatically generate transcripts. This includes commercial applications like Microsoft Azure's (https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/), Google Cloud (https://cloud.google.com/speech-to-text), Amazon Transcribe (https://aws.amazon.com/transcribe/pricing/), or IBM Watson (https://www.ibm.com/cloud/watson-speech-to-text). Open source solutions in Python also exist. Transcriptions of videos published on Youtube are available on-line.
-   
-   <br>
-   ![](./images/ReDoc_videos_47.JPG){width=100%}
-   <br>
-   
-   Some care must be taken when adding automatic speech transcriptions into your metadata, as the transcriptions are not always perfect and may return unexpected results. This will be the case when the sound quality is low, or when the video includes sections in an unknown language (see the example below, of a video in English that includes a brief segmnent in Somali; the speech-to-text algorithm may in such case attempt to transcribe text it does not recognize, returning invalid information).   
-   
-   <br>
-   ![](./images/ReDoc_videos_48.JPG){width=100%}
-   <br>
    
    - **`media`** *[Optional ; Repeatable ; String]* <br>        
    <br>
