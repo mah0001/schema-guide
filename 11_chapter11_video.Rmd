@@ -475,10 +475,11 @@ Users of the video may need further clarification and information. This section 
    <br>
    Indicates another video that this video is part of. This element maps to the element *isPartOf* in VideoObject. 
 
-   - **`relations`** *[Optional ; Repeatable, String]* <br>   @@@@ Added ("relations" in ReDoc; fix and redo screenshot)
+   - **`relations`** *[Optional ; Repeatable, String]* <br>   
    <br>
    ![](./images/ReDoc_videos_33.JPG){width=100%}
    <br>
+   
    Defines, as a free text field, the relation between the video being documented and other resources. This is a Dublin Core element.
 
    - **`video_provider`** *[Optional ; Not repeatable, String]* <br>
@@ -493,12 +494,17 @@ Users of the video may need further clarification and information. This section 
    <br>
    URL of the video. This element maps to the element *url* in VideoObject.
 
-   - **`embed_url`** *[Optional ; Not repeatable, String]* <br>  @@@@ how not to include the embedded image in the Guide?
+   - **`embed_url`** *[Optional ; Not repeatable, String]* <br>  
    <br>
    ![](./images/ReDoc_videos_36.JPG){width=100%}
    <br>
-   A URL pointing to a player for a specific video. This element maps to the element *embedUrl* in VideoObject. For example, "<iframe width="560" height="315" src="https://www.youtube.com/embed/7Aif1xjstws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>"
-   @@@@@@@@@ Provide a description of what this is, and how to get that content. 
+   A URL pointing to a player for a specific video. This element maps to the element *embedUrl* in VideoObject. For example, "https://www.youtube.com/embed/7Aif1xjstws"
+
+   To be embedded, a video must be hosted on a video sharing platform like Youtube (www.youtube.com). To obtain the "embed link" from youtube, click on the "Share" button, then "Embed". In the result box, select the content of the element `src = `.
+   
+   <br>
+   ![](./images/ReDoc_videos_46.JPG){width=100%}
+   <br>
 
    - **`encoding_format`**  *[Optional ; Not repeatable, String]* <br> 
    <br>
@@ -711,7 +717,7 @@ my_video = list(
     
     video_url = "https://www.youtube.com/watch?v=7Aif1xjstws",
     
-    embed_url = '<iframe width="560" height="315" src="https://www.youtube.com/embed/7Aif1xjstws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+    embed_url = "https://www.youtube.com/embed/7Aif1xjstws",
     
     duration = "PT2M14S"  # 2 minutes and 14 seconds
     
@@ -736,7 +742,6 @@ In NADA, the video will now appear in the "All" tab and in the "Videos" tab.
   <br>
   
 If the `embed_url` element was provided, the video can be played within the NADA page. 
-@@@@ provide some additional information: what are the conditions to make a video playable from NADA; what if not in YouTube?
 
   <br>
   ![](./images/video_in_NADA_2.JPG){width=100%} 
@@ -745,5 +750,5 @@ If the `embed_url` element was provided, the video can be played within the NADA
 
 ### In Python
 
-Script
+Script [to do]
 
