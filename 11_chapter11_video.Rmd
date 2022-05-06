@@ -413,14 +413,14 @@ Information on the topics covered in the video. A controlled vocabulary will pre
 
    - **`repository`** *[Optional ; Not repeatable ; String]* <br>
    <br>
-   ![](./images/ReDoc_video_27b.JPG){width=100%}
+   ![](./images/ReDoc_videos_27b.JPG){width=100%}
    <br>
    The name of the repository (organization).
 
 - **`contacts`** *[Optional, Repeatable]* <br>   @@@@@ Do screenshot
 Users of the video may need further clarification and information. This section may include the name-affiliation-email-URI of one or multiple contact persons. This block of elements will identify contact persons who can be used as resource persons regarding problems or questions raised by the user community. The URI attribute should be used to indicate a URN or URL for the homepage of the contact individual. The email attribute is used to indicate an email address for the contact individual. It is recommended to avoid putting the actual name of individuals. The information provided here should be valid for the long term. It is therefore preferable to identify contact persons by a title. The same applies for the email field. Ideally, a "generic" email address should be provided. It is easy to configure a mail server in such a way that all messages sent to the generic email address would be automatically forwarded to some staff members.
 <br>
-   ![](./images/ReDoc_video_27c.JPG){width=100%}  @@@@
+   ![](./images/ReDoc_videos_27c.JPG){width=100%}  @@@@
    <br>
     - **`name`** *[Required, Not repeatable, String]* <br>
     Name of a person or unit (such as a data help desk). It will usually be better to provide a title/function than the actual name of the person. Keep in mind that people do not stay forever in their position.
@@ -573,13 +573,13 @@ Users of the video may need further clarification and information. This section 
    
    - **`citation`** *[Optional ; Not repeatable, String]* <br>   
    <br>
-   ![](./images/ReDoc_video_43b.JPG){width=100%}
+   ![](./images/ReDoc_videos_43b.JPG){width=100%}
    <br>
    This element provides a required or recommended citation of the audio file.
 
    - **`transcript`** *[Optional ; Repeatable, String]* <br>   
    <br>
-   ![](./images/ReDoc_video_43c.JPG){width=100%}
+   ![](./images/ReDoc_videos_43c.JPG){width=100%}
    <br>
    The transcript of the video content, provided as a text. Note that if the text is very long, an alternative is to save it in a separate text file and to make it available in a data catalog as an external resource.
       - **`language`** *[Optional ; Not repeatable ; String]* <br>   
