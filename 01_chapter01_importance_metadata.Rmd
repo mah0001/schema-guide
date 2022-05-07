@@ -269,7 +269,7 @@ The standards and schemas we recommend and describe in this guide are the follow
 | Videos                     | Dublin Core augmented with VideoObject from schema.org | 
 | Programs and scripts       | Custom-designed schema                          | 
 | External resources         | Dublin Core                                     |
-| All data types             | DCAT and schema.org  (used for search engine optimization purpose)|
+| All data types             | DCAT and schema.org  (used for search engine optimization purpose, not as the primary schema to document resources)|
 
 <br>
 
