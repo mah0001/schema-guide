@@ -733,6 +733,26 @@ my_video = list(
     
     embed_url = "https://www.youtube.com/embed/7Aif1xjstws",
     
+    transcript = list(
+      list(
+         language = "English",
+         transcript = "Mogadishu is a dangerous place securityhas improved since al-shabaab militias 
+         withdrew last month but not a lot despite the insecurity hundreds of thousands of Somalis 
+         have been streaming into the capital from surrounding areas they're fleeing the worst famine 
+         to strike the region in 60 years in a landmark visit the UN High Commissioner for Refugees 
+         Antonio Gutierrez traveled to Mogadishu this week to visit with Somalis he urged the international 
+         community to rapidly increase aid to people who have been through so much already makes us very emotional is to
+         feel that for 2020 as these people has been suffering the suffering enormously of course there is a large
+         responsibility of Somalis in the way things have happened but let's also recognize that international community
+         there sometimes also be part of the problem and not part of the solution some aid is getting through fatuma has
+         just been registered to receive assistance from UNHCR she left her home and is now seeking help in the capital
+         she is camped with thousands of others in a settlement not far from the shoreline UNHCR is providing plastic
+         sheeting and other supplies there are also food distributions there are a total of four hundred thousand displaced
+         people in Mogadishu 100,000 arrived in the past two months alone getting assistance to them despite the
+         dangers is an urgent priority otherwise settlements like these are certain to you"
+      )   
+    ),
+    
     duration = "PT2M14S"  # 2 minutes and 14 seconds
     
   )
