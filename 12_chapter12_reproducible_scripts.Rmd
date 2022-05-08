@@ -1060,25 +1060,18 @@ A list of analytic, statistical, econometric, machine learning methods used in t
     ```
 
 - **`software`** *[Optional ; Repeatable]* <br>
-This field is used to list the software and the specialized packages and libraries that were used to implement the project and that are required to reproduce the scripts. The libraries that are loaded by the scripts (e.g., by the R *require* or *library* command) are included (not all their own dependencies, which will be assumed to be installed automatically).
+This field is used to list the software and the specialized packages and libraries/packages that were used to implement the project and that are required to reproduce the scripts. The libraries that are loaded by the scripts (e.g., by the R *require* or *library* command) are included (not all their own dependencies, which will be assumed to be installed automatically).
   <br>
-  ![](./images/ReDoc_scripts_29.JPG){width=100%} @@@@@@ REDO SCREENSHOT AFTER ADDING MISSING ELEMENTS
+  ![](./images/ReDoc_scripts_29.JPG){width=100%} 
   <br>
    - **`name`** *[Required ; Not repeatable ; String]* <br>
    The name of the software. 
    - **`version`** *[Optional ; Not repeatable ; String]* <br>
    The version of the software. 
-   - **`library`** *[Optional ; Repeatable]* <br>  @@@@@@@@@ some elements to be added to the schema
-   A repeatable block of two elements used to describe the libraries/packages (dependencies) needed to reproduce the scripts. 
-				- **`name`** *[Required ; Not repeatable ; String]* <br>
-				Name of the package or library (this can be an R package, a Python Library, a Stata ADO package, or equivalent) 
-				- **`version`** *[Optional ; Not repeatable ; String]* <br>
-				Version of the package/library.
-				- **`note`** *[Optional ; Not repeatable ; String]* <br>
-				Any additional information on the package/library.
-				<br><br>
-
-	> Example in R:
+   - **`library`** *[Optional ; Not repeatable]* <br>  
+   A list of libraries/packages required to run the scripts. Note that the specific version of each package is not documented here; it is expected to be found in the script or in the reproduction instructions. 
+   
+ 	> Example in R:
 
     ```{r, eval=F, echo=T}
     my_project = list(
@@ -1090,17 +1083,14 @@ This field is used to list the software and the specialized packages and librari
           
           list(name    = "R", 
                version = "4.0.2",
-               library = list(name = "caret",   version = "6.0-86"),
-                         list(name = "dplyr",   version = "1.0.2"),
-                         list(name = "ggplot2", version = "3.3.3")),
+               library = list("caret", "dplyr", "ggplot2"),
           
           list(name    = "Stata", 
                version = "15"),
           
           list(name    = "Python", 
                version = "3.7 (Anaconda install)",
-               library = list(name = "pandas",       version = "1.2.0"),
-                         list(name = "scikit-learn", version = "0.22"))
+               library = list("pandas", "scikit-learn")
           
         ),
         
@@ -1738,7 +1728,8 @@ external_resources_add(
 
 ```
 
-The metadata and all resources (script files, etc.) are now available in the NADA catalog.  @@@@@ redo screenshot when displays external resources
+The metadata and all resources (script files, etc.) are now available in the NADA catalog.  
+@@@@@ redo screenshot when displays external resources
 
 <br>
 ![](./images/script_example1_nada.JPG)  
