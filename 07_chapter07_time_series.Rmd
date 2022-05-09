@@ -60,21 +60,21 @@ The set of elements in `metadata_information` is used to provide information on 
 ![](./images/ReDoc_ts_database_01.JPG){width=100%}
 <br>
     - **`title`** *[Optional ; Not repeatable ; String]* <br>
-    The title of the metadata document containing the database metadata.
+    The title of the metadata document containing the database metadata.<br>
     - **`idno`** *[Required ; Not repeatable ; String]* <br>
-    A unique identifier of the database metadata document. It can be for example the identifier of the database preceded by a prefix identifying the metadata producer.
+    A unique identifier of the database metadata document. It can be for example the identifier of the database preceded by a prefix identifying the metadata producer.<br>
     - **`producers`** *[Optional ; Repeatable]* <br>
-    A list and description of the producers of the database metadata (not the producers of the database).
+    A list and description of the producers of the database metadata (not the producers of the database).<br>
        - **`name`** *[Optional ; Not repeatable ; String]* <br>
-       The name of the person or organization who produced the metadata (or contributed to its production).
+       The name of the person or organization who produced the metadata (or contributed to its production).<br>
        - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
-       The abbreviation (aconym) of the organization mentioned in `name`.
+       The abbreviation (aconym) of the organization mentioned in `name`.<br>
        - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-       The affiliation of the person or organization mentioned in `name`.
+       The affiliation of the person or organization mentioned in `name`.<br>
        - **`role`** *[Optional ; Not repeatable ; String]* <br>
-       The specific role of the person or organization mentioned in `name` in the production of the metadata.
+       The specific role of the person or organization mentioned in `name` in the production of the metadata.<br>
     - **`prod_date`** *[Optional ; Not repeatable ; String]* <br>
-    The date when the metadata was produced, preferably entered in ISO 8601 format (YYYY-MM-DD).
+    The date when the metadata was produced, preferably entered in ISO 8601 format (YYYY-MM-DD).<br>
     - **`version`** *[Optional ; Not repeatable ; String]* <br>
     The version of the metadata (not the version of the database).
     
@@ -92,15 +92,15 @@ The set of elements in `metadata_information` is used to provide information on 
   ![](./images/ReDoc_documents_07.JPG){width=100%}
   <br>    
       - **`type`** *[Optional ; Not repeatable ; String]* <br>
-      The type of unique ID, e.g. "DOI".
+      The type of unique ID, e.g. "DOI".<br>
       - **`value`** *[Required ; Not repeatable ; String]* <br>
       The identifier itself.<br>
     - **`title`** *[Required ; Not repeatable ; String]* <br>
-    The title is the name by which the database is formally known. It is good practice to include the year of production in the title (and possibly the month, or quarter, if a new version of the database is released more than once a year). For example, "World Development Indicators, April 2020".  
+    The title is the name by which the database is formally known. It is good practice to include the year of production in the title (and possibly the month, or quarter, if a new version of the database is released more than once a year). For example, "World Development Indicators, April 2020".<br>  
     - **`sub_title`** *[Optional ; Not repeatable ; String]* <br>
-    The database subtitle can be used when there is a need to distinguish characteristics of a database. This element will rarely be used. 
+    The database subtitle can be used when there is a need to distinguish characteristics of a database. This element will rarely be used.<br> 
     - **`alternate_title`** *[Optional ; Not repeatable ; String]* <br>
-    This can be an acronym, or an alternative name of the database. For example, "WDI April 2020".
+    This can be an acronym, or an alternative name of the database. For example, "WDI April 2020".<br>
     - **`translated_title`** *[Optional ; Not repeatable ; String]* <br>
     The title of the database in a secondary language (if more than one other language, they may be entered as one string, as this element is not repeatable).<br><br>
 
