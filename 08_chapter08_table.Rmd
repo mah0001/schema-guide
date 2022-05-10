@@ -647,8 +647,6 @@ The data sources are often cited in the footnote section of a table. The `name`,
     A link (URL) to the source dataset.
     <br>
 
-    
-
   > Example in R: 
 
     ```{r, eval=F, echo=T}
@@ -663,10 +661,32 @@ The data sources are often cited in the footnote section of a table. The `name`,
           )
         ),  
         # ...
+      
       )
     )
     ```
+    
+- **`api_documentation`** *[Optional ; Repeatable]* <br>    @@@@@ do screenshot
+Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. The documentation will usually not be specific to a series, but apply to all series in a same database.<br>
+    <br>
+    ![](./images/@@@@@@@.JPG){width=100%}
+    <br>
+    - **`description`** *[Optional ; Not repeatable ; String]* <br>
+    This element will not contain the API documentation itself, but information on what documentation is available.
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    The URL of the API documentation.<br><br>
+    `
 
+- **`api_documentation`** *[Optional ; Repeatable]* <br>
+Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. The documentation will usually not be specific to a series, but apply to all series in a same database.
+    <br>
+    ![](./images/ReDoc_ts_series_36.JPG){width=100%}
+    <br>
+    - **`description`** *[Optional ; Not repeatable ; String]* <br>
+    This element will not contain the API documentation itself, but information on what documentation is available.
+    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+    The URL of the API documentation.<br><br>
+    
 - **`time_periods`** *[Optional, Repeatable]* <br>
 The time periods consists of a list or periods (range of years / quarters / months / days) that the data relate to, preferably entered in ISO 8601 format (YYYY, or YYYY-MM, or YYYY-MM-DD). If the data are by quarter, convert them into ISO 8601 format (e.g., first quarter of 2020 would be "from 2020-01 to 2020-03). This is a repeatable field. If the time periods are for example 1990, 2000 to 2004, and 2014 to June 2019, do not enter the time period as a single range 1990-2019 as this would include irrelevant periods. It should be entered as three separate ranges as in the example below. For data that are related to a specific date (for example, the population of a country as of the census day), enter the date in both the `from` and `to` fields.
     <br>
