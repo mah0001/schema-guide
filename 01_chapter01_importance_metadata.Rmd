@@ -363,7 +363,7 @@ The schemas proposed by schema.org have been developed primarily "to improve the
 
 ### DCAT
 
-[**DCAT**](https://www.w3.org/TR/vocab-dcat-2/) describes datasets and data services using a standard model and vocabulary. It is organized in 13 "classes" (Catalog, Cataloged Resource, Catalog Record, Dataset, Distribution, Data Service, Concept SCheme, Concept, Organization/Person, Relationship, Role, Period of Time, and Location). Within classes, *properties* are used as metadata elements. For example, the class *Cataloged Resource* includes properties like *title*, *description*, *resource creator*; the class *Dataset* includes properties like *spatial resolution*, *temporal coverage*; many of these properties can easily be mapped to equivalent elements of the specialized metadata schemas we recommend in this Guide.
+[**DCAT**](https://www.w3.org/TR/vocab-dcat-2/) describes datasets and data services using a standard model and vocabulary. It is organized in 13 "classes" (Catalog, Cataloged Resource, Catalog Record, Dataset, Distribution, Data Service, Concept Scheme, Concept, Organization/Person, Relationship, Role, Period of Time, and Location). Within classes, *properties* are used as metadata elements. For example, the class *Cataloged Resource* includes properties like *title*, *description*, *resource creator*; the class *Dataset* includes properties like *spatial resolution*, *temporal coverage*; many of these properties can easily be mapped to equivalent elements of the specialized metadata schemas we recommend in this Guide.
 
 
 ## Controlled vocabularies
