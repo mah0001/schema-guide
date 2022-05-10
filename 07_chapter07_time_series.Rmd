@@ -214,7 +214,7 @@ Themes provide a general idea of the research that might guide the creation and/
     - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
     The name of the controlled vocabulary used, if any. 
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-    A link to the controlled vocabulary mentioned in field `vocabulary'.
+    A link to the controlled vocabulary mentioned in field 'vocabulary'.<br>
 
 - **`topics`** *[Optional ; Repeatable]*<br>
     The `topics` field indicates the broad substantive topic(s) that the indicator/series covers. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) tpoic classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification).<br>
