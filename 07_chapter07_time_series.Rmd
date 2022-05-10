@@ -1001,7 +1001,7 @@ This element provides links to online resources of any type that could be useful
     - **`uri`** *[Optional ; Not repeatable ; String]* <br>
     The uri (URL) to the described resource.<br><br>
 
-- **`api_documentation`** *[Optional ; Not repeatable]* <br>
+- **`api_documentation`** *[Optional ; Repeatable]* <br>
 Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. The documentation will usually not be specific to a series, but apply to all series in a same database.
     <br>
     ![](./images/ReDoc_ts_series_36.JPG){width=100%}
