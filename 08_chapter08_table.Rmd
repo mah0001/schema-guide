@@ -665,22 +665,11 @@ The data sources are often cited in the footnote section of a table. The `name`,
       )
     )
     ```
-    
-- **`api_documentation`** *[Optional ; Repeatable]* <br>    @@@@@ do screenshot
-Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. The documentation will usually not be specific to a series, but apply to all series in a same database.<br>
-    <br>
-    ![](./images/@@@@@@@.JPG){width=100%}
-    <br>
-    - **`description`** *[Optional ; Not repeatable ; String]* <br>
-    This element will not contain the API documentation itself, but information on what documentation is available.
-    - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-    The URL of the API documentation.<br><br>
-    `
 
 - **`api_documentation`** *[Optional ; Repeatable]* <br>
-Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. The documentation will usually not be specific to a series, but apply to all series in a same database.
+Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. 
     <br>
-    ![](./images/ReDoc_ts_series_36.JPG){width=100%}
+    ![](./images/ReDoc_Table_36.JPG){width=100%}
     <br>
     - **`description`** *[Optional ; Not repeatable ; String]* <br>
     This element will not contain the API documentation itself, but information on what documentation is available.
