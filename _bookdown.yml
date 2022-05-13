@@ -16,6 +16,7 @@ rmd_files:
      "13_chapter13_related_resources.Rmd",
      "90_annexes.Rmd"]
 book_filename: "SCHEMA_GUIDE"
+output_dir: docs
 new_session: yes
 delete_merged_file: true
 language:
