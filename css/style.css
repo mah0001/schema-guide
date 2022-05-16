@@ -1,10 +1,23 @@
 .book .book-body .page-wrapper .page-inner section.normal pre {
-  background-color: AliceBlue !important;
-  border: 1px solid DarkGray;
-  border-radius: 4px;
+  background-image: url("images/code-square.svg");
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: 25px center;
+  min-height: 120px;
+  font-size: .85em;
   line-height: 1;
-  padding-left: 1em;
+  background-color: #ebeced !important;
+  border: dashed 5px #cccecf;
   width: auto;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal code {
+  font-size: 1em !important;
+  background-color: #ebeced !important;
+  border-radius: 4px;
 }
 
 .book .book-body .page-wrapper .page-inner section.normal pre.small-block {
@@ -64,7 +77,23 @@ h1.title {
 
 /* -----------div tips------------- */
 
-div.demo, div.note, div.idea, div.quote {
+div.code {
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: 25px center;
+  min-height: 120px;
+  background-color: #ebeced;
+  border: dashed 5px #cccecf;
+}
+
+div.code {
+  background-image: url("images/code-square.svg");
+}
+
+div.note, div.idea, div.quote {
   padding: 1em;
   margin: 1em 0;
   padding-left: 100px;
@@ -75,10 +104,6 @@ div.demo, div.note, div.idea, div.quote {
   color: #1f5386;
   background-color: #dfedff;
   border: dashed 5px #bed3ec;
-}
-
-div.demo {
-  background-image: url("images/code-square.svg");
 }
 
 div.note {

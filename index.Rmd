@@ -17,7 +17,6 @@ colorlinks: yes
 graphics: yes
 ---
 
-
 # Preface {-}
 
 ```{asis, echo=identical(knitr:::pandoc_to(), 'html')}

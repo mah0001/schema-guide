@@ -74,7 +74,9 @@ The main obstacles to data visibility and discoverability are that:
 
 The challenge for data users is not only to discover data, but also to obtain all necessary information to fully understand the data and to use them responsibly and appropriately. A same indicator label, for example *unemployment rate (%)*, can mask significant differences by country, source, and time. The international recommendations for the definition and calculation of *unemployment rate* has changed over time, and not all countries use the same data collection instrument (labor force survey or other) to collect the underlying data. In on-line data dissemination platforms, detailed metadata should therefore always be associated and disseminated with the data. This must be a close association; the relevant metadata will ideally not be more than one click away from the data. This is particularly critical when a platform publishes data from multiple sources that are not fully harmonized.
 
-> The scope and meaning of labour statistics in general are determined by their source and methodology, and this is certainly true for the unemployment rate. In order to interpret the data accurately, it is crucial to understand what the data convey and how they were collected and constructed, which implies having information on the relevant metadata. The design and characteristics of the data source (typically a labour force survey or similar household survey for the unemployment rate), especially in terms of definitions and concepts used, geographical and age coverage, and reference periods have great implications for the resulting data, making it crucial to take them into account when analysing the statistics. It is also essential to seek information on any methodological changes and breaks in series to assess their impact for trend analysis, and to keep in mind methodological differences across countries when conducting cross-country studies. (From [*Quick guide on interpreting the unemployment rate*](https://ilo.org/wcmsp5/groups/public/---dgreports/---stat/documents/publication/wcms_675155.pdf), International Labour Office – Geneva: ILO, 2019, ISBN : 978-92-2-133323-4 (web pdf)).
+:::quote
+The scope and meaning of labour statistics in general are determined by their source and methodology, and this is certainly true for the unemployment rate. In order to interpret the data accurately, it is crucial to understand what the data convey and how they were collected and constructed, which implies having information on the relevant metadata. The design and characteristics of the data source (typically a labour force survey or similar household survey for the unemployment rate), especially in terms of definitions and concepts used, geographical and age coverage, and reference periods have great implications for the resulting data, making it crucial to take them into account when analysing the statistics. It is also essential to seek information on any methodological changes and breaks in series to assess their impact for trend analysis, and to keep in mind methodological differences across countries when conducting cross-country studies. (From [*Quick guide on interpreting the unemployment rate*](https://ilo.org/wcmsp5/groups/public/---dgreports/---stat/documents/publication/wcms_675155.pdf), International Labour Office – Geneva: ILO, 2019, ISBN : 978-92-2-133323-4 (web pdf)).
+:::
 
 Data producers have a responsibility to generate comprehensive metadata for their datasets. The administrators and curators of data catalogs are responsible for providing well-documented data, specialized search tools, advice to data users, and for making the metadata as visible as possible to the search engines by implementing search engine optimization (SEO). 
 
@@ -154,15 +156,16 @@ Metadata compliant with standards and schemas will typically be stored as JSON o
 
 **Structured, machine-readable (JSON) version**:
 
-  ```
-  { "title"           : "Child Mortality Survey 2010-2011",
-    "alternate_title" : "CMS 2010-2011", 
-    "authoring_entity": "National Statistics Office (NSO)", 
-    "funding_agencies": [{"name":"Child Health Trust Fund (CHTF)", "grant":"TF123_456"}],
-    "coll_dates"      : [{"start":"2010-07", "end":"2011-06"}],
-    "nation"          : [{"name":"Popstan", "abbreviation":"POP"}] 
-  }  
-  ```
+```
+{ 
+  "title"           : "Child Mortality Survey 2010-2011",
+  "alternate_title" : "CMS 2010-2011", 
+  "authoring_entity": "National Statistics Office (NSO)", 
+  "funding_agencies": [{"name":"Child Health Trust Fund (CHTF)", "grant":"TF123_456"}],
+  "coll_dates"      : [{"start":"2010-07", "end":"2011-06"}],
+  "nation"          : [{"name":"Popstan", "abbreviation":"POP"}] 
+}  
+```
 
 Both versions contain (almost) the same information. In the structured version, we have added acronyms and the ISO country code. This does not create new information but will help make the existing information more discoverable and inter-operable. The structured version is clearly more suitable for publishing in a meta-database (or catalog). Organizing and storing metadata in such a structured manner will enable all kinds of applications. For example, when metadata for a collection of surveys are stored in a database, it becomes straightforward to apply filters (for example, a filter by country using the nation/name element) and targeted searches to answer questions like "What data are available that cover the month of December 2010?" or "What surveys did the CHTF sponsor?". 
 
@@ -184,8 +187,10 @@ Fully understanding a dataset before conducting analysis should be a pre-requisi
 
 ### Discoverability
 
-> Data discoverability is one of the main tasks, next to availability and interoperability, that public policy makers and implementers should take into due consideration in order to foster access, use and re-use of public sector information, particularly in case of open data. Users shall be enabled to easily search and find data they need for the most different purposes. That is clearly highlighted in the introduction statements of the INSPIRE Directive, where we can read that “The loss of time and resources in searching for existing (spatial) data or establishing whether they may be used for a particular purpose is a key obstacle to the full exploitation of the data available”.
+:::quote
+Data discoverability is one of the main tasks, next to availability and interoperability, that public policy makers and implementers should take into due consideration in order to foster access, use and re-use of public sector information, particularly in case of open data. Users shall be enabled to easily search and find data they need for the most different purposes. That is clearly highlighted in the introduction statements of the INSPIRE Directive, where we can read that “The loss of time and resources in searching for existing (spatial) data or establishing whether they may be used for a particular purpose is a key obstacle to the full exploitation of the data available”.
 From [*Metadata and data portals/catalogues are essential assets to enable that data discoverability.*](https://www.europeandataportal.eu/en/impact-studies/country-insights/italy/italy-discoverability-practice)
+:::
 
 What matters is not only <u>what</u> metadata are provided as input to the search engines that matters, it is also <u>how</u> the metadata are provided. To understand the value of structured metadata, we need to take into consideration how search engines ingest, index, and exploit the metadata. In brief, the metadata will need to be acquired, augmented, analyzed and transformed, and indexed before they can be made searchable. We provide here an overview of the process, which is described in detail by D. Turnbull and J. Berryman in ["Relevant Search: With applications for Solr and Elasticsearch"](https://www.manning.com/books/relevant-search) (2016). 
 
@@ -237,7 +242,9 @@ In other cases, the user may not be brought to the data catalog at all, if the c
  
 It is thus critical to optimize the visibility of the content of specialized data catalogs in the lead search engines, Google in particular. This optimization process is referred to as **search engine optimization** or SEO. [Wikipedia](https://en.wikipedia.org/wiki/Search_engine_optimization) describes SEO as “the process of improving the quality and quantity of website traffic to a website or a web page from search engines. SEO targets unpaid traffic (known as "natural" or "organic" results) rather than direct traffic or paid traffic. (…) As an Internet marketing strategy, SEO considers how search engines work, the computer-programmed algorithms that dictate search engine behavior, what people search for, the actual search terms or keywords typed into search engines, and which search engines are preferred by their targeted audience. SEO is performed because a website will receive more visitors from a search engine when websites rank higher on the search engine results page.” 
 
-   > "Because search engines crawl the web pages that are generated from databases (rather than crawling the databases themselves), your carefully applied metadata inside the database will not even be seen by search engines unless you write scripts to display the metadata tags and their values in HTML meta tags. It is crucial to understand that any metadata offered to search engines must be recognizable as part of a schema and must be machine-readable, which is to say that the search engine must be able to parse the metadata accurately. (For example, if you enter a bibliographic citation into a single metadata field, the search engine probably won’t know how to distinguish the article title from the journal title, or the volume from the issue number. In order for the search engine to read those citations effectively each part of the citation must have its own field. (...) Making sure metadata is machine-readable requires patterns and consistency, which will also prepare it for transformation to other schema. (This is far more important than picking any single metadata schema. (...)" *From the blog post "Metadata, Schema.org, and Getting Your Digital Collection Noticed" by Patrick Hogan (https://www.ala.org/tools/article/ala-techsource/metadata-schemaorg-and-getting-your-digital-collection-noticed-3)*
+:::quote
+Because search engines crawl the web pages that are generated from databases (rather than crawling the databases themselves), your carefully applied metadata inside the database will not even be seen by search engines unless you write scripts to display the metadata tags and their values in HTML meta tags. It is crucial to understand that any metadata offered to search engines must be recognizable as part of a schema and must be machine-readable, which is to say that the search engine must be able to parse the metadata accurately. (For example, if you enter a bibliographic citation into a single metadata field, the search engine probably won’t know how to distinguish the article title from the journal title, or the volume from the issue number. In order for the search engine to read those citations effectively each part of the citation must have its own field. (...) Making sure metadata is machine-readable requires patterns and consistency, which will also prepare it for transformation to other schema. (This is far more important than picking any single metadata schema. (...) *From the blog post "Metadata, Schema.org, and Getting Your Digital Collection Noticed" by Patrick Hogan (https://www.ala.org/tools/article/ala-techsource/metadata-schemaorg-and-getting-your-digital-collection-noticed-3)*
+:::
 
 Guidelines for implementing SEO are provided by Google Search, Google Dataset Search, and other lead search engines. These guidelines are to be implemented not only by webmasters, but also by the developers of data cataloguing tools who should embed SEO into their software applications. 
 
@@ -289,7 +296,9 @@ The standards and schemas we recommend and describe in this guide are the follow
 
 <br>
 
-  > Note on SDMX: The metadata standards and schemas described in the Guide do not include the [Statistical Data and Metadata eXchange (SDMX)](https://sdmx.org/?sdmx_news=launching-the-new-sdmx-3-0-standard) standard sponsored by a group of international organisations. Although SDMX includes a metadata component, it is intended to support machine-to-machine data exchange, not data documentation and discoverability. SDMX and the metadata standards and schemas we describe in the Guide could --and should-- be made inter-operable. 
+:::note
+Note on SDMX: The metadata standards and schemas described in the Guide do not include the [Statistical Data and Metadata eXchange (SDMX)](https://sdmx.org/?sdmx_news=launching-the-new-sdmx-3-0-standard) standard sponsored by a group of international organisations. Although SDMX includes a metadata component, it is intended to support machine-to-machine data exchange, not data documentation and discoverability. SDMX and the metadata standards and schemas we describe in the Guide could --and should-- be made inter-operable. 
+:::
 
 ### Documents
 
@@ -346,7 +355,9 @@ According to their [developers' guide](https://developers.google.com/search/docs
 
 We recommend to document data using the most appropriate standard or schema for each type of data (DDI, Dublin Core, ISO 19139, etc.; see section 1.4), and to map (part of) the content of the metadata to the schema.org or DECAT schemas for search engine optimization. The production of the metadata compliant with schema.org or DCAT should be automated and "hidden" in data cataloguing tools. 
 
-> "Making it easier to discover datasets: a [Google blog post by Natasha Noy](https://www.blog.google/products/search/making-it-easier-discover-datasets/) (2018): "There are many thousands of data repositories on the web, providing access to millions of datasets; and local and national governments around the world publish their data as well. To enable easy access to this data, we launched Dataset Search, Similar to how Google Scholar works, Dataset Search lets you find datasets wherever they’re hosted, whether it’s a publisher's site, a digital library, or an author's personal web page. To create Dataset search, we developed guidelines for dataset providers to describe their data in a way that Google (and other search engines) can better understand the content of their pages. These guidelines include salient information about datasets: who created the dataset, when it was published, how the data was collected, what the terms are for using the data, etc. We then collect and link this information, analyze where different versions of the same dataset might be, and find publications that may be describing or discussing the dataset. Our approach is based on an open standard for describing this information (schema.org) and anybody who publishes data can describe their dataset this way. We encourage dataset providers, large and small, to adopt this common standard so that all datasets are part of this robust ecosystem."
+:::quote
+Making it easier to discover datasets: a [Google blog post by Natasha Noy](https://www.blog.google/products/search/making-it-easier-discover-datasets/) (2018): "There are many thousands of data repositories on the web, providing access to millions of datasets; and local and national governments around the world publish their data as well. To enable easy access to this data, we launched Dataset Search, Similar to how Google Scholar works, Dataset Search lets you find datasets wherever they’re hosted, whether it’s a publisher's site, a digital library, or an author's personal web page. To create Dataset search, we developed guidelines for dataset providers to describe their data in a way that Google (and other search engines) can better understand the content of their pages. These guidelines include salient information about datasets: who created the dataset, when it was published, how the data was collected, what the terms are for using the data, etc. We then collect and link this information, analyze where different versions of the same dataset might be, and find publications that may be describing or discussing the dataset. Our approach is based on an open standard for describing this information (schema.org) and anybody who publishes data can describe their dataset this way. We encourage dataset providers, large and small, to adopt this common standard so that all datasets are part of this robust ecosystem.
+:::
 
 ### schema.org
 
@@ -372,7 +383,9 @@ The schemas proposed by schema.org have been developed primarily "to improve the
 
 Metadata standards and schemas provide lists of elements with a description of the expected content to be captured in each element. For some elements, it may be appropriate to restrict the valid content to pre-selected options or "controlled vocabularies". A controlled vocabulary is a pre-defined list of values that can be accepted as valid content for some elements. For example. a metadata element "data type" should not be populated with free text, but should make use of a pre-defined taxonomy of data types. The use of controlled vocabularies (for selected metadata elements) will be particularly useful to implement search and filter features in data catalogs (see section 3.1.1 of this Guide), and to foster inter-operability of data catalogs.
 
-> In library and information science, controlled vocabulary is a carefully selected list of words and phrases, which are used to tag units of information (document or work) so that they may be more easily retrieved by a search.[Wikipedia](https://en.wikipedia.org/wiki/Controlled_vocabulary)
+:::quote
+In library and information science, controlled vocabulary is a carefully selected list of words and phrases, which are used to tag units of information (document or work) so that they may be more easily retrieved by a search.[Wikipedia](https://en.wikipedia.org/wiki/Controlled_vocabulary)
+:::
 
 Controlled vocabularies can be specific to an agency, or be developed by a community of practice. For example, the list of countries and codes provided by the [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) can be used as a controlled vocabulary for a metadata element `country` or `nation`; the [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) list of languages can be used as a controlled vocabulary for a metadata element `language`. Or the [CESSDA topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification) can be used as a controlled vocabulary for the element `topics` found in most metadata schemas. When a controlled vocabulary is used in a metadata standard or schema, it is good practice to include an identification of its origin and version.  
 
@@ -381,7 +394,7 @@ Some recommended controlled vocabularies are included in the description of the 
 Ideally, controlled vocabulary will be developed in compliance with the [FAIR principles](https://www.go-fair.org/fair-principles/) for scientific data management and stewardship: **F**indability, **A**ccessibility, **I**nteroperability, and **R**euse.
 
 
-## Tags and tag groups 
+## Tags and tag groups
 
 All metadata standards and schemas described in this guide include a `tags` element, even when this element is not part of a standard. This element enables the implementation of filters (facets) in data cataloguing applications, in a flexible manner. The `tags` metadata element is repeatable (meaning that more than one tag can be attached to a dataset) and contains two sub-elements to capture a `tag` (word or phrase), and the `tag_group` (if any) it belongs to.
 
@@ -392,13 +405,11 @@ All metadata standards and schemas described in this guide include a `tags` elem
 To illustrate the use of tags, let's assume that a catalog contains datasets that are available freely, and others that are available for a fee. The catalog administrator may want to provide a filter (facet) in the user interface that would allow users to filter datasets based on their free or not free status. None of the metadata schemas we describe in the Guide contains an element specifically designed to indicate the "free" or "for a fee" nature of the data. But this information can be captured in a tag "*Free*" or "*For a fee*" that would be added to each dataset in the catalog, with a tag group that could be named "free_or_fee". In R, this would be done as follows (for a "Free" dataset):
 
 ```{r, eval=F, echo=T}
-
 # ... ,
 tags = list(
   list(tag = "Free", tag_group = "free_or_fee")
 )
 # ... 
-
 ```
     
 In the NADA catalog, a facet titled "Free or for a fee" can then be created based on the information found in the `tags` element where `tag_group` = "free_or_fee".
