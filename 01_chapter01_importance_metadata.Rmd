@@ -353,30 +353,6 @@ As mentioned in section 1.2.5, data catalogs need to be optimized to improve the
 
 According to their [developers' guide](https://developers.google.com/search/docs/data-types/dataset), Google's approach to dataset discovery makes use of schema.org and other metadata standards that can be added to the web pages (i.e. to the html files) that describe datasets. Google's Dataset Search tool "understands" metadata structured using either schema.org Dataset markup, or equivalent structures represented in W3C's Data Catalog Vocabulary ([DCAT](https://www.w3.org/TR/vocab-dcat/#dcat-scope)) format. Schemas from schema.org and DCAT are thus intended to make data more <u>discoverable</u>; they are not primarily intended to make the data more <u>usable</u>. We therefore recommend to document data using the most appropriate standard or schema for each type of data (DDI, Dublin Core, ISO 19139, etc.; see section 1.4), and to map (part of) the content of the metadata to the schema.org or DECAT schemas for search engine optimization.  
 
-The embedding of metadata compliant with schema.org or DCAT should be automated in data cataloguing tools. Practically, this means that the cataloguing application will (i) extract part of the metadata it contains (which should have been generated in compliance with a specialized metadata standard, for example the DDI for microdata), (ii) map the extracted metadata to the DCAT or schema.org schema, and (iii) embed it in the html pages of the data catalog. The screenshots below show an example of the html page for a dataset published in a NADA catalog, with the underlying source code and the result in Google Dataset Search.
-
-<br>
-**The html page as viewed by the catalog user - Displays DDI metadata**
-<br>
-<center>
-![](./images/reDoc_html_view.JPG){width=100%}
-</center>
-<br>
-
-**The html page code (abstract); embeds schema.org-compliant metadata (with information extracted from DDI-compliant metadata)**
-<br>
-<center>
-![](./images/reDoc_html_code.JPG){width=100%}
-</center>
-<br>
-
-**The result - High visibility/ranking in Google Dataset Search** (catalog.ihsn.org and microdata.worldbank.org are NADA catalogs that embed schema.org metadata).
-<br>
-<center>
-![](./images/reDoc_html_rank.JPG){width=100%}
-</center>
-<br>
-
 :::quote
 Making it easier to discover datasets: a [Google blog post by Natasha Noy](https://www.blog.google/products/search/making-it-easier-discover-datasets/) (2018): "There are many thousands of data repositories on the web, providing access to millions of datasets; and local and national governments around the world publish their data as well. To enable easy access to this data, we launched Dataset Search, Similar to how Google Scholar works, Dataset Search lets you find datasets wherever they’re hosted, whether it’s a publisher's site, a digital library, or an author's personal web page. To create Dataset search, we developed guidelines for dataset providers to describe their data in a way that Google (and other search engines) can better understand the content of their pages. These guidelines include salient information about datasets: who created the dataset, when it was published, how the data was collected, what the terms are for using the data, etc. We then collect and link this information, analyze where different versions of the same dataset might be, and find publications that may be describing or discussing the dataset. Our approach is based on an open standard for describing this information (schema.org) and anybody who publishes data can describe their dataset this way. We encourage dataset providers, large and small, to adopt this common standard so that all datasets are part of this robust ecosystem.
 :::
@@ -400,6 +376,33 @@ The schemas proposed by schema.org have been developed primarily "to improve the
 
 [**DCAT**](https://www.w3.org/TR/vocab-dcat-2/) describes datasets and data services using a standard model and vocabulary. It is organized in 13 "classes" (Catalog, Cataloged Resource, Catalog Record, Dataset, Distribution, Data Service, Concept Scheme, Concept, Organization/Person, Relationship, Role, Period of Time, and Location). Within classes, *properties* are used as metadata elements. For example, the class *Cataloged Resource* includes properties like *title*, *description*, *resource creator*; the class *Dataset* includes properties like *spatial resolution*, *temporal coverage*; many of these properties can easily be mapped to equivalent elements of the specialized metadata schemas we recommend in this Guide.
 
+### Practical implementation of DCAT and schema.org
+
+The embedding of metadata compliant with schema.org or DCAT should be automated in data cataloguing tools. Practically, this means that the cataloguing application will (i) extract part of the metadata it contains (which should have been generated in compliance with a specialized metadata standard, for example the DDI for microdata), (ii) map the extracted metadata to the DCAT or schema.org schema, and (iii) embed it in the html pages of the data catalog. The screenshots below show an example of the html page for a dataset published in a NADA catalog, with the underlying source code and the result in Google Dataset Search.
+
+<br>
+**The html page as viewed by the catalog user - Displays DDI metadata**
+<br>
+<center>
+![](./images/reDoc_html_view.JPG){width=80%}
+</center>
+<br>
+
+<br>
+**The html page code (abstract); embeds schema.org-compliant metadata (with information extracted from DDI-compliant metadata)**
+<br>
+<center>
+![](./images/reDoc_html_code.JPG){width=80%}
+</center>
+<br>
+
+<br>
+**The result - High visibility/ranking in Google Dataset Search** (catalog.ihsn.org and microdata.worldbank.org are NADA catalogs that embed schema.org metadata).
+<br>
+<center>
+![](./images/reDoc_html_rank.JPG){width=80%}
+</center>
+<br>
 
 ## Controlled vocabularies
 
