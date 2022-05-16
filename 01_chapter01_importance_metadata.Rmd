@@ -2,6 +2,8 @@
 output: html_document
 ---
 
+# (PART) GET STARTED  {-}
+
 # The benefits of rich, structured metadata {#chapter01}
 
 Finding, understanding, and using the most relevant data can be a challenging task for researchers and other data users. 
