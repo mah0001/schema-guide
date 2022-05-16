@@ -5,7 +5,7 @@
   padding-left: 100px;
   background-size: 50px;
   background-repeat: no-repeat;
-  background-position: 25px center;
+  background-position: 25px 25px;
   min-height: 120px;
   font-size: .85em;
   line-height: 1;
@@ -99,7 +99,7 @@ div.note, div.idea, div.quote {
   padding-left: 100px;
   background-size: 50px;
   background-repeat: no-repeat;
-  background-position: 25px center;
+  background-position: 25px 25px;
   min-height: 120px;
   color: #1f5386;
   background-color: #dfedff;

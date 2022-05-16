@@ -139,7 +139,8 @@ Most elements in metadata standards and schemas are optional. Schema-compliant m
 
 Metadata compliant with all schemas presented in this Guide can in principle be generated using programming languages. We show below how these schemas, as described in their [on-line documentation](https://ihsn.github.io/nada-api-redoc/catalog-admin/#), translate into R and Python scripts. Generating metadata using R will consist of producing a *list* object (itself containing lists), while generating metadata using Python will consist of producing a *dictionary* object (itself containing lists and dictionaries). The Guide provides many practical examples. The core principles are presented below.
 
-> Note: The sequence in which the metadata elements are created when documenting a dataset using R or Python does not have to match the sequence in the schema documentation. 
+:::note
+The sequence in which the metadata elements are created when documenting a dataset using R or Python does not have to match the sequence in the schema documentation. :::
 
 ### Interpreting the metadata documentation (API)
 
@@ -159,11 +160,14 @@ The metadata schemas are [documented on-line](https://ihsn.github.io/nada-api-re
 
 <br>
 
-  > Tip: Dictionaries in Python are very similar to JSON schemas. When documenting a dataset, data curators who use Python can copy a schema from the ReDoc website, paste it in their script editor, then fill out the relevant metadata elements and delete the ones that are not used.
+
+:::idea
+Dictionaries in Python are very similar to JSON schemas. When documenting a dataset, data curators who use Python can copy a schema from the ReDoc website, paste it in their script editor, then fill out the relevant metadata elements and delete the ones that are not used.
+:::
   
-  <center>
-  ![](./images/copy_ReDoc.JPG){width=75%}
-  </center>
+<center>
+![](./images/copy_ReDoc.JPG){width=75%}
+</center>
 
 <br>
 
@@ -232,9 +236,7 @@ my_doc <- list(
         list(first_name = "Jeffery",  last_name = "Marshall",   affiliation = "World Bank"),
         list(first_name = "Lucrecia", last_name = "Santibañez", affiliation = "World Bank")
       )
-
    )
-   
 )
 
 # Publish the metadata in the central catalog 
@@ -271,8 +273,6 @@ In Python, the same process is implemented by creating a *dictionary* containing
 
 ```{python eval=F, echo=T}
 
-@@@@@@@ check/run code
-
 import pynada as nada
 
 # Define the NADA catalog URL and provide an API key
@@ -308,7 +308,6 @@ document_description = {
       {'first_name': "Jeffery",  'last_name': "Marshall",   'affiliation' = "World Bank"},
       {'first_name': "Lucrecia", 'last_name': "Santibañez", 'affiliation' = "World Bank"},
   ]
-  
 }
 
 # Publish the metadata in the central catalog 
