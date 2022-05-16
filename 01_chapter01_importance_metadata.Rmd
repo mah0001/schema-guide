@@ -391,15 +391,15 @@ All metadata standards and schemas described in this guide include a `tags` elem
 
 To illustrate the use of tags, let's assume that a catalog contains datasets that are available freely, and others that are available for a fee. The catalog administrator may want to provide a filter (facet) in the user interface that would allow users to filter datasets based on their free or not free status. None of the metadata schemas we describe in the Guide contains an element specifically designed to indicate the "free" or "for a fee" nature of the data. But this information can be captured in a tag "*Free*" or "*For a fee*" that would be added to each dataset in the catalog, with a tag group that could be named "free_or_fee". In R, this would be done as follows (for a "Free" dataset):
 
-    ```{r, eval=F, echo=T}
+```{r, eval=F, echo=T}
 
-    # ... ,
-    tags = list(
-      list(tag = "Free", tag_group = "free_or_fee")
-    )
-    # ... 
+# ... ,
+tags = list(
+  list(tag = "Free", tag_group = "free_or_fee")
+)
+# ... 
 
-    ```
+```
     
 In the NADA catalog, a facet titled "Free or for a fee" can then be created based on the information found in the `tags` element where `tag_group` = "free_or_fee".
 
