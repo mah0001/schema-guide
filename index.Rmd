@@ -48,4 +48,3 @@ The Guide was created using [R Bookdown](https://bookdown.org/) and is licensed 
 </center>
  
 
-`
