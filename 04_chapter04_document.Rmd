@@ -13,7 +13,8 @@ output: html_document
 
 This chapter describes the use of a metadata schema for documenting *documents*. By *document*, we mean a bibliographic resource of any type such as a book, a working paper or a paper published in a scientific journal, a report, a presentation, a manual, or any another resource consisting mainly of <u>text</u> and available in physical and/or electronic format.
 
-> Suggestions and recommendations to data curators<br>
+:::idea
+Suggestions and recommendations to data curators<br>
 
    - Documents in a data catalog can appear (i) as "data" in the catalog, or as "related resources" attached to other datasets. The schema we describe here is to be used for documents that will be listed as catalog entries and made searchable, not those that will be attached as resources (for which the "external resource" metadata schema must be used.
    - For all types of "data" we describe in this Guide (microdata, geographic, indicators, tables, images, audio, video, and scripts), what is indexed and made searchable in the catalog are the **metadata** associated with the data (some of these metadata may have been extracted directly from the data). For *documents*, not only the metadata but the content of the document (the "data") can and should be indexed and made searchable. Some documents may have been scanned and submitted to optical character recognition (OCR). The OCR process will not always manage to properly convert images to text, resulting in errors and non-existing words that should not be included in an index. It is thus recommended to submit the text version of these documents to a pipeline of quality control and enhancement (spell checker, and other).
@@ -23,7 +24,7 @@ This chapter describes the use of a metadata schema for documenting *documents*.
    - Machine learning tools also provide automatic language detection and translation solutions that mey be useful to enhance the metadata.
    - Documenting documents using R or Python is not very complex. For large collections of documents, managing and publishing metadata can be made significantly more efficient when programmatic solutions are used.
    - It is highly recommended to obtain a globally unique identifier for each document, such as a DOI.
-
+:::
 
 ## MARC 21, Dublin Core, and BibTex 
 
@@ -100,31 +101,29 @@ The date the <u>metadata</u> (not the resource being documented) was produced.
 
 - **`version`** *[Optional ; Not repeatable ; String]* <br> 
 The version of the metadata (not the version of the resource being documented).
-  
-<br>
 
-  > Example in R:
+
+```{r, eval=F, echo=T}
+my_doc = list(
   
-  ```{r, eval=F, echo=T}
-  my_doc = list(
+  metadata_information = list(
     
-    metadata_information = list(
-      
-      idno = "WBDG_978-1-4648-1342-9",
-      
-      producers = list(
-        list(name = "Development Data Group, Curation Team", 
-             abbr = "WBDG", 
-             affiliation = "World Bank")
-      ),
-      
-      production_date = "2020-12-27"
+    idno = "WBDG_978-1-4648-1342-9",
+    
+    producers = list(
+      list(name = "Development Data Group, Curation Team", 
+           abbr = "WBDG", 
+           affiliation = "World Bank")
     ),
     
-    # ...
-    
-  ) 
-  ```
+    production_date = "2020-12-27"
+  ),
+  
+  # ...
+  
+) 
+```
+
 
 ### Document description
 
@@ -147,25 +146,23 @@ The `title_statement` is a required group of five elements, two of which are req
     - **`translated_title`** *[Optional ; Not repeatable ; String]* <br>
     A translation of the title of the document.<br>
     
-    > Example in R:
+```{r, indent="  ", eval=F, echo=T}
+my_doc <- list(
+  # ... ,
   
-    ```{r, eval=F, echo=T}
-    my_doc <- list(
-      # ... ,
-      
-      document_description = list(
-        title_statement = list(
-          idno = "978-1-4648-1342-9",
-          title = "The Changing Nature of Work",
-          sub-title = "World Development Report 2019",
-          alternate_title = "WDR 2019",
-	  translated_title = "Rapport dur le Développement dans le Monde 2019"
-        ),
-        
-        # ...
-      )  
-    )  
-    ```
+  document_description = list(
+    title_statement = list(
+      idno = "978-1-4648-1342-9",
+      title = "The Changing Nature of Work",
+      sub-title = "World Development Report 2019",
+      alternate_title = "WDR 2019",
+      translated_title = "Rapport dur le Développement dans le Monde 2019"
+    ),
+    
+    # ...
+  )  
+)  
+```
 
 - **`authors`** *[Optional ; Repeatable]* <br>
 The authors should be listed in the same order as they appear in the source itself, which is not necessarily alphabetical. If necessary, the elements contained in this block can be used to generate a BibTex-compliant *author* field (in BibTex, the field `author` contains the name(s) of the author(s), separated by *and* when the document has more than one author.)
@@ -185,31 +182,26 @@ The authors should be listed in the same order as they appear in the source itse
      - **`type`** *[Optional ; Not repeatable ; String]* <br>
      The type of ID, i.e. the identification of the registry that assigned the author's identifier, e.g. "ORCID". <br>
      - **`id`** *[Optional ; Not repeatable ; String]* <br>
-     The ID of the author in the registry mentioned in `type`.<br>
+     The ID of the author in the registry mentioned in `type`.<br><br>
   - **`full_name`** *[Optional ; Not repeatable ; String]* <br>
-  The full name of the author. This element should only be used when the first and last name of an author cannot be distinguished, i.e. when elements `first_name` and `last_name` cannot be filled out. This element can also be used when the author of a document is an organization or other type of entity.<br>   
-
-  <br>
-  > Example in R:
-
-  ```{r, eval=F, echo=T}
-  my_doc <- list(
+  The full name of the author. This element should only be used when the first and last name of an author cannot be distinguished, i.e. when elements `first_name` and `last_name` cannot be filled out. This element can also be used when the author of a document is an organization or other type of entity.<br>
+  
+```{r, indent="  ", eval=F, echo=T}
+my_doc <- list(
+  # ... ,
+  document_description = list(
     # ... ,
-    document_description = list(
-      # ... ,
-      
-      authors = list(
-         list(first_name = "John", last_name = "Smith",
-              author_id = list(type = "ORCID", id = "0000-0002-1234-XXXX")),
-         list(first_name = "Jane", last_name = "Doe"),
-              author_id = list(type = "ORCID", id = "0000-0002-5678-YYYY"))
-      ),
-      
-      # ...
+    
+    authors = list(
+       list(first_name = "John", last_name = "Smith",
+            author_id = list(type = "ORCID", id = "0000-0002-1234-XXXX")),
+       list(first_name = "Jane", last_name = "Doe"),
+            author_id = list(type = "ORCID", id = "0000-0002-5678-YYYY"))
     ),
-    # ... 
-  )  
-  ```
+    
+    # ...
+  ) 
+```
 
 - **`editors`** *[Optional ; Repeatable]* <br>
 If the source is a text within an edited volume, it should be listed under the name of the author of the text used, not under the name of the editor. The name of the editor should however be provided in the bibliographic citation, in accordance with a [reference style](https://awelu.srv.lu.se/sources-and-referencing/using-a-reference-style/elements-of-the-reference-list/). If necessary, these elements can be used to generate a BibTex-compliant `editor` field, which contains the name(s) of the editor(s).
@@ -223,12 +215,11 @@ If the source is a text within an edited volume, it should be listed under the n
     - **`last_name`** *[Optional ; Not repeatable ; String]* <br>
     The last name of the editor.
     - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-    The affiliation of the editor.<br>
+    The affiliation of the editor.<br><br>
 
-<br>
+
 - **`date_created`** *[Optional ; Not repeatable ; String]* <br> 
 The date, entered in ISO format (YYYY-MM-DD or YYYY-MM or YYYY), when the document was produced. This can be different from the date the document was published, made available, and from the temporal coverage. The document "Nigeria - Displacement Report" by the International Organization for Migration (IOM) shown below provides an example of this. The document was produced in November 2020 (`date_created`), refers to events that occurred between 21 September and 10 October 2021 (`temporal_coverage`), and was published (`date_published`) on 28 January 2021. The `month` and `year` correspond to the BibTex elements `month` and `year` for unpublished documents (for published documents, BibTex will use the information found in `date_published`; see below). 
-
   <br>
   ![](./images/ReDoc_documents_06.JPG){width=100%}
   <br>
@@ -242,8 +233,8 @@ The date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY) when the document wa
 - **`date_published`** *[Optional ; Not repeatable ; String]* <br>
 The date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY) when the document was published. The `month` and `year` correspond to the BibTex elements `month` and `year` for published documents (for unpublished documents, BibTex will use the information found in `date_created`; see above).
 
-<br>
-The example below is a [report from the International Organization for Migrations](https://displacement.iom.int/node/10647) (IOM). It shows the difference between the date the document was created (`date_created`), published (`date_published`), and the period it covers (`temporal_coverage`).
+
+  The example below is a [report from the International Organization for Migrations](https://displacement.iom.int/node/10647) (IOM). It shows the difference between the date the document was created (`date_created`), published (`date_published`), and the period it covers (`temporal_coverage`).
 
   <br>
   <center>
@@ -251,24 +242,23 @@ The example below is a [report from the International Organization for Migration
   </center>
   <br>
 
-In R, this will be captured as follows:
+  In R, this will be captured as follows:
 
-  ```{r, eval=F, echo=T}
-  my_doc <- list(
+```{r, indent="  ", eval=F, echo=T}
+my_doc <- list(
+  # ... ,
+  document_description = list(
     # ... ,
-    document_description = list(
-      # ... ,
-      
-      temporal_coverage = "21 September 2020 to 10 October 2020",
-      date_created = "2020-11",  
-      date_published = "2021-01-28",
-      
-      # ...
-    ),
-    # ...
     
-  )  
-  ```
+    temporal_coverage = "21 September 2020 to 10 October 2020",
+    date_created = "2020-11",  
+    date_published = "2021-01-28",
+    
+    # ...
+  ),
+  # ...
+)  
+```
 
 - **`identifiers`** *[Optional ; Repeatable]*   
 This element is used to enter document identifiers (IDs) other than the catalog ID entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI), an International Standard Book Number (ISBN), or an International Standard Serial Number (ISSN). The ID entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI, ISBN, ISSN, or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`). Note that `doi` is a BibTex element, which can be extracted from `identifiers` if a DOI was included in the metadata.
