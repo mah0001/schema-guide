@@ -44,7 +44,7 @@ The World Bank Development Data Hub is also a specialized data catalog. The issu
 
 **Example 4: Searching for *"gdp per capita india 2020"* in [Google](https://www.google.com/search?q=gdp+per+capita+india+2021&rlz=1C1GCEA_enUS977US977&ei=ehrjYffSBdCKggfE5K-QAg&start=0&sa=N&ved=2ahUKEwj394WWubT1AhVQheAKHUTyCyI4MhDy0wN6BAgBEDc&biw=1600&bih=650&dpr=1.2)**
 
-Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information (as of 15 January 2022) from a commercial source, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. MOSPI's website only appears in the 6th page of results, which few users will ever access. For many users, the source of the information may not matter; but for others, a link to the originating and "reference" source - where more metadata can possibly be found - may be critical.
+Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information (as of 15 January 2022) from a commercial source, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
 
 <br>
 <center>
@@ -55,6 +55,9 @@ Search engine like Google are increasingly designed to return not just links, bu
 <center>
 ![](./images/gdp_india_2.JPG){width=90%}
 </center>
+<br>
+<br>
+MOSPI's website only appears in the 6th page of results, which few users will ever access. For many users, the source of the information may not matter; but for others, a link to the originating and "reference" source - where more metadata can possibly be found - may be critical.
 <br>
 <br>
 <center>
