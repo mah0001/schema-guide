@@ -1,3 +1,5 @@
+/* -----------code chunk------------- */
+
 .book .book-body .page-wrapper .page-inner section.normal pre {
   background-image: url("images/code-square.svg");
   padding: 1em;
@@ -19,6 +21,7 @@ code.sourceCode {
   padding: 0px !important;
 }
 
+/* -----------inline code------------- */
 .book .book-body .page-wrapper .page-inner section.normal code {
   font-size: 1em !important;
   background-color: #ebeced !important;
@@ -26,6 +29,7 @@ code.sourceCode {
   border-radius: 4px;
   padding: 2px;
 }
+
 
 .book .book-body .page-wrapper .page-inner section.normal pre.small-block {
   width: 75%;
