@@ -248,22 +248,23 @@ The adoption of standards and schemas by software developers also contributes to
 
 ### Visibility
 
-Data cataloguing applications provide search and filtering tools to help users of the catalog identify data of interest. But not all users will start their search for data directly in specialized data catalogs; many will start their search in Google, Google Dataset Search, Bing, Yahoo! or other search engine. With an estimated 87 percent market share of desktop searches as of September 2021, Google dominate the search engine use. (source: 
-https://www.statista.com/statistics/216573/worldwide-market-share-of-search-engines/). 
+Data cataloguing applications provide search and filtering tools to help users of the catalog identify data of interest. But not all users will start their search for data directly in specialized data catalogs; many will start their search in Google, Google Dataset Search, Bing, Yahoo! or another search engine.  
 
-When searching Google, users may be provided with a direct "answer" brought directly to a specific entry in a data catalog without transiting via the catalog's home or search page. For example, a search for "population india 2020" on Google, will provide a direct *answer* first, then links to the underlying resources.<br>
+Some search engines may provide users with a direct answer to their query, without transiting via the source catalog. This will be the case when the query can be associated with a specific indicator, time and location for which data are openly available or accessible via a public API. For example, a search for "population india 2020" on Google, will provide an *answer* first, followed by links to the underlying sources.
+<br>
    <center>
    ![](./images/Google_Population_India_2020.JPG){width=90%}
    </center>
 <br>
-A search for "albania lsms 2012" (a Living Standard Measurement Study, i.e. household survey) will link directly to the survey page in a Microdata Library, not to the home or search page of the data library.
+
+In other cases, the search engine will provide users with a link to a specific catalog page, not to the catalog's home page. In such cases, the user will not be directly connected to the catalog's own search engine. For example, a search for "albania lsms 2012" (a Living Standard Measurement Study, i.e. household survey) in Google will send the user directly to the survey page of the catalog, not to the home or search page of the catalog.
 <br>
    <center>
    ![](./images/Google_LSMS_Albania_2012.JPG){width=90%}
    </center>
 <br>
 
-In other cases, the user may not be brought to the data catalog at all, if the catalog ranked low in the relevance order of the Google query results. User behavior data (2020) showed that "only 9% of Google searchers make it to the bottom of the first page of the search results", and that "only .44% of searchers go to the second page of Google’s search results". (source: https://www.smartinsights.com/search-engine-marketing/search-engine-statistics/)
+In some cases, the user may not be brought to the data catalog at all, if the catalog ranked low in the relevance order of the Google query results. User behavior data (2020) showed that "only 9% of Google searchers make it to the bottom of the first page of the search results", and that "only .44% of searchers go to the second page of Google’s search results". (source: https://www.smartinsights.com/search-engine-marketing/search-engine-statistics/)
  
 It is thus critical to optimize the visibility of the content of specialized data catalogs in the lead search engines, Google in particular. This optimization process is referred to as **search engine optimization** or SEO. [Wikipedia](https://en.wikipedia.org/wiki/Search_engine_optimization) describes SEO as “the process of improving the quality and quantity of website traffic to a website or a web page from search engines. SEO targets unpaid traffic (known as "natural" or "organic" results) rather than direct traffic or paid traffic. (…) As an Internet marketing strategy, SEO considers how search engines work, the computer-programmed algorithms that dictate search engine behavior, what people search for, the actual search terms or keywords typed into search engines, and which search engines are preferred by their targeted audience. SEO is performed because a website will receive more visitors from a search engine when websites rank higher on the search engine results page.” 
 
