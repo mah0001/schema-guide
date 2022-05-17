@@ -14,10 +14,17 @@
   width: auto;
 }
 
+code.sourceCode {
+  border: solid 0px #cccecf !important;
+  padding: 0px !important;
+}
+
 .book .book-body .page-wrapper .page-inner section.normal code {
   font-size: 1em !important;
   background-color: #ebeced !important;
+  border: solid 1px #cccecf;
   border-radius: 4px;
+  padding: 2px;
 }
 
 .book .book-body .page-wrapper .page-inner section.normal pre.small-block {

@@ -36,7 +36,7 @@ In the *documents* schema, authors are documented in the metadata element `autho
 
 In JSON, this information will be stored as follows. 
 
-```
+```{json}
 "authors":[
   { "first_name":"Bo", "initial":"P.J", "last_name":"Andrée", "affiliation":"World Bank"},
   { "first_name":"Andres", "last_name":"Chamorro", "affiliation":"World Bank"},
@@ -48,7 +48,7 @@ In JSON, this information will be stored as follows.
 
 The same information in XML format is as follows: 
 
-```
+```{xml}
 <authors>
   <author>
     <first_name>Bo</first_name> 
