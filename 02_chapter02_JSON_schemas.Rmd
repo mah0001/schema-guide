@@ -4,6 +4,14 @@ output: html_document
 
 # Metadata formats and tools {#chapter02}
 
+
+ <!--       _  _____  ____  _   _  __   ____  __ _       -->
+ <!--      | |/ ____|/ __ \| \ | | \ \ / /  \/  | |      -->
+ <!--      | | (___ | |  | |  \| |  \ V /| \  / | |      -->
+ <!--  _   | |\___ \| |  | | . ` |   > < | |\/| | |      -->
+ <!-- | |__| |____) | |__| | |\  |  / . \| |  | | |____  -->
+ <!--  \____/|_____/ \____/|_| \_| /_/ \_\_|  |_|______| -->
+                                                   
 ## The JSON and XML formats 
 
 Metadata standards and schemas consist of structured lists of metadata fields. They serve multiple purposes. First, they help data curators document datasets, ensuring completeness and usability. The schema must be sufficiently intuitive and *human-readable* to allow data curators to generate and organize their metadata according to the schema. Second, they are the input to software and database applications including metadata editors and data catalogs. The schemas must thus also be *machine-readable*, and available in open file formats. JSON (JavaScript Object Notation) and XML (eXtended Markup Language) are the most suitable formats for these purposes.
@@ -88,6 +96,16 @@ JSON and XML formats have similarities:
 A main difference is that XML files have to be parsed with an XML parser, while JSON files can be parsed by a standard JavaScript function. JSON files are thus easier to parse than XML, and easier to read by humans, which makes them our preferred choice. We will show in this Guide how JSON metadata schemas correspond to lists in R or Python, making it possible to generate metadata programmatically. 
 
 
+
+
+
+<!--  __          ___                    -->
+<!--  \ \        / / |                   -->
+<!--   \ \  /\  / /| |__   ___ _ __ ___  -->
+<!--    \ \/  \/ / | '_ \ / _ \ '__/ _ \ -->
+<!--     \  /\  /  | | | |  __/ | |  __/ -->
+<!--      \/  \/   |_| |_|\___|_|  \___| -->
+                                   
 ## Where to find the schemas' documentation
 
 The most recent documentation of the schemas we present in the Guide, and of the corresponding API, is available on-line at https://ihsn.github.io/nada-api-redoc/catalog-admin/#. 
@@ -133,6 +151,18 @@ In the schemas, metadata fields/elements can have the following properties:
 The schemas can also provide default values and controlled vocabularies for some elements. 
 
 
+
+
+
+ <!--  _______                  _       _   _              -->
+ <!-- |__   __|                | |     | | (_)             -->
+ <!--    | |_ __ __ _ _ __  ___| | __ _| |_ _ _ __   __ _  -->
+ <!--    | | '__/ _` | '_ \/ __| |/ _` | __| | '_ \ / _` | -->
+ <!--    | | | | (_| | | | \__ \ | (_| | |_| | | | | (_| | -->
+ <!--    |_|_|  \__,_|_| |_|___/_|\__,_|\__|_|_| |_|\__, | -->
+ <!--                                                __/ | -->
+ <!--                                               |___/  -->
+                                               
 ## Translating a JSON schema into R and Python 
 
 Most elements in metadata standards and schemas are optional. Schema-compliant metadata can thus be very brief and simple. But the objective of data curators should always be to generate and publish as much and as detailed metadata as possible. This means that metadata documents can be long and relatively complex. This will for example be the case of metadata compliant with the DDI metadata standard used to document microdata, which contains elements that describe each variable in a dataset with elements that include (optional) summary statistics. As a dataset can contain thousands of variables, the production of such metadata requires the use of a specialized metadata editor (the metadata editor would read the data files and generate a DDI-compliant list of variables with their name, label, summary statistics). When the metadata are not too complex, they can be generated using languages like R and Python. For example, the documentation of publications or images will typically only require a few simple metadata elements (author, title, date, etc.) Generating metadata using programming languages has significant advantages. It allows automation, and makes the documentation process fully replicable and transparent. 

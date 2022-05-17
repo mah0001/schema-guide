@@ -19,6 +19,16 @@ The process of publishing data and metadata in a NADA catalog consists of:
    4. **Select an access policy** to be applied to the dataset, when relevant. This will determine if and how users can access the data (direct access, access from another repository, licensed access, no access, or other). This will typically apply to microdata and geographic datasets, not to other types of data. 
 
 
+
+
+
+ <!--  ______         _                        -->
+ <!-- |  ____|       | |                       -->
+ <!-- | |__ ___  __ _| |_ _   _ _ __ ___  ___  -->
+ <!-- |  __/ _ \/ _` | __| | | | '__/ _ \/ __| -->
+ <!-- | | |  __/ (_| | |_| |_| | | |  __/\__ \ -->
+ <!-- |_|  \___|\__,_|\__|\__,_|_|  \___||___/ -->
+
 ## Features of a modern data catalog 
 
 We present here some desirable features of a modern on-line data catalog from the perspective of data users and catalog administrators, focusing on the features that are enabled by rich and structured metadata.
@@ -196,6 +206,19 @@ In addition to the features that will make a data catalog meet the expectations 
    - Possibility to provide feedback and suggestions to the application developers
    
 
+
+
+
+
+ <!--  __  __            _     _              _                       _              -->
+ <!-- |  \/  |          | |   (_)            | |                     (_)             -->
+ <!-- | \  / | __ _  ___| |__  _ _ __   ___  | | ___  __ _ _ __ _ __  _ _ __   __ _  -->
+ <!-- | |\/| |/ _` |/ __| '_ \| | '_ \ / _ \ | |/ _ \/ _` | '__| '_ \| | '_ \ / _` | -->
+ <!-- | |  | | (_| | (__| | | | | | | |  __/ | |  __/ (_| | |  | | | | | | | | (_| | -->
+ <!-- |_|  |_|\__,_|\___|_| |_|_|_| |_|\___| |_|\___|\__,_|_|  |_| |_|_|_| |_|\__, | -->
+ <!--                                                                          __/ | -->
+ <!--                                                                         |___/  -->
+ 
 ## Machine learning for improved user experience
 
 We mentioned in Chapter 1 the importance of generating rich metadata, and the possibilities that machine learning approaches offer to enrich metadata. We also mentioned the use of machine learning, and natural language processing (NLP) tools and models in particular, to improve the performance of search engines. Machine learning models enable semantic search engines and recommender systems, and are thus a tool to help users find relevant data. They are also a solution to improve the ranking of results that search engine will find, to ensure that the most relevant ones are brought to the attention of users. The lead search engines (Google, Bing and others) have for many years relied on machine learning. Specialized data catalogs will not have the resources (and do not need) to implement such advanced systems, but should however explore opportunities to exploit machine learning to improve their users' experience. Exploiting machine learning solutions do not necessarily require that catalog administrators build expertise in machine learning or train their own models; data catalogs could make use of external APIs (e.g., APIs that can automatically and in real time translate queries, convert queries into embeddings, and others). Ideally, a global community of practice will developing such APIs (including the training of NLP models) and provide them as a global public good.  
@@ -236,6 +259,18 @@ Implementing Learn to Rank models may be challenging for data catalog administra
 ![](./images/schema_search_ranking.JPG){width=100%}
 </center>
 
+
+
+
+
+
+
+ <!--  ______              -->
+ <!-- |  ____|             -->
+ <!-- | |__ _ __ ___  ___  -->
+ <!-- |  __| '__/ _ \/ _ \ -->
+ <!-- | |  | | |  __/  __/ -->
+ <!-- |_|  |_|  \___|\___| -->
 
 ## Free cataloguing tools
 
