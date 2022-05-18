@@ -801,7 +801,7 @@ The element provides information on the unit(s) of observations that correspond 
 
   ![](./images/ReDoc_Table_14.JPG){width=100%}
   - **`value`** *[Required, Not repeatable, String]*
-  The `value` is not a numeric value; it is the label (description) of the observation unit, e.g, "individual" or "person", "household", "dwelling", enterprise, "country", etc. <br><br>
+  The `value` is not a numeric value; it is the label (description) of the observation unit, e.g, "individual" or "person", "household", "dwelling", enterprise, "country", etc. <br>
 
 
 ```{r, indent="  ", eval=F, echo=T}
