@@ -440,7 +440,7 @@ The schemas proposed by schema.org have been developed primarily "to improve the
 
 ### Practical implementation of DCAT and schema.org
 
-The embedding of metadata compliant with schema.org or DCAT should be automated in data cataloguing tools. Practically, this means that the cataloguing application will (i) extract part of the metadata it contains (which should have been generated in compliance with a specialized metadata standard, for example the DDI for microdata), (ii) map the extracted metadata to the DCAT or schema.org schema, and (iii) embed it in the html pages of the data catalog. The screenshots below show an example of the html page for a dataset published in a NADA catalog, with the underlying source code and the result in Google Dataset Search.
+The embedding of metadata compliant with schema.org or DCAT should be automated in data cataloguing tools. Practically, this means that the cataloguing application will (i) extract part of the metadata it contains (which should have been generated in compliance with a specialized metadata standard, for example the DDI for microdata), (ii) map the extracted metadata to the DCAT or schema.org schema, and (iii) embed it in the html pages of the data catalog. A mapping between the schema presented in this Guide and DCAT/schema.org is provided in annexes 2 to 10. The screenshots below show an example of the html page for a dataset published in a NADA catalog, with the underlying source code and the result in Google Dataset Search.
 
 <br>
 **The HTML page as viewed by the catalog user** - The HTML page displays the full content of the DDI-compliant metadata; this does not make use of the DCAT or schema.org metadata.
