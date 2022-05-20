@@ -32,7 +32,7 @@ Stodden et al. 2013. [*Setting the Default to Reproducible - Reproducibility in 
 Turnbull, D. and J. Berryman. 2016. [*Relevant Search: With applications for Solr and Elasticsearch*](https://www.manning.com/books/relevant-search) 
 
 
-## Links (standards, schemas, controlled vocabularies)
+## Links (standards, schemas, controlled vocabularies) {-}
 
 American Psychological Association (APA): APA Style (example of specific publications styles for a table)
 https://apastyle.apa.org/style-grammar-guidelines/tables-figures/tables
