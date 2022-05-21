@@ -314,7 +314,7 @@ This element is used to enter document identifiers (IDs) other than the catalog 
  
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   The type of unique ID, e.g. "DOI", "ISBN", or "ISSN".
-  - **`value`** *[Required ; Not repeatable ; String]* <br>
+  - **`identifier`** *[Required ; Not repeatable ; String]* <br>
   The identifier itself. <br><br>
 
   The example shows the list of identifiers of the World Bank World Development Report 2020 *The Changing Nature of Work* (see full metadata for this document in the *Complete Example 2* of this chapter).
@@ -329,12 +329,12 @@ This element is used to enter document identifiers (IDs) other than the catalog 
       # ... ,
       
       identifiers = list(
-        list(type = "ISSN",           value = "0163-5085"),
-        list(type = "ISBN softcover", value = "978-1-4648-1328-3"),
-        list(type = "ISBN hardcover", value = "978-1-4648-1342-9"),
-        list(type = "e-ISBN",         value = "978-1-4648-1356-6"),
-        list(type = "DOI softcover",  value = "10.1596/978-1-4648-1328-3"),   
-        list(type = "DOI hardcover",  value = "10.1596/978-1-4648-1342-9")   
+        list(type = "ISSN",           identifier = "0163-5085"),
+        list(type = "ISBN softcover", identifier = "978-1-4648-1328-3"),
+        list(type = "ISBN hardcover", identifier = "978-1-4648-1342-9"),
+        list(type = "e-ISBN",         identifier = "978-1-4648-1356-6"),
+        list(type = "DOI softcover",  identifier = "10.1596/978-1-4648-1328-3"),   
+        list(type = "DOI hardcover",  identifier = "10.1596/978-1-4648-1342-9")   
       ),
       
       # ...
