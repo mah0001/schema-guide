@@ -6,7 +6,7 @@ output: html_document
 
 # Annex 1: References and links {-}
 
-## Documents {-}
+**Documents**
 
 Asian Development Bank (ADB). 2001. [*Mapping the Spatial Distribution of Poverty Using Satellite Imagery in Thailand*](http://dx.doi.org/10.22617/TCS210112-2) ISBN 978-92-9262-768-3 (print), 978-92-9262-769-0 (electronic), 978-92-9262-770-6 (ebook)
 Publication Stock No. TCS210112-2. DOI: http://dx.doi.org/10.22617/TCS210112-2
@@ -32,7 +32,7 @@ Stodden et al. 2013. [*Setting the Default to Reproducible - Reproducibility in 
 Turnbull, D. and J. Berryman. 2016. [*Relevant Search: With applications for Solr and Elasticsearch*](https://www.manning.com/books/relevant-search) 
 
 
-## Links (standards, schemas, controlled vocabularies) {-}
+**Links (standards, schemas, controlled vocabularies)**
 
 American Psychological Association (APA): APA Style (example of specific publications styles for a table)
 https://apastyle.apa.org/style-grammar-guidelines/tables-figures/tables
@@ -74,7 +74,7 @@ Vedantu: Tabulation
 https://www.vedantu.com/commerce/tabulation
 
 
-## Links (tools) {-}
+**Links (tools)**
 
 [ElasticSearch](https://github.com/elastic/elasticsearch) 
 
@@ -99,12 +99,12 @@ https://cran.r-project.org/web/packages/geometa/index.html
 
 Solr: https://solr.apache.org/
 
-## Links (others) {-}
+**Links (others)**
 
 WorldPop: https://www.worldpop.org/
 
 
-# Annex 2: Mapping the document schema to BibTex, MARC21, and schema.org {-}
+# Annex 2: Mapping the document schema to BibTex, DCMI, MARC21, and schema.org {-}
 
 [to do]
 
@@ -128,7 +128,7 @@ WorldPop: https://www.worldpop.org/
 
 [to do]
 
-# Annex 8: Mapping the audio schema to schema.org {-}
+# Annex 8: Mapping the audio schema to Dublin Core and schema.org {-}
 
 [to do]
 
@@ -136,7 +136,7 @@ WorldPop: https://www.worldpop.org/
 
 [to do]
 
-# Annex 10: Mapping the research/script schema to schema.org {-}
+# Annex 10: Mapping the research/script schema to Dublin Core and schema.org {-}
 
 [to do]
 
