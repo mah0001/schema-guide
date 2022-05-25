@@ -114,7 +114,7 @@ div.note, div.idea, div.quote {
   min-height: 120px;
   color: #1f5386;
   background-color: #dfedff;
-  border: dashed 5px #bed3ec;
+  border: solid 3px #bed3ec;
 }
 
 div.note {
