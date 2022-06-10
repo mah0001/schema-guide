@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Introduction {-}</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Introduction {-}</h1>
+
+<p><strong>The volume and diversity of socio-economic data available to researchers and analysts have increased considerably over the past decade.</strong> Government agencies, national and international non-governmental organizations, and the private sector, produce large volume of data relevant for research and policy making. These data include microdata from surveys and censuses, databases from administrative systems, remote sensing data and satellite imagery, statistical tables and time series of indicators, documents and reports, collections of photos, and more. In some countries, open data initiatives are being implemented to promote the dissemination, use, and re-purposing of these data.</p>
+
+<blockquote>
+<p>In this Guide, we adopt a broad definition of what constitute data. Unit-record level data (microdata) from surveys and censuses, time series and databases of indicators, statistical tables, satellite and remote sensing imagery are <em>structured, quantitative data</em>. We also consider collections of textual information (publications, reports, newspaper articles, tweets and other social media posting, and others), and possibly of photos, videos and audio files, as data. These data are not structured, but natural language processing (NLP), image processing, and other machine learning algorithms are available to extract and structure content from such resources. The Guide also covers <em>data processing and analysis programs and scripts</em>. These data-related products deserve to be documented and disseminated with the same rigor that applies to data.</p>
+</blockquote>
+
+<p><strong>The demand for data is also large, diverse, and changing.</strong> Modern methods and tools allow data of different sources and types to be exploited in an integrated manner. For example, population census and survey data can be combined with satellite imagery to generate high-resolution poverty maps (<a href="https://www.adb.org/sites/default/files/publication/695616/mapping-poverty-satellite-imagery-thailand.pdf">ADB, 2021</a>); satellite imagery can be combined with census, administrative, and survey data to generate small-area estimates of demographic indicators (<a href="https://www.worldpop.org/">WorldPop</a>); natural language processing algorithms applied to news streams can generate fine-grained predictors of food insecurity (<a href="https://arxiv.org/pdf/2111.15602.pdf">Balashankar et al, 2021</a>); and night-light data combined with population estimates can be used to assess unmet electrification needs (<a href="http://www-personal.umich.edu/%7Ebrianmin/HREA/index.html">Brian Min and Zachary O&#39;Keeffe, 2021</a>). Data integration allows analysts to generate more disaggregated and timely insight, and to answer questions that no data source alone could answer. There is thus much value in documenting, packaging, and disseminating data of multiple sources and types.</p>
+
+<p><strong>This &reg;evolution in the supply and demand for data brings opportunities to increase the social and economic value of data.</strong> But data remain difficult to find and use, and many datasets remain under-exploited. Data analysts often devote significant time locating, accessing, and understanding data. A more effective marketplace for data would allow them to devote their attention to analysis.   </p>
+
+<p><strong>The solution involves the development and maintenance of inter-operable, openly-accessible data catalogs with advanced discovery features.</strong> To foster <em>discoverability</em> of data, data catalogs must include advanced search engines and ideally be able to operate as recommender systems. To foster the <em>visibility</em> of data, they must embed search engine optimization. To foster the <em>usability</em> of data and their <em>responsible use</em>, they must provide users with complete and detailed technical documentation, and clear information on the terms of use associated with each dataset. And to ensure efficiency and transparency in research and analysis and in the use of data, they should also include analysis programs and scripts associated with the data (which, in this Guide, we treat as a particular type of &ldquo;data&rdquo;).</p>
+
+<p><strong>To achieve these objectives, comprehensive and quality metadata must be provided with the data</strong>. When datasets are published in a searchable catalog, the content that is indexed and made searchable are the metadata, not the data themselves. Metadata include the technical and contextual information related to the data. They can be created manually by data producers and curators, programmatically using specialized algorithms and scripts, or both (as will often be the case for complex datasets). Generating high quality metadata requires skills, resources, and incentives. In too many cases, one or more of these three conditions is not fully met and many datasets are poorly documented and lack discoverability and usability. </p>
+
+<p><strong>The content of data catalogs is controlled by the catalog administrator and curator.</strong> This is a major difference with search engines like Google or Bing, which collect and index materials from a vast number of diverse and &ldquo;external&rdquo; sources. Data catalogs &ndash; and the search engines embedded in them &ndash; are therefore more similar to commercial platforms than they are from the lead search engines. And much can be learned from these platforms. Indeed, datasets to be disseminated are like products to be sold: they need to be well described, made visible and attractive to customers (including to some customers who may not know exactly what they are looking for), and easily accessible. Structured, rich metadata are an essential component of such imperatives.</p>
+
+<p>The first chapter of this Guide is an advocacy for more and better metadata, enabled by the adoption of different metadata standards and schemas[<sup>1]</sup> which are the foundations of the solutions we propose. <strong>Metadata standards</strong> consist of structured and comprehensive lists of <em>metadata elements</em> that can be used to organize and store the documentation of data of any type. Each metadata element has a name and a label, and is provided with a description that may include information on its expected content and format, on the mandatory or optional and on the repeatable or non-repeatable character of the element, on suggested controlled vocabularies, and more. Each main data type requires a specific metadata standard or schema.</p>
+
+<p>The development and implementation of <strong>international best practice in data documentation and cataloguing</strong> (data curation) is only one of three component of a work program by the World Bank&#39;s Development Data Group aiming to promoting access and responsible use of data. The other two components are (i) the development and implementation of <strong>a search engine optimized for data discovery</strong>, with semantic search capability and able to operate as a recommender system, and (ii) strengthen technical capacity and establish a community of practice around data management and dissemination in low- and middle-income countries. This Guide focuses on the first of these three components. We recommend and describe metadata standards and schemas, and formulate practical recommendations and guidance for their use. We provide examples of compliant metadata generated using R, Python, and specialized metadata editors. We show how these metadata can be published and made searchable in on-line catalogs. </p>
+
+<p>We use the <a href="http://nada.ihsn.org/">NADA</a> open source cataloguing application as an example, but the value of standard-compliant metadata would apply to any cataloguing tool. The Guide is not intended to be a substitute to the documentation provided by the custodians of the metadata standards, and it is also not a replacement for the documentation of the tools we refer to, for which specific documentation is available. </p>
+
+<p>In Chapter 1 of the Guide, we describe the importance of rich and structured metadata. Chapter 2 introduces JSON and XML, the file formats used to describe and exloit metadata standards and schemas. Chapter 3 describes the expected features of a modern data cataloguing solution, designed to optimize discoverability, visibility, and usability of data. Chapters 4 to 12 present the specific standards and schemas we recommend, with examples of their use.</p>
+
+<p>This Guide is intended to be a live document. The standards and schemas it describes, and the related tools, will be updated and upgraded periodically. The Guide is therefore published as an open document in our GitHub repository, and contributions from readers are welcome.  </p>
+
+<p>[<sup>1]:</sup> We refer to metadata <em>standards</em> when a community or organization is in charge of the development and maintenance of a metadata schema, with formal governance. We use the term metadata <em>schema</em> when no formal governance is established.  </p>
+
+</body>
+
+</html>
