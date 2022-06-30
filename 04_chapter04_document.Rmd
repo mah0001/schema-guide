@@ -190,8 +190,10 @@ The `title_statement` is a required group of five elements, two of which are req
   - **`translated_title`** *[Optional ; Not repeatable ; String]* <br>
   A translation of the title of the document.<br>
     
+    
 ```{r, indent="  ", eval=F, echo=T}
 my_doc <- list(
+
   # ... ,
   
   document_description = list(
@@ -200,7 +202,7 @@ my_doc <- list(
       title = "The Changing Nature of Work",
       sub-title = "World Development Report 2019",
       alternate_title = "WDR 2019",
-      translated_title = "Rapport dur le Développement dans le Monde 2019"
+      translated_title = "Rapport sur le Développement dans le Monde 2019"
     ),
     
     # ...
@@ -419,20 +421,20 @@ my_doc <- list(
 my_doc <- list(
   # ... ,
   document_description = list(
-        # ...,
+    # ...,
         
-        toc_structured = list(
-           list(id = "0",   parent_id = "" ,  name = "Introduction"),
-           list(id = "1",   parent_id = "" ,  name = "1. The importance of rich and structured metadata"),
-           list(id = "11",  parent_id = "1",  name = "1.1 Rich metadata"),
-           list(id = "12",  parent_id = "1",  name = "1.2 Structured metadata"),
-           list(id = "2",   parent_id = "" ,  name = "2. Technology: JSON schemas and tools"),
-           list(id = "21",  parent_id = "2",  name = "2.1 JSON schemas"),
-           list(id = "211", parent_id = "21", name = "2.1.1 Advantages of JSON over XML"),
-           list(id = "22",  parent_id = "2",  name = "2.2 Defining a metadata schema in JSON format")
-           # etc.
-        ),
-        # ...
+    toc_structured = list(
+      list(id = "0",   parent_id = "" ,  name = "Introduction"),
+      list(id = "1",   parent_id = "" ,  name = "1. The importance of rich and structured metadata"),
+      list(id = "11",  parent_id = "1",  name = "1.1 Rich metadata"),
+      list(id = "12",  parent_id = "1",  name = "1.2 Structured metadata"),
+      list(id = "2",   parent_id = "" ,  name = "2. Technology: JSON schemas and tools"),
+      list(id = "21",  parent_id = "2",  name = "2.1 JSON schemas"),
+      list(id = "211", parent_id = "21", name = "2.1.1 Advantages of JSON over XML"),
+      list(id = "22",  parent_id = "2",  name = "2.2 Defining a metadata schema in JSON format")
+      # etc.
+    ),
+    # ...
   ),
   # ...
 ) 
