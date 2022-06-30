@@ -17,13 +17,13 @@ This chapter describes the use of a metadata schema for documenting *documents*.
 Suggestions and recommendations to data curators<br>
 
    - Documents in a data catalog can appear (i) as "data" in the catalog, or as "related resources" attached to other datasets. The schema we describe here is to be used for documents that will be listed as catalog entries and made searchable, not those that will be attached as resources (for which the "external resource" metadata schema must be used.
-   - For all types of "data" we describe in this Guide (microdata, geographic, indicators, tables, images, audio, video, and scripts), what is indexed and made searchable in the catalog are the **metadata** associated with the data (some of these metadata may have been extracted directly from the data). For *documents*, not only the metadata but the content of the document (the "data") can and should be indexed and made searchable. Some documents may have been scanned and submitted to optical character recognition (OCR). The OCR process will not always manage to properly convert images to text, resulting in errors and non-existing words that should not be included in an index. It is thus recommended to submit the text version of these documents to a pipeline of quality control and enhancement (spell checker, and other).
-   - Including a screenshot of a document cover page in a data catalog adds value. The screenshot is a form of visual metadata. 
+   - For all types of data we describe in this Guide (microdata, geographic, indicators, tables, images, audio, video, and scripts), what is indexed and made searchable in the catalog are the **metadata** associated with the data (some of these metadata may have been extracted directly from the data). For *documents*, not only the metadata but the content of the document (the "data") can and should be indexed and made searchable. Some documents may have been scanned and submitted to optical character recognition (OCR). The OCR process will not always manage to properly convert images to text, resulting in errors and non-existing words that should not be included in an index. It is thus recommended to submit the text version of these documents to a pipeline of quality control and enhancement (spell checker, and other).
+   - Including a screenshot of a document cover page in a data catalog adds value.  
    - Documents should be categorized by type, and the *type* metadata element should have a controlled vocabulary. If a document can have more than one type, use the *tags* element (with a *tag_group* = *type*) instead of the non-repeatable *type* element to store this information. Use this information to activate a facet in the catalog user interface. Many users will find it useful to be able to filter documents by type.
    - The document metadata can be augmented in different manners, including by applying automated topic extraction (e.g. using a LDA topic model) and by generating document embeddings. When topic models and embedding models are used, it is important to ensure that the same topic model and the same embedding model is consistently used for all resources in the catalog.
    - Machine learning tools also provide automatic language detection and translation solutions that mey be useful to enhance the metadata.
    - Documenting documents using R or Python is not very complex. For large collections of documents, managing and publishing metadata can be made significantly more efficient when programmatic solutions are used.
-   - It is highly recommended to obtain a globally unique identifier for each document, such as a DOI.
+   - It is highly recommended to obtain a globally unique identifier for each document, such as a DOI, an ISBN, or other.
 :::
 
 
@@ -100,7 +100,7 @@ The proposed schema comprises two main blocks of elements, **`metadata_informati
                                                                          
 ### Metadata information
 
-The **`metadata_information`** contains information not related to the document itself but to its metadata, i.e. it contains "metadata on the metadata". This information is optional but we recommend to enter content at least in the `name` and `date` sub-elements, which indicate who generated the metadata and when. This information is not useful to end-users of document catalogs, but is useful to catalog administrators for two reasons:
+The **`metadata_information`** contains information not related to the document itself but to its metadata. In other words, it contains "metadata on the metadata". This information is optional but we recommend to enter content at least in the `name` and `date` sub-elements, which indicate who generated the metadata and when. This information is not useful to end-users of document catalogs, but is useful to catalog administrators for two reasons:
 
   - metadata compliant with standards are intended to be shared and used by inter-operable applications. Data catalogs offer opportunities to harvest (pull) information from other catalogs, or to publish (push) metadata in other catalogs. Metadata information helps to keep track of the provenance of metadata.
   
@@ -135,6 +135,7 @@ The date the <u>metadata</u> (not the resource being documented) was produced.
 - **`version`** *[Optional ; Not repeatable ; String]* <br> 
 The version of the metadata (not the version of the resource being documented).
 
+> Example
 
 ```{r, eval=F, echo=T}
 my_doc = list(
