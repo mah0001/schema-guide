@@ -127,7 +127,7 @@ The `metadata_information` block is used to document the table metadata (not the
 <br>
 
 - **`idno`** *[Optional, Not Repeatable, String]* <br> 
-A unique identifier for the metadata document (the *metadata document* is the JSON file containing the table metadata). This is different from the table unique identifier (see section `title_statement` below), although the same identifier can be used, and it is good practice to generate IDs that would maintain an easy connection between the metadata IDNO and the table IDNO. For example, if the unique ID of the table is "TBL_0001", the IDNO in the metadata_information could be "META_TBL_001".
+A unique identifier for the metadata document (the *metadata document* is the JSON file containing the table metadata). This is different from the table unique identifier (see section `title_statement` below), although the same identifier can be used, and it is good practice to generate identfiers that would maintain an easy connection between the metadata idno and the table idno. For example, if the unique identifier of the table is "TBL_0001", the `idno` in the metadata_information could be "META_TBL_001".
 
 - **`title`** *[Optional, Not Repeatable, String]* <br>
 The title of the metadata document (not necessarily the title of the table).
@@ -144,7 +144,7 @@ This refers to the producer(s) of the table <u>metadata</u>, not to the producer
   - **`role`** *[Optional, Not Repeatable, String]* <br>
   The specific role of the metadata producer/curator mentioned in `name` (applicable when more than one person was involved in the production of the metadata). <br><br>
 
-- **`prod_date`** *[Optional, Not Repeatable, String]* <br>   @@@ redo screenshot
+- **`production_date`** *[Optional, Not Repeatable, String]* <br>
 The date the metadata (not the table) was produced. The date will preferably be entered in ISO 8601 format (YYYY-MM-DD).
 
 - **`version`** *[Optional, Not Repeatable, String]* <br>
@@ -232,7 +232,7 @@ my_table = list(
            table_number = "Table 1.0",
            title        = "Resident population by age group, sex, and area of residence, 2020",
            sub_title    = "District of X, as of June 30",
-           alternate_title = "Population residente par groupe d'âge, sexe et zone de residence, 2020 (District X, au 30 juin)"
+           alternate_title = "Population résidente par groupe d'âge, sexe et zone de résidence, 2020 (district X, au 30 juin)"
         ),
         # ...
   )
@@ -435,7 +435,7 @@ The date the table was created. It is recommended to enter the date in ISO 8601 
  <!--                        |_|                                          -->
  
 - **`date_published`** *[Optional, Not Repeatable, String]* <br>
-The date the table was published. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). If the table is contained in a document (report, paper, book, etc.), the date the table is published is associated with the publication date of that document. If the table is found in a statistics yearbook for example, then the publication date will be the date the yearbook is published. 
+The date the table was published. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). If the table is contained in a document (report, paper, book, etc.), the date the table is published is associated with the publication date of that document. If the table is found in a statistics yearbook for example, then the publication date will be the date the yearbook was published. 
 
   ![](./images/ReDoc_Table_08a.JPG){width=100%}
 <br>
@@ -513,7 +513,7 @@ The columns description is composed of the column spanner and the column heads. 
   ![](./images/ReDoc_Table_09.JPG){width=100%}  
   - **`label`** *[Required, Not Repeatable, String]* <br>
   The labels of the table columns (or *column captions*) are vital for discoverability. The column labels will include both column spanners and column headers. Columns spanners are captions that join various column headers together. 
-  - **`var_name`** *[Optional, Not Repeatable, String* <br>
+  - **`var_name`** *[Optional, Not Repeatable, String*] <br>
   This refers to the name of the variables found in the dataset (typically microdata) used to produce the table. The objective of this optional field is to help establish a link between the source dataset and the table, to foster reproducibility.    
   - **`dataset`** *[Optional, Not Repeatable, String]* <br>
   This refers to the dataset (typically microdata) used to produce the table. If the dataset is available in a catalog and has a unique identifier (DOI or other), this identifier can be entered here. Alternatively, the title of the dataset or a permanent URI can be provided.<br><br>
