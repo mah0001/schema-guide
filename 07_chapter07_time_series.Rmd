@@ -473,7 +473,7 @@ A list of countries for which data are available in the database. This element i
  <!--                        |___/            |___/          |_|                                          -->
                         
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
-A list of geographic units (regions, countries, states, provinces, etc.) for which data are available in the database. This list is not limited to countries; it can contain sub-national areas, supra-national regions, or non-administrative area names. The `typ` element is used to indicate the type of geographic area. Countries may, but do not have to be repeated here if provided in the eleement `ref_country`.
+A list of geographic units (regions, countries, states, provinces, etc.) for which data are available in the database. This list is not limited to countries; it can contain sub-national areas, supra-national regions, or non-administrative area names. The `type` element is used to indicate the type of geographic area. Countries may, but do not have to be repeated here if provided in the eleement `ref_country`.
 
   ![](./images/ReDoc_ts_database_17.JPG){width=100%}
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -481,7 +481,7 @@ A list of geographic units (regions, countries, states, provinces, etc.) for whi
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code of the geographic unit as found in the database. If no code is available in the database, a code still can be added to the metadata. In such case, using the [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) codes is recommended for countries. 
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
-  Type of geographic unit e.g. country, state, region, province, or other grouping. 
+  Type of geographic unit e.g. country, state, region, province, or other grouping. <br>
 
 
 
@@ -494,10 +494,11 @@ A list of geographic units (regions, countries, states, provinces, etc.) for whi
  <!--                             __/ |            __/ |         | |                                        -->
  <!--                            |___/            |___/          |_|                                        -->
                             
-- **`geographic_coverage_note`** <br>
+- **`geographic_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
+The note can be used to capture additional information on the geographic coverage of the database.<br>
 ![](./images/ReDoc_ts_database_18.JPG){width=100%}
 
-  The note can be used to capture additional information on the geographic coverage of the database.
+  
 
 
  <!--  __   ___    ___  __     _     _                -->
@@ -531,9 +532,10 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
  <!--                            |___/                                          |___/  -->
  
 - **`geographic_granularity`** *[Optional ; Not repeatable ; String]* <br>
+
 ![](./images/ReDoc_ts_database_20.JPG){width=100%}
 
-  Whereas the `geographic_units` element lists the various geographic levels for which there is data in the database, the `geographic_granularity` element will provide information on the geographic levels for which information is available in the database. For example: "The database contains data at the national, provincial (admin 1) and district (admin 2) levels."
+  Whereas the `geographic_units` element lists the various geographic levels for which there is data in the database, the `geographic_granularity` element will provide information on the geographic levels for which information is available in the database. For example: "The database contains data at the national, provincial (admin 1) and district (admin 2) levels."<br>
 
 
  <!--  __   ___    ___  ____                                                  _    -->
@@ -544,9 +546,10 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
  <!--  |_(_)____(_)____|____(_)  \__,_|_|  \___|\__,_|  \___\___/ \__,_|_| |_|\__| -->
                                                                              
 - **`geographic_area_count`** *[Optional ; Not repeatable ; String]*<br>
+
 ![](./images/ReDoc_ts_database_21.JPG){width=100%}
   
-  The number of geographic areas for which data are provided in the database. The World Bank World Development Indicators for example provides data for 262 different areas (which includes countries and territories, geographic regions, and other country groupings).
+  The number of geographic areas for which data are provided in the database. The World Bank World Development Indicators for example provides data for 262 different areas (which includes countries and territories, geographic regions, and other country groupings).<br>
 
 
  <!--  __   ___    ___  _  _                                               -->
@@ -603,6 +606,7 @@ An itemized list of person(s) and/or organization(s) other than sponsors and con
  <!--  |_(_)____(_)____\___(_)  \__,_|\___|_|\_\ |___/\__|_| |_| |_|\__| -->
   
 - **`acknowledgment_statement`** *[Optional ; Not repeatable ; String]*<br>
+
 ![](./images/ReDoc_ts_database_24.JPG){width=100%}
 
   An overall statement of acknowledgment, which can be used as an alternative (or supplement) to the itemized list provided in `acknowledgments`.<br><br>
@@ -615,7 +619,7 @@ An itemized list of person(s) and/or organization(s) other than sponsors and con
  <!--  |_(_)____(_)____/_(_)    \___\___/|_| |_|\__\__,_|\___|\__|___/ -->
 
 - **`contacts`** *[Optional ; Repeatable]* <br>
-The contacts element provides the public interface for questions associated with the development and maintenance of the database. There could be various contacts provided depending upon the organization.  
+The `contacts` element provides the public interface for questions associated with the development and maintenance of the database. There could be various contacts provided depending upon the organization.  
 
   ![](./images/ReDoc_ts_database_25.JPG){width=100%}
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -715,6 +719,7 @@ This set of elements is used to describe the access license(s) attached to the d
  <!--  |_(_)____(_)____/____(_)  \___|_|\__\__,_|\__|_|\___/|_| |_| -->
   
 - **`citation`** *[Optional ; Not repeatable ; String]* <br>
+
 ![](./images/ReDoc_ts_database_30.JPG){width=100%}
 
   The citation requirement for the database (i.e. how users should cite the database in publications and reports).  
@@ -743,9 +748,10 @@ This element is provided to add notes that are relevant for describing the datab
  <!--  |_(_)____(_)____/   |_(_)  \__,_|_|___/\___|_|\__,_|_|_| |_| |_|\___|_|    -->
   
 - **`disclaimer`** *[Optional ; Not repeatable ; String]* <br>
+
 ![](./images/ReDoc_ts_database_32.JPG){width=100%}
 
-  If the agency responsible for managing the database has determined that there may be some liability as a result of the data, the element may be used to provide a disclaimer statement.
+If the agency responsible for managing the database has determined that there may be some liability as a result of the data, the element may be used to provide a disclaimer statement.<br><br>
 
 
  <!--  __   ___    ____  _____                               _       _     _    -->
@@ -802,13 +808,15 @@ The `additional` element allows data curators to create their own metadata eleme
 
 #### Complete example
 
-We use the World Bank's [World Development Indicators 2021 (WDI)](https://datatopics.worldbank.org/world-development-indicators/) database as an example. In this example, we assume that all information is entered manually in the script. In a real application, it is likely that some elements like the list and number of geographic areas covered in the database, or the start and end year of the period covered by the data, will be extracted programmatically by reading the data file (the entire WDI database can be bulk-downloaded as a CSV or MS-Excel file), or by extracting information from the database API (WDI metadata is available via [API](https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information)).
+We use the World Bank's [World Development Indicators 2021 (WDI)](https://datatopics.worldbank.org/world-development-indicators/) database as an example. In this example, we assume that all information is entered manually in the script. In a real application, it is likely that some elements like the list and number of geographic areas covered in the database, or the start and end year of the period covered by the data, will be extracted programmatically by reading the data file (the WDI data and related metadata can be downloaded as CSV or MS-Excel files), or by extracting information from the database API (WDI metadata is available via [API](https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information)).
 
 --------
 ** Using R
 --------
 
 ```{r, indent="", eval=F, echo=T}
+
+# The code below creates an object `wdi_database` ready to be published in a NADA catalog (using the NADAR package).
 
 wdi_database <- list(
   
@@ -858,7 +866,7 @@ wdi_database <- list(
       list(code = "ARB", name = "Arab World"),
       list(code = "ARE", name = "United Arab Emirates"),
       list(code = "ARG", name = "Argentina")
-      # ... and 255 more
+      # ... and 255 more - not shown here
     ),
     
     geographic_granularity = "global, national, regional",                           
@@ -904,6 +912,8 @@ wdi_database <- list(
 
 ```{python, indent="", eval=F, echo=T}
 
+# The code below creates a dictionary `wdi_database` ready to be published in a NADA catalog (using the PyNADA library).
+
 wdi_database: {
   
   "database_description" : {    
@@ -926,10 +936,9 @@ wdi_database: {
     date_created = "2021-09-15",
     date_published = "2021-09-15",
     
-    version = [
-      list("version" : "On-line public version (open data), 15 September 2021",
-           "date" : "2021-09-15", 
-           "responsibility" : "World Bank, Development Data Group")],
+    version = [{"version" : "On-line public version (open data), 15 September 2021",
+                "date" : "2021-09-15", 
+                "responsibility" : "World Bank, Development Data Group"}],
 
     update_frequency = "Quarterly",
     
@@ -941,55 +950,56 @@ wdi_database: {
     
     topics = list_topics,
     
-    geographic_units = list(
-      {"code" : "ABW", "name" : "Aruba"),
-      {"code" : "AFE", "name" : "Africa Eastern and Southern"),
-      {"code" : "AFG", "name" : "Afghanistan"),
-      {"code" : "AFW", "name" : "Africa Western and Central"),
-      {"code" : "AGO", "name" : "Angola"),
-      {"code" : "ALB", "name" : "Albania"),
-      {"code" : "AND", "name" : "Andorra"),
-      {"code" : "ARB", "name" : "Arab World"),
-      {"code" : "ARE", "name" : "United Arab Emirates"),
-      {"code" : "ARG", "name" : "Argentina")
-      # ... and 255 more
-    ),
+    geographic_units = [
+      {"code" : "ABW", "name" : "Aruba"},
+      {"code" : "AFE", "name" : "Africa Eastern and Southern"},
+      {"code" : "AFG", "name" : "Afghanistan"},
+      {"code" : "AFW", "name" : "Africa Western and Central"},
+      {"code" : "AGO", "name" : "Angola"},
+      {"code" : "ALB", "name" : "Albania"},
+      {"code" : "AND", "name" : "Andorra"},
+      {"code" : "ARB", "name" : "Arab World"},
+      {"code" : "ARE", "name" : "United Arab Emirates"},
+      {"code" : "ARG", "name" : "Argentina"}
+      # ... and 255 more, not shown here
+    ],
     
     geographic_granularity = "global, national, regional",                           
     
     geographic_area_count = "265",           
     
-    languages = {
-      {"code" : "en", "name" : "English"),
-      {"code" : "sp", "name" : "Spanish"),
-      {"code" : "fr", "name" : "French"),
-      {"code" : "ar", "name" : "Arabic"),
-      {"code" : "cn", "name" : "Chinese")
-    ),
+    languages = [
+      {"code" : "en", "name" : "English"},
+      {"code" : "sp", "name" : "Spanish"},
+      {"code" : "fr", "name" : "French"},
+      {"code" : "ar", "name" : "Arabic"},
+      {"code" : "cn", "name" : "Chinese"}
+    ],
     
     contacts = [{"name" : "Data Help Desk", 
                   "affiliation" : "World Bank",
                   "uri" : "https://datahelpdesk.worldbank.org/",
-                  "email" : "data@worldbank.org")),    
+                  "email" : "data@worldbank.org"}],    
     
-    access_options = list(
+    access_options = [
       {"type" : "API",   
-       "uri"  : "https://datahelpdesk.worldbank.org/knowledgebase/articles/889386"),
+       "uri"  : "https://datahelpdesk.worldbank.org/knowledgebase/articles/889386"},
       {"type" : "Bulk (CSV)",  
-       "uri"  : "https://data.worldbank.org/data-catalog/world-development-indicators"),
+       "uri"  : "https://data.worldbank.org/data-catalog/world-development-indicators"},
       {"type" : "Query", 
-       "uri"  : "http://databank.worldbank.org/data/source/world-development-indicators"),
+       "uri"  : "http://databank.worldbank.org/data/source/world-development-indicators"},
       {"type" : "PDF",   
-       "uri"  : "https://openknowledge.worldbank.org/bitstream/handle/10986/26447/WDI-2017-web.pdf")),    
+       "uri"  : "https://openknowledge.worldbank.org/bitstream/handle/10986/26447/WDI-2017-web.pdf"}
+    ],    
     
-    license = list({"type" : "CC BY-4.0", 
-                    "uri"  : "https://creativecommons.org/licenses/by/4.0/")),
+    license = [{"type" : "CC BY-4.0", 
+                "uri"  : "https://creativecommons.org/licenses/by/4.0/"}],
     
     citation = "World Development Indicators 2021 (September), The World Bank"
     
-  ) 
+  } 
   
-)
+}
 ```
 
 
@@ -1035,7 +1045,7 @@ The first elements of the schema (`repositoryid`, `access_policy`, `data_remote_
 
 **`repositoryid`** identifies the collection in which the metadata will be published. By default, the metadata will be published in the central catalog. To publish them in a collection, the collection must have been previously created in NADA. 
 
-**`access_policy`** indicates the access policy to be applied to the data: direct access, open access, public use files, licensed access, data accessible from an external repository, and data not accessible. A controlled vocabulary is provided and must be used, with the following respective options: {`direct; open ; public ; licensed ; remote ; data_na`}.
+**`access_policy`** indicates the access policy to be applied to the data: direct access, open access, public use files, licensed access, data accessible from an external repository, and data not accessible. A controlled vocabulary is provided and must be used, with the following respective options: {`direct; open; public; licensed; remote; data_na`}.
 
 **`data_remote_url`** provides the link to an external website where the data can be obtained, if the `access_policy` has been set to `remote`.
 
@@ -2184,6 +2194,11 @@ Note that we only show how metadata are generated and published in a NADA catalo
 
 ```{r, eval=F, echo=T}
 
+# The code below generates metadata at the database level (object "wdi_database")
+# and for a time series (object "this_series"). 
+# It then publishes the metadata in a NADA catalog using the R package NADAR.
+# It also publishes related materials as "external resources".
+
 library(nadar)
 
 # ----------------------------------------------------------------------------------
@@ -2196,7 +2211,7 @@ set_api_verbose(FALSE)
 
 setwd("C:/my_indicators/")
 
-thumb = "poverty.JPG"   # To be used as thumbnail in the data catalog
+thumb = "poverty.JPG"   # Image to be used as thumbnail in the data catalog
 
 # Document the database (WDI)
 
@@ -2254,7 +2269,7 @@ this_series = list(
     
     name = "Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)",
     
-    database_id = db_id,
+    database_id = db_id,   # To attach the database metadata to the series metadata
     
     measurement_unit = "% of population",
     
