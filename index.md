@@ -1,0 +1,44 @@
+--- 
+title: "[DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability"
+author: "Olivier Dupriez and Mehmood Asghar"
+date: "2022-07-05"
+knit: bookdown::render_book
+site: bookdown::bookdown_site
+documentclass: krantz
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.7"
+biblio-style: apalike
+link-citations: yes
+description: ""
+github-repo: ""
+cover-image: "./images/cover2.jpg"
+url: ''
+colorlinks: yes
+graphics: yes
+---
+
+# Preface {-}
+
+<p style="text-align: center;"><img src="images/cover2.JPG"/></p>
+
+The objective of the Guide is to promote the production and use of rich and structured metadata to improve the usability, the discoverability, and the use of data. The volume and diversity of data made available to the research community are growing fast. But many valuable datasets remain under-exploited. Data must be made easier to find, access, and analyze, which depend largely on the quality of the associated metadata. This Guide is primarily intended to promote and facilitate the adoption of metadata standards and schemas. It was written as a companion guide to a suite of tools and guidelines, including the [NADA cataloguing](http://nada.ihsn.org/) open-source application, the related R package NADAR and Python library PyNADA, and a forthcoming open-source Metadata Editor software. 
+
+The Guide was written by Olivier Dupriez (Lead Statistician, World Bank) and Mehmood Asghar (Senior Data Engineer, World Bank). Kamwoo Lee (Data Scientist, World Bank) produced some of the examples of the use of metadata schemas included in the Guide, played a critical role in the testing of the schemas, and led the development of PyNADA. Matthew Welch (Senior Economist-Statistician, World Bank) provided comments on the Guide. Thijs Benschop (Data Scientist, World Bank) contributed to the development of NADAR. Emmanuel Blondel (Consultant) contributed much of chapter 6. Geoffrey Greenwell (Consultant) provided input to chapter 8. Tefera Bekele Degefu and Cathrine Machingauta (Data Scientists, World Bank) participated in the testing of the schemas and packages.
+
+The production of the Guide and related tools has been made possible by financial contributions from:
+
+   - The [International Household Survey Network (IHSN)](www.ihsn.org) Trust Fund, project P167116, Grant No TF0A7461, by the Foreign, Commonwealth & Development Office (FCDO) of the United Kingdom (formerly the Department for International Development - DfID).
+   - The UK-UNHCR-World Bank research program on forced displacement by FCDO (FCV Data Platform component, project P174529, Grant No TF0B4149). This project did not specifically sponsor the production of the Guide, but supported the development of a data platform which led to the improvement and testing of some of the metadata schemas described in the Guide.
+   - The World Bank - UNHCR Joint Data Center's Microdata Library project P174080, Grant No TF0B4772, administered by the World Bank Development Data Group.
+   - The World Bank administrative budget.
+
+We also express gratitude to the developers of metadata standards. 
+
+The Guide was created using [R Bookdown](https://bookdown.org/) and is licensed under a [Creative Commons Attribution- NonCommercial- NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/). We welcome feedback and suggestions, as well as direct contributions to the editing and improvement of the document. The Guide's source code is stored in GitHub. Clicking on the *edit me* icon that appears on top of each page in the web version will take you to an editable R Markdown file where, if you are logged in to GitHub, you will be able to post your suggestions. Feedback and suggestions can also be sent to [...@...]
+
+<center>
+![](./images/index_contribute_editing_Github.jpg){width=40%}
+
+
+![](./images/index_ccby_logo.png){width=20%}
+</center>

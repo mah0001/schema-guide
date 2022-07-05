@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Images | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability</title>
+  <meta name="description" content="Chapter 9 Images | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Images | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/./images/cover2.jpg" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Images | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  
+  
+  <meta name="twitter:image" content="/./images/cover2.jpg" />
+
+<meta name="author" content="Olivier Dupriez and Mehmood Asghar" />
+
+
+<meta name="date" content="2022-07-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter08.html"/>
+<link rel="next" href="chapter10.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metadata Schema Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="part"><span><b>I GET STARTED</b></span></li>
+<li class="chapter" data-level="1" data-path="chapter01.html"><a href="chapter01.html"><i class="fa fa-check"></i><b>1</b> The benefits of rich, structured metadata</a><ul>
+<li class="chapter" data-level="1.1" data-path="chapter01.html"><a href="chapter01.html#rich-metadata"><i class="fa fa-check"></i><b>1.1</b> Rich metadata</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="chapter01.html"><a href="chapter01.html#benefits-for-data-users"><i class="fa fa-check"></i><b>1.1.1</b> Benefits for data users</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chapter01.html"><a href="chapter01.html#benefits-for-data-producers"><i class="fa fa-check"></i><b>1.1.2</b> Benefits for data producers</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chapter01.html"><a href="chapter01.html#scope-of-the-metadata"><i class="fa fa-check"></i><b>1.1.3</b> Scope of the metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chapter01.html"><a href="chapter01.html#structured-metadata"><i class="fa fa-check"></i><b>1.2</b> Structured metadata</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="chapter01.html"><a href="chapter01.html#completeness"><i class="fa fa-check"></i><b>1.2.1</b> Completeness</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chapter01.html"><a href="chapter01.html#usability"><i class="fa fa-check"></i><b>1.2.2</b> Usability</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chapter01.html"><a href="chapter01.html#discoverability"><i class="fa fa-check"></i><b>1.2.3</b> Discoverability</a></li>
+<li class="chapter" data-level="1.2.4" data-path="chapter01.html"><a href="chapter01.html#interoperability"><i class="fa fa-check"></i><b>1.2.4</b> Interoperability</a></li>
+<li class="chapter" data-level="1.2.5" data-path="chapter01.html"><a href="chapter01.html#visibility"><i class="fa fa-check"></i><b>1.2.5</b> Visibility</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chapter01.html"><a href="chapter01.html#augmented-enriched-metadata"><i class="fa fa-check"></i><b>1.3</b> Augmented (enriched) metadata</a></li>
+<li class="chapter" data-level="1.4" data-path="chapter01.html"><a href="chapter01.html#recommended-standards-and-schemas"><i class="fa fa-check"></i><b>1.4</b> Recommended standards and schemas</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chapter01.html"><a href="chapter01.html#documents"><i class="fa fa-check"></i><b>1.4.1</b> Documents</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chapter01.html"><a href="chapter01.html#microdata"><i class="fa fa-check"></i><b>1.4.2</b> Microdata</a></li>
+<li class="chapter" data-level="1.4.3" data-path="chapter01.html"><a href="chapter01.html#geographic-datasets-data-structures-and-data-services"><i class="fa fa-check"></i><b>1.4.3</b> Geographic datasets, data structures, and data services</a></li>
+<li class="chapter" data-level="1.4.4" data-path="chapter01.html"><a href="chapter01.html#time-series-indicators"><i class="fa fa-check"></i><b>1.4.4</b> Time series, indicators</a></li>
+<li class="chapter" data-level="1.4.5" data-path="chapter01.html"><a href="chapter01.html#statistical-tables"><i class="fa fa-check"></i><b>1.4.5</b> Statistical tables</a></li>
+<li class="chapter" data-level="1.4.6" data-path="chapter01.html"><a href="chapter01.html#images"><i class="fa fa-check"></i><b>1.4.6</b> Images</a></li>
+<li class="chapter" data-level="1.4.7" data-path="chapter01.html"><a href="chapter01.html#audio"><i class="fa fa-check"></i><b>1.4.7</b> Audio</a></li>
+<li class="chapter" data-level="1.4.8" data-path="chapter01.html"><a href="chapter01.html#videos"><i class="fa fa-check"></i><b>1.4.8</b> Videos</a></li>
+<li class="chapter" data-level="1.4.9" data-path="chapter01.html"><a href="chapter01.html#programs-and-scripts"><i class="fa fa-check"></i><b>1.4.9</b> Programs and scripts</a></li>
+<li class="chapter" data-level="1.4.10" data-path="chapter01.html"><a href="chapter01.html#external-resources"><i class="fa fa-check"></i><b>1.4.10</b> External resources</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="chapter01.html"><a href="chapter01.html#dcat-and-schema.org-for-search-engine-optimization"><i class="fa fa-check"></i><b>1.5</b> DCAT and schema.org for search engine optimization</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="chapter01.html"><a href="chapter01.html#dcat"><i class="fa fa-check"></i><b>1.5.1</b> DCAT</a></li>
+<li class="chapter" data-level="1.5.2" data-path="chapter01.html"><a href="chapter01.html#schema.org"><i class="fa fa-check"></i><b>1.5.2</b> schema.org</a></li>
+<li class="chapter" data-level="1.5.3" data-path="chapter01.html"><a href="chapter01.html#practical-implementation-of-dcat-and-schema.org"><i class="fa fa-check"></i><b>1.5.3</b> Practical implementation of DCAT and schema.org</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="chapter01.html"><a href="chapter01.html#controlled-vocabularies"><i class="fa fa-check"></i><b>1.6</b> Controlled vocabularies</a></li>
+<li class="chapter" data-level="1.7" data-path="chapter01.html"><a href="chapter01.html#tags-and-tag-groups"><i class="fa fa-check"></i><b>1.7</b> Tags and tag groups</a></li>
+<li class="chapter" data-level="1.8" data-path="chapter01.html"><a href="chapter01.html#embeddings-and-semantic-discovery"><i class="fa fa-check"></i><b>1.8</b> Embeddings and semantic discovery</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter02.html"><a href="chapter02.html"><i class="fa fa-check"></i><b>2</b> Metadata formats and tools</a><ul>
+<li class="chapter" data-level="2.1" data-path="chapter02.html"><a href="chapter02.html#the-json-and-xml-formats"><i class="fa fa-check"></i><b>2.1</b> The JSON and XML formats</a></li>
+<li class="chapter" data-level="2.2" data-path="chapter02.html"><a href="chapter02.html#where-to-find-the-schemas-documentation"><i class="fa fa-check"></i><b>2.2</b> Where to find the schemas’ documentation</a></li>
+<li class="chapter" data-level="2.3" data-path="chapter02.html"><a href="chapter02.html#translating-a-json-schema-into-r-and-python"><i class="fa fa-check"></i><b>2.3</b> Translating a JSON schema into R and Python</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="chapter02.html"><a href="chapter02.html#interpreting-the-metadata-documentation-api"><i class="fa fa-check"></i><b>2.3.1</b> Interpreting the metadata documentation (API)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chapter02.html"><a href="chapter02.html#generating-compliant-metadata-using-r"><i class="fa fa-check"></i><b>2.3.2</b> Generating compliant metadata using R</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chapter02.html"><a href="chapter02.html#generating-compliant-metadata-using-python"><i class="fa fa-check"></i><b>2.3.3</b> Generating compliant metadata using Python</a></li>
+<li class="chapter" data-level="2.3.4" data-path="chapter02.html"><a href="chapter02.html#generating-compliant-metadata-using-metadata-editors"><i class="fa fa-check"></i><b>2.3.4</b> Generating compliant metadata using metadata editors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter03.html"><a href="chapter03.html"><i class="fa fa-check"></i><b>3</b> Data cataloguing</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter03.html"><a href="chapter03.html#features-of-a-modern-data-catalog"><i class="fa fa-check"></i><b>3.1</b> Features of a modern data catalog</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="chapter03.html"><a href="chapter03.html#what-users-want"><i class="fa fa-check"></i><b>3.1.1</b> What users want</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter03.html"><a href="chapter03.html#what-catalog-administrators-want"><i class="fa fa-check"></i><b>3.1.2</b> What catalog administrators want</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter03.html"><a href="chapter03.html#machine-learning-for-improved-user-experience"><i class="fa fa-check"></i><b>3.2</b> Machine learning for improved user experience</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chapter03.html"><a href="chapter03.html#improving-discoverability"><i class="fa fa-check"></i><b>3.2.1</b> Improving discoverability</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chapter03.html"><a href="chapter03.html#improving-results-ranking"><i class="fa fa-check"></i><b>3.2.2</b> Improving results ranking</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chapter03.html"><a href="chapter03.html#free-cataloguing-tools"><i class="fa fa-check"></i><b>3.3</b> Free cataloguing tools</a></li>
+</ul></li>
+<li class="part"><span><b>II STANDARDS AND SCHEMAS</b></span></li>
+<li class="chapter" data-level="4" data-path="chapter04.html"><a href="chapter04.html"><i class="fa fa-check"></i><b>4</b> Documents</a><ul>
+<li class="chapter" data-level="4.1" data-path="chapter04.html"><a href="chapter04.html#marc-21-dublin-core-and-bibtex"><i class="fa fa-check"></i><b>4.1</b> MARC 21, Dublin Core, and BibTex</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter04.html"><a href="chapter04.html#schema-description"><i class="fa fa-check"></i><b>4.2</b> Schema description</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="chapter04.html"><a href="chapter04.html#metadata-information"><i class="fa fa-check"></i><b>4.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chapter04.html"><a href="chapter04.html#document-description"><i class="fa fa-check"></i><b>4.2.2</b> Document description</a></li>
+<li class="chapter" data-level="4.2.3" data-path="chapter04.html"><a href="chapter04.html#provenance"><i class="fa fa-check"></i><b>4.2.3</b> Provenance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chapter04.html"><a href="chapter04.html#tags"><i class="fa fa-check"></i><b>4.2.4</b> Tags</a></li>
+<li class="chapter" data-level="4.2.5" data-path="chapter04.html"><a href="chapter04.html#lda-topics"><i class="fa fa-check"></i><b>4.2.5</b> LDA topics</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chapter04.html"><a href="chapter04.html#embeddings"><i class="fa fa-check"></i><b>4.2.6</b> Embeddings</a></li>
+<li class="chapter" data-level="4.2.7" data-path="chapter04.html"><a href="chapter04.html#additional-fields"><i class="fa fa-check"></i><b>4.2.7</b> Additional fields</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chapter04.html"><a href="chapter04.html#complete-examples"><i class="fa fa-check"></i><b>4.3</b> Complete examples</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chapter04.html"><a href="chapter04.html#example-1-working-paper"><i class="fa fa-check"></i><b>4.3.1</b> Example 1: Working Paper</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chapter04.html"><a href="chapter04.html#example-2-book"><i class="fa fa-check"></i><b>4.3.2</b> Example 2: Book</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chapter04.html"><a href="chapter04.html#example-3-importing-from-a-list-of-documents"><i class="fa fa-check"></i><b>4.3.3</b> Example 3: Importing from a list of documents</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter05.html"><a href="chapter05.html"><i class="fa fa-check"></i><b>5</b> Microdata</a><ul>
+<li class="chapter" data-level="5.1" data-path="chapter05.html"><a href="chapter05.html#definition-of-microdata"><i class="fa fa-check"></i><b>5.1</b> Definition of microdata</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter05.html"><a href="chapter05.html#the-data-documentation-initiative-ddi-metadata-standard"><i class="fa fa-check"></i><b>5.2</b> The Data Documentation Initiative (DDI) metadata standard</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="chapter05.html"><a href="chapter05.html#ddi-codebook"><i class="fa fa-check"></i><b>5.2.1</b> DDI-Codebook</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chapter05.html"><a href="chapter05.html#ddi-lifecycle"><i class="fa fa-check"></i><b>5.2.2</b> DDI-Lifecycle</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chapter05.html"><a href="chapter05.html#some-practical-considerations"><i class="fa fa-check"></i><b>5.3</b> Some practical considerations</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter05.html"><a href="chapter05.html#schema-description-ddi-codebook-2.5"><i class="fa fa-check"></i><b>5.4</b> Schema description: DDI-Codebook 2.5</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="chapter05.html"><a href="chapter05.html#document-description-1"><i class="fa fa-check"></i><b>5.4.1</b> Document description</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chapter05.html"><a href="chapter05.html#study-description"><i class="fa fa-check"></i><b>5.4.2</b> Study description</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chapter05.html"><a href="chapter05.html#description-of-data-files"><i class="fa fa-check"></i><b>5.4.3</b> Description of data files</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chapter05.html"><a href="chapter05.html#variable-description"><i class="fa fa-check"></i><b>5.4.4</b> Variable description</a></li>
+<li class="chapter" data-level="5.4.5" data-path="chapter05.html"><a href="chapter05.html#variable-groups"><i class="fa fa-check"></i><b>5.4.5</b> Variable groups</a></li>
+<li class="chapter" data-level="5.4.6" data-path="chapter05.html"><a href="chapter05.html#provenance-1"><i class="fa fa-check"></i><b>5.4.6</b> Provenance</a></li>
+<li class="chapter" data-level="5.4.7" data-path="chapter05.html"><a href="chapter05.html#tags-1"><i class="fa fa-check"></i><b>5.4.7</b> Tags</a></li>
+<li class="chapter" data-level="5.4.8" data-path="chapter05.html"><a href="chapter05.html#lda-topics-1"><i class="fa fa-check"></i><b>5.4.8</b> LDA topics</a></li>
+<li class="chapter" data-level="5.4.9" data-path="chapter05.html"><a href="chapter05.html#embeddings-1"><i class="fa fa-check"></i><b>5.4.9</b> Embeddings</a></li>
+<li class="chapter" data-level="5.4.10" data-path="chapter05.html"><a href="chapter05.html#additional"><i class="fa fa-check"></i><b>5.4.10</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chapter05.html"><a href="chapter05.html#generating-and-publishing-ddi-metadata"><i class="fa fa-check"></i><b>5.5</b> Generating and publishing DDI metadata</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="chapter05.html"><a href="chapter05.html#using-the-nesstar-publisher-ddi-metadata-editor"><i class="fa fa-check"></i><b>5.5.1</b> Using the Nesstar Publisher (DDI metadata editor)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chapter05.html"><a href="chapter05.html#using-the-world-bank-metadata-editor"><i class="fa fa-check"></i><b>5.5.2</b> Using the World Bank Metadata Editor</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chapter05.html"><a href="chapter05.html#using-r-or-python"><i class="fa fa-check"></i><b>5.5.3</b> Using R or Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter06.html"><a href="chapter06.html"><i class="fa fa-check"></i><b>6</b> Geographic data and services</a><ul>
+<li class="chapter" data-level="6.1" data-path="chapter06.html"><a href="chapter06.html#background"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter06.html"><a href="chapter06.html#geographic-information-metadata-standards"><i class="fa fa-check"></i><b>6.2</b> Geographic information metadata standards</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="chapter06.html"><a href="chapter06.html#documenting-geographic-datasets---the-iso-19115-standard"><i class="fa fa-check"></i><b>6.2.1</b> Documenting geographic datasets - The ISO 19115 standard</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chapter06.html"><a href="chapter06.html#describing-data-structures---the-iso-19115-2-and-iso-19110-standards"><i class="fa fa-check"></i><b>6.2.2</b> Describing data structures - The ISO 19115-2 and ISO 19110 standards</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chapter06.html"><a href="chapter06.html#describing-data-services---the-iso-19119-standard"><i class="fa fa-check"></i><b>6.2.3</b> Describing data services - The ISO 19119 standard</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chapter06.html"><a href="chapter06.html#unified-metadata-specification---the-isots-19139-standard"><i class="fa fa-check"></i><b>6.2.4</b> Unified metadata specification - The ISO/TS 19139 standard</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chapter06.html"><a href="chapter06.html#schema-description-1"><i class="fa fa-check"></i><b>6.3</b> Schema description</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="chapter06.html"><a href="chapter06.html#introduction-1"><i class="fa fa-check"></i><b>6.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chapter06.html"><a href="chapter06.html#common-sets-of-elements"><i class="fa fa-check"></i><b>6.3.2</b> Common sets of elements</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chapter06.html"><a href="chapter06.html#core-metadata-properties"><i class="fa fa-check"></i><b>6.3.3</b> Core metadata properties</a></li>
+<li class="chapter" data-level="6.3.4" data-path="chapter06.html"><a href="chapter06.html#main-metadata-sections"><i class="fa fa-check"></i><b>6.3.4</b> Main metadata sections</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chapter06.html"><a href="chapter06.html#iso-19110-feature-catalogue-feature_catalogue"><i class="fa fa-check"></i><b>6.4</b> ISO 19110 Feature Catalogue (<code>feature_catalogue</code>)</a></li>
+<li class="chapter" data-level="6.5" data-path="chapter06.html"><a href="chapter06.html#provenance-2"><i class="fa fa-check"></i><b>6.5</b> Provenance</a></li>
+<li class="chapter" data-level="6.6" data-path="chapter06.html"><a href="chapter06.html#tags-2"><i class="fa fa-check"></i><b>6.6</b> Tags</a></li>
+<li class="chapter" data-level="6.7" data-path="chapter06.html"><a href="chapter06.html#lda-topics-2"><i class="fa fa-check"></i><b>6.7</b> LDA topics</a></li>
+<li class="chapter" data-level="6.8" data-path="chapter06.html"><a href="chapter06.html#embeddings-2"><i class="fa fa-check"></i><b>6.8</b> Embeddings</a></li>
+<li class="chapter" data-level="6.9" data-path="chapter06.html"><a href="chapter06.html#additional-1"><i class="fa fa-check"></i><b>6.9</b> Additional</a></li>
+<li class="chapter" data-level="6.10" data-path="chapter06.html"><a href="chapter06.html#complete-examples-1"><i class="fa fa-check"></i><b>6.10</b> Complete examples</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="chapter06.html"><a href="chapter06.html#example-1-vector---shape-files-bangladesh-outline-of-camps-of-rohingya-refugees-in-coxs-bazar-january-2021"><i class="fa fa-check"></i><b>6.10.1</b> Example 1 (vector - shape files): Bangladesh, Outline of camps of Rohingya refugees in Cox’s Bazar, January 2021</a></li>
+<li class="chapter" data-level="6.10.2" data-path="chapter06.html"><a href="chapter06.html#example-2-vector-csv-data-syria-refugee-sites-ocha"><i class="fa fa-check"></i><b>6.10.2</b> Example 2 (vector, CSV data): Syria Refugee Sites (OCHA)</a></li>
+<li class="chapter" data-level="6.10.3" data-path="chapter06.html"><a href="chapter06.html#example-3-vector-with-feature-catalogue---the-gdis-beta-dataset"><i class="fa fa-check"></i><b>6.10.3</b> Example 3 (vector, with Feature Catalogue) - The GDIS (beta) dataset</a></li>
+<li class="chapter" data-level="6.10.4" data-path="chapter06.html"><a href="chapter06.html#example-4-raster-spatial-distribution-of-the-ethiopian-population-in-2020"><i class="fa fa-check"></i><b>6.10.4</b> Example 4 (raster): Spatial distribution of the Ethiopian population in 2020</a></li>
+<li class="chapter" data-level="6.10.5" data-path="chapter06.html"><a href="chapter06.html#example-5-service-the-united-nations-geospatial-website"><i class="fa fa-check"></i><b>6.10.5</b> Example 5 (service): The United Nations Geospatial website</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="chapter06.html"><a href="chapter06.html#useful-tools"><i class="fa fa-check"></i><b>6.11</b> Useful tools</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter07.html"><a href="chapter07.html"><i class="fa fa-check"></i><b>7</b> Indicators and time series</a><ul>
+<li class="chapter" data-level="7.1" data-path="chapter07.html"><a href="chapter07.html#indicators-time-series-database-and-scope-of-the-schema"><i class="fa fa-check"></i><b>7.1</b> Indicators, time series, database, and scope of the schema</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter07.html"><a href="chapter07.html#schema-description-2"><i class="fa fa-check"></i><b>7.2</b> Schema description</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chapter07.html"><a href="chapter07.html#database-schema"><i class="fa fa-check"></i><b>7.2.1</b> Database schema</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chapter07.html"><a href="chapter07.html#the-time-series-indicators-schema"><i class="fa fa-check"></i><b>7.2.2</b> The time series (indicators) schema</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chapter07.html"><a href="chapter07.html#provenance-3"><i class="fa fa-check"></i><b>7.2.3</b> Provenance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chapter07.html"><a href="chapter07.html#tags-3"><i class="fa fa-check"></i><b>7.2.4</b> Tags</a></li>
+<li class="chapter" data-level="7.2.5" data-path="chapter07.html"><a href="chapter07.html#additional-2"><i class="fa fa-check"></i><b>7.2.5</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chapter07.html"><a href="chapter07.html#generating-and-publishing-compliant-metadata---complete-example"><i class="fa fa-check"></i><b>7.3</b> Generating and publishing compliant metadata - Complete example</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="chapter07.html"><a href="chapter07.html#using-r-3"><i class="fa fa-check"></i><b>7.3.1</b> Using R</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chapter07.html"><a href="chapter07.html#using-python-3"><i class="fa fa-check"></i><b>7.3.2</b> Using Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter08.html"><a href="chapter08.html"><i class="fa fa-check"></i><b>8</b> Statistical tables</a><ul>
+<li class="chapter" data-level="8.1" data-path="chapter08.html"><a href="chapter08.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter08.html"><a href="chapter08.html#anatomy-of-a-table"><i class="fa fa-check"></i><b>8.2</b> Anatomy of a table</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter08.html"><a href="chapter08.html#schema-description-3"><i class="fa fa-check"></i><b>8.3</b> Schema description</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="chapter08.html"><a href="chapter08.html#cataloguing-parameters-1"><i class="fa fa-check"></i><b>8.3.1</b> Cataloguing parameters</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter08.html"><a href="chapter08.html#metadata-information-2"><i class="fa fa-check"></i><b>8.3.2</b> Metadata information</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter08.html"><a href="chapter08.html#table-description"><i class="fa fa-check"></i><b>8.3.3</b> Table description</a></li>
+<li class="chapter" data-level="8.3.4" data-path="chapter08.html"><a href="chapter08.html#provenance-4"><i class="fa fa-check"></i><b>8.3.4</b> Provenance</a></li>
+<li class="chapter" data-level="8.3.5" data-path="chapter08.html"><a href="chapter08.html#tags-4"><i class="fa fa-check"></i><b>8.3.5</b> Tags</a></li>
+<li class="chapter" data-level="8.3.6" data-path="chapter08.html"><a href="chapter08.html#additional-custom-elements"><i class="fa fa-check"></i><b>8.3.6</b> Additional (custom) elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chapter08.html"><a href="chapter08.html#complete-examples-2"><i class="fa fa-check"></i><b>8.4</b> Complete examples</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="chapter08.html"><a href="chapter08.html#example-1"><i class="fa fa-check"></i><b>8.4.1</b> Example 1</a></li>
+<li class="chapter" data-level="8.4.2" data-path="chapter08.html"><a href="chapter08.html#example-2"><i class="fa fa-check"></i><b>8.4.2</b> Example 2</a></li>
+<li class="chapter" data-level="8.4.3" data-path="chapter08.html"><a href="chapter08.html#example-3"><i class="fa fa-check"></i><b>8.4.3</b> Example 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter09.html"><a href="chapter09.html"><i class="fa fa-check"></i><b>9</b> Images</a><ul>
+<li class="chapter" data-level="9.1" data-path="chapter09.html"><a href="chapter09.html#image-metadata"><i class="fa fa-check"></i><b>9.1</b> Image metadata</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="chapter09.html"><a href="chapter09.html#embedded-metadata-exif"><i class="fa fa-check"></i><b>9.1.1</b> Embedded metadata: EXIF</a></li>
+<li class="chapter" data-level="9.1.2" data-path="chapter09.html"><a href="chapter09.html#iptc-and-dublin-core-standards"><i class="fa fa-check"></i><b>9.1.2</b> IPTC and Dublin Core standards</a></li>
+<li class="chapter" data-level="9.1.3" data-path="chapter09.html"><a href="chapter09.html#augmenting-image-metadata"><i class="fa fa-check"></i><b>9.1.3</b> Augmenting image metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="chapter09.html"><a href="chapter09.html#schema-description-4"><i class="fa fa-check"></i><b>9.2</b> Schema description</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chapter09.html"><a href="chapter09.html#common-elements"><i class="fa fa-check"></i><b>9.2.1</b> Common elements</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chapter09.html"><a href="chapter09.html#iptc"><i class="fa fa-check"></i><b>9.2.2</b> IPTC</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chapter09.html"><a href="chapter09.html#dublin-core"><i class="fa fa-check"></i><b>9.2.3</b> Dublin Core</a></li>
+<li class="chapter" data-level="9.2.4" data-path="chapter09.html"><a href="chapter09.html#additional-elements-1"><i class="fa fa-check"></i><b>9.2.4</b> Additional elements</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chapter09.html"><a href="chapter09.html#examples"><i class="fa fa-check"></i><b>9.3</b> Examples</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chapter09.html"><a href="chapter09.html#example-1---using-the-iptc-option"><i class="fa fa-check"></i><b>9.3.1</b> Example 1 - Using the IPTC option</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chapter09.html"><a href="chapter09.html#example-2---using-the-dcmi-option"><i class="fa fa-check"></i><b>9.3.2</b> Example 2 - Using the DCMI option</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter10.html"><a href="chapter10.html"><i class="fa fa-check"></i><b>10</b> Audio</a><ul>
+<li class="chapter" data-level="10.1" data-path="chapter10.html"><a href="chapter10.html#augmenting-audio-metadata"><i class="fa fa-check"></i><b>10.1</b> Augmenting audio metadata</a></li>
+<li class="chapter" data-level="10.2" data-path="chapter10.html"><a href="chapter10.html#schema-description-5"><i class="fa fa-check"></i><b>10.2</b> Schema description</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="chapter10.html"><a href="chapter10.html#metadata-information-3"><i class="fa fa-check"></i><b>10.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chapter10.html"><a href="chapter10.html#audio-description"><i class="fa fa-check"></i><b>10.2.2</b> Audio description</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chapter10.html"><a href="chapter10.html#complete-example-1"><i class="fa fa-check"></i><b>10.3</b> Complete example</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="chapter10.html"><a href="chapter10.html#in-r"><i class="fa fa-check"></i><b>10.3.1</b> In R</a></li>
+<li class="chapter" data-level="10.3.2" data-path="chapter10.html"><a href="chapter10.html#in-python"><i class="fa fa-check"></i><b>10.3.2</b> In Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter11.html"><a href="chapter11.html"><i class="fa fa-check"></i><b>11</b> Videos</a><ul>
+<li class="chapter" data-level="11.1" data-path="chapter11.html"><a href="chapter11.html#augmenting-video-metadata"><i class="fa fa-check"></i><b>11.1</b> Augmenting video metadata</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter11.html"><a href="chapter11.html#schema-description-6"><i class="fa fa-check"></i><b>11.2</b> Schema description</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="chapter11.html"><a href="chapter11.html#metadata-information-4"><i class="fa fa-check"></i><b>11.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chapter11.html"><a href="chapter11.html#video-description"><i class="fa fa-check"></i><b>11.2.2</b> Video description</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chapter11.html"><a href="chapter11.html#complete-example-2"><i class="fa fa-check"></i><b>11.3</b> Complete example</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="chapter11.html"><a href="chapter11.html#in-r-1"><i class="fa fa-check"></i><b>11.3.1</b> In R</a></li>
+<li class="chapter" data-level="11.3.2" data-path="chapter11.html"><a href="chapter11.html#in-python-1"><i class="fa fa-check"></i><b>11.3.2</b> In Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter12.html"><a href="chapter12.html"><i class="fa fa-check"></i><b>12</b> Research projects and scripts</a><ul>
+<li class="chapter" data-level="12.1" data-path="chapter12.html"><a href="chapter12.html#rationale"><i class="fa fa-check"></i><b>12.1</b> Rationale</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter12.html"><a href="chapter12.html#motivation-for-open-analytics"><i class="fa fa-check"></i><b>12.2</b> Motivation for open analytics</a></li>
+<li class="chapter" data-level="12.3" data-path="chapter12.html"><a href="chapter12.html#schema-description-7"><i class="fa fa-check"></i><b>12.3</b> Schema description</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="chapter12.html"><a href="chapter12.html#document-description-2"><i class="fa fa-check"></i><b>12.3.1</b> Document description</a></li>
+<li class="chapter" data-level="12.3.2" data-path="chapter12.html"><a href="chapter12.html#project-description"><i class="fa fa-check"></i><b>12.3.2</b> Project description</a></li>
+<li class="chapter" data-level="12.3.3" data-path="chapter12.html"><a href="chapter12.html#provenance-5"><i class="fa fa-check"></i><b>12.3.3</b> Provenance</a></li>
+<li class="chapter" data-level="12.3.4" data-path="chapter12.html"><a href="chapter12.html#tags-5"><i class="fa fa-check"></i><b>12.3.4</b> Tags</a></li>
+<li class="chapter" data-level="12.3.5" data-path="chapter12.html"><a href="chapter12.html#additional-3"><i class="fa fa-check"></i><b>12.3.5</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="chapter12.html"><a href="chapter12.html#generating-compliant-metadata"><i class="fa fa-check"></i><b>12.4</b> Generating compliant metadata</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="chapter12.html"><a href="chapter12.html#full-example-using-r"><i class="fa fa-check"></i><b>12.4.1</b> Full example, using R</a></li>
+<li class="chapter" data-level="12.4.2" data-path="chapter12.html"><a href="chapter12.html#full-example-using-python"><i class="fa fa-check"></i><b>12.4.2</b> Full example, using Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter13.html"><a href="chapter13.html"><i class="fa fa-check"></i><b>13</b> External resources</a><ul>
+<li class="chapter" data-level="13.1" data-path="chapter13.html"><a href="chapter13.html#example-of-use-of-external-resources"><i class="fa fa-check"></i><b>13.1</b> Example of use of external resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>ANNEXES</b></span></li>
+<li class="chapter" data-level="" data-path="annex-1-references-and-links.html"><a href="annex-1-references-and-links.html"><i class="fa fa-check"></i>Annex 1: References and links</a></li>
+<li class="chapter" data-level="" data-path="annex-2-mapping-the-document-schema-to-bibtex-dcmi-marc21-and-schema.html"><a href="annex-2-mapping-the-document-schema-to-bibtex-dcmi-marc21-and-schema.html"><i class="fa fa-check"></i>Annex 2: Mapping the document schema to BibTex, DCMI, MARC21, and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><a href="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><i class="fa fa-check"></i>Annex 3: Mapping the microdata schema to DDI Codebook and DCAT/schema.org</a><ul>
+<li class="chapter" data-level="2" data-path="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><a href="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html#microdata-schema-mapping-for-ddi-codebook-2.5"><i class="fa fa-check"></i><b>2</b> Microdata schema mapping for DDI Codebook 2.5</a></li>
+<li class="chapter" data-level="3" data-path="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><a href="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html#microdata-schema-mapping-for-dcatschema.org"><i class="fa fa-check"></i><b>3</b> Microdata schema mapping for DCAT/Schema.org</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="annex-4-mapping-the-geographic-schema-to-dcatschema.html"><a href="annex-4-mapping-the-geographic-schema-to-dcatschema.html"><i class="fa fa-check"></i>Annex 4: Mapping the geographic schema to DCAT/schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-5-mapping-the-indicatortime-series-schema-to-schema.html"><a href="annex-5-mapping-the-indicatortime-series-schema-to-schema.html"><i class="fa fa-check"></i>Annex 5: Mapping the indicator/time series schema to schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-6-mapping-the-table-schema-to-schema.html"><a href="annex-6-mapping-the-table-schema-to-schema.html"><i class="fa fa-check"></i>Annex 6: Mapping the table schema to schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-7-mapping-the-image-schema-to-dublin-core-iptc-and-schema.html"><a href="annex-7-mapping-the-image-schema-to-dublin-core-iptc-and-schema.html"><i class="fa fa-check"></i>Annex 7: Mapping the image schema to Dublin Core, IPTC, and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-8-mapping-the-audio-schema-to-dublin-core-and-schema.html"><a href="annex-8-mapping-the-audio-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 8: Mapping the audio schema to Dublin Core and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-9-mapping-the-video-schema-to-dublin-core-and-schema.html"><a href="annex-9-mapping-the-video-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 9: Mapping the video schema to Dublin Core and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-10-mapping-the-researchscript-schema-to-dublin-core-and-schema.html"><a href="annex-10-mapping-the-researchscript-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 10: Mapping the research/script schema to Dublin Core and schema.org</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">[DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter09" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 9</span> Images<a href="chapter09.html#chapter09" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<br>
+<center>
+<img src="images/IPTC_DCMI.JPG" style="width:70.0%" />
+</center>
+<p><br></p>
+<p><!--  __  __      _            _       _         -->
+<!-- |  \/  |    | |          | |     | |        -->
+<!-- | \  / | ___| |_ __ _  __| | __ _| |_ __ _  -->
+<!-- | |\/| |/ _ \ __/ _` |/ _` |/ _` | __/ _` | -->
+<!-- | |  | |  __/ || (_| | (_| | (_| | || (_| | -->
+<!-- |_|  |_|\___|\__\__,_|\__,_|\__,_|\__\__,_| --></p>
+<div id="image-metadata" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.1</span> Image metadata<a href="chapter09.html#image-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter describes the use of two metadata standards for the documentation of images. Images may include both electronic and physical representations, but we are here interested in images available as electronic files, intended to be catalogued and published in on-line catalogs/albums. These files will typically be available in one of the following formats: JPG, PNG, or TIFF. Images can be photos taken by digital cameras, images generated by computer, or scanned images. The metadata standards we describe are intended to make these images discoverable, accessible, and usable. For that purpose, metadata must be provided on the content of the image (in the form of caption, description, keywords, etc.), on the location and date the image was generated, on the author, and more. Information on use license and copyrights, on possible privacy protection issues (persons, possibly minors, etc.) is needed to provide users with information they need to ensure their use of the published images is legal, ethical, and responsible.</p>
+<p>The device used to generate images in the form of electronic files (such as digital cameras) contain embedded metadata. Digital cameras generate EXIF metadata. This information may be useful to some users, but (with a few exceptions like the date the photo was taken and the GPS location if generated), they lack information on the content of the image (what is represented in it), required for discoverability. This information must added by curators. Part of it will be entered manually, other can be extracted in a largely automated manner using machine learning models and APIs. This information must be structured and stored in compliance with a metadata standard. We present in this chapter two standards that can serve that purpose: the comprehensive (and somewhat complex) <a href="https://iptc.org/">IPTC standard</a>, and the simpler <a href="https://dublincore.org/">Dublin Core (DCMI)</a> standard. The metadata schema we propose embeds both options; when using the schema, users will select either one or the other to document their images. We also make references to the <a href="https://schema.org/ImageObject">ImageObject metadata schema</a> from schema.org, and include some of their elements in our schema.</p>
+<div class="quote">
+<p>Although photographs may be more explicit than a long discourse for humans, they don’t describe themselves in term of content as texts do. For texts, authors use many clues to indicate what they are talking about: titles, abstract, keywords, etc. which may be used for automatic cataloguing. Searching for photos must rely on manual cataloguing, or relate texts and documents that come with the photos. <em>(Source: <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.43.5077&amp;rep=rep1&amp;type=pdf" class="uri">https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.43.5077&amp;rep=rep1&amp;type=pdf</a>)</em></p>
+</div>
+<p>We start with a brief presentation of the EXIF metadata, then describe the schema we propose for the documentation and cataloguing of images.</p>
+<div id="embedded-metadata-exif" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.1</span> Embedded metadata: EXIF<a href="chapter09.html#embedded-metadata-exif" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Modern digital cameras automatically generate metadata and embed it into the image file. This metadata is known as the Exchangeable Image File Format or EXIF. EXIF will record information on the date and time the image was taken, on the GPS location coordinates (latitude &amp; longitude, possibly altitude) if the camera was equipped with a GPS and geolocation was enabled, information on the device including manufacturer and model, technical information (lens type, focal range, aperture, shutter speed, flash settings), the system-generated unique image identifier, and more.</p>
+<p>There are several ways to extract or view an image’s EXIF Data. For example, the R packages ExifTool and ExifR allow extraction and use of EXIF metadata, and applications like Flickr will display EXIF content.</p>
+<p><br>
+<img src="images/schema_guide_exif_01.JPG" style="width:100.0%" />
+<br></p>
+<p>But with the exception of the date, location (if captured), and unique image identifier, the content of the EXIF does not provide information that users interested in identifying images based on their source and/or content will find useful. Metadata describing the content and source of an image will have to be obtained from another source or using other tools.</p>
+</div>
+<div id="iptc-and-dublin-core-standards" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.2</span> IPTC and Dublin Core standards<a href="chapter09.html#iptc-and-dublin-core-standards" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The metadata schema we propose for documenting images contains two mutually-exclusive options: the Dublin Core, as a simple option, and the IPTC as a more complex and advanced solutions. The schema also contains a few metadata elements that will be used no matter which option is selected. The schema is structured as follows:</p>
+<ul>
+<li><p>A few elements common to both options are provided to document the metadata (not the image itself), to provide some cataloguing parameters, and to set a unique identifier for the image being documented.</p></li>
+<li><p>Then come the two options for documenting the image itself: the IPTC block of metadata elements, and the Dublin Core block of elements. Users will make use of one of them, not both.</p>
+<ul>
+<li><p>The IPTC is the most detailed and complex schema. The version embedded in our schema is 2019.1 According to the <a href="https://iptc.org/standards/photo-metadata/iptc-standard/">IPTC website</a>, “The IPTC Photo Metadata Standard is the most widely used standard to describe photos, because of its universal acceptance among news agencies, photographers, photo agencies, libraries, museums, and other related industries. It structures and defines metadata properties that allow users to add precise and reliable data about images.” The IPTC standard consists of two schemas: IPTC Core and IPTC Extension. They provide a comprehensive set of fields to document an image including information on time and geographic coverage, people and objects shown in the image, information on rights, and more. The schema is complex and in most cases only a small subset of fields will be used to document an image. Controlled vocabularies are recommended for some elements.</p></li>
+<li><p>The Dublin Core (DCMI) is a simpler and highly flexible standard, composed of 15 core elements which we supplement with a few elements mostly taken from the ImageObject schema from schema.org.</p></li>
+</ul></li>
+<li><p>Last, a small number of additional metadata elements are provided, which are common to both options described above.</p></li>
+</ul>
+<p>Whether the IPTC or the simpler DCMI option is used, the metadata should be made as rich as possible.</p>
+</div>
+<div id="augmenting-image-metadata" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.1.3</span> Augmenting image metadata<a href="chapter09.html#augmenting-image-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To make images discoverable, metadata that describe the content depicted in an image, the source of the image and the rights and licensing associated with it, are essential but not provided in the EXIF. Additional metadata must be provided.</p>
+<p>Some of these metadata will have to be generated by image authors and/or curators, other can be generated in a much automated manner using machine learning models and tools. Image processing algorithms that make it possible to augmented metadata include algorithms of face detection, person identification, automated labeling, text extraction, and others. Before describing the proposed metadata schema in the following sections, we present here some example of tools that make such metadata enhancement easy and affordable.</p>
+<p>The example we provide below makes use of the <a href="https://cloud.google.com/vision/docs/drag-and-drop">Google Vision API</a> to generate image metadata. Google Vision is one out of multiple tools that can be used for that purpose such as <a href="https://aws.amazon.com/rekognition/">Amazon Rekognition</a>, or <a href="https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/">Microsoft Azure Computer Vision</a>. This example makes use of a photo selected from the <a href="https://www.flickr.com/photos/worldbank/1543136297/in/album-72157634086023459/">World Bank Flickr album</a>.</p>
+<center>
+<img src="images/Google_Vision_00.jpg" style="width:100.0%" />
+</center>
+<p>The image comes with a brief description that identifies the photographer, the location (name of the country and town, not GPS location), and the content of the image. The description of the image includes important keywords that, when indexed in a catalog, will support discoverability of the image. This information, to be manually entered, is valuable and must be part of the curated image metadata.</p>
+<hr />
+<center>
+<img src="images/Google_Vision_00a.jpg" style="width:70.0%" />
+</center>
+<hr />
+<p>But we can add useful additional information in an automated manner and at low cost using machine learning models. In the example below, we use the (free) on-line <a href="https://cloud.google.com/vision">“Try it” tool</a> of the Google Vision application.</p>
+<center>
+<img src="images/Google_vision_01.JPG" style="width:85.0%" />
+</center>
+<p>The Google Vision API returns and displays the results of the image processing in multiple tabs. The same content is available programmatically in JSON format. The content of this JSON file can be mapped to elements of the metadata schema, for automatic addition to the image metadata.</p>
+<p>The first tab is the result of <strong>faces</strong> detection. Each detected face has a bounding box and metadata such as the derived emotion of the person. The bounding box can be used to automatically flag images that have one or multiple “significant size” face(s) and may have to be excluded from the published images for privacy protection reasons.</p>
+<center>
+<img src="images/Google_Vision_02.jpg" style="width:85.0%" />
+</center>
+<p>The second tab reports on detected <strong>objects</strong>.</p>
+<center>
+<img src="images/Google_Vision_03.jpg" style="width:85.0%" />
+</center>
+<p>The third tab suggests <strong>labels</strong> that could be attached to the image, provided with a degree of confidence. A threshold can be set to automatically add (or not) each proposed label as a keyword in the image metadata.</p>
+<center>
+<img src="images/Google_Vision_04.jpg" style="width:85.0%" />
+</center>
+<p><img src="images/Google_Vision_04a.jpg" style="width:30.0%" />
+<img src="images/Google_Vision_04b.jpg" style="width:30.0%" />
+<img src="images/Google_Vision_04c.jpg" style="width:30.0%" /></p>
+<p>The fourth tab shows the <strong>text</strong> detected in the image. The quality of text detection and recognition depends on the resolution of the image and on the size and orientation of the text in the image. In our example, the algorithm fails to read (most of) the small, rotated and truncated text.</p>
+<center>
+<img src="images/Google_Vision_06.jpg" style="width:65.0%" />
+</center>
+<p>The tool managed to recognize some, but not all characters. In this case, this would be considered as not useful information to be added to the image metadata.</p>
+<center>
+<img src="images/Google_Vision_05.jpg" style="width:85.0%" />
+</center>
+<p>We are not interested in the <strong>properties</strong> tab which does not provide information that can be used for discoverability of images based on their content or source.</p>
+<p>The last tab, <strong>Safe search</strong>, could be used as warnings if you plan to make the image publicly accessible.</p>
+<center>
+<img src="images/Google_Vision_07.jpg" style="width:85.0%" />
+</center>
+<p>This “Try it” tool demonstrates the capabilities of the application which, for automating the processing of a collection of images, would be accessed programmatically using R, Python or another programming language. Accessing the application’s API requires a key. The cost of image labeling, face detection, and other image processing is low. For information on pricing, consult the website of the API providers.</p>
+<p><!--   _____      _                           -->
+<!--  / ____|    | |                          -->
+<!-- | (___   ___| |__   ___ _ __ ___   __ _  -->
+<!--  \___ \ / __| '_ \ / _ \ '_ ` _ \ / _` | -->
+<!--  ____) | (__| | | |  __/ | | | | | (_| | -->
+<!-- |_____/ \___|_| |_|\___|_| |_| |_|\__,_| --></p>
+</div>
+</div>
+<div id="schema-description-4" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.2</span> Schema description<a href="chapter09.html#schema-description-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The schema contains two options to document images: the IPTC and the Dublin Core metadata standards. The schema contains four main groups of metadata elements:
+1. A small set of “common elements” (used no matter what option – IPTC or Dublin Core – is used), used mostly for cataloguing purpose.
+2. The IPTC metadata elements
+3. The Dublin Core (DCMI) elements
+4. Another small set of common elements.</p>
+<p>The description of IPTC metadata elements is largely taken from the Photo Metadata section of the <a href="https://iptc.org/standards/photo-metadata/">IPTC website</a>.</p>
+<p><img src="images/ReDoc_image_01.JPG" style="width:100.0%" /></p>
+<p><!--  __      _____                                       -->
+<!-- /_ |    / ____|                                      -->
+<!--  | |   | |     ___  _ __ ___  _ __ ___   ___  _ __   -->
+<!--  | |   | |    / _ \| '_ ` _ \| '_ ` _ \ / _ \| '_ \  -->
+<!--  | |_  | |___| (_) | | | | | | | | | | | (_) | | | | -->
+<!--  |_(_)  \_____\___/|_| |_| |_|_| |_| |_|\___/|_| |_| --></p>
+<div id="common-elements" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.1</span> Common elements<a href="chapter09.html#common-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><strong><code>metadata_information</code></strong> <em>[Optional ; Not repeatable]</em> <br>
+This block is used to describe who produced the metadata and when. This is an optional section of the schema. It is useful for archivist more than data users. The description of the image itself is found in the <code>IPTC</code> or <code>DCMI</code> section.
+<br>
+<img src="images/ReDoc_image_02.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><p><strong><code>title</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The title of the image metadata. This can be the same as the image title.</p></li>
+<li><p><strong><code>idno</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The unique identifier of the image metadata document (which can be different from the image identifier).</p></li>
+<li><p><strong><code>producers</code></strong> <em>[Optional ; Repeatable]</em> <br>
+A list of persons or organizations involved in the documentation (production of the metadata) of the image.</p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not repeatable, String]</em> <br>
+The name of the person or agency that is responsible for the documentation of the image.</li>
+<li><strong><code>abbr</code></strong> <em>[Optional ; Not repeatable, String]</em> <br>
+Abbreviation (acronym) of the agency mentioned in <code>name</code>.</li>
+<li><strong><code>affiliation</code></strong> <em>[Optional ; Not repeatable, String]</em> <br>
+Affiliation of the person or agency mentioned in <code>name</code>.</li>
+<li><strong><code>role</code></strong> <em>[Optional ; Not repeatable, String]</em> <br>
+The specific role of the person or agency mentioned in <code>name</code> in the production of the metadata. This element will be used when more than one person or organization is listed in the <code>producers</code> element to distinguish the specific contribution of each metadata producer.<br><br></li>
+</ul></li>
+<li><p><strong><code>production_date</code></strong> <em>[Optional ; Not repeatable, String]</em> <br><br />
+The date the image metadata was generated (not the date the image was created), preferably entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).</p></li>
+<li><p><strong><code>version</code></strong> <em>[Optional ; Not repeatable, String]</em> <br>
+The version of the metadata on this image. This element will rarely be used.</p></li>
+</ul></li>
+<li><p><strong><code>image_description</code></strong> <em>[Required ; Not Repeatable]</em> <br>
+The <code>image_description</code> will contain the metadata related to one image.</p>
+<ul>
+<li><p><strong><code>idno</code></strong> <em>[Required ; Not Repeatable, String]</em> <br>
+The (main) unique identifier of the image, to be used for cataloguing purpose.
+<br>
+<img src="images/ReDoc_image_02b.JPG" style="width:100.0%" />
+<br></p></li>
+<li><p><strong><code>identifiers</code></strong> <em>[Optional, Repeatable]</em> <br>
+The repeatable element <code>identifiers</code> is used to list image identifiers other than the one used in <code>idno</code>. Some images may have unique identifiers assigned by different organizations or cataloguing systems; this element is used to document them.</p>
+<p>This element is used to enter image identifiers (IDs) other than the catalog ID entered in the <code>image_description / idno</code> element. It can for example be a Digital Object Identifier (DOI), or the EXIF identifier. Note that the ID entered in the <code>idno</code> element can be repeated here (<code>idno</code> does not provide a <code>type</code> parameter, that curators may want to document).
+<br>
+<img src="images/ReDoc_image_02a.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>type</code></strong> <em>[Optional, Not Repeatable, String]</em>
+The type of identifier. This could be for example “DOI”.</li>
+<li><strong><code>identifier</code></strong> <em>[Required, Not Repeatable, String]</em>
+The identifier itself.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><!--  ___      _____ _____ _______ _____  -->
+<!-- |__ \    |_   _|  __ \__   __/ ____| -->
+<!--    ) |     | | | |__) | | | | |      -->
+<!--   / /      | | |  ___/  | | | |      -->
+<!--  / /_ _   _| |_| |      | | | |____  -->
+<!-- |____(_) |_____|_|      |_|  \_____| --></p>
+</div>
+<div id="iptc" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.2</span> IPTC<a href="chapter09.html#iptc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong><code>iptc</code></strong> <em>[Optional ; Not Repeatable]</em> <br>
+The schema provides two options (standards) to document an image: the IPTC, and the Dublin Core. Only one of these standards, not both, will be used to document an image. The block <code>iptc</code> will be used when IPTC is the preferred option. In such case, the <code>dcmi</code> block describe later in this chapter will be left empty. IPTC is the most complex of these two options.
+<br>
+<img src="images/ReDoc_image_03.JPG" style="width:100.0%" />
+<br></p>
+<p><strong><code>photoVideoMetadataIPTC</code></strong> <em>[Required ; Not Repeatable ; String]</em> <br>
+Contains all elements used to describe the image using the IPTC standard.</p>
+<ul>
+<li><p><strong><code>title</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_04.JPG" style="width:100.0%" />
+<br>
+The title is a shorthand reference for the digital image. It provides a short verbal and human readable name which can be a text and/or a numeric reference. It is not the same as the Headline (see below). Some may use the <code>title</code> field to store the file name of the image, though the field may be used in many ways. This element should not be used to provide the unique identifier of the image.</p></li>
+<li><p><strong><code>imageSupplierImageId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A unique identifier assigned by the image supplier to the image.
+<br>
+<img src="images/ReDoc_image_05.JPG" style="width:100.0%" />
+<br></p></li>
+<li><p><strong><code>registryEntries</code></strong> <em>[Optional ; Repeatable]</em> <br>
+A structured element used to provide cataloguing information (i.e. an entry in a registry). It includes the unique identifier for the image issued by the registry and the registry’s organization identifier.
+<br>
+<img src="images/ReDoc_image_06.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>role</code></strong>: <em>[Optional ; Not Repeatable ; String]</em> <br>
+An identifier of the reason and/or purpose for this Registry Entry.</li>
+<li><strong><code>assetIdentifier</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A unique identifier created by the registry and applied by the creator of the digital image. This value shall not be changed after being applied. This identifier is linked to a corresponding Registry Organization Identifier. Enter the unique identifier created by a registry and applied by the creator of the digital image. This value shall not be changed after being applied. This identifier may be globally unique by itself, but it must be unique for the issuing registry. An input to this field should be made mandatory.</li>
+<li><strong><code>registryIdentifier</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+An identifier for the registry/organization which issued the corresponding Registry Image Id. <br><br></li>
+</ul></li>
+<li><p><strong><code>digitalImageGuid</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_07.JPG" style="width:100.0%" />
+<br>
+A globally unique identifier for the image. This identifier is created and applied by the creator of the digital image at the time of its creation. This value shall not be changed after that time. The identifier can be generated using an algorithm that would guarantee that the created identifier is globally unique. Device that create digital images like digital or video cameras or scanners usually create such an identifier at the time of the creation of the digital data, and add it to the metadata embedded in the image file (e.g., the EXIF metadata).IPTC’s requirements for unique ids are as follows:</p>
+<ul>
+<li>It must be globally unique. Algorithms for this purpose exist.</li>
+<li>It should identify the camera body.</li>
+<li>It should identify each individual photo from this camera body.</li>
+<li>It should identify the date and time of the creation of the picture.</li>
+<li>It should be secured against tampering.<br><br></li>
+</ul></li>
+<li><p><strong><code>dateCreated</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_08.JPG" style="width:100.0%" />
+<br>
+Designates the date and optionally the time the content of the image was created. For a photo, this will be the date and time the photo was taken. When no information is available on the time, the time is set to 00:00:00. The preferred format for the <code>dateCreated</code> element is the truncated DateTime format, for example: 2021-02-22T21:24:06Z</p></li>
+<li><p><strong><code>headline</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_09.JPG" style="width:100.0%" />
+<br>
+A brief publishable summary of the contents of the image. Note that a headline is not the same as a title.</p></li>
+<li><p><strong><code>eventName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_10.JPG" style="width:100.0%" />
+<br>
+The name or a brief description of the event where the image was taken. If this is a sub-event of a larger event, mention both in the description. For example: “Opening statement, 1st International Conference on Metadata Standards, New York, November 2021”.</p></li>
+<li><p><strong><code>description</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_11.JPG" style="width:100.0%" />
+<br>
+A textual description, including captions, of the image. This describes the who, what, and why of what is happening in this image. This might include names of people, and/or their role in the action that is taking place within the image. Example: “The president of the Metadata Association delivers the keynote address”.</p></li>
+<li><p><strong><code>captionWriter</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_12.JPG" style="width:100.0%" />
+<br>
+An identifier, or the name, of the person involved in writing, editing or correcting the description of the image.</p></li>
+<li><p><strong><code>keywords</code></strong>: <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_13.JPG" style="width:100.0%" />
+<br><br />
+Keywords (terms or phrases) to express the subject of the image. Keywords do not have to be taken from a controlled vocabulary.</p></li>
+<li><p><strong><code>sceneCodes</code></strong> <em>[Optional ; Repeatable ; String]</em> <br> @@@@ Split “scenes” into 3 elements (code, label, description) and redo screenshot
+<br>
+<img src="images/ReDoc_image_14.JPG" style="width:100.0%" />
+<br><br />
+The <code>sceneCodes</code> describe the scene of a photo content. The <a href="http://cv.iptc.org/newscodes/scene">IPTC Scene-NewsCodes</a> controlled vocabulary (published under a Creative Commons Attribution (CC BY) 4.0 license) should be used, where a scene is represented as a string of 6 digits.<br></p>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="30%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">code</th>
+<th align="center">Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">010100</td>
+<td align="center">headshot</td>
+<td>A head only view of a person (or animal/s) or persons as in a montage.</td>
+</tr>
+<tr class="even">
+<td align="center">010200</td>
+<td align="center">half-length</td>
+<td>A torso and head view of a person or persons.</td>
+</tr>
+<tr class="odd">
+<td align="center">010300</td>
+<td align="center">full-length</td>
+<td>A view from head to toe of a person or persons</td>
+</tr>
+<tr class="even">
+<td align="center">010400</td>
+<td align="center">profile</td>
+<td>A view of a person from the side</td>
+</tr>
+<tr class="odd">
+<td align="center">010500</td>
+<td align="center">rear view</td>
+<td>A view of a person or persons from the rear.</td>
+</tr>
+<tr class="even">
+<td align="center">010600</td>
+<td align="center">single</td>
+<td>A view of only one person, object or animal.</td>
+</tr>
+<tr class="odd">
+<td align="center">010700</td>
+<td align="center">couple</td>
+<td>A view of two people who are in a personal relationship, for example engaged, married or in a romantic partnership.</td>
+</tr>
+<tr class="even">
+<td align="center">010800</td>
+<td align="center">two</td>
+<td>A view of two people</td>
+</tr>
+<tr class="odd">
+<td align="center">010900</td>
+<td align="center">group</td>
+<td>A view of more than two people</td>
+</tr>
+<tr class="even">
+<td align="center">011000</td>
+<td align="center">general view</td>
+<td>An overall view of the subject and its surrounds</td>
+</tr>
+<tr class="odd">
+<td align="center">011100</td>
+<td align="center">panoramic view</td>
+<td>A panoramic or wide angle view of a subject and its surrounds</td>
+</tr>
+<tr class="even">
+<td align="center">011200</td>
+<td align="center">aerial view</td>
+<td>A view taken from above</td>
+</tr>
+<tr class="odd">
+<td align="center">011300</td>
+<td align="center">under-water</td>
+<td>A photo taken under water</td>
+</tr>
+<tr class="even">
+<td align="center">011400</td>
+<td align="center">night scene</td>
+<td>A photo taken during darkness</td>
+</tr>
+<tr class="odd">
+<td align="center">011500</td>
+<td align="center">satellite</td>
+<td>A photo taken from a satellite in orbit</td>
+</tr>
+<tr class="even">
+<td align="center">011600</td>
+<td align="center">exterior view</td>
+<td>A photo that shows the exterior of a building or other object</td>
+</tr>
+<tr class="odd">
+<td align="center">011700</td>
+<td align="center">interior view</td>
+<td>A scene or view of the interior of a building or other object</td>
+</tr>
+<tr class="even">
+<td align="center">011800</td>
+<td align="center">close-up</td>
+<td>A view of, or part of a person/object taken at close range in order to emphasize detail or accentuate mood. Macro photography.</td>
+</tr>
+<tr class="odd">
+<td align="center">011900</td>
+<td align="center">action</td>
+<td>Subject in motion such as children jumping, horse running</td>
+</tr>
+<tr class="even">
+<td align="center">012000</td>
+<td align="center">performing</td>
+<td>Subject or subjects on a stage performing to an audience</td>
+</tr>
+<tr class="odd">
+<td align="center">012100</td>
+<td align="center">posing</td>
+<td>Subject or subjects posing such as a “victory” pose or other stance that symbolizes leadership.</td>
+</tr>
+<tr class="even">
+<td align="center">012200</td>
+<td align="center">symbolic</td>
+<td>A posed picture symbolizing an event - two rings for marriage</td>
+</tr>
+<tr class="odd">
+<td align="center">012300</td>
+<td align="center">off-beat</td>
+<td>An attractive, perhaps fun picture of everyday events - dog with sunglasses, people cooling off in the fountain</td>
+</tr>
+<tr class="even">
+<td align="center">012400</td>
+<td align="center">movie scene</td>
+<td>Photos taken during the shooting of a movie or TV production.</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p><br></p>
+<ul>
+<li><p><strong><code>sceneCodesLabelled</code></strong> <em>[Optional ; Repeatable]</em> <br><br />
+<br>
+<img src="images/ReDoc_image_14.JPG" style="width:100.0%" />
+<br><br />
+The <code>sceneCodes</code> element described above only allows for the capture of codes. To improve discoverability (by indexing important keywords), not only the scene codes but also the scene description should be provided. The IPTC standard does not provide an element that allows the scene label and description to be entered. The <code>sceneCodesLabelled</code> is an element that we added to our schema. Ideally, curators will enter the scene codes in the element <code>sceneCodes</code> to maintain full compatibility with the IPTC, and complement that information by also entering the codes and their description in the <code>sceneCodesLabelled</code> element.<br></p>
+<ul>
+<li><strong><code>code</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The code for the scene of a photo content. The <a href="http://cv.iptc.org/newscodes/scene">IPTC Scene-NewsCodes</a> controlled vocabulary (published under a Creative Commons Attribution (CC BY) 4.0 license) should be used, where a scene is represented as a string of 6 digits. See table above.<br></li>
+<li><strong><code>label</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The label of the scene. See table above for examples.<br></li>
+<li><strong><code>description</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A more detailed description of the scene. See table above for examples.<br><br></li>
+</ul></li>
+<li><p><strong><code>subjectCodes</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_15.JPG" style="width:100.0%" />
+<br><br />
+Specifies one or more subjects from the <a href="http://cv.iptc.org/newscodes/subjectcode">IPTC Subject-NewsCodes</a> controlled vocabulary to categorize the image. Each Subject is represented as a string of 8 digits. The vocabulary consists of about 1400 terms organized into 3 levels (users can decide to use only the first, or the first two levels; the more detail is provided, the better the discoverability of the image). The first level of the controlled vocabulary is as follows:
+<br></p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="30%" />
+<col width="56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">code</th>
+<th align="center">Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">01000000</td>
+<td align="center">arts, culture and entertainment</td>
+<td>Matters pertaining to the advancement and refinement of the human mind, of interests, skills, tastes and emotions</td>
+</tr>
+<tr class="even">
+<td align="center">02000000</td>
+<td align="center">crime, law and justice</td>
+<td>Establishment and/or statement of the rules of behavior in society, the enforcement of these rules, breaches of the rules and the punishment of offenders. Organizations and bodies involved in these activities.</td>
+</tr>
+<tr class="odd">
+<td align="center">03000000</td>
+<td align="center">disaster and accident</td>
+<td>Man made and natural events resulting in loss of life or injury to living creatures and/or damage to inanimate objects or property.</td>
+</tr>
+<tr class="even">
+<td align="center">04000000</td>
+<td align="center">economy, business and finance</td>
+<td>All matters concerning the planning, production and exchange of wealth.</td>
+</tr>
+<tr class="odd">
+<td align="center">05000000</td>
+<td align="center">education</td>
+<td>All aspects of furthering knowledge of human individuals from birth to death.</td>
+</tr>
+<tr class="even">
+<td align="center">06000000</td>
+<td align="center">environmental issue</td>
+<td>All aspects of protection, damage, and condition of the ecosystem of the planet earth and its surroundings.</td>
+</tr>
+<tr class="odd">
+<td align="center">07000000</td>
+<td align="center">health</td>
+<td>All aspects pertaining to the physical and mental welfare of human beings.</td>
+</tr>
+<tr class="even">
+<td align="center">08000000</td>
+<td align="center">human interest</td>
+<td>Lighter items about individuals, groups, animals or objects.</td>
+</tr>
+<tr class="odd">
+<td align="center">09000000</td>
+<td align="center">labor</td>
+<td>Social aspects, organizations, rules and conditions affecting the employment of human effort for the generation of wealth or provision of services and the economic support of the unemployed.</td>
+</tr>
+<tr class="even">
+<td align="center">10000000</td>
+<td align="center">lifestyle and leisure</td>
+<td>Activities undertaken for pleasure, relaxation or recreation outside paid employment, including eating and travel.</td>
+</tr>
+<tr class="odd">
+<td align="center">11000000</td>
+<td align="center">politics</td>
+<td>Local, regional, national and international exercise of power, or struggle for power, and the relationships between governing bodies and states.</td>
+</tr>
+<tr class="even">
+<td align="center">12000000</td>
+<td align="center">religion and belief</td>
+<td>All aspects of human existence involving theology, philosophy, ethics and spirituality.</td>
+</tr>
+<tr class="odd">
+<td align="center">13000000</td>
+<td align="center">science and technology</td>
+<td>All aspects pertaining to human understanding of nature and the physical world and the development and application of this knowledge</td>
+</tr>
+<tr class="even">
+<td align="center">14000000</td>
+<td align="center">social issue</td>
+<td>Aspects of the behavior of humans affecting the quality of life.</td>
+</tr>
+<tr class="odd">
+<td align="center">15000000</td>
+<td align="center">sport</td>
+<td>Competitive exercise involving physical effort. Organizations and bodies involved in these activities.</td>
+</tr>
+<tr class="even">
+<td align="center">16000000</td>
+<td align="center">unrest</td>
+<td>conflicts and war Acts of socially or politically motivated protest and/or violence.</td>
+</tr>
+<tr class="odd">
+<td align="center">17000000</td>
+<td align="center">weather</td>
+<td>The study, reporting and prediction of meteorological phenomena.</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<p>As an example of subjects at the three levels, the list below zooms on the subject “education”.<br><br></p>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="35%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">code</th>
+<th align="center">Subject</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">05000000</td>
+<td align="center">education</td>
+<td>All aspects of furthering knowledge of human individuals from birth to death</td>
+</tr>
+<tr class="even">
+<td align="center">05001000</td>
+<td align="center">Adult education</td>
+<td>Education provided for older students outside the usual age groups of 5-25</td>
+</tr>
+<tr class="odd">
+<td align="center">05002000</td>
+<td align="center">Further education</td>
+<td>Any form of education beyond basic education of several levels</td>
+</tr>
+<tr class="even">
+<td align="center">05003000</td>
+<td align="center">parent organization</td>
+<td>Groups of parents set up to support schools</td>
+</tr>
+<tr class="odd">
+<td align="center">05004000</td>
+<td align="center">preschool</td>
+<td>Education for children under the national compulsory education age</td>
+</tr>
+<tr class="even">
+<td align="center">05005000</td>
+<td align="center">school</td>
+<td>A building or institution in which education of various sorts is provided</td>
+</tr>
+<tr class="odd">
+<td align="center">05005001</td>
+<td align="center">elementary schools</td>
+<td>Schools usually of a level from kindergarten through 11 or 12 years of age</td>
+</tr>
+<tr class="even">
+<td align="center">05005002</td>
+<td align="center">middle schools</td>
+<td>Transitional school between elementary and high school, 12 through 13 years of age</td>
+</tr>
+<tr class="odd">
+<td align="center">05005003</td>
+<td align="center">high schools</td>
+<td>Pre-college/ university level education 14 to 17 or 18 years of age, called freshman, sophomore, junior and senior</td>
+</tr>
+<tr class="even">
+<td align="center">05006000</td>
+<td align="center">teachers union</td>
+<td>Organization of teachers for collective bargaining and other purposes</td>
+</tr>
+<tr class="odd">
+<td align="center">05007000</td>
+<td align="center">university</td>
+<td>Institutions of higher learning capable of providing doctorate degrees</td>
+</tr>
+<tr class="even">
+<td align="center">05008000</td>
+<td align="center">upbringing</td>
+<td>Lessons learned from parents and others as one grows up</td>
+</tr>
+<tr class="odd">
+<td align="center">05009000</td>
+<td align="center">entrance examination</td>
+<td>Exams for entering colleges, universities, junior and senior high schools, and all other higher and lower education institutes, including cram schools, which help students prepare for exams for entry to prestigious schools.</td>
+</tr>
+<tr class="even">
+<td align="center">05010000</td>
+<td align="center">teaching and learning</td>
+<td>Either end of the education equation</td>
+</tr>
+<tr class="odd">
+<td align="center">05010001</td>
+<td align="center">students</td>
+<td>People of any age in a structured environment, not necessarily a classroom, in order to learn something</td>
+</tr>
+<tr class="even">
+<td align="center">05010002</td>
+<td align="center">teachers</td>
+<td>People with knowledge who can impart that knowledge to others</td>
+</tr>
+<tr class="odd">
+<td align="center">05010003</td>
+<td align="center">curriculum</td>
+<td>The courses offered by a learning institution and the regulation of those courses</td>
+</tr>
+<tr class="even">
+<td align="center">05010004</td>
+<td align="center">test/examination</td>
+<td>A measurement of student accomplishment</td>
+</tr>
+<tr class="odd">
+<td align="center">05011000</td>
+<td align="center">religious education</td>
+<td>Instruction by any faith, in that faith or about other faiths, usually, but not always, conducted in schools run by religious bodies</td>
+</tr>
+<tr class="even">
+<td align="center">05011001</td>
+<td align="center">parochial school</td>
+<td>A school run by the Roman Catholic faith</td>
+</tr>
+<tr class="odd">
+<td align="center">05011002</td>
+<td align="center">seminary</td>
+<td>A school of any faith specifically designed to train ministers</td>
+</tr>
+<tr class="even">
+<td align="center">05011003</td>
+<td align="center">yeshiva</td>
+<td>A school for training rabbis</td>
+</tr>
+<tr class="odd">
+<td align="center">05011004</td>
+<td align="center">madrasa</td>
+<td>A school for teaching Islam</td>
+</tr>
+</tbody>
+</table>
+<p><br></p></li>
+<li><p><strong><code>subjectCodesLabelled</code></strong> <em>[Optional ; Repeatable]</em> <br><br />
+<br>
+<img src="images/ReDoc_image_15b.JPG" style="width:100.0%" />
+<br><br />
+The <code>subjectCodes</code> element described above only allows for the capture of codes. To improve discoverability (by indexing important keywords), not only the subject codes but also the subject description should be provided. The IPTC standard does not provide an element that allows the subject label and description to be entered. The <code>subjectCodesLabelled</code> is an element that we added to our schema. Ideally, curators will enter the subject codes in the element <code>subjectCodes</code> to maintain full compatibility with the IPTC, and complement that information by also entering the codes and their description in the <code>subjectCodesLabelled</code> element. <br></p>
+<ul>
+<li><strong><code>code</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Specifies one or more subjects from the <a href="http://cv.iptc.org/newscodes/subjectcode">IPTC Subject-NewsCodes</a> controlled vocabulary to categorize the image. Each Subject is represented as a string of 8 digits. The vocabulary consists of about 1400 terms organized into 3 levels (users can decide to use only the first, or the first two levels; the more detail is provided, the better the discoverability of the image). See examples in the table above.<br></li>
+<li><strong><code>label</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The label of the subject. See table above for examples.<br></li>
+<li><strong><code>description</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A more detailed description of the subject. See table above for examples.<br><br></li>
+</ul></li>
+<li><p><strong><code>creatorNames</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_16.JPG" style="width:100.0%" />
+<br><br />
+Enter details about the creator or creators of this image. The Image Creator must often be attributed in association with any use of the image. The Image Creator, Copyright Owner, Image Supplier and Licensor may be the same or different entities.<br></p></li>
+<li><p><strong><code>creatorContactInfo</code></strong> <em>[Optional ;Not repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_17.JPG" style="width:100.0%" />
+<br><br />
+The creator’s contact information provides all necessary information to get in contact with the creator of this image and comprises a set of elements for proper addressing. Note that if the creator is also the licensor, his or her contact information should be provided in the <code>licensor</code> fields. <br></p>
+<ul>
+<li><strong><code>country</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The country name for the address of the person that created this image.<br></li>
+<li><strong><code>emailwork</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The work email address(es) for the creator of the image. Multiple email addresses can be given, in which case they should be separated by a comma.<br></li>
+<li><strong><code>region</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The state or province for the address of the creator of the image.<br></li>
+<li><strong><code>phonework</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The work phone number(s) for the creator of the image. Use the international format including the country code, such as +1 (123) 456789. Multiple numbers can be given, in which case they should be separated by a comma.<br></li>
+<li><strong><code>weburlwork</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The work web address for the creator of the image. Multiple addresses can be given, in which case they should be separated by a comma.<br></li>
+<li><strong><code>address</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The address of the creator of the image. This may comprise a company name.<br></li>
+<li><strong><code>city</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The city for the address of the person that created the image.<br></li>
+<li><strong><code>postalCode</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Enter the local postal code for the address of the person who created the image.<br><br></li>
+</ul></li>
+<li><p><strong><code>creditLine</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_18.JPG" style="width:100.0%" />
+<br><br />
+The credit to person(s) and/or organization(s) required by the supplier of the image to be used when published. This is a free-text field. <br><br></p></li>
+<li><p><strong><code>digitalSourceType</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_19.JPG" style="width:100.0%" />
+<br><br />
+The type of the source of this digital image. One value should be selected from the IPTC controlled vocabulary (published under a Creative Commons Attribution (CC BY) 4.0 license license) that contains the following values:
+<br></p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="26%" />
+<col width="46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Type</th>
+<th align="center">Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">digitalCapture</td>
+<td align="center">Original digital capture of a real life scene</td>
+<td>The digital image is the original and only instance and was taken by a digital camera</td>
+</tr>
+<tr class="even">
+<td align="center">negativeFilm</td>
+<td align="center">Digitized from a negative on film</td>
+<td>The digital image was digitized from a negative on film on any other transparent medium</td>
+</tr>
+<tr class="odd">
+<td align="center">positiveFilm</td>
+<td align="center">Digitized from a positive on film</td>
+<td>The digital image was digitized from a positive on a transparency or any other transparent medium</td>
+</tr>
+<tr class="even">
+<td align="center">print</td>
+<td align="center">Digitized from a print on non-transparent medium</td>
+<td>The digital image was digitized from an image printed on a non-transparent medium</td>
+</tr>
+<tr class="odd">
+<td align="center">softwareImage</td>
+<td align="center">Created by software</td>
+<td>The digital image was created by computer software</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p><br></p>
+<ul>
+<li><p><strong><code>jobid</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_20.JPG" style="width:100.0%" />
+<br><br />
+Number or identifier for the purpose of improved workflow handling (control or tracking). This is a user created identifier related to the job for which the image is supplied. <br>
+Note: As this identifier references a job of the receiver’s workflow it must first be issued by the receiver, then transmitted to the creator or provider of the news object and finally added by the creator to this field.<br></p></li>
+<li><p><strong><code>jobtitle</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_21.JPG" style="width:100.0%" />
+<br><br />
+The job title of the photographer (the person listed in <code>creatorNames</code>). The use of this element implies that the photographer information (<code>creatorNames</code> is not empty). <br></p></li>
+<li><p><strong><code>source</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_22.JPG" style="width:100.0%" />
+<br><br />
+The name of a person or party who has a role in the content supply chain. The <code>source</code> can be different from the <code>creator</code> and from the entities listed in the Copyright Notice.<br></p></li>
+<li><p><strong><code>locationsShown</code></strong> <em>[Optional ; Repeatable]</em> <br>
+<br>
+<img src="images/ReDoc_image_24.JPG" style="width:100.0%" />
+<br>
+This block of elements is used to document the location shown in the image. This information should be provided with as much detail as possible. It contains elements that can be used to provide a “nested” description of the location, from a high geographic level (world region) down to a very specific location (city and sub-location within a city).<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The full name of the location.<br></li>
+<li><strong><code>identifiers</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+A globally unique identifier of the location shown.<br></li>
+<li><strong><code>worldRegion</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of a world region. This element is at the first (top) level of the top-down geographical hierarchy.<br></li>
+<li><strong><code>countryName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of a country of a location. This element is at the second level of a top-down geographical hierarchy.<br></li>
+<li><strong><code>countryCode</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The ISO code of the country mentioned in <code>countryName</code>.<br><br />
+</li>
+<li><strong><code>provinceState</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of a sub-region of the country - for example a province or a state name. This element is at the third level of a top-down geographical hierarchy.<br><br />
+</li>
+<li><strong><code>city</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of the city. This element is at the fourth level of a top-down geographical hierarchy.<br></li>
+<li><strong><code>sublocation</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The sublocation name could either be the name of a sublocation to a city or the name of a well known location or (natural) monument outside a city. This element is at the fifth (lowest) level of a top-down geographical hierarchy.<br></li>
+<li><strong><code>gpsAltitude</code></strong> <em>[Optional ; Not Repeatable ; Numeric]</em> <br>
+The altitude in meters of a WGS84 based position of this location.<br></li>
+<li><strong><code>gpsLatitude</code></strong> <em>[Optional ; Not Repeatable ; Numeric]</em> <br>
+Latitude of a WGS84 based position of this location (in some cases, this information may be contained in the EXIF metadata).<br></li>
+<li><strong><code>gpsLongitude</code></strong> <em>[Optional ; Not Repeatable ; Numeric]</em> <br>
+Longitude of a WGS84 based position of this location (in some cases, this information may be contained in the EXIF metadata).<br><br></li>
+</ul></li>
+<li><p><strong><code>imageRating</code></strong> <em>[Optional ; Not Repeatable ; Numeric]</em> <br>
+<br>
+<img src="images/ReDoc_image_25.JPG" style="width:100.0%" />
+<br>
+Rating of the image by its user or supplier. The value shall be -1 or in the range 0 to 5. -1 indicates “rejected” and 0 “unrated”. If an explicit value is not provided, the default value is 0 will be assumed.<br></p></li>
+<li><p><strong><code>supplier</code></strong> <em>[Optional ; Repeatable]</em> <br>
+<br>
+<img src="images/ReDoc_image_26.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of the supplier of the image (person or organization).<br></li>
+<li><strong><code>identifiers</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+The identifier for the most recent supplier of this image. This will not necessarily be the creator or the owner of the image.<br><br></li>
+</ul></li>
+<li><p><strong><code>copyrightNotice</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_27.JPG" style="width:100.0%" />
+<br>
+Contains any necessary copyright notice for claiming the intellectual property for this photograph and should identify the current owner of the copyright for the photograph. Other entities like the creator of the photograph may be added in the corresponding field. Notes on usage rights should be provided in “Rights usage terms”. Example: ©2008 Jane Doe. If the copyright ownership must be expressed in a more controlled manner, use the fields “Copyright Owner”, “Copyright Owner ID”, “Copyright Owner Name” described below instead of the <code>copyrightNotice</code> element. <br></p></li>
+<li><p><strong><code>copyrightOwners</code></strong> <em>[Optional ; Repeatable]</em> <br>
+Owner or owners of the copyright in the licensed image, described in a structured format (as an alternative to the element <code>copyrightNotice</code> described above. This block serves the same purpose of identifying the rights holder/s for the image. The Copyright Owner, Image Creator and Licensor may be the same or different entities.
+<br>
+<img src="images/ReDoc_image_28.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of the owner of the copyright in the licensed image.<br></li>
+<li><strong><code>role</code></strong> <em>[Optional ; Repeatable ; String]</em><br>
+The role the entity.<br><br />
+</li>
+<li><strong><code>identifiers</code></strong> <em>[Optional ; Repeatable ; String]</em><br>
+The identifier of the owner of the copyright in the licensed image.<br><br></li>
+</ul></li>
+<li><p><strong><code>usageTerms</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_29.JPG" style="width:100.0%" />
+<br>
+The licensing parameters of the image expressed in free-text. Enter instructions on how this image can legally be used. The PLUS fields of the IPTC Extension can be used in parallel to express the licensed usage in more controlled terms.<br></p></li>
+<li><p><strong><code>embdEncRightsExpr</code></strong> <em>[Optional ; Repeatable]</em> <br>
+An embedded rights expression using a rights expression language which is encoded as a string.
+Embedded Encoded Rights Expression (EERE) structure
+A structure providing details of an embedded encoded rights expression
+<br>
+<img src="images/ReDoc_image_30.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>encRightsExpr</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Rights Expression Language ID. An identifier of the rights expression language used by the rights expression.<br></li>
+<li><strong><code>rightsExprEncType</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The encoding type of the rights expression, identified by an IANA Media Type.<br></li>
+<li><strong><code>rightsExprLangId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+An embedded rights expression using any rights expression language.<br> @@@@
+<a href="https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#embedded-encoded-rights-expression-eere-structure" class="uri">https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#embedded-encoded-rights-expression-eere-structure</a>
+<br></li>
+</ul></li>
+<li><p><strong><code>linkedEncRightsExpr</code></strong> <em>[Optional ; Repeatable]</em> <br>
+Link to Encoded Rights Expression.<br>
+<br>
+<img src="images/ReDoc_image_31.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>linkedRightsExpr</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The link to a web resource representing an encoded rights expression.<br></li>
+<li><strong><code>rightsExprEncType</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The encoding type of the rights expression, identified by an IANA Media Type.<br></li>
+<li><strong><code>rightsExprLangId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The identifer of the rights expression language used by the rights expression.<br><br></li>
+</ul></li>
+<li><p><strong><code>webstatementRights</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_32.JPG" style="width:100.0%" />
+<br><br />
+URL referencing a web resource providing a statement of the copyright ownership and usage rights of the image.<br><br></p></li>
+<li><p><strong><code>instructions</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_33.JPG" style="width:100.0%" />
+<br><br />
+Any of a number of instructions from the provider or creator to the receiver of the image which might include any of the following: embargoes and other restrictions not covered by the “Rights Usage Terms” field; information regarding the original means of capture (scanning notes, colourspace info) or other specific text information that the user may need for accurate reproduction; additional permissions required when publishing; credits for publishing if they exceed the IIM length of the credit field.<br></p></li>
+<li><p><strong><code>genres</code></strong> <em>[Optional ; Repeatable]</em> <br>
+<br>
+<img src="images/ReDoc_image_34.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>cvId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the Controlled Vocabulary the term is from.<br></li>
+<li><strong><code>cvTermName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The natural language name of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermRefinedAbout</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Optionally enter a refinement of the ‘about’ relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary. May be used to refine the generic about relationship. <br>
+Artistic, style, journalistic, product or other genre(s) of the image (expressed by a term from any Controlled Vocabulary) <br><br></li>
+</ul></li>
+<li><p><strong><code>intellectualGenre</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_35.JPG" style="width:100.0%" />
+<br><br />
+A term to describe the nature of the image in terms of its intellectual or journalistic characteristics (for example “actuality”, “interview”, “background”, “feature”, “summary”, “wrapup” for journalistic genres, or “daybook”, “obituary”, “press release”, “transcript” for news category related genres. It is advised to use terms from a controlled vocabulary such as the <a href="http://cv.iptc.org/newscodes/genre">NewsCodes Scheme</a> published by the IPTC under a Creative Commons Attribution (CC BY) 4.0 license.<br>
+<br></p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Genre</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Actuality</td>
+<td>Recording of an event</td>
+</tr>
+<tr class="even">
+<td align="center">Advertiser Supplied</td>
+<td>Content is supplied by an organization or individual that has paid the news provider for its placement</td>
+</tr>
+<tr class="odd">
+<td align="center">Advice</td>
+<td>Letters and answers about readers’ personal problems</td>
+</tr>
+<tr class="even">
+<td align="center">Advisory</td>
+<td>Recommendation on editorial or technical matters by a provider to its customers</td>
+</tr>
+<tr class="odd">
+<td align="center">On This Day</td>
+<td>List of data, including birthdays of famous people and items of historical significance, for a given day</td>
+</tr>
+<tr class="even">
+<td align="center">Analysis</td>
+<td>Data and conclusions drawn by a journalist who has conducted in depth research for a story</td>
+</tr>
+<tr class="odd">
+<td align="center">Archival material</td>
+<td>Material selected from the originator’s archive that has been previously distributed</td>
+</tr>
+<tr class="even">
+<td align="center">Background</td>
+<td>Scene setting and explanation for an event being reported</td>
+</tr>
+<tr class="odd">
+<td align="center">Behind the Story</td>
+<td>The content describes how a story was reported and offers context on the reporting</td>
+</tr>
+<tr class="even">
+<td align="center">Biography</td>
+<td>Facts and background about a person</td>
+</tr>
+<tr class="odd">
+<td align="center">Birth Announcement</td>
+<td>News of newly born children</td>
+</tr>
+<tr class="even">
+<td align="center">Current Events</td>
+<td>Content about events taking place at the time of the report</td>
+</tr>
+<tr class="odd">
+<td align="center">Curtain Raiser</td>
+<td>Information about the staging and outcome of an immediately upcoming event</td>
+</tr>
+<tr class="even">
+<td align="center">Daybook</td>
+<td>Items filed on a regular basis that are lists of upcoming events with time and place, designed to inform others of events for planning purposes.</td>
+</tr>
+<tr class="odd">
+<td align="center">Exclusive</td>
+<td>Information content, in any form, that is unique to a specific information provider.</td>
+</tr>
+<tr class="even">
+<td align="center">Fact Check</td>
+<td>The news item looks into the truth or falsehood of another reported news item or assertion (for example a statement on social media by a public figure)</td>
+</tr>
+<tr class="odd">
+<td align="center">Feature</td>
+<td>The object content is about a particular event or individual that may not be significant to the current breaking news.</td>
+</tr>
+<tr class="even">
+<td align="center">Fixture</td>
+<td>The object contains data that occurs often and predictably.</td>
+</tr>
+<tr class="odd">
+<td align="center">Forecast</td>
+<td>The object contains opinion as to the outcome of a future event.</td>
+</tr>
+<tr class="even">
+<td align="center">From the Scene</td>
+<td>The object contains a report from the scene of an event.</td>
+</tr>
+<tr class="odd">
+<td align="center">Help us to Report</td>
+<td>The news item is a call for readers to provide information that may help journalists to investigate a potential news story</td>
+</tr>
+<tr class="even">
+<td align="center">History</td>
+<td>The object content is based on previous rather than current events.</td>
+</tr>
+<tr class="odd">
+<td align="center">Horoscope</td>
+<td>Astrological forecasts</td>
+</tr>
+<tr class="even">
+<td align="center">Interview</td>
+<td>The object contains a report of a dialogue with a news source that gives it significant voice (includes Q and A).</td>
+</tr>
+<tr class="odd">
+<td align="center">Listing of facts</td>
+<td>Detailed listing of facts related to a topic or a story</td>
+</tr>
+<tr class="even">
+<td align="center">Music</td>
+<td>The object contains music alone.</td>
+</tr>
+<tr class="odd">
+<td align="center">Obituary</td>
+<td>The object contains a narrative about an individual’s life and achievements for publication after his or her death.</td>
+</tr>
+<tr class="even">
+<td align="center">Opinion</td>
+<td>The object contains an editorial comment that reflects the views of the author.</td>
+</tr>
+<tr class="odd">
+<td align="center">Polls and Surveys</td>
+<td>The object contains numeric or other information produced as a result of questionnaires or interviews.</td>
+</tr>
+<tr class="even">
+<td align="center">Press Release</td>
+<td>The object contains promotional material or information provided to a news organisation.</td>
+</tr>
+<tr class="odd">
+<td align="center">Press-Digest</td>
+<td>The object contains an editorial comment by another medium completely or in parts without significant journalistic changes.</td>
+</tr>
+<tr class="even">
+<td align="center">Profile</td>
+<td>The object contains a description of the life or activity of a news subject (often a living individual).</td>
+</tr>
+<tr class="odd">
+<td align="center">Program</td>
+<td>A news item giving lists of intended events and time to be covered by the news provider. Each program covers a day, a week, a month or a year. The covered period is referenced as a keyword.</td>
+</tr>
+<tr class="even">
+<td align="center">Question and Answer Session</td>
+<td>The object contains the interviewer and subject questions and answers.</td>
+</tr>
+<tr class="odd">
+<td align="center">Quote</td>
+<td>The object contains a one or two sentence verbatim in direct quote.</td>
+</tr>
+<tr class="even">
+<td align="center">Raw Sound</td>
+<td>The object contains unedited sounds.</td>
+</tr>
+<tr class="odd">
+<td align="center">Response to a Question</td>
+<td>The object contains a reply to a question.</td>
+</tr>
+<tr class="even">
+<td align="center">Results Listings and Statistics</td>
+<td>The object contains alphanumeric data suitable for presentation in tabular form.</td>
+</tr>
+<tr class="odd">
+<td align="center">Retrospective</td>
+<td>The object contains material that looks back on a specific (generally long) period of time such as a season, quarter, year or decade.</td>
+</tr>
+<tr class="even">
+<td align="center">Review</td>
+<td>The object contains a critique of a creative activity or service (for example a book, a film or a restaurant).</td>
+</tr>
+<tr class="odd">
+<td align="center">Satire</td>
+<td>Uses exaggeration, irony, or humor to make a point; not intended to be understood as factual</td>
+</tr>
+<tr class="even">
+<td align="center">Scener</td>
+<td>The object contains a description of the event circumstances.</td>
+</tr>
+<tr class="odd">
+<td align="center">Side bar and supporting information</td>
+<td>Related story that provides additional context or insight into a news event</td>
+</tr>
+<tr class="even">
+<td align="center">Special Report</td>
+<td>In-depth examination of a single subject requiring extensive research and usually presented at great length, either as a single item or as a series of items</td>
+</tr>
+<tr class="odd">
+<td align="center">Sponsored</td>
+<td>Content is produced on behalf of an organization or individual that has paid the news provider for production and may approve content publication</td>
+</tr>
+<tr class="even">
+<td align="center">Summary</td>
+<td>Single item synopsis of a number of generally unrelated news stories</td>
+</tr>
+<tr class="odd">
+<td align="center">Supported</td>
+<td>Content is produced with financial support from an organization or individual, yet not approved by the underwriter before or after publication</td>
+</tr>
+<tr class="even">
+<td align="center">Synopsis</td>
+<td>The object contains a condensed version of a single news item.</td>
+</tr>
+<tr class="odd">
+<td align="center">Text only</td>
+<td>The object contains a transcription of text.</td>
+</tr>
+<tr class="even">
+<td align="center">Transcript and Verbatim</td>
+<td>A word for word report of a discussion or briefing</td>
+</tr>
+<tr class="odd">
+<td align="center">Update</td>
+<td>The object contains an intraday snapshot (as for electronic services) of a single news subject.</td>
+</tr>
+<tr class="even">
+<td align="center">Voicer</td>
+<td>Content is only voice</td>
+</tr>
+<tr class="odd">
+<td align="center">Wrap</td>
+<td>Complete summary of an event</td>
+</tr>
+<tr class="even">
+<td align="center">Wrapup</td>
+<td>Recap of a running story</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p><br></p>
+<ul>
+<li><p><strong><code>artworkOrObjects</code></strong> <em>[Optional ; Repeatable]</em> <br>
+This block provides a set of metadata elements to be used to describe the object or artwork shown in the image.
+<br>
+<img src="images/ReDoc_image_36.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>title</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A human readable name of the object or artwork shown in the image.<br></li>
+<li><strong><code>contentDescription</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A textual description of the content depicted in the object or artwork.<br></li>
+<li><strong><code>physicalDescription</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A textual description of the physical characteristics of the artwork or object, without reference to the content depicted. This would be used to describe the object type, materials, techniques, and measurements.<br></li>
+<li><strong><code>creatorNames</code></strong> <em>[Optional Repeatable ; String]</em> <br>
+The name of the person(s) (possibly an organization) who created the object or artwork shown in the image.<br></li>
+<li><strong><code>creatorIdentifiers</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+One or multiple globally unique identifier(s) for the artist who created the artwork or object shown in the image. This could be an identifier issued by an online registry of persons or companies. Make sure to enter these identifiers in the exact same sequence as the names entered in the field <code>creatorNames</code>.<br></li>
+<li><strong><code>contributionDescription</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A description of any contributions made to the artwork or object. It should include the type, date and location of contribution, and details about the contributor.<br></li>
+<li><strong><code>stylePeriod</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+The style, historical or artistic period, movement, group, or school whose characteristics are represented in the artwork or object. It is advised to take the terms from a Controlled Vocabulary.<br></li>
+<li><strong><code>dateCreated</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The date and optionally the time the artwork or object shown in the image was created.<br></li>
+<li><strong><code>circaDateCreated</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The approximate date or range of dates associated with the creation and production of an artwork or object or its components.<br></li>
+<li><strong><code>source</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of the organization or body holding and registering the artwork or object in this image for inventory purposes.<br></li>
+<li><strong><code>sourceInventoryNr</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The inventory number issued by the organization or body holding and registering the artwork or object in the image.<br></li>
+<li><strong><code>sourceInventoryUrl</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A reference URL for the metadata record of the inventory maintained by the Source.<br></li>
+<li><strong><code>currentCopyrightOwnerName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of the current owner of the copyright of the artwork or object.<br></li>
+<li><strong><code>currentCopyrightOwnerIdentifier</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A globally unique identifier for the current copyright owner e.g. issued by an online registry of persons or companies.<br></li>
+<li><strong><code>copyrightNotice</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Any necessary copyright notice for claiming the intellectual property for artwork or an object in the image and should identify the current owner of the copyright of this work with associated intellectual property rights.<br></li>
+<li><strong><code>currentLicensorName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Name of the current licensor of the artwork or object.<br></li>
+<li><strong><code>currentLicensorIdentifier</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A globally unique identifier for the current licensor e.g. issued by an online registry of persons or companies.<br><br></li>
+</ul></li>
+<li><p><strong><code>personInImageNames</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_37.JPG" style="width:100.0%" />
+<br><br />
+This repeatable block of elements is used to provide information on the person(s) shown in the image.<br><br></p></li>
+<li><p><strong><code>personsShown</code></strong> <em>[Optional ; Repeatable]</em> <br>
+Details about person(s) shown in the image. It is not required to list all, just those details which can be recognized.
+<br>
+<img src="images/ReDoc_image_38.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of a person shown in the image.<br></li>
+<li><strong><code>description</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A textual description of the person. For example, you may include actions taken, emotional expressions shown and more.<br></li>
+<li><strong><code>identifiers</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Globally Unique identifiers of the person, such as those from <a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">WikiData</a>.<br />
+</li>
+<li><strong><code>characteristics</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A property or trait of the person, provided as a term selected from a Controlled Vocabulary.<br>
+<ul>
+<li><strong><code>cvId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the Controlled Vocabulary the term is from.<br></li>
+<li><strong><code>cvTermName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The natural language name of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermRefinedAbout</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The refined ‘about’ relationship of the term with the content. Optionally enter a refinement of the ‘about’ relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary. <br><br></li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>modelAges</code></strong> <em>[Optional ; Repeatable ; Numeric]</em> <br>
+<br>
+<img src="images/ReDoc_image_39.JPG" style="width:100.0%" />
+<br>
+Age of the human model(s) at the time the image was taken. Be aware of any legal implications of providing ages for young models. Ages below 18 years should not be included.<br><br></p></li>
+<li><p><strong><code>additionalModelInfo</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_40.JPG" style="width:100.0%" />
+<br>
+Information about other facets of the model(s). <br><br></p></li>
+<li><p><strong><code>minorModelAgeDisclosure</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_41.JPG" style="width:100.0%" />
+<br>
+The age of the youngest model pictured in the image, at the time the image was created. This information is not intended to be displayed publicly; it is intended to be used as a filter for inclusion/exclusion of images in catalogs and dissemination processes.<br></p></li>
+<li><p><strong><code>modelReleaseDocuments</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_42.JPG" style="width:100.0%" />
+<br><br />
+Identifier associated with each Model Release. <br><br></p></li>
+<li><p><strong><code>modelReleaseStatus</code></strong> <em>[Optional ; Not Repeatable]</em> <br>
+<br>
+<img src="images/ReDoc_image_43.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>cvId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the Controlled Vocabulary the term is from.<br></li>
+<li><strong><code>cvTermName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The natural language name of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermRefinedAbout</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The refined ‘about’ relationship of the term with the content. Optionally enter a refinement of the ‘about’ relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary. May be used to refine the generic about relationship.<br><br></li>
+</ul></li>
+<li><p><strong><code>organisationInImageNames</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_44.JPG" style="width:100.0%" />
+<br><br />
+The name of the organization or company which is featured in the image.<br><br></p></li>
+<li><p><strong><code>organisationInImageCodes</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_45.JPG" style="width:100.0%" />
+<br><br />
+The code, extracted from a controlled vocabulary, used to identify the organization or company featured in the image. For example a stock ticker symbol may be used. Enter an identifier for the controlled vocabulary, then a colon, and finally the code from the vocabulary assigned to the organization (e.g. nasdaq:companyA)<br></p></li>
+<li><p><strong><code>productsShown</code></strong> <em>[Optional ; Repeatable]</em> <br>
+Details about a product shown in the image.
+<br>
+<img src="images/ReDoc_image_46.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>description</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A textual description of the product.<br></li>
+<li><strong><code>gtin</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The <a href="https://www.gs1.org/standards/id-keys/gtin">Global Trade Item Number (GTIN)</a> of the product (GTIN-8 to GTIN-14 codes can be used).<br></li>
+<li><strong><code>name</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of the product.<br><br></li>
+</ul></li>
+<li><p><strong><code>maxAvailHeight</code></strong> <em>[Optional ; Not Repeatable ; Numeric]</em> <br>
+<br>
+<img src="images/ReDoc_image_47.JPG" style="width:100.0%" />
+<br><br />
+The maximum available height in pixels of the original photo from which this photo has been derived by downsizing. <br><br></p></li>
+<li><p><strong><code>maxAvailWidth</code></strong> <em>[Optional ; Not Repeatable ; Numeric]</em> <br>
+<br>
+<img src="images/ReDoc_image_48.JPG" style="width:100.0%" />
+<br><br />
+The maximum available width in pixels of the original photo from which this photo has been derived by downsizing. <br><br></p></li>
+<li><p><strong><code>propertyReleaseStatus</code></strong> <em>[Optional ; Not Repeatable]</em> <br>
+<br>
+<img src="images/ReDoc_image_49.JPG" style="width:100.0%" />
+<br><br />
+This summarizes the availability and scope of property releases authorizing usage of the properties appearing in the photograph. One value should be selected from a controlled vocabulary. It is recommended to apply the value PR-UPR very carefully and to check the wording of the property release thoroughly before applying it.<br></p>
+<ul>
+<li><strong><code>cvId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the Controlled Vocabulary the term is from.<br></li>
+<li><strong><code>cvTermName</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The natural language name of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermId</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The globally unique identifier of the term from a Controlled Vocabulary.<br></li>
+<li><strong><code>cvTermRefinedAbout</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Refined ‘about’ relationship of the CV-Term. The refined ‘about’ relationship of the term with the content. Optionally enter a refinement of the ‘about’ relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary.<br><br></li>
+</ul></li>
+<li><p><strong><code>propertyReleaseDocuments</code></strong> <em>[Optional ; Repeatable ; String]</em> <br>
+<br>
+<img src="images/ReDoc_image_50.JPG" style="width:100.0%" />
+<br><br />
+Optional identifier associated with each Property Release. <br></p></li>
+</ul>
+<div class="note">
+<p>The IPTC elements are followed by a small set of common elements: see <code>license</code>, <code>tags</code>, and <code>album</code> in section <strong><code>Additional elements</code></strong>.</p>
+</div>
+<p><!--  ____     _____        _     _ _          _____                -->
+<!-- |___ \   |  __ \      | |   | (_)        / ____|               -->
+<!--   __) |  | |  | |_   _| |__ | |_ _ __   | |     ___  _ __ ___  -->
+<!--  |__ <   | |  | | | | | '_ \| | | '_ \  | |    / _ \| '__/ _ \ -->
+<!--  ___) |  | |__| | |_| | |_) | | | | | | | |___| (_) | | |  __/ -->
+<!-- |____(_) |_____/ \__,_|_.__/|_|_|_| |_|  \_____\___/|_|  \___| --></p>
+</div>
+<div id="dublin-core" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.3</span> Dublin Core<a href="chapter09.html#dublin-core" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We introduced the Dublin Core Metadata Initiative (DCMI) specification in chapter 3 - Documents. It contains 15 core elements, which are generic and versatile enough to be used for documenting different types of resources. Other elements can be added to the specification to increase its relevancy for specific uses. In the schema we recommend for the documentation of publications, we added elements inspired by the MARC 21 standard. We take a similar approach for the use of the Dublin Core for documenting images, by adding elements inspired by the <a href="https://schema.org/ImageObject">ImageObject</a> schema from schema.org to the 15 elements.</p>
+<p>The fifteen elements, with their definition extracted from the <a href="https://dublincore.org/">Dublin Core website</a>, are the following:</p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="76%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Element name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>identifier</td>
+<td>An unambiguous reference to the resource within a given context.</td>
+</tr>
+<tr class="even">
+<td>type</td>
+<td>The nature or genre of the resource.</td>
+</tr>
+<tr class="odd">
+<td>title</td>
+<td>A name given to the resource.</td>
+</tr>
+<tr class="even">
+<td>description</td>
+<td>An account of the resource.</td>
+</tr>
+<tr class="odd">
+<td>subject</td>
+<td>The topic of the resource.</td>
+</tr>
+<tr class="even">
+<td>creator</td>
+<td>An entity primarily responsible for making the resource.</td>
+</tr>
+<tr class="odd">
+<td>contributor</td>
+<td>An entity responsible for making contributions to the resource.</td>
+</tr>
+<tr class="even">
+<td>publisher</td>
+<td>An entity responsible for making the resource available.</td>
+</tr>
+<tr class="odd">
+<td>date</td>
+<td>A point or period of time associated with an event in the life cycle of the resource.</td>
+</tr>
+<tr class="even">
+<td>coverage</td>
+<td>The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.</td>
+</tr>
+<tr class="odd">
+<td>format</td>
+<td>The file format, physical medium, or dimensions of the resource.</td>
+</tr>
+<tr class="even">
+<td>language</td>
+<td>A language of the resource.</td>
+</tr>
+<tr class="odd">
+<td>relation</td>
+<td>A related resource.</td>
+</tr>
+<tr class="even">
+<td>rights</td>
+<td>Information about rights held in and over the resource.</td>
+</tr>
+<tr class="odd">
+<td>source</td>
+<td>A related resource from which the described resource is derived.</td>
+</tr>
+</tbody>
+</table>
+<p>We do not use the <code>identifier</code> element, as we already have a unique identifier in the common element <code>idno</code>.</p>
+<p>We added the following elements to the schema, which are not part of the core list of the DCMI:</p>
+<ul>
+<li>identifiers</li>
+<li>caption</li>
+<li>keywords</li>
+<li>topics</li>
+<li>country</li>
+<li>gps (latitude, longitude, altitude)</li>
+<li>note</li>
+</ul>
+<div class="note">
+<p>The common additional elements <code>license</code>, <code>album</code> and <code>tags</code> also complement the DCMI metadata (see section <strong><code>Additional elements</code></strong>).</p>
+</div>
+<p>We describe below how DCMI elements are used to document images.</p>
+<p><strong><code>dcmi</code></strong> <em>[Optional, Not repeatable]</em> <br>
+Users of the schema will chose either IPTC or Dublin Core (DCMI), <u>not both</u>, to document their images. If the choice is DCMI, the elements under <code>dcmi</code> will be used.
+<br>
+<img src="images/ReDoc_image_51.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><p><strong><code>type</code></strong> <em>[Required, Not Repeatable, String]</em> <br>
+The Dublin Core schema is flexible and versatile, and can be used to document different types of resources. This element is used to document the type of resource being documented. The DCMI provides a list of suggested categories, including “image” which is the relevant type to be entered here. Some users may want to be more specific in the description of the type of resource, for example distinguishing color from black &amp; white images. This distinction should not be made in this element; another element can be used for such purpose (like tags and tag groups).</p></li>
+<li><p><strong><code>title</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The title of the photo.</p></li>
+<li><p><strong><code>caption</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+A caption for the photo.</p></li>
+<li><p><strong><code>description</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+A brief description of the content depicted in the image. This element will typically provide more detailed information than the title or caption. Note that other elements can be used to provide a more specific and “itemized” description of an image; the element <code>keywords</code> for example can be used to list labels associated with an image (possibly generated in an automated manner using machine learning tools).</p></li>
+<li><p><strong><code>subject</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The topic of the resource, described in a narrative manner.</p></li>
+<li><p><strong><code>topics</code></strong> <em>[Optional ; Repeatable]</em><br>
+The <code>topics</code> field indicates the broad substantive topic(s) that the image represents. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the <a href="https://vocabularies.cessda.eu/vocabulary/TopicClassification">Council of European Social Science Data Archives (CESSDA) thesaurus</a>.<br>
+<br>
+<img src="images/ReDoc_image_53.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>id</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The unique identifier of the topic. It can be a sequential number, or the ID of the topic in a controlled vocabulary.</li>
+<li><strong><code>name</code></strong> <em>[Required ; Not repeatable ; String]</em> <br>
+The label of the topic associated with the data.<br />
+</li>
+<li><strong><code>parent_id</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+When a hierarchical (nested) controlled vocabulary is used, the <code>parent_id</code> field can be used to indicate a higher-level topic to which this topic belongs.</li>
+<li><strong><code>vocabulary</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The name of the controlled vocabulary used, if any.</li>
+<li><strong><code>uri</code></strong> <br>
+A link to the controlled vocabulary mentioned in field `vocabulary’.<br><br></li>
+</ul></li>
+<li><p><strong><code>keywords</code></strong> <em>[Optional ; Repeatable]</em> <br>
+Words or phrases that describe salient aspects of an image content. Can be used for building keyword indexes and for classification and retrieval purposes. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
+<br>
+<img src="images/ReDoc_image_54.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Required ; String ; Non repeatable]</em> <br>
+Keyword (or phrase). Keywords summarize the content or subject matter of the image.</li>
+<li><strong><code>vocabulary</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+Controlled vocabulary from which the keyword is extracted, if any.<br />
+</li>
+<li><strong><code>uri</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The URI of the controlled vocabulary used, if any.<br><br></li>
+</ul></li>
+<li><p><strong><code>creator</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The name of the person (or organization) who has taken the photo or created the image.</p></li>
+<li><p><strong><code>contributor</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The contributor could be a person or organization, possibly a sponsoring organizations.</p></li>
+<li><p><strong><code>publisher</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The person or organization who publish the image.</p></li>
+<li><p><strong><code>date</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The date when the photo was taken / the image was created, preferably entered in ISO 8601 format.</p></li>
+<li><p><strong><code>country</code></strong> <em>[Optional, Repeatable]</em> <br>
+<br>
+<img src="images/ReDoc_image_55.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The name of the country/economy where the photo was taken.</li>
+<li><strong><code>code</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The code of the country/economy mentioned in <code>name</code>. This will preferably be the ISO country code.<br><br></li>
+</ul></li>
+<li><p><strong><code>coverage</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+In the Dublin Core, the coverage can be either temporal or geographic. In the use of the schema, <code>coverage</code> is used to document the geographic coverage of the image. This element complements the <code>country</code> element, and allows more specific information to be provided.</p></li>
+<li><p><strong><code>gps</code></strong> <em>[Optional, Not Repeatable]</em> <br>
+The geographic location where the photo was taken. Some digital cameras equipped with GPS can, when the option is activated, capture and store in the EXIF metadata the exact geographic location where the photo was taken.
+<br>
+<img src="images/ReDoc_image_56.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>latitude</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The latitude of the geographic location where the photo was taken.</li>
+<li><strong><code>longitude</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The longitude of the geographic location where the photo was taken.</li>
+<li><strong><code>altitude</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The altitude of the geographic location where the photo was taken.<br><br></li>
+</ul></li>
+<li><p><strong><code>format</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+This refers to the image file format. It is typically expressed using a MIME format.</p></li>
+<li><p><strong><code>languages</code></strong> <em>[Optional, Not repeatable, String]</em> <br>
+The language(s) in which the image metadata (caption, title) is provided. This is a block of two elements (at least one must be provided for each language).
+<br>
+<img src="images/ReDoc_image_57.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The name of the language.</li>
+<li><strong><code>code</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The code of the language. The use of <a href="https://www.loc.gov/standards/iso639-2/php/code_list.php">ISO 639-2</a> (the alpha-3 code in Codes for the representation of names of languages) is recommended. Numeric codes must be entered as strings. <br><br></li>
+</ul></li>
+<li><p><strong><code>relations</code></strong> <em>[Optional, Repeatable, String]</em> <br>
+A list of related resources (images or of other type)
+<br>
+<img src="images/ReDoc_image_58.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The name (title) of the related resource.</li>
+<li><strong><code>type</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+A brief description of the type of relation. A controlled vocabulary could be used.</li>
+<li><strong><code>uri</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+A link to the related resource being described.<br><br></li>
+</ul></li>
+<li><p><strong><code>rights</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+The copyrights for the photograph. License is in another (common) element.</p></li>
+<li><p><strong><code>source</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+A related resource from which the described image is derived.</p></li>
+<li><p><strong><code>note</code></strong> <em>[Optional, Not Repeatable, String]</em> <br>
+Any additional information on the image, not captured in one of the other metadata elements.</p></li>
+</ul>
+<p><!--  _  _                 _     _ _ _   _                   _  -->
+<!-- | || |       /\      | |   | (_) | (_)                 | | -->
+<!-- | || |_     /  \   __| | __| |_| |_ _  ___  _ __   __ _| | -->
+<!-- |__   _|   / /\ \ / _` |/ _` | | __| |/ _ \| '_ \ / _` | | -->
+<!--    | |_   / ____ \ (_| | (_| | | |_| | (_) | | | | (_| | | -->
+<!--    |_(_) /_/    \_\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| --></p>
+</div>
+<div id="additional-elements-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.4</span> Additional elements<a href="chapter09.html#additional-elements-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><strong><code>license</code></strong> <em>[Optional ; Repeatable]</em> <br>
+The license under which the image is published.
+<br>
+<img src="images/ReDoc_image_59.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+The name of the license.</li>
+<li><strong><code>uri</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A URL where detailed information on the license / terms of use can be found.<br><br></li>
+</ul></li>
+<li><p><strong><code>album</code></strong> <em>[Optional ; Repeatable]</em> <br>
+If your catalog contains many images, you will likely want to group them by album. Albums are collections of images organized by theme, period, location, photographer, or other criteria. One image can belong to more than one album. Albums are thus “virtual collections”.
+<br>
+<img src="images/ReDoc_image_60.JPG" style="width:100.0%" />
+<br></p>
+<ul>
+<li><strong><code>name</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A short name (label) given to the album.</li>
+<li><strong><code>description</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A brief description of the album.</li>
+<li><strong><code>owner</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+Identification of the owner/custodian of the album. This can be the name of a person or an organization.</li>
+<li><strong><code>uri</code></strong> <em>[Optional ; Not Repeatable ; String]</em> <br>
+A URL for the album.<br><br></li>
+</ul></li>
+<li><p><strong><code>provenance</code></strong> <em>[Optional ; Repeatable]</em>
+Metadata can be programmatically harvested from external catalogs. The <code>provenance</code> group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. These elements are NOT part of the DDI metadata standard.<br>
+<br>
+<img src="images/ReDoc_image_60a.JPG" style="width:100.0%" /><br />
+<br></p>
+<ul>
+<li><strong><code>origin_description</code></strong> <em>[Required ; Not repeatable]</em> <br>
+The <code>origin_description</code> elements are used to describe when and from where metadata have been extracted or harvested. <br>
+<ul>
+<li><strong><code>harvest_date</code></strong> <em>[Required ; Not repeatable ; String]</em> <br>
+The date and time the metadata were harvested, entered in ISO 8601 format.<br></li>
+<li><strong><code>altered</code></strong> <em>[Optional ; Not repeatable ; Boolean]</em> <br>
+A boolean variable (“true” or “false”; "true by default) indicating whether the harvested metadata have been modified before being re-published. In many cases, the unique identifier of the study (element <code>idno</code> in the Study Description / Title Statement section) will be modified when published in a new catalog.<br></li>
+<li><strong><code>base_url</code></strong> <em>[Required ; Not repeatable ; String]</em> <br>
+The URL from where the metadata were harvested.<br></li>
+<li><strong><code>identifier</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The unique dataset identifier (<code>idno</code> element) in the source catalog. When harvested metadata are re-published in a new catalog, the identifier will likely be changed. The <code>identifier</code> element in <code>provenance</code> is used to maintain traceability.<br></li>
+<li><strong><code>date_stamp</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br></li>
+<li><strong><code>metadata_namespace</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br>
+@@@@@@@ definition <br><br></li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>tags</code></strong> <em>[Optional ; Repeatable]</em> <br>
+As shown in section 1.7 of the Guide, tags, when associated with <code>tag_groups</code>, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
+<br>
+<img src="images/ReDoc_image_61.JPG" style="width:100.0%" /><br />
+<br></p>
+<ul>
+<li><strong><code>tag</code></strong> <em>[Required ; Not repeatable ; String]</em> <br>
+A user-defined tag.</li>
+<li><strong><code>tag_group</code></strong> <em>[Optional ; Not repeatable ; String]</em> <br><br>
+A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.<br><br></li>
+</ul></li>
+<li><p><strong><code>additional</code></strong> <em>[Optional ; Not repeatable]</em><br>
+The <code>additional</code> element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the <code>additional</code> block; embedding them elsewhere in the schema would cause schema validation to fail.
+<br>
+<img src="images/ReDoc_image_62.JPG" style="width:100.0%" /><br />
+<br></p></li>
+</ul>
+<p><!--  ______                           _            -->
+<!-- |  ____|                         | |           -->
+<!-- | |__  __  ____ _ _ __ ___  _ __ | | ___  ___  -->
+<!-- |  __| \ \/ / _` | '_ ` _ \| '_ \| |/ _ \/ __| -->
+<!-- | |____ >  < (_| | | | | | | |_) | |  __/\__ \ -->
+<!-- |______/_/\_\__,_|_| |_| |_| .__/|_|\___||___/ -->
+<!--                            | |                 -->
+<!--                            |_|                 --></p>
+</div>
+</div>
+<div id="examples" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.3</span> Examples<a href="chapter09.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use schema and resource schema for publishing links.</p>
+<div id="example-1---using-the-iptc-option" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.3.1</span> Example 1 - Using the IPTC option<a href="chapter09.html#example-1---using-the-iptc-option" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We selected an image from the World Bank Flickr collection. The image is available at <a href="https://www.flickr.com/photos/worldbank/8120361619/in/album-72157648790716931/" class="uri">https://www.flickr.com/photos/worldbank/8120361619/in/album-72157648790716931/</a>
+Some metadata is provided with the photo.</p>
+<center>
+<img src="images/Image_Example_01a.JPG" style="width:80.0%" />
+</center>
+<p>Metadata:</p>
+<center>
+<img src="images/Image_Example_01b.JPG" style="width:80.0%" />
+</center>
+<p>The image is made available in multiple formats. We assume that we want to only provide access to the small, medium and original version of the image available in our NADA catalog. We also assume that instead of uploading the images to our catalog server to make them available directly from our catalog, we want to provide link to the images in the source repository (Flickr in this case).</p>
+<p><img src="images/Image_Example_01c.JPG" style="width:40.0%" /></p>
+<p><strong>Using R</strong></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="chapter09.html#cb124-1"></a><span class="kw">library</span>(nadar)</span>
+<span id="cb124-2"><a href="chapter09.html#cb124-2"></a></span>
+<span id="cb124-3"><a href="chapter09.html#cb124-3"></a><span class="co"># ----------------------------------------------------------------------------------</span></span>
+<span id="cb124-4"><a href="chapter09.html#cb124-4"></a><span class="co"># Enter credentials (API confidential key) and catalog URL</span></span>
+<span id="cb124-5"><a href="chapter09.html#cb124-5"></a>my_keys &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/confidential/my_API_keys.csv&quot;</span>, <span class="dt">header=</span>F, <span class="dt">stringsAsFactors=</span>F)</span>
+<span id="cb124-6"><a href="chapter09.html#cb124-6"></a><span class="kw">set_api_key</span>(<span class="st">&quot;my_keys[1,1&quot;</span>)  </span>
+<span id="cb124-7"><a href="chapter09.html#cb124-7"></a><span class="kw">set_api_url</span>(<span class="st">&quot;https://.../index.php/api/&quot;</span>) </span>
+<span id="cb124-8"><a href="chapter09.html#cb124-8"></a><span class="kw">set_api_verbose</span>(<span class="ot">FALSE</span>)</span>
+<span id="cb124-9"><a href="chapter09.html#cb124-9"></a><span class="co"># ----------------------------------------------------------------------------------</span></span>
+<span id="cb124-10"><a href="chapter09.html#cb124-10"></a></span>
+<span id="cb124-11"><a href="chapter09.html#cb124-11"></a><span class="kw">setwd</span>(<span class="st">&quot;C:/my_images/&quot;</span>)</span>
+<span id="cb124-12"><a href="chapter09.html#cb124-12"></a><span class="co"># Download image files from Flickr (different resolutions)</span></span>
+<span id="cb124-13"><a href="chapter09.html#cb124-13"></a></span>
+<span id="cb124-14"><a href="chapter09.html#cb124-14"></a><span class="kw">download.file</span>(<span class="st">&quot;https://live.staticflickr.com/4858/31953178928_77e4d7abae_o_d.jpg&quot;</span>, </span>
+<span id="cb124-15"><a href="chapter09.html#cb124-15"></a>              <span class="dt">destfile =</span> <span class="st">&quot;img_001_original.jpg&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;wb&quot;</span>)</span>
+<span id="cb124-16"><a href="chapter09.html#cb124-16"></a></span>
+<span id="cb124-17"><a href="chapter09.html#cb124-17"></a><span class="kw">download.file</span>(<span class="st">&quot;https://live.staticflickr.com/4858/31953178928_44abb01418_w_d.jpg&quot;</span>, </span>
+<span id="cb124-18"><a href="chapter09.html#cb124-18"></a>              <span class="dt">destfile =</span> <span class="st">&quot;img_001_small.jpg&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;wb&quot;</span>)</span>
+<span id="cb124-19"><a href="chapter09.html#cb124-19"></a></span>
+<span id="cb124-20"><a href="chapter09.html#cb124-20"></a><span class="co"># Generate image metadata (using the IPTC metadata elements)</span></span>
+<span id="cb124-21"><a href="chapter09.html#cb124-21"></a></span>
+<span id="cb124-22"><a href="chapter09.html#cb124-22"></a>pic_desc &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb124-23"><a href="chapter09.html#cb124-23"></a>  </span>
+<span id="cb124-24"><a href="chapter09.html#cb124-24"></a>  <span class="dt">metadata_information =</span> <span class="kw">list</span>(</span>
+<span id="cb124-25"><a href="chapter09.html#cb124-25"></a>    </span>
+<span id="cb124-26"><a href="chapter09.html#cb124-26"></a>    <span class="dt">producers =</span> <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;OD&quot;</span>),</span>
+<span id="cb124-27"><a href="chapter09.html#cb124-27"></a>    </span>
+<span id="cb124-28"><a href="chapter09.html#cb124-28"></a>    <span class="dt">production_date =</span> <span class="st">&quot;2022-01-10&quot;</span></span>
+<span id="cb124-29"><a href="chapter09.html#cb124-29"></a>    </span>
+<span id="cb124-30"><a href="chapter09.html#cb124-30"></a>  ),</span>
+<span id="cb124-31"><a href="chapter09.html#cb124-31"></a>  </span>
+<span id="cb124-32"><a href="chapter09.html#cb124-32"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb124-33"><a href="chapter09.html#cb124-33"></a>  </span>
+<span id="cb124-34"><a href="chapter09.html#cb124-34"></a>  <span class="dt">image_description =</span> <span class="kw">list</span>(</span>
+<span id="cb124-35"><a href="chapter09.html#cb124-35"></a>    </span>
+<span id="cb124-36"><a href="chapter09.html#cb124-36"></a>    <span class="dt">iptc =</span> <span class="kw">list</span>(</span>
+<span id="cb124-37"><a href="chapter09.html#cb124-37"></a>      </span>
+<span id="cb124-38"><a href="chapter09.html#cb124-38"></a>      <span class="dt">photoVideoMetadataIPTC =</span> <span class="kw">list</span>(</span>
+<span id="cb124-39"><a href="chapter09.html#cb124-39"></a>        </span>
+<span id="cb124-40"><a href="chapter09.html#cb124-40"></a>        <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan&quot;</span>,</span>
+<span id="cb124-41"><a href="chapter09.html#cb124-41"></a>        </span>
+<span id="cb124-42"><a href="chapter09.html#cb124-42"></a>        <span class="dt">imageSupplierImageId =</span> <span class="st">&quot;Image_001&quot;</span>,</span>
+<span id="cb124-43"><a href="chapter09.html#cb124-43"></a>        </span>
+<span id="cb124-44"><a href="chapter09.html#cb124-44"></a>        <span class="dt">headline =</span> <span class="st">&quot;Residents get water&quot;</span>,</span>
+<span id="cb124-45"><a href="chapter09.html#cb124-45"></a>        </span>
+<span id="cb124-46"><a href="chapter09.html#cb124-46"></a>        <span class="dt">dateCreated =</span> <span class="st">&quot;2008-09-20T00:00:00Z&quot;</span>,</span>
+<span id="cb124-47"><a href="chapter09.html#cb124-47"></a>        </span>
+<span id="cb124-48"><a href="chapter09.html#cb124-48"></a>        <span class="dt">creatorNames =</span> <span class="kw">list</span>(<span class="st">&quot;Sofie Tesson, Taimani Films&quot;</span>),</span>
+<span id="cb124-49"><a href="chapter09.html#cb124-49"></a>        </span>
+<span id="cb124-50"><a href="chapter09.html#cb124-50"></a>        <span class="dt">description =</span> <span class="st">&quot;View of villagers, getting some water. </span></span>
+<span id="cb124-51"><a href="chapter09.html#cb124-51"></a><span class="st">                       World Bank Emergency Horticulture and Livestock Project&quot;</span>,</span>
+<span id="cb124-52"><a href="chapter09.html#cb124-52"></a>        </span>
+<span id="cb124-53"><a href="chapter09.html#cb124-53"></a>        <span class="dt">digitalImageGuid =</span> <span class="st">&quot;72157648790716931&quot;</span>,</span>
+<span id="cb124-54"><a href="chapter09.html#cb124-54"></a>        </span>
+<span id="cb124-55"><a href="chapter09.html#cb124-55"></a>        <span class="dt">locationsShown =</span> <span class="kw">list</span>(</span>
+<span id="cb124-56"><a href="chapter09.html#cb124-56"></a>          <span class="kw">list</span>(<span class="dt">countryCode =</span> <span class="st">&quot;AFG&quot;</span>, <span class="dt">countryName =</span> <span class="st">&quot;Afghanistan&quot;</span>)</span>
+<span id="cb124-57"><a href="chapter09.html#cb124-57"></a>        ),</span>
+<span id="cb124-58"><a href="chapter09.html#cb124-58"></a>        </span>
+<span id="cb124-59"><a href="chapter09.html#cb124-59"></a>        <span class="dt">keywords =</span> <span class="kw">list</span>(<span class="st">&quot;Water and sanitation&quot;</span>),</span>
+<span id="cb124-60"><a href="chapter09.html#cb124-60"></a>        </span>
+<span id="cb124-61"><a href="chapter09.html#cb124-61"></a>      <span class="op">@</span><span class="er">@@</span><span class="st"> </span>as list?  <span class="dt">sceneCodes =</span> <span class="kw">list</span>(<span class="st">&quot;010600, 011000, 011100, 011900&quot;</span>),</span>
+<span id="cb124-62"><a href="chapter09.html#cb124-62"></a>        </span>
+<span id="cb124-63"><a href="chapter09.html#cb124-63"></a>        <span class="dt">sceneCodesLabelled =</span> <span class="kw">list</span>(</span>
+<span id="cb124-64"><a href="chapter09.html#cb124-64"></a>          </span>
+<span id="cb124-65"><a href="chapter09.html#cb124-65"></a>          <span class="kw">list</span>(<span class="dt">code =</span> <span class="st">&quot;010600&quot;</span>, </span>
+<span id="cb124-66"><a href="chapter09.html#cb124-66"></a>               <span class="dt">label =</span> <span class="st">&quot;single&quot;</span>,</span>
+<span id="cb124-67"><a href="chapter09.html#cb124-67"></a>               <span class="dt">description =</span> <span class="st">&quot;A view of only one person, object or animal.&quot;</span>),</span>
+<span id="cb124-68"><a href="chapter09.html#cb124-68"></a>          </span>
+<span id="cb124-69"><a href="chapter09.html#cb124-69"></a>          <span class="kw">list</span>(<span class="dt">code =</span> <span class="st">&quot;011000&quot;</span>, </span>
+<span id="cb124-70"><a href="chapter09.html#cb124-70"></a>               <span class="dt">label =</span> <span class="st">&quot;general view&quot;</span>,</span>
+<span id="cb124-71"><a href="chapter09.html#cb124-71"></a>               <span class="dt">description =</span> <span class="st">&quot;An overall view of the subject and its surrounds&quot;</span>),</span>
+<span id="cb124-72"><a href="chapter09.html#cb124-72"></a></span>
+<span id="cb124-73"><a href="chapter09.html#cb124-73"></a>          <span class="kw">list</span>(<span class="dt">code =</span> <span class="st">&quot;011100&quot;</span>, </span>
+<span id="cb124-74"><a href="chapter09.html#cb124-74"></a>               <span class="dt">label =</span> <span class="st">&quot;panoramic view&quot;</span>,</span>
+<span id="cb124-75"><a href="chapter09.html#cb124-75"></a>               <span class="dt">description =</span> <span class="st">&quot;A panoramic or wide angle view of a subject and its surrounds&quot;</span>),</span>
+<span id="cb124-76"><a href="chapter09.html#cb124-76"></a>          </span>
+<span id="cb124-77"><a href="chapter09.html#cb124-77"></a>          <span class="kw">list</span>(<span class="dt">code =</span> <span class="st">&quot;011900&quot;</span>, </span>
+<span id="cb124-78"><a href="chapter09.html#cb124-78"></a>               <span class="dt">label =</span> <span class="st">&quot;action&quot;</span>,</span>
+<span id="cb124-79"><a href="chapter09.html#cb124-79"></a>               <span class="dt">description =</span> <span class="st">&quot;Subject in motion&quot;</span>)</span>
+<span id="cb124-80"><a href="chapter09.html#cb124-80"></a>          </span>
+<span id="cb124-81"><a href="chapter09.html#cb124-81"></a>        ),</span>
+<span id="cb124-82"><a href="chapter09.html#cb124-82"></a>          </span>
+<span id="cb124-83"><a href="chapter09.html#cb124-83"></a>      <span class="op">@</span><span class="er">@@</span><span class="st"> </span>as list?   <span class="dt">subjectCodes =</span> <span class="kw">list</span>(<span class="st">&quot;06000000, 09000000, 14000000&quot;</span>),</span>
+<span id="cb124-84"><a href="chapter09.html#cb124-84"></a>        </span>
+<span id="cb124-85"><a href="chapter09.html#cb124-85"></a>        <span class="dt">subjectCodesLabelled =</span> <span class="kw">list</span>(</span>
+<span id="cb124-86"><a href="chapter09.html#cb124-86"></a>          </span>
+<span id="cb124-87"><a href="chapter09.html#cb124-87"></a>          <span class="kw">list</span>(<span class="dt">code =</span> <span class="st">&quot;06000000&quot;</span>, </span>
+<span id="cb124-88"><a href="chapter09.html#cb124-88"></a>               <span class="dt">label =</span> <span class="st">&quot;environmental issue&quot;</span>,</span>
+<span id="cb124-89"><a href="chapter09.html#cb124-89"></a>               <span class="dt">description =</span> <span class="st">&quot;All aspects of protection, damage, and condition of the ecosystem of the planet earth and its surroundings.&quot;</span>),</span>
+<span id="cb124-90"><a href="chapter09.html#cb124-90"></a>          </span>
+<span id="cb124-91"><a href="chapter09.html#cb124-91"></a>          <span class="kw">list</span>(<span class="dt">code =</span> <span class="st">&quot;09000000&quot;</span>, </span>
+<span id="cb124-92"><a href="chapter09.html#cb124-92"></a>               <span class="dt">label =</span> <span class="st">&quot;labor&quot;</span>,</span>
+<span id="cb124-93"><a href="chapter09.html#cb124-93"></a>               <span class="dt">description =</span> <span class="st">&quot;Social aspects, organizations, rules and conditions affecting the employment of human effort for the generation of wealth or provision of services and the economic support of the unemployed.&quot;</span>),</span>
+<span id="cb124-94"><a href="chapter09.html#cb124-94"></a>          </span>
+<span id="cb124-95"><a href="chapter09.html#cb124-95"></a>          <span class="kw">list</span>(<span class="dt">code =</span> <span class="st">&quot;14000000&quot;</span>, </span>
+<span id="cb124-96"><a href="chapter09.html#cb124-96"></a>               <span class="dt">label =</span> <span class="st">&quot;social issue&quot;</span>,</span>
+<span id="cb124-97"><a href="chapter09.html#cb124-97"></a>               <span class="dt">description =</span> <span class="st">&quot;Aspects of the behavior of humans affecting the quality of life.&quot;</span>)</span>
+<span id="cb124-98"><a href="chapter09.html#cb124-98"></a>          </span>
+<span id="cb124-99"><a href="chapter09.html#cb124-99"></a>        ),</span>
+<span id="cb124-100"><a href="chapter09.html#cb124-100"></a>          </span>
+<span id="cb124-101"><a href="chapter09.html#cb124-101"></a>        <span class="dt">source =</span> <span class="st">&quot;World Bank&quot;</span>,</span>
+<span id="cb124-102"><a href="chapter09.html#cb124-102"></a>        </span>
+<span id="cb124-103"><a href="chapter09.html#cb124-103"></a>        <span class="dt">supplier =</span> <span class="kw">list</span>(</span>
+<span id="cb124-104"><a href="chapter09.html#cb124-104"></a>          <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;World Bank&quot;</span>)</span>
+<span id="cb124-105"><a href="chapter09.html#cb124-105"></a>        )</span>
+<span id="cb124-106"><a href="chapter09.html#cb124-106"></a>      </span>
+<span id="cb124-107"><a href="chapter09.html#cb124-107"></a>      )</span>
+<span id="cb124-108"><a href="chapter09.html#cb124-108"></a>      </span>
+<span id="cb124-109"><a href="chapter09.html#cb124-109"></a>    ),</span>
+<span id="cb124-110"><a href="chapter09.html#cb124-110"></a></span>
+<span id="cb124-111"><a href="chapter09.html#cb124-111"></a>    <span class="dt">license =</span> <span class="kw">list</span>(</span>
+<span id="cb124-112"><a href="chapter09.html#cb124-112"></a>      <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;Attribution 2.0 Generic (CC BY 2.0)&quot;</span>, </span>
+<span id="cb124-113"><a href="chapter09.html#cb124-113"></a>           <span class="dt">uri =</span> <span class="st">&quot;https://creativecommons.org/licenses/by/2.0/&quot;</span>)</span>
+<span id="cb124-114"><a href="chapter09.html#cb124-114"></a>    ),</span>
+<span id="cb124-115"><a href="chapter09.html#cb124-115"></a>    </span>
+<span id="cb124-116"><a href="chapter09.html#cb124-116"></a>    <span class="dt">album =</span> <span class="kw">list</span>(</span>
+<span id="cb124-117"><a href="chapter09.html#cb124-117"></a>      <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;World Bank Projects in Afghanistan&quot;</span>)</span>
+<span id="cb124-118"><a href="chapter09.html#cb124-118"></a>    )</span>
+<span id="cb124-119"><a href="chapter09.html#cb124-119"></a>    </span>
+<span id="cb124-120"><a href="chapter09.html#cb124-120"></a>  )</span>
+<span id="cb124-121"><a href="chapter09.html#cb124-121"></a>  </span>
+<span id="cb124-122"><a href="chapter09.html#cb124-122"></a>)</span>
+<span id="cb124-123"><a href="chapter09.html#cb124-123"></a></span>
+<span id="cb124-124"><a href="chapter09.html#cb124-124"></a><span class="co"># Publish the image metadata in the NADA catalog</span></span>
+<span id="cb124-125"><a href="chapter09.html#cb124-125"></a></span>
+<span id="cb124-126"><a href="chapter09.html#cb124-126"></a><span class="kw">image_add</span>(<span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>, </span>
+<span id="cb124-127"><a href="chapter09.html#cb124-127"></a>          <span class="dt">metadata =</span> pic_desc,</span>
+<span id="cb124-128"><a href="chapter09.html#cb124-128"></a>          <span class="dt">repositoryid =</span> <span class="st">&quot;central&quot;</span>,</span>
+<span id="cb124-129"><a href="chapter09.html#cb124-129"></a>          <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span>, </span>
+<span id="cb124-130"><a href="chapter09.html#cb124-130"></a>          <span class="dt">published =</span> <span class="dv">1</span>,</span>
+<span id="cb124-131"><a href="chapter09.html#cb124-131"></a>          <span class="dt">thumbnail =</span> thumb)</span>
+<span id="cb124-132"><a href="chapter09.html#cb124-132"></a></span>
+<span id="cb124-133"><a href="chapter09.html#cb124-133"></a><span class="co"># Provide a link to the images in the originating repository, and upload files</span></span>
+<span id="cb124-134"><a href="chapter09.html#cb124-134"></a><span class="co"># (uploading files will make them available directly from the NADA catalog)</span></span>
+<span id="cb124-135"><a href="chapter09.html#cb124-135"></a></span>
+<span id="cb124-136"><a href="chapter09.html#cb124-136"></a><span class="kw">external_resources_add</span>(</span>
+<span id="cb124-137"><a href="chapter09.html#cb124-137"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb124-138"><a href="chapter09.html#cb124-138"></a>  <span class="dt">dctype =</span> <span class="st">&quot;pic&quot;</span>,</span>
+<span id="cb124-139"><a href="chapter09.html#cb124-139"></a>  <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan (Flickr link)&quot;</span>,</span>
+<span id="cb124-140"><a href="chapter09.html#cb124-140"></a>  <span class="dt">file_path =</span> <span class="st">&quot;https://www.flickr.com/photos/water_alternatives/31953178928/in/photolist-QFAoS5&quot;</span>,</span>
+<span id="cb124-141"><a href="chapter09.html#cb124-141"></a>  <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span></span>
+<span id="cb124-142"><a href="chapter09.html#cb124-142"></a>)</span>
+<span id="cb124-143"><a href="chapter09.html#cb124-143"></a></span>
+<span id="cb124-144"><a href="chapter09.html#cb124-144"></a><span class="kw">external_resources_add</span>(</span>
+<span id="cb124-145"><a href="chapter09.html#cb124-145"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb124-146"><a href="chapter09.html#cb124-146"></a>  <span class="dt">dctype =</span> <span class="st">&quot;pic&quot;</span>,</span>
+<span id="cb124-147"><a href="chapter09.html#cb124-147"></a>  <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan (original size)&quot;</span>,</span>
+<span id="cb124-148"><a href="chapter09.html#cb124-148"></a>  <span class="dt">file_path =</span> <span class="st">&quot;img_001_original.jpg&quot;</span>,</span>
+<span id="cb124-149"><a href="chapter09.html#cb124-149"></a>  <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span></span>
+<span id="cb124-150"><a href="chapter09.html#cb124-150"></a>)</span>
+<span id="cb124-151"><a href="chapter09.html#cb124-151"></a></span>
+<span id="cb124-152"><a href="chapter09.html#cb124-152"></a><span class="kw">external_resources_add</span>(</span>
+<span id="cb124-153"><a href="chapter09.html#cb124-153"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb124-154"><a href="chapter09.html#cb124-154"></a>  <span class="dt">dctype =</span> <span class="st">&quot;pic&quot;</span>,</span>
+<span id="cb124-155"><a href="chapter09.html#cb124-155"></a>  <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan (small size)&quot;</span>,</span>
+<span id="cb124-156"><a href="chapter09.html#cb124-156"></a>  <span class="dt">file_path =</span> <span class="st">&quot;img_001_small.jpg&quot;</span>,</span>
+<span id="cb124-157"><a href="chapter09.html#cb124-157"></a>  <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span></span>
+<span id="cb124-158"><a href="chapter09.html#cb124-158"></a>)</span></code></pre></div>
+<p><br><br></p>
+<p><strong>Result in NADA</strong></p>
+<p>The metadata, links, and images will be displayed in NADA.</p>
+<center>
+<img src="images/ReDoc_images_34.JPG" style="width:80.0%" />
+</center>
+<p><br><br>
+Different views (mosaic, list, page views) are available. If the metadata contained a GPS location, a map showing the exact location where the photo was taken will also be displayed in the image page.</p>
+<center>
+<img src="images/ReDoc_images_35.JPG" style="width:80.0%" />
+</center>
+<p><br><br></p>
+<p><strong>Using Python </strong></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb125-1"><a href="chapter09.html#cb125-1"></a><span class="co"># Python script</span></span></code></pre></div>
+</div>
+<div id="example-2---using-the-dcmi-option" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.3.2</span> Example 2 - Using the DCMI option<a href="chapter09.html#example-2---using-the-dcmi-option" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We document the same image as in Example 1.</p>
+<p><strong>Using R </strong></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="chapter09.html#cb126-1"></a><span class="kw">library</span>(nadar)</span>
+<span id="cb126-2"><a href="chapter09.html#cb126-2"></a></span>
+<span id="cb126-3"><a href="chapter09.html#cb126-3"></a><span class="co"># ----------------------------------------------------------------------------------</span></span>
+<span id="cb126-4"><a href="chapter09.html#cb126-4"></a><span class="co"># Enter credentials (API confidential key) and catalog URL</span></span>
+<span id="cb126-5"><a href="chapter09.html#cb126-5"></a>my_keys &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;C:/confidential/my_API_keys.csv&quot;</span>, <span class="dt">header=</span>F, <span class="dt">stringsAsFactors=</span>F)</span>
+<span id="cb126-6"><a href="chapter09.html#cb126-6"></a><span class="kw">set_api_key</span>(<span class="st">&quot;my_keys[1,1&quot;</span>)  </span>
+<span id="cb126-7"><a href="chapter09.html#cb126-7"></a><span class="kw">set_api_url</span>(<span class="st">&quot;https://.../index.php/api/&quot;</span>) </span>
+<span id="cb126-8"><a href="chapter09.html#cb126-8"></a><span class="kw">set_api_verbose</span>(<span class="ot">FALSE</span>)</span>
+<span id="cb126-9"><a href="chapter09.html#cb126-9"></a><span class="co"># ----------------------------------------------------------------------------------</span></span>
+<span id="cb126-10"><a href="chapter09.html#cb126-10"></a></span>
+<span id="cb126-11"><a href="chapter09.html#cb126-11"></a><span class="kw">setwd</span>(<span class="st">&quot;C:/my_images/&quot;</span>)</span>
+<span id="cb126-12"><a href="chapter09.html#cb126-12"></a><span class="co"># Download image files from Flickr (different resolutions)</span></span>
+<span id="cb126-13"><a href="chapter09.html#cb126-13"></a></span>
+<span id="cb126-14"><a href="chapter09.html#cb126-14"></a><span class="kw">download.file</span>(<span class="st">&quot;https://live.staticflickr.com/4858/31953178928_77e4d7abae_o_d.jpg&quot;</span>, </span>
+<span id="cb126-15"><a href="chapter09.html#cb126-15"></a>              <span class="dt">destfile =</span> <span class="st">&quot;img_001_original.jpg&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;wb&quot;</span>)</span>
+<span id="cb126-16"><a href="chapter09.html#cb126-16"></a></span>
+<span id="cb126-17"><a href="chapter09.html#cb126-17"></a><span class="kw">download.file</span>(<span class="st">&quot;https://live.staticflickr.com/4858/31953178928_44abb01418_w_d.jpg&quot;</span>, </span>
+<span id="cb126-18"><a href="chapter09.html#cb126-18"></a>              <span class="dt">destfile =</span> <span class="st">&quot;img_001_small.jpg&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;wb&quot;</span>)</span>
+<span id="cb126-19"><a href="chapter09.html#cb126-19"></a></span>
+<span id="cb126-20"><a href="chapter09.html#cb126-20"></a><span class="co"># Generate image metadata (using the DCMI metadata elements)</span></span>
+<span id="cb126-21"><a href="chapter09.html#cb126-21"></a></span>
+<span id="cb126-22"><a href="chapter09.html#cb126-22"></a>pic_desc &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb126-23"><a href="chapter09.html#cb126-23"></a>  </span>
+<span id="cb126-24"><a href="chapter09.html#cb126-24"></a>  <span class="dt">metadata_information =</span> <span class="kw">list</span>(</span>
+<span id="cb126-25"><a href="chapter09.html#cb126-25"></a>    </span>
+<span id="cb126-26"><a href="chapter09.html#cb126-26"></a>    <span class="dt">producers =</span> <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;OD&quot;</span>),</span>
+<span id="cb126-27"><a href="chapter09.html#cb126-27"></a>    </span>
+<span id="cb126-28"><a href="chapter09.html#cb126-28"></a>    <span class="dt">production_date =</span> <span class="st">&quot;2022-01-10&quot;</span></span>
+<span id="cb126-29"><a href="chapter09.html#cb126-29"></a></span>
+<span id="cb126-30"><a href="chapter09.html#cb126-30"></a>  ),</span>
+<span id="cb126-31"><a href="chapter09.html#cb126-31"></a>  </span>
+<span id="cb126-32"><a href="chapter09.html#cb126-32"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb126-33"><a href="chapter09.html#cb126-33"></a>  </span>
+<span id="cb126-34"><a href="chapter09.html#cb126-34"></a>  <span class="dt">image_description =</span> <span class="kw">list</span>(</span>
+<span id="cb126-35"><a href="chapter09.html#cb126-35"></a>    </span>
+<span id="cb126-36"><a href="chapter09.html#cb126-36"></a>    <span class="dt">dcmi =</span> <span class="kw">list</span>(</span>
+<span id="cb126-37"><a href="chapter09.html#cb126-37"></a>      </span>
+<span id="cb126-38"><a href="chapter09.html#cb126-38"></a>      <span class="dt">identifier =</span> <span class="st">&quot;72157648790716931&quot;</span>,</span>
+<span id="cb126-39"><a href="chapter09.html#cb126-39"></a>      </span>
+<span id="cb126-40"><a href="chapter09.html#cb126-40"></a>      <span class="dt">type =</span> <span class="st">&quot;image&quot;</span>,</span>
+<span id="cb126-41"><a href="chapter09.html#cb126-41"></a>      </span>
+<span id="cb126-42"><a href="chapter09.html#cb126-42"></a>      <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan&quot;</span>,</span>
+<span id="cb126-43"><a href="chapter09.html#cb126-43"></a>      </span>
+<span id="cb126-44"><a href="chapter09.html#cb126-44"></a>      <span class="dt">caption =</span> <span class="st">&quot;Residents get water&quot;</span>,</span>
+<span id="cb126-45"><a href="chapter09.html#cb126-45"></a>      </span>
+<span id="cb126-46"><a href="chapter09.html#cb126-46"></a>      <span class="dt">description =</span> <span class="st">&quot;View of villagers, getting some water.</span></span>
+<span id="cb126-47"><a href="chapter09.html#cb126-47"></a><span class="st">                     World Bank Emergency Horticulture and Livestock Project&quot;</span>,</span>
+<span id="cb126-48"><a href="chapter09.html#cb126-48"></a>      </span>
+<span id="cb126-49"><a href="chapter09.html#cb126-49"></a>      <span class="dt">subject =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb126-50"><a href="chapter09.html#cb126-50"></a>      </span>
+<span id="cb126-51"><a href="chapter09.html#cb126-51"></a>      <span class="dt">topics =</span> <span class="kw">list</span>(),</span>
+<span id="cb126-52"><a href="chapter09.html#cb126-52"></a>      </span>
+<span id="cb126-53"><a href="chapter09.html#cb126-53"></a>      <span class="dt">keywords =</span> <span class="kw">list</span>(</span>
+<span id="cb126-54"><a href="chapter09.html#cb126-54"></a>        <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;water and sanitation&quot;</span>)</span>
+<span id="cb126-55"><a href="chapter09.html#cb126-55"></a>      ),</span>
+<span id="cb126-56"><a href="chapter09.html#cb126-56"></a>      </span>
+<span id="cb126-57"><a href="chapter09.html#cb126-57"></a>      <span class="dt">creator =</span> <span class="st">&quot;Sofie Tesson, Taimani Films&quot;</span>,</span>
+<span id="cb126-58"><a href="chapter09.html#cb126-58"></a>      </span>
+<span id="cb126-59"><a href="chapter09.html#cb126-59"></a>      <span class="dt">publisher =</span> <span class="st">&quot;World Bank&quot;</span>,</span>
+<span id="cb126-60"><a href="chapter09.html#cb126-60"></a>      </span>
+<span id="cb126-61"><a href="chapter09.html#cb126-61"></a>      <span class="dt">date =</span> <span class="st">&quot;2008-09-20T00:00:00Z&quot;</span>,</span>
+<span id="cb126-62"><a href="chapter09.html#cb126-62"></a>      </span>
+<span id="cb126-63"><a href="chapter09.html#cb126-63"></a>      <span class="dt">country =</span> <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;Afghanistan&quot;</span>, <span class="dt">code =</span> <span class="st">&quot;AFG&quot;</span>),</span>
+<span id="cb126-64"><a href="chapter09.html#cb126-64"></a>      </span>
+<span id="cb126-65"><a href="chapter09.html#cb126-65"></a>      <span class="dt">language =</span> <span class="st">&quot;English&quot;</span></span>
+<span id="cb126-66"><a href="chapter09.html#cb126-66"></a>      </span>
+<span id="cb126-67"><a href="chapter09.html#cb126-67"></a>    ),</span>
+<span id="cb126-68"><a href="chapter09.html#cb126-68"></a>  </span>
+<span id="cb126-69"><a href="chapter09.html#cb126-69"></a>    <span class="dt">license =</span> <span class="kw">list</span>(</span>
+<span id="cb126-70"><a href="chapter09.html#cb126-70"></a>      <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;Attribution 2.0 Generic (CC BY 2.0)&quot;</span>, </span>
+<span id="cb126-71"><a href="chapter09.html#cb126-71"></a>           <span class="dt">uri =</span> <span class="st">&quot;https://creativecommons.org/licenses/by/2.0/&quot;</span>)),</span>
+<span id="cb126-72"><a href="chapter09.html#cb126-72"></a>    </span>
+<span id="cb126-73"><a href="chapter09.html#cb126-73"></a>    <span class="dt">album =</span> <span class="kw">list</span>(</span>
+<span id="cb126-74"><a href="chapter09.html#cb126-74"></a>      <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;World Bank Projects in Afghanistan&quot;</span>)</span>
+<span id="cb126-75"><a href="chapter09.html#cb126-75"></a>    )</span>
+<span id="cb126-76"><a href="chapter09.html#cb126-76"></a>    </span>
+<span id="cb126-77"><a href="chapter09.html#cb126-77"></a>  )  </span>
+<span id="cb126-78"><a href="chapter09.html#cb126-78"></a>    </span>
+<span id="cb126-79"><a href="chapter09.html#cb126-79"></a>)</span>
+<span id="cb126-80"><a href="chapter09.html#cb126-80"></a></span>
+<span id="cb126-81"><a href="chapter09.html#cb126-81"></a><span class="co"># Publish the image metadata in the NADA catalog</span></span>
+<span id="cb126-82"><a href="chapter09.html#cb126-82"></a></span>
+<span id="cb126-83"><a href="chapter09.html#cb126-83"></a><span class="kw">image_add</span>(<span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>, </span>
+<span id="cb126-84"><a href="chapter09.html#cb126-84"></a>          <span class="dt">metadata =</span> pic_desc,</span>
+<span id="cb126-85"><a href="chapter09.html#cb126-85"></a>          <span class="dt">repositoryid =</span> <span class="st">&quot;central&quot;</span>,</span>
+<span id="cb126-86"><a href="chapter09.html#cb126-86"></a>          <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span>, </span>
+<span id="cb126-87"><a href="chapter09.html#cb126-87"></a>          <span class="dt">published =</span> <span class="dv">1</span>,</span>
+<span id="cb126-88"><a href="chapter09.html#cb126-88"></a>          <span class="dt">thumbnail =</span> thumb)</span>
+<span id="cb126-89"><a href="chapter09.html#cb126-89"></a></span>
+<span id="cb126-90"><a href="chapter09.html#cb126-90"></a><span class="co"># Provide a link to the images in the originating repository, and upload files</span></span>
+<span id="cb126-91"><a href="chapter09.html#cb126-91"></a><span class="co"># (uploading files will make them available directly from the NADA catalog)</span></span>
+<span id="cb126-92"><a href="chapter09.html#cb126-92"></a></span>
+<span id="cb126-93"><a href="chapter09.html#cb126-93"></a><span class="kw">external_resources_add</span>(</span>
+<span id="cb126-94"><a href="chapter09.html#cb126-94"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb126-95"><a href="chapter09.html#cb126-95"></a>  <span class="dt">dctype =</span> <span class="st">&quot;pic&quot;</span>,</span>
+<span id="cb126-96"><a href="chapter09.html#cb126-96"></a>  <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan (Flickr link)&quot;</span>,</span>
+<span id="cb126-97"><a href="chapter09.html#cb126-97"></a>  <span class="dt">file_path =</span> <span class="st">&quot;https://www.flickr.com/photos/water_alternatives/31953178928/in/photolist-QFAoS5&quot;</span>,</span>
+<span id="cb126-98"><a href="chapter09.html#cb126-98"></a>  <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span></span>
+<span id="cb126-99"><a href="chapter09.html#cb126-99"></a>)</span>
+<span id="cb126-100"><a href="chapter09.html#cb126-100"></a></span>
+<span id="cb126-101"><a href="chapter09.html#cb126-101"></a><span class="kw">external_resources_add</span>(</span>
+<span id="cb126-102"><a href="chapter09.html#cb126-102"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb126-103"><a href="chapter09.html#cb126-103"></a>  <span class="dt">dctype =</span> <span class="st">&quot;pic&quot;</span>,</span>
+<span id="cb126-104"><a href="chapter09.html#cb126-104"></a>  <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan (original size)&quot;</span>,</span>
+<span id="cb126-105"><a href="chapter09.html#cb126-105"></a>  <span class="dt">file_path =</span> <span class="st">&quot;img_001_original.jpg&quot;</span>,</span>
+<span id="cb126-106"><a href="chapter09.html#cb126-106"></a>  <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span></span>
+<span id="cb126-107"><a href="chapter09.html#cb126-107"></a>)</span>
+<span id="cb126-108"><a href="chapter09.html#cb126-108"></a></span>
+<span id="cb126-109"><a href="chapter09.html#cb126-109"></a><span class="kw">external_resources_add</span>(</span>
+<span id="cb126-110"><a href="chapter09.html#cb126-110"></a>  <span class="dt">idno =</span> <span class="st">&quot;image_001&quot;</span>,</span>
+<span id="cb126-111"><a href="chapter09.html#cb126-111"></a>  <span class="dt">dctype =</span> <span class="st">&quot;pic&quot;</span>,</span>
+<span id="cb126-112"><a href="chapter09.html#cb126-112"></a>  <span class="dt">title =</span> <span class="st">&quot;Man fetching water, Afghanistan (small size)&quot;</span>,</span>
+<span id="cb126-113"><a href="chapter09.html#cb126-113"></a>  <span class="dt">file_path =</span> <span class="st">&quot;img_001_small.jpg&quot;</span>,</span>
+<span id="cb126-114"><a href="chapter09.html#cb126-114"></a>  <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span></span>
+<span id="cb126-115"><a href="chapter09.html#cb126-115"></a>)</span></code></pre></div>
+<p><br><br></p>
+<p><strong>Using Python </strong></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb127-1"><a href="chapter09.html#cb127-1"></a><span class="co"># Python script</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter08.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter10.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SCHEMA_GUIDE.pdf", "SCHEMA_GUIDE.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Metadata formats and tools | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability</title>
+  <meta name="description" content="Chapter 2 Metadata formats and tools | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Metadata formats and tools | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/./images/cover2.jpg" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Metadata formats and tools | [DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  
+  
+  <meta name="twitter:image" content="/./images/cover2.jpg" />
+
+<meta name="author" content="Olivier Dupriez and Mehmood Asghar" />
+
+
+<meta name="date" content="2022-07-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter01.html"/>
+<link rel="next" href="chapter03.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metadata Schema Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="part"><span><b>I GET STARTED</b></span></li>
+<li class="chapter" data-level="1" data-path="chapter01.html"><a href="chapter01.html"><i class="fa fa-check"></i><b>1</b> The benefits of rich, structured metadata</a><ul>
+<li class="chapter" data-level="1.1" data-path="chapter01.html"><a href="chapter01.html#rich-metadata"><i class="fa fa-check"></i><b>1.1</b> Rich metadata</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="chapter01.html"><a href="chapter01.html#benefits-for-data-users"><i class="fa fa-check"></i><b>1.1.1</b> Benefits for data users</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chapter01.html"><a href="chapter01.html#benefits-for-data-producers"><i class="fa fa-check"></i><b>1.1.2</b> Benefits for data producers</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chapter01.html"><a href="chapter01.html#scope-of-the-metadata"><i class="fa fa-check"></i><b>1.1.3</b> Scope of the metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chapter01.html"><a href="chapter01.html#structured-metadata"><i class="fa fa-check"></i><b>1.2</b> Structured metadata</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="chapter01.html"><a href="chapter01.html#completeness"><i class="fa fa-check"></i><b>1.2.1</b> Completeness</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chapter01.html"><a href="chapter01.html#usability"><i class="fa fa-check"></i><b>1.2.2</b> Usability</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chapter01.html"><a href="chapter01.html#discoverability"><i class="fa fa-check"></i><b>1.2.3</b> Discoverability</a></li>
+<li class="chapter" data-level="1.2.4" data-path="chapter01.html"><a href="chapter01.html#interoperability"><i class="fa fa-check"></i><b>1.2.4</b> Interoperability</a></li>
+<li class="chapter" data-level="1.2.5" data-path="chapter01.html"><a href="chapter01.html#visibility"><i class="fa fa-check"></i><b>1.2.5</b> Visibility</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chapter01.html"><a href="chapter01.html#augmented-enriched-metadata"><i class="fa fa-check"></i><b>1.3</b> Augmented (enriched) metadata</a></li>
+<li class="chapter" data-level="1.4" data-path="chapter01.html"><a href="chapter01.html#recommended-standards-and-schemas"><i class="fa fa-check"></i><b>1.4</b> Recommended standards and schemas</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chapter01.html"><a href="chapter01.html#documents"><i class="fa fa-check"></i><b>1.4.1</b> Documents</a></li>
+<li class="chapter" data-level="1.4.2" data-path="chapter01.html"><a href="chapter01.html#microdata"><i class="fa fa-check"></i><b>1.4.2</b> Microdata</a></li>
+<li class="chapter" data-level="1.4.3" data-path="chapter01.html"><a href="chapter01.html#geographic-datasets-data-structures-and-data-services"><i class="fa fa-check"></i><b>1.4.3</b> Geographic datasets, data structures, and data services</a></li>
+<li class="chapter" data-level="1.4.4" data-path="chapter01.html"><a href="chapter01.html#time-series-indicators"><i class="fa fa-check"></i><b>1.4.4</b> Time series, indicators</a></li>
+<li class="chapter" data-level="1.4.5" data-path="chapter01.html"><a href="chapter01.html#statistical-tables"><i class="fa fa-check"></i><b>1.4.5</b> Statistical tables</a></li>
+<li class="chapter" data-level="1.4.6" data-path="chapter01.html"><a href="chapter01.html#images"><i class="fa fa-check"></i><b>1.4.6</b> Images</a></li>
+<li class="chapter" data-level="1.4.7" data-path="chapter01.html"><a href="chapter01.html#audio"><i class="fa fa-check"></i><b>1.4.7</b> Audio</a></li>
+<li class="chapter" data-level="1.4.8" data-path="chapter01.html"><a href="chapter01.html#videos"><i class="fa fa-check"></i><b>1.4.8</b> Videos</a></li>
+<li class="chapter" data-level="1.4.9" data-path="chapter01.html"><a href="chapter01.html#programs-and-scripts"><i class="fa fa-check"></i><b>1.4.9</b> Programs and scripts</a></li>
+<li class="chapter" data-level="1.4.10" data-path="chapter01.html"><a href="chapter01.html#external-resources"><i class="fa fa-check"></i><b>1.4.10</b> External resources</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="chapter01.html"><a href="chapter01.html#dcat-and-schema.org-for-search-engine-optimization"><i class="fa fa-check"></i><b>1.5</b> DCAT and schema.org for search engine optimization</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="chapter01.html"><a href="chapter01.html#dcat"><i class="fa fa-check"></i><b>1.5.1</b> DCAT</a></li>
+<li class="chapter" data-level="1.5.2" data-path="chapter01.html"><a href="chapter01.html#schema.org"><i class="fa fa-check"></i><b>1.5.2</b> schema.org</a></li>
+<li class="chapter" data-level="1.5.3" data-path="chapter01.html"><a href="chapter01.html#practical-implementation-of-dcat-and-schema.org"><i class="fa fa-check"></i><b>1.5.3</b> Practical implementation of DCAT and schema.org</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="chapter01.html"><a href="chapter01.html#controlled-vocabularies"><i class="fa fa-check"></i><b>1.6</b> Controlled vocabularies</a></li>
+<li class="chapter" data-level="1.7" data-path="chapter01.html"><a href="chapter01.html#tags-and-tag-groups"><i class="fa fa-check"></i><b>1.7</b> Tags and tag groups</a></li>
+<li class="chapter" data-level="1.8" data-path="chapter01.html"><a href="chapter01.html#embeddings-and-semantic-discovery"><i class="fa fa-check"></i><b>1.8</b> Embeddings and semantic discovery</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter02.html"><a href="chapter02.html"><i class="fa fa-check"></i><b>2</b> Metadata formats and tools</a><ul>
+<li class="chapter" data-level="2.1" data-path="chapter02.html"><a href="chapter02.html#the-json-and-xml-formats"><i class="fa fa-check"></i><b>2.1</b> The JSON and XML formats</a></li>
+<li class="chapter" data-level="2.2" data-path="chapter02.html"><a href="chapter02.html#where-to-find-the-schemas-documentation"><i class="fa fa-check"></i><b>2.2</b> Where to find the schemas’ documentation</a></li>
+<li class="chapter" data-level="2.3" data-path="chapter02.html"><a href="chapter02.html#translating-a-json-schema-into-r-and-python"><i class="fa fa-check"></i><b>2.3</b> Translating a JSON schema into R and Python</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="chapter02.html"><a href="chapter02.html#interpreting-the-metadata-documentation-api"><i class="fa fa-check"></i><b>2.3.1</b> Interpreting the metadata documentation (API)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chapter02.html"><a href="chapter02.html#generating-compliant-metadata-using-r"><i class="fa fa-check"></i><b>2.3.2</b> Generating compliant metadata using R</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chapter02.html"><a href="chapter02.html#generating-compliant-metadata-using-python"><i class="fa fa-check"></i><b>2.3.3</b> Generating compliant metadata using Python</a></li>
+<li class="chapter" data-level="2.3.4" data-path="chapter02.html"><a href="chapter02.html#generating-compliant-metadata-using-metadata-editors"><i class="fa fa-check"></i><b>2.3.4</b> Generating compliant metadata using metadata editors</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter03.html"><a href="chapter03.html"><i class="fa fa-check"></i><b>3</b> Data cataloguing</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter03.html"><a href="chapter03.html#features-of-a-modern-data-catalog"><i class="fa fa-check"></i><b>3.1</b> Features of a modern data catalog</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="chapter03.html"><a href="chapter03.html#what-users-want"><i class="fa fa-check"></i><b>3.1.1</b> What users want</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter03.html"><a href="chapter03.html#what-catalog-administrators-want"><i class="fa fa-check"></i><b>3.1.2</b> What catalog administrators want</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter03.html"><a href="chapter03.html#machine-learning-for-improved-user-experience"><i class="fa fa-check"></i><b>3.2</b> Machine learning for improved user experience</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chapter03.html"><a href="chapter03.html#improving-discoverability"><i class="fa fa-check"></i><b>3.2.1</b> Improving discoverability</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chapter03.html"><a href="chapter03.html#improving-results-ranking"><i class="fa fa-check"></i><b>3.2.2</b> Improving results ranking</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chapter03.html"><a href="chapter03.html#free-cataloguing-tools"><i class="fa fa-check"></i><b>3.3</b> Free cataloguing tools</a></li>
+</ul></li>
+<li class="part"><span><b>II STANDARDS AND SCHEMAS</b></span></li>
+<li class="chapter" data-level="4" data-path="chapter04.html"><a href="chapter04.html"><i class="fa fa-check"></i><b>4</b> Documents</a><ul>
+<li class="chapter" data-level="4.1" data-path="chapter04.html"><a href="chapter04.html#marc-21-dublin-core-and-bibtex"><i class="fa fa-check"></i><b>4.1</b> MARC 21, Dublin Core, and BibTex</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter04.html"><a href="chapter04.html#schema-description"><i class="fa fa-check"></i><b>4.2</b> Schema description</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="chapter04.html"><a href="chapter04.html#metadata-information"><i class="fa fa-check"></i><b>4.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chapter04.html"><a href="chapter04.html#document-description"><i class="fa fa-check"></i><b>4.2.2</b> Document description</a></li>
+<li class="chapter" data-level="4.2.3" data-path="chapter04.html"><a href="chapter04.html#provenance"><i class="fa fa-check"></i><b>4.2.3</b> Provenance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chapter04.html"><a href="chapter04.html#tags"><i class="fa fa-check"></i><b>4.2.4</b> Tags</a></li>
+<li class="chapter" data-level="4.2.5" data-path="chapter04.html"><a href="chapter04.html#lda-topics"><i class="fa fa-check"></i><b>4.2.5</b> LDA topics</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chapter04.html"><a href="chapter04.html#embeddings"><i class="fa fa-check"></i><b>4.2.6</b> Embeddings</a></li>
+<li class="chapter" data-level="4.2.7" data-path="chapter04.html"><a href="chapter04.html#additional-fields"><i class="fa fa-check"></i><b>4.2.7</b> Additional fields</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chapter04.html"><a href="chapter04.html#complete-examples"><i class="fa fa-check"></i><b>4.3</b> Complete examples</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chapter04.html"><a href="chapter04.html#example-1-working-paper"><i class="fa fa-check"></i><b>4.3.1</b> Example 1: Working Paper</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chapter04.html"><a href="chapter04.html#example-2-book"><i class="fa fa-check"></i><b>4.3.2</b> Example 2: Book</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chapter04.html"><a href="chapter04.html#example-3-importing-from-a-list-of-documents"><i class="fa fa-check"></i><b>4.3.3</b> Example 3: Importing from a list of documents</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter05.html"><a href="chapter05.html"><i class="fa fa-check"></i><b>5</b> Microdata</a><ul>
+<li class="chapter" data-level="5.1" data-path="chapter05.html"><a href="chapter05.html#definition-of-microdata"><i class="fa fa-check"></i><b>5.1</b> Definition of microdata</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter05.html"><a href="chapter05.html#the-data-documentation-initiative-ddi-metadata-standard"><i class="fa fa-check"></i><b>5.2</b> The Data Documentation Initiative (DDI) metadata standard</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="chapter05.html"><a href="chapter05.html#ddi-codebook"><i class="fa fa-check"></i><b>5.2.1</b> DDI-Codebook</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chapter05.html"><a href="chapter05.html#ddi-lifecycle"><i class="fa fa-check"></i><b>5.2.2</b> DDI-Lifecycle</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chapter05.html"><a href="chapter05.html#some-practical-considerations"><i class="fa fa-check"></i><b>5.3</b> Some practical considerations</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter05.html"><a href="chapter05.html#schema-description-ddi-codebook-2.5"><i class="fa fa-check"></i><b>5.4</b> Schema description: DDI-Codebook 2.5</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="chapter05.html"><a href="chapter05.html#document-description-1"><i class="fa fa-check"></i><b>5.4.1</b> Document description</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chapter05.html"><a href="chapter05.html#study-description"><i class="fa fa-check"></i><b>5.4.2</b> Study description</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chapter05.html"><a href="chapter05.html#description-of-data-files"><i class="fa fa-check"></i><b>5.4.3</b> Description of data files</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chapter05.html"><a href="chapter05.html#variable-description"><i class="fa fa-check"></i><b>5.4.4</b> Variable description</a></li>
+<li class="chapter" data-level="5.4.5" data-path="chapter05.html"><a href="chapter05.html#variable-groups"><i class="fa fa-check"></i><b>5.4.5</b> Variable groups</a></li>
+<li class="chapter" data-level="5.4.6" data-path="chapter05.html"><a href="chapter05.html#provenance-1"><i class="fa fa-check"></i><b>5.4.6</b> Provenance</a></li>
+<li class="chapter" data-level="5.4.7" data-path="chapter05.html"><a href="chapter05.html#tags-1"><i class="fa fa-check"></i><b>5.4.7</b> Tags</a></li>
+<li class="chapter" data-level="5.4.8" data-path="chapter05.html"><a href="chapter05.html#lda-topics-1"><i class="fa fa-check"></i><b>5.4.8</b> LDA topics</a></li>
+<li class="chapter" data-level="5.4.9" data-path="chapter05.html"><a href="chapter05.html#embeddings-1"><i class="fa fa-check"></i><b>5.4.9</b> Embeddings</a></li>
+<li class="chapter" data-level="5.4.10" data-path="chapter05.html"><a href="chapter05.html#additional"><i class="fa fa-check"></i><b>5.4.10</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chapter05.html"><a href="chapter05.html#generating-and-publishing-ddi-metadata"><i class="fa fa-check"></i><b>5.5</b> Generating and publishing DDI metadata</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="chapter05.html"><a href="chapter05.html#using-the-nesstar-publisher-ddi-metadata-editor"><i class="fa fa-check"></i><b>5.5.1</b> Using the Nesstar Publisher (DDI metadata editor)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chapter05.html"><a href="chapter05.html#using-the-world-bank-metadata-editor"><i class="fa fa-check"></i><b>5.5.2</b> Using the World Bank Metadata Editor</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chapter05.html"><a href="chapter05.html#using-r-or-python"><i class="fa fa-check"></i><b>5.5.3</b> Using R or Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter06.html"><a href="chapter06.html"><i class="fa fa-check"></i><b>6</b> Geographic data and services</a><ul>
+<li class="chapter" data-level="6.1" data-path="chapter06.html"><a href="chapter06.html#background"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter06.html"><a href="chapter06.html#geographic-information-metadata-standards"><i class="fa fa-check"></i><b>6.2</b> Geographic information metadata standards</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="chapter06.html"><a href="chapter06.html#documenting-geographic-datasets---the-iso-19115-standard"><i class="fa fa-check"></i><b>6.2.1</b> Documenting geographic datasets - The ISO 19115 standard</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chapter06.html"><a href="chapter06.html#describing-data-structures---the-iso-19115-2-and-iso-19110-standards"><i class="fa fa-check"></i><b>6.2.2</b> Describing data structures - The ISO 19115-2 and ISO 19110 standards</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chapter06.html"><a href="chapter06.html#describing-data-services---the-iso-19119-standard"><i class="fa fa-check"></i><b>6.2.3</b> Describing data services - The ISO 19119 standard</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chapter06.html"><a href="chapter06.html#unified-metadata-specification---the-isots-19139-standard"><i class="fa fa-check"></i><b>6.2.4</b> Unified metadata specification - The ISO/TS 19139 standard</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chapter06.html"><a href="chapter06.html#schema-description-1"><i class="fa fa-check"></i><b>6.3</b> Schema description</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="chapter06.html"><a href="chapter06.html#introduction-1"><i class="fa fa-check"></i><b>6.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chapter06.html"><a href="chapter06.html#common-sets-of-elements"><i class="fa fa-check"></i><b>6.3.2</b> Common sets of elements</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chapter06.html"><a href="chapter06.html#core-metadata-properties"><i class="fa fa-check"></i><b>6.3.3</b> Core metadata properties</a></li>
+<li class="chapter" data-level="6.3.4" data-path="chapter06.html"><a href="chapter06.html#main-metadata-sections"><i class="fa fa-check"></i><b>6.3.4</b> Main metadata sections</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chapter06.html"><a href="chapter06.html#iso-19110-feature-catalogue-feature_catalogue"><i class="fa fa-check"></i><b>6.4</b> ISO 19110 Feature Catalogue (<code>feature_catalogue</code>)</a></li>
+<li class="chapter" data-level="6.5" data-path="chapter06.html"><a href="chapter06.html#provenance-2"><i class="fa fa-check"></i><b>6.5</b> Provenance</a></li>
+<li class="chapter" data-level="6.6" data-path="chapter06.html"><a href="chapter06.html#tags-2"><i class="fa fa-check"></i><b>6.6</b> Tags</a></li>
+<li class="chapter" data-level="6.7" data-path="chapter06.html"><a href="chapter06.html#lda-topics-2"><i class="fa fa-check"></i><b>6.7</b> LDA topics</a></li>
+<li class="chapter" data-level="6.8" data-path="chapter06.html"><a href="chapter06.html#embeddings-2"><i class="fa fa-check"></i><b>6.8</b> Embeddings</a></li>
+<li class="chapter" data-level="6.9" data-path="chapter06.html"><a href="chapter06.html#additional-1"><i class="fa fa-check"></i><b>6.9</b> Additional</a></li>
+<li class="chapter" data-level="6.10" data-path="chapter06.html"><a href="chapter06.html#complete-examples-1"><i class="fa fa-check"></i><b>6.10</b> Complete examples</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="chapter06.html"><a href="chapter06.html#example-1-vector---shape-files-bangladesh-outline-of-camps-of-rohingya-refugees-in-coxs-bazar-january-2021"><i class="fa fa-check"></i><b>6.10.1</b> Example 1 (vector - shape files): Bangladesh, Outline of camps of Rohingya refugees in Cox’s Bazar, January 2021</a></li>
+<li class="chapter" data-level="6.10.2" data-path="chapter06.html"><a href="chapter06.html#example-2-vector-csv-data-syria-refugee-sites-ocha"><i class="fa fa-check"></i><b>6.10.2</b> Example 2 (vector, CSV data): Syria Refugee Sites (OCHA)</a></li>
+<li class="chapter" data-level="6.10.3" data-path="chapter06.html"><a href="chapter06.html#example-3-vector-with-feature-catalogue---the-gdis-beta-dataset"><i class="fa fa-check"></i><b>6.10.3</b> Example 3 (vector, with Feature Catalogue) - The GDIS (beta) dataset</a></li>
+<li class="chapter" data-level="6.10.4" data-path="chapter06.html"><a href="chapter06.html#example-4-raster-spatial-distribution-of-the-ethiopian-population-in-2020"><i class="fa fa-check"></i><b>6.10.4</b> Example 4 (raster): Spatial distribution of the Ethiopian population in 2020</a></li>
+<li class="chapter" data-level="6.10.5" data-path="chapter06.html"><a href="chapter06.html#example-5-service-the-united-nations-geospatial-website"><i class="fa fa-check"></i><b>6.10.5</b> Example 5 (service): The United Nations Geospatial website</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="chapter06.html"><a href="chapter06.html#useful-tools"><i class="fa fa-check"></i><b>6.11</b> Useful tools</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter07.html"><a href="chapter07.html"><i class="fa fa-check"></i><b>7</b> Indicators and time series</a><ul>
+<li class="chapter" data-level="7.1" data-path="chapter07.html"><a href="chapter07.html#indicators-time-series-database-and-scope-of-the-schema"><i class="fa fa-check"></i><b>7.1</b> Indicators, time series, database, and scope of the schema</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter07.html"><a href="chapter07.html#schema-description-2"><i class="fa fa-check"></i><b>7.2</b> Schema description</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chapter07.html"><a href="chapter07.html#database-schema"><i class="fa fa-check"></i><b>7.2.1</b> Database schema</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chapter07.html"><a href="chapter07.html#the-time-series-indicators-schema"><i class="fa fa-check"></i><b>7.2.2</b> The time series (indicators) schema</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chapter07.html"><a href="chapter07.html#provenance-3"><i class="fa fa-check"></i><b>7.2.3</b> Provenance</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chapter07.html"><a href="chapter07.html#tags-3"><i class="fa fa-check"></i><b>7.2.4</b> Tags</a></li>
+<li class="chapter" data-level="7.2.5" data-path="chapter07.html"><a href="chapter07.html#additional-2"><i class="fa fa-check"></i><b>7.2.5</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chapter07.html"><a href="chapter07.html#generating-and-publishing-compliant-metadata---complete-example"><i class="fa fa-check"></i><b>7.3</b> Generating and publishing compliant metadata - Complete example</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="chapter07.html"><a href="chapter07.html#using-r-3"><i class="fa fa-check"></i><b>7.3.1</b> Using R</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chapter07.html"><a href="chapter07.html#using-python-3"><i class="fa fa-check"></i><b>7.3.2</b> Using Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter08.html"><a href="chapter08.html"><i class="fa fa-check"></i><b>8</b> Statistical tables</a><ul>
+<li class="chapter" data-level="8.1" data-path="chapter08.html"><a href="chapter08.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter08.html"><a href="chapter08.html#anatomy-of-a-table"><i class="fa fa-check"></i><b>8.2</b> Anatomy of a table</a></li>
+<li class="chapter" data-level="8.3" data-path="chapter08.html"><a href="chapter08.html#schema-description-3"><i class="fa fa-check"></i><b>8.3</b> Schema description</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="chapter08.html"><a href="chapter08.html#cataloguing-parameters-1"><i class="fa fa-check"></i><b>8.3.1</b> Cataloguing parameters</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter08.html"><a href="chapter08.html#metadata-information-2"><i class="fa fa-check"></i><b>8.3.2</b> Metadata information</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter08.html"><a href="chapter08.html#table-description"><i class="fa fa-check"></i><b>8.3.3</b> Table description</a></li>
+<li class="chapter" data-level="8.3.4" data-path="chapter08.html"><a href="chapter08.html#provenance-4"><i class="fa fa-check"></i><b>8.3.4</b> Provenance</a></li>
+<li class="chapter" data-level="8.3.5" data-path="chapter08.html"><a href="chapter08.html#tags-4"><i class="fa fa-check"></i><b>8.3.5</b> Tags</a></li>
+<li class="chapter" data-level="8.3.6" data-path="chapter08.html"><a href="chapter08.html#additional-custom-elements"><i class="fa fa-check"></i><b>8.3.6</b> Additional (custom) elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chapter08.html"><a href="chapter08.html#complete-examples-2"><i class="fa fa-check"></i><b>8.4</b> Complete examples</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="chapter08.html"><a href="chapter08.html#example-1"><i class="fa fa-check"></i><b>8.4.1</b> Example 1</a></li>
+<li class="chapter" data-level="8.4.2" data-path="chapter08.html"><a href="chapter08.html#example-2"><i class="fa fa-check"></i><b>8.4.2</b> Example 2</a></li>
+<li class="chapter" data-level="8.4.3" data-path="chapter08.html"><a href="chapter08.html#example-3"><i class="fa fa-check"></i><b>8.4.3</b> Example 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter09.html"><a href="chapter09.html"><i class="fa fa-check"></i><b>9</b> Images</a><ul>
+<li class="chapter" data-level="9.1" data-path="chapter09.html"><a href="chapter09.html#image-metadata"><i class="fa fa-check"></i><b>9.1</b> Image metadata</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="chapter09.html"><a href="chapter09.html#embedded-metadata-exif"><i class="fa fa-check"></i><b>9.1.1</b> Embedded metadata: EXIF</a></li>
+<li class="chapter" data-level="9.1.2" data-path="chapter09.html"><a href="chapter09.html#iptc-and-dublin-core-standards"><i class="fa fa-check"></i><b>9.1.2</b> IPTC and Dublin Core standards</a></li>
+<li class="chapter" data-level="9.1.3" data-path="chapter09.html"><a href="chapter09.html#augmenting-image-metadata"><i class="fa fa-check"></i><b>9.1.3</b> Augmenting image metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="chapter09.html"><a href="chapter09.html#schema-description-4"><i class="fa fa-check"></i><b>9.2</b> Schema description</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chapter09.html"><a href="chapter09.html#common-elements"><i class="fa fa-check"></i><b>9.2.1</b> Common elements</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chapter09.html"><a href="chapter09.html#iptc"><i class="fa fa-check"></i><b>9.2.2</b> IPTC</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chapter09.html"><a href="chapter09.html#dublin-core"><i class="fa fa-check"></i><b>9.2.3</b> Dublin Core</a></li>
+<li class="chapter" data-level="9.2.4" data-path="chapter09.html"><a href="chapter09.html#additional-elements-1"><i class="fa fa-check"></i><b>9.2.4</b> Additional elements</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chapter09.html"><a href="chapter09.html#examples"><i class="fa fa-check"></i><b>9.3</b> Examples</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chapter09.html"><a href="chapter09.html#example-1---using-the-iptc-option"><i class="fa fa-check"></i><b>9.3.1</b> Example 1 - Using the IPTC option</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chapter09.html"><a href="chapter09.html#example-2---using-the-dcmi-option"><i class="fa fa-check"></i><b>9.3.2</b> Example 2 - Using the DCMI option</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter10.html"><a href="chapter10.html"><i class="fa fa-check"></i><b>10</b> Audio</a><ul>
+<li class="chapter" data-level="10.1" data-path="chapter10.html"><a href="chapter10.html#augmenting-audio-metadata"><i class="fa fa-check"></i><b>10.1</b> Augmenting audio metadata</a></li>
+<li class="chapter" data-level="10.2" data-path="chapter10.html"><a href="chapter10.html#schema-description-5"><i class="fa fa-check"></i><b>10.2</b> Schema description</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="chapter10.html"><a href="chapter10.html#metadata-information-3"><i class="fa fa-check"></i><b>10.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chapter10.html"><a href="chapter10.html#audio-description"><i class="fa fa-check"></i><b>10.2.2</b> Audio description</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chapter10.html"><a href="chapter10.html#complete-example-1"><i class="fa fa-check"></i><b>10.3</b> Complete example</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="chapter10.html"><a href="chapter10.html#in-r"><i class="fa fa-check"></i><b>10.3.1</b> In R</a></li>
+<li class="chapter" data-level="10.3.2" data-path="chapter10.html"><a href="chapter10.html#in-python"><i class="fa fa-check"></i><b>10.3.2</b> In Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter11.html"><a href="chapter11.html"><i class="fa fa-check"></i><b>11</b> Videos</a><ul>
+<li class="chapter" data-level="11.1" data-path="chapter11.html"><a href="chapter11.html#augmenting-video-metadata"><i class="fa fa-check"></i><b>11.1</b> Augmenting video metadata</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter11.html"><a href="chapter11.html#schema-description-6"><i class="fa fa-check"></i><b>11.2</b> Schema description</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="chapter11.html"><a href="chapter11.html#metadata-information-4"><i class="fa fa-check"></i><b>11.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chapter11.html"><a href="chapter11.html#video-description"><i class="fa fa-check"></i><b>11.2.2</b> Video description</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chapter11.html"><a href="chapter11.html#complete-example-2"><i class="fa fa-check"></i><b>11.3</b> Complete example</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="chapter11.html"><a href="chapter11.html#in-r-1"><i class="fa fa-check"></i><b>11.3.1</b> In R</a></li>
+<li class="chapter" data-level="11.3.2" data-path="chapter11.html"><a href="chapter11.html#in-python-1"><i class="fa fa-check"></i><b>11.3.2</b> In Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter12.html"><a href="chapter12.html"><i class="fa fa-check"></i><b>12</b> Research projects and scripts</a><ul>
+<li class="chapter" data-level="12.1" data-path="chapter12.html"><a href="chapter12.html#rationale"><i class="fa fa-check"></i><b>12.1</b> Rationale</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter12.html"><a href="chapter12.html#motivation-for-open-analytics"><i class="fa fa-check"></i><b>12.2</b> Motivation for open analytics</a></li>
+<li class="chapter" data-level="12.3" data-path="chapter12.html"><a href="chapter12.html#schema-description-7"><i class="fa fa-check"></i><b>12.3</b> Schema description</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="chapter12.html"><a href="chapter12.html#document-description-2"><i class="fa fa-check"></i><b>12.3.1</b> Document description</a></li>
+<li class="chapter" data-level="12.3.2" data-path="chapter12.html"><a href="chapter12.html#project-description"><i class="fa fa-check"></i><b>12.3.2</b> Project description</a></li>
+<li class="chapter" data-level="12.3.3" data-path="chapter12.html"><a href="chapter12.html#provenance-5"><i class="fa fa-check"></i><b>12.3.3</b> Provenance</a></li>
+<li class="chapter" data-level="12.3.4" data-path="chapter12.html"><a href="chapter12.html#tags-5"><i class="fa fa-check"></i><b>12.3.4</b> Tags</a></li>
+<li class="chapter" data-level="12.3.5" data-path="chapter12.html"><a href="chapter12.html#additional-3"><i class="fa fa-check"></i><b>12.3.5</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="chapter12.html"><a href="chapter12.html#generating-compliant-metadata"><i class="fa fa-check"></i><b>12.4</b> Generating compliant metadata</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="chapter12.html"><a href="chapter12.html#full-example-using-r"><i class="fa fa-check"></i><b>12.4.1</b> Full example, using R</a></li>
+<li class="chapter" data-level="12.4.2" data-path="chapter12.html"><a href="chapter12.html#full-example-using-python"><i class="fa fa-check"></i><b>12.4.2</b> Full example, using Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter13.html"><a href="chapter13.html"><i class="fa fa-check"></i><b>13</b> External resources</a><ul>
+<li class="chapter" data-level="13.1" data-path="chapter13.html"><a href="chapter13.html#example-of-use-of-external-resources"><i class="fa fa-check"></i><b>13.1</b> Example of use of external resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>ANNEXES</b></span></li>
+<li class="chapter" data-level="" data-path="annex-1-references-and-links.html"><a href="annex-1-references-and-links.html"><i class="fa fa-check"></i>Annex 1: References and links</a></li>
+<li class="chapter" data-level="" data-path="annex-2-mapping-the-document-schema-to-bibtex-dcmi-marc21-and-schema.html"><a href="annex-2-mapping-the-document-schema-to-bibtex-dcmi-marc21-and-schema.html"><i class="fa fa-check"></i>Annex 2: Mapping the document schema to BibTex, DCMI, MARC21, and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><a href="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><i class="fa fa-check"></i>Annex 3: Mapping the microdata schema to DDI Codebook and DCAT/schema.org</a><ul>
+<li class="chapter" data-level="2" data-path="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><a href="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html#microdata-schema-mapping-for-ddi-codebook-2.5"><i class="fa fa-check"></i><b>2</b> Microdata schema mapping for DDI Codebook 2.5</a></li>
+<li class="chapter" data-level="3" data-path="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html"><a href="annex-3-mapping-the-microdata-schema-to-ddi-codebook-and-dcatschema.html#microdata-schema-mapping-for-dcatschema.org"><i class="fa fa-check"></i><b>3</b> Microdata schema mapping for DCAT/Schema.org</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="annex-4-mapping-the-geographic-schema-to-dcatschema.html"><a href="annex-4-mapping-the-geographic-schema-to-dcatschema.html"><i class="fa fa-check"></i>Annex 4: Mapping the geographic schema to DCAT/schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-5-mapping-the-indicatortime-series-schema-to-schema.html"><a href="annex-5-mapping-the-indicatortime-series-schema-to-schema.html"><i class="fa fa-check"></i>Annex 5: Mapping the indicator/time series schema to schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-6-mapping-the-table-schema-to-schema.html"><a href="annex-6-mapping-the-table-schema-to-schema.html"><i class="fa fa-check"></i>Annex 6: Mapping the table schema to schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-7-mapping-the-image-schema-to-dublin-core-iptc-and-schema.html"><a href="annex-7-mapping-the-image-schema-to-dublin-core-iptc-and-schema.html"><i class="fa fa-check"></i>Annex 7: Mapping the image schema to Dublin Core, IPTC, and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-8-mapping-the-audio-schema-to-dublin-core-and-schema.html"><a href="annex-8-mapping-the-audio-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 8: Mapping the audio schema to Dublin Core and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-9-mapping-the-video-schema-to-dublin-core-and-schema.html"><a href="annex-9-mapping-the-video-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 9: Mapping the video schema to Dublin Core and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-10-mapping-the-researchscript-schema-to-dublin-core-and-schema.html"><a href="annex-10-mapping-the-researchscript-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 10: Mapping the research/script schema to Dublin Core and schema.org</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">[DRAFT] Metadata Standards and Schemas for Improved Data Discoverability and Usability</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter02" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 2</span> Metadata formats and tools<a href="chapter02.html#chapter02" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><!--       _  _____  ____  _   _  __   ____  __ _       -->
+<!--      | |/ ____|/ __ \| \ | | \ \ / /  \/  | |      -->
+<!--      | | (___ | |  | |  \| |  \ V /| \  / | |      -->
+<!--  _   | |\___ \| |  | | . ` |   > < | |\/| | |      -->
+<!-- | |__| |____) | |__| | |\  |  / . \| |  | | |____  -->
+<!--  \____/|_____/ \____/|_| \_| /_/ \_\_|  |_|______| --></p>
+<div id="the-json-and-xml-formats" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.1</span> The JSON and XML formats<a href="chapter02.html#the-json-and-xml-formats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Metadata standards and schemas consist of structured lists of metadata fields. They serve multiple purposes. First, they help data curators document datasets, ensuring completeness and usability. The schema must be sufficiently intuitive and <em>human-readable</em> to allow data curators to generate and organize their metadata according to the schema. Second, they are the input to software and database applications including metadata editors and data catalogs. The schemas must thus also be <em>machine-readable</em>, and available in open file formats. JSON (JavaScript Object Notation) and XML (eXtended Markup Language) are the most suitable formats for these purposes.</p>
+<p>Some international metadata standards like the Data Documentation Initative (DDI, for microdata), the Dublin Core (a generic metadata specification, which we use to document documents), or the ISO 19139 (for geospatial data) are defined and published as XML specifications. XML schemas can be “translated” into JSON schemas, which is our preferred format (a choice we justify in the next section). All standards and schemas we document and recommend in this Guide are presented in their JSON version. Our JSON schemas are in some cases limited to a subset of the original XML schema, as we excluded elements that are rarely used. This has minor impact on the utility of the schemas, but significantly increases their usability.</p>
+<p>The JSON format has the following characteristics (this information was extracted from <a href="https://www.w3schools.com/js/js_json_intro.asp">www.w3schools.com</a>):</p>
+<ul>
+<li>JSON is a syntax for storing and exchanging data</li>
+<li>JSON files are text files (open), written with JavaScript object notation</li>
+<li>JSON is a lightweight data-interchange format</li>
+<li>JSON is language independent</li>
+<li>Data in JSON files are stored as <em>key/value</em> pairs. Keys must be strings, written with double quotes. For example, the name of a metadata field (the <em>key</em>) can be “first_name”, and the value attached to it could be “John”. Values can have one of the following data types: string, number, JSON object, array, boolean, or null.</li>
+<li>Data in JSON files are separated by commas</li>
+<li>Square brackets hold arrays</li>
+<li>Curly braces hold objects</li>
+</ul>
+<p>The example below shows how this format would be used in a metadata schema to document the list of authors of a document, using elements from the Dublin Core standard.</p>
+<center>
+<img src="images/document_example_01_authors_keywords.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<p>In the <em>documents</em> schema, authors are documented in the metadata element <code>authors</code> which contains the following sub-elements: <code>first_name</code>, <code>initial</code>, <code>last_name</code>, and <code>affiliation</code>.</p>
+<center>
+<img src="images/JSON_array_list_authors.JPG" style="width:100.0%" />
+</center>
+<p>In JSON, this information will be stored as follows.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="chapter02.html#cb3-1"></a><span class="er">&quot;authors&quot;:</span><span class="ot">[</span></span>
+<span id="cb3-2"><a href="chapter02.html#cb3-2"></a>  <span class="fu">{</span> <span class="dt">&quot;first_name&quot;</span><span class="fu">:</span><span class="st">&quot;Bo&quot;</span><span class="fu">,</span> <span class="dt">&quot;initial&quot;</span><span class="fu">:</span><span class="st">&quot;P.J&quot;</span><span class="fu">,</span> <span class="dt">&quot;last_name&quot;</span><span class="fu">:</span><span class="st">&quot;Andrée&quot;</span><span class="fu">,</span> <span class="dt">&quot;affiliation&quot;</span><span class="fu">:</span><span class="st">&quot;World Bank&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-3"><a href="chapter02.html#cb3-3"></a>  <span class="fu">{</span> <span class="dt">&quot;first_name&quot;</span><span class="fu">:</span><span class="st">&quot;Andres&quot;</span><span class="fu">,</span> <span class="dt">&quot;last_name&quot;</span><span class="fu">:</span><span class="st">&quot;Chamorro&quot;</span><span class="fu">,</span> <span class="dt">&quot;affiliation&quot;</span><span class="fu">:</span><span class="st">&quot;World Bank&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-4"><a href="chapter02.html#cb3-4"></a>  <span class="fu">{</span> <span class="dt">&quot;first_name&quot;</span><span class="fu">:</span><span class="st">&quot;Aart&quot;</span><span class="fu">,</span>   <span class="dt">&quot;last_name&quot;</span><span class="fu">:</span><span class="st">&quot;Kraay&quot;</span><span class="fu">,</span>    <span class="dt">&quot;affiliation&quot;</span><span class="fu">:</span><span class="st">&quot;World Bank&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-5"><a href="chapter02.html#cb3-5"></a>  <span class="fu">{</span> <span class="dt">&quot;first_name&quot;</span><span class="fu">:</span><span class="st">&quot;Phoebe&quot;</span><span class="fu">,</span> <span class="dt">&quot;last_name&quot;</span><span class="fu">:</span><span class="st">&quot;Spencer&quot;</span><span class="fu">,</span>  <span class="dt">&quot;affiliation&quot;</span><span class="fu">:</span><span class="st">&quot;World Bank&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-6"><a href="chapter02.html#cb3-6"></a>  <span class="fu">{</span> <span class="dt">&quot;first_name&quot;</span><span class="fu">:</span><span class="st">&quot;Dieter&quot;</span><span class="fu">,</span> <span class="dt">&quot;last_name&quot;</span><span class="fu">:</span><span class="st">&quot;Wang&quot;</span><span class="fu">,</span>     <span class="dt">&quot;affiliation&quot;</span><span class="fu">:</span><span class="st">&quot;World Bank&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-7"><a href="chapter02.html#cb3-7"></a><span class="ot">]</span></span></code></pre></div>
+<p>The same information in XML format is as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="chapter02.html#cb4-1"></a><span class="kw">&lt;authors&gt;</span></span>
+<span id="cb4-2"><a href="chapter02.html#cb4-2"></a>  <span class="kw">&lt;author&gt;</span></span>
+<span id="cb4-3"><a href="chapter02.html#cb4-3"></a>    <span class="kw">&lt;first_name&gt;</span>Bo<span class="kw">&lt;/first_name&gt;</span> </span>
+<span id="cb4-4"><a href="chapter02.html#cb4-4"></a>    <span class="kw">&lt;initial&gt;</span>P.J.<span class="kw">&lt;/initial&gt;</span> </span>
+<span id="cb4-5"><a href="chapter02.html#cb4-5"></a>    <span class="kw">&lt;last_name&gt;</span>Andrée<span class="kw">&lt;/last_name&gt;</span> </span>
+<span id="cb4-6"><a href="chapter02.html#cb4-6"></a>    <span class="kw">&lt;affiliation&gt;</span>World Bank<span class="kw">&lt;/affiliation&gt;</span></span>
+<span id="cb4-7"><a href="chapter02.html#cb4-7"></a>  <span class="kw">&lt;/author&gt;</span></span>
+<span id="cb4-8"><a href="chapter02.html#cb4-8"></a>  <span class="kw">&lt;author&gt;</span></span>
+<span id="cb4-9"><a href="chapter02.html#cb4-9"></a>    <span class="kw">&lt;first_name&gt;</span>Andres<span class="kw">&lt;/first_name&gt;</span> </span>
+<span id="cb4-10"><a href="chapter02.html#cb4-10"></a>    <span class="kw">&lt;last_name&gt;</span>Chamorro<span class="kw">&lt;/last_name&gt;</span> </span>
+<span id="cb4-11"><a href="chapter02.html#cb4-11"></a>    <span class="kw">&lt;affiliation&gt;</span>World Bank<span class="kw">&lt;/affiliation&gt;</span></span>
+<span id="cb4-12"><a href="chapter02.html#cb4-12"></a>  <span class="kw">&lt;/author&gt;</span></span>
+<span id="cb4-13"><a href="chapter02.html#cb4-13"></a>    <span class="kw">&lt;author&gt;</span></span>
+<span id="cb4-14"><a href="chapter02.html#cb4-14"></a>    <span class="kw">&lt;first_name&gt;</span>Aart<span class="kw">&lt;/first_name&gt;</span> </span>
+<span id="cb4-15"><a href="chapter02.html#cb4-15"></a>    <span class="kw">&lt;last_name&gt;</span>Kraay<span class="kw">&lt;/last_name&gt;</span> </span>
+<span id="cb4-16"><a href="chapter02.html#cb4-16"></a>    <span class="kw">&lt;affiliation&gt;</span>World Bank<span class="kw">&lt;/affiliation&gt;</span></span>
+<span id="cb4-17"><a href="chapter02.html#cb4-17"></a>  <span class="kw">&lt;/author&gt;</span></span>
+<span id="cb4-18"><a href="chapter02.html#cb4-18"></a>    <span class="kw">&lt;author&gt;</span></span>
+<span id="cb4-19"><a href="chapter02.html#cb4-19"></a>    <span class="kw">&lt;first_name&gt;</span>Phoebe<span class="kw">&lt;/first_name&gt;</span> </span>
+<span id="cb4-20"><a href="chapter02.html#cb4-20"></a>    <span class="kw">&lt;last_name&gt;</span>Spencer<span class="kw">&lt;/last_name&gt;</span> </span>
+<span id="cb4-21"><a href="chapter02.html#cb4-21"></a>    <span class="kw">&lt;affiliation&gt;</span>World Bank<span class="kw">&lt;/affiliation&gt;</span></span>
+<span id="cb4-22"><a href="chapter02.html#cb4-22"></a>  <span class="kw">&lt;/author&gt;</span></span>
+<span id="cb4-23"><a href="chapter02.html#cb4-23"></a>  <span class="kw">&lt;author&gt;</span></span>
+<span id="cb4-24"><a href="chapter02.html#cb4-24"></a>    <span class="kw">&lt;first_name&gt;</span>Dieter<span class="kw">&lt;/first_name&gt;</span> </span>
+<span id="cb4-25"><a href="chapter02.html#cb4-25"></a>    <span class="kw">&lt;last_name&gt;</span>Wang<span class="kw">&lt;/last_name&gt;</span> </span>
+<span id="cb4-26"><a href="chapter02.html#cb4-26"></a>    <span class="kw">&lt;affiliation&gt;</span>World Bank<span class="kw">&lt;/affiliation&gt;</span></span>
+<span id="cb4-27"><a href="chapter02.html#cb4-27"></a>  <span class="kw">&lt;/author&gt;</span></span>
+<span id="cb4-28"><a href="chapter02.html#cb4-28"></a><span class="kw">&lt;/authors&gt;</span></span></code></pre></div>
+<p>JSON and XML formats have similarities:</p>
+<ul>
+<li>Both are human readable and saved as text files (non-proprietary format)</li>
+<li>Both are hierarchical (they contain values within values)</li>
+<li>Both can be parsed and used by many programming languages including R and Python</li>
+</ul>
+<p>A main difference is that XML files have to be parsed with an XML parser, while JSON files can be parsed by a standard JavaScript function. JSON files are thus easier to parse than XML, and easier to read by humans, which makes them our preferred choice. We will show in this Guide how JSON metadata schemas correspond to lists in R or Python, making it possible to generate metadata programmatically.</p>
+<!--  __          ___                    -->
+<!--  \ \        / / |                   -->
+<!--   \ \  /\  / /| |__   ___ _ __ ___  -->
+<!--    \ \/  \/ / | '_ \ / _ \ '__/ _ \ -->
+<!--     \  /\  /  | | | |  __/ | |  __/ -->
+<!--      \/  \/   |_| |_|\___|_|  \___| -->
+</div>
+<div id="where-to-find-the-schemas-documentation" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.2</span> Where to find the schemas’ documentation<a href="chapter02.html#where-to-find-the-schemas-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The most recent documentation of the schemas we present in the Guide, and of the corresponding API, is available on-line at <a href="https://ihsn.github.io/nada-api-redoc/catalog-admin/#" class="uri">https://ihsn.github.io/nada-api-redoc/catalog-admin/#</a>.</p>
+<center>
+<img src="images/reDoc.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<p>The metadata schemas have a hierarchical structure. They all start with three or four common elements that are not strictly-speaking part of the metadata, but that contain information that will be used by the NADA cataloguing application:</p>
+<center>
+<img src="images/reDoc_0.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<ul>
+<li><strong><code>repositoryid</code></strong> identifies the collection in which the metadata will be published</li>
+<li><strong><code>access_policy</code></strong> determines if and how the <u>data files</u> will be accessible from the catalog in which the metadata are published. This element only applies to the microdata and geographic schemas. It makes use of a controlled vocabulary with the following access policy options:
+<ul>
+<li><strong><code>direct</code></strong>: data can be downloaded without requiring them to be registered;</li>
+<li><strong><code>open</code></strong>: same as “direct”, with an open data license attached to the dataset;</li>
+<li><strong><code>public</code></strong>: public use files, which only require users to be registered in the catalog;</li>
+<li><strong><code>licensed</code></strong>: access to data is restricted to registered users who receive authorization to use the data, after submitting a request;</li>
+<li><strong><code>remote</code></strong>: data are made available by an external data repository;</li>
+<li><strong><code>data_na</code></strong>: data are not accessible to the public (only metadata are published).</li>
+</ul></li>
+<li><strong><code>published</code></strong> determines the status of the metadata in the on-line catalog (with options 0 = draft and 1 = published). Published entries are visible to all visitors of the on-line catalog; unpublished (draft) entries will only be visible by the catalog administrators and reviewers.</li>
+<li><strong><code>overwrite</code></strong> determines whether the metadata already in the catalog for this entry can be overwritten (iwith options yes or no, ‘no’ being the default)</li>
+</ul>
+<p>The various sections that follow this set of cataloguing elements will be specific to each standard/schema. For example, the DDI standard used to document microdata contains the following main sections:</p>
+<ul>
+<li><strong><code>document description</code></strong>: a description of the metadata (who documented the dataset, when, etc.) Most schemas will contain such a section describing the metadata, useful mainly to data curators and catalog administrators. In other schemas, this section may be named <code>metadata_description</code>.</li>
+<li><strong><code>study description</code></strong>: the description of the survey/census/study, not including the data files and data dictionary.</li>
+<li><strong><code>file description</code></strong>: a list and description of data files associated to the study.</li>
+<li><strong><code>variable description</code></strong>: the data dictionary (description of variables).</li>
+</ul>
+<p>The schema-specific sections are followed by a few other metadata elements that are common to most schemas. These are elements that will provide useful information for cataloguing and discoverability purposes. They include <strong>tags</strong> (which allow catalog administrators to attach tags to datasets independently of their type, which can be used as filters in the catalog), and external resources. Some schemas also provide the possibility for data curators to add their own metadata elements, to accommodate information for which no metadata element is provided in the schema (the use of these <code>additional</code> elements should be the exception, as metadata schemas are designed to cover the full scope of metadata).</p>
+<p>In the schemas, metadata fields/elements can have the following properties:</p>
+<ul>
+<li><strong>Optional</strong> or <strong>required</strong>. When an element is declared as <em>required</em> (or <em>mandatory</em>), the metadata will be considered invalid if it contains no information in that element. To keep the schemas flexible, very few elements are set as required. Note that it is possible for a metadata element to be <code>required</code> but have all its components (for elements that have sub-elements) declared as optional. This will be the case when at least one (but any) of the sub-element must contain information. It is also possible for an element to be declared <em>optional</em> but have one or more of its sub-elements declared <code>mandatory</code> (this means that the field is optional, but if it is used, some of its features MUST be provided.)</li>
+<li><strong>Repeatable</strong> or <strong>Not repeatable</strong>. For example, the element <code>nation</code> in the DDI standard is <em>Repeatable</em> because a dataset can cover more than one country, while the element <code>title</code> is <em>Not repeatable</em> because a study should be identified by a unique title.</li>
+<li><strong>Type</strong>. This indicates the format of the information contained in an element. It can be a <em>string</em> (text), a <em>numeric</em> value, a <em>boolean</em> variable (TRUE/FALSE), or an <em>array</em>.</li>
+</ul>
+<p>The schemas can also provide default values and controlled vocabularies for some elements.</p>
+<p><!--  _______                  _       _   _              -->
+<!-- |__   __|                | |     | | (_)             -->
+<!--    | |_ __ __ _ _ __  ___| | __ _| |_ _ _ __   __ _  -->
+<!--    | | '__/ _` | '_ \/ __| |/ _` | __| | '_ \ / _` | -->
+<!--    | | | | (_| | | | \__ \ | (_| | |_| | | | | (_| | -->
+<!--    |_|_|  \__,_|_| |_|___/_|\__,_|\__|_|_| |_|\__, | -->
+<!--                                                __/ | -->
+<!--                                               |___/  --></p>
+</div>
+<div id="translating-a-json-schema-into-r-and-python" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.3</span> Translating a JSON schema into R and Python<a href="chapter02.html#translating-a-json-schema-into-r-and-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most elements in metadata standards and schemas are optional. Schema-compliant metadata can thus be very brief and simple. But the objective of data curators should always be to generate and publish as much and as detailed metadata as possible. This means that metadata documents can be long and relatively complex. This will for example be the case of metadata compliant with the DDI metadata standard used to document microdata, which contains elements that describe each variable in a dataset with elements that include (optional) summary statistics. As a dataset can contain thousands of variables, the production of such metadata requires the use of a specialized metadata editor (the metadata editor would read the data files and generate a DDI-compliant list of variables with their name, label, summary statistics). When the metadata are not too complex, they can be generated using languages like R and Python. For example, the documentation of publications or images will typically only require a few simple metadata elements (author, title, date, etc.) Generating metadata using programming languages has significant advantages. It allows automation, and makes the documentation process fully replicable and transparent.</p>
+<p>Metadata compliant with all schemas presented in this Guide can in principle be generated using programming languages. We show below how these schemas, as described in their <a href="https://ihsn.github.io/nada-api-redoc/catalog-admin/#">on-line documentation</a>, translate into R and Python scripts. Generating metadata using R will consist of producing a <em>list</em> object (itself containing lists), while generating metadata using Python will consist of producing a <em>dictionary</em> object (itself containing lists and dictionaries). The Guide provides many practical examples. The core principles are presented below.</p>
+<p>:::note
+The sequence in which the metadata elements are created when documenting a dataset using R or Python does not have to match the sequence in the schema documentation. :::</p>
+<div id="interpreting-the-metadata-documentation-api" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.3.1</span> Interpreting the metadata documentation (API)<a href="chapter02.html#interpreting-the-metadata-documentation-api" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The metadata schemas are <a href="https://ihsn.github.io/nada-api-redoc/catalog-admin/#">documented on-line</a>. In this documentation, curly brackets indicate that a list (in R) or a dictionary (in Python) must be created to store the metadata elements. Square brackets indicate that a block of elements (the list or dictionary) is repeatable, i.e. in R a list of list(s) will be expected. For example (extracted from the <a href="(https://ihsn.github.io/nada-api-redoc/catalog-admin/#operation/createDocument)">DOCUMENT</a> metadata schema):</p>
+<p><strong>In R:</strong></p>
+<center>
+<img src="images/JSON_to_R_interpret.JPG" style="width:100.0%" />
+</center>
+<p><strong>In Python:</strong> (note that double quotes can be substituted to single quotes)</p>
+<center>
+<img src="images/JSON_to_Python_interpret.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<div class="idea">
+<p>Dictionaries in Python are very similar to JSON schemas. When documenting a dataset, data curators who use Python can copy a schema from the ReDoc website, paste it in their script editor, then fill out the relevant metadata elements and delete the ones that are not used.</p>
+</div>
+<center>
+<img src="images/copy_ReDoc.JPG" style="width:75.0%" />
+</center>
+<p><br></p>
+<p>Not only can metadata be generated using R or Python (or other programming languages), they can also be published in a NADA catalog using R or Python, using the NADA API and the R package NADAR or the Python library PyNADA. The next sections provide examples of the programmatic generation and publishing of metadata in a catalog.</p>
+</div>
+<div id="generating-compliant-metadata-using-r" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.3.2</span> Generating compliant metadata using R<a href="chapter02.html#generating-compliant-metadata-using-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Metadata compliant with a standard/schema can be generated using R, and directly uploaded in a NADA catalog without having to be saved as a JSON file. An object (a list) must be created in the R script that contains metadata compliant with the JSON schema. The example below shows how such an object is created and published in a NADA catalog. We assume here that we have a document with the following information:</p>
+<ul>
+<li>document unique id: <em>ABC123</em></li>
+<li>title: <em>Teaching in Lao PDR</em></li>
+<li>authors: <em>Luis Benveniste, Jeffery Marshall, Lucrecia Santibañez (World Bank)</em></li>
+<li>date published: <em>2007</em></li>
+<li>countries: <em>Lao PDR</em>.</li>
+<li>The document is available from the World Bank Open knowledge Repository at <a href="http://hdl.handle.net/10986/7710" class="uri">http://hdl.handle.net/10986/7710</a>.</li>
+</ul>
+<p>We will use the <a href="https://ihsn.github.io/nada-api-redoc/catalog-admin/#tag/Documents">DOCUMENT schema</a> to document the publication, and the <a href="https://ihsn.github.io/nada-api-redoc/catalog-admin/#tag/External-resources">EXTERNAL RESOURCE schema</a> to publish a link to the document in NADA.</p>
+<center>
+<img src="images/ReDoc_documents_21.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<p>Publishing data and metadata in a NADA catalog (using R and the NADAR package or Python and the PyNADA library) requires that we first identify the on-line catalog where the metadata will be published (by providing its URL in the <code>set_api_url</code> command line) and provide a key to authenticate as a catalog administrator (in the <code>set_api_key</code> command line; this key should not be entered in clear in a script to avoid accidental disclosure).</p>
+<p>We then create an object (a list in R, or a dictionary in Python) that we will name <em>my_doc</em> (this is a user-defined name, not an imposed name). Within this list (or dictionary), we will enter all metadata elements, some of which can be simple elements, while others are lists (or dictionaries). The first element to be included is the <code>document_description</code>, which is required. Within it, we add the <code>title_statement</code> which is also required and contains the mandatory elements <code>idno</code> and <code>title</code> (all documents must have a unique ID number for cataloguing purpose, and a title). The list of countries that the document covers is a <u>repeatable</u> element, i.e. a list of lists (although we only have one country in this case). Information on the authors is also a repeatable element, allowing us to capture the information on the three co-authors individually.</p>
+<p>This <em>my_doc</em> object is then published in the NADA catalog using the <code>add_document</code> command. Last, we publish (as an external resource) a link to the file, with only basic information. We do not need to document this resource in detail, as it corresponds to the metadata provided in <em>my_doc</em>. If we had a different external resource (for example an MS-Excel table that contains all tables shown in the publication), we would make use of more of the external resources metadata elements to document it. Note that instead of a URL, we could have provided a path to an electronic file (e.g., to the PDF document), in which case the file would be uploaded to the web server and made available directly from the on-line catalog. We had previously captured a screenshot of the cover page of the document to be used as thumbnail in the catalog (optional).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="chapter02.html#cb5-1"></a><span class="kw">library</span>(nadar)</span>
+<span id="cb5-2"><a href="chapter02.html#cb5-2"></a></span>
+<span id="cb5-3"><a href="chapter02.html#cb5-3"></a><span class="co"># Define the NADA catalog URL and provide an API key</span></span>
+<span id="cb5-4"><a href="chapter02.html#cb5-4"></a></span>
+<span id="cb5-5"><a href="chapter02.html#cb5-5"></a><span class="kw">set_api_url</span>(<span class="st">&quot;http://nada-demo.ihsn.org/index.php/api/&quot;</span>)</span>
+<span id="cb5-6"><a href="chapter02.html#cb5-6"></a><span class="kw">set_api_key</span>(<span class="st">&quot;a1b2c3d4e5&quot;</span>)  </span>
+<span id="cb5-7"><a href="chapter02.html#cb5-7"></a>    <span class="co"># Note: an administrator API key must always be kept strictly confidential; </span></span>
+<span id="cb5-8"><a href="chapter02.html#cb5-8"></a>    <span class="co"># It is good practice to read it from an external file, not to enter it in clear </span></span>
+<span id="cb5-9"><a href="chapter02.html#cb5-9"></a></span>
+<span id="cb5-10"><a href="chapter02.html#cb5-10"></a>thumb  &lt;-<span class="st"> &quot;C:/DOCS/teaching_lao.JPG&quot;</span>  <span class="co"># Cover page image to be used as thumbnail</span></span>
+<span id="cb5-11"><a href="chapter02.html#cb5-11"></a></span>
+<span id="cb5-12"><a href="chapter02.html#cb5-12"></a><span class="co"># Generate and publish the metadata on the publication</span></span>
+<span id="cb5-13"><a href="chapter02.html#cb5-13"></a></span>
+<span id="cb5-14"><a href="chapter02.html#cb5-14"></a>doc_id &lt;-<span class="st"> &quot;ABC001&quot;</span> </span>
+<span id="cb5-15"><a href="chapter02.html#cb5-15"></a></span>
+<span id="cb5-16"><a href="chapter02.html#cb5-16"></a>my_doc &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb5-17"><a href="chapter02.html#cb5-17"></a></span>
+<span id="cb5-18"><a href="chapter02.html#cb5-18"></a>   <span class="dt">document_description =</span> <span class="kw">list</span>(</span>
+<span id="cb5-19"><a href="chapter02.html#cb5-19"></a>   </span>
+<span id="cb5-20"><a href="chapter02.html#cb5-20"></a>      <span class="dt">title_statement =</span> <span class="kw">list</span>(</span>
+<span id="cb5-21"><a href="chapter02.html#cb5-21"></a>        <span class="dt">idno =</span> doc_id, </span>
+<span id="cb5-22"><a href="chapter02.html#cb5-22"></a>        <span class="dt">title =</span> <span class="st">&quot;Teaching in Lao PDR&quot;</span></span>
+<span id="cb5-23"><a href="chapter02.html#cb5-23"></a>      ),</span>
+<span id="cb5-24"><a href="chapter02.html#cb5-24"></a>      </span>
+<span id="cb5-25"><a href="chapter02.html#cb5-25"></a>      <span class="dt">date_published =</span> <span class="st">&quot;2007&quot;</span>,</span>
+<span id="cb5-26"><a href="chapter02.html#cb5-26"></a>  </span>
+<span id="cb5-27"><a href="chapter02.html#cb5-27"></a>      <span class="dt">ref_country =</span> <span class="kw">list</span>(</span>
+<span id="cb5-28"><a href="chapter02.html#cb5-28"></a>        <span class="kw">list</span>(<span class="dt">name =</span> <span class="st">&quot;Lao PDR&quot;</span>,  <span class="dt">code =</span> <span class="st">&quot;LAO&quot;</span>)</span>
+<span id="cb5-29"><a href="chapter02.html#cb5-29"></a>      ),</span>
+<span id="cb5-30"><a href="chapter02.html#cb5-30"></a>      </span>
+<span id="cb5-31"><a href="chapter02.html#cb5-31"></a>      <span class="co"># Authors: we only have one author, but this is a list of lists </span></span>
+<span id="cb5-32"><a href="chapter02.html#cb5-32"></a>      <span class="co"># as the &#39;authors&#39; element is a repeatable element in the schema</span></span>
+<span id="cb5-33"><a href="chapter02.html#cb5-33"></a>      <span class="dt">authors =</span> <span class="kw">list</span>(</span>
+<span id="cb5-34"><a href="chapter02.html#cb5-34"></a>        <span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Luis&quot;</span>,     <span class="dt">last_name =</span> <span class="st">&quot;Benveniste&quot;</span>, <span class="dt">affiliation =</span> <span class="st">&quot;World Bank&quot;</span>),</span>
+<span id="cb5-35"><a href="chapter02.html#cb5-35"></a>        <span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Jeffery&quot;</span>,  <span class="dt">last_name =</span> <span class="st">&quot;Marshall&quot;</span>,   <span class="dt">affiliation =</span> <span class="st">&quot;World Bank&quot;</span>),</span>
+<span id="cb5-36"><a href="chapter02.html#cb5-36"></a>        <span class="kw">list</span>(<span class="dt">first_name =</span> <span class="st">&quot;Lucrecia&quot;</span>, <span class="dt">last_name =</span> <span class="st">&quot;Santibañez&quot;</span>, <span class="dt">affiliation =</span> <span class="st">&quot;World Bank&quot;</span>)</span>
+<span id="cb5-37"><a href="chapter02.html#cb5-37"></a>      )</span>
+<span id="cb5-38"><a href="chapter02.html#cb5-38"></a>   )</span>
+<span id="cb5-39"><a href="chapter02.html#cb5-39"></a>)</span>
+<span id="cb5-40"><a href="chapter02.html#cb5-40"></a></span>
+<span id="cb5-41"><a href="chapter02.html#cb5-41"></a><span class="co"># Publish the metadata in the central catalog </span></span>
+<span id="cb5-42"><a href="chapter02.html#cb5-42"></a></span>
+<span id="cb5-43"><a href="chapter02.html#cb5-43"></a><span class="kw">add_document</span>(<span class="dt">idno =</span> doc_id, </span>
+<span id="cb5-44"><a href="chapter02.html#cb5-44"></a>             <span class="dt">metadata =</span> my_doc, </span>
+<span id="cb5-45"><a href="chapter02.html#cb5-45"></a>             <span class="dt">repositoryid =</span> <span class="st">&quot;central&quot;</span>, </span>
+<span id="cb5-46"><a href="chapter02.html#cb5-46"></a>             <span class="dt">published =</span> <span class="dv">1</span>,</span>
+<span id="cb5-47"><a href="chapter02.html#cb5-47"></a>             <span class="dt">thumbnail =</span> thumb,</span>
+<span id="cb5-48"><a href="chapter02.html#cb5-48"></a>             <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span>)</span>
+<span id="cb5-49"><a href="chapter02.html#cb5-49"></a></span>
+<span id="cb5-50"><a href="chapter02.html#cb5-50"></a><span class="co"># Add a link as an external resource of type document/analytical (doc/anl).</span></span>
+<span id="cb5-51"><a href="chapter02.html#cb5-51"></a></span>
+<span id="cb5-52"><a href="chapter02.html#cb5-52"></a><span class="kw">external_resources_add</span>(</span>
+<span id="cb5-53"><a href="chapter02.html#cb5-53"></a>  <span class="dt">title =</span> <span class="st">&quot;Teaching in Lao PDR&quot;</span>,</span>
+<span id="cb5-54"><a href="chapter02.html#cb5-54"></a>  <span class="dt">idno =</span> doc_id,</span>
+<span id="cb5-55"><a href="chapter02.html#cb5-55"></a>  <span class="dt">dctype =</span> <span class="st">&quot;doc/anl&quot;</span>,</span>
+<span id="cb5-56"><a href="chapter02.html#cb5-56"></a>  <span class="dt">file_path =</span> <span class="st">&quot;http://hdl.handle.net/10986/7710&quot;</span>,</span>
+<span id="cb5-57"><a href="chapter02.html#cb5-57"></a>  <span class="dt">overwrite =</span> <span class="st">&quot;yes&quot;</span></span>
+<span id="cb5-58"><a href="chapter02.html#cb5-58"></a>)</span></code></pre></div>
+<p>The document is now available in the NADA catalog.</p>
+<center>
+<img src="images/ReDoc_documents_21b.JPG" style="width:100.0%" />
+</center>
+</div>
+<div id="generating-compliant-metadata-using-python" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.3.3</span> Generating compliant metadata using Python<a href="chapter02.html#generating-compliant-metadata-using-python" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Python, the same process is implemented by creating a <em>dictionary</em> containing all required elements. Within this dictionary, metadata elements may be store as dictionaries or, for repeatable elements, as lists of dictionaries. The Python equivalent of the R example provided above is as follows:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="chapter02.html#cb6-1"></a><span class="im">import</span> pynada <span class="im">as</span> nada</span>
+<span id="cb6-2"><a href="chapter02.html#cb6-2"></a></span>
+<span id="cb6-3"><a href="chapter02.html#cb6-3"></a><span class="co"># Define the NADA catalog URL and provide an API key</span></span>
+<span id="cb6-4"><a href="chapter02.html#cb6-4"></a></span>
+<span id="cb6-5"><a href="chapter02.html#cb6-5"></a>set_api_url(<span class="st">&quot;http://nada-demo.ihsn.org/index.php/api/&quot;</span>)</span>
+<span id="cb6-6"><a href="chapter02.html#cb6-6"></a>set_api_key(<span class="st">&quot;a1b2c3d4e5&quot;</span>)  </span>
+<span id="cb6-7"><a href="chapter02.html#cb6-7"></a>    <span class="co"># Note: an administrator API key must always be kept strictly confidential; </span></span>
+<span id="cb6-8"><a href="chapter02.html#cb6-8"></a>    <span class="co"># It is good practice to read it from an external file, not to enter it in clear  </span></span>
+<span id="cb6-9"><a href="chapter02.html#cb6-9"></a></span>
+<span id="cb6-10"><a href="chapter02.html#cb6-10"></a>thumb  <span class="op">&lt;-</span> <span class="st">&quot;C:/DOCS/teaching_lao.JPG&quot;</span>  <span class="co"># Cover page image to be used as thumbnail</span></span>
+<span id="cb6-11"><a href="chapter02.html#cb6-11"></a></span>
+<span id="cb6-12"><a href="chapter02.html#cb6-12"></a><span class="co"># Generate and publish the metadata on the publication</span></span>
+<span id="cb6-13"><a href="chapter02.html#cb6-13"></a></span>
+<span id="cb6-14"><a href="chapter02.html#cb6-14"></a>doc_id <span class="op">=</span> <span class="st">&quot;ABC001&quot;</span></span>
+<span id="cb6-15"><a href="chapter02.html#cb6-15"></a></span>
+<span id="cb6-16"><a href="chapter02.html#cb6-16"></a>document_description <span class="op">=</span> {</span>
+<span id="cb6-17"><a href="chapter02.html#cb6-17"></a></span>
+<span id="cb6-18"><a href="chapter02.html#cb6-18"></a>  <span class="st">&#39;title_statement&#39;</span>: {</span>
+<span id="cb6-19"><a href="chapter02.html#cb6-19"></a>      <span class="st">&#39;idno&#39;</span>: <span class="st">&quot;ABC001&quot;</span>,</span>
+<span id="cb6-20"><a href="chapter02.html#cb6-20"></a>      <span class="st">&#39;title&#39;</span>: <span class="st">&quot;Teaching in Lao PDR&quot;</span></span>
+<span id="cb6-21"><a href="chapter02.html#cb6-21"></a>  },</span>
+<span id="cb6-22"><a href="chapter02.html#cb6-22"></a>  </span>
+<span id="cb6-23"><a href="chapter02.html#cb6-23"></a>  <span class="st">&#39;date_published&#39;</span>: <span class="st">&quot;2007&quot;</span>,</span>
+<span id="cb6-24"><a href="chapter02.html#cb6-24"></a></span>
+<span id="cb6-25"><a href="chapter02.html#cb6-25"></a>  <span class="st">&#39;ref_country&#39;</span>: [</span>
+<span id="cb6-26"><a href="chapter02.html#cb6-26"></a>        {<span class="st">&#39;name&#39;</span>: <span class="st">&quot;Lao PDR&quot;</span>, <span class="st">&#39;code&#39;</span>: <span class="st">&quot;Lao&quot;</span>}</span>
+<span id="cb6-27"><a href="chapter02.html#cb6-27"></a>    ],</span>
+<span id="cb6-28"><a href="chapter02.html#cb6-28"></a>  </span>
+<span id="cb6-29"><a href="chapter02.html#cb6-29"></a>  <span class="co"># Authors: we only have one author, but this is a list of lists </span></span>
+<span id="cb6-30"><a href="chapter02.html#cb6-30"></a>  <span class="co"># as the &#39;authors&#39; element is a repeatable element in the schema</span></span>
+<span id="cb6-31"><a href="chapter02.html#cb6-31"></a>  <span class="st">&#39;authors&#39;</span>: [</span>
+<span id="cb6-32"><a href="chapter02.html#cb6-32"></a>      {<span class="st">&#39;first_name&#39;</span>: <span class="st">&quot;Luis&quot;</span>,     <span class="st">&#39;last_name&#39;</span>: <span class="st">&quot;Benveniste&quot;</span>, <span class="st">&#39;affiliation&#39;</span> <span class="op">=</span> <span class="st">&quot;World Bank&quot;</span>},</span>
+<span id="cb6-33"><a href="chapter02.html#cb6-33"></a>      {<span class="st">&#39;first_name&#39;</span>: <span class="st">&quot;Jeffery&quot;</span>,  <span class="st">&#39;last_name&#39;</span>: <span class="st">&quot;Marshall&quot;</span>,   <span class="st">&#39;affiliation&#39;</span> <span class="op">=</span> <span class="st">&quot;World Bank&quot;</span>},</span>
+<span id="cb6-34"><a href="chapter02.html#cb6-34"></a>      {<span class="st">&#39;first_name&#39;</span>: <span class="st">&quot;Lucrecia&quot;</span>, <span class="st">&#39;last_name&#39;</span>: <span class="st">&quot;Santibañez&quot;</span>, <span class="st">&#39;affiliation&#39;</span> <span class="op">=</span> <span class="st">&quot;World Bank&quot;</span>},</span>
+<span id="cb6-35"><a href="chapter02.html#cb6-35"></a>  ]</span>
+<span id="cb6-36"><a href="chapter02.html#cb6-36"></a>}</span>
+<span id="cb6-37"><a href="chapter02.html#cb6-37"></a></span>
+<span id="cb6-38"><a href="chapter02.html#cb6-38"></a><span class="co"># Publish the metadata in the central catalog </span></span>
+<span id="cb6-39"><a href="chapter02.html#cb6-39"></a></span>
+<span id="cb6-40"><a href="chapter02.html#cb6-40"></a>nada.create_document_dataset(</span>
+<span id="cb6-41"><a href="chapter02.html#cb6-41"></a>  dataset_id <span class="op">=</span> doc_id,</span>
+<span id="cb6-42"><a href="chapter02.html#cb6-42"></a>  repository_id <span class="op">=</span> <span class="st">&quot;central&quot;</span>,</span>
+<span id="cb6-43"><a href="chapter02.html#cb6-43"></a>  published <span class="op">=</span> <span class="dv">1</span>,</span>
+<span id="cb6-44"><a href="chapter02.html#cb6-44"></a>  overwrite <span class="op">=</span> <span class="st">&quot;yes&quot;</span>,</span>
+<span id="cb6-45"><a href="chapter02.html#cb6-45"></a>  my_doc_metadata,             <span class="op">@@@@@@</span></span>
+<span id="cb6-46"><a href="chapter02.html#cb6-46"></a>  thumbnail_path <span class="op">=</span> thumb)</span>
+<span id="cb6-47"><a href="chapter02.html#cb6-47"></a></span>
+<span id="cb6-48"><a href="chapter02.html#cb6-48"></a><span class="co"># Add a link as an external resource of type document/analytical (doc/anl).</span></span>
+<span id="cb6-49"><a href="chapter02.html#cb6-49"></a></span>
+<span id="cb6-50"><a href="chapter02.html#cb6-50"></a>nada.add_resource(</span>
+<span id="cb6-51"><a href="chapter02.html#cb6-51"></a>  dataset_id <span class="op">=</span> doc_id,</span>
+<span id="cb6-52"><a href="chapter02.html#cb6-52"></a>  dctype <span class="op">=</span> <span class="st">&quot;doc/anl&quot;</span>,</span>
+<span id="cb6-53"><a href="chapter02.html#cb6-53"></a>  title <span class="op">=</span> <span class="st">&quot;Teaching in Lao PDR&quot;</span>,</span>
+<span id="cb6-54"><a href="chapter02.html#cb6-54"></a>  file_path <span class="op">=</span> <span class="st">&quot;http://hdl.handle.net/10986/7710&quot;</span>,</span>
+<span id="cb6-55"><a href="chapter02.html#cb6-55"></a>  overwrite <span class="op">=</span> <span class="st">&quot;yes&quot;</span>)</span></code></pre></div>
+</div>
+<div id="generating-compliant-metadata-using-metadata-editors" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.3.4</span> Generating compliant metadata using metadata editors<a href="chapter02.html#generating-compliant-metadata-using-metadata-editors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R and Python are powerful tools to generate metadata in a flexible and efficient manner. They offer opportunities to automate tasks, to extract metadata from APIs or data files, to augment metadata, and to provide full transparency and replicability in the metadata production process. But this requires a certain level of expertise in R or Python. To support users who do not have such expertise, and to facilitate the use of complex metadata standards, specialized <em>metadata editors</em> have been developed to document certain types of data, in particular microdata (with the DDI metadata standard) and geospatial data (with the ISO 19139 metadata standard).</p>
+<p>The <a href="http://www.nesstar.com/software/publisher.html">Nesstar Publisher</a> is a popular DDI metadata editor used to document microdata. The application, developed and published by the Norwegian Centre for Research Data, was built around the DDI Codebook 1.n version. It also makes use of Dublin Core elements to document external resources. The application, built on an outdated technology and DDI version, is however not maintained anymore. The World Bank has initiated the development of a more modern and open source version of this application, compatible with the most recent version of DDI Codebook (and other metadata standards).</p>
+<p>For documenting geographic datasets and services, the <a href="https://geonetwork-opensource.org/">GeoNetwork metadata editor</a>, an <a href="https://www.osgeo.org/">OSGeo</a> project, supports ISO 19115/19119/19110 standards. Other tools like the open-source R package <a href="https://cran.r-project.org/web/packages/geometa/index.html">geometa</a> (<em>Tools for Reading and Writing ISO/OGC Geographic Metadata</em>) can also help data curators in the production of structured metadata.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter01.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter03.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SCHEMA_GUIDE.pdf", "SCHEMA_GUIDE.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
