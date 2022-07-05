@@ -21,7 +21,7 @@ output: html_document
                                                   
 ##	Indicators, time series, database, and scope of the schema
 
-**Indicators** are summary measures related to key issues or phenomena, derived from a series of observed facts. Indicators form **time series** when they are provided with a temporal ordering, i.e. when their values are provided with an ordered annual, quarterly, monthly, daily, or other time reference. In the context of this Guide, we consider as time series all indicators provided with an associated time, whether this time represents a regular, continuous series or not. For example, the indicators provided by the Demographic and Health Surveys (DHS) [StatCompiler](https://www.statcompiler.com/en/), which are only available for the years when DHS are conducted in countries (which for some countries can be a single year), would be considered as "time series".
+**Indicators** are summary measures related to key issues or phenomena, derived from observed facts. Indicators form **time series** when they are provided with a temporal ordering, i.e. when their values are provided with an ordered annual, quarterly, monthly, daily, or other time reference. Time series are usually published with equal intervals between values. In the context of this Guide, we however consider as time series all indicators provided for a given geographic area with an associated time reference, whether this time represents a regular, continuous succession of time stamps or not. For example, the indicators provided by the Demographic and Health Surveys (DHS) [StatCompiler](https://www.statcompiler.com/en/), which are only available for the years when DHS are conducted in countries (which for some countries can be a single year), would be considered here as "time series".
 
 Time series are often contained in multi-indicators databases, like the World Bank's [World Development Indicators - WDI](https://datatopics.worldbank.org/world-development-indicators/), whose on-line version contains series for 1,430 indicators (as of 2021). To document not only the series but also the databases they belong to, we propose two metadata schemas: one to document the series/indicators, the other one to document the databases they belong to. 
 
@@ -47,7 +47,7 @@ The (optional) **SOURCE DATABASE** tab will display the metadata related to the 
 
 - Indicators and time series often come with metadata limited to the indicators/series name and a brief definition. This significantly reduces the discoverability of the indicators, and the possibility to implement semantic searchability and recommender systems. It is therefore highly recommended to generate more detailed metadata for each time series, including information on the purpose and typical use of the indicators, of its relevancy to different audiences, of its limitations, and more.
 
-- When documenting an indicator or time series, attention should be paid to include keywords and phrases in the metadata that reflect how data users are likely to formulate their queries when searching data catalogs. Subject-matter expertise, combined with regular assessment of queries submitted to data catalogs, can help in identifying such keywords. For example, the metadata related to an indicator "Prevalence of stunting" should contain the keyword "malnutrition", or the metadata related to "GDP per capita" should include keywords like "economic growth". By doing so, data curators will provide richer input to search engines and to machine learning models (topic models and word embedding models) used to enable semantic searchability and recommender systems. This will have a significant and direct impact on the searchability and discoverability of the data. 
+- When documenting an indicator or time series, attention should be paid to include keywords and phrases in the metadata that reflect how data users are likely to formulate their queries when searching data catalogs. Subject-matter expertise, combined with an analysis of queries submitted to data catalogs, can help to identify such keywords. For example, the metadata related to an indicator "Prevalence of stunting" should contain the keyword "malnutrition", and the metadata related to "GDP per capita" should include keywords like "economic growth" or "national income". By doing so, data curators will provide richer input to search engines and recommender systems, and will have a significant and direct impact on the discoverability of the data. 
 :::
 
 
@@ -64,7 +64,7 @@ The (optional) **SOURCE DATABASE** tab will display the metadata related to the 
 
 ## Schema description
 
-An indicator or time series is documented using the **time series /indicators** schema. The **database** schema is optional, and used to document the database, if any, that the indicator belongs to. When multiple series of a same database are documented, the metadata related to the database will only need to be generated once, then applied to all series. One element in the **time series /indicators** schema is used to establish the link between the indicator and the database.
+An indicator or time series is documented using the **time series /indicators** schema. The **database** schema is optional, and used to document the database, if any, that the indicator belongs to. When multiple series of a same database are documented, the metadata related to the database only needs to be generated once, then applied to all series. One metadata element in the **time series /indicators** schema is used to link an indicator to the corresponding database.
 
 
 
@@ -81,13 +81,13 @@ An indicator or time series is documented using the **time series /indicators** 
 
 The **database** schema is used to document the database that contains the time series, not to document the indicators or /series. 
 
-The schema includes two elements that are not metadata, but parameters used when publishing the metadata in a catalog:
+The schema includes two elements that are not metadata, but parameters used when publishing the metadata in a NADA catalog:
 
-- **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished). This value must be set to 1 (published) to make the metadata visible. Note that the database metadata will only be shown in NADA in association with the metadata of an indicator. 
+- **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished), in which case it is only visible to catalog administrators. This value must be set to 1 (published) to make the metadata visible. Note that the database metadata will only be shown in NADA in association with the metadata of an indicator. 
 <br>
 ![](./images/ReDoc_ts_database_02.JPG){width=100%}
 <br>
-- **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same database can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that a database will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element  `database_description > title_statement > idno` is the same.
+- **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same database can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. A database will be considered as being the same as a previously uploaded one if they have the same identifier (provided in the metadata element `database_description > title_statement > idno`).
 
 
 
@@ -102,7 +102,7 @@ The schema includes two elements that are not metadata, but parameters used when
 #### Metadata information
 
 **`metadata_information`** *[Optional, Not Repeatable]* <br>
-The set of elements in `metadata_information` is used to provide information on the production of the database metadata. This information is used mostly for administrative purposes by data curators and catalog administrators. It is not useful to data users.
+The set of elements in `metadata_information` is used to provide information on the production of the database metadata. This information is used mostly for administrative purposes by data curators and catalog administrators.
 
 ![](./images/ReDoc_ts_database_01.JPG){width=100%}
 
@@ -153,11 +153,10 @@ The version of the metadata (not the version of the database).
 
   ![](./images/ReDoc_ts_database_03.JPG){width=100%}
   - **`idno`** *[Required ; Not repeatable ; String]* <br>
-  A unique identifier of the database. For example, the World Bank's World Development Indicators database, version of April 2020, could have `idno` = "WB_WDI_APR_2020".
+  A unique identifier of the database. For example, the World Bank's World Development Indicators database published in April 2020 could have `idno` = WB_WDI_APR_2020.
   - **`identifiers`** *[Optional ; Repeatable]* <br>
-  This element is used to enter database identifiers (IDs) other than the catalog ID entered in `idno`. It can for example be a Digital Object Identifier (DOI). The `idno` can be repeated here (`idno` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
-
-    ![](./images/ReDoc_documents_07.JPG){width=100%}
+  This element is used to store database identifiers (IDs) other than the catalog ID entered in `idno`. It can for example be a Digital Object Identifier (DOI). The `idno` can be repeated here (`idno` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
+  
     - **`type`** *[Optional ; Not repeatable ; String]* <br>
     The type of unique ID, e.g. "DOI".<br>
     - **`value`** *[Required ; Not repeatable ; String]* <br>
