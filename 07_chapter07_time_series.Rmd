@@ -123,7 +123,7 @@ A list and description of the producers of the database metadata (not the produc
 - **`prod_date`** *[Optional ; Not repeatable ; String]* <br>
 The date when the metadata was produced, preferably entered in ISO 8601 format (YYYY-MM-DD).<br>
 - **`version`** *[Optional ; Not repeatable ; String]* <br>
-The version of the metadata (not the version of the database).
+The version of the metadata (not the version of the database).<br>
     
     
     
@@ -153,15 +153,13 @@ The version of the metadata (not the version of the database).
 
   ![](./images/ReDoc_ts_database_03.JPG){width=100%}
   - **`idno`** *[Required ; Not repeatable ; String]* <br>
-  A unique identifier of the database. For example, the World Bank's World Development Indicators database published in April 2020 could have `idno` = WB_WDI_APR_2020.
+  A unique identifier of the database. For example, the World Bank's World Development Indicators database published in April 2020 could have `idno` = "WB_WDI_APR_2020".
   - **`identifiers`** *[Optional ; Repeatable]* <br>
   This element is used to store database identifiers (IDs) other than the catalog ID entered in `idno`. It can for example be a Digital Object Identifier (DOI). The `idno` can be repeated here (`idno` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
-  
     - **`type`** *[Optional ; Not repeatable ; String]* <br>
     The type of unique ID, e.g. "DOI".<br>
     - **`value`** *[Required ; Not repeatable ; String]* <br>
-    The identifier itself.<br><br>
-    
+    The identifier itself.<br>
   - **`title`** *[Required ; Not repeatable ; String]* <br>
   The title is the name by which the database is formally known. It is good practice to include the year of production in the title (and possibly the month, or quarter, if a new version of the database is released more than once a year). For example, "World Development Indicators, April 2020".<br>  
   - **`sub_title`** *[Optional ; Not repeatable ; String]* <br>
@@ -207,7 +205,7 @@ This set of five elements is used to identify the organization(s) or person(s) w
 - **`abstract`** *[Optional ; Not repeatable ; String]* <br>
 
   ![](./images/ReDoc_ts_database_05.JPG){width=100%}
-  The `abstract` is a brief description of the database. It can for example include a short statement on the database scope and coverage (not in detail, as other fields are available for that purpose), objectives, history, and expected audience.
+  The `abstract` is a brief description of the database. It can for example include a short statement on the database scope and coverage (not in detail, as other fields are available for that purpose), objectives, history, and expected audience.<br>
 
 
  <!--  __   ___  _  _                _  -->
@@ -220,7 +218,7 @@ This set of five elements is used to identify the organization(s) or person(s) w
 - **`url`** *[Optional ; Not repeatable ; String]* <br>
 
   ![](./images/ReDoc_ts_database_06.JPG){width=100%}
-  The link to the public interface of the database (home page). 
+  The link to the public interface of the database (home page). <br>
 
 
  <!--  __   ___    _____    _                     -->
@@ -235,7 +233,7 @@ This set of five elements is used to identify the organization(s) or person(s) w
 - **`type`** *[Optional ; Not repeatable ; String]*<br>
 
   ![](./images/ReDoc_ts_database_07.JPG){width=100%}
-  The type of database. 
+  The type of database. <br>
 
 
  <!--  __   ___     __         _       _  -->
@@ -248,7 +246,7 @@ This set of five elements is used to identify the organization(s) or person(s) w
 - **`doi`** *[Optional ; Not repeatable ; String]* <br>
 
   ![](./images/ReDoc_ts_database_08.JPG){width=100%}
-  The Digital Object Identifier (DOI) for the database, if available. This complements the `idno` field (note that the DOI can be used as `idno`). DOIs provide a solution to guarantee the global uniqueness of an identifier. Their use is highly recommended. DOIs should be included in citation requirements.  
+  The Digital Object Identifier (DOI) for the database, if available. This complements the `idno` field (note that the DOI can be used as `idno`). DOIs provide a solution to guarantee the global uniqueness of an identifier. Their use is highly recommended. DOIs should be included in citation requirements.<br>
 
 
  <!--  __   ___   ______       _       _                             _           _  -->
@@ -274,7 +272,7 @@ This is the date the database was created. The date should be entered in ISO 860
  <!--                                           |_|                                          -->
  
 - **`date_published`** <br>
-This is the date the database was made public. The date should be entered in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY). 
+This is the date the database was made public. The date should be entered in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY). <br>
 
 
 
@@ -312,7 +310,7 @@ A database rarely remains static; it will be regularly updated and upgraded. The
 Indicates at which frequency the database is updated (for example, "annual" or "quarterly"). The use of a controlled vocabulary is recommended. If a database contains many indicators, the update frequency may vary by indicator (e.g., some may be updated on a monthly or quarterly basis while others are only updated annually). The information provided in the `update_frequency` will correspond to the frequency of update for the indicators that are most frequently updated. 
 
   ![](./images/ReDoc_ts_database_11.JPG){width=100%}
-
+<br>
   
  <!--  __   ___   __ __              _              _       _       -->
  <!-- /_ | |__ \ /_ /_ |            | |            | |     | |      -->
@@ -345,8 +343,6 @@ The time coverage is the time span of all the data contained in the database acr
   - **`end`** *[Optional ; Not repeatable ; String]* <br>
   Indicates the end date of the period covered by the data (across all series) in the database. The date should be provided in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY).<br><br>
 
-  
-
 
  <!--  __   ___   __ ____     _   _                                                     _        -->
  <!-- /_ | |__ \ /_ |___ \   | | (_)                                                   | |       -->
@@ -358,7 +354,7 @@ The time coverage is the time span of all the data contained in the database acr
  <!--                                                               |___/                        -->
 
 - **`time_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
-The element is used to annotate and/or describe auxiliary information related to the time coverage described in `time_coverage`.
+The element is used to annotate and/or describe auxiliary information related to the time coverage described in `time_coverage`.<br>
 
 
 
@@ -371,7 +367,7 @@ The element is used to annotate and/or describe auxiliary information related to
  <!--                        | |                                          __/ | -->
  <!--                        |_|                                         |___/  -->
 
-- **`periodicity`** *[Optional ; Repeatable* <br>
+- **`periodicity`** *[Optional ; Repeatable]* <br>
 The periodicity of the data describes the periodicity of the indicators contained in the database. A database can contain series covering different periods, in which case the information will be repeated for each type of periodicity. A controlled vocabulary should be used.
 
   ![](./images/ReDoc_ts_database_13.JPG){width=100%}
@@ -391,7 +387,7 @@ Themes provide a general idea of the research that might guide the creation and/
 
   ![](./images/ReDoc_ts_database_14.JPG){width=100%}
   - **`id`** *[Optional ; Not repeatable ; String]*<br>
-  The unique identifier of the theme. It can be a sequential number, or the ID of the theme in a controlled vocabulary.
+  The unique identifier of the theme. It can be a sequential number, or the identifier of the theme in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The label of the theme associated with the data. 
   - **`parent_id`** *[Optional ; Not repeatable ; String]*<br>
@@ -412,11 +408,11 @@ Themes provide a general idea of the research that might guide the creation and/
  <!--                                 |_|                -->
 
 - **`topics`** *[Optional ; Repeatable]*<br>
-The `topics` field indicates the broad substantive topic(s) that the indicator/series covers. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) tpoic classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification).<br>
+The `topics` field indicates the broad substantive topic(s) that the indicator/series covers. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) topic classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification).<br>
 
   ![](./images/ReDoc_ts_database_15.JPG){width=100%}
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
-  The unique identifier of the topic. It can be a sequential number, or the ID of the topic in a controlled vocabulary.
+  The unique identifier of the topic. It can be a sequential number, or the identifier of the topic in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The label of the topic associated with the data.  
   - **`parent_id`** *[Optional ; Not repeatable ; String]* <br>
@@ -436,15 +432,15 @@ The `topics` field indicates the broad substantive topic(s) that the indicator/s
  <!--                                   __/ |                             -->
  <!--                                  |___/                              -->
                                   
-- **`keywords`** *[DDI: \<keyword>\ ; Optional ; Repeatable]* <br>
+- **`keywords`** *[Optional ; Repeatable]* <br>
 Words or phrases that describe salient aspects of a data collection's content. This can be used for building keyword indexes and for classification and retrieval purposes. Keywords can be selected from a standard thesaurus, preferably an international, multilingual thesaurus. The list of keywords can include keywords extracted from one or more controlled vocabularies and user-defined keywords. 
 
   ![](./images/ReDoc_ts_database_16.JPG){width=100%}
-  - **`name`** *[DDI: \<keyword>\ ; Required ; String ; Non repeatable]* <br>
+  - **`name`** *[Required ; String ; Non repeatable]* <br>
   A keyword (or phrase).  
-  - **`vocab`** *[DDI: \<vocab>\ ; Optional ; Not repeatable ; String]* <br>
+  - **`vocab`** *[Optional ; Not repeatable ; String]* <br>
   The name of the controlled vocabulary from which the keyword was extracted, if any.  
-  - **`uri`** *[DDI: \<vocabURI>\ ; Optional ; Not repeatable ; String]* <br>
+  - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URI of the controlled vocabulary used, if any.<br><br>
 
 
@@ -1828,15 +1824,15 @@ This element provides information on the source(s) of data that were used to gen
  <!--                                       __/ |                             -->
  <!--                                      |___/                              -->
 
-- **`keywords`** *[DDI: \<keyword>\ ; Optional ; Repeatable]* <br>
+- **`keywords`** *[Optional ; Repeatable]* <br>
 Words or phrases that describe salient aspects of a data collection's content. Can be used for building keyword indexes and for classification and retrieval purposes. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
 
   ![](./images/ReDoc_ts_series_39.JPG){width=100%}
-  - **`name`** *[DDI: \<keyword>\ ; Required ; String ; Non repeatable]* <br>
+  - **`name`** *[Required ; String ; Non repeatable]* <br>
   Keyword (or phrase). Keywords summarize the content or subject matter of the study. 
-  - **`vocab`** *[DDI: \<vocab>\ ; Optional ; Not repeatable ; String]* <br>
+  - **`vocab`** *[Optional ; Not repeatable ; String]* <br>
   Controlled vocabulary from which the keyword is extracted, if any.  
-  - **`uri`** *[DDI: \<vocabURI>\ ; Optional ; Not repeatable ; String]* <br>
+  - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URI of the controlled vocabulary used, if any.
 
 
