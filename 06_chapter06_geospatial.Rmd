@@ -547,7 +547,7 @@ The **extent** defines the boundaries of the dataset in space (horizontally and 
 
  Element       | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
-| `geographicElement`     | Spatial (horizontal) extent element. This can be defined either with a `geographicBoundingBox` providing the coordinates bounding the limits of the dataset, by means of four properties: `southBoundLongitude`, `westBoundLongitude`, `northBoundLongitude`, `eastBoundLongitude` (recommended); or using `geographicDescription` - free text that defines the area covered.|
+| `geographicElement`     | Spatial (horizontal) extent element. This can be defined either with a `geographicBoundingBox` providing the coordinates bounding the limits of the dataset, by means of four properties: `southBoundLongitude`, `westBoundLongitude`, `northBoundLongitude`, `eastBoundLongitude` (recommended); or using `geographicDescription` - free text that defines the area covered. When the dataset covers one or more countries, it is recommended to enter the country names in this element, as it can then be used in data catalogs for filtering by geography.|
 | `verticalElement`        | Spatial (vertical) extent element, providing two properties: `minimumValue`, `maximumValue` and `verticalCRS` (reference to the vertical coordinate reference system)  |
 | `temporalElement`   | Temporal extent element. Depending on the temporal characteristics of the dataset, this will consist in a `TimePeriod` (made of a `beginPosition` and `endPosition`) or a `TimeInstant` (made of a single `timePosition`) referencing date/time information according to [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)                |
 
@@ -2866,7 +2866,8 @@ my_geo_data <- list(
                 westBoundLongitude = bbox(ras)[1,1],
                 northBoundLatitude = bbox(ras)[2,2],
                 eastBoundLongitude = bbox(ras)[1,2]
-              )
+              ),
+              geographicDescription = "Ethiopia"
             )
           )
         ),
