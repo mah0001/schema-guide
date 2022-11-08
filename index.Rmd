@@ -30,7 +30,7 @@ The Guide was written by Olivier Dupriez (Lead Statistician, World Bank) and Meh
 The production of the Guide and related tools has been made possible by financial contributions from:
 
    - The [International Household Survey Network (IHSN)](www.ihsn.org) Trust Fund, project P167116, Grant No TF0A7461, by the Foreign, Commonwealth & Development Office (FCDO) of the United Kingdom (formerly the Department for International Development - DfID).
-   - The UK-UNHCR-World Bank research program on forced displacement by FCDO (FCV Data Platform component, project P174529, Grant No TF0B4149). This project did not specifically sponsor the production of the Guide, but supported the development of a data platform which led to the improvement and testing of some of the metadata schemas described in the Guide.
+   - The UK Aid-UNHCR-World Bank research program Building the Evidence on Protracted Forced Displacement, funded by the UK government (FCV Data Platform component, project P174529, Grant No TF0B4149). This project did not specifically sponsor the production of the Guide, but supported the development of a data platform which led to the improvement and testing of some of the metadata schemas described in the Guide.
    - The World Bank - UNHCR Joint Data Center's Microdata Library project P174080, Grant No TF0B4772, administered by the World Bank Development Data Group.
    - The World Bank administrative budget.
 
