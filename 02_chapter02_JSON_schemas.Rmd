@@ -18,7 +18,9 @@ Metadata standards and schemas consist of structured lists of metadata fields. T
 
 Some international metadata standards like the Data Documentation Initative (DDI Codebook, for microdata), the Dublin Core (a generic metadata specification, which we use to document documents), or the ISO 19139 (for geospatial data) are defined and published as XML specifications. XML schemas can be translated into JSON schemas, which is our preferred format (a choice we justify in the next section). The standards and schemas that we cover in this Guide are presented in their JSON version.  
 
-The JSON format is open, non-propriertary. JSON files are language-independent plain text files. Metadata in JSON files are stored as *key/value* pairs where the keys are the metadata element names. For example, the name of a *key* can be "title", and the value attached to it could be "Labor Force Survey 2020". Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). The example below shows how this format would be used in a metadata schema to document the list of authors of a document, using elements from the Dublin Core metadata standard.   
+The JSON format is open, non-propriertary. JSON files are language-independent plain text files. Metadata in JSON files are stored as *key/value* pairs where the keys are the metadata element names. For example, the name of a *key* can be "title", and the value attached to it could be "Labor Force Survey 2020". Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). 
+
+The example below shows how this format would be used in a metadata schema to document the list of authors of a document, using elements from the Dublin Core metadata standard.   
 
 <center>
 ![](./images/document_example_01_authors_keywords.JPG){width=100%}
@@ -158,7 +160,7 @@ Most elements in metadata standards and schemas are optional. Schema-compliant m
 
 Metadata compliant with all schemas presented in this Guide can in principle be generated using programming languages. We show below how these schemas, as described in their [on-line documentation](https://ihsn.github.io/nada-api-redoc/catalog-admin/#), translate into R and Python scripts. Generating metadata using R will consist of producing a *list* object (itself containing lists), while generating metadata using Python will consist of producing a *dictionary* object (itself containing lists and dictionaries). The Guide provides many practical examples. The core principles are presented below.
 
-:::note
+:::Note
 The sequence in which the metadata elements are created when documenting a dataset using R or Python does not have to match the sequence in the schema documentation. :::
 
 ### Interpreting the metadata documentation (API)
