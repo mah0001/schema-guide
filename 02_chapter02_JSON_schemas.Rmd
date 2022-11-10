@@ -14,22 +14,11 @@ output: html_document
                                                    
 ## The JSON and XML formats 
 
-Metadata standards and schemas consist of structured lists of metadata fields. They serve multiple purposes. First, they help data curators document datasets, ensuring completeness and usability. The schema must be sufficiently intuitive and *human-readable* to allow data curators to generate and organize their metadata according to the schema. Second, they are the input to software and database applications including metadata editors and data catalogs. The schemas must thus also be *machine-readable*, and available in open file formats. JSON (JavaScript Object Notation) and XML (eXtended Markup Language) are the most suitable formats for these purposes.
+Metadata standards and schemas consist of structured lists of metadata fields. They serve multiple purposes. First, they help data curators generate complete and usable documentation of their datasets. Metadata standards that are intuitive and *human-readable* better serve this purpose. Second, standards and schemas help generate machine-readable metadata to be used as input to software and database applications like data catalogs. Metadata available in open file formats like JSON (JavaScript Object Notation) and XML (eXtended Markup Language) are most suitable for this purposes.
 
-Some international metadata standards like the Data Documentation Initative (DDI, for microdata), the Dublin Core (a generic metadata specification, which we use to document documents), or the ISO 19139 (for geospatial data) are defined and published as XML specifications. XML schemas can be "translated" into JSON schemas, which is our preferred format (a choice we justify in the next section). All standards and schemas we document and recommend in this Guide are presented in their JSON version. Our JSON schemas are in some cases limited to a subset of the original XML schema, as we excluded elements that are rarely used. This has minor impact on the utility of the schemas, but significantly increases their usability. 
+Some international metadata standards like the Data Documentation Initative (DDI Codebook, for microdata), the Dublin Core (a generic metadata specification, which we use to document documents), or the ISO 19139 (for geospatial data) are defined and published as XML specifications. XML schemas can be translated into JSON schemas, which is our preferred format (a choice we justify in the next section). The standards and schemas that we cover in this Guide are presented in their JSON version.  
 
-The JSON format has the following characteristics (this information was extracted from [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)):
-
-   - JSON is a syntax for storing and exchanging data
-   - JSON files are text files (open), written with JavaScript object notation
-   - JSON is a lightweight data-interchange format
-   - JSON is language independent 
-   - Data in JSON files are stored as *key/value* pairs. Keys must be strings, written with double quotes. For example, the name of a metadata field (the *key*) can be "first_name", and the value attached to it could be "John". Values can have one of the following data types: string, number, JSON object, array, boolean, or null. 
-   - Data in JSON files are separated by commas
-   - Square brackets hold arrays
-   - Curly braces hold objects 
-
-The example below shows how this format would be used in a metadata schema to document the list of authors of a document, using elements from the Dublin Core standard.   
+The JSON format is open, non-propriertary. JSON files are language-independent plain text files. Metadata in JSON files are stored as *key/value* pairs where the keys are the metadata element names. For example, the name of a *key* can be "title", and the value attached to it could be "Labor Force Survey 2020". Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). The example below shows how this format would be used in a metadata schema to document the list of authors of a document, using elements from the Dublin Core metadata standard.   
 
 <center>
 ![](./images/document_example_01_authors_keywords.JPG){width=100%}
@@ -54,7 +43,7 @@ In JSON, this information will be stored as follows.
 ]
 ```
 
-The same information in XML format is as follows: 
+The same information stored in XML format is as follows: 
 
 ```{xml}
 <authors>
@@ -93,7 +82,7 @@ JSON and XML formats have similarities:
    - Both are hierarchical (they contain values within values)
    - Both can be parsed and used by many programming languages including R and Python
 
-A main difference is that XML files have to be parsed with an XML parser, while JSON files can be parsed by a standard JavaScript function. JSON files are thus easier to parse than XML, and easier to read by humans, which makes them our preferred choice. We will show in this Guide how JSON metadata schemas correspond to lists in R or Python, making it possible to generate metadata programmatically. 
+JSON files are easier than XML to parse and to generate programatically (we will show in this Guide how JSON metadata schemas correspond to lists in R and to dictionaries in Python), and easier to read by humans. This makes them our preferred choice. 
 
 
 
