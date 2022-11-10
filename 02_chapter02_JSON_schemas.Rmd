@@ -160,8 +160,10 @@ Most elements in metadata standards and schemas are optional. Schema-compliant m
 
 Metadata compliant with all schemas presented in this Guide can in principle be generated using programming languages. We show below how these schemas, as described in their [on-line documentation](https://ihsn.github.io/nada-api-redoc/catalog-admin/#), translate into R and Python scripts. Generating metadata using R will consist of producing a *list* object (itself containing lists), while generating metadata using Python will consist of producing a *dictionary* object (itself containing lists and dictionaries). The Guide provides many practical examples. The core principles are presented below.
 
-:::Note
-The sequence in which the metadata elements are created when documenting a dataset using R or Python does not have to match the sequence in the schema documentation. :::
+:::note
+The sequence in which the metadata elements are created when documenting a dataset using R or Python does not have to match the sequence in the schema documentation.
+:::
+
 
 ### Interpreting the metadata documentation (API)
 
