@@ -154,49 +154,32 @@ The schemas can also provide default values and controlled vocabularies for some
  <!--                                                __/ | -->
  <!--                                               |___/  -->
                                                
-## Translating a JSON schema into R and Python 
+## How to generate metadata? 
+
+Metadata compliant with any of the standards and schemas described in this Guide can be generated in two different ways: programatically using a programming language like R or Python, or using a specialized metadata editor application.
 
 Most elements in metadata standards and schemas are optional. Schema-compliant metadata can thus be very brief and simple. But the objective of data curators should always be to generate and publish as much and as detailed metadata as possible. This means that metadata documents can be long and relatively complex. This will for example be the case of metadata compliant with the DDI metadata standard used to document microdata, which contains elements that describe each variable in a dataset with elements that include (optional) summary statistics. As a dataset can contain thousands of variables, the production of such metadata requires the use of a specialized metadata editor (the metadata editor would read the data files and generate a DDI-compliant list of variables with their name, label, summary statistics). When the metadata are not too complex, they can be generated using languages like R and Python. For example, the documentation of publications or images will typically only require a few simple metadata elements (author, title, date, etc.) Generating metadata using programming languages has significant advantages. It allows automation, and makes the documentation process fully replicable and transparent. 
 
-Metadata compliant with all schemas presented in this Guide can in principle be generated using programming languages. We show below how these schemas, as described in their [on-line documentation](https://ihsn.github.io/nada-api-redoc/catalog-admin/#), translate into R and Python scripts. Generating metadata using R will consist of producing a *list* object (itself containing lists), while generating metadata using Python will consist of producing a *dictionary* object (itself containing lists and dictionaries). The Guide provides many practical examples. The core principles are presented below.
+
 
 :::note
 The sequence in which the metadata elements are created when documenting a dataset using R or Python does not have to match the sequence in the schema documentation.
 :::
 
 
-### Interpreting the metadata documentation (API)
 
-The metadata schemas are [documented on-line](https://ihsn.github.io/nada-api-redoc/catalog-admin/#). In this documentation, curly brackets indicate that a list (in R) or a dictionary (in Python) must be created to store the metadata elements. Square brackets indicate that a block of elements (the list or dictionary) is repeatable, i.e. in R a list of list(s) will be expected. For example (extracted from the [DOCUMENT]((https://ihsn.github.io/nada-api-redoc/catalog-admin/#operation/createDocument)) metadata schema): 
+Not only can metadata be generated using R or Python (or other programming languages), they can also be published in a NADA catalog using R or Python, using the NADA API and the R package NADAR or the Python library PyNADA. The next sections provide examples of the programmatic generation and publishing of metadata in a catalog.
 
-**In R:**
+
+### Generating compliant metadata using R
+
+We show below how the schemas described in their [on-line documentation](https://ihsn.github.io/nada-api-redoc/catalog-admin/#) translate into R scripts. Generating metadata using R will consist of producing a *list* object (itself containing lists).
+
+The metadata schemas are [documented on-line](https://ihsn.github.io/nada-api-redoc/catalog-admin/#). In this documentation, curly brackets indicate that a list must be created to store the metadata elements. Square brackets indicate that a block of elements (the list) is repeatable, i.e. in R a list of list(s) will be expected. For example (extracted from the [DOCUMENT]((https://ihsn.github.io/nada-api-redoc/catalog-admin/#operation/createDocument)) metadata schema): 
 
 <center>
 ![](./images/JSON_to_R_interpret.JPG){width=100%}
 </center>
-
-**In Python:** (note that double quotes can be substituted to single quotes)
-
-<center>
-![](./images/JSON_to_Python_interpret.JPG){width=100%}
-</center>
-
-<br>
-
-
-:::idea
-Dictionaries in Python are very similar to JSON schemas. When documenting a dataset, data curators who use Python can copy a schema from the ReDoc website, paste it in their script editor, then fill out the relevant metadata elements and delete the ones that are not used.
-:::
-  
-<center>
-![](./images/copy_ReDoc.JPG){width=75%}
-</center>
-
-<br>
-
-Not only can metadata be generated using R or Python (or other programming languages), they can also be published in a NADA catalog using R or Python, using the NADA API and the R package NADAR or the Python library PyNADA. The next sections provide examples of the programmatic generation and publishing of metadata in a catalog.
-
-### Generating compliant metadata using R
 
 Metadata compliant with a standard/schema can be generated using R, and directly uploaded in a NADA catalog without having to be saved as a JSON file. An object (a list) must be created in the R script that contains metadata compliant with the JSON schema. The example below shows how such an object is created and published in a NADA catalog. We assume here that we have a document with the following information: 
 
@@ -292,7 +275,27 @@ The document is now available in the NADA catalog.
 
 ### Generating compliant metadata using Python
 
-In Python, the same process is implemented by creating a *dictionary* containing all required elements. Within this dictionary, metadata elements may be store as dictionaries or, for repeatable elements, as lists of dictionaries. The Python equivalent of the R example provided above is as follows:
+We show below how the schemas described in their [on-line documentation](https://ihsn.github.io/nada-api-redoc/catalog-admin/#), translate into Python scripts. Generating metadata using Python will consist of producing a *dictionary* object (itself containing lists and dictionaries). Within this dictionary, metadata elements may be store as dictionaries or, for repeatable elements, as lists of dictionaries. 
+
+The metadata schemas are [documented on-line](https://ihsn.github.io/nada-api-redoc/catalog-admin/#). In this documentation, curly brackets indicate that a dictionary must be created to store the metadata elements. Square brackets indicate that a block of elements (the dictionary) is repeatable. The same example we provided for R above: 
+
+<center>
+![](./images/JSON_to_Python_interpret.JPG){width=100%}
+</center>
+
+<br>
+
+:::idea
+Dictionaries in Python are very similar to JSON schemas. When documenting a dataset, data curators who use Python can copy a schema from the ReDoc website, paste it in their script editor, then fill out the relevant metadata elements and delete the ones that are not used.
+:::
+  
+<center>
+![](./images/copy_ReDoc.JPG){width=75%}
+</center>
+
+<br>
+
+The Python equivalent of the R example provided above is as follows:
 
 ```{python eval=F, echo=T}
 
@@ -353,7 +356,6 @@ nada.add_resource(
   overwrite = "yes")
 
 ```
-
 
 ### Generating compliant metadata using metadata editors
 
