@@ -35,10 +35,12 @@ Metadata in JSON are stored as *key/value* pairs, where the keys correspond to t
 
 In the *documents* schema, authors are documented in the metadata element `authors` which contains the following sub-elements: `first_name`, `initial`, `last_name`, and `affiliation`.
 
+<br></br>
 <center>
 ![](./images/JSON_array_list_authors.JPG){width=100%}
 </center>
 
+<br></br>
 In JSON, this information will be stored in key/value pairs as follows. 
 
 ```{json}
@@ -61,6 +63,7 @@ In JSON, this information will be stored in key/value pairs as follows.
 ]
 ```
 
+<br></br>
 In XML, the same information will be stored within named tags as follows. 
 
 ```{xml}
