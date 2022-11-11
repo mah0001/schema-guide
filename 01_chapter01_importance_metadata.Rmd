@@ -24,7 +24,7 @@ Assume an analyst seeking to study the correlation between education and poverty
 </center>
 <br>
 
-**Example 2: Searching for *"child malnutrition"* data in the [US Open Data platform (data.gov)](https://catalog.data.gov)**
+**Example 2: Searching for *child malnutrition* in the [US Open Data platform (data.gov)](https://catalog.data.gov)**
 
 Child malnutrition is typically measured by the indicators of percentage of *children stunted*, *children wasted*, and *children overweight*. In a survey micro-dataset, one would need to find variables *age in months*, *height*, and *weight* for the dataset to be relevant. A query for *child malnutrition* in the U.S. Government’s open data platform [data.gov](https://catalog.data.gov) returns the following results: 
 
@@ -56,7 +56,7 @@ Queries for *children stunted*, *children wasted*, and *children overweight* ret
 
 It is not clear whether the search algorithm has the capacity to identify relevant microdata based on variable names (it is unlikely that it does). But even an apparently less challenging task appears to be too complex for this (and for almost any other) data catalog.     
 
-**Example 3: Searching for *"dutch disease"* in the [World Bank's Development Data Hub](https://datacatalog.worldbank.org)**
+**Example 3: Searching for *dutch disease* in the [World Bank's Development Data Hub](https://datacatalog.worldbank.org)**
 
 The World Bank Development Data Hub is also a specialized data catalog. The issue we illustrate here is the lack of semantic capability in a search engine. Most data catalogs rely on keyword-based (lexical) search, which may fail to understand the user's intent. In our example, the engine fails to recognize *dutch disease* as an economic concept, and returns non-relevant results related to health and disease prevention. 
 
@@ -66,7 +66,7 @@ The World Bank Development Data Hub is also a specialized data catalog. The issu
 </center>
 <br>
 
-**Example 4: Searching for *"gdp per capita india 2020"* in [Google]**
+**Example 4: Searching for *gdp per capita india 2020* in Google**
 
 Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information from the World Bank, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
 
