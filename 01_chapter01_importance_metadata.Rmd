@@ -26,9 +26,7 @@ Assume an analyst seeking to study the correlation between education and poverty
 
 **Example 2: Searching for *"child malnutrition"* data in the [US Open Data platform (data.gov)](https://catalog.data.gov)**
 
-Child malnutrition is typically measured by the indicators of percentage of *children stunted*, *children wasted*, and *children overweight". 
-
-A query for *child malnutrition* in the U.S. Government’s open data platform [data.gov]((https://catalog.data.gov)) returns the following results: 
+Child malnutrition is typically measured by the indicators of percentage of *children stunted*, *children wasted*, and *children overweight*. In a survey micro-dataset, one would need to find variables *age in months*, *height*, and *weight* for the dataset to be relevant. A query for *child malnutrition* in the U.S. Government’s open data platform [data.gov](https://catalog.data.gov) returns the following results: 
 
 <br>
 <center>
@@ -55,6 +53,8 @@ Queries for *children stunted*, *children wasted*, and *children overweight* ret
 ![](./images/search_issue_data_gov1d.JPG){width=90%}
 </center>
 <br>
+
+It is not clear whether the search algorithm has the capacity to identify relevant microdata based on variable names (it is unlikely that it does). But even an apparently less challenging task appears to be too complex for this (and for almost any other) data catalog.     
 
 **Example 3: Searching for *"dutch disease"* in the [World Bank's Development Data Hub](https://datacatalog.worldbank.org)**
 
@@ -100,9 +100,14 @@ The challenge for data users is not only to discover data, but also to obtain al
 The scope and meaning of labour statistics in general are determined by their source and methodology, and this is certainly true for the unemployment rate. In order to interpret the data accurately, it is crucial to understand what the data convey and how they were collected and constructed, which implies having information on the relevant metadata. The design and characteristics of the data source (typically a labour force survey or similar household survey for the unemployment rate), especially in terms of definitions and concepts used, geographical and age coverage, and reference periods have great implications for the resulting data, making it crucial to take them into account when analysing the statistics. It is also essential to seek information on any methodological changes and breaks in series to assess their impact for trend analysis, and to keep in mind methodological differences across countries when conducting cross-country studies. (From [*Quick guide on interpreting the unemployment rate*](https://ilo.org/wcmsp5/groups/public/---dgreports/---stat/documents/publication/wcms_675155.pdf), International Labour Office – Geneva: ILO, 2019, ISBN : 978-92-2-133323-4 (web pdf)).
 :::
 
+
+### A call for better metadata and search algorithms
+
 Data producers have a responsibility to generate comprehensive metadata for their datasets. The administrators and curators of data catalogs are responsible for providing well-documented data, specialized search tools, advice to data users, and for making the metadata as visible as possible to the search engines by implementing search engine optimization (SEO). 
 
 To serve the multiple purposes of improving the usability, visibility, discoverability, and accessibility of data, metadata must be **rich** (detailed and comprehensive) and **structured**. Metadata standards and schemas provide a solution to data curators to improve the comprehensiveness of, and to structure, their metadata. And machine learning and other approaches can be implemented to **augment** (or **enhance**) metadata in a largely automated manner, making them richer. 
+
+Solution is in better algorithms that combine lexical search, semantic search (NLP), filtering, advanced search option (targeted), recommender, enabled by richer and structured metadata. Research, development, and continuous improvement on algorithms and metadata enhancement solutions is needed. Call for investment in open algorithms and models. Metadata standards are there to ingest anbd enable.
 
 
 
