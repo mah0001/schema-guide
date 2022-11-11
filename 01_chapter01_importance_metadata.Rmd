@@ -10,7 +10,7 @@ output: html_document
 
 Finding, understanding, and using the most relevant data can be a challenging task for researchers and other data users. 
 
-<u>**Finding data**</u>
+### Finding data
 
 Search engines like Google and Bing are designed to search the whole world wide web, not specifically to find data. They perform well for simple data queries that call for a simple answer (e.g., *population of India in 2020*), or when a user searches for a specific resource available on-line (e.g., *Living Standards Measurement Survey Albania 2012*). But they will not (and should not be expected to) perform as well for complex data queries. Researchers will thus often turn to specialized on-line data catalogs and data platforms maintained by national or international organizations, academic data centers, and libraries. Unfortunately, the search algorithms embedded in data catalogs often consist of out-of-the-box solutions that also provide unsatisfactory search results. This is due in part to weaknesses in the metadata associated with the data resources, and in part to the lack of optimization of the search indexes and algorithms. Google's *Dataset Search* is an attempt to implement a better search engine to a catalog of datasets. But its performance is also hampered by the paucity of available metadata. The examples below illustrate in an anecdotal manner some of the problems that researchers face when searching for data. The results shown below are as of 11 November 2022, and will be vary over time.
 
@@ -76,8 +76,8 @@ Search engine like Google are increasingly designed to return not just links, bu
 </center>
 <br>
 
-
 MOSPI's website only appears in the 7th page of results (with a link to a PDF document, not to MOSPI's website or data catalog), which few users will ever access. For many users, the source of the information may not matter; but for others, a link to the originating and "reference" source - where more metadata can possibly be found - may be critical. For the data producer, ranking higher in the search results also matters. Few official data producers understand and invest in search engine optimization. 
+
 <br>
 <center>
 ![](./images/gdp_india_2_2.JPG){width=90%}
@@ -92,7 +92,7 @@ The main obstacles to data visibility and discoverability are that:
    - **search engines embedded in specialized data catalogs have limited capabilities.** Most often, they rely on full-text search and do not provide semantic searchability. Ideally, data catalogs would even go beyond providing semantic searchability and be able to operate as *recommender systems*. To best satisfy the needs of data analysts, search tools embedded in data catalogs should also be able to **distinguish different types of data**, and be **optimized to rank results by relevancy**.
    - **specialized data catalogs lack visibility**, due to a lack of search engine optimization.
 
-**<u>Understanding and using data</u>**
+### Understanding and using data
 
 The challenge for data users is not only to discover data, but also to obtain all necessary information to fully understand the data and to use them responsibly and appropriately. A same indicator label, for example *unemployment rate (%)*, can mask significant differences by country, source, and time. The international recommendations for the definition and calculation of *unemployment rate* has changed over time, and not all countries use the same data collection instrument (labor force survey or other) to collect the underlying data. In on-line data dissemination platforms, detailed metadata should therefore always be associated and disseminated with the data. This must be a close association; the relevant metadata will ideally not be more than one click away from the data. This is particularly critical when a platform publishes data from multiple sources that are not fully harmonized.
 
@@ -103,8 +103,6 @@ The scope and meaning of labour statistics in general are determined by their so
 Data producers have a responsibility to generate comprehensive metadata for their datasets. The administrators and curators of data catalogs are responsible for providing well-documented data, specialized search tools, advice to data users, and for making the metadata as visible as possible to the search engines by implementing search engine optimization (SEO). 
 
 To serve the multiple purposes of improving the usability, visibility, discoverability, and accessibility of data, metadata must be **rich** (detailed and comprehensive) and **structured**. Metadata standards and schemas provide a solution to data curators to improve the comprehensiveness of, and to structure, their metadata. And machine learning and other approaches can be implemented to **augment** (or **enhance**) metadata in a largely automated manner, making them richer. 
-
-
 
 
 
