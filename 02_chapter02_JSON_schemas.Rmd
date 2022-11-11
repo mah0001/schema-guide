@@ -18,7 +18,15 @@ Metadata standards and schemas consist of structured lists of metadata fields. T
 
 Some international metadata standards like the Data Documentation Initative (DDI Codebook, for microdata), the ISO 19139 (for geospatial data), or the Dublin Core (a more generic metadata specification) are described and published as XML specifications. Any XML standard or schema can be "translated" into JSON, which is our preferred format (a choice we justify in the next section).   
 
-JSON is an open, non-propriertary format. JSON files are language-independent text files. Metadata in JSON are stored as *key/value* pairs, where the keys correspond to the names of the metadata elements in the standard. Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). The example below shows how the JSON format is used to document the list of authors of a [document](http://hdl.handle.net/10986/34511), using elements from the Dublin Core metadata standard.
+JSON and XML formats have similarities: 
+
+   - Both are non-proprietary text files
+   - Both are hierarchical (they may contain values within values)
+   - Both can be parsed and used by many programming languages including R and Python
+
+JSON files are however easier to parse than XML, easier to generate programmatically, and easier to read by humans. This makes them our preferred choice for describing and using metadata standards and schemas.
+
+Metadata in JSON are stored as *key/value* pairs, where the keys correspond to the names of the metadata elements in the standard. Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). Metadata in XML are stored within named tags. The example below shows how the JSON and XML formats are used to document the list of authors of a [document](http://hdl.handle.net/10986/34511), using elements from the Dublin Core metadata standard.
 
 <center>
 ![](./images/document_example_01b_authors_keywords.JPG){width=100%}
@@ -31,7 +39,7 @@ In the *documents* schema, authors are documented in the metadata element `autho
 ![](./images/JSON_array_list_authors.JPG){width=100%}
 </center>
 
-In JSON, this information will be stored as follows. 
+In JSON, this information will be stored in key/value pairs as follows. 
 
 ```{json}
 "authors" : [
@@ -53,7 +61,7 @@ In JSON, this information will be stored as follows.
 ]
 ```
 
-The same information stored in XML format is as follows: 
+In XML, the same information will be stored within named tags as follows. 
 
 ```{xml}
 <authors>
@@ -83,14 +91,6 @@ The same information stored in XML format is as follows:
 </authors>
 ```
 
-JSON and XML formats have similarities: 
-
-   - Both are human readable and saved as text files (non-proprietary format)
-   - Both are hierarchical (they may contain values within values)
-   - Both can be parsed and used by many programming languages including R and Python
-
-JSON files are easier to parse than XML, easier to generate programmatically (we will show in this Guide how JSON metadata schemas correspond to lists in R and to dictionaries in Python), and easier to read by humans. This makes them our preferred choice for describing and using metadata standards and schemas. 
-
 
 
 <!--  __          ___                    -->
@@ -109,7 +109,7 @@ The most recent documentation of the schemas we present in the Guide, and of the
 </center>
 <br>
 
-The documentation of each standard or schema shows three or four common elements that are not actually elements of the standard or schema, but that contain information that will be used when the NADA cataloguing application is used to publish the metadata. If NADA is not used, these elements can be ignored.
+The documentation of each standard or schema shows four common elements that are not actually elements of the standard or schema, but that contain information that will be used when the NADA cataloguing application is used to publish the metadata. If NADA is not used, these elements can be ignored.
 
 <center>
 ![](./images/reDoc_0.JPG){width=100%}
@@ -159,7 +159,7 @@ The schemas may also provide default values and controlled vocabularies for some
                                                
 ## How to generate metadata? 
 
-Metadata compliant with the standards and schemas described in this Guide can be generated in two different ways: programatically using a programming language like R or Python, or by using a specialized metadata editor application. The first option provides a high degree of flexibility and efficiency. It offers multiple opportunities to automate part of the metadata generation process, and to exploit advanced machine learning solutions to enhance metadata. Also, metadata generated using R or Python can also be published in a NADA catalog using the NADA API and the R package NADAR or the Python library PyNADA. The programmatic option may thus be the preferred option for organizations that have strong expertise in R or Python. For other organizations, and for some types of data, the use of a specialized **metadata editor** may be a better option. Metadata editors are specialized software applications designed to offer a user-friendly alternative to the programmatic generation of metadata. We provide in this section a brief description of how structured metadata can be generated and published using respectively R, Python, and a metadata editor application. 
+Metadata compliant with the standards and schemas described in this Guide can be generated in two different ways: **programatically** using a programming language like R or Python, or by **using a specialized metadata editor** application. The first option provides a high degree of flexibility and efficiency. It offers multiple opportunities to automate part of the metadata generation process, and to exploit advanced machine learning solutions to enhance metadata. Also, metadata generated using R or Python can also be published in a NADA catalog using the NADA API and the R package NADAR or the Python library PyNADA. The programmatic option may thus be the preferred option for organizations that have strong expertise in R or Python. For other organizations, and for some types of data, the use of a specialized metadata editor may be a better option. Metadata editors are specialized software applications designed to offer a user-friendly alternative to the programmatic generation of metadata. We provide in this section a brief description of how structured metadata can be generated and published using respectively R, Python, and a metadata editor application. 
 
 ### Generating compliant metadata using R
 
@@ -175,7 +175,7 @@ The sequence in which the metadata elements are created when documenting a datas
 
 Metadata compliant with a standard/schema can be generated using R, and directly uploaded in a NADA catalog without having to be saved as a JSON file. An object (a list) must be created in the R script that contains metadata compliant with the JSON schema. The example below shows how such an object is created and published in a NADA catalog. We assume here that we have a document with the following information: 
 
-   - document unique id: *ABC123* 
+   - document unique id: *WB_10986/7710* 
    - title: *Teaching in Lao PDR*
    - authors: *Luis Benveniste, Jeffery Marshall, Lucrecia Santibañez (World Bank)*
    - date published: *2007*
@@ -189,11 +189,11 @@ We will use the [DOCUMENT schema](https://ihsn.github.io/nada-api-redoc/catalog-
 </center>
 <br>
 
-Publishing data and metadata in a NADA catalog (using R and the NADAR package or Python and the PyNADA library) requires that we first identify the on-line catalog where the metadata will be published (by providing its URL in the `set_api_url` command line) and provide a key to authenticate as a catalog administrator (in the `set_api_key` command line; this key should not be entered in clear in a script to avoid accidental disclosure). 
+Publishing data and metadata in a NADA catalog (using R and the NADAR package or Python and the PyNADA library) requires to first identify the on-line catalog where the metadata will be published (by providing its URL in the `set_api_url` command line) and to provide a key to authenticate as a catalog administrator (in the `set_api_key` command line; note that this key should never be entered in clear in a script to avoid accidental disclosure). 
 
-We then create an object (a list in R, or a dictionary in Python) that we will name *my_doc* (this is a user-defined name, not an imposed name). Within this list (or dictionary), we will enter all metadata elements, some of which can be simple elements, while others are lists (or dictionaries). The first element to be included is the `document_description`, which is required. Within it, we add the `title_statement` which is also required and contains the mandatory elements `idno` and `title` (all documents must have a unique ID number for cataloguing purpose, and a title). The list of countries that the document covers is a <u>repeatable</u> element, i.e. a list of lists (although we only have one country in this case). Information on the authors is also a repeatable element, allowing us to capture the information on the three co-authors individually. 
+We then create an object (a list in R, or a dictionary in Python) that we will for example name *my_doc*. Within this list (or dictionary), we will enter all metadata elements. Some will be simple elements, others will be lists (or dictionaries). The first element to be included is the required `document_description`. Within it, we include the `title_statement` which is also required and contains the mandatory elements `idno` and `title` (all documents must have a unique ID number for cataloguing purpose, and a title). The list of countries that the document covers is a <u>repeatable</u> element, i.e. a list of lists (although we only have one country in this case). Information on the authors is a repeatable element, allowing us to capture the information on the three co-authors individually. 
 
-This *my_doc* object is then published in the NADA catalog using the `add_document` command. Last, we publish (as an external resource) a link to the file, with only basic information. We do not need to document this resource in detail, as it corresponds to the metadata provided in *my_doc*. If we had a different external resource (for example an MS-Excel table that contains all tables shown in the publication), we would make use of more of the external resources metadata elements to document it. Note that instead of a URL, we could have provided a path to an electronic file (e.g., to the PDF document), in which case the file would be uploaded to the web server and made available directly from the on-line catalog. We had previously captured a screenshot of the cover page of the document to be used as thumbnail in the catalog (optional).
+This *my_doc* object is then published in the NADA catalog using the `add_document` function. Last, we publish (as an external resource) a link to the file, with only basic information. We do not need to document this resource in detail, as it corresponds to the metadata provided in *my_doc*. If we had a different external resource (for example an MS-Excel table that contains all tables shown in the publication), we would make use of more of the external resources metadata elements to document it. Note that instead of a URL, we could have provided a path to an electronic file (e.g., to the PDF document), in which case the file would be uploaded to the web server and made available directly from the on-line catalog. We had previously captured a screenshot of the cover page of the document to be used as thumbnail in the catalog (optional).
 
 ```{r eval=F, echo=T}
 
@@ -210,7 +210,7 @@ thumb  <- "C:/DOCS/teaching_lao.JPG"  # Cover page image to be used as thumbnail
 
 # Generate and publish the metadata on the publication
 
-doc_id <- "ABC001" 
+doc_id <- "WB_10986/7710" 
 
 my_doc <- list(
 
@@ -302,12 +302,12 @@ thumb  <- "C:/DOCS/teaching_lao.JPG"  # Cover page image to be used as thumbnail
 
 # Generate and publish the metadata on the publication
 
-doc_id = "ABC001"
+doc_id = "WB_10986/7710"
 
 document_description = {
 
   'title_statement': {
-      'idno': "ABC001",
+      'idno': "WB_10986/7710",
       'title': "Teaching in Lao PDR"
   },
   
