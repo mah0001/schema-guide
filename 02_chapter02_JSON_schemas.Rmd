@@ -35,12 +35,11 @@ Metadata in JSON are stored as *key/value* pairs, where the keys correspond to t
 
 In the *documents* schema, authors are documented in the metadata element `authors` which contains the following sub-elements: `first_name`, `initial`, `last_name`, and `affiliation`.
 
-<br></br>
 <center>
 ![](./images/JSON_array_list_authors.JPG){width=100%}
 </center>
+<br>
 
-<br></br>
 In JSON, this information will be stored in key/value pairs as follows. 
 
 ```{json}
@@ -63,7 +62,6 @@ In JSON, this information will be stored in key/value pairs as follows.
 ]
 ```
 
-<br></br>
 In XML, the same information will be stored within named tags as follows. 
 
 ```{xml}
@@ -105,21 +103,21 @@ In XML, the same information will be stored within named tags as follows.
                                    
 ## Where to find the schemas' documentation
 
-The most recent documentation of the schemas we present in the Guide, and of the corresponding API, is available on-line at https://ihsn.github.io/nada-api-redoc/catalog-admin/#. 
+The most recent documentation of the schemas described in the Guide is available on-line at https://ihsn.github.io/nada-api-redoc/catalog-admin/#. 
 
 <center>
 ![](./images/reDoc.JPG){width=100%}
 </center>
 <br>
 
-The documentation of each standard or schema shows four common elements that are not actually elements of the standard or schema, but that contain information that will be used when the NADA cataloguing application is used to publish the metadata. If NADA is not used, these elements can be ignored.
+The documentation of each standard or schema starts with four common elements that are not actually part of the standard or schema, but that contain information that will be used when the metadata are published in a data catalog that uses the NADA application. If NADA is not used, these "administrative elements" can be ignored.
 
 <center>
 ![](./images/reDoc_0.JPG){width=100%}
 </center>
 <br>
 
-   - **`repositoryid`** identifies the collection in which the metadata will be published 
+   - **`repositoryid`** identifies the collection in which the metadata will be published. 
    - **`access_policy`** determines if and how the <u>data files</u> will be accessible from the catalog in which the metadata are published. This element only applies to the microdata and geographic metadata standards. It makes use of a controlled vocabulary with the following access policy options: 
       - **`direct`**: data can be downloaded without requiring them to be registered; 
       - **`open`**: same as "direct", with an open data license attached to the dataset; 
@@ -128,18 +126,18 @@ The documentation of each standard or schema shows four common elements that are
       - **`remote`**: data are made available by an external data repository;
       - **`data_na`**: data are not accessible to the public (only metadata are published). 
    - **`published`** determines the status of the metadata in the on-line catalog (with options 0 = draft and 1 = published). Published entries are visible to all visitors of the on-line catalog; unpublished (draft) entries will only be visible by the catalog administrators and reviewers. 
-   - **`overwrite`** determines whether the metadata already in the catalog for this entry can be overwritten (iwith options yes or no, 'no' being the default)  
+   - **`overwrite`** determines whether the metadata already in the catalog for this entry can be overwritten (iwith options yes or no, 'no' being the default).  
 
-This set of common elements is followed by one or multiple sections that contain the elements specific to each standard/schema. For example, the DDI Codebook metadata standard, used to document microdata, contains the following main sections:
+This set of administrative elements is followed by one or multiple sections that contain the elements specific to each standard/schema. For example, the DDI Codebook metadata standard, used to document microdata, contains the following main sections:
    
    - **`document description`**: a description of the metadata (who documented the dataset, when, etc.) Most schemas will contain such a section describing the metadata, useful mainly to data curators and catalog administrators. In other schemas, this section may be named `metadata_description`. 
    - **`study description`**: the description of the survey/census/study, not including the data files and data dictionary.
    - **`file description`**: a list and description of data files associated to the study.
    - **`variable description`**: the data dictionary (description of variables).
 
-The schema-specific sections are followed by a few other metadata elements that are common to most schemas. These are elements used to capture additional information useful for cataloguing and discoverability purposes. They include **tags** (which allow catalog administrators to attach tags to datasets independently of their type, which can be used as filters in the catalog), and **external resources**. 
+The schema-specific sections are followed by a few other metadata elements common to most schemas. These elements are used to provide additional information useful for cataloguing and discoverability purposes. They include **tags** (which allow catalog administrators to attach tags to datasets independently of their type, which can be used as filters in the catalog), and **external resources**. 
 
-Some schemas provide the possibility for data curators to add their own metadata elements, to accommodate **additional** information for which no metadata element is provided in the schema. The use of additional elements should be the exception, as metadata standards and schemas are expected to provide all necessary elements. 
+Some schemas provide the possibility for data curators to add their own metadata elements in an **additional** section. The use of additional elements should be the exception, as metadata standards and schemas are designed to provide all elements needed to fully document a data resource. 
 
 In each standard and schema, metadata elements can have the following properties:
 
@@ -147,7 +145,10 @@ In each standard and schema, metadata elements can have the following properties
    - **Repeatable** or **Not repeatable**. For example, the element `nation` in the DDI standard is *Repeatable* because a dataset can cover more than one country, while the element `title` is *Not repeatable* because a study should be identified by a unique title. 
    - **Type**. This indicates the format of the information contained in an element. It can be a *string* (text), a *numeric* value, a *boolean* variable (TRUE/FALSE), or an *array*.
 
-The schemas may also provide default values and controlled vocabularies for some elements. 
+Some schemas may recommend controlled vocabularies for some elements. For example, the ISO 19139 used to document geographic datasets recommends ...
+
+In most cases however, controlled vocabularies are not part of the metadata standard or schema. They will be selected and activated in templates and applications.
+...example...
 
 
 
@@ -162,7 +163,7 @@ The schemas may also provide default values and controlled vocabularies for some
                                                
 ## How to generate metadata? 
 
-Metadata compliant with the standards and schemas described in this Guide can be generated in two different ways: **programatically** using a programming language like R or Python, or by **using a specialized metadata editor** application. The first option provides a high degree of flexibility and efficiency. It offers multiple opportunities to automate part of the metadata generation process, and to exploit advanced machine learning solutions to enhance metadata. Also, metadata generated using R or Python can also be published in a NADA catalog using the NADA API and the R package NADAR or the Python library PyNADA. The programmatic option may thus be the preferred option for organizations that have strong expertise in R or Python. For other organizations, and for some types of data, the use of a specialized metadata editor may be a better option. Metadata editors are specialized software applications designed to offer a user-friendly alternative to the programmatic generation of metadata. We provide in this section a brief description of how structured metadata can be generated and published using respectively R, Python, and a metadata editor application. 
+Metadata compliant with the standards and schemas described in this Guide can be generated in two different ways: **programmatically** using a programming language like R or Python, or by **using a specialized metadata editor** application. The first option provides a high degree of flexibility and efficiency. It offers multiple opportunities to automate part of the metadata generation process, and to exploit advanced machine learning solutions to enhance metadata. Also, metadata generated using R or Python can also be published in a NADA catalog using the NADA API and the R package NADAR or the Python library PyNADA. The programmatic option may thus be the preferred option for organizations that have strong expertise in R or Python. For other organizations, and for some types of data, the use of a specialized metadata editor may be a better option. Metadata editors are specialized software applications designed to offer a user-friendly alternative to the programmatic generation of metadata. We provide in this section a brief description of how structured metadata can be generated and published using respectively R, Python, and a metadata editor application. 
 
 ### Generating compliant metadata using R
 
@@ -355,5 +356,12 @@ nada.add_resource(
 R and Python are powerful tools to generate metadata in a flexible and efficient manner. They offer opportunities to automate tasks, to extract metadata from APIs or data files, to augment metadata, and to provide full transparency and replicability in the metadata production process. But this requires a level of expertise in R or Python that many organizations may not have. To support users who do not have such expertise, and to facilitate the use of complex metadata standards, specialized *metadata editors* have been developed to document certain types of data, in particular microdata (with the DDI metadata standard) and geospatial data (with the ISO 19139 metadata standard).
 
 The [Nesstar Publisher](http://www.nesstar.com/software/publisher.html) is a popular DDI metadata editor used to document microdata. The application, developed and published by the Norwegian Centre for Research Data, was built around the DDI Codebook 1.n version. It also makes use of Dublin Core elements to document external resources. The application, built on an outdated technology and DDI version, is however not maintained anymore. The World Bank has initiated the development of a more modern and open source version of this application, compatible with the most recent version of DDI Codebook (and other metadata standards). 
+
+Template for the selection of elements, default values, controlled vocabularies
+Then UI with (for some types) import of data and automated generation of some metadata.
+
+Example of microdata
+Example of document
+
 
 For documenting geographic datasets and services, the [GeoNetwork metadata editor](https://geonetwork-opensource.org/), an [OSGeo](https://www.osgeo.org/) project, supports ISO 19115/19119/19110 standards. Other tools like the open-source R package [geometa](https://cran.r-project.org/web/packages/geometa/index.html) (*Tools for Reading and Writing ISO/OGC Geographic Metadata*) can also help data curators in the production of structured metadata.
