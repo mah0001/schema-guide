@@ -10,58 +10,75 @@ Finding, understanding, and using the most relevant data can be a challenging ta
 
 <u>**Finding data**</u>
 
-Search engines like Google and Bing are designed to search the whole world wide web, not specifically to find data. They perform well for data queries when a simple answer can be provided (e.g., "population of India in 2020"), or when a user searches for a specific resource available on-line (e.g., "Living Standards Measurement Survey Albania 2012"). But they will not and should not be expected to perform as well for more complex or specialized data queries. Researchers will thus often turn to specialized on-line data catalogs, like the open data platforms and catalogs maintained by national or international organizations and academic data centers and libraries. Unfortunately, the search engine algorithms embedded in such catalogs are often out-of-the-box solutions that also perform poorly, in part due to the low quality of the metadata attached to the datasets, and in part due to the lack of optimization of the search algorithm. Google's *Dataset Search* is an attempt to apply the performance of Google's search engine to a specialized data catalog. But its performance is also hampered by the paucity of available metadata. The examples below (generated in January 2022; results may differ over time) illustrate in an anecdotal manner some of the problems that researchers face when searching for data.
+Search engines like Google and Bing are designed to search the whole world wide web, not specifically to find data. They perform well for simple data queries that call for a simple answer (e.g., *population of India in 2020*), or when a user searches for a specific resource available on-line (e.g., *Living Standards Measurement Survey Albania 2012*). But they will not (and should not be expected to) perform as well for complex data queries. Researchers will thus often turn to specialized on-line data catalogs and data platforms maintained by national or international organizations, academic data centers, and libraries. Unfortunately, the search algorithms embedded in data catalogs often consist of out-of-the-box solutions that also provide unsatisfactory search results. This is due in part to weaknesses in the metadata associated with the data resources, and in part to the lack of optimization of the search indexes and algorithms. Google's *Dataset Search* is an attempt to implement a better search engine to a catalog of datasets. But its performance is also hampered by the paucity of available metadata. The examples below illustrate in an anecdotal manner some of the problems that researchers face when searching for data. The results shown below are as of 11 November 2022, and will be vary over time.
 
-**Example 1: Searching for *"microdata on inequality in Africa"* in [Google](https://www.google.com/search?q=microdata+on+inequality+in+Africa&rlz=1C1GCEA_enUS977US977&oq=microdata+on+inequality+in+Africa&aqs=chrome.0.69i59j69i64.1478j0j4&sourceid=chrome&ie=UTF-8)**
+**Example 1: Searching for data on education and poverty in Kenya using Google**
 
-As a response to the query *microdata on inequality in Africa*, Google returns as the most relevant results a list of <u>publications</u> (working papers and citations), not links to micro-datasets. Although the returned publications may eventually lead the data analysts to some useful datasets, the results fail to provide the user with what was specifically requested:  <u>microdata</u>.
-
-<br>
-<center>
-![](./images/search_issue_google.JPG){width=90%}
-</center>
-<br>
-
-**Example 2: Searching for *"US economic growth"* in the [US Open Data platform (data.gov)](https://catalog.data.gov/dataset?q=us+economic+growth&sort=score+desc%2C+name+asc&as_sfid=AAAAAAVQcFJrQSuZ7Phfhyds5Cu7FSjgZkk6_BNOAo80l8Jlt7fP9PYExdfT9Qpv8_nnZtG1WdBai1gfGn4cpPUiL3Otc1NU44xrjydWs1_F9P2F1nwhk_mqUccQeVOOeefhT_g%3D&as_fid=0ea219634a9a055f6599275e489e6f0e4b97e917)**
-
-The results to a query for *US economic growth* submitted to data.gov illustrates a different problem: the relevancy and ranking of results. The platform returns as "most relevant" a series of datasets related to the growth of sablefish. Data on GDP growth or other economic indicators (available in data.gov) would have been more appropriate. When searching data catalogs, most users will expect an experience similar to the one they get from the lead search engines, and may fail to explore the list of results beyond the top entries. 
+Assume an analyst seeking to study the correlation between education and poverty levels in Kenya. A query for *data on poverty and education in Kenya* on Google will return useful results to an analyst looking for processed information, in the form of publications and blogs. An analyst looking for data as an input to her own analysis, not for the output of existing data analysis, will not find these results as relevant. A more specific query for *survey microdata on poverty and education in Kenya* will return more relevant results, but will miss many relevant datasets. Indeed, some datasets may contain variables on education levels and income with no mention of the keyword *poverty*). Also, the metadata associated with many survey datasets will not include a deteiled data dictionary (a comprehensive list of variables with their labels and description), which severely reduces the possibility for even the most advanced search algorithms to identify relevant resources.
 
 <br>
 <center>
-![](./images/search_issue_data_gov.JPG){width=90%}
+![](./images/search_issue_google_2.JPG){width=90%}
 </center>
 <br>
 
-**Example 3: Searching for *"dutch disease"* in the [World Bank's Development Data Hub](https://datacatalog.worldbank.org/int/search?q=dutch%20disease&start=0&sort=)**
+**Example 2: Searching for *"child malnutrition"* data in the [US Open Data platform (data.gov)](https://catalog.data.gov)**
+
+Child malnutrition is typically measured by the indicators of percentage of *children stunted*, *children wasted*, and *children overweight". 
+
+A query for *child malnutrition* in the U.S. Government’s open data platform [data.gov]((https://catalog.data.gov)) returns the following results: 
+
+<br>
+<center>
+![](./images/search_issue_data_gov1a.JPG){width=90%}
+</center>
+<br>
+
+Queries for *children stunted*, *children wasted*, and *children overweight* return significantly different results, with limited overlap between the results of the four queries. 
+
+<br>
+<center>
+![](./images/search_issue_data_gov1b.JPG){width=90%}
+</center>
+<br>
+
+<br>
+<center>
+![](./images/search_issue_data_gov1c.JPG){width=90%}
+</center>
+<br>
+
+<br>
+<center>
+![](./images/search_issue_data_gov1d.JPG){width=90%}
+</center>
+<br>
+
+**Example 3: Searching for *"dutch disease"* in the [World Bank's Development Data Hub](https://datacatalog.worldbank.org)**
 
 The World Bank Development Data Hub is also a specialized data catalog. The issue we illustrate here is the lack of semantic capability in a search engine. Most data catalogs rely on keyword-based (lexical) search, which may fail to understand the user's intent. In our example, the engine fails to recognize *dutch disease* as an economic concept, and returns non-relevant results related to health and disease prevention. 
 
 <br>
 <center>
-![](./images/search_issue_wb_ddh_dutch_disease.JPG){width=90%}
+![](./images/search_issue_wb_ddh_dutch_disease2.JPG){width=90%}
 </center>
 <br>
 
-**Example 4: Searching for *"gdp per capita india 2020"* in [Google](https://www.google.com/search?q=gdp+per+capita+india+2021&rlz=1C1GCEA_enUS977US977&ei=ehrjYffSBdCKggfE5K-QAg&start=0&sa=N&ved=2ahUKEwj394WWubT1AhVQheAKHUTyCyI4MhDy0wN6BAgBEDc&biw=1600&bih=650&dpr=1.2)**
+**Example 4: Searching for *"gdp per capita india 2020"* in [Google]**
 
-Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information (as of 15 January 2022) from a commercial source, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
+Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information from the World Bank, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
 
 <br>
 <center>
-![](./images/gdp_india_1.JPG){width=90%}
+![](./images/gdp_india_2_1.JPG){width=90%}
 </center>
 <br>
+
+
+MOSPI's website only appears in the 7th page of results (with a link to a PDF document, not to MOSPI's website or data catalog), which few users will ever access. For many users, the source of the information may not matter; but for others, a link to the originating and "reference" source - where more metadata can possibly be found - may be critical. For the data producer, ranking higher in the search results also matters. Few official data producers understand and invest in search engine optimization. 
 <br>
 <center>
-![](./images/gdp_india_2.JPG){width=90%}
-</center>
-<br>
-<br>
-MOSPI's website only appears in the 6th page of results, which few users will ever access. For many users, the source of the information may not matter; but for others, a link to the originating and "reference" source - where more metadata can possibly be found - may be critical.
-<br>
-<br>
-<center>
-![](./images/gdp_india_3.JPG){width=90%}
+![](./images/gdp_india_2_2.JPG){width=90%}
 </center>
 <br>
 
