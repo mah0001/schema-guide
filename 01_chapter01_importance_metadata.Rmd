@@ -6,6 +6,8 @@ output: html_document
 
 # The benefits of rich, structured metadata {#chapter01}
 
+## The challenges of data discoverability and usability
+
 Finding, understanding, and using the most relevant data can be a challenging task for researchers and other data users. 
 
 <u>**Finding data**</u>
