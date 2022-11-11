@@ -18,10 +18,10 @@ Metadata standards and schemas consist of structured lists of metadata fields. T
 
 Some international metadata standards like the Data Documentation Initative (DDI Codebook, for microdata), the ISO 19139 (for geospatial data), or the Dublin Core (a more generic metadata specification) are described and published as XML specifications. Any XML standard or schema can be "translated" into JSON, which is our preferred format (a choice we justify in the next section).   
 
-JSON is an open, non-propriertary format. JSON files are language-independent text files. Metadata in JSON are stored as *key/value* pairs, where the keys correspond to the names of the metadata elements in the standard. Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). The example below shows how the JSON format is used to document the list of authors of a document, using elements from the Dublin Core metadata standard.
+JSON is an open, non-propriertary format. JSON files are language-independent text files. Metadata in JSON are stored as *key/value* pairs, where the keys correspond to the names of the metadata elements in the standard. Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). The example below shows how the JSON format is used to document the list of authors of a [document](http://hdl.handle.net/10986/34511), using elements from the Dublin Core metadata standard.
 
 <center>
-![](./images/document_example_01_authors_keywords.JPG){width=100%}
+![](./images/document_example_01b_authors_keywords.JPG){width=100%}
 </center>
 <br>
 
@@ -34,12 +34,22 @@ In the *documents* schema, authors are documented in the metadata element `autho
 In JSON, this information will be stored as follows. 
 
 ```{json}
-"authors":[
-  { "first_name":"Bo", "initial":"P.J", "last_name":"Andrée", "affiliation":"World Bank"},
-  { "first_name":"Andres", "last_name":"Chamorro", "affiliation":"World Bank"},
-  { "first_name":"Aart",   "last_name":"Kraay",    "affiliation":"World Bank"},
-  { "first_name":"Phoebe", "last_name":"Spencer",  "affiliation":"World Bank"},
-  { "first_name":"Dieter", "last_name":"Wang",     "affiliation":"World Bank"},
+"authors" : [
+  {"first_name" : "Dieter", 
+   "last_name"  : "Wang", 
+   "affiliation": "World Bank Group; Fragility, Conflict and Violence"},
+  {"first_name" : "Bo",     
+   "initial"    : "P.J.", 
+   "last_name"  : "Andrée", 
+   "affiliation": "World Bank Group; Fragility, Conflict and Violence"},
+  {"first_name" : "Andres", 
+   "initial"    : "F.", 
+   "last_name"  : "Chamorro", 
+   "affiliation": "World Bank Group; Development Data Analytics and Tools"},
+  {"first_name" : "Phoebe", 
+   "initial"    : "G.", 
+   "last_name"  : "Spencer",  
+   "affiliation":"World Bank Group; Fragility, Conflict and Violence"}
 ]
 ```
 
@@ -48,30 +58,27 @@ The same information stored in XML format is as follows:
 ```{xml}
 <authors>
   <author>
+    <first_name>Dieter</first_name> 
+    <last_name>Wang</last_name> 
+    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
+  </author>
+  <author>
     <first_name>Bo</first_name> 
     <initial>P.J.</initial> 
     <last_name>Andrée</last_name> 
-    <affiliation>World Bank</affiliation>
+    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
   </author>
   <author>
     <first_name>Andres</first_name> 
+    <initial>E.</initial>
     <last_name>Chamorro</last_name> 
-    <affiliation>World Bank</affiliation>
-  </author>
-    <author>
-    <first_name>Aart</first_name> 
-    <last_name>Kraay</last_name> 
-    <affiliation>World Bank</affiliation>
-  </author>
-    <author>
-    <first_name>Phoebe</first_name> 
-    <last_name>Spencer</last_name> 
-    <affiliation>World Bank</affiliation>
+    <affiliation>World Bank Group; Development Data Analytics and Tools</affiliation>
   </author>
   <author>
-    <first_name>Dieter</first_name> 
-    <last_name>Wang</last_name> 
-    <affiliation>World Bank</affiliation>
+    <first_name>Phoebe</first_name> 
+    <initial>G.</initial>
+    <last_name>Spencer</last_name> 
+    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
   </author>
 </authors>
 ```
@@ -83,8 +90,6 @@ JSON and XML formats have similarities:
    - Both can be parsed and used by many programming languages including R and Python
 
 JSON files are easier to parse than XML, easier to generate programmatically (we will show in this Guide how JSON metadata schemas correspond to lists in R and to dictionaries in Python), and easier to read by humans. This makes them our preferred choice for describing and using metadata standards and schemas. 
-
-
 
 
 
