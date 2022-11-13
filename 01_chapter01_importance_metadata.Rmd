@@ -452,9 +452,11 @@ If you have content that shouldn't be found in search results or you want to opt
 Web developers can also take action to improve it by following the Search Engine Optimization (SEO) recommendations and guidelines provided by search engines. One of these recommendations is to embed "structured data" in the catalog's HTML pages. 
 
 What do we mean by "structured data" in this context? For what type of resources? https://developers.google.com/search/docs/appearance/structured-data/search-gallery
+   microdata, indicators, geographic, tables, documents, images, videos. ALso FAQs if catalog includes that. See list in Google page.
+   
 How does Google use it? 
 
-Where this is stored? How a catalog generates pages that users view?  Information in database --> extract ; adds visualizations if widgets ; generates html using CSS. WHen schema.org used, part of the extracted information (selected metadata elements) is stored as JSON-LD and saved in the HTML. For each schema, need to select elements, and map them to schema.org.   
+How is it generated and where this is stored? How a catalog generates pages that users view?  Information in database --> extract ; adds visualizations if widgets ; generates html using CSS. WHen schema.org used, part of the extracted information (selected metadata elements) is stored as JSON-LD and saved in the HTML. For each schema, need to select elements, and map them to schema.org.   
 
 "Google Search works hard to understand the content of a page. You can help us by providing explicit clues about the meaning of a page to Google by including structured data on the page. Structured data is a standardized format for providing information about a page and classifying the page content; for example, on a recipe page, what are the ingredients, the cooking time and temperature, the calories, and so on."  https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
 
