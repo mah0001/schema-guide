@@ -430,15 +430,33 @@ We are interested in documenting and disseminating **data processing and analysi
  <!-- | |__| | |____ / ____ \| |    -->
  <!-- |_____/ \_____/_/    \_\_|    -->
                               
-## schema.org and DCAT for search engine optimization
+## Schema.org and DCAT for search engine optimization
 
 As mentioned in section 1.2.5, data catalogs need to be optimized to improve the visibility and ranking of their content in search engines, including specialized search engines like Google's [Dataset Search](https://datasetsearch.research.google.com/). 
 
-The ranking of a web page by Google or other search engine is determined by a complex and proprietary algorithm, and is controlled by Google. Unless ad, cannot guarantee that will be on top. For ranking, content is what matters most; rich metadata will include better description, so better indexed information about each dataset. Invest in data documentation and pay attention to keywords, topics, description, etc. specific to the dataset. Also, links from other web pages. Web developers can also take action to improve it by following the Search Engine Optimization (SEO) recommendations and guidelines provided by search engines. One of these recommendations is to embed "structured data" in the catalog's HTML pages. 
+The ranking of a web page by Google or other search engine is determined by a complex and proprietary algorithm, and is controlled by Google. Unless ad, cannot guarantee that will be on top. For ranking, content is what matters most; rich metadata will include better description, so better indexed information about each dataset. Invest in data documentation and pay attention to keywords, topics, description, etc. specific to the dataset. Also, links from other web pages. 
 
-What do we mean by "structured data" in this context?
-Where this is stored? 
+"  From https://developers.google.com/search/docs/essentials :
+While there are many things you can do to improve your site's SEO, there are a few core practices that can have the most impact on your web content's ranking and appearance on Google Search:
+
+Create helpful, reliable, people-first content.
+Use words that people would use to look for your content, and place those words in prominent locations on the page, such as the title and main heading of a page, and other descriptive locations such as alt text and link text.
+Make your links crawlable so that Google can find other pages on your site via the links on your page.
+Tell people about your site. Be active in communities where you can tell like-minded people about your services and products that you mention on your site.
+If you have other content, such as images, videos, structured data, and JavaScript, make sure you're following those specific best practices so that we can understand those parts of your page too.
+Enhance how your site appears on Google Search by enabling features that make sense for your site.
+If you have content that shouldn't be found in search results or you want to opt out entirely, use the appropriate method for controlling how your content appears in Google Search.
+
+"
+
+Web developers can also take action to improve it by following the Search Engine Optimization (SEO) recommendations and guidelines provided by search engines. One of these recommendations is to embed "structured data" in the catalog's HTML pages. 
+
+What do we mean by "structured data" in this context? For what type of resources? https://developers.google.com/search/docs/appearance/structured-data/search-gallery
 How does Google use it? 
+
+Where this is stored? How a catalog generates pages that users view?  Information in database --> extract ; adds visualizations if widgets ; generates html using CSS. WHen schema.org used, part of the extracted information (selected metadata elements) is stored as JSON-LD and saved in the HTML. For each schema, need to select elements, and map them to schema.org.   
+
+"Google Search works hard to understand the content of a page. You can help us by providing explicit clues about the meaning of a page to Google by including structured data on the page. Structured data is a standardized format for providing information about a page and classifying the page content; for example, on a recipe page, what are the ingredients, the cooking time and temperature, the calories, and so on."  https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
 
 Structured data is different for different types of resources. Google have multiple types of resources for which structured data can be provided. This includes receipes, etc. [link] The ones we are interested in are datasets, document, image. The structure of these data must be compliant with a schema from schema.org or with the DCAT metadata schema).
 
