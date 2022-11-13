@@ -364,7 +364,7 @@ The standards and schemas we recommend and describe in this guide are the follow
 | Videos                     | Dublin Core augmented with VideoObject from schema.org | 
 | Programs and scripts       | Custom-designed schema                          | 
 | External resources         | Dublin Core                                     |
-| All data types             | DCAT and schema.org  (used for search engine optimization purpose, not as the primary schema to document resources)|
+| All data types             | schema.org and DCAT  (used for search engine optimization purpose, not as the primary schema to document resources)|
 
 <br>
 
@@ -374,7 +374,7 @@ Note on SDMX: The metadata standards and schemas described in the Guide do not i
 
 ### Documents
 
-**Documents** are bibliographic resource of any type, such as books, working papers and papers published in scientific journals, reports, manuals, and other resources consisting mainly of text. Document libraries have along tradition of using structured metadata to manage their collections, which dates back from before the days this was computerized. Multiple standards are available. The Dublin Core Metadata Initiative specification (DCMI) provides simple and flexible option. The MARC standard (**MA**chine-**R**eadable **C**ataloging) standard used by the United States Library of Congress is another, more advanced one. We make use of the DCMI complemented by a few elements inspired by the MARC.
+**Documents** are bibliographic resource of any type, such as books, working papers and papers published in scientific journals, reports, manuals, and other resources consisting mainly of text. Document libraries have along tradition of using structured metadata to manage their collections, which dates back from before the days this was computerized. Multiple standards are available. The Dublin Core Metadata Initiative specification (DCMI) provides simple and flexible option. The MARC standard (**MA**chine-**R**eadable **C**ataloging) standard used by the United States Library of Congress is another, more advanced one. The schema we describe in this Guide make is the DCMI complemented by a few elements inspired by the MARC standard.
 
 ### Microdata
 
@@ -430,11 +430,23 @@ We are interested in documenting and disseminating **data processing and analysi
  <!-- | |__| | |____ / ____ \| |    -->
  <!-- |_____/ \_____/_/    \_\_|    -->
                               
-## DCAT and schema.org for search engine optimization
+## schema.org and DCAT for search engine optimization
 
-As mentioned in section 1.2.5, data catalogs need to be optimized to improve the visibility and ranking of their content in search engines, including specialized search engines like Google's [Dataset Search](https://datasetsearch.research.google.com/). Guidelines for implementing Search Engine Optimization (SEO) are provided by the main search engines. Basically, optimizing an on-line data catalog for visibility consists of embedding structured metadata in the catalog's html pages. The structure of the metadata must be compliant with a schema.org or with the DCAT metadata schema (schema.org/dataset is built on DCAT).   
+As mentioned in section 1.2.5, data catalogs need to be optimized to improve the visibility and ranking of their content in search engines, including specialized search engines like Google's [Dataset Search](https://datasetsearch.research.google.com/). 
 
-According to their [developers' guide](https://developers.google.com/search/docs/data-types/dataset), Google's approach to dataset discovery makes use of schema.org and other metadata standards that can be added to the web pages (i.e. to the html files) that describe datasets. Google's Dataset Search tool "understands" metadata structured using either schema.org Dataset markup, or equivalent structures represented in W3C's Data Catalog Vocabulary ([DCAT](https://www.w3.org/TR/vocab-dcat/#dcat-scope)) format. Schemas from schema.org and DCAT are thus intended to make data more <u>discoverable</u>; they are not primarily intended to make the data more <u>usable</u>. We therefore recommend to document data using the most appropriate standard or schema for each type of data (DDI, Dublin Core, ISO 19139, etc.; see section 1.4), and to map (part of) the content of the metadata to the schema.org or DECAT schemas for search engine optimization.  
+The ranking of a web page by Google or other search engine is determined by a complex and proprietary algorithm, and is controlled by Google. Unless ad, cannot guarantee that will be on top. For ranking, content is what matters most; rich metadata will include better description, so better indexed information about each dataset. Invest in data documentation and pay attention to keywords, topics, description, etc. specific to the dataset. Also, links from other web pages. Web developers can also take action to improve it by following the Search Engine Optimization (SEO) recommendations and guidelines provided by search engines. One of these recommendations is to embed "structured data" in the catalog's HTML pages. 
+
+What do we mean by "structured data" in this context?
+Where this is stored? 
+How does Google use it? 
+
+Structured data is different for different types of resources. Google have multiple types of resources for which structured data can be provided. This includes receipes, etc. [link] The ones we are interested in are datasets, document, image. The structure of these data must be compliant with a schema from schema.org or with the DCAT metadata schema).
+
+[Google guidelines - url]
+
+According to their [developers' guide](https://developers.google.com/search/docs/data-types/dataset), Google's approach to dataset discovery makes use of schema.org and other metadata standards that can be added to the web pages (i.e. to the html files) that describe datasets. Google's Dataset Search tool "understands" metadata structured using either schema.org Dataset markup, or equivalent structures represented in W3C's Data Catalog Vocabulary ([DCAT](https://www.w3.org/TR/vocab-dcat/#dcat-scope)) format. 
+
+How does that relate to the standards and schemas recommended in this GUide? Schemas from schema.org and DCAT are thus intended to make data more <u>discoverable</u>; they are not primarily intended to make the data more <u>usable</u>. We therefore recommend to document data using the most appropriate standard or schema for each type of data (DDI, Dublin Core, ISO 19139, etc.; see section 1.4), and to map (part of) the content of the metadata to the schema.org.  
 
 :::quote
 Making it easier to discover datasets: a [Google blog post by Natasha Noy](https://www.blog.google/products/search/making-it-easier-discover-datasets/) (2018): "There are many thousands of data repositories on the web, providing access to millions of datasets; and local and national governments around the world publish their data as well. To enable easy access to this data, we launched Dataset Search, Similar to how Google Scholar works, Dataset Search lets you find datasets wherever they’re hosted, whether it’s a publisher's site, a digital library, or an author's personal web page. To create Dataset search, we developed guidelines for dataset providers to describe their data in a way that Google (and other search engines) can better understand the content of their pages. These guidelines include salient information about datasets: who created the dataset, when it was published, how the data was collected, what the terms are for using the data, etc. We then collect and link this information, analyze where different versions of the same dataset might be, and find publications that may be describing or discussing the dataset. Our approach is based on an open standard for describing this information (schema.org) and anybody who publishes data can describe their dataset this way. We encourage dataset providers, large and small, to adopt this common standard so that all datasets are part of this robust ecosystem.
@@ -494,8 +506,6 @@ The embedding of metadata compliant with schema.org or DCAT should be automated 
 ![](./images/reDoc_html_rank.JPG){width=80%}
 </center>
 <br>
-
-
 
 
 
