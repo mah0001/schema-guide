@@ -432,27 +432,30 @@ We are interested in documenting and disseminating **data processing and analysi
                               
 ## Schema.org and DCAT for search engine optimization
 
-As mentioned in section 1.2.5, data catalogs need to be optimized to improve the visibility and ranking of their content in search engines, including specialized search engines like Google's [Dataset Search](https://datasetsearch.research.google.com/). 
+### The basics of search engine optimization
 
-The ranking of a web page by Google or other search engine is determined by a complex and proprietary algorithm, and is controlled by Google. Unless ad, cannot guarantee that will be on top. For ranking, content is what matters most; rich metadata will include better description, so better indexed information about each dataset. Invest in data documentation and pay attention to keywords, topics, description, etc. specific to the dataset. Also, links from other web pages. 
+Data catalogs must be optimized to improve the visibility and ranking of their content in search engines, including specialized search engines like Google's [Dataset Search](https://datasetsearch.research.google.com/). The ranking of web pages by Google and other lead search engines is determined by a complex, proprietary, and non-disclosed algorithm. The only option for a web developer to ensure that a web page would appear on top of the Google list of results is to pay for it, publishing the page as a commercial ad. Otherwise, the ranking of a web page in the search engine results pages will be determined by many known and unknown elements. Lead search engines provide guidance and recommendations on search engine optimization (SEO) to web developers. See for example [Google Search Central](https://developers.google.com/search) where Google publish *Specific things you can do to improve the SEO of your website*. "Google's automated ranking systems are designed to present helpful, reliable information that's primarily created to benefit people, not to gain search engine rankings, in the top Search results." ([Google Search Central](https://developers.google.com/search/docs/fundamentals/creating-helpful-content))
 
-"  From https://developers.google.com/search/docs/essentials :
-While there are many things you can do to improve your site's SEO, there are a few core practices that can have the most impact on your web content's ranking and appearance on Google Search:
+Improving the ranking of catalog pages is a shared responsibiloity of data curators and catalog administrators.
 
-Create helpful, reliable, people-first content.
-Use words that people would use to look for your content, and place those words in prominent locations on the page, such as the title and main heading of a page, and other descriptive locations such as alt text and link text.
-Make your links crawlable so that Google can find other pages on your site via the links on your page.
-Tell people about your site. Be active in communities where you can tell like-minded people about your services and products that you mention on your site.
-If you have other content, such as images, videos, structured data, and JavaScript, make sure you're following those specific best practices so that we can understand those parts of your page too.
-Enhance how your site appears on Google Search by enabling features that make sense for your site.
-If you have content that shouldn't be found in search results or you want to opt out entirely, use the appropriate method for controlling how your content appears in Google Search.
+**Data curators** must pay particular attention to providing rich, useful content in the catalog web pages (the HTML pages that describe each catalog entry). Remember that what search engines will use to identify your datasets as relevant is the metadata that will be indexed in their database. Datasets that are well documented, i.e. those published with rich and structured metadata, will rank higher. Much attention should be paid to include clear titles, descriptions (abstracts), list of keywords and topics covered, and identification of the geographic coverage of the data. In Google Search Central's terms: *Create helpful, reliable, people-first content.* and *Use words that people would use to look for your content, and place those words in prominent locations on the page, such as the title and main heading of a page, and other descriptive locations such as alt text and link text.* 
 
-"
+**Developers and administrators of cataloguing applications** must pay attention to: 
 
-Web developers can also take action to improve it by following the Search Engine Optimization (SEO) recommendations and guidelines provided by search engines. One of these recommendations is to embed "structured data" in the catalog's HTML pages. 
+- Ensure that the catalog deliver a good page experience to users (see [Understanding page experience in Google Search results](https://developers.google.com/search/docs/appearance/page-experience)). This involves:
+   - Catalog pages that load fast
+   - Catalog pages that are mobile-friendly. A data catalog should be built with a responsive design.
+   - Provide secure connection by serving the catalog over HTTPS (see more information, see for example https://web.dev/enable-https/)
+- Embed *structured data* in the HTML catalog pages. Structured data is information included in web pages that help Google understand the content of a web page. It applies to certain types of content, including datasets. This influences not only the ranking, but also the way information on catalog web pages will be displayed in Google. The next section is dedicated to this.
+
+A helpful and detailed [self-assessment list](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) of items that data curators, catalog developers, and catalog administrators should pay attention to is provided by Google. Various tools are also available to catalog developers and administrators to assess the technical performance of their web pages (speed of loading, responsiveness, and others; see for example the [Core Web Vitals](https://web.dev/vitals-tools/) and [Google Search Console](https://developers.google.com/search/docs/monitor-debug/search-console-start)). 
+
+The ranking of a web page in search engine results also depends much on the popularity and credibility ("authoritativeness") of the page. Google and other search engines will assess this by the number of other websites that provide links to a data catalog, and by the number of hits the catalog pages receive. As suggested by Google, *Tell people about your site. Be active in communities where you can tell like-minded people about your services and products that you mention on your site.*
+
+### Structured data for rich results
 
 What do we mean by "structured data" in this context? For what type of resources? https://developers.google.com/search/docs/appearance/structured-data/search-gallery
-   microdata, indicators, geographic, tables, documents, images, videos. ALso FAQs if catalog includes that. See list in Google page.
+   microdata, indicators, geographic, tables, documents, images, videos. Also FAQs if catalog includes that. See list in Google page.
    
 How does Google use it? 
 
