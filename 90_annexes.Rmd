@@ -84,13 +84,202 @@ Publication Stock No. TCS210112-2. DOI: http://dx.doi.org/10.22617/TCS210112-2
 - WorldPop: https://www.worldpop.org/
 
 
-# Annex 2: Mapping the document schema to BibTex, DCMI, MARC21, and schema.org {-}
+# Annex 2: Mapping standards and schemas to schema.org {-}
+
+The use of *structured data* described in section 1.6.2 requires a mapping between the relevant elements of some of the metadata standards and schemas described in the Guide to the schema.org standard. We provide here a suggested selection and mapping.
+
+### Microdata
+
+|schema.org/dataset     |DDI CodeBook     | Recommendation  |
+|-----------------------|-----------------|-----------------|
+|title  |    |
+|name   |    |
+|description |    |
+|url |    |
+|sameAs |    |
+|identifier |    |
+|keywords |    |
+|license |    |
+|isAccessibleForFree |    |
+|hasPart / isPartOf |    |
+|creator type / url  / name / contactPoint / funder |    |
+|includedInDataCatalog |    |
+|distribution |    |
+|temporalCoverage |    |
+|spatialCoverage |    |
+
+**Example:**
+
+
+### Geographic data
+
+|schema.org/dataset     |DDI CodeBook     | Recommendation  |
+|-----------------------|-----------------|-----------------|
+|title  |    |
+|name   |    |
+|description |    |
+|url |    |
+|sameAs |    |
+|identifier |    |
+|keywords |    |
+|license |    |
+|isAccessibleForFree |    |
+|hasPart / isPartOf |    |
+|creator type / url  / name / contactPoint / funder |    |
+|includedInDataCatalog |    |
+|distribution |    |
+|temporalCoverage |    |
+|spatialCoverage |    |
+
+**Example:**
+
+```html
+<html>
+  <head>
+    <title>Albania Living Standards Measurement Survey 2012</title>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org/",
+      "@type":"Dataset",
+      "name":"Albania Living Standards Measurement Survey 2012 (LSMS 2010)",
+      "description":"",
+      "url":"",
+      "sameAs":"",
+      "identifier": ["",
+                     ""],
+      "keywords":[
+         "",
+         "",
+         "",
+         ""
+      ],
+      "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
+      "isAccessibleForFree" : true,
+      "hasPart" : [
+        {
+          "@type": "Dataset",
+          "name": "",
+          "description": "",
+          "license" : "",
+          "creator":{
+             "@type":"Organization",
+             "name": ""
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "",
+          "description": "",
+          "license" : "",
+          "creator":{
+             "@type":"Organization",
+             "name": ""
+          }
+        }
+      ],
+      "creator":{
+         "@type":"Organization",
+         "url": "https://www.worldbank.org/",
+         "name":"World Bank, Development Data Group",
+         "contactPoint":{
+            "@type":"ContactPoint",
+            "contactType": "",
+            "telephone":"",
+            "email":""
+         }
+      },
+      "funder":{
+         "@type": "Organization",
+         "sameAs": "",
+         "name": ""
+      },
+      "includedInDataCatalog":{
+         "@type":"DataCatalog",
+         "name":""
+      },
+      "distribution":[
+         {
+            "@type":"DataDownload",
+            "encodingFormat":"Stata",
+            "contentUrl":""
+         },
+         {
+            "@type":"DataDownload",
+            "encodingFormat":"CSV",
+            "contentUrl":""
+         }
+      ],
+      "temporalCoverage":"2012",
+      "spatialCoverage":{
+         "@type":"Place",
+         "geo":{
+            "@type":"GeoShape",
+            "box":""
+         }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+### Indicators (and database)
+
+|schema.org/dataset     |INDICATOR schema | Recommendation  |
+|-----------------------|-----------------|-----------------|
+|title  |    |
+|name   |    |
+|description |    |
+|url |    |
+|sameAs |    |
+|identifier |    |
+|keywords |    |
+|license |    |
+|isAccessibleForFree |    |
+|hasPart / isPartOf |    |
+|creator type / url  / name / contactPoint / funder |    |
+|includedInDataCatalog |    |
+|distribution |    |
+|temporalCoverage |    |
+|spatialCoverage |    |
+
+**Example:**
+
+### Tables
+
+|schema.org/dataset     |TABLES schema    | Recommendation  |
+|-----------------------|-----------------|-----------------|
+|title  |    |
+|name   |    |
+|description |    |
+|url |    |
+|sameAs |    |
+|identifier |    |
+|keywords |    |
+|license |    |
+|isAccessibleForFree |    |
+|hasPart / isPartOf |    |
+|creator type / url  / name / contactPoint / funder |    |
+|includedInDataCatalog |    |
+|distribution |    |
+|temporalCoverage |    |
+|spatialCoverage |    |
+
+**Example:**
+
+### Images
+
+
+
+
+
 
 [to do]
 
-# Annex 3: Mapping the microdata schema to DDI Codebook 2.5 and DCAT/schema.org {-}
+# Annex 3: Mapping the microdata schema to the DDI Codebook 2.5  {-}
 
-## Microdata schema mapping to DDI Codebook 2.5
 |JSON Schema                                                           |DDI/XML CodeBook 2.5                                                        |Title                                                                  |
 |----------------------------------------------------------------------|----------------------------------------------------------------------------|-----------------------------------------------------------------------|
 |doc_desc                                                              |docDscr                                                                     |                                                                       |
@@ -331,10 +520,6 @@ Publication Stock No. TCS210112-2. DOI: http://dx.doi.org/10.22617/TCS210112-2
 |data_files                                                            |                                                                            |                                                                       |
 |variables                                                             |                                                                            |                                                                       |
 |variable_groups                                                       |                                                                            |Variable groups                                                        |
-
-
-## Microdata schema mapping for DCAT/Schema.org
-[to do]
 
 # Annex 4: Mapping the geographic schema to DCAT/schema.org {-}
 
