@@ -86,7 +86,7 @@ Publication Stock No. TCS210112-2. DOI: http://dx.doi.org/10.22617/TCS210112-2
 
 # Annex 2: Mapping standards and schemas to schema.org {-}
 
-The use of *structured data* described in section 1.6.2 requires a mapping between the relevant elements of some of the metadata standards and schemas described in the Guide to the schema.org standard. We provide here a suggested selection and mapping.
+The use of *structured data* described in section 1.6.2 requires a mapping between the relevant elements of some of the metadata standards and schemas described in the Guide to the schema.org standard. We provide here a suggested selection and mapping for the core set of elements (we do not attempt to map all possible elements that are common to our schemas and schema.org).
 
 ### Microdata
 
