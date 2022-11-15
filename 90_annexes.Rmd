@@ -107,6 +107,7 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 |temporalCoverage       |    |
 |spatialCoverage        |    |
 
+
 **Example:**
 
 ```html
@@ -207,6 +208,7 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 |temporalCoverage       |    |
 |spatialCoverage        |    |
 
+
 **Example:**
 
 
@@ -230,6 +232,7 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 |temporalCoverage       |    |
 |spatialCoverage        |    | 
 
+
 **Example:**
 
 ### Tables
@@ -251,6 +254,7 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 |temporalCoverage       |    |
 |spatialCoverage        |    |
 
+
 **Example:**
 
 ### Images
@@ -259,44 +263,44 @@ The complete list of elements available in schema.org to document an image objec
 
 |schema.org/dataset     |IMAGE schema (IPTC) | Recommendation  |
 |-----------------------|--------------------|-----------------|
-| name
-| abstract
-| creator
-| provider
-| sourceOrganization
-| dateCreated
-| keywords
-| contentLocation
-| contentReferenceTime
-| copyrightHolder
-| copyrightNotice
-| copyrightYear
-| creditText
-| isAccessibleForFree
-| license
-| acquireLicensePage
-| contentUrl
+| name                  |  |
+| abstract              |  |
+| creator               |  |
+| provider              |  |
+| sourceOrganization    |  |
+| dateCreated           |  |
+| keywords              |  |
+| contentLocation       |  |
+| contentReferenceTime  |  |
+| copyrightHolder       |  |
+| copyrightNotice       |  |
+| copyrightYear         |  |
+| creditText            |  |
+| isAccessibleForFree   |  |
+| license               |  | 
+| acquireLicensePage    |  |
+| contentUrl            |  |
 
 
 |schema.org/dataset     |IMAGE schema (DCMI) | Recommendation  |
 |-----------------------|--------------------|-----------------|
-| name
-| abstract
-| creator
-| provider
-| sourceOrganization
-| dateCreated
-| keywords
-| contentLocation
-| contentReferenceTime
-| copyrightHolder
-| copyrightNotice
-| copyrightYear
-| creditText
-| isAccessibleForFree
-| license
-| acquireLicensePage
-| contentUrl
+| name                  |  |
+| abstract              |  |
+| creator               |  |
+| provider              |  |
+| sourceOrganization    |  |
+| dateCreated           |  |
+| keywords              |  |
+| contentLocation       |  |
+| contentReferenceTime  |  |
+| copyrightHolder       |  |
+| copyrightNotice       |  |
+| copyrightYear         |  |
+| creditText            |  |
+| isAccessibleForFree   |  |
+| license               |  | 
+| acquireLicensePage    |  |
+| contentUrl            |  |
 
 
 **Example:**
