@@ -110,6 +110,85 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 
 **Example:**
 
+```html
+<html>
+  <head>
+    <title>Albania Living Standards Measurement Survey 2012</title>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org/",
+      "@type":"Dataset",
+      "name":"Albania Living Standards Measurement Survey 2012 (LSMS 2010)",
+      "description":"The Living Standards Measurement Survey (LSMS) is a multi-purpose household survey conducted to measure living conditions and poverty situation,                        and to help policymakers in monitoring and developing social programs. LSMS has been carried out in Albania in the context of continuing                                monitoring of poverty and the creation of policy evaluation system in the framework of the National Strategy for Development and Integration                            (previously the National Strategy for Economic and Social Development). The first Albania LSMS was conducted in 2002, followed by 2003, 2004,                          2005, 2008 and 2012 surveys. In 2012, 6,671 households participated in the survey.",
+      "url":"https://microdata.worldbank.org/index.php/catalog/1970",
+      "identifier": ["ALB_2012_LSMS_v01_M_v01_A_PUF"],
+      "keywords":[
+         "demographic characteristics",
+         "education",
+         "communication",
+         "labor",
+         "employment",
+         "non-farm business",
+         "migration",
+         "remittances",
+         "subjective poverty",
+         "health",
+         "fertility",
+         "non-food expenditures",
+         "dwelling",
+         "utilities",
+         "durable goods",
+         "daily food consumption"
+      ],
+      "license" : "",
+      "isAccessibleForFree" : true,
+      "creator":[
+         {
+            "@type":"Organization",
+            "url": "http://www.instat.gov.al/en/",
+            "name":"Institute of Statistics of Albania",
+            "contactPoint":{
+               "@type":"ContactPoint",
+               "email":"info@instat.gov.al"
+         },
+         { 
+            "@type":"Organization",
+            "url": "https://www.worldbank.org/",
+            "name":"World Bank",
+            "contactPoint":{
+               "@type":"ContactPoint",
+               "contactType": "LSMS technical support",
+               "email":"lsms@worldbank.org"
+            }
+      ],
+      "funder":{
+         "@type": "Organization",
+         "name": "World Bank"
+      },
+      "includedInDataCatalog":{
+         "@type":"World Bank Microdata Library",
+         "name":"https://microdata.worldbank.org/index.php/home"
+      },
+      "distribution":[
+         {
+            "@type":"DataDownload",
+            "encodingFormat":"SPSS Windows (.sav)",
+            "contentUrl":"http://www.instat.gov.al/en/figures/micro-data/"
+         }
+      ],
+      "temporalCoverage":"2012",
+      "spatialCoverage":{
+         "@type":"Place",
+         "name": "Albania"
+         }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+```
 
 ### Geographic data
 
@@ -133,97 +212,7 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 
 **Example:**
 
-```html
-<html>
-  <head>
-    <title>Albania Living Standards Measurement Survey 2012</title>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org/",
-      "@type":"Dataset",
-      "name":"Albania Living Standards Measurement Survey 2012 (LSMS 2010)",
-      "description":"",
-      "url":"",
-      "sameAs":"",
-      "identifier": ["",
-                     ""],
-      "keywords":[
-         "",
-         "",
-         "",
-         ""
-      ],
-      "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
-      "isAccessibleForFree" : true,
-      "hasPart" : [
-        {
-          "@type": "Dataset",
-          "name": "",
-          "description": "",
-          "license" : "",
-          "creator":{
-             "@type":"Organization",
-             "name": ""
-          }
-        },
-        {
-          "@type": "Dataset",
-          "name": "",
-          "description": "",
-          "license" : "",
-          "creator":{
-             "@type":"Organization",
-             "name": ""
-          }
-        }
-      ],
-      "creator":{
-         "@type":"Organization",
-         "url": "https://www.worldbank.org/",
-         "name":"World Bank, Development Data Group",
-         "contactPoint":{
-            "@type":"ContactPoint",
-            "contactType": "",
-            "telephone":"",
-            "email":""
-         }
-      },
-      "funder":{
-         "@type": "Organization",
-         "sameAs": "",
-         "name": ""
-      },
-      "includedInDataCatalog":{
-         "@type":"DataCatalog",
-         "name":""
-      },
-      "distribution":[
-         {
-            "@type":"DataDownload",
-            "encodingFormat":"Stata",
-            "contentUrl":""
-         },
-         {
-            "@type":"DataDownload",
-            "encodingFormat":"CSV",
-            "contentUrl":""
-         }
-      ],
-      "temporalCoverage":"2012",
-      "spatialCoverage":{
-         "@type":"Place",
-         "geo":{
-            "@type":"GeoShape",
-            "box":""
-         }
-      }
-    }
-    </script>
-  </head>
-  <body>
-  </body>
-</html>
-```
+
 
 ### Indicators (and database)
 
@@ -271,12 +260,39 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 
 ### Images
 
+|schema.org/dataset     |IMAGE schema (IPTC) | Recommendation  |
+|-----------------------|--------------------|-----------------|
 
 
 
+|schema.org/dataset     |IMAGE schema (DCMI) | Recommendation  |
+|-----------------------|--------------------|-----------------|
 
 
-[to do]
+**Example:**
+
+<html>
+  <head>
+    <title>Residents get water from an artesian well, Sindh, Pakistan</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "contentUrl": "https://nada-demo.ihsn.org/index.php/catalog/13",
+      "license": "Attribution License",
+      "acquireLicensePage": "https://nada-demo.ihsn.org/index.php/catalog/13/related-materials",
+      "creditText": "",
+      "creator": {
+        "@type": "Person",
+        "name": "Caroline Suzman"
+       },
+      "copyrightNotice": ""
+    }
+    </script>
+  </head>
+</html>
+
+
 
 # Annex 3: Mapping the microdata schema to the DDI Codebook 2.5  {-}
 
