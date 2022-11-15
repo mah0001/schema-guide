@@ -92,28 +92,26 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 
 |schema.org/dataset     |DDI CodeBook     | Recommendation  |
 |-----------------------|-----------------|-----------------|
-|title  |    |
-|name   |    |
-|description |    |
-|url |    |
-|sameAs |    |
-|identifier |    |
-|keywords |    |
-|license |    |
-|isAccessibleForFree |    |
-|hasPart / isPartOf |    |
+|name                   |    |
+|description            |    |
+|url                    |    |
+|sameAs                 |    |
+|identifier             |    |
+|keywords               |    |
+|license                |    |
+|isAccessibleForFree    |    |
+|hasPart / isPartOf     |    |
 |creator type / url  / name / contactPoint / funder |    |
-|includedInDataCatalog |    |
-|distribution |    |
-|temporalCoverage |    |
-|spatialCoverage |    |
+|includedInDataCatalog  |    |
+|distribution           |    |
+|temporalCoverage       |    |
+|spatialCoverage        |    |
 
 **Example:**
 
 ```html
 <html>
   <head>
-    <title>Albania Living Standards Measurement Survey 2012</title>
     <script type="application/ld+json">
     {
       "@context":"https://schema.org/",
@@ -192,23 +190,22 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 
 ### Geographic data
 
-|schema.org/dataset     |DDI CodeBook     | Recommendation  |
+|schema.org/dataset     |ISO 19139        | Recommendation  |
 |-----------------------|-----------------|-----------------|
-|title  |    |
-|name   |    |
-|description |    |
-|url |    |
-|sameAs |    |
-|identifier |    |
-|keywords |    |
-|license |    |
-|isAccessibleForFree |    |
-|hasPart / isPartOf |    |
+|name                   |    |
+|description            |    |
+|url                    |    |
+|sameAs                 |    |
+|identifier             |    |
+|keywords               |    |
+|license                |    |
+|isAccessibleForFree    |    |
+|hasPart / isPartOf     |    |
 |creator type / url  / name / contactPoint / funder |    |
-|includedInDataCatalog |    |
-|distribution |    |
-|temporalCoverage |    |
-|spatialCoverage |    |
+|includedInDataCatalog  |    |
+|distribution           |    |
+|temporalCoverage       |    |
+|spatialCoverage        |    |
 
 **Example:**
 
@@ -218,21 +215,20 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 
 |schema.org/dataset     |INDICATOR schema | Recommendation  |
 |-----------------------|-----------------|-----------------|
-|title  |    |
-|name   |    |
-|description |    |
-|url |    |
-|sameAs |    |
-|identifier |    |
-|keywords |    |
-|license |    |
-|isAccessibleForFree |    |
-|hasPart / isPartOf |    |
+|name                   |    |
+|description            |    |
+|url                    |    |
+|sameAs                 |    |
+|identifier             |    |
+|keywords               |    |
+|license                |    |
+|isAccessibleForFree    |    |
+|hasPart / isPartOf     |    |
 |creator type / url  / name / contactPoint / funder |    |
-|includedInDataCatalog |    |
-|distribution |    |
-|temporalCoverage |    |
-|spatialCoverage |    |
+|includedInDataCatalog  |    |
+|distribution           |    |
+|temporalCoverage       |    |
+|spatialCoverage        |    | 
 
 **Example:**
 
@@ -240,33 +236,67 @@ The use of *structured data* described in section 1.6.2 requires a mapping betwe
 
 |schema.org/dataset     |TABLES schema    | Recommendation  |
 |-----------------------|-----------------|-----------------|
-|title  |    |
-|name   |    |
-|description |    |
-|url |    |
-|sameAs |    |
-|identifier |    |
-|keywords |    |
-|license |    |
-|isAccessibleForFree |    |
-|hasPart / isPartOf |    |
+|name                   |    |
+|description            |    |
+|url                    |    |
+|sameAs                 |    |
+|identifier             |    |
+|keywords               |    |
+|license                |    |
+|isAccessibleForFree    |    |
+|hasPart / isPartOf     |    |
 |creator type / url  / name / contactPoint / funder |    |
-|includedInDataCatalog |    |
-|distribution |    |
-|temporalCoverage |    |
-|spatialCoverage |    |
+|includedInDataCatalog  |    |
+|distribution           |    |
+|temporalCoverage       |    |
+|spatialCoverage        |    |
 
 **Example:**
 
 ### Images
 
+The complete list of elements available in schema.org to document an image object is available at https://schema.org/ImageObject. We only show in the table below a selection of the ones we consder the most relevant and frequently available. Images can be documented either using the IPTC-based schema, or the Dublin Core (DCMI)-based schema.
+
 |schema.org/dataset     |IMAGE schema (IPTC) | Recommendation  |
 |-----------------------|--------------------|-----------------|
-
+| name
+| abstract
+| creator
+| provider
+| sourceOrganization
+| dateCreated
+| keywords
+| contentLocation
+| contentReferenceTime
+| copyrightHolder
+| copyrightNotice
+| copyrightYear
+| creditText
+| isAccessibleForFree
+| license
+| acquireLicensePage
+| contentUrl
 
 
 |schema.org/dataset     |IMAGE schema (DCMI) | Recommendation  |
 |-----------------------|--------------------|-----------------|
+| name
+| abstract
+| creator
+| provider
+| sourceOrganization
+| dateCreated
+| keywords
+| contentLocation
+| contentReferenceTime
+| copyrightHolder
+| copyrightNotice
+| copyrightYear
+| creditText
+| isAccessibleForFree
+| license
+| acquireLicensePage
+| contentUrl
 
 
 **Example:**
