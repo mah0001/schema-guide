@@ -359,7 +359,7 @@ This element is used to enter document identifiers (IDs) other than the catalog 
 
   ![](./images/ReDoc_documents_04a2.JPG){width=100%}
 
-  The status of the document should (but does not have to) be provided using a controlled vocabulary. We suggest the following vocabulary: `{first draft, draft, reviewed draft, final draft, final}`. Most documents published in a catalog will likely be `final`.
+  The status of the document. The status of the document should (but does not have to) be provided using a controlled vocabulary, for example with the following options: "first draft", "draft", "reviewed draft", "final draft", "final". Most documents published in a catalog will likely be "final".
 
 <br>
 
@@ -405,12 +405,12 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_04b2.JPG){width=100%}
 
-  This element is used as an alternative to `toc` to provide a <u>structured</u> table of content. The element contains a repeatable block of three sub-elements which provides the possibility to define a hierarchical structure:
+  This element is used as an alternative to `toc` to provide a <u>structured</u> table of content. The element contains a repeatable block of sub-elements which provides the possibility to define a hierarchical structure:
 
   - **`id`** *[Optional ; Not repeatable ; String]* <br> 
   A unique identifier for the element of the table of content. For example, the `id` for Chapter 1 could be "1" while the `id` for section 1 of chapter 1 would be "11".
   - **`parent_id`** *[Optional ; Not repeatable ; String]* <br>
-  The `id` of the parent section (e.g., if the TOC is divided into chapters, themselves divided into sections, the `parent_id` of a section would be the id of the chapter it belongs to.)
+  The `id` of the parent section (e.g., if the table of content is divided into chapters, themselves divided into sections, the `parent_id` of a section would be the id of the chapter it belongs to.)
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The label of this section of the table of content (e.g., the chapter or section title) <br><br>
 
@@ -469,7 +469,7 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_05b.JPG){width=100%}
 
-  This field can be used to provide information on the document that does not belong to the other, more specific metadata elements provided in the schema. It corresponds to the `note` element in BibTex.
+  This field can be used to provide information on the document that does not belong to the other, more specific metadata elements provided in the schema. 
   - **`note`**  <br>
   A note, entered as free text.
 
@@ -496,17 +496,18 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_05c.JPG){width=100%}
 
-  A textual description of topics covered in the document, which complements the elements `description` and `topics`.
+  A textual description of the topics covered in the document, which complements (but does not duplicate) the elements `description` and `topics` available in the schema.
 
 <br>
 
 - **`ref_country`** *[Optional ; Repeatable]* <br>
-The list of countries (or regions) covered by the document, if applicable. This is a repeatable block of two elements:
+The list of countries (or regions) covered by the document, if applicable. 
+This is a repeatable block of two elements:
   
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The country/region name. Note that many organizations have their own policies on the naming of countries/regions/economies/territories, which data curators will have to comply with.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
-  The country/region code (entered as a string, even for numeric codes). It is recommended to use a standard list of countries and regions, such as the ISO country list ([ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)).
+  The country/region code. It is recommended to use a standard list of countries codes, such as the [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes).
 
   ![](./images/ReDoc_documents_05d.JPG){width=100%}
 
@@ -552,18 +553,18 @@ A list of geographic units covered in the document, other than the countries lis
 <br>
 
 - **`bbox`** *[Optional ; Repeatable]* <br>
-The bounding box(es) of geographic units covered in the document. The bounding boxes are the coordinates (latitude and longitude) of rectangular geographic areas that the document covers. This element will rarely be used for documenting publications. Bounding boxes are an optional element, but when a bounding box is defined, all four coordinates are required. 
+This element is used to define one or multiple geographic bounding box(es), which are the rectangular fundamental geometric description of the geographic coverage of the data. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the dataset’s geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. The valid range of latitude in degrees is -90 and +90 for the southern and northern hemisphere, respectively. Longitude is in the range -180 and +180 specifying coordinates west and east of the Prime Meridian, respectively. This element will rarely be used for documenting publications. Bounding boxes are an optional element, but when a bounding box is defined, all four coordinates are required. 
 
   ![](./images/ReDoc_documents_05f.JPG){width=100%}
 
   - **`west`** *[Required ; Not repeatable ; String]* <br>
-  The west limit of the geographic area.
+  The West longitude of the bounding box.
   - **`east`** *[Optional ; Not repeatable ; String]* <br>
-  The east limit of the geographic area.
+  The East longitude of the bounding box.
   - **`south`** *[Optional ; Not repeatable ; String]* <br>
-  The south limit of the geographic area. 
+  The South latitude of the bounding box.
   - **`north`** *[Optional ; Not repeatable ; String]* <br>
-  The north limit of the geographic area.<br>
+  The North latitude of the bounding box.<br>
 
 ```{r, indent="  ", eval=F, echo=T}
 my_doc <- list(
@@ -590,7 +591,7 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_05g.JPG){width=100%}
 
-  This element provides another space for capturing information on the spatial coverage of a document, which complements the `ref_country`, `geographic_units`, and `bbox` elements. It can be used to qualify the geographic coverage of the document, in the form of a free text. For example, a report on refugee camps in the Cox's Bazar district of Bangladesh would have Bangladesh as reference country, "Cox's Bazar" as a geographic unit, and "Rohingyas refugee camps" as spatial coverage. 
+  This element provides another space for capturing information on the spatial coverage of a document, which complements the `ref_country`, `geographic_units`, and `bbox` elements. It can be used to qualify the geographic coverage of the document, in the form of a free text. For example, a report on refugee camps in the Cox's Bazar district of Bangladesh would have Bangladesh as reference country, "Cox's Bazar" as a geographic unit, and "Rohingya's refugee camps" as spatial coverage. 
 <br>
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -607,7 +608,7 @@ my_doc <- list(
       list(name = "Cox's Bazar", type = "District")
     ),  
     
-    spatial_coverage = "Rohingyas refugee camps",
+    spatial_coverage = "Rohingya's refugee camps",
     
     # ...
   ),
@@ -650,7 +651,7 @@ Some documents are published regularly. The frequency of publications can be doc
 <br>
 
 - **`languages`** *[Optional ; Repeatable]* <br>
-The language(s) in which the document is written. 
+The language(s) in which the document is written. For the language codes and names, the use of the ISO 639-2 standard is recommended.
 
   ![](./images/ReDoc_documents_08.JPG){width=100%}
   
@@ -685,7 +686,7 @@ Information on the license(s) attached to the document, which defines the terms 
   ![](./images/ReDoc_documents_09.JPG){width=100%}    
 
   - **`name`** *[Required ; Not repeatable ; String]* <br>
-  The name of the license.
+  The name of the license (e.g., CC-BY 4.0).
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL of the license, where detailed information on the license can be obtained.
 
@@ -925,19 +926,7 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_12d.JPG){width=100%}
 
-  This element is used to provide a description of the legal terms or other conditions that a person or organization who wants to use or reproduce the document has to comply with. This could be a simple disclaimer.
-
-```{r, indent="  ", eval=F, echo=T}
-  my_doc <- list(
-  # ... ,
-  document_description = list(
-    # ... ,
-    usage_terms = "This work is a product of the staff of The World Bank with external contributions. The findings, interpretations, and conclusions expressed in this work do not necessarily reflect the views of The World Bank, its Board of Executive Directors, or the governments they represent. The World Bank does not guarantee the accuracy of the data included in this work. The boundaries, colors, denominations, and other information shown on any map in this work do not imply any judgment on the part of The World Bank concerning the legal status of any territory or the endorsement or acceptance of such boundaries."
-    # ...
-  ),
-  # ... 
-)  
-```   
+  This element is used to provide a description of the legal terms or other conditions that a person or organization who wants to use or reproduce the document has to comply with. 
 
 <br>
 
@@ -945,13 +934,26 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_12e.JPG){width=100%}
 
-  A disclaimer limits the liability that the Statistics Office has regarding the use of the data. A standard legal statement should be used for all documents from a same agency. 
+  A disclaimer limits the liability of the author(s) and/or publisher(s) of the document. A standard legal statement should be used for all documents from a same agency. 
+
+```{r, indent="  ", eval=F, echo=T}
+  my_doc <- list(
+  # ... ,
+  document_description = list(
+    # ... ,
+    disclaimer = "This work is a product of the staff of The World Bank with external contributions. The findings, interpretations, and conclusions expressed in this work do not necessarily reflect the views of The World Bank, its Board of Executive Directors, or the governments they represent. The World Bank does not guarantee the accuracy of the data included in this work. The boundaries, colors, denominations, and other information shown on any map in this work do not imply any judgment on the part of The World Bank concerning the legal status of any territory or the endorsement or acceptance of such boundaries."
+    # ...
+  ),
+  # ... 
+)  
+```   
+
 
 - **`security_classification`** *[Optional ; Not repeatable ; String]* <br>
 
   ![](./images/ReDoc_documents_12f1.JPG){width=100%}
 
-  Information on the security classification attached to the document. The different levels of classification indicate the degree of sensitivity of the content of the document. This field should make use of a controlled vocabulary, specific or adopted by the organization that curates or disseminates the document. Such a vocabulary could contain the following levels: `public, internal-only, confidential, restricted` 
+  Information on the security classification attached to the document. The different levels of classification indicate the degree of sensitivity of the content of the document. This field should make use of a controlled vocabulary, specific or adopted by the organization that curates or disseminates the document. Such a vocabulary could contain the following levels: `public, internal only, confidential, restricted, strictly confidential` 
 
 <br>
 
@@ -999,7 +1001,7 @@ my_doc <- list(
       data_sources = list(
         list(name = "Bangladesh Demographic and Health Survey 2017-18", 
              uri = "https://www.dhsprogram.com/methodology/survey/survey-display-536.cfm",
-             note  = "Household Survey conducted by the National Institute of Population Research and Training, Medical Education and Family Welfare Division and Ministry of Health and Family Welfare. Data and documentation available at https://dhsprogram.com/)
+             note  = "Household survey conducted by the National Institute of Population Research and Training, Medical Education and Family Welfare Division and Ministry of Health and Family Welfare. Data and documentation available at https://dhsprogram.com/)"
       ),
       
       # ...
@@ -1014,7 +1016,7 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_15.JPG){width=100%}
   
-  A list of keywords that provide information on the core content of the document. Keywords provide a convenient solution to improve the discoverability of the document, as it allows terms and phrases not found in the document itself to be indexed and to make a document discoverable by text-based search engines. A controlled vocabulary will preferably be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list provided here can combine keywords from multiple controlled vocabularies, and user-defined keywords.  
+  A list of keywords that provide information on the core content of the document. Keywords provide a convenient solution to improve the discoverability of the document, as it allows terms and phrases not found in the document itself to be indexed and to make a document discoverable by text-based search engines. A controlled vocabulary can be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list provided here can combine keywords from multiple controlled vocabularies and user-defined keywords.  
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The keyword itself.
   - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
@@ -1057,7 +1059,7 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_15a.JPG){width=100%}
 
-  A list of themes covered by the document. A controlled vocabulary will preferably be used. Note that `themes` will rarely be used as the elements `topics` and `disciplines` are more appropriate for most uses. This is a block of five fields:
+  A list of themes covered by the document. A controlled vocabulary will preferably be used. The list provided here can combine themes from multiple controlled vocabularies and user-defined themes. Note that `themes` will rarely be used as the elements `topics` and `disciplines` are more appropriate for most uses. This is a block of five fields:
   
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The ID of the theme, taken from a controlled vocabulary.
@@ -1076,8 +1078,7 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_15b.JPG){width=100%}
  
-  Information on the topics covered in the document. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary.
-  This element is a block of five fields: 
+  Information on the topics covered in the document. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). The list provided here can combine topics from multiple controlled vocabularies and user-defined topics. The element is a block of five fields: 
 
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The identifier of the topic, taken from a controlled vocabulary.
@@ -1146,8 +1147,7 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_15c.JPG){width=100%}
 
-  Information on the academic disciplines related to the content of the document. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
-    his is a block of five elements: 
+  Information on the academic disciplines related to the content of the document. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). The list provided here can combine disciplines from multiple controlled vocabularies and user-defined disciplines. This is a block of five elements: 
     
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The identifier of the discipline, taken from a controlled vocabulary.
@@ -1215,12 +1215,12 @@ my_doc <- list(
 <br>
 
 - **`relations`** *[Optional ; Repeatable]* <br>
-References to related resources.
+References to related resources with a specification of the type of relationship.
 
   ![](./images/ReDoc_documents_16d.JPG){width=100%}
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
-  The related resource. Recommended practice is to identify the related resource by means of a URI. If this is not possible or feasible, a string conforming to a formal identification system may be provided.
+  The related resource. Recommended practice is to identify the related resource by means of a URL. If this is not possible or feasible, a string conforming to a formal identification system may be provided.
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   The type of relationship. The use of a controlled vocabulary is recommended. The Dublin Core proposes the following vocabulary: {`isPartOf, hasPart, isVersionOf, isFormatOf, hasFormat, references, isReferencedBy, isBasedOn, isBasisFor, replaces, isReplacedBy, requires, isRequiredBy`}.<br>
 <br>
