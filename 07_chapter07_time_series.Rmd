@@ -188,7 +188,7 @@ This set of five elements is used to identify the organization(s) or person(s) w
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
   The affiliation of the person or organization mentioned in `name`.  
   - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
-  Abbreviated name (acronym) of the organization mentioned in `name`.
+  The abbreviated name (acronym) of the organization mentioned in `name`.
   - **`email`** *[Optional ; Not repeatable ; String]* <br>
   The public email contact of the person or organizations mentioned in `name`. It is good practice to provide a service account email address, not a personal one.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
