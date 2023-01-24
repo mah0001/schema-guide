@@ -679,7 +679,7 @@ my_ddi <- list(
 #### Bibliographic citation
 
 **`bib_citation`** *[Optional ; Not repeatable ; String]* <br>
-Complete bibliographic reference containing all of the standard elements of a citation that can be used to cite the study. The `bib_citation_format` (see below) is provided to enable specification of the particular citation style used, e.g., APA, MLA, Chicago, etc. 
+Complete bibliographic reference containing all of the standard elements of a citation that can be used to cite the study. The `bib_citation_format` (see below) is provided to enable specification of the particular citation style used, e.g., APA, MLA, or Chicago. 
 
 ![](./images/ReDoc_Microdata_10a.JPG){width=100%}  
 
@@ -695,7 +695,7 @@ Complete bibliographic reference containing all of the standard elements of a ci
 #### Bibliographic citation format
 
 **`bib_citation_format`** *[Optional ; Not repeatable ; String]* <br>
-This element is used to specify the particular citation style used in the field `bib_citation` described above, e.g., APA, MLA, Chicago, etc. <br>
+This element is used to specify the particular citation style used in the field `bib_citation` described above, e.g., APA, MLA, or Chicago. <br>
 
 ```{r, indent="", eval=F, echo=T}
   my_ddi <- list(
@@ -791,7 +791,7 @@ This element can be used to provide additional information on the study which ca
 Provides structured information on the agency that authorized the study, the date of authorization, and an authorization statement. This element will be used when a special legislation is required to conduct the data collection (for example a Census Act) or when the approval of an Ethics Board or other body is required to collect the data.
 
 - **`date`** *[Optional ; Not repeatable ; String]* 
-The date, preferably in ISO 8601 format (YYYY-MM-DD) when the authorization to conduct the study was granted.<br>
+The date, preferably entered in ISO 8601 format (YYYY-MM-DD), when the authorization to conduct the study was granted.<br>
 - **`agency`** *[Optional ; Repeatable]* <br> 
 Identification of the agency that authorized the study.
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -1269,7 +1269,7 @@ my_ddi <- list(
 - **`notes`** *[Optional ; Not repeatable ; String]* <br>
 
   ![](./images/ReDoc_Microdata_16i.JPG){width=100%}
-  This element is provided to document any specific situations, observations, or events that occured during data collection. Consider stating such items like: <br>         
+  This element is provided to document any specific situations, observations, or events that occurred during data collection. Consider stating such items like: <br>         
     - Was a training of enumerators held? (elaborate) <br>
     - Was a pilot survey conducted? <br>
     - Did any events have a bearing on the data quality? (elaborate) <br>
