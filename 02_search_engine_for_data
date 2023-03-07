@@ -1,5 +1,9 @@
 
-# A search engine and recommender system optimized for data {chapter 2}
+---
+output: html_document
+---
+
+# A search engine and recommender system optimized for data {#chapter02}
 
 ## A call for better metadata and search algorithms
 
