@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# The benefits of rich, structured metadata {#chapter03}
+# The power of rich, structured metadata {#chapter03}
 
  <!--  _____  _      _      -->
  <!-- |  __ \(_)    | |     -->
@@ -70,7 +70,62 @@ Explanatory materials are the information that should be created and preserved t
    - **Data source**: Details about the source from which the data is derived should be included. For example, when the data source consists of responses to survey questionnaires, each question should be carefully recorded in the documentation. Ideally, the text will include a reference to the generated variable(s). It is also useful to explain the conditions under which a question would be asked, including, if possible, the cases to which it applies and, ideally, a summary of response statistics.
    - **Confidentiality and anonymization**: It is important to determine whether the data contains any confidential information on individuals, households, organizations, or institutions. If so, such information should be recorded together with any agreement on how to use the data, such as with survey respondents. Issues of confidentiality may restrict the analyses to be undertaken or results to be published, particularly if the data is to be made available for secondary use. If the data were anonymized to prevent identification, it is wise to record the anonymization procedure (taking care of not providing information that would enable a reverse-engineering of the procedure) and its impact on the data, as such modification may restrict subsequent analysis.
 
+### Some recommendations
 
+ <!--   _____            _             _ _          _  -->
+ <!--  / ____|          | |           | | |        | | -->
+ <!-- | |     ___  _ __ | |_ _ __ ___ | | | ___  __| | -->
+ <!-- | |    / _ \| '_ \| __| '__/ _ \| | |/ _ \/ _` | -->
+ <!-- | |___| (_) | | | | |_| | | (_) | | |  __/ (_| | -->
+ <!--  \_____\___/|_| |_|\__|_|  \___/|_|_|\___|\__,_| -->
+                                                 
+#### Controlled vocabularies
+
+Metadata standards and schemas provide lists of elements with a description of the expected content to be captured in each element. For some elements, it may be appropriate to restrict the valid content to pre-selected options or "controlled vocabularies". A controlled vocabulary is a pre-defined list of values that can be accepted as valid content for some elements. For example. a metadata element "data type" should not be populated with free text, but should make use of a pre-defined taxonomy of data types. The use of controlled vocabularies (for selected metadata elements) will be particularly useful to implement search and filter features in data catalogs (see section 3.1.1 of this Guide), and to foster inter-operability of data catalogs.
+
+:::quote
+In library and information science, controlled vocabulary is a carefully selected list of words and phrases, which are used to tag units of information (document or work) so that they may be more easily retrieved by a search.[Wikipedia](https://en.wikipedia.org/wiki/Controlled_vocabulary)
+:::
+
+Controlled vocabularies can be specific to an agency, or be developed by a community of practice. For example, the list of countries and codes provided by the [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) can be used as a controlled vocabulary for a metadata element `country` or `nation`; the [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) list of languages can be used as a controlled vocabulary for a metadata element `language`. Or the [CESSDA topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification) can be used as a controlled vocabulary for the element `topics` found in most metadata schemas. When a controlled vocabulary is used in a metadata standard or schema, it is good practice to include an identification of its origin and version.  
+
+Some recommended controlled vocabularies are included in the description of the ISO 19139 standard for geographic data and services (see chapter 6). Most standards and schemas we recommend also include a `topics` element. Annex 1 provides a description of the CESSDA topics classification. 
+
+Ideally, controlled vocabulary will be developed in compliance with the [FAIR principles](https://www.go-fair.org/fair-principles/) for scientific data management and stewardship: **F**indability, **A**ccessibility, **I**nteroperability, and **R**euse.
+
+
+ <!--  _______               -->
+ <!-- |__   __|              -->
+ <!--    | | __ _  __ _ ___  -->
+ <!--    | |/ _` |/ _` / __| -->
+ <!--    | | (_| | (_| \__ \ -->
+ <!--    |_|\__,_|\__, |___/ -->
+ <!--              __/ |     -->
+ <!--             |___/      -->
+
+#### Tags and tag groups
+
+All metadata standards and schemas described in this guide include a `tags` element, even when this element is not part of a standard. This element enables the implementation of filters (facets) in data cataloguing applications, in a flexible manner. The `tags` metadata element is repeatable (meaning that more than one tag can be attached to a dataset) and contains two sub-elements to capture a `tag` (word or phrase), and the `tag_group` (if any) it belongs to.
+
+<center>
+![](./images/reDoc_tags.JPG){width=100%}
+</center>
+
+To illustrate the use of tags, let's assume that a catalog contains datasets that are available freely, and others that are available for a fee. The catalog administrator may want to provide a filter (facet) in the user interface that would allow users to filter datasets based on their free or not free status. None of the metadata schemas we describe in the Guide contains an element specifically designed to indicate the "free" or "for a fee" nature of the data. But this information can be captured in a tag "*Free*" or "*For a fee*" that would be added to each dataset in the catalog, with a tag group that could be named "free_or_fee". In R, this would be done as follows (for a "Free" dataset):
+
+```{r, eval=F, echo=T}
+# ... ,
+tags = list(
+  list(tag = "Free", tag_group = "free_or_fee")
+)
+# ... 
+```
+    
+In the NADA catalog, a facet titled "Free or for a fee" can then be created based on the information found in the `tags` element where `tag_group` = "free_or_fee".
+
+<center>
+![](./images/reDoc_tags_2.JPG){width=100%}
+</center>
 
 
 
@@ -83,6 +138,8 @@ Explanatory materials are the information that should be created and preserved t
  <!-- |_____/ \__|_|   \__,_|\___|\__|\__,_|_|  \___|\__,_| -->
                                                       
 ## Structured metadata
+
+### What structure?
 
 Metadata should not only be comprehensive and detailed, they should also be organized in a **structured** manner, preferably using a standardized structure. **Structured metadata** means that the metadata are stored in specific *fields* (or *elements*) organized in a <u>metadata schema</u>. **Standardized** means that the list and description of elements are commonly agreed by a community of practice.
 
@@ -107,12 +164,94 @@ Metadata compliant with standards and schemas will typically be stored as JSON o
 ```
 
 Both versions contain (almost) the same information. In the structured version, we have added acronyms and the ISO country code. This does not create new information but will help make the existing information more discoverable and inter-operable. The structured version is clearly more suitable for publishing in a meta-database (or catalog). Organizing and storing metadata in such a structured manner will enable all kinds of applications. For example, when metadata for a collection of surveys are stored in a database, it becomes straightforward to apply filters (for example, a filter by country using the nation/name element) and targeted searches to answer questions like "What data are available that cover the month of December 2010?" or "What surveys did the CHTF sponsor?". 
+                                                   
+### Formats for structured metadata: JSON and XML 
+
+Metadata standards and schemas consist of structured lists of metadata fields. They serve multiple purposes. First, they help data curators generate complete and usable documentation of their datasets. Metadata standards that are intuitive and *human-readable* better serve this purpose. Second, they help generate *machine-readable* metadata that are the input to software applications like on-line data catalogs. Metadata available in open file formats like JSON (JavaScript Object Notation) and XML (eXtended Markup Language) are most suitable for this purposes.
+
+Some international metadata standards like the Data Documentation Initative (DDI Codebook, for microdata), the ISO 19139 (for geospatial data), or the Dublin Core (a more generic metadata specification) are described and published as XML specifications. Any XML standard or schema can be "translated" into JSON, which is our preferred format (a choice we justify in the next section).   
+
+JSON and XML formats have similarities: 
+
+   - Both are non-proprietary text files
+   - Both are hierarchical (they may contain values within values)
+   - Both can be parsed and used by many programming languages including R and Python
+
+JSON files are however easier to parse than XML, easier to generate programmatically, and easier to read by humans. This makes them our preferred choice for describing and using metadata standards and schemas.
+
+Metadata in JSON are stored as *key/value* pairs, where the keys correspond to the names of the metadata elements in the standard. Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). Metadata in XML are stored within named tags. The example below shows how the JSON and XML formats are used to document the list of authors of a [document](http://hdl.handle.net/10986/34511), using elements from the Dublin Core metadata standard.
+
+<center>
+![](./images/document_example_01b_authors_keywords.JPG){width=100%}
+</center>
+<br>
+
+In the *documents* schema, authors are documented in the metadata element `authors` which contains the following sub-elements: `first_name`, `initial`, `last_name`, and `affiliation`.
+
+<center>
+![](./images/JSON_array_list_authors.JPG){width=100%}
+</center>
+<br>
+
+In JSON, this information will be stored in key/value pairs as follows. 
+
+```{json}
+"authors" : [
+  {"first_name" : "Dieter", 
+   "last_name"  : "Wang", 
+   "affiliation": "World Bank Group; Fragility, Conflict and Violence"},
+  {"first_name" : "Bo",     
+   "initial"    : "P.J.", 
+   "last_name"  : "Andrée", 
+   "affiliation": "World Bank Group; Fragility, Conflict and Violence"},
+  {"first_name" : "Andres", 
+   "initial"    : "F.", 
+   "last_name"  : "Chamorro", 
+   "affiliation": "World Bank Group; Development Data Analytics and Tools"},
+  {"first_name" : "Phoebe", 
+   "initial"    : "G.", 
+   "last_name"  : "Spencer",  
+   "affiliation":"World Bank Group; Fragility, Conflict and Violence"}
+]
+```
+
+In XML, the same information will be stored within named tags as follows. 
+
+```{xml}
+<authors>
+  <author>
+    <first_name>Dieter</first_name> 
+    <last_name>Wang</last_name> 
+    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
+  </author>
+  <author>
+    <first_name>Bo</first_name> 
+    <initial>P.J.</initial> 
+    <last_name>Andrée</last_name> 
+    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
+  </author>
+  <author>
+    <first_name>Andres</first_name> 
+    <initial>E.</initial>
+    <last_name>Chamorro</last_name> 
+    <affiliation>World Bank Group; Development Data Analytics and Tools</affiliation>
+  </author>
+  <author>
+    <first_name>Phoebe</first_name> 
+    <initial>G.</initial>
+    <last_name>Spencer</last_name> 
+    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
+  </author>
+</authors>
+```
+
+### Benefits of structured metadata
 
 Metadata standards and schemas must be comprehensive and intuitive. They aim to provide comprehensive and granular lists of elements. Some standards may contain a very long list of elements. Most often, only a subset of the available elements will be used to document a specific dataset. For example, the elements of the DDI metadata standard related to sample design will be used to document sample survey datasets but will be ignored when documenting a population census or an administrative dataset. In all standards and schemas, most elements are *optional*, not *required*. Data curators should however try and provide content for all elements for which information is or can be made available.
 
 Complying with metadata standards and schemas contributes to the completeness, usability, discoverability, and inter-operability of the metadata, and to the visibility of the data and metadata.
 
-### Completeness 
+#### Completeness 
 
 When they document datasets, data curators who do not make use of metadata standards and schemas tend to focus on the readily-available documentation and may omit some information that secondary data users --and search engines-- may need. Metadata standards and schemas provide checklists of what information could or should be provided. These checklists are developed by experts, and are regularly updated or upgraded based on feedback received from users or to accommodate new technologies. 
 
@@ -120,11 +259,11 @@ Generating complete metadata will often be a collaborative exercise, as the prod
 
 Generating complete and detailed metadata may be seen as a burden by some organizations or researchers. But it will typically represent only a small fraction of the time and budget invested in the production of the data, and is an investment that will add much value to the data by increasing their usability and discoverability.
  
-### Usability 
+#### Usability 
 
 Fully understanding a dataset before conducting analysis should be a pre-requisite for all researchers and data users. But this will only be possible when the documentation is easy to obtain and exploit. Convenience to users is key. When using a geographic dataset for example, the user should be able to immediately find the coordinate reference system that was used. When using survey microdata, which may contain hundreds or thousands of variables, the user need to be able to immediately access information on a variable label, underlying question, universe, categories, etc. Structured metadata enables such "convenience", as they can easily be transformed into bookmarked PDF documents, searchable websites, machine-readable codebooks, etc. The way metadata are displayed can be tailored to the specific needs of different categories of users.
 
-### Discoverability
+#### Discoverability
 
 :::quote
 Data discoverability is one of the main tasks, next to availability and interoperability, that public policy makers and implementers should take into due consideration in order to foster access, use and re-use of public sector information, particularly in case of open data. Users shall be enabled to easily search and find data they need for the most different purposes. That is clearly highlighted in the introduction statements of the INSPIRE Directive, where we can read that “The loss of time and resources in searching for existing (spatial) data or establishing whether they may be used for a particular purpose is a key obstacle to the full exploitation of the data available”.
@@ -152,7 +291,7 @@ Once the metadata has been acquired, transformed, and indexed, it is available f
 </center>
 
 
-### Interoperability 
+#### Interoperability 
 
 Data catalogs that adopt common metadata standards and schemas can exchange information including through automated harvesting and synchronization of catalogs. This allows them to increase their visibility, and to publish their metadata in hubs. Recommendations and guidelines for improved inter-operability of data catalogs are provided by the [Open Archives Initiative](https://www.openarchives.org/). 
 
@@ -160,7 +299,7 @@ Interoperability between data catalogs can be further improved by the adoption o
 
 The adoption of standards and schemas by software developers also contributes to the easy transfer of metadata across applications. For example, data capture tools like [Survey Solutions](https://mysurvey.solutions/en/) by the World Bank and [CsPro](https://www.census.gov/data/software/cspro.html) by the US Census Bureau offer options to export metadata compliant with the DDI Codebook standard; ESRI's ArcGIS software export geospatial metadata in the ISO 19139 standard. 
 
-### Visibility
+#### Visibility
 
 Data cataloguing applications provide search and filtering tools to help users of the catalog identify data of interest. But not all users will start their search for data directly in specialized data catalogs; many will start their search in Google, Google Dataset Search, Bing, Yahoo! or another search engine.  
 
@@ -208,9 +347,9 @@ An important element of SEO is the provision of structured metadata that can be 
  <!--                 __/ |                                    -->
  <!--                |___/                                     -->
 
-## Augmented (enriched) metadata
+## Augmenting metadata
 
-Detailed and complete metadata foster usability and discoverability of data. Enrichment of the metadata will therefore be beneficial. There are multiple ways metadata can be made richer, or *augmented*, programmatically and in a largely automated manner. Metadata can be extracted from external sources or from the data themselves. 
+Detailed and complete metadata foster usability and discoverability of data. Augmentation of "enrichment" or "enhancement" of the metadata will therefore be beneficial. There are multiple ways metadata can be made richer, or *augmented*, programmatically and in a largely automated manner. Metadata can be extracted from external sources or from the data themselves. 
 
 **Extraction from external sources**
 
@@ -222,15 +361,40 @@ Metadata can be extracted from the data themselves. What metadata can be extract
 
    - For microdata: variable-level statistics (range of values, number of valid/missing cases, frequencies for categorical variables, summary statistics like means or standard deviations for continuous variables) can be extracted and stored as metadata. The DDI Codebook metadata standard provides elements for that purpose.  
    - For documents: information such as the country counts (how many times each country is mentioned) can be extracted automatically to fill out the metadata element related to geographic coverage. Natural language processing (NLP) models can be applied to automatically extract keywords or topics (e.g., using a Latent Dirichlet Allocation - LDA - topic model). Classification models can be applied to categorize documents by type. 
+   
+Embeddings and semantic discovery
+
+Previous sections of the chapter showed the value of rich and structured metadata to improve data usability and discoverability. Comprehensive and structured metadata are required to build and develop advanced and optimized <u>lexical</u> search engines (i.e. search engines that return results based on a matching of terms found in a query and in an inverted index). The richness of the metadata guarantees that the search engine will have all necessary "raw material" to identify datasets of interest. The metadata structure allows catalog administrators to tune their search engine (provided they use advanced solutions like Solr or ElasticSearch) to return and rank results in the most relevant manner. But this leaves one issue unsolved: the dependency on keyword matching. A user interested in datasets related to *malnutrition* for example will not find the indicators on *Prevalence of stunting* and *Prevalence of wasting* that the catalog may contain, unless the keyword "malnutrition" was included in these indicators' metadata. Smarter search engines will be able to "understand" users intent, and identify relevant data based not only on a keyword matching process, but also on the **semantic closeness** between a query submitted by thea user and the metadata available in the database. The combination of rich metadata and natural language processing (NLP) models can solve this issue, by enabling semantic searchability in data catalogs.
+
+To enable a semantic search engine (or a recommender system), we need a way to "quantify" the semantic content of a query submitted by the user and the semantic content the metadata associated with a dataset, and to measure the closeness between them. This "quantitative" representation of semantic content can be generated in the form of numeric vectors called **embeddings**. "Word embedding is a term used for the representation of words for text analysis, typically in the form of a real-valued vector that encodes the meaning of the word such that the words that are closer in the vector space are expected to be similar in meaning." (Jurafsky, Daniel; H. James, Martin (2000)). These vectors will typically have a large dimension, with a length of 100 or more. They can be generated for a word, a phrase, or a longer text such as a paragraph or a full document. They are calculated using models like word2vec (Mikolov et al., 2013) or other. Training such models require a large corpus of hundreds of thousands or millions of documents. Pre-trained models and APIs are available that allow data catalog curators to generate embeddings for their metadata and, in real time, for queries submitted by users.
+
+Practically, embeddings are used as follows: metadata (or part of the metadata) associated with a dataset are converted into a numeric vector using a pre-trained embedding model. These embeddings are stored in a database. When a user submits a search query (which can be a term, a phrase, or even a document), the query is analyzed and enhanced (stop words are removed, spelling errors may be fixed, language detection and automatic translation may be applied, and more), then transformed into a vector using the same pre-trained model that was used to generate the metadata vectors. The metadata vectors that have the shortest distance (typically the cosine distance) with the query vector will be identified. The search engine will then return a sorted list of datasets having the highest semantic similarity with the query, or the distance between vectors will be used in combination with other criteria to rank and return results to the user. The fast identification of the closest vectors requires a specialized and optimized tool like the open source [Milvus](https://milvus.io/) application.
+
+
+[^1] See Omar Benjelloun, Shiyu Chen, Natasha Noy, 2020, *Google Dataset Search by the Numbers*, https://doi.org/10.48550/arXiv.2006.06894
+
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+
+
+   
    - For geospatial data: bounding boxes (i.e. the *extent* of the data) can be derived from the data files. 
    - For photos taken by digital cameras: metadata such as the date and time the photo was taken and possibly the geographic location can be extracted from the EXIF metadata generated by digital cameras and stored in the image file. Also, machine learning models allow image labeling, face detection, text detection and recognition to be applied at low cost (using commercial solutions like [Google Vision](https://cloud.google.com/vision) or [Amazon Rekognition](https://aws.amazon.com/rekognition/) among others). 
    - For videos and audio files, machine learning models of speech-to-text API solutions can be used to automatically generate transcripts (see for example [Amazon Transcribe](https://aws.amazon.com/transcribe/), [Google Cloud Speech-to-Text](https://cloud.google.com/speech-to-text), [Microsoft Azure Speech to Text](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/), or [rev.ai](https://www.rev.ai/)). The content of the transcripts can then be indexed in search engines, making the content of video and audio files more discoverable. 
    - For programs and scripts: a parsing of the commands used in the script may be used to derive information on the methods applied.
    - For all types: user-defined tags can be added, possibly generated by machine learning classification algorithms.
-
-
-
-
 
 
 
@@ -320,9 +484,9 @@ We are interested in documenting and disseminating **data processing and analysi
  <!-- | |__| | |____ / ____ \| |    -->
  <!-- |_____/ \_____/_/    \_\_|    -->
                               
-## Schema.org and DCAT for search engine optimization
+### Schema.org and DCAT for search engine optimization
 
-### The basics of search engine optimization
+#### The basics of search engine optimization
 
 Data catalogs must be optimized to improve the visibility and ranking of their content in search engines, including specialized search engines like Google's [Dataset Search](https://datasetsearch.research.google.com/). The ranking of web pages by Google and other lead search engines is determined by complex, proprietary, and non-disclosed algorithms. The only option for a web developer to ensure that a web page appears on top of the Google list of results is to pay for it, publishing it as a commercial ad. Otherwise, the ranking of a web page will be determined by a combination of known and unknown criteria. "Google's automated ranking systems are designed to present helpful, reliable information that's primarily created to benefit people, not to gain search engine rankings, in the top Search results." ([Google Search Central](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)) But Google, Bing and other search engines provide web developers with some guidance and recommendations on search engine optimization (SEO). See for example the [Google Search Central](https://developers.google.com/search) website where Google publish "Specific things you can do to improve the SEO of your website". 
 
@@ -340,7 +504,7 @@ Last, Google will "reward" popular websites, i.e. websites that are frequently v
 
 A helpful and detailed [self-assessment list](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) of items that data curators, catalog developers, and catalog administrators should pay attention to is provided by Google. Various tools are also available to catalog developers and administrators to assess the technical performance of their websites.
 
-### Structured data for rich results in Google
+#### Structured data for rich results in Google
 
 *Structured data* is information that is embedded in HTML pages that helps Google classify, understand, and display the content of the page when the page is related to a specific type of content. The information stored in the structured data does not impact how the page itself is displayed in a web browser; it only impacts the display of information on the page when returned by Google search results. The types of content to which structured metadata applies is diverse and includes items like job positings, cooking receipes, books, events, movies, math solvers, and others (see the list provided in [Google's Search Gallery](https://developers.google.com/search/docs/appearance/structured-data/search-gallery)). It also applies to resources of type *dataset* and *image*. In this context, a *dataset* can be any type of structured dataset including microdata, indicators, tables, and geographic datasets.
 
@@ -365,7 +529,7 @@ The schemas proposed by schema.org have been developed primarily "to improve the
 
 [**DCAT**](https://www.w3.org/TR/vocab-dcat-2/) describes datasets and data services using a standard model and vocabulary. It is organized in 13 "classes" (Catalog, Cataloged Resource, Catalog Record, Dataset, Distribution, Data Service, Concept Scheme, Concept, Organization/Person, Relationship, Role, Period of Time, and Location). Within classes, *properties* are used as metadata elements. For example, the class *Cataloged Resource* includes properties like *title*, *description*, *resource creator*; the class *Dataset* includes properties like *spatial resolution*, *temporal coverage*; many of these properties can easily be mapped to equivalent elements of the specialized metadata schemas we recommend in this Guide.
 
-### Practical implementation of structured data
+#### Practical implementation of structured data
 
 The embedding of structured data into HTML pages must be automated in a data cataloguing tool. Data catalogs applications dynamically generate the HTML pages that display the description of each catalog entry. They do so by extracting the necessary metadata from the catalog database, and applying "transformations and styles" to this content to produce a user-friendly output that catalog visitors will view in their web browser. To embed structured data in these pages, the catalog application will (i) extract the relevant subset of metadata elements from the original metadata (e.g., from the DDI-compliant metadata for a micro-dataset), (ii) map these extracted elements to the schema.org or DCAT schema, and (iii) save it in the HTML page as a JSON-LD "hidden" component. Mapping the core elements of specialized metadata standards to the schema.org schema is thus essential to enable this feature. A mapping between the schema presented in this Guide and schema.org is provided in annex 2 of the Guide. 
 
@@ -400,197 +564,6 @@ The screenshots below show an example of an HTML page for a dataset published in
 ![](./images/reDoc_html_rank.JPG){width=80%}
 </center>
 <br>
-
-
-
- <!--   _____            _             _ _          _  -->
- <!--  / ____|          | |           | | |        | | -->
- <!-- | |     ___  _ __ | |_ _ __ ___ | | | ___  __| | -->
- <!-- | |    / _ \| '_ \| __| '__/ _ \| | |/ _ \/ _` | -->
- <!-- | |___| (_) | | | | |_| | | (_) | | |  __/ (_| | -->
- <!--  \_____\___/|_| |_|\__|_|  \___/|_|_|\___|\__,_| -->
-                                                 
-## Controlled vocabularies
-
-Metadata standards and schemas provide lists of elements with a description of the expected content to be captured in each element. For some elements, it may be appropriate to restrict the valid content to pre-selected options or "controlled vocabularies". A controlled vocabulary is a pre-defined list of values that can be accepted as valid content for some elements. For example. a metadata element "data type" should not be populated with free text, but should make use of a pre-defined taxonomy of data types. The use of controlled vocabularies (for selected metadata elements) will be particularly useful to implement search and filter features in data catalogs (see section 3.1.1 of this Guide), and to foster inter-operability of data catalogs.
-
-:::quote
-In library and information science, controlled vocabulary is a carefully selected list of words and phrases, which are used to tag units of information (document or work) so that they may be more easily retrieved by a search.[Wikipedia](https://en.wikipedia.org/wiki/Controlled_vocabulary)
-:::
-
-Controlled vocabularies can be specific to an agency, or be developed by a community of practice. For example, the list of countries and codes provided by the [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) can be used as a controlled vocabulary for a metadata element `country` or `nation`; the [ISO 639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) list of languages can be used as a controlled vocabulary for a metadata element `language`. Or the [CESSDA topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification) can be used as a controlled vocabulary for the element `topics` found in most metadata schemas. When a controlled vocabulary is used in a metadata standard or schema, it is good practice to include an identification of its origin and version.  
-
-Some recommended controlled vocabularies are included in the description of the ISO 19139 standard for geographic data and services (see chapter 6). Most standards and schemas we recommend also include a `topics` element. Annex 1 provides a description of the CESSDA topics classification. 
-
-Ideally, controlled vocabulary will be developed in compliance with the [FAIR principles](https://www.go-fair.org/fair-principles/) for scientific data management and stewardship: **F**indability, **A**ccessibility, **I**nteroperability, and **R**euse.
-
-
-
-
-
-
- <!--  _______               -->
- <!-- |__   __|              -->
- <!--    | | __ _  __ _ ___  -->
- <!--    | |/ _` |/ _` / __| -->
- <!--    | | (_| | (_| \__ \ -->
- <!--    |_|\__,_|\__, |___/ -->
- <!--              __/ |     -->
- <!--             |___/      -->
-
-## Tags and tag groups
-
-All metadata standards and schemas described in this guide include a `tags` element, even when this element is not part of a standard. This element enables the implementation of filters (facets) in data cataloguing applications, in a flexible manner. The `tags` metadata element is repeatable (meaning that more than one tag can be attached to a dataset) and contains two sub-elements to capture a `tag` (word or phrase), and the `tag_group` (if any) it belongs to.
-
-<center>
-![](./images/reDoc_tags.JPG){width=100%}
-</center>
-
-To illustrate the use of tags, let's assume that a catalog contains datasets that are available freely, and others that are available for a fee. The catalog administrator may want to provide a filter (facet) in the user interface that would allow users to filter datasets based on their free or not free status. None of the metadata schemas we describe in the Guide contains an element specifically designed to indicate the "free" or "for a fee" nature of the data. But this information can be captured in a tag "*Free*" or "*For a fee*" that would be added to each dataset in the catalog, with a tag group that could be named "free_or_fee". In R, this would be done as follows (for a "Free" dataset):
-
-```{r, eval=F, echo=T}
-# ... ,
-tags = list(
-  list(tag = "Free", tag_group = "free_or_fee")
-)
-# ... 
-```
-    
-In the NADA catalog, a facet titled "Free or for a fee" can then be created based on the information found in the `tags` element where `tag_group` = "free_or_fee".
-
-<center>
-![](./images/reDoc_tags_2.JPG){width=100%}
-</center>
-
-
-
-
-
- <!--  ______           _              _     _ _                  -->
- <!-- |  ____|         | |            | |   | (_)                 -->
- <!-- | |__   _ __ ___ | |__   ___  __| | __| |_ _ __   __ _ ___  -->
- <!-- |  __| | '_ ` _ \| '_ \ / _ \/ _` |/ _` | | '_ \ / _` / __| -->
- <!-- | |____| | | | | | |_) |  __/ (_| | (_| | | | | | (_| \__ \ -->
- <!-- |______|_| |_| |_|_.__/ \___|\__,_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                   __/ |     -->
- <!--                                                  |___/      -->
- 
-## Embeddings and semantic discovery
-
-Previous sections of the chapter showed the value of rich and structured metadata to improve data usability and discoverability. Comprehensive and structured metadata are required to build and develop advanced and optimized <u>lexical</u> search engines (i.e. search engines that return results based on a matching of terms found in a query and in an inverted index). The richness of the metadata guarantees that the search engine will have all necessary "raw material" to identify datasets of interest. The metadata structure allows catalog administrators to tune their search engine (provided they use advanced solutions like Solr or ElasticSearch) to return and rank results in the most relevant manner. But this leaves one issue unsolved: the dependency on keyword matching. A user interested in datasets related to *malnutrition* for example will not find the indicators on *Prevalence of stunting* and *Prevalence of wasting* that the catalog may contain, unless the keyword "malnutrition" was included in these indicators' metadata. Smarter search engines will be able to "understand" users intent, and identify relevant data based not only on a keyword matching process, but also on the **semantic closeness** between a query submitted by thea user and the metadata available in the database. The combination of rich metadata and natural language processing (NLP) models can solve this issue, by enabling semantic searchability in data catalogs.
-
-To enable a semantic search engine (or a recommender system), we need a way to "quantify" the semantic content of a query submitted by the user and the semantic content the metadata associated with a dataset, and to measure the closeness between them. This "quantitative" representation of semantic content can be generated in the form of numeric vectors called **embeddings**. "Word embedding is a term used for the representation of words for text analysis, typically in the form of a real-valued vector that encodes the meaning of the word such that the words that are closer in the vector space are expected to be similar in meaning." (Jurafsky, Daniel; H. James, Martin (2000)). These vectors will typically have a large dimension, with a length of 100 or more. They can be generated for a word, a phrase, or a longer text such as a paragraph or a full document. They are calculated using models like word2vec (Mikolov et al., 2013) or other. Training such models require a large corpus of hundreds of thousands or millions of documents. Pre-trained models and APIs are available that allow data catalog curators to generate embeddings for their metadata and, in real time, for queries submitted by users.
-
-Practically, embeddings are used as follows: metadata (or part of the metadata) associated with a dataset are converted into a numeric vector using a pre-trained embedding model. These embeddings are stored in a database. When a user submits a search query (which can be a term, a phrase, or even a document), the query is analyzed and enhanced (stop words are removed, spelling errors may be fixed, language detection and automatic translation may be applied, and more), then transformed into a vector using the same pre-trained model that was used to generate the metadata vectors. The metadata vectors that have the shortest distance (typically the cosine distance) with the query vector will be identified. The search engine will then return a sorted list of datasets having the highest semantic similarity with the query, or the distance between vectors will be used in combination with other criteria to rank and return results to the user. The fast identification of the closest vectors requires a specialized and optimized tool like the open source [Milvus](https://milvus.io/) application.
-
-
-[^1] See Omar Benjelloun, Shiyu Chen, Natasha Noy, 2020, *Google Dataset Search by the Numbers*, https://doi.org/10.48550/arXiv.2006.06894
-
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-
-
-# Metadata formats and tools {#chapter02}
-
-
- <!--       _  _____  ____  _   _  __   ____  __ _       -->
- <!--      | |/ ____|/ __ \| \ | | \ \ / /  \/  | |      -->
- <!--      | | (___ | |  | |  \| |  \ V /| \  / | |      -->
- <!--  _   | |\___ \| |  | | . ` |   > < | |\/| | |      -->
- <!-- | |__| |____) | |__| | |\  |  / . \| |  | | |____  -->
- <!--  \____/|_____/ \____/|_| \_| /_/ \_\_|  |_|______| -->
-                                                   
-## The JSON and XML formats 
-
-Metadata standards and schemas consist of structured lists of metadata fields. They serve multiple purposes. First, they help data curators generate complete and usable documentation of their datasets. Metadata standards that are intuitive and *human-readable* better serve this purpose. Second, they help generate *machine-readable* metadata that are the input to software applications like on-line data catalogs. Metadata available in open file formats like JSON (JavaScript Object Notation) and XML (eXtended Markup Language) are most suitable for this purposes.
-
-Some international metadata standards like the Data Documentation Initative (DDI Codebook, for microdata), the ISO 19139 (for geospatial data), or the Dublin Core (a more generic metadata specification) are described and published as XML specifications. Any XML standard or schema can be "translated" into JSON, which is our preferred format (a choice we justify in the next section).   
-
-JSON and XML formats have similarities: 
-
-   - Both are non-proprietary text files
-   - Both are hierarchical (they may contain values within values)
-   - Both can be parsed and used by many programming languages including R and Python
-
-JSON files are however easier to parse than XML, easier to generate programmatically, and easier to read by humans. This makes them our preferred choice for describing and using metadata standards and schemas.
-
-Metadata in JSON are stored as *key/value* pairs, where the keys correspond to the names of the metadata elements in the standard. Values can be string, numeric, boolean, arrays, null, or JSON objects (for a more detailed description of the JSON format, see [www.w3schools.com](https://www.w3schools.com/js/js_json_intro.asp)). Metadata in XML are stored within named tags. The example below shows how the JSON and XML formats are used to document the list of authors of a [document](http://hdl.handle.net/10986/34511), using elements from the Dublin Core metadata standard.
-
-<center>
-![](./images/document_example_01b_authors_keywords.JPG){width=100%}
-</center>
-<br>
-
-In the *documents* schema, authors are documented in the metadata element `authors` which contains the following sub-elements: `first_name`, `initial`, `last_name`, and `affiliation`.
-
-<center>
-![](./images/JSON_array_list_authors.JPG){width=100%}
-</center>
-<br>
-
-In JSON, this information will be stored in key/value pairs as follows. 
-
-```{json}
-"authors" : [
-  {"first_name" : "Dieter", 
-   "last_name"  : "Wang", 
-   "affiliation": "World Bank Group; Fragility, Conflict and Violence"},
-  {"first_name" : "Bo",     
-   "initial"    : "P.J.", 
-   "last_name"  : "Andrée", 
-   "affiliation": "World Bank Group; Fragility, Conflict and Violence"},
-  {"first_name" : "Andres", 
-   "initial"    : "F.", 
-   "last_name"  : "Chamorro", 
-   "affiliation": "World Bank Group; Development Data Analytics and Tools"},
-  {"first_name" : "Phoebe", 
-   "initial"    : "G.", 
-   "last_name"  : "Spencer",  
-   "affiliation":"World Bank Group; Fragility, Conflict and Violence"}
-]
-```
-
-In XML, the same information will be stored within named tags as follows. 
-
-```{xml}
-<authors>
-  <author>
-    <first_name>Dieter</first_name> 
-    <last_name>Wang</last_name> 
-    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
-  </author>
-  <author>
-    <first_name>Bo</first_name> 
-    <initial>P.J.</initial> 
-    <last_name>Andrée</last_name> 
-    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
-  </author>
-  <author>
-    <first_name>Andres</first_name> 
-    <initial>E.</initial>
-    <last_name>Chamorro</last_name> 
-    <affiliation>World Bank Group; Development Data Analytics and Tools</affiliation>
-  </author>
-  <author>
-    <first_name>Phoebe</first_name> 
-    <initial>G.</initial>
-    <last_name>Spencer</last_name> 
-    <affiliation>World Bank Group; Fragility, Conflict and Violence</affiliation>
-  </author>
-</authors>
-```
 
 
 
@@ -661,7 +634,7 @@ In most cases however, controlled vocabularies are not part of the metadata stan
  <!--                                                __/ | -->
  <!--                                               |___/  -->
                                                
-## How to generate metadata? 
+## Generating structured metadata 
 
 Metadata compliant with the standards and schemas described in this Guide can be generated in two different ways: **programmatically** using a programming language like R or Python, or by **using a specialized metadata editor** application. The first option provides a high degree of flexibility and efficiency. It offers multiple opportunities to automate part of the metadata generation process, and to exploit advanced machine learning solutions to enhance metadata. Also, metadata generated using R or Python can also be published in a NADA catalog using the NADA API and the R package NADAR or the Python library PyNADA. The programmatic option may thus be the preferred option for organizations that have strong expertise in R or Python. For other organizations, and for some types of data, the use of a specialized metadata editor may be a better option. Metadata editors are specialized software applications designed to offer a user-friendly alternative to the programmatic generation of metadata. We provide in this section a brief description of how structured metadata can be generated and published using respectively R, Python, and a metadata editor application. 
 
@@ -824,7 +797,7 @@ nada.add_resource(
   overwrite = "yes")
 ```
 
-### Generating compliant metadata using metadata editors
+### Generating compliant metadata using a metadata editor
 
 R and Python are powerful tools to generate metadata in a flexible and efficient manner. They offer opportunities to automate tasks, to extract metadata from APIs or data files, to augment metadata, and to provide full transparency and replicability in the metadata production process. But this requires a level of expertise in R or Python that many organizations may not have. To support users who do not have such expertise, and to facilitate the use of complex metadata standards, specialized *metadata editors* have been developed to document certain types of data, in particular microdata (with the DDI metadata standard) and geospatial data (with the ISO 19139 metadata standard).
 
