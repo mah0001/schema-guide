@@ -5,13 +5,7 @@ output: html_document
 
 # A search engine and recommender system optimized for data {#chapter02}
 
-## A call for better metadata and search algorithms
-
-Data producers have a responsibility to generate comprehensive metadata for their datasets. The administrators and curators of data catalogs are responsible for providing well-documented data, specialized search tools, advice to data users, and for making the metadata as visible as possible to the search engines by implementing search engine optimization (SEO). 
-
-To serve the multiple purposes of improving the usability, visibility, discoverability, and accessibility of data, metadata must be **rich** (detailed and comprehensive) and **structured**. Metadata standards and schemas provide a solution to data curators to improve the comprehensiveness of, and to structure, their metadata. And machine learning and other approaches can be implemented to **augment** (or **enhance**) metadata in a largely automated manner, making them richer. 
-
-Solution is in better algorithms that combine lexical search, semantic search (NLP), filtering, advanced search option (targeted), recommender, enabled by richer and structured metadata. Research, development, and continuous improvement on algorithms and metadata enhancement solutions is needed. Call for investment in open algorithms and models. Metadata standards are there to ingest anbd enable.
+We describe in this chapter the features that an on-line data catalog should have to better satisfy the needs and expectations of various categories of users. The objective is develop catalogs that combine lexical search, semantic search (NLP), filtering, advanced search option (targeted), and a recommender system. Also, that provide users with detaled metadata, and convenience in formats and modes of access. 
 
 ## Data cataloguing 
 
