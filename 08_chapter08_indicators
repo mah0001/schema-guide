@@ -114,14 +114,17 @@ The first elements of the schema (`repositoryid`, `access_policy`, `data_remote_
  <!--                 | |                                                  -->
  <!--                 |_|                                                  -->
 
-#### Information on the metadata production
+#### Metadata information
 
-**`metadata_information`** *[Optional ; Not repeatable]* <br>
-This block is used to describe who produced the metadata and when. This is an optional section of the schema. It is useful for archivist more than data users. The description of the series itself is found in the section `series_description.` 
+**`metadata_information`** *[Optional, Not Repeatable]* <br>
+The set of elements in `metadata_information` is used to provide information on the production of the indicator metadata. This information is used mostly for administrative purposes by data curators and catalog administrators.
 
-![](./images/ReDoc_ts_series_02.JPG){width=100%}
+![](./images/ReDoc_ts_database_01.JPG){width=100%}
 
-
+- **`title`** *[Optional ; Not repeatable ; String]* <br>
+The title of the metadata document containing the indicator metadata.<br>
+- **`idno`** *[Required ; Not repeatable ; String]* <br>
+A unique identifier of the indicator metadata document. It can be for example the identifier of the indicator preceded by a prefix identifying the metadata producer.<br>
 - **`producers`** *[Optional ; Repeatable]*  <br>
 This is a list of producers involved in the documentation (production of the metadata) of the series.
 
@@ -140,6 +143,9 @@ The date the metadata was generated. The date should be entered in ISO 8601 form
 - **`version`** *[Optional ; Not repeatable, String]* <br>
 The version of the metadata on this series. This element will rarely be used.
 
+![](./images/ReDoc_ts_series_02.JPG){width=100%}
+
+
 
 ```{r, indent="  ", eval=F, echo=T}
 metadata_creation = list(
@@ -152,14 +158,6 @@ metadata_creation = list(
   
 )
 ```
-
-
-
-
-
-
-
-
 
 
 
@@ -269,7 +267,19 @@ The element `idno` described above is the reference unique identifier for the ca
   - **`database`** <br>
   The name of the database (or catalog) where this alternative identifier is used, e.g. "IMF, International Financial Statistics (IFS)".<br>
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-  A link (URL) to the database mentioned in `database`. <br><br>
+  A link (URL) to the database mentioned in `database`. <br>
+  - **`notes`** *[Optional ; Not repeatable ; String]* <br>
+  Any additional information on the alternate identifier. <br><br>
+
+- **`languages`** *[Optional ; Repeatable]* <br>  
+An indicator or time series can be made available at different levels of disaggregation. For example, an indicator containing estimates of the "Population" of a country by year can be available by sex. The data curators in such case will have two options: (i) create and document three separate indicators, namely "Population, Total", "Population, Female", and "Population, Male"; or create a single indicator "Population" and attach a *dimension* "sex" to it, with values "Total", "Female", and "Male". The `dimensions` are features (or "variables") that define the different levels of disaggregation within an indicator/series. The element `dimensions` is used to provide an itemized list of disaggregations that correspond exactly to the published data. Note that when an indicator is available at two "non-overlapping" levels of disaggregation, it should be split into two indicators. For example, if the Population indicator is available by male/female and by urban/rural, but not by male/urban/male/rural/female urban/female rural, it should be treated as two separate indicators ("Population by sex" with dimension sex = "male / female" and "Population by area of residence" with dimension area = "urban / rural".) Note also that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented.<br>
+
+  ![](./images/ReDoc_ts_series_08b.JPG){width=100%}
+  - **`name`** *[Required ; Not repeatable ; String]* <br>
+  The name of the language.
+  - **`code`** *[Optional ; Not repeatable ; String]* <br>
+  The code of the language, preferably the ISO code.<br><br>
+
 
 
  <!--  ___    ____  ______               _ _    -->
@@ -303,10 +313,12 @@ The element `idno` described above is the reference unique identifier for the ca
 An indicator or time series can be made available at different levels of disaggregation. For example, an indicator containing estimates of the "Population" of a country by year can be available by sex. The data curators in such case will have two options: (i) create and document three separate indicators, namely "Population, Total", "Population, Female", and "Population, Male"; or create a single indicator "Population" and attach a *dimension* "sex" to it, with values "Total", "Female", and "Male". The `dimensions` are features (or "variables") that define the different levels of disaggregation within an indicator/series. The element `dimensions` is used to provide an itemized list of disaggregations that correspond exactly to the published data. Note that when an indicator is available at two "non-overlapping" levels of disaggregation, it should be split into two indicators. For example, if the Population indicator is available by male/female and by urban/rural, but not by male/urban/male/rural/female urban/female rural, it should be treated as two separate indicators ("Population by sex" with dimension sex = "male / female" and "Population by area of residence" with dimension area = "urban / rural".) Note also that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented.<br>
 
   ![](./images/ReDoc_ts_series_08b.JPG){width=100%}
+  - **`name`** *[Required ; Not repeatable ; String]* <br>
+  The name of the dimension.
   - **`label`** *[Required ; Not repeatable ; String]* <br>
-  The label of the disaggregation level, for example "sex", or "urban/rural".
+  The label of the dimension, for example "sex", or "urban/rural".
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
-  A description of the disaggregation level (for example, if the label was "age group", the description can provide detailed information on the age groups, e.g. "The age groups in the database are 0-14, 15-49, 50-64, and 65+ years old".)<br><br>
+  A description of the dimension (for example, if the label was "age group", the description can provide detailed information on the age groups, e.g. "The age groups in the database are 0-14, 15-49, 50-64, and 65+ years old".)<br><br>
 
 
  <!--  ___    ____   ___                    _           _ _      _ _          -->
@@ -433,6 +445,10 @@ This repeatable element can be used to document concepts related to the indicato
 
   This element documents methodological details on the production of the series or indicator. 
 
+- **`derivation`** *[Optional ; Not repeatable ; String]* <br>
+![](./images/ReDoc_ts_series_15a.JPG){width=100%}
+
+A description of the method and calculations used to derive the estimates for the indicator.
 
  <!--  ___    ____  __ ______   _                       _        _   _              -->
  <!-- |__ \  |___ \/_ |____  | (_)                     | |      | | (_)             -->
@@ -556,6 +572,8 @@ Themes provide a general idea of the research that might guide the creation and/
   The name of the controlled vocabulary used, if any. 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link to the controlled vocabulary mentioned in field `vocabulary'.
+  
+  
  <!--  ___    ____   ___  _____    _              _           -->
  <!-- |__ \  |___ \ |__ \| ____|  | |            (_)          -->
  <!--    ) |   __) |   ) | |__    | |_ ___  _ __  _  ___ ___  -->
@@ -634,7 +652,9 @@ The time period covers the entire span of data available for the series. The tim
   - **`start`** *[Required ; Not repeatable ; String]* <br>
   The initial date of the series in the dataset. The start date should be entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).
   - **`end`** *[Required ; Not repeatable ; String]* <br>
-  The end date is the latest date for which an estimate for the indicator is available. The end date should be entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).<br><br>
+  The end date is the latest date for which an estimate for the indicator is available. The end date should be entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).<br>
+  - **`notes`** *[Optional ; Not repeatable ; String]* <br>
+  Additional information on the time period.<br><br>
 
 
  <!--  ___    ____   ___   ___              __                         _               -->
@@ -675,6 +695,12 @@ List of geographic units (regions, countries, states, provinces, etc.) for which
   Code of the geographic unit. The [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)  code is preferred when the unit is a country.
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   Type of geographic unit e.g. "country", "state", "region", "province", "city", etc. <br><br>
+
+
+
+@@@@ bbox
+![](./images/ReDoc_ts_series_28a.JPG){width=100%}
+
 
 
  <!--  ___    ____   ____  __                                        _   _               _  -->
