@@ -426,7 +426,7 @@ The ISO 19139 specification provides a structured set of metadata elements to de
 | `individualName`   | Name of the individual                                       |
 | `organisationName` | Name of the organization                                     |
 | `positionName`     | Position of the individual in the organization               |
-| `contactInfo`      | Contact information. The contact information is divided into 3 sections: `phone`(including either `voice` or `facsimile` numbers; `address`, handling the physical address elements (`deliveryPoint`, `city`, `postalCode`, `country`), contact e-mail (`electronicEmailAddress`), and `onlineResource` (e.g., the URL of the organization website) |
+| `contactInfo`      | Contact information. The contact information is divided into 3 sections: `phone`(including either `voice` or `facsimile` numbers; `address`, handling the physical address elements (`deliveryPoint`, `city`, `postalCode`, `country`), contact e-mail (`electronicEmailAddress`), and `onlineResource`, e.g., the URL of the organization website (which includes `linkage`, `name`, `description`, `protocol`, and `function` ; see below) |
 | `role`             | Role of the person/organization. A recommended controlled vocabulary is provided by ISO 19139, with the following options: `{resourceProvider, custodian, owner, sponsor, user, distributor, originator, pointOfContact, principalInvestigator, processor, publisher, author, coAuthor, collaborator, editor, mediator, rightsHolder, contributor, funder, stakeholder}` |
 
 <center>
@@ -483,7 +483,7 @@ The **citation** is another common element that can be used in various parts of 
 | ----------------------- | ------------------------------------------------------------ |
 | `title`                 | Title of the resource                                        |
 | `alternateTitle`        | An alternate title (if applicable)                           |
-| `date`                  | Date(s) associated to a resource. This may include different types of dates. The type of date should be provided, and selected from the controlled vocabulary proposed by the ISO 19139: date of  `{creation, publication, revision, expiry, lastUpdate, lastRevision, nextUpdate, unavailable, inForce, adopted, deprecated, superseded, validityBegins, validityExpires, released, distribution}` |
+| `date`                  | Date(s) associated to a resource, with sub-elements `date` and `type`. This may include different types of dates. The type of date should be provided, and selected from the controlled vocabulary proposed by the ISO 19139: date of  `{creation, publication, revision, expiry, lastUpdate, lastRevision, nextUpdate, unavailable, inForce, adopted, deprecated, superseded, validityBegins, validityExpires, released, distribution}` |
 | `edition`               | Edition of the resource                                      |
 | `editionDate`           | Edition date                                                 |
 | `identifier`            | A unique persistent identifier for the metadata. If a DOI is available for the resource, the DOI should be entered here. The same `fileIdentifier` should be used if no other persistent identifier is available.  |
@@ -554,10 +554,6 @@ The **extent** defines the boundaries of the dataset in space (horizontally and 
 <center>
 ![](./images/ReDoc_geospatial_32.JPG){width=100%}
 </center>
-
-
-
-
 
 
 
