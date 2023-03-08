@@ -1836,12 +1836,11 @@ This element can be used to give the data archive's class or study status number
 - **`data_processing`** *[Optional ; Repeatable]* <br>   @@@@ Improve definition of elements
 ![](./images/ReDoc_Microdata_25b.JPG){width=100%}
 This element is used to describe how data were electronically captured (e.g., entered in the field, in a centralized manner by data entry clerks, captured electronically using tablets and a CAPI application, via web forms, etc.). Information on devices and software used for data capture can also be provided here. Other data processing procedures not captured elsewhere in the documentation can be described here (tabulation, etc.) <br>
-  - **`data_processing`** *[Optional ; Repeatable ; String]*
-  A description of a data processing task. 
-  - **`source`** *[Optional ; Repeatable ; String]*
-  The source(s) used for the task.
   - **`type`** *[Optional ; Not repeatable ; String]* <br> 
-  The type attribute supports better classification of this activity, including the optional use of a controlled vocabulary. The vocabulary could include options like "data capture", "data validation", "variable derivation", "tabulation", "data visualizations", anonymization", "documentation", etc.<br><br>
+  The type attribute supports better classification of this activity, including the optional use of a controlled vocabulary. The vocabulary could include options like “data capture”, “data validation”, “variable derivation”, “tabulation”, “data visualizations”, anonymization“, ”documentation", etc.<br>
+  - **`description`** *[Optional ; Repeatable ; String]*
+  A description of a data processing task.
+<br>
 
 - **`coding_instructions`** *[Optional ; Repeatable]* <br>   
 The `coding_instructions` elements can be used to describe specific coding instructions used in data processing, cleaning, or tabulation. Providing this information may however be complex and very tedious for datasets with a significant number of variables, where hundreds of commands are used to process the data. An alternative option, preferable in many cases, will be to publish reproducible data editing, tabulation and analysis scripts together with the data, as related resources.<br>
@@ -2301,7 +2300,8 @@ Contains a reference to the IDs of possible following questions. This can be use
 Contains a reference to IDs of possible preceding questions. This can be used to document backward skip instructions.<br>
 
 - **`var_qstn_ivuinstr`** *[Optional ; Not repeatable ; String]* <br>  
-Specific instructions to the individual conducting an interview. The content will typically be entered by copy/pasting instructions in the interviewer's manual (or in the CAPI application). In cases where the same instructions relate to multiple variables, repeat the same information in the metadata for all these variables.<br>
+Specific instructions to the individual conducting an interview. The content will typically be entered by copy/pasting instructions in the interviewer's manual (or in the CAPI application). In cases where the same instructions relate to multiple variables, repeat the same information in the metadata for all these variables.
+NOTE: In earlier version of the documentation, due to a typo, the element was named `var_qstn_ivulnstr`.<br>
 
 - **`var_universe`** *[Optional ; Not repeatable ; String]* <br>
 The universe at the variable level defines the population the question applied to. It reflects skip patterns in a questionnaire. This information can typically be copy/pasted from the survey questionnaire. Try to be as specific as possible. This information is critical for the analyst, as it explains why missing values may be found in a variable. In the example below (from the Malawi MICS 2006 survey questionnaire), the universe for questions ED1 to ED2 will be *"Household members age 5 and above"*, and the universe for Question ED3 will be *"Household members age 5 and above who ever attended school or pre-school"*.<br> 
