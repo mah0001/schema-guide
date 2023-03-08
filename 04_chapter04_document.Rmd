@@ -890,6 +890,26 @@ These elements are used to acknowledge contributions to the production of the do
 
 <br>
 
+- **`contacts`** *[Optional ; Repeatable]* <br>
+Contact information for a person or organization that can be contacted for inquiries related to the document.
+
+  ![](./images/ReDoc_documents_12b.JPG){width=100%}
+
+  - **`name`** *[Optional ; Not repeatable ; String]* <br>
+  The name of the contact. This can be a person or an organization..
+  - **`role`** *[Optional ; Not repeatable ; String]* <br>
+  The specific role of the person or organization mentioned in `contact`.
+  - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
+  The affiliation of the contact person. 
+  - **`email`** *[Optional ; Not repeatable ; String]* <br>
+  The email address of the contact person or organization. Personal emails should be avoided.<br> 
+  - **`telephone`** *[Optional ; Not repeatable ; String]* <br>
+  The telephone number for the contact person or organization. Personal phone numbers should be avoided.<br> 
+  - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+  A link to an on-line resource related to the contact person or organization.<br> 
+
+<br>
+
 - **`rights`** *[Optional ; Not repeatable ; String]* <br>
 
   ![](./images/ReDoc_documents_12c1.JPG){width=100%}
