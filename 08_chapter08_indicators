@@ -116,7 +116,7 @@ The first elements of the schema (`repositoryid`, `access_policy`, `data_remote_
 
 #### Information on the metadata production
 
-**`metadata_creation`** *[Optional ; Not repeatable]* <br>
+**`metadata_information`** *[Optional ; Not repeatable]* <br>
 This block is used to describe who produced the metadata and when. This is an optional section of the schema. It is useful for archivist more than data users. The description of the series itself is found in the section `series_description.` 
 
 ![](./images/ReDoc_ts_series_02.JPG){width=100%}
