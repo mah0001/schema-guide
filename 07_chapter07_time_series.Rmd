@@ -158,7 +158,7 @@ The version of the metadata (not the version of the database).<br>
   This element is used to store database identifiers (IDs) other than the catalog ID entered in `idno`. It can for example be a Digital Object Identifier (DOI). The `idno` can be repeated here (`idno` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
     - **`type`** *[Optional ; Not repeatable ; String]* <br>
     The type of unique ID, e.g. "DOI".<br>
-    - **`value`** *[Required ; Not repeatable ; String]* <br>
+    - **`identifier`** *[Required ; Not repeatable ; String]* <br>
     The identifier itself.<br>
   - **`title`** *[Required ; Not repeatable ; String]* <br>
   The title is the name by which the database is formally known. It is good practice to include the year of production in the title (and possibly the month, or quarter, if a new version of the database is released more than once a year). For example, "World Development Indicators, April 2020".<br>  
@@ -234,19 +234,6 @@ This set of five elements is used to identify the organization(s) or person(s) w
 
   ![](./images/ReDoc_ts_database_07.JPG){width=100%}
   The type of database. <br>
-
-
- <!--  __   ___     __         _       _  -->
- <!-- /_ | |__ \   / /        | |     (_) -->
- <!--  | |    ) | / /_      __| | ___  _  -->
- <!--  | |   / / | '_ \    / _` |/ _ \| | -->
- <!--  | |_ / /_ | (_) |  | (_| | (_) | | -->
- <!--  |_(_)____(_)___(_)  \__,_|\___/|_| -->
-                                    
-- **`doi`** *[Optional ; Not repeatable ; String]* <br>
-
-  ![](./images/ReDoc_ts_database_08.JPG){width=100%}
-  The Digital Object Identifier (DOI) for the database, if available. This complements the `idno` field (note that the DOI can be used as `idno`). DOIs provide a solution to guarantee the global uniqueness of an identifier. Their use is highly recommended. DOIs should be included in citation requirements.<br>
 
 
  <!--  __   ___   ______       _       _                             _           _  -->
@@ -343,16 +330,6 @@ The time coverage is the time span of all the data contained in the database acr
   - **`end`** *[Optional ; Not repeatable ; String]* <br>
   Indicates the end date of the period covered by the data (across all series) in the database. The date should be provided in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY).<br><br>
 
-
- <!--  __   ___   __ ____     _   _                                                     _        -->
- <!-- /_ | |__ \ /_ |___ \   | | (_)                                                   | |       -->
- <!--  | |    ) | | | __) |  | |_ _ _ __ ___   ___    _____   ___ __ __ _   _ __   ___ | |_ ___  -->
- <!--  | |   / /  | ||__ <   | __| | '_ ` _ \ / _ \  / __\ \ / / '__/ _` | | '_ \ / _ \| __/ _ \ -->
- <!--  | |_ / /_ _| |___) |  | |_| | | | | | |  __/ | (__ \ V /| | | (_| | | | | | (_) | ||  __/ -->
- <!--  |_(_)____(_)_|____(_)  \__|_|_| |_| |_|\___|  \___| \_/ |_|  \__, | |_| |_|\___/ \__\___| -->
- <!--                                                                __/ |                       -->
- <!--                                                               |___/                        -->
-
 - **`time_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
 The element is used to annotate and/or describe auxiliary information related to the time coverage described in `time_coverage`.<br>
 
@@ -438,11 +415,19 @@ Words or phrases that describe salient aspects of a data collection's content. T
   ![](./images/ReDoc_ts_database_16.JPG){width=100%}
   - **`name`** *[Required ; String ; Non repeatable]* <br>
   A keyword (or phrase).  
-  - **`vocab`** *[Optional ; Not repeatable ; String]* <br>
+  - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
   The name of the controlled vocabulary from which the keyword was extracted, if any.  
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URI of the controlled vocabulary used, if any.<br><br>
 
+- **`dimensions`** *[Optional ; Repeatable]* <br>
+The dimensions available for the series included in the database. For example, "country, year". 
+
+  ![](./images/ReDoc_ts_database_16.JPG){width=100%}
+  - **`name`** *[Required ; String ; Non repeatable]* <br>
+  The name of the dimension.  
+  - **`label`** *[Optional ; Not repeatable ; String]* <br>
+  A label for the dimension.<br><br>
 
  <!--  __   ___   __  ___               __                         _               -->
  <!-- /_ | |__ \ /_ |/ _ \             / _|                       | |              -->
@@ -483,30 +468,9 @@ A list of geographic units (regions, countries, states, provinces, etc.) for whi
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   Type of geographic unit e.g. country, state, region, province, or other grouping. <br>
 
-
-
- <!--  __   ___    ___   ___                                            _     _                    _        -->
- <!-- /_ | |__ \  |__ \ / _ \                                          | |   (_)                  | |       -->
- <!--  | |    ) |    ) | | | |    __ _  ___  ___   __ _ _ __ __ _ _ __ | |__  _  ___   _ __   ___ | |_ ___  -->
- <!--  | |   / /    / /| | | |   / _` |/ _ \/ _ \ / _` | '__/ _` | '_ \| '_ \| |/ __| | '_ \ / _ \| __/ _ \ -->
- <!--  | |_ / /_ _ / /_| |_| |  | (_| |  __/ (_) | (_| | | | (_| | |_) | | | | | (__  | | | | (_) | ||  __/ -->
- <!--  |_(_)____(_)____|\___(_)  \__, |\___|\___/ \__, |_|  \__,_| .__/|_| |_|_|\___| |_| |_|\___/ \__\___| -->
- <!--                             __/ |            __/ |         | |                                        -->
- <!--                            |___/            |___/          |_|                                        -->
-                            
 - **`geographic_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
 The note can be used to capture additional information on the geographic coverage of the database.<br>
 ![](./images/ReDoc_ts_database_18.JPG){width=100%}
-
-  
-
-
- <!--  __   ___    ___  __     _     _                -->
- <!-- /_ | |__ \  |__ \/_ |   | |   | |               -->
- <!--  | |    ) |    ) || |   | |__ | |__   _____  __ -->
- <!--  | |   / /    / / | |   | '_ \| '_ \ / _ \ \/ / -->
- <!--  | |_ / /_ _ / /_ | |_  | |_) | |_) | (_) >  <  -->
- <!--  |_(_)____(_)____||_(_) |_.__/|_.__/ \___/_/\_\ -->
 
 - **`bbox`** *[Optional ; Repeatable]* <br>
 Bounding boxes are typically used for geographic datasets to indicate the geographic coverage of the data, but can be provided for databases as well, although this will rarely be done. A geographic bounding box defines a rectangular geographic area.
@@ -520,30 +484,12 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
   Southern geographic parameter of the bounding box.
   - **`north`** *[Required ; Not repeatable ; String]* <br>
   Northern geographic parameter of the bounding box.
-
-
- <!--  __   ___    ___  ___                                  _            _ _          -->
- <!-- /_ | |__ \  |__ \|__ \                                | |          (_) |         -->
- <!--  | |    ) |    ) |  ) |     __ _ _ __ __ _ _ __  _   _| | __ _ _ __ _| |_ _   _  -->
- <!--  | |   / /    / /  / /     / _` | '__/ _` | '_ \| | | | |/ _` | '__| | __| | | | -->
- <!--  | |_ / /_ _ / /_ / /_ _  | (_| | | | (_| | | | | |_| | | (_| | |  | | |_| |_| | -->
- <!--  |_(_)____(_)____|____(_)  \__, |_|  \__,_|_| |_|\__,_|_|\__,_|_|  |_|\__|\__, | -->
- <!--                             __/ |                                          __/ | -->
- <!--                            |___/                                          |___/  -->
  
 - **`geographic_granularity`** *[Optional ; Not repeatable ; String]* <br>
 
 ![](./images/ReDoc_ts_database_20.JPG){width=100%}
 
   Whereas the `geographic_units` element lists the various geographic levels for which there is data in the database, the `geographic_granularity` element will provide information on the geographic levels for which information is available in the database. For example: "The database contains data at the national, provincial (admin 1) and district (admin 2) levels."<br>
-
-
- <!--  __   ___    ___  ____                                                  _    -->
- <!-- /_ | |__ \  |__ \|___ \                                                | |   -->
- <!--  | |    ) |    ) | __) |    __ _ _ __ ___  __ _    ___ ___  _   _ _ __ | |_  -->
- <!--  | |   / /    / / |__ <    / _` | '__/ _ \/ _` |  / __/ _ \| | | | '_ \| __| -->
- <!--  | |_ / /_ _ / /_ ___) |  | (_| | | |  __/ (_| | | (_| (_) | |_| | | | | |_  -->
- <!--  |_(_)____(_)____|____(_)  \__,_|_|  \___|\__,_|  \___\___/ \__,_|_| |_|\__| -->
                                                                              
 - **`geographic_area_count`** *[Optional ; Not repeatable ; String]*<br>
 
@@ -596,15 +542,7 @@ An itemized list of person(s) and/or organization(s) other than sponsors and con
   Role of the person or agency that is being recognized or acknowledged for supporting the database.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   Website URL or email of the person or organization being recognized or acknowledged for supporting the database.
-    
-    
- <!--  __   ___    ___   __                _          _             _    -->
- <!-- /_ | |__ \  |__ \ / /               | |        | |           | |   -->
- <!--  | |    ) |    ) / /_      __ _  ___| | __  ___| |_ _ __ ___ | |_  -->
- <!--  | |   / /    / / '_ \    / _` |/ __| |/ / / __| __| '_ ` _ \| __| -->
- <!--  | |_ / /_ _ / /| (_) |  | (_| | (__|   <  \__ \ |_| | | | | | |_  -->
- <!--  |_(_)____(_)____\___(_)  \__,_|\___|_|\_\ |___/\__|_| |_| |_|\__| -->
-  
+   
 - **`acknowledgment_statement`** *[Optional ; Not repeatable ; String]*<br>
 
 ![](./images/ReDoc_ts_database_24.JPG){width=100%}
@@ -692,6 +630,15 @@ This repeatable set of elements describes the different modes and formats in whi
   This element allows for annotating any specific information associated with the access mode mentioned in `type`. <br><br>
 
 
+- **`errata`** *[Optional ; Repeatable]* <br>
+A list of errata at the database level. Note that an `errata` element is also available in the schema used for the description of indicators/series.
+
+  ![](./images/ReDoc_ts_database_28.JPG){width=100%}
+  - **`date`** *[Optional ; Not repeatable ; String]* <br>
+  The date the erratum was published, preferably entered in ISO format.
+  - **`description`** *[Optional ; Not repeatable ; String]* <br>
+  A description of the error and of the measures taken to remedy.<br><br>
+
  <!--  __   ___    ____  __     _ _                          -->
  <!-- /_ | |__ \  |___ \/_ |   | (_)                         -->
  <!--  | |    ) |   __) || |   | |_  ___ ___ _ __  ___  ___  -->
@@ -703,7 +650,7 @@ This repeatable set of elements describes the different modes and formats in whi
 This set of elements is used to describe the access license(s) attached to the database.
 
   ![](./images/ReDoc_ts_database_29.JPG){width=100%}
-  - **`type`** *[Optional ; Not repeatable ; String]* <br>
+  - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the license, for example "Creative Commons Attribution 4.0 International license (CC-BY 4.0)". 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A URI to a description of the license, for example "https://creativecommons.org/licenses/by/4.0/";
