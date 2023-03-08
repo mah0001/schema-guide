@@ -6,7 +6,7 @@ output: html_document
 
 # The challenge of finding and using data {#chapter01}
 
-Finding, understanding, and using the most relevant data can be a challenging task for researchers and other data users. 
+Finding, understanding, and using the most relevant data can be a challenging task for researchers and other data users. Many analysts rely on tribal knowledge to identify data. Others spend significant time locating, acquiring (or failing to acquire), understanding, and wrangling data-- time that would be prefer to invest in data analysis. Making data easier to find and use, especially for data that are shared with a broad community of analysts, is a way to foster data analysis and use and to increase the value of the data. We provide here a few examples that illustrate some of the challenges that researchers face.  
 
 ## Finding data
 
