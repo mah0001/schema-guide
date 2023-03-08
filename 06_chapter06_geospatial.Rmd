@@ -446,6 +446,9 @@ An **online resource** is a common set of elements frequently used in the geogra
 | `protocol`    | Web protocol used to get the resource, e.g., FTP, HTTP. In case of a basic HTTP, the ISO 19139 suggests the value 'WWW:LINK-1.0-http--link'. For geographic standard data services, it is recommended to fill this element with the appropriate protocol identifier. For an OGC Web Map Service (WMS) link for example, use 'OGC:WMS-1.1.0-http-get-map' |
 | `function`    | Function (purpose) of the online resource.                 |
 
+<center>
+![](./images/ReDoc_geospatial_03b.JPG){width=100%}
+</center>
 
 #### Offline resource (Medium)
 
@@ -474,6 +477,9 @@ The table below lists the ISO 19139 elements used to document a **file format**.
 | `fileDecompressionTechnique` | Technique for file decompression (if applicable)  |
 | `FormatDistributor`          | <u>Contact</u>(s) responsible of the distribution |
 
+<center>
+![](./images/ReDoc_geospatial_03d.JPG){width=100%}
+</center>
 
 #### Citation
 
@@ -514,6 +520,9 @@ The **citation** is another common element that can be used in various parts of 
 | `keyword`       | The keyword itself. When possible, existing vocabularies should be preferred to writing free-text keywords. An example of global vocabulary is the [*Global Change Master Directory*](http://vocab.nerc.ac.uk/collection/P04/current/) that could be a valuable source to reference data domains / disciplines, or the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/).
 | `thesaurusName` | A reference to a thesaurus (if applicable) from which the keywords are extracted. The thesaurus itself should then be documented as a <u>citation</u>. |
 
+<center>
+![](./images/ReDoc_geospatial_03c.JPG){width=100%}
+</center>
 
 #### Constraints   @@@@ not clear. where is the element useLimitations? ... what are the elements used in the schema?
 
