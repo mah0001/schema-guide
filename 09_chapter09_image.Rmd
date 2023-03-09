@@ -243,7 +243,7 @@ The `image_description` will contain the metadata related to one image.
  <!--  / /_ _   _| |_| |      | | | |____  -->
  <!-- |____(_) |_____|_|      |_|  \_____| -->
                                      
-### IPTC
+### IPTC option
 
 **`iptc`** *[Optional ; Not Repeatable]* <br>
 The schema provides two options (standards) to document an image: the IPTC, and the Dublin Core. Only one of these standards, not both, will be used to document an image. The block `iptc` will be used when IPTC is the preferred option. In such case, the `dcmi` block describe later in this chapter will be left empty. IPTC is the most complex of these two options. 
@@ -262,17 +262,11 @@ Contains all elements used to describe the image using the IPTC standard.
 <br>
 The title is a shorthand reference for the digital image. It provides a short verbal and human readable name which can be a text and/or a numeric reference. It is not the same as the Headline (see below). Some may use the `title` field to store the file name of the image, though the field may be used in many ways. This element should not be used to provide the unique identifier of the image.
 
-
-
-
 - **`imageSupplierImageId`** *[Optional ; Not Repeatable ; String]* <br>
 A unique identifier assigned by the image supplier to the image.
 <br>
 ![](./images/ReDoc_image_05.JPG){width=100%}
 <br>
-
-
-
 
 - **`registryEntries`** *[Optional ; Repeatable]* <br>
 A structured element used to provide cataloguing information (i.e. an entry in a registry). It includes the unique identifier for the image issued by the registry and the registry’s organization identifier. 
@@ -287,9 +281,6 @@ A structured element used to provide cataloguing information (i.e. an entry in a
   - **`registryIdentifier`** *[Optional ; Not Repeatable ; String]* <br>
   An identifier for the registry/organization which issued the corresponding Registry Image Id. <br><br>
 
-
-
-
 - **`digitalImageGuid`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_07.JPG){width=100%}
@@ -301,17 +292,11 @@ A globally unique identifier for the image. This identifier is created and appli
   - It should identify the date and time of the creation of the picture.
   - It should be secured against tampering.<br><br>
 
-
-
-
 - **`dateCreated`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_08.JPG){width=100%}
 <br>
 Designates the date and optionally the time the content of the image was created. For a photo, this will be the date and time the photo was taken. When no information is available on the time, the time is set to 00:00:00. The preferred format for the `dateCreated` element is the truncated DateTime format, for example: 2021-02-22T21:24:06Z
-
-
-
 
 - **`headline`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
@@ -319,17 +304,11 @@ Designates the date and optionally the time the content of the image was created
 <br>
 A brief publishable summary of the contents of the image. Note that a headline is not the same as a title.
 
-
-
-
 - **`eventName`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_10.JPG){width=100%}
 <br>
 The name or a brief description of the event where the image was taken. If this is a sub-event of a larger event, mention both in the description. For example: "Opening statement, 1st International Conference on Metadata Standards, New York, November 2021". 
-
-
-
 
 - **`description`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
@@ -337,17 +316,11 @@ The name or a brief description of the event where the image was taken. If this 
 <br>
 A textual description, including captions, of the image. This describes the who, what, and why of what is happening in this image. This might include names of people, and/or their role in the action that is taking place within the image. Example: "The president of the Metadata Association delivers the keynote address".
 
-
-
-
 - **`captionWriter`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_12.JPG){width=100%}
 <br>
 An identifier, or the name, of the person involved in writing, editing or correcting the description of the image. 
-
-
-
 
 - **`keywords`**: *[Optional ; Repeatable ; String]* <br>
 <br>
@@ -355,12 +328,9 @@ An identifier, or the name, of the person involved in writing, editing or correc
 <br>      
 Keywords (terms or phrases) to express the subject of the image. Keywords do not have to be taken from a controlled vocabulary.  
 
-
-
-
-- **`sceneCodes`** *[Optional ; Repeatable ; String]* <br>  @@@@ Split "scenes" into 3 elements (code, label, description) and redo screenshot
+- **`sceneCodes`** *[Optional ; Repeatable ; String]* <br>  
 <br>
-![](./images/ReDoc_image_14.JPG){width=100%}
+![](./images/ReDoc_image_14a.JPG){width=100%}
 <br>         
 The `sceneCodes` describe the scene of a photo content. The [IPTC Scene-NewsCodes](http://cv.iptc.org/newscodes/scene) controlled vocabulary (published under a Creative Commons Attribution (CC BY) 4.0 license) should be used, where a scene is represented as a string of 6 digits.<br>
    
@@ -393,14 +363,10 @@ The `sceneCodes` describe the scene of a photo content. The [IPTC Scene-NewsCode
   
 <br>
 
-
-
-
-
 - **`sceneCodesLabelled`** *[Optional ; Repeatable]* <br>  
 <br>
-![](./images/ReDoc_image_14.JPG){width=100%}
-<br>         
+![](./images/ReDoc_image_14a.JPG){width=100%}
+<br>
 The `sceneCodes` element described above only allows for the capture of codes. To improve discoverability (by indexing important keywords), not only the scene codes but also the scene description should be provided. The IPTC standard does not provide an element that allows the scene label and description to be entered. The `sceneCodesLabelled` is an element that we added to our schema. Ideally, curators will enter the scene codes in the element `sceneCodes` to maintain full compatibility with the IPTC, and complement that information by also entering the codes and their description in the `sceneCodesLabelled` element.<br>
 
   - **`code`** *[Optional ; Not Repeatable ; String]* <br>
@@ -410,12 +376,9 @@ The `sceneCodes` element described above only allows for the capture of codes. T
   - **`description`** *[Optional ; Not Repeatable ; String]* <br>
   A more detailed description of the scene. See table above for examples.<br><br>
   
-  
-  
-  
 - **`subjectCodes`** *[Optional ; Repeatable ; String]* <br>
 <br>
-![](./images/ReDoc_image_15.JPG){width=100%}
+![](./images/ReDoc_image_15a.JPG){width=100%}
 <br>        
 Specifies one or more subjects from the [IPTC Subject-NewsCodes](http://cv.iptc.org/newscodes/subjectcode) controlled vocabulary to categorize the image. Each Subject is represented as a string of 8 digits. The vocabulary consists of about 1400 terms organized into 3 levels (users can decide to use only the first, or the first two levels; the more detail is provided, the better the discoverability of the image). The first level of the controlled vocabulary is as follows:
 <br>
@@ -470,10 +433,6 @@ Specifies one or more subjects from the [IPTC Subject-NewsCodes](http://cv.iptc.
   |05011004|     madrasa            | A school for teaching Islam|
 <br>
 
-
-
-
-
 - **`subjectCodesLabelled`** *[Optional ; Repeatable]* <br>  
 <br>
 ![](./images/ReDoc_image_15b.JPG){width=100%}
@@ -488,17 +447,11 @@ The `subjectCodes` element described above only allows for the capture of codes.
   A more detailed description of the subject. See table above for examples.<br><br>
 
 
-
-
-
 - **`creatorNames`** *[Optional ; Repeatable ; String]* <br> 
 <br>
 ![](./images/ReDoc_image_16.JPG){width=100%}
 <br>        
 Enter details about the creator or creators of this image. The Image Creator must often be attributed in association with any use of the image. The Image Creator, Copyright Owner, Image Supplier and Licensor may be the same or different entities.<br>      
-
-
-
 
 
 - **`creatorContactInfo`** *[Optional ;Not repeatable ; String]* <br>
@@ -525,17 +478,11 @@ The creator’s contact information provides all necessary information to get in
   Enter the local postal code for the address of the person who created the image.<br><br>  
    
 
-
-
-
 - **`creditLine`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_18.JPG){width=100%}
 <br>      
 The credit to person(s) and/or organization(s) required by the supplier of the image to be used when published. This is a free-text field. <br><br>
-
-
-
 
 
 - **`digitalSourceType`** *[Optional ; Not Repeatable ; String]* <br>
@@ -556,15 +503,12 @@ The type of the source of this digital image. One value should be selected from 
 <br> 
 
 
-
 - **`jobid`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_20.JPG){width=100%}
 <br>       
 Number or identifier for the purpose of improved workflow handling (control or tracking). This is a user created identifier related to the job for which the image is supplied. <br>
 Note: As this identifier references a job of the receiver’s workflow it must first be issued by the receiver, then transmitted to the creator or provider of the news object and finally added by the creator to this field.<br>
-
-
 
 
 - **`jobtitle`** *[Optional ; Not Repeatable ; String]* <br>
@@ -574,16 +518,11 @@ Note: As this identifier references a job of the receiver’s workflow it must f
 The job title of the photographer (the person listed in `creatorNames`). The use of this element implies that the photographer information (`creatorNames` is not empty).  <br>
 
 
-
-
 - **`source`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_22.JPG){width=100%}
 <br>        
 The name of a person or party who has a role in the content supply chain. The `source` can be different from the `creator` and from the entities listed in the Copyright Notice.<br>
-
-
-
 
 
 - **`locationsShown`** *[Optional ; Repeatable]* <br> 
@@ -616,17 +555,11 @@ This block of elements is used to document the location shown in the image. This
   Longitude of a WGS84 based position of this location (in some cases, this information may be contained in the EXIF metadata).<br><br>
 
 
-
-
-
 - **`imageRating`** *[Optional ; Not Repeatable ; Numeric]* <br>
 <br>
 ![](./images/ReDoc_image_25.JPG){width=100%}
 <br> 
 Rating of the image by its user or supplier. The value shall be -1 or in the range 0 to 5. -1 indicates "rejected" and 0 "unrated". If an explicit value is not provided, the default value is 0 will be assumed.<br>
-
-
-
 
 
 - **`supplier`** *[Optional ; Repeatable]* <br>
@@ -639,16 +572,11 @@ Rating of the image by its user or supplier. The value shall be -1 or in the ran
   The identifier for the most recent supplier of this image. This will not necessarily be the creator or the owner of the image.<br><br>
 
 
-
-
 - **`copyrightNotice`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_27.JPG){width=100%}
 <br> 
 Contains any necessary copyright notice for claiming the intellectual property for this photograph and should identify the current owner of the copyright for the photograph. Other entities like the creator of the photograph may be added in the corresponding field. Notes on usage rights should be provided in "Rights usage terms". Example: ©2008 Jane Doe. If the copyright ownership must be expressed in a more controlled manner, use the fields "Copyright Owner", "Copyright Owner ID", "Copyright Owner Name" described below instead of the `copyrightNotice` element. <br>
-
-
-
 
 
 - **`copyrightOwners`** *[Optional ; Repeatable]* <br>
@@ -664,15 +592,11 @@ Owner or owners of the copyright in the licensed image, described in a structure
   The identifier of the owner of the copyright in the licensed image.<br><br>
 
 
-
-
 - **`usageTerms`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_29.JPG){width=100%}
 <br> 
 The licensing parameters of the image expressed in free-text. Enter instructions on how this image can legally be used. The PLUS fields of the IPTC Extension can be used in parallel to express the licensed usage in more controlled terms.<br>
-
-
 
 
 - **`embdEncRightsExpr`** *[Optional ; Repeatable]* <br>
@@ -693,9 +617,6 @@ https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#embedded
 <br>
 
 
-
-
-
 - **`linkedEncRightsExpr`** *[Optional ; Repeatable]* <br>
 Link to Encoded Rights Expression.<br>
    <br>
@@ -709,10 +630,6 @@ Link to Encoded Rights Expression.<br>
    The identifer of the rights expression language used by the rights expression.<br><br>
 
 
-
-
-
-
 - **`webstatementRights`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_32.JPG){width=100%}
@@ -720,19 +637,11 @@ Link to Encoded Rights Expression.<br>
 URL referencing a web resource providing a statement of the copyright ownership and usage rights of the image.<br><br>
 
 
-
-
-
-
 - **`instructions`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_33.JPG){width=100%}
 <br>        
 Any of a number of instructions from the provider or creator to the receiver of the image which might include any of the following: embargoes and other restrictions not covered by the "Rights Usage Terms" field; information regarding the original means of capture (scanning notes, colourspace info) or other specific text information that the user may need for accurate reproduction; additional permissions required when publishing; credits for publishing if they exceed the IIM length of the credit field.<br> 
-
-
-
-
 
 
 - **`genres`** *[Optional ; Repeatable]* <br>
@@ -750,10 +659,6 @@ Any of a number of instructions from the provider or creator to the receiver of 
   Artistic, style, journalistic, product or other genre(s) of the image (expressed by a term from any Controlled Vocabulary) <br><br>
   
   
-  
-
-
-
 - **`intellectualGenre`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_35.JPG){width=100%}
@@ -821,10 +726,6 @@ A term to describe the nature of the image in terms of its intellectual or journ
 <br>
 
 
-
-
-
-
 - **`artworkOrObjects`** *[Optional ; Repeatable]* <br>
 This block provides a set of metadata elements to be used to describe the object or artwork shown in the image.
 <br>
@@ -867,17 +768,11 @@ This block provides a set of metadata elements to be used to describe the object
   A globally unique identifier for the current licensor e.g. issued by an online registry of persons or companies.<br><br>
 
 
-
-
-
 - **`personInImageNames`** *[Optional ; Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_37.JPG){width=100%}
 <br>  
 This repeatable block of elements is used to provide information on the person(s) shown in the image.<br><br>  
-
-
-
 
 
 - **`personsShown`** *[Optional ; Repeatable]* <br>
@@ -903,17 +798,11 @@ Details about person(s) shown in the image. It is not required to list all, just
     The refined 'about' relationship of the term with the content. Optionally enter a refinement of the 'about' relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary. <br><br>
 
 
-
-
-
 - **`modelAges`** *[Optional ; Repeatable ; Numeric]* <br>
 <br>
 ![](./images/ReDoc_image_39.JPG){width=100%}
 <br> 
 Age of the human model(s) at the time the image was taken. Be aware of any legal implications of providing ages for young models. Ages below 18 years should not be included.<br><br>
-
-
-
 
 
 - **`additionalModelInfo`** *[Optional ; Not Repeatable ; String]* <br>
@@ -923,9 +812,6 @@ Age of the human model(s) at the time the image was taken. Be aware of any legal
 Information about other facets of the model(s). <br><br>
 
 
-
-
-
 - **`minorModelAgeDisclosure`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_41.JPG){width=100%}
@@ -933,17 +819,11 @@ Information about other facets of the model(s). <br><br>
 The age of the youngest model pictured in the image, at the time the image was created. This information is not intended to be displayed publicly; it is intended to be used as a filter for inclusion/exclusion of images in catalogs and dissemination processes.<br>
 
 
-
-
-
 - **`modelReleaseDocuments`** *[Optional ; Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_42.JPG){width=100%}
 <br>       
 Identifier associated with each Model Release. <br><br>
-
-
-
 
 
 - **`modelReleaseStatus`** *[Optional ; Not Repeatable]* <br>
@@ -960,9 +840,6 @@ Identifier associated with each Model Release. <br><br>
   The refined 'about' relationship of the term with the content. Optionally enter a refinement of the 'about' relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary. May be used to refine the generic about relationship.<br><br> 
 
 
-
-
-
 - **`organisationInImageNames`** *[Optional ; Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_44.JPG){width=100%}
@@ -970,17 +847,11 @@ Identifier associated with each Model Release. <br><br>
 The name of the organization or company which is featured in the image.<br><br>
 
 
-
-
-
 - **`organisationInImageCodes`** *[Optional ; Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_45.JPG){width=100%}
 <br>          
 The code, extracted from a controlled vocabulary, used to identify the organization or company featured in the image. For example a stock ticker symbol may be used. Enter an identifier for the controlled vocabulary, then a colon, and finally the code from the vocabulary assigned to the organization (e.g. nasdaq:companyA)<br>
-
-
-
 
 
 - **`productsShown`** *[Optional ; Repeatable]* <br> 
@@ -996,9 +867,6 @@ Details about a product shown in the image.
   The name of the product.<br><br>
 
 
-
-
-
 - **`maxAvailHeight`** *[Optional ; Not Repeatable ; Numeric]* <br>
 <br>
 ![](./images/ReDoc_image_47.JPG){width=100%}
@@ -1006,17 +874,11 @@ Details about a product shown in the image.
 The maximum available height in pixels of the original photo from which this photo has been derived by downsizing. <br><br>
 
 
-
-
-
 - **`maxAvailWidth`** *[Optional ; Not Repeatable ; Numeric]* <br>
 <br>
 ![](./images/ReDoc_image_48.JPG){width=100%}
 <br>  
 The maximum available width in pixels of the original photo from which this photo has been derived by downsizing. <br><br>
-
-
-
 
 
 - **`propertyReleaseStatus`** *[Optional ; Not Repeatable]* <br>
@@ -1034,9 +896,6 @@ This summarizes the availability and scope of property releases authorizing usag
   Refined 'about' relationship of the CV-Term. The refined 'about' relationship of the term with the content. Optionally enter a refinement of the 'about' relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary.<br><br>
 
 
-
-
-
 - **`propertyReleaseDocuments`** *[Optional ; Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_image_50.JPG){width=100%}
@@ -1044,14 +903,24 @@ This summarizes the availability and scope of property releases authorizing usag
 Optional identifier associated with each Property Release. <br>
 
 
+- **`aboutCvTerms`** *[Optional ; Repeatable]* <br>
+<br>
+![](./images/ReDoc_image_50b.JPG){width=100%}
+<br>  
+One or more topics, themes or entities the content is about, each one expressed by a term from a controlled vocabulary.<br>
+  - **`cvId`** *[Optional ; Not Repeatable ; String]* <br>
+  The globally unique identifier of the Controlled Vocabulary the term is from.<br> 
+  - **`cvTermName`** *[Optional ; Not Repeatable ; String]* <br>
+  The natural language name of the term from a Controlled Vocabulary.<br> 
+  - **`cvTermId`** *[Optional ; Not Repeatable ; String]* <br>
+  The globally unique identifier of the term from a Controlled Vocabulary.<br> 
+  - **`cvTermRefinedAbout`** *[Optional ; Not Repeatable ; String]* <br>
+  Refined 'about' relationship of the CV-Term. The refined 'about' relationship of the term with the content. Optionally enter a refinement of the 'about' relationship of the term with the content of the image. This must be a globally unique identifier from a Controlled Vocabulary.<br><br>
+
+
 :::note
 The IPTC elements are followed by a small set of common elements: see `license`, `tags`, and `album` in section **`Additional elements`**.
 :::
-
-
-
-
-
 
 
 
@@ -1062,7 +931,7 @@ The IPTC elements are followed by a small set of common elements: see `license`,
  <!--  ___) |  | |__| | |_| | |_) | | | | | | | |___| (_) | | |  __/ -->
  <!-- |____(_) |_____/ \__,_|_.__/|_|_|_| |_|  \_____\___/|_|  \___| -->
                                                                
-### Dublin Core
+### Dublin Core option
 
 We introduced the Dublin Core Metadata Initiative (DCMI) specification in chapter 3 - Documents. It contains 15 core elements, which are generic and versatile enough to be used for documenting different types of resources. Other elements can be added to the specification to increase its relevancy for specific uses. In the schema we recommend for the documentation of publications, we added elements inspired by the MARC 21 standard. We take a similar approach for the use of the Dublin Core for documenting images, by adding elements inspired by the [ImageObject](https://schema.org/ImageObject) schema from schema.org to the 15 elements.
 
@@ -1112,36 +981,20 @@ Users of the schema will chose either IPTC or Dublin Core (DCMI), <u>not both</u
 <br>  
 
 
-
-
 - **`type`** *[Required, Not Repeatable, String]* <br>
 The Dublin Core schema is flexible and versatile, and can be used to document different types of resources. This element is used to document the type of resource being documented. The DCMI provides a list of suggested categories, including "image" which is the relevant type to be entered here. Some users may want to be more specific in the description of the type of resource, for example distinguishing color from black & white images. This distinction should not be made in this element; another element can be used for such purpose (like tags and tag groups). 
-
-
 
 
 - **`title`** *[Optional, Not Repeatable, String]* <br> 
 The title of the photo. 
 
 
-
-
 - **`caption`** *[Optional, Not Repeatable, String]* <br>
 A caption for the photo. 
 
 
-
-
 - **`description`** *[Optional, Not Repeatable, String]* <br>
 A brief description of the content depicted in the image. This element will typically provide more detailed information than the title or caption. Note that other elements can be used to provide a more specific and "itemized" description of an image; the element `keywords` for example can be used to list labels associated with an image (possibly generated in an automated manner using machine learning tools).
-
-
-
-
-- **`subject`** *[Optional, Not Repeatable, String]* <br> 
-The topic of the resource, described in a narrative manner.
-
-
 
 
 - **`topics`** *[Optional ; Repeatable]*<br>
@@ -1162,9 +1015,6 @@ The `topics` field indicates the broad substantive topic(s) that the image repre
   A link to the controlled vocabulary mentioned in field `vocabulary'.<br><br>
 
 
-
-
-
 - **`keywords`** *[Optional ; Repeatable]* <br>
 Words or phrases that describe salient aspects of an image content. Can be used for building keyword indexes and for classification and retrieval purposes. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
 <br>
@@ -1179,30 +1029,20 @@ Words or phrases that describe salient aspects of an image content. Can be used 
   The URI of the controlled vocabulary used, if any.<br><br>
 
 
-
-
 - **`creator`** *[Optional, Not Repeatable, String]* <br> 
 The name of the person (or organization) who has taken the photo or created the image.
-
-
 
 
 - **`contributor`** *[Optional, Not Repeatable, String]* <br> 
 The contributor could be a person or organization, possibly a sponsoring organizations.
 
 
-
-
 - **`publisher`** *[Optional, Not Repeatable, String]* <br> 
 The person or organization who publish the image.
 
 
-
-
 - **`date`** *[Optional, Not Repeatable, String]* <br> 
 The date when the photo was taken / the image was created, preferably entered in ISO 8601 format.
-
-
 
 
 - **`country`** *[Optional, Repeatable]* <br>
@@ -1215,12 +1055,8 @@ The date when the photo was taken / the image was created, preferably entered in
   The code of the country/economy mentioned in `name`. This will preferably be the ISO country code.<br><br>
 
 
-
-
 - **`coverage`** *[Optional, Not Repeatable, String]* <br> 
 In the Dublin Core, the coverage can be either temporal or geographic. In the use of the schema, `coverage` is used to document the geographic coverage of the image. This element complements the `country` element, and allows more specific information to be provided.
-
-
 
 
 - **`gps`** *[Optional, Not Repeatable]* <br>
@@ -1237,12 +1073,8 @@ The geographic location where the photo was taken. Some digital cameras equipped
   The altitude of the geographic location where the photo was taken.<br><br>
    
    
-   
-   
 - **`format`** *[Optional, Not Repeatable, String]* <br> 
 This refers to the image file format. It is typically expressed using a MIME format.
-
-
 
 
 - **`languages`** *[Optional, Not repeatable, String]* <br> 
@@ -1255,9 +1087,6 @@ The language(s) in which the image metadata (caption, title) is provided. This i
   The name of the language.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code of the language. The use of [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) (the alpha-3 code in Codes for the representation of names of languages) is recommended. Numeric codes must be entered as strings. <br><br>
-
-
-
 
 
 - **`relations`** *[Optional, Repeatable, String]* <br> 
@@ -1274,18 +1103,12 @@ A list of related resources (images or of other type)
   A link to the related resource being described.<br><br>
 
 
-
-
 - **`rights`** *[Optional, Not Repeatable, String]* <br> 
 The copyrights for the photograph. License is in another (common) element.
 
 
-
-
 - **`source`** *[Optional, Not Repeatable, String]* <br>
 A related resource from which the described image is derived.
-
-
 
 
 - **`note`** *[Optional, Not Repeatable, String]* <br>
@@ -1304,7 +1127,9 @@ Any additional information on the image, not captured in one of the other metada
  <!--    | |_   / ____ \ (_| | (_| | | |_| | (_) | | | | (_| | | -->
  <!--    |_(_) /_/    \_\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| -->
                                                            
-### Additional elements
+### Additional elements (IPTC and DCMI)
+
+Two elements are added to the list of `image_description` section of the schema. They apply both to the IPTC and to the DCMI options. 
 
 - **`license`** *[Optional ; Repeatable]* <br>
 The license under which the image is published.
@@ -1316,9 +1141,6 @@ The license under which the image is published.
   The name of the license.
   - **`uri`** *[Optional ; Not Repeatable ; String]* <br>
   A URL where detailed information on the license / terms of use can be found.<br><br>
-  
-  
-  
   
   
 - **`album`** *[Optional ; Repeatable]* <br>
@@ -1336,13 +1158,8 @@ If your catalog contains many images, you will likely want to group them by albu
   A URL for the album.<br><br>
 
 
-
-
-
-
-
 - **`provenance`** *[Optional ; Repeatable]* 
-Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. These elements are NOT part of the DDI metadata standard.<br>
+Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata.<br>
 <br>
 ![](./images/ReDoc_image_60a.JPG){width=100%}  
 <br>
@@ -1363,11 +1180,6 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
     @@@@@@@ definition <br><br>
 
 
-
-
-
-
-
 - **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
 <br>
@@ -1378,6 +1190,7 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
   A user-defined tag.
   - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
   A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.<br><br>
+
 
 
 
