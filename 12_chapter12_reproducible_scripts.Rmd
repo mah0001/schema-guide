@@ -1576,7 +1576,7 @@ This field is used to describe the scripts written by the project authors. All s
     - **`name`** *[Optional ; Not repeatable ; String]* <br>
     Name of the author (person or organization) of the script 
     - **`affiliation`**  *[Optional ; Not repeatable ; String]* <br>
-    The organization that the author belongs to.
+    The affiliation of the author.
     - **`role`** *[Optional ; Not repeatable ; String]* <br>
     Specific role of the person or organization in the production of the script. <br><br>
   	
