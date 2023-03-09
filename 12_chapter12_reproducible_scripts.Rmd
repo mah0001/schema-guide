@@ -177,10 +177,9 @@ The *title_statement* is a group of five elements, two of them mandatory.
   - **`title`** *[Required ; Not Repeatable ; String]* <br>
   The title is the official name of the project as it may be stated in reports, papers or other documents. The title will in most cases be identical to the Document Title (see above). The title may correspond to the title of an academic paper, of a project impact evaluation, etc. Pay attention to capitalization in the title.
   - **`sub_title`** *[Optional ; Not Repeatable ; String]*  <br>
-  Subtitle is optional and rarely used. A short subtitle for the project. Often the sub title is used to qualify the title or rephrase the title.    - **`alternate_title`** *[Optional ; Not Repeatable ; String]* <br>
+  Subtitle is optional and rarely used. A short subtitle for the project. Often the sub title is used to qualify the title or rephrase the title.    
+  - **`alternate_title`** *[Optional ; Not Repeatable ; String]* <br>
   An alternate title of the project. This would be any alternate title that would help discover the research project. In countries with more than one official language, a translation of the title may be provided. Likewise, the translated title may simply be a translation into English from a country's own language.  
-  - **`abbreviated_title`** *[Optional ; Not Repeatable ; String]* <br>
-  An abbreviated version of the title of the project. Some projects may be referred to using a short name.    
   - **`translated_title`** *[Optional ; Not Repeatable ; String]* <br>
   A translated version of the title (this will be used for example when a catalog documents all entries in English, but wants to preserve the title of a project in its original language when the original language is not English).<br>
 
@@ -271,7 +270,6 @@ This element will describe and reference all substantial/intended products of th
 The `output` is a repeatable block of seven elements, used to document all output of the research project:
   - **`type`** *[Optional ; Non repeatable]* <br>
   Type of output. The type of output relates to the media which is used to convey or communicate the intended results, findings or conclusions of the research project. This field may be controlled by a controlled vocabulary. The kind on content could be "Working paper", "Database", etc. 
-  
   - **`title`** *[Required ; Non repeatable]* <br>
   Formal title of the output. Depending upon the kind of output, the title will vary in formality.
   - **`authors`** *[Optional ; Non repeatable]* <br>
@@ -404,7 +402,7 @@ URL of the project website.
  <!--                 __/ |             __/ |           -->
  <!--                |___/             |___/            -->
  
-- **`languages`** *[Optional ; Repeatable]* <br>
+- **`language`** *[Optional ; Repeatable]* <br>
 A block of two elements describing the language(s) of the project. At least one of the two elements must be provided for each listed language. The use of [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) (the alpha-3 code in Codes for the representation of names of languages) is recommended.
 <br>
 ![](./images/ReDoc_scripts_09.JPG){width=100%}
@@ -557,6 +555,8 @@ This element is used to document the life cycle of the research project, from it
   This is a header for the phase of the process. 
   - **`date_start`** *[Optional ; Not repeatable ; String]* <br>
   Date the phase started (preferably in ISO 8601 format, YYYY-MM-DD)
+  - **`date_end`** *[Optional ; Not repeatable ; String]* <br>
+  Date the phase ended (preferably in ISO 8601 format, YYYY-MM-DD)
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
   A brief description of the phase. <br><br>
 
@@ -738,7 +738,7 @@ my_project = list(
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   Name of the funding agency/sponsor. 
-  - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
+  - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
   Abbreviation of the funding/sponsoring agency. 
   - **`role`** *[Optional ; Not repeatable ; String]* <br>
   Specific role of the funding/sponsoring agency.     
@@ -1351,10 +1351,11 @@ Information on the license(s) attached to the research project resources, which 
   The name of the license.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL of the license, where detailed information on the license can be obtained.
+  - **`note`** *[Optional ; Not repeatable ; String]* <br>
+  Additional information on the license.
   <br>
   ![](./images/ReDoc_scripts_26.JPG){width=100%}
   <br>
-
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1406,7 +1407,7 @@ Information on the copyright, if any, that applies to the research project metad
 - **`technology_environment`** *[Optional ; Not repeatable ; String]* <br>
 This field is used to provide a description (as detailed as possible) of the computational environment under which the scripts were implemented and are expected to be reproducible. A substantial challenge in reproducing analyses is installing and configuring the web of dependencies of specific versions of various analytical tools. Virtual machines (a computer inside a computer) enable you to efficiently share your entire computational environment with all the dependencies intact. (https://ropensci.github.io/reproducibility-guide/sections/introduction/) 
 
-  ![](./images/ReDoc_scripts_27.JPG){width=100%}
+  ![](./images/ReDoc_scripts_27a.JPG){width=100%}
 
 
 
@@ -1423,6 +1424,7 @@ This field is used to provide a description (as detailed as possible) of the com
 - **`technology_requirements`** *[Optional ; Not repeatable ; String]* <br>
 Software/hardware or other technology requirements needed to run the scripts and replicate the outputs
 
+![](./images/ReDoc_scripts_27b.JPG){width=100%}
 
 
 
@@ -1436,8 +1438,9 @@ Software/hardware or other technology requirements needed to run the scripts and
  <!--          |_|                                                  -->
  
 - **`reproduction_instructions`** *[Optional ; Not repeatable ; String]* <br>
+Instructions to secondary analysts who may want to reproduce the scripts.
 
-
+![](./images/ReDoc_scripts_27c.JPG){width=100%}
 
 
  <!--                 _   _               _      -->
@@ -1512,7 +1515,7 @@ This field is used to list the software and the specialized packages and librari
   The name of the software. 
   - **`version`** *[Optional ; Not repeatable ; String]* <br>
   The version of the software. 
-  - **`library`** *[Optional ; Not repeatable]* <br>  
+  - **`library`** *[Optional ; Repeatable]* <br>  
   A list of libraries/packages required to run the scripts. Note that the specific version of each package is not documented here; it is expected to be found in the script or in the reproduction instructions. 
    
 
@@ -1560,6 +1563,8 @@ This field is used to describe the scripts written by the project authors. All s
   <br>
   ![](./images/ReDoc_scripts_30.JPG){width=100%} 
   <br>
+  @@@@@@@@@@ redo screenshot; authors section has changed
+  
   - **`file_name`** *[Optional ; Not repeatable ; String]* <br> 
   Name of the script file (for R users, this will typically include files with extension [.R], for Stata users it will be files with extension [.do], for Python users ...). But this can also include other files related and required to run the scripts (for example lookup CSV files, etc.) This does not include the data files, which are described ina  specific field. 
   - **``zip_package``** *[Optional ; Not repeatable]* <br> 
@@ -1570,8 +1575,8 @@ This field is used to describe the scripts written by the project authors. All s
   This is a repeatable block that allows entering a list of authors and co-authors of a script 
     - **`name`** *[Optional ; Not repeatable ; String]* <br>
     Name of the author (person or organization) of the script 
-    - **`abbr`**  *[Optional ; Not repeatable ; String]* <br>
-    The acronym of the organization who authored the script.
+    - **`affiliation`**  *[Optional ; Not repeatable ; String]* <br>
+    The organization that the author belongs to.
     - **`role`** *[Optional ; Not repeatable ; String]* <br>
     Specific role of the person or organization in the production of the script. <br><br>
   	
@@ -1593,7 +1598,7 @@ This field is used to describe the scripts written by the project authors. All s
   Repository (e.g. GitHub repo) where the script has been published. 
   - **`notes`** *[Optional ; Not repeatable ; String]* <br>
   Any additional information on the script.
-  - **`license`** *[Optional ; Not repeatable]* <br>
+  - **`license`** *[Optional ; Repeatable]* <br>
     License, if any, under which the script is published.
     - **`name`** *[Optional ; Not repeatable ; String]* <br>
     Name (label) of the license  
@@ -1613,7 +1618,7 @@ my_project = list(
            zip_package = "all_scripts.zip", 
            title = "Project X - Master script", 
            authors = list(name = "John Doe", 
-                          abbr = "JD", 
+                          affiliation = "IHSN", 
                           role = "Writing, testing and documenting the script"),
            date = "2020-12-27",
            format = "R script",
@@ -1631,7 +1636,7 @@ my_project = list(
            zip_package = "", 
            title = "Charts and maps", 
            authors = list(name = "", 
-                          abbr = "", 
+                          affiliation = "", 
                           role = ""),
            date = "",
            format = "R script",
@@ -1642,8 +1647,8 @@ my_project = list(
            instructions = "",
            source_code_repo = "",
            notes = "",
-           license = list(name = "CC BY 4.0", 
-                          uri = "https://creativecommons.org/licenses/by/4.0/deed.ast")),
+           license = list(list(name = "CC BY 4.0", 
+                               uri = "https://creativecommons.org/licenses/by/4.0/deed.ast"))),
       
       list(file_name = "02_visualization", 
            zip_package = "", 
@@ -1658,16 +1663,14 @@ my_project = list(
            instructions = "",
            source_code_repo = "",
            notes = "",
-           license = list(name = "CC BY 4.0", 
-                          uri = "https://creativecommons.org/licenses/by/4.0/deed.ast")),
+           license = list(list(name = "CC BY 4.0", 
+                               uri = "https://creativecommons.org/licenses/by/4.0/deed.ast"))),
       
     ),
     # ...
   )
 )  
 ```
-
-
 
 
 
@@ -1757,15 +1760,16 @@ The contacts element provides the public interface for questions associated with
   <br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the contact person that should be contacted depending on the role defined below. 
-  - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-  The organization or affiliation of the contact person. This is usually the organization that the contact person represents.
   - **`role`** *[Optional ; Not repeatable ; String]* <br>
   Role of the contact person. A research project may have contact persons depending on the output or some of the technical input. Some complex projects may have various data collection processes that have different processing channels and contacts. This section should provide for a key primary public interface that can refer the public inquiry or provide a collection of entry points. 
+  - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
+  The organization or affiliation of the contact person. This is usually the organization that the contact person represents.
+  - **`email`** *[Optional ; Not repeatable ; String]* <br>
+  Email address of the responsible person, institution, or division in charge of the research project or output.
+  - **`telephone`** *[Optional ; Not repeatable ; String]* <br>
+  Phone number of the responsible institution or division of the research project or output. 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-  The URI of the agency or organization of the contact organization. This may be the same as the web page of the project or may be a permanent contact name at an institutional level and not project related. Eventually a project web site may be removed but there may still be need to have a contact. In this case, it is recommended to have a contact that is permanent.
-  - **`phone`** *[Optional ; Not repeatable ; String]* <br>
-  Phone number of the responsible institution or division of the research project or output. <br><br>
-
+  The URI of the agency or organization of the contact organization. This may be the same as the web page of the project or may be a permanent contact name at an institutional level and not project related. Eventually a project web site may be removed but there may still be need to have a contact. In this case, it is recommended to have a contact that is permanent.<br><br>
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1786,13 +1790,6 @@ my_project = list(
   )
 )  
 ```
-
-
-
-
-
-
-
 
 
 <!--   _____                                                -->
@@ -1824,8 +1821,6 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
     The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
     - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
     @@@@@@@ <br>
-
-
 
 
 
