@@ -217,10 +217,10 @@ This section contains the metadata elements that describe the table itself. Not 
   A subtitle can provide further descriptive or explanatory content to the table. 
   
   - **`alternate_title`** *[Optional, Not Repeatable, String]* <br>
-  The alternate title element is usually used to provide a translation of the title in countries where more than one official language is used or if a publication is widely disseminated in two languages. 
+  An alternate title for the table. 
   
-  - **`abbreviated_title`** *[Optional, Not Repeatable, String]* <br>
-  An abbreviated title (seldom used). <br>
+  - **`translated_title`** *[Optional, Not Repeatable, String]* <br>
+  A translation of the title. <br>
     
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -232,7 +232,7 @@ my_table = list(
            table_number = "Table 1.0",
            title        = "Resident population by age group, sex, and area of residence, 2020",
            sub_title    = "District of X, as of June 30",
-           alternate_title = "Population résidente par groupe d'âge, sexe et zone de résidence, 2020 (district X, au 30 juin)"
+           translated_title = "Population résidente par groupe d'âge, sexe et zone de résidence, 2020 (district X, au 30 juin)"
         ),
         # ...
   )
@@ -255,7 +255,7 @@ This element is used to enter document identifiers other than the catalog identi
   ![](./images/ReDoc_Table_04.JPG){width=100%}
   - **`type`** *[Optional, Not Repeatable, String]* <br>
   The type of unique ID, e.g. "DOI".
-  - **`value`** *[Required, Not Repeatable, String]* <br>
+  - **`identifier`** *[Required, Not Repeatable, String]* <br>
   The identifier itself. <br>
 
 
@@ -266,7 +266,7 @@ my_table = list(
         # ... ,
         identifiers = list(
           type  = "DOI",
-          value = "XXX.XXX.XXXX"
+          identifier = "XXX.XXX.XXXX"
         ),
   # ...
   )
@@ -861,25 +861,6 @@ my_table = list(
 <br>
 
 
- <!--  ____  __  ___                 _       _             -->
- <!-- |___ \/_ |/ _ \               (_)     | |            -->
- <!--   __) || | (_) |    __ _ _ __  _    __| | ___   ___  -->
- <!--  |__ < | |> _ <    / _` | '_ \| |  / _` |/ _ \ / __| -->
- <!--  ___) || | (_) |  | (_| | |_) | | | (_| | (_) | (__  -->
- <!-- |____(_)_|\___(_)  \__,_| .__/|_|  \__,_|\___/ \___| -->
- <!--                         | |                          -->
- <!--                         |_|                          -->
-
-- **`api_documentation`** *[Optional ; Repeatable]* <br>
-Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. 
-    
-  ![](./images/ReDoc_Table_36.JPG){width=100%}
-  - **`description`** *[Optional ; Not repeatable ; String]* <br>
-  This element will not contain the API documentation itself, but information on what documentation is available.
-  - **`uri`** *[Optional ; Not repeatable ; String]* <br>
-  The URL of the API documentation.<br><br>
-  
-    
     
  <!--  ____  __  ___    _   _                 -->
  <!-- |___ \/_ |/ _ \  | | (_)                -->
@@ -1151,6 +1132,26 @@ my_table = list(
 <br>
 
 
+ <!--  ____  __  ___                 _       _             -->
+ <!-- |___ \/_ |/ _ \               (_)     | |            -->
+ <!--   __) || | (_) |    __ _ _ __  _    __| | ___   ___  -->
+ <!--  |__ < | |> _ <    / _` | '_ \| |  / _` |/ _ \ / __| -->
+ <!--  ___) || | (_) |  | (_| | |_) | | | (_| | (_) | (__  -->
+ <!-- |____(_)_|\___(_)  \__,_| .__/|_|  \__,_|\___/ \___| -->
+ <!--                         | |                          -->
+ <!--                         |_|                          -->
+
+- **`api_documentation`** *[Optional ; Repeatable]* <br>
+Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. 
+    
+  ![](./images/ReDoc_Table_36.JPG){width=100%}
+  - **`description`** *[Optional ; Not repeatable ; String]* <br>
+  This element will not contain the API documentation itself, but information on what documentation is available.
+  - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+  The URL of the API documentation.<br><br>
+  
+    
+    
  <!--  ____   ___ ______               _     _ _           _   _                  -->
  <!-- |___ \ |__ \____  |             | |   | (_)         | | (_)                 -->
  <!--   __) |   ) |  / /   _ __  _   _| |__ | |_  ___ __ _| |_ _  ___  _ __  ___  -->
@@ -1662,13 +1663,6 @@ If the table has a relation to other resources (e.g., it is a subset of another 
 
 
 
-
-
-
-
-
-
-
  <!--  _  _                                                          -->
  <!-- | || |                                                         -->
  <!-- | || |_   _ __  _ __ _____   _____ _ __   __ _ _ __   ___ ___  -->
@@ -1699,12 +1693,6 @@ The `origin_description` elements are used to describe when and from where metad
   The date stamp (in UTC date format) of the metadata record in the originating repository (this should correspond to the date the metadata were last updated in the source catalog).<br>
   - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
   @@@@@@@ <br>
-
-
-
-
-
-
 
 
 
