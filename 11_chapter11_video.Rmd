@@ -24,10 +24,6 @@ When published in a NADA catalog, the metadata related to video files will appea
 ![](./images/Video_NADA_tabs.JPG){width=100%}
 <br>
 
-  
-  
-
-
  <!--                                           _   _              -->
  <!--     /\                                   | | (_)             -->
  <!--    /  \  _   _  __ _ _ __ ___   ___ _ __ | |_ _ _ __   __ _  -->
@@ -56,11 +52,6 @@ Note that some care must be taken when adding automatic speech transcriptions in
 <br>
 
 
-
-
-
-
-
  <!--   _____      _                           -->
  <!--  / ____|    | |                          -->
  <!-- | (___   ___| |__   ___ _ __ ___   __ _  -->
@@ -77,10 +68,6 @@ The first three elements of the schema (`repositoryid`, `published`, and `overwr
 - **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished). This value must be set to 1 (published) to make the metadata visible.
 
 - **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same video can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that a video will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element `video_description > idno` is the same.
-
-
-
-
 
 
  <!--  __  __      _            _       _         -->
@@ -122,11 +109,6 @@ Date the metadata (not the table) was produced.<br>
 Version of the metadata (not version of the table).<br>
 
 
-
-
-
-
-
  <!-- __      ___     _                  _                 -->
  <!-- \ \    / (_)   | |                | |                -->
  <!--  \ \  / / _  __| | ___  ___     __| | ___  ___  ___  -->
@@ -138,9 +120,6 @@ Version of the metadata (not version of the table).<br>
 
 **`video_description`** *[Required ; Not Repeatable]* <br>
 The `video_description` section contains all elements that will be used to describe the video and its content. These are the elements that will be indexed and made searchable when published in a data catalog.
-
-
-
 
  <!--  _     _              -->
  <!-- (_)   | |             -->
@@ -176,8 +155,6 @@ The `video_description` section contains all elements that will be used to descr
   - **`value`** *[Required ; Not repeatable ; String]* <br>
   The identifier. <br><br>
 
-
-
  <!--  _   _ _   _       -->
  <!-- | | (_) | | |      -->
  <!-- | |_ _| |_| | ___  -->
@@ -192,8 +169,6 @@ The `video_description` section contains all elements that will be used to descr
 
   The title of the video. This element maps to the element *caption* in VideoObject. 
 
-
-
  <!--        _ _     _   _ _   _       -->
  <!--       | | |   | | (_) | | |      -->
  <!--   __ _| | |_  | |_ _| |_| | ___  -->
@@ -207,8 +182,6 @@ The `video_description` section contains all elements that will be used to descr
 <br>
 
   An alias for the video title. This element maps to the element *alternateName* in VideoObject.
-
-
 
  <!--      _                     _       _   _              -->
  <!--     | |                   (_)     | | (_)             -->
@@ -546,29 +519,6 @@ video_description = list(
   Indicates the place(s) which are depicted or described in the video. This element maps to the element `contentLocation` in VideoObject. This element complements the `ref_country` element. It can be used to qualify the geographic coverage of the video, in the form of a free text. 
 
 
-
- <!--  _     _                -->
- <!-- | |   | |               -->
- <!-- | |__ | |__   _____  __ -->
- <!-- | '_ \| '_ \ / _ \ \/ / -->
- <!-- | |_) | |_) | (_) >  <  -->
- <!-- |_.__/|_.__/ \___/_/\_\ -->
- 
-- **`bbox`** *[Optional ; Repeatable]* <br>   
-<br>
-![](./images/ReDoc_videos_22.JPG){width=100%}
-<br>
-
-  This element is used to define one or multiple bounding box(es), which are the (rectangular) fundamental geometric description of the geographic coverage of the video. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the video's geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. 
-  - **`west`** *[Required ; Not repeatable ; String]* <br>
-  West longitude of the box
-  - **`east`** *[Required ; Not repeatable ; String]* <br>
-  East longitude of the box
-  - **`south`** *[Required ; Not repeatable ; String]* <br>
-  South latitude of the box
-  - **`north`** *[Required ; Not repeatable ; String]* <br>
-  North latitude of the box
-  
   
   
  <!--                  _             _               __   _   _                 -->
@@ -639,6 +589,29 @@ video_description = list(
 
 
 
+ <!--  _     _                -->
+ <!-- | |   | |               -->
+ <!-- | |__ | |__   _____  __ -->
+ <!-- | '_ \| '_ \ / _ \ \/ / -->
+ <!-- | |_) | |_) | (_) >  <  -->
+ <!-- |_.__/|_.__/ \___/_/\_\ -->
+ 
+- **`bbox`** *[Optional ; Repeatable]* <br>   
+<br>
+![](./images/ReDoc_videos_22.JPG){width=100%}
+<br>
+
+  This element is used to define one or multiple bounding box(es), which are the (rectangular) fundamental geometric description of the geographic coverage of the video. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the video's geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. 
+  - **`west`** *[Required ; Not repeatable ; String]* <br>
+  West longitude of the box
+  - **`east`** *[Required ; Not repeatable ; String]* <br>
+  East longitude of the box
+  - **`south`** *[Required ; Not repeatable ; String]* <br>
+  South latitude of the box
+  - **`north`** *[Required ; Not repeatable ; String]* <br>
+  North latitude of the box
+  
+
 
  <!--  _                                                -->
  <!-- | |                                               -->
@@ -697,52 +670,6 @@ Organization or person who created/authored the video.
 
 
 
- <!--                  _        _ _           _                  -->
- <!--                 | |      (_) |         | |                 -->
- <!--   ___ ___  _ __ | |_ _ __ _| |__  _   _| |_ ___  _ __ ___  -->
- <!--  / __/ _ \| '_ \| __| '__| | '_ \| | | | __/ _ \| '__/ __| -->
- <!-- | (_| (_) | | | | |_| |  | | |_) | |_| | || (_) | |  \__ \ -->
- <!--  \___\___/|_| |_|\__|_|  |_|_.__/ \__,_|\__\___/|_|  |___/ -->
- 
-- **`contributors`** *[Optional, Repeatable]* <br> 
-<br>
-![](./images/ReDoc_videos_26.JPG){width=100%}
-<br>
-
-  Identifies the person(s) and/or organization(s) who contributed to the production of the video. The `role` attribute allows defining what the specific contribution of the identified person or organization was. <br>
-  - **`name`** *[Optional, Not Repeatable ; String]* <br>
-  The name of the contributor (person or organization). 
-  - **`affiliation`** *[Optional, Not Repeatable ; String]* <br>
-  The affiliation of the contributor. 
-  - **`abbreviation`** *[Optional, Not Repeatable ; String]* <br>
-  The abbreviation for the institution which has been listed as the affiliation of the contributor.         
-  - **`role`** *[Optional, Not Repeatable ; String]* <br>
-  The specific role of the contributor. This could for example be "Cameraman", "Sound engineer", etc.
-  - **`uri`** *[Optional, Not Repeatable ; String]* <br>
-  A URI (link to a website, or email address) for the contributor. <br><br>
-
-
-```{r, indent="  ", eval=F, echo=T}
-my_video = list(
-  # ... ,
-  video_description = list(
-        # ... ,
-        contributors = list(
-          list(
-            name         = "",
-            affiliation  = "",
-            abbreviation = "",
-            role         = "",
-            uri          = "")
-        ),  
-        # ...
-  )
-)
-```
-
-
-
-
 
  <!--              _     _ _     _                -->
  <!--             | |   | (_)   | |               -->
@@ -769,8 +696,6 @@ my_video = list(
   )
 )
 ```
-
-
 
 
  <!--                           _ _                    -->
@@ -819,6 +744,49 @@ Users of the video may need further clarification and information. This section 
   A link to a website where contact information for `name` can be found.<br><br>
   
   
+
+ <!--                  _        _ _           _                  -->
+ <!--                 | |      (_) |         | |                 -->
+ <!--   ___ ___  _ __ | |_ _ __ _| |__  _   _| |_ ___  _ __ ___  -->
+ <!--  / __/ _ \| '_ \| __| '__| | '_ \| | | | __/ _ \| '__/ __| -->
+ <!-- | (_| (_) | | | | |_| |  | | |_) | |_| | || (_) | |  \__ \ -->
+ <!--  \___\___/|_| |_|\__|_|  |_|_.__/ \__,_|\__\___/|_|  |___/ -->
+ 
+- **`contributors`** *[Optional, Repeatable]* <br> 
+<br>
+![](./images/ReDoc_videos_26.JPG){width=100%}
+<br>
+
+  Identifies the person(s) and/or organization(s) who contributed to the production of the video. The `role` attribute allows defining what the specific contribution of the identified person or organization was. <br>
+  - **`name`** *[Optional, Not Repeatable ; String]* <br>
+  The name of the contributor (person or organization). 
+  - **`affiliation`** *[Optional, Not Repeatable ; String]* <br>
+  The affiliation of the contributor. 
+  - **`abbr`** *[Optional, Not Repeatable ; String]* <br>
+  The abbreviation for the institution which has been listed as the affiliation of the contributor.         
+  - **`role`** *[Optional, Not Repeatable ; String]* <br>
+  The specific role of the contributor. This could for example be "Cameraman", "Sound engineer", etc.
+  - **`uri`** *[Optional, Not Repeatable ; String]* <br>
+  A URI (link to a website, or email address) for the contributor. <br><br>
+
+
+```{r, indent="  ", eval=F, echo=T}
+my_video = list(
+  # ... ,
+  video_description = list(
+        # ... ,
+        contributors = list(
+          list(
+            name         = "",
+            affiliation  = "",
+            abbr         = "",
+            role         = "",
+            uri          = "")
+        ),  
+        # ...
+  )
+)
+```
                                              
 
  <!--  ___ _ __   ___  _ __  ___  ___  _ __ ___  -->
@@ -885,8 +853,6 @@ Users of the video may need further clarification and information. This section 
   A resource from which this video is derived or from which it is a modification or adaption. This element maps to the element *isBasedOn* in VideoObject. 
 
 
-
-
  <!--  _                        _            __  -->
  <!-- (_)                      | |          / _| -->
  <!--  _ ___   _ __   __ _ _ __| |_    ___ | |_  -->
@@ -904,8 +870,6 @@ Users of the video may need further clarification and information. This section 
   Indicates another video that this video is part of. This element maps to the element *isPartOf* in VideoObject. 
 
 
-
-
  <!--           _       _   _              -->
  <!--          | |     | | (_)             -->
  <!--  _ __ ___| | __ _| |_ _  ___  _ __   -->
@@ -919,7 +883,6 @@ Users of the video may need further clarification and information. This section 
 <br>
 
   Defines, as a free text field, the relation between the video being documented and other resources. This is a Dublin Core element.
-
 
 
  <!--        _     _                                   _     _            -->
@@ -1155,8 +1118,10 @@ Users of the video may need further clarification and information. This section 
 <br>
 
   The transcript of the video content, provided as a text. Note that if the text is very long, an alternative is to save it in a separate text file and to make it available in a data catalog as an external resource.
-  - **`language`** *[Optional ; Not repeatable ; String]* <br>   
-  The language of the transcript.
+  - **`language_name`** *[Optional ; Not repeatable ; String]* <br>   
+  The name of the language of the transcript.
+  - **`language_code`** *[Optional ; Not repeatable ; String]* <br>   
+  The code of the language of the transcript, preferably the ISO code.
   - **`text`** *[Optional ; Not repeatable ; String]* <br>   
   
   The transcript itself. Adding the transcript in the metadata will make the video much more discoverable, as the content of the transcription can be indexed in catalogs.
