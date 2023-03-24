@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Images {#chapter09}
+# Images {#chapter10}
 
 <br>
 <center>
