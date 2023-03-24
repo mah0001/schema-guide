@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Statistical tables {#chapter08}
+# Statistical tables {#chapter09}
 
 <center>
 ![](./images/table_logo.JPG){width=25%}  
