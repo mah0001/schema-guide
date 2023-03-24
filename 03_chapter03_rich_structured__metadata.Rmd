@@ -130,8 +130,6 @@ In the NADA catalog, a facet titled "Free or for a fee" can then be created base
 </center>
 
 
-
-
  <!--   _____ _                   _                      _  -->
  <!--  / ____| |                 | |                    | | -->
  <!-- | (___ | |_ _ __ _   _  ___| |_ _   _ _ __ ___  __| | -->
@@ -336,9 +334,6 @@ An important element of SEO is the provision of structured metadata that can be 
 
 
 
-
-
-
  <!--                                           _           _  -->
  <!--     /\                                   | |         | | -->
  <!--    /  \  _   _  __ _ _ __ ___   ___ _ __ | |_ ___  __| | -->
@@ -363,7 +358,7 @@ Metadata can be extracted from the data themselves. What metadata can be extract
    - For microdata: variable-level statistics (range of values, number of valid/missing cases, frequencies for categorical variables, summary statistics like means or standard deviations for continuous variables) can be extracted and stored as metadata. The DDI Codebook metadata standard provides elements for that purpose.  
    - For documents: information such as the country counts (how many times each country is mentioned) can be extracted automatically to fill out the metadata element related to geographic coverage. Natural language processing (NLP) models can be applied to automatically extract keywords or topics (e.g., using a Latent Dirichlet Allocation - LDA - topic model). Classification models can be applied to categorize documents by type. 
    
-Embeddings and semantic discovery
+**Embeddings and semantic discovery**
 
 Previous sections of the chapter showed the value of rich and structured metadata to improve data usability and discoverability. Comprehensive and structured metadata are required to build and develop advanced and optimized <u>lexical</u> search engines (i.e. search engines that return results based on a matching of terms found in a query and in an inverted index). The richness of the metadata guarantees that the search engine will have all necessary "raw material" to identify datasets of interest. The metadata structure allows catalog administrators to tune their search engine (provided they use advanced solutions like Solr or ElasticSearch) to return and rank results in the most relevant manner. But this leaves one issue unsolved: the dependency on keyword matching. A user interested in datasets related to *malnutrition* for example will not find the indicators on *Prevalence of stunting* and *Prevalence of wasting* that the catalog may contain, unless the keyword "malnutrition" was included in these indicators' metadata. Smarter search engines will be able to "understand" users intent, and identify relevant data based not only on a keyword matching process, but also on the **semantic closeness** between a query submitted by thea user and the metadata available in the database. The combination of rich metadata and natural language processing (NLP) models can solve this issue, by enabling semantic searchability in data catalogs.
 
@@ -372,22 +367,8 @@ To enable a semantic search engine (or a recommender system), we need a way to "
 Practically, embeddings are used as follows: metadata (or part of the metadata) associated with a dataset are converted into a numeric vector using a pre-trained embedding model. These embeddings are stored in a database. When a user submits a search query (which can be a term, a phrase, or even a document), the query is analyzed and enhanced (stop words are removed, spelling errors may be fixed, language detection and automatic translation may be applied, and more), then transformed into a vector using the same pre-trained model that was used to generate the metadata vectors. The metadata vectors that have the shortest distance (typically the cosine distance) with the query vector will be identified. The search engine will then return a sorted list of datasets having the highest semantic similarity with the query, or the distance between vectors will be used in combination with other criteria to rank and return results to the user. The fast identification of the closest vectors requires a specialized and optimized tool like the open source [Milvus](https://milvus.io/) application.
 
 
-[^1] See Omar Benjelloun, Shiyu Chen, Natasha Noy, 2020, *Google Dataset Search by the Numbers*, https://doi.org/10.48550/arXiv.2006.06894
 
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
 
 
    
@@ -624,16 +605,6 @@ Some schemas may recommend controlled vocabularies for some elements. For exampl
 In most cases however, controlled vocabularies are not part of the metadata standard or schema. They will be selected and activated in templates and applications.
 ...example...
 
-
-
- <!--  _______                  _       _   _              -->
- <!-- |__   __|                | |     | | (_)             -->
- <!--    | |_ __ __ _ _ __  ___| | __ _| |_ _ _ __   __ _  -->
- <!--    | | '__/ _` | '_ \/ __| |/ _` | __| | '_ \ / _` | -->
- <!--    | | | | (_| | | | \__ \ | (_| | |_| | | | | (_| | -->
- <!--    |_|_|  \__,_|_| |_|___/_|\__,_|\__|_|_| |_|\__, | -->
- <!--                                                __/ | -->
- <!--                                               |___/  -->
                                                
 ## Generating structured metadata 
 
@@ -805,10 +776,13 @@ R and Python are powerful tools to generate metadata in a flexible and efficient
 The [Nesstar Publisher](http://www.nesstar.com/software/publisher.html) is a popular DDI metadata editor used to document microdata. The application, developed and published by the Norwegian Centre for Research Data, was built around the DDI Codebook 1.n version. It also makes use of Dublin Core elements to document external resources. The application, built on an outdated technology and DDI version, is however not maintained anymore. The World Bank has initiated the development of a more modern and open source version of this application, compatible with the most recent version of DDI Codebook (and other metadata standards). 
 
 Template for the selection of elements, default values, controlled vocabularies
+
 Then UI with (for some types) import of data and automated generation of some metadata.
 
 Example of microdata
 Example of document
 
-
 For documenting geographic datasets and services, the [GeoNetwork metadata editor](https://geonetwork-opensource.org/), an [OSGeo](https://www.osgeo.org/) project, supports ISO 19115/19119/19110 standards. Other tools like the open-source R package [geometa](https://cran.r-project.org/web/packages/geometa/index.html) (*Tools for Reading and Writing ISO/OGC Geographic Metadata*) can also help data curators in the production of structured metadata.
+
+
+[^1] See Omar Benjelloun, Shiyu Chen, Natasha Noy, 2020, *Google Dataset Search by the Numbers*, https://doi.org/10.48550/arXiv.2006.06894
