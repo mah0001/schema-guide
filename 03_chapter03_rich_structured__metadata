@@ -812,17 +812,3 @@ Example of document
 
 
 For documenting geographic datasets and services, the [GeoNetwork metadata editor](https://geonetwork-opensource.org/), an [OSGeo](https://www.osgeo.org/) project, supports ISO 19115/19119/19110 standards. Other tools like the open-source R package [geometa](https://cran.r-project.org/web/packages/geometa/index.html) (*Tools for Reading and Writing ISO/OGC Geographic Metadata*) can also help data curators in the production of structured metadata.
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
