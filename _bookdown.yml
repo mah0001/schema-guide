@@ -9,7 +9,7 @@ rmd_files:
 - 05_chapter05_microdata.Rmd
 - 06_chapter06_geospatial.Rmd
 - 07_chapter07_database.Rmd
-- 08_chapter08_time_series.Rmd
+- 08_chapter08_indicators.Rmd
 - 09_chapter09_table.Rmd
 - 10_chapter10_image.Rmd
 - 11_chapter11_video.Rmd
