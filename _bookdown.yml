@@ -2,16 +2,16 @@ book_filename: SCHEMA_GUIDE
 rmd_files: 
 - index.Rmd
 - 00_introduction.Rmd
-- 01_chapter01_importance_metadata.Rmd
-- 02_chapter02_JSON_schemas.Rmd
-- 03_chapter03_nada_catalog.Rmd
+- 01_chapter01_challenge_finding_using_data.Rmd
+- 02_chapter02_search_engine_for_data.Rmd
+- 03_chapter03_rich_structured__metadata.Rmd
 - 04_chapter04_document.Rmd
 - 05_chapter05_microdata.Rmd
 - 06_chapter06_geospatial.Rmd
-- 07_chapter07_time_series.Rmd
-- 08_chapter08_table.Rmd
-- 09_chapter09_image.Rmd
-- 10_chapter10_audio.Rmd
+- 07_chapter07_database.Rmd
+- 08_chapter08_time_series.Rmd
+- 09_chapter09_table.Rmd
+- 10_chapter10_image.Rmd
 - 11_chapter11_video.Rmd
 - 12_chapter12_reproducible_scripts.Rmd
 - 13_chapter13_related_resources.Rmd
