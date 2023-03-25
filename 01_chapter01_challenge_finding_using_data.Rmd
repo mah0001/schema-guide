@@ -131,4 +131,12 @@ The scope and meaning of labour statistics in general are determined by their so
 
 ## Solutions
 
+Data catalogs (libraries) with:
+- Advanced search algorithms and filters. This includes full text search, advanced search, semantic search, and recommender system. Possibility to enter simple queries, or complex, even a document as a query.
+- SEO, as many users will find the catalog via search engines
+- Display of detailed metadata, with possibility to easyly assess fitness for purpose
+- Inter-operability
+- Multiple modes of data access
+
+In chapter 2, we define the features of a modern catalog in more detail.
 
