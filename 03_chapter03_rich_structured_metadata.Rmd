@@ -6,13 +6,7 @@ output: html_document
 
 The previous chapter defined the features of an advanced data discoverability and dissemination solution. What enables such a solution is not only the algorithms and technology, but also the quality of the metadata available to enable them. This chapter describes what metadata are needed, and how they can be organized and improved to fully enable the search and recommender tools. The metadata must be rich and structured. To make them rich, machine learning can be used. To ensure consistent structure, the use of metadata standards and schemas is highly recommended. In this chapter, we build the case for rich, augmented, structured metadata and for the adoption of metadata standard and schemas. The second part of this Guide will provide a detailed description of each recommended standard or schema, for different data types.
 
- <!--  _____  _      _      -->
- <!-- |  __ \(_)    | |     -->
- <!-- | |__) |_  ___| |__   -->
- <!-- |  _  /| |/ __| '_ \  -->
- <!-- | | \ \| | (__| | | | -->
- <!-- |_|  \_\_|\___|_| |_| -->
- 
+
 ## Rich metadata
 
 *Rich* metadata means detailed and comprehensive metadata. Rich metadata are beneficial to both the users and the providers (producers and curators) of data.
@@ -73,14 +67,7 @@ Explanatory materials are the information that should be created and preserved t
    - **Confidentiality and anonymization**: It is important to determine whether the data contains any confidential information on individuals, households, organizations, or institutions. If so, such information should be recorded together with any agreement on how to use the data, such as with survey respondents. Issues of confidentiality may restrict the analyses to be undertaken or results to be published, particularly if the data is to be made available for secondary use. If the data were anonymized to prevent identification, it is wise to record the anonymization procedure (taking care of not providing information that would enable a reverse-engineering of the procedure) and its impact on the data, as such modification may restrict subsequent analysis.
 
 ### Some recommendations
-
- <!--   _____            _             _ _          _  -->
- <!--  / ____|          | |           | | |        | | -->
- <!-- | |     ___  _ __ | |_ _ __ ___ | | | ___  __| | -->
- <!-- | |    / _ \| '_ \| __| '__/ _ \| | |/ _ \/ _` | -->
- <!-- | |___| (_) | | | | |_| | | (_) | | |  __/ (_| | -->
- <!--  \_____\___/|_| |_|\__|_|  \___/|_|_|\___|\__,_| -->
-                                                 
+                                                
 #### Controlled vocabularies
 
 Metadata standards and schemas provide lists of elements with a description of the expected content to be captured in each element. For some elements, it may be appropriate to restrict the valid content to pre-selected options or "controlled vocabularies". A controlled vocabulary is a pre-defined list of values that can be accepted as valid content for some elements. For example. a metadata element "data type" should not be populated with free text, but should make use of a pre-defined taxonomy of data types. The use of controlled vocabularies (for selected metadata elements) will be particularly useful to implement search and filter features in data catalogs (see section 3.1.1 of this Guide), and to foster inter-operability of data catalogs.
@@ -95,15 +82,6 @@ Some recommended controlled vocabularies are included in the description of the 
 
 Ideally, controlled vocabulary will be developed in compliance with the [FAIR principles](https://www.go-fair.org/fair-principles/) for scientific data management and stewardship: **F**indability, **A**ccessibility, **I**nteroperability, and **R**euse.
 
-
- <!--  _______               -->
- <!-- |__   __|              -->
- <!--    | | __ _  __ _ ___  -->
- <!--    | |/ _` |/ _` / __| -->
- <!--    | | (_| | (_| \__ \ -->
- <!--    |_|\__,_|\__, |___/ -->
- <!--              __/ |     -->
- <!--             |___/      -->
 
 #### Tags and tag groups
 
@@ -129,13 +107,6 @@ In the NADA catalog, a facet titled "Free or for a fee" can then be created base
 ![](./images/reDoc_tags_2.JPG){width=100%}
 </center>
 
-
- <!--   _____ _                   _                      _  -->
- <!--  / ____| |                 | |                    | | -->
- <!-- | (___ | |_ _ __ _   _  ___| |_ _   _ _ __ ___  __| | -->
- <!--  \___ \| __| '__| | | |/ __| __| | | | '__/ _ \/ _` | -->
- <!--  ____) | |_| |  | |_| | (__| |_| |_| | | |  __/ (_| | -->
- <!-- |_____/ \__|_|   \__,_|\___|\__|\__,_|_|  \___|\__,_| -->
                                                       
 ## Structured metadata
 
@@ -333,16 +304,6 @@ Guidelines for implementing SEO are provided by Google Search, Google Dataset Se
 An important element of SEO is the provision of structured metadata that can be exploited directly by the crawlers and indexers of search engines. This is the purpose of a set of schemas known as [**schema.org**](https://schema.org/). In 2011 Google, Microsoft, Yandex, and Yahoo! created a common set of schemas for structured data markup on web pages with the aim of helping search engines to better understand websites. An alternative to schema.org is the [DCAT (Data Catalog Vocabulary)](https://www.w3.org/TR/vocab-dcat-2/) metadata schema recommended by the W3C, also recognized by Google. "DCAT is a vocabulary for publishing data catalogs on the Web, which was originally developed in the context of government data catalogs such as data.gov and data.gov.uk (...)" (https://www.w3.org/TR/vocab-dcat-2/) Mapping augmented and structured metadata to the schema.org and/or DCAT standard is a critical element of such optimization. It will contribute significantly to the visibility of on-line data and metadata. Implementing such structured data markup in digital repositories is the responsibility of data librarians and of developers of data cataloguing applications. 
 
 
-
- <!--                                           _           _  -->
- <!--     /\                                   | |         | | -->
- <!--    /  \  _   _  __ _ _ __ ___   ___ _ __ | |_ ___  __| | -->
- <!--   / /\ \| | | |/ _` | '_ ` _ \ / _ \ '_ \| __/ _ \/ _` | -->
- <!--  / ____ \ |_| | (_| | | | | | |  __/ | | | ||  __/ (_| | -->
- <!-- /_/    \_\__,_|\__, |_| |_| |_|\___|_| |_|\__\___|\__,_| -->
- <!--                 __/ |                                    -->
- <!--                |___/                                     -->
-
 ## Augmenting metadata
 
 Detailed and complete metadata foster usability and discoverability of data. Augmentation of "enrichment" or "enhancement" of the metadata will therefore be beneficial. There are multiple ways metadata can be made richer, or *augmented*, programmatically and in a largely automated manner. Metadata can be extracted from external sources or from the data themselves. 
@@ -366,11 +327,6 @@ To enable a semantic search engine (or a recommender system), we need a way to "
 
 Practically, embeddings are used as follows: metadata (or part of the metadata) associated with a dataset are converted into a numeric vector using a pre-trained embedding model. These embeddings are stored in a database. When a user submits a search query (which can be a term, a phrase, or even a document), the query is analyzed and enhanced (stop words are removed, spelling errors may be fixed, language detection and automatic translation may be applied, and more), then transformed into a vector using the same pre-trained model that was used to generate the metadata vectors. The metadata vectors that have the shortest distance (typically the cosine distance) with the query vector will be identified. The search engine will then return a sorted list of datasets having the highest semantic similarity with the query, or the distance between vectors will be used in combination with other criteria to rank and return results to the user. The fast identification of the closest vectors requires a specialized and optimized tool like the open source [Milvus](https://milvus.io/) application.
 
-
-
-
-
-
    
    - For geospatial data: bounding boxes (i.e. the *extent* of the data) can be derived from the data files. 
    - For photos taken by digital cameras: metadata such as the date and time the photo was taken and possibly the geographic location can be extracted from the EXIF metadata generated by digital cameras and stored in the image file. Also, machine learning models allow image labeling, face detection, text detection and recognition to be applied at low cost (using commercial solutions like [Google Vision](https://cloud.google.com/vision) or [Amazon Rekognition](https://aws.amazon.com/rekognition/) among others). 
@@ -378,14 +334,6 @@ Practically, embeddings are used as follows: metadata (or part of the metadata) 
    - For programs and scripts: a parsing of the commands used in the script may be used to derive information on the methods applied.
    - For all types: user-defined tags can be added, possibly generated by machine learning classification algorithms.
 
-
-
- <!--  _____                                                   _          _  -->
- <!-- |  __ \                                                 | |        | | -->
- <!-- | |__) |___  ___ ___  _ __ ___  _ __ ___   ___ _ __   __| | ___  __| | -->
- <!-- |  _  // _ \/ __/ _ \| '_ ` _ \| '_ ` _ \ / _ \ '_ \ / _` |/ _ \/ _` | -->
- <!-- | | \ \  __/ (_| (_) | | | | | | | | | | |  __/ | | | (_| |  __/ (_| | -->
- <!-- |_|  \_\___|\___\___/|_| |_| |_|_| |_| |_|\___|_| |_|\__,_|\___|\__,_| -->
 
 ## Recommended standards and schemas
 
@@ -458,14 +406,7 @@ We are interested in documenting and disseminating **data processing and analysi
 
 **External resources** are files and links that we may want to attach to a dataset's published metadata in a data catalog. When we publish metadata in a catalog, what is published is only the textual documentation contained in the JSO or XML metadata file. Other resources attached to a dataset (such as the questionnaire for a survey, technical or training manuals, tabulations, reports, possibly micro-data files, etc.) are not included in these metadata, but also constitute important materials for data users. All these resources are what we consider as *external resources* ("external" to the schema-compliant metadata), which need to be catalogued and (for most of them) published with the metadata. A simple metadata schema, based on the Dublin Core, is used to provide some essential information on these resources.     
 
-
- <!--  _____   _____       _______  -->
- <!-- |  __ \ / ____|   /\|__   __| -->
- <!-- | |  | | |       /  \  | |    -->
- <!-- | |  | | |      / /\ \ | |    -->
- <!-- | |__| | |____ / ____ \| |    -->
- <!-- |_____/ \_____/_/    \_\_|    -->
-                              
+                             
 ### Schema.org and DCAT for search engine optimization
 
 #### The basics of search engine optimization
@@ -547,14 +488,6 @@ The screenshots below show an example of an HTML page for a dataset published in
 </center>
 <br>
 
-
-
-<!--  __          ___                    -->
-<!--  \ \        / / |                   -->
-<!--   \ \  /\  / /| |__   ___ _ __ ___  -->
-<!--    \ \/  \/ / | '_ \ / _ \ '__/ _ \ -->
-<!--     \  /\  /  | | | |  __/ | |  __/ -->
-<!--      \/  \/   |_| |_|\___|_|  \___| -->
                                    
 ## Where to find the schemas' documentation
 
