@@ -23,13 +23,6 @@ The process of publishing data and metadata in a NADA catalog consists of:
    4. **Select an access policy** to be applied to the dataset, when relevant. This will determine if and how users can access the data (direct access, access from another repository, licensed access, no access, or other). This will typically apply to microdata and geographic datasets, not to other types of data. 
 
 
- <!--  ______         _                        -->
- <!-- |  ____|       | |                       -->
- <!-- | |__ ___  __ _| |_ _   _ _ __ ___  ___  -->
- <!-- |  __/ _ \/ _` | __| | | | '__/ _ \/ __| -->
- <!-- | | |  __/ (_| | |_| |_| | | |  __/\__ \ -->
- <!-- |_|  \___|\__,_|\__|\__,_|_|  \___||___/ -->
-
 ### Features of a modern data catalog 
 
 We present here some desirable features of a modern on-line data catalog from the perspective of data users and catalog administrators, focusing on the features that are enabled by rich and structured metadata.
@@ -206,19 +199,6 @@ In addition to the features that will make a data catalog meet the expectations 
    - Option to use widgets to embed custom charts, maps, and data grids in the catalog
    - Possibility to provide feedback and suggestions to the application developers
    
-
-
-
-
-
- <!--  __  __            _     _              _                       _              -->
- <!-- |  \/  |          | |   (_)            | |                     (_)             -->
- <!-- | \  / | __ _  ___| |__  _ _ __   ___  | | ___  __ _ _ __ _ __  _ _ __   __ _  -->
- <!-- | |\/| |/ _` |/ __| '_ \| | '_ \ / _ \ | |/ _ \/ _` | '__| '_ \| | '_ \ / _` | -->
- <!-- | |  | | (_| | (__| | | | | | | |  __/ | |  __/ (_| | |  | | | | | | | | (_| | -->
- <!-- |_|  |_|\__,_|\___|_| |_|_|_| |_|\___| |_|\___|\__,_|_|  |_| |_|_|_| |_|\__, | -->
- <!--                                                                          __/ | -->
- <!--                                                                         |___/  -->
  
 ### Machine learning for improved user experience
 
@@ -260,18 +240,6 @@ Implementing Learn to Rank models may be challenging for data catalog administra
 ![](./images/schema_search_ranking.JPG){width=100%}
 </center>
 
-
-
-
-
-
-
- <!--  ______              -->
- <!-- |  ____|             -->
- <!-- | |__ _ __ ___  ___  -->
- <!-- |  __| '__/ _ \/ _ \ -->
- <!-- | |  | | |  __/  __/ -->
- <!-- |_|  |_|  \___|\___| -->
 
 ### Free cataloguing tools
 
