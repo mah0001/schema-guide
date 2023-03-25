@@ -6,7 +6,7 @@ output: html_document
 
 # The challenge of finding, assessing, accessing, and using data {#chapter01}
 
-Finding, understanding, and using the most relevant data can be a challenging task for researchers. Often, they spend significant time identifying, locating, acquiring (and sometimes failing to acquire), understanding, and wrangling the data they need, Some will rely on tribal knowledge and chose to use convenient more than relevant data. Making data easier to find, access, and use can foster the re-use and re-purposing of existing data and increase the return on investments in data collection and creation. We provide in this chapter a few examples that illustrate some of the obstacles that researchers face when looking for, and using data.  
+Finding, assessing, accessing, and using the most relevant data can be a challenging task for researchers. Often, they spend significant time identifying, locating, acquiring (and sometimes failing to acquire), understanding, and wrangling the data they need, Some will rely on tribal knowledge and chose to use convenient more than relevant data. Making data easier to find, access, and use can foster the re-use and re-purposing of existing data and increase the return on investments in data collection and creation. We provide in this chapter a few examples that illustrate some of the obstacles that researchers face when looking for, and using data.  
 
 ## Finding data
 
