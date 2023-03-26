@@ -28,7 +28,7 @@ The target audience for this Guide comprises data curators and administrators of
 
 The Guide was produced as a component of a toolset that also includes a specialized metadata editor and a cataloguing tool. These tools aim to address the technical issues of data documentation and dissemination. The legal and ethical aspects are equally important. Other tools and guidelines are available that provide recommendations on data protection (statistical disclosure control), and on data dissemination policies. 
 
-## Acknowledgments
+## Acknowledgments {-}
 
 The Guide was written by Olivier Dupriez (Lead Data Scientist, World Bank) and Mehmood Asghar (Senior Data Engineer, World Bank). Kamwoo Lee (Data Scientist, World Bank) produced some of the examples of the use of metadata schemas included in the Guide and contributed to the testing of the schemas. Emmanuel Blondel (consultant) contributed much of chapter 6. Geoffrey Greenwell (consultant) provided input to chapter 9. Tefera Bekele Degefu and Cathrine Machingauta (Data Scientists, World Bank) participated in the testing of the metadata schemas. Matthew Welch (Senior Economist-Statistician, World Bank) provided comments on the Guide.
 
