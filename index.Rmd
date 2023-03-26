@@ -30,7 +30,7 @@ The Guide was produced as a component of a toolset that also includes a speciali
 
 ## Acknowledgments
 
-The Guide was written by Olivier Dupriez (Lead Data Scientist, World Bank) and Mehmood Asghar (Senior Data Engineer, World Bank). Kamwoo Lee (Data Scientist, World Bank) produced some of the examples of the use of metadata schemas included in the Guide and contributed to the testing of the schemas. Emmanuel Blondel (consultant) contributed much of chapter 6. Geoffrey Greenwell (consultant) provided input to chapter 8. Tefera Bekele Degefu and Cathrine Machingauta (Data Scientists, World Bank) participated in the testing of the metadata schemas. Matthew Welch (Senior Economist-Statistician, World Bank) provided comments on the Guide.
+The Guide was written by Olivier Dupriez (Lead Data Scientist, World Bank) and Mehmood Asghar (Senior Data Engineer, World Bank). Kamwoo Lee (Data Scientist, World Bank) produced some of the examples of the use of metadata schemas included in the Guide and contributed to the testing of the schemas. Emmanuel Blondel (consultant) contributed much of chapter 6. Geoffrey Greenwell (consultant) provided input to chapter 9. Tefera Bekele Degefu and Cathrine Machingauta (Data Scientists, World Bank) participated in the testing of the metadata schemas. Matthew Welch (Senior Economist-Statistician, World Bank) provided comments on the Guide.
 
 The production of the Guide and related tools has been made possible by financial contributions from:
 
