@@ -6,7 +6,7 @@ output: html_document
 
 We describe in this chapter the features that an on-line data catalog should have to better satisfy the needs and expectations of various categories of users. The objective is develop catalogs that combine lexical search, semantic search (NLP), filtering, advanced search option (targeted), and a recommender system. Also, that provide users with detaled metadata, and convenience in formats and modes of access. 
 
-## Data cataloguing 
+## Features of a modern data catalog  
 
 Metadata are primarily intended to make the data **usable** and **discoverable**. 
 
@@ -23,11 +23,11 @@ The process of publishing data and metadata in a NADA catalog consists of:
    4. **Select an access policy** to be applied to the dataset, when relevant. This will determine if and how users can access the data (direct access, access from another repository, licensed access, no access, or other). This will typically apply to microdata and geographic datasets, not to other types of data. 
 
 
-### Features of a modern data catalog 
+
 
 We present here some desirable features of a modern on-line data catalog from the perspective of data users and catalog administrators, focusing on the features that are enabled by rich and structured metadata.
 
-#### What users want 
+### What users want 
 
 The first thing that users expect from an on-line data catalog is a combination of user-friendly **filters** (**facets**) and **search** tools that will help them identify and access the most relevant datasets. Most users are used to the ease of use and high performance of search engines like Google or Bing. They are also used to the user-friendliness and convenience of commercial platforms like Amazon and others, which allow them to quickly identify products of interest and acquire them in a fast and hassle-free manner. These platforms are simple, predictable, relevant, fast, and reliable. Data catalogs should have similar characteristics. Much can thus be learned from the design of lead search engine and e-commerce sites.
 
@@ -179,7 +179,7 @@ When the data (time series and tabular data, possibly also microdata) are made a
 </center>
 
 
-#### What catalog administrators want
+### What catalog administrators want
 
 In addition to the features that will make a data catalog meet the expectations of its users, a catalog administrator will expect or appreciate (some of) the following features from a modern data catalog application:
 
@@ -200,11 +200,11 @@ In addition to the features that will make a data catalog meet the expectations 
    - Possibility to provide feedback and suggestions to the application developers
    
  
-### Machine learning for improved user experience
+## Machine learning for improved user experience
 
 We mentioned in Chapter 1 the importance of generating rich metadata, and the possibilities that machine learning approaches offer to enrich metadata. We also mentioned the use of machine learning, and natural language processing (NLP) tools and models in particular, to improve the performance of search engines. Machine learning models enable semantic search engines and recommender systems, and are thus a tool to help users find relevant data. They are also a solution to improve the ranking of results that search engine will find, to ensure that the most relevant ones are brought to the attention of users. The lead search engines (Google, Bing and others) have for many years relied on machine learning. Specialized data catalogs will not have the resources (and do not need) to implement such advanced systems, but should however explore opportunities to exploit machine learning to improve their users' experience. Exploiting machine learning solutions do not necessarily require that catalog administrators build expertise in machine learning or train their own models; data catalogs could make use of external APIs (e.g., APIs that can automatically and in real time translate queries, convert queries into embeddings, and others). Ideally, a global community of practice will developing such APIs (including the training of NLP models) and provide them as a global public good.  
 
-#### Improving discoverability
+### Improving discoverability
 
 In 2019 Google announced their implementation of an NLP model named BERT (for Biderectional Encoder Representations from Transformers) as a component of their search engine. Other companies (Amazon, Apple, Microsoft, and others) are developing similar models to improve their search engines. One objective pursued by these companies is to build search engines that can support their digital assistant systems (like Siri, Alexa, Cortana, or Hey Google). These assistants operate on a conversational mode and provide users with answers, not links to resources. Improving NLP models is a continuous and strategic imperative for these companies. And because not all answers can be found in textual resources, Google are also conducting research to develop solutions to [extract answers from tabular data](https://ai.googleblog.com/2020/04/using-neural-networks-to-find-answers.html).
 
@@ -223,7 +223,7 @@ Relatively simple models, built on open source tools and publicly-available docu
 ![](./images/word_graph_dutch_disease.JPG){width=100%}
 </center>
 
-#### Improving results ranking
+### Improving results ranking
 
 Search engines must be able not only to identify relevant resources, but also to rank and present them to users in an optimal order of relevance. We illustrated the problem in Chapter 1. [Research](https://www.webfx.com/internet-marketing/seo-statistics.html) shows that 75% of search engine users don’t click past the first page.
 
@@ -241,7 +241,7 @@ Implementing Learn to Rank models may be challenging for data catalog administra
 </center>
 
 
-### Free cataloguing tools
+## Cataloguing tools
 
 The examples we provided in this chapter are taken from our NADA cataloguing application. Other open-source cataloguing applications are available, including CKAN, GeoNetworks, and Dataverse. 
 
