@@ -14,7 +14,7 @@ The leading search platforms like Google and Bing have outstanding capabilities.
 
 Because the data are scattered across many sources and locations, a user wo does not have prior knowledge of what data s/he needs and where they can be found will be poorly served. The lead search engines, although not dedicated to locating data, serve a crucial role to bring users if not to the data themselves, at least to the relevant catalogs and repositories. It is the responsibility of the administrators of these catalogs to ensure that their assets are visible in generic search engines, and that their specific applications provide additionsl more optimized search and discovery features. 
 
- Ideally, all data would be shared in compliance with the FAIR principles and be Findable, Accessible, Interoperable, and Reusable.
+Ideally, all data would be shared in compliance with the FAIR principles and be Findable, Accessible, Interoperable, and Reusable.
 
 Search engines like Google and Bing are designed to search the whole world wide web, not specifically to find data. They perform well for simple data queries that call for a simple answer (e.g., *population of India in 2020*), or when a user searches for a specific resource available on-line (e.g., *Living Standards Measurement Survey Albania 2012*). But they will not (and should not be expected to) perform as well for complex data queries, or to provide recommendations. Researchers will thus often turn to specialized on-line data catalogs and data platforms maintained by national or international organizations, academic data centers, and data archives or data libraries. Unfortunately, the search algorithms embedded in data catalogs also provide unsatisfactory search results. This is due in part to weaknesses in the metadata associated with the data resources, and in part to the lack of optimization of the search indexes and algorithms. Google's *Dataset Search* is an attempt to implement a better search engine to a catalog of datasets. But its performance is also hampered by the paucity of available metadata. The examples below illustrate in an anecdotal manner some of the problems that researchers face when searching for data. The results shown below are as of 11 November 2022, and will be vary over time.
 
@@ -107,6 +107,7 @@ Is the method satisfactory
 Are data comparable (over time, across sources)
 Will the data remain available? Updated?
 
+
 ## Accessing data
 
 Terms of use
@@ -122,6 +123,7 @@ File formats
 - Outdated
 - Inconvenient (labels, etc)
 
+
 ## Using data
 
 The challenge for data users is not only to discover data, but also to obtain all necessary information to fully understand the data and to use them responsibly and appropriately. A same indicator label, for example *unemployment rate (%)*, can mask significant differences by country, source, and time. The international recommendations for the definition and calculation of *unemployment rate* has changed over time, and not all countries use the same data collection instrument (labor force survey or other) to collect the underlying data. In on-line data dissemination platforms, detailed metadata should therefore always be associated and disseminated with the data. This must be a close association; the relevant metadata will ideally not be more than one click away from the data. This is particularly critical when a platform publishes data from multiple sources that are not fully harmonized.
@@ -131,6 +133,7 @@ The scope and meaning of labour statistics in general are determined by their so
 :::
 
 Reproducibility: ...
+
 
 ## Solutions
 
