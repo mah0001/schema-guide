@@ -10,13 +10,13 @@ Finding, assessing, accessing, and using the most relevant data can be a challen
 
 ## Finding data
 
-How do researchers look for data when they do not know exactly what data they need to find:
-- Queries in specialized catalogs - This assume they know about the data catalog and have some idea of what they can find in it. All catalogs have a limited scope and coverage. 
-- Queries in search engines like Google. This is critical. 
+The leading search platforms like Google and Bing have outstanding capabilities. They are not only able to locate resourecs of interest on the web, but also increasingly to provide direct answers to their users and to becaome an assistant. The emergence and use of tools like chatGPT will only increase this trend. These systems are however not tailored to meet the needs of researchers looking for data. Simple requests will be answered directly. For example, someone who wants to know the population of India in 2020 will eb provided with a direct answer, extracted by the search engine from a source deemed (by them, not by the user) as authoritative. But these systems will not always return the most useful results to researchers whose data needs cannot be expressed in a simple query. A research question may be answered by multiple types of data, some available in data libraries or repositories, other available as somewhat hidden links in websites (e.g., as an article supplement).
 
-They submit queries based on expectation of keyword match (full text search). 
+Many users will not have a query for a specific indicator or dataset, but need recommendations on useful data to answer a research question. How do researchers look for data when they do not know exactly what data they need to find:
+- Queries in specialized catalogs. This assume they know about the data catalog and have some idea of what they can find in it. All catalogs have a limited scope and coverage. 
+- Queries in search engines like Google. This is critical.
 
-Some simple requests may be answered directly. This is the trend in search engines: provide an answer before providing a link. For complex dataset, only links will be returned. Once a match is returned, browse the content to confirm that the data are indeed useful. Hoping to have as direct access to the data as possible, in the most convenient format. 
+ Ideally, all data would be shared in compliance with the FAIR principles and be Findable, Accessible, Interoperable, and Reusable.
 
 Search engines like Google and Bing are designed to search the whole world wide web, not specifically to find data. They perform well for simple data queries that call for a simple answer (e.g., *population of India in 2020*), or when a user searches for a specific resource available on-line (e.g., *Living Standards Measurement Survey Albania 2012*). But they will not (and should not be expected to) perform as well for complex data queries, or to provide recommendations. Researchers will thus often turn to specialized on-line data catalogs and data platforms maintained by national or international organizations, academic data centers, and data archives or data libraries. Unfortunately, the search algorithms embedded in data catalogs also provide unsatisfactory search results. This is due in part to weaknesses in the metadata associated with the data resources, and in part to the lack of optimization of the search indexes and algorithms. Google's *Dataset Search* is an attempt to implement a better search engine to a catalog of datasets. But its performance is also hampered by the paucity of available metadata. The examples below illustrate in an anecdotal manner some of the problems that researchers face when searching for data. The results shown below are as of 11 November 2022, and will be vary over time.
 
@@ -102,7 +102,12 @@ The main obstacles to data visibility and discoverability are that:
 ## Assessing data
 
 Are the data really relevant?
-
+Is the sample size large enough?
+Does it cover the entire universe of interest? And the entire geography of interest?
+Is the source reliable
+Is the method satisfactory
+Are data comparable (over time, across sources)
+Will the data remain available? Updated?
 
 ## Accessing data
 
@@ -119,7 +124,6 @@ File formats
 - Outdated
 - Inconvenient (labels, etc)
 
-
 ## Using data
 
 The challenge for data users is not only to discover data, but also to obtain all necessary information to fully understand the data and to use them responsibly and appropriately. A same indicator label, for example *unemployment rate (%)*, can mask significant differences by country, source, and time. The international recommendations for the definition and calculation of *unemployment rate* has changed over time, and not all countries use the same data collection instrument (labor force survey or other) to collect the underlying data. In on-line data dissemination platforms, detailed metadata should therefore always be associated and disseminated with the data. This must be a close association; the relevant metadata will ideally not be more than one click away from the data. This is particularly critical when a platform publishes data from multiple sources that are not fully harmonized.
@@ -128,15 +132,27 @@ The challenge for data users is not only to discover data, but also to obtain al
 The scope and meaning of labour statistics in general are determined by their source and methodology, and this is certainly true for the unemployment rate. In order to interpret the data accurately, it is crucial to understand what the data convey and how they were collected and constructed, which implies having information on the relevant metadata. The design and characteristics of the data source (typically a labour force survey or similar household survey for the unemployment rate), especially in terms of definitions and concepts used, geographical and age coverage, and reference periods have great implications for the resulting data, making it crucial to take them into account when analysing the statistics. It is also essential to seek information on any methodological changes and breaks in series to assess their impact for trend analysis, and to keep in mind methodological differences across countries when conducting cross-country studies. (From [*Quick guide on interpreting the unemployment rate*](https://ilo.org/wcmsp5/groups/public/---dgreports/---stat/documents/publication/wcms_675155.pdf), International Labour Office – Geneva: ILO, 2019, ISBN : 978-92-2-133323-4 (web pdf)).
 :::
 
+Reproducibility: ...
 
 ## Solutions
 
+FAIR principles.
+
+Find:
 Data catalogs (libraries) with:
 - Advanced search algorithms and filters. This includes full text search, advanced search, semantic search, and recommender system. Possibility to enter simple queries, or complex, even a document as a query.
 - SEO, as many users will find the catalog via search engines
-- Display of detailed metadata, with possibility to easyly assess fitness for purpose
-- Inter-operability
+
+Accessible:
 - Multiple modes of data access
+
+Inter-operable
+- Inter-operability
+
+Reusable
+- Display of detailed metadata, with possibility to easyly assess fitness for purpose
+- Scripts, not only data
+
 
 In chapter 2, we define the features of a modern catalog in more detail.
 
