@@ -14,8 +14,6 @@ Leading search platforms like Google and Bing are renowned for their remarkable 
 
 While search engines like Google and Bing play a crucial role in bringing users to relevant catalogs and repositories, specialized online data catalogs and platforms maintained by national or international organizations, academic data centers, data archives, or data libraries are better suited for researchers seeking relevant data. However, the search algorithms embedded in data catalogs can also provide unsatisfactory search results due to weaknesses in metadata associated with data resources and the lack of optimization of search indexes and algorithms.
 
-Ideally, all data should be shared in compliance with the FAIR principles to ensure that they are Findable, Accessible, Interoperable, and Reusable. Google's Dataset Search is a noteworthy attempt to improve the search engine's performance in finding relevant datasets, but its efficacy is hindered by the paucity of available metadata.
-
 In conclusion, while search engines like Google and Bing are useful for finding specific resources online, specialized online data catalogs and platforms are more effective in meeting the needs of researchers seeking relevant data. Administrators of these catalogs have a responsibility to ensure that their assets are visible in generic search engines and that their specific applications provide additional optimized search and discovery features. 
 
 The examples provided below illustrate some of the problems that researchers encounter when searching for data. It is worth noting that the results shown are as of 11 November 2022 and are subject to variation over time.
@@ -139,9 +137,12 @@ Reproducibility: ...
 
 ## Solutions
 
-FAIR principles.
+Ideally, all data should be shared in compliance with the FAIR principles to ensure that they are Findable, Accessible, Interoperable, and Reusable. Google's Dataset Search is a noteworthy attempt to improve the search engine's performance in finding relevant datasets, but its efficacy is hindered by the paucity of available metadata.
 
-Find:
+Data curation is essential, not only cataloguing. The whole process, from acquisition to dissemination is important. Objective is to let researcher focus on analysis, by making the process of finding, assessing, accessing, and preparing data as efficient as possible - anticipating theirneeds, and doing the work once to serve many. For sponsors of data collection: invest not only in data production, but also in the curation of data for re-use. 
+
+
+Findable:
 Data catalogs (libraries) with:
 - Advanced search algorithms and filters. This includes full text search, advanced search, semantic search, and recommender system. Possibility to enter simple queries, or complex, even a document as a query.
 - SEO, as many users will find the catalog via search engines
