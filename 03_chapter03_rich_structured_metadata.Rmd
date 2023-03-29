@@ -6,7 +6,6 @@ output: html_document
 
 The previous chapter defined the features of an advanced data discoverability and dissemination solution. What enables such a solution is not only the algorithms and technology, but also the quality of the metadata available to enable them. This chapter describes what metadata are needed, and how they can be organized and improved to fully enable the search and recommender tools. The metadata must be rich and structured. To make them rich, machine learning can be used. To ensure consistent structure, the use of metadata standards and schemas is highly recommended. In this chapter, we build the case for rich, augmented, structured metadata and for the adoption of metadata standard and schemas. The second part of this Guide will provide a detailed description of each recommended standard or schema, for different data types.
 
-
 ## Rich metadata
 
 *Rich* metadata means detailed and comprehensive metadata. Rich metadata are beneficial to both the users and the providers (producers and curators) of data.
@@ -110,6 +109,8 @@ In the NADA catalog, a facet titled "Free or for a fee" can then be created base
 ### What structure?
 
 Metadata should not only be comprehensive and detailed, they should also be organized in a **structured** manner, preferably using a standardized structure. **Structured metadata** means that the metadata are stored in specific *fields* (or *elements*) organized in a <u>metadata schema</u>. **Standardized** means that the list and description of elements are commonly agreed by a community of practice.
+
+"A metadata schema is a system that defines the data elements needed to describe a particular object, such as a certain type of research data." (Ten rules data discovert - add ref) 
 
 Some metadata standards have originated from academic data centers, like the [Data Documentation Initiative (DDI)](https://ddialliance.org/), maintained by the [Inter-University Consortium for Political and Social Research](https://www.icpsr.umich.edu/web/pages/) (ICPSR) at the University of Michigan. Other found their origins in specialized communities of practice (like the [ISO 19139](https://www.iso.org/standard/67253.html?browse=tc) for geospatial resources). The private sector also contributes to the development of standards, like the [International Press Telecommunications Council (IPTC)](https://iptc.org/) standard developed by and for news media.
 
