@@ -137,7 +137,7 @@ The scope and meaning of labour statistics in general are determined by their so
 Reproducibility: ...
 
 
-## Solutions
+## A FAIR solution
 
 "To solve the information retrieval problem, researchers must therefore think broadly about who needs that information and the context within which it is created, as well as its actual content." "Being mindful of all potential users and how they might need to interact with you and your work is the foundation." (https://doi.org/10.1371/journal.pcbi.1008469)
 
