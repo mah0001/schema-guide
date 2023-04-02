@@ -6,25 +6,22 @@ output: html_document
 
 # The challenge of finding, assessing, accessing, and using data {#chapter01}
 
-Many national and international organizations have adopted data sharing policies aiming to make their data more accessible to the research community. Sharing data is increasingly a requirement imposed by laws or by sponsors of data collection activities. But a commitment to share data is not sufficient. If the data are difficult to find and use, data sharing policies and regulations will not have the expected impact. Researchers often face challenges in finding, assessing, accessing, and using relevant data. Data are available from a large and gowing number of sources, not all of them easily visible and discoverable. The process of locating and accessing data can be time-consuming and complex, requiring significant effort to identify, locate, acquire, understand, and manage datasets. Many researchers will rely on personal networks to obtain the data they need, and thus make use of "convenient" data that may not be the most relevant data. Improving the accessibility and usability of data will encourage the reuse and repurposing of existing data, leading to greater return on investment in data collection and creation. In this chapter, we will explore several examples that highlight the obstacles researchers encounter when searching for and utilizing data. 
+Many national and international organizations have adopted data-sharing policies to make their data more accessible to the research community. Sharing data is increasingly becoming a requirement imposed by laws --for data collected by public organizations-- or by the sponsors of data collection activities. However, a commitment to sharing data is not sufficient. If the data are difficult to find and use, data-sharing policies and regulations will not have the expected impact. Researchers often face challenges in finding, assessing, accessing, and using relevant data. Data are available from a large and growing number of sources, not all of which are easily visible and discoverable. The process of locating and accessing data can be time-consuming and complex, requiring significant effort to identify, locate, acquire, understand, and manage datasets. Improving the accessibility and usability of data will encourage the reuse and repurposing of existing data, leading to a greater return on investment in data collection and creation. In this chapter, we explore several examples that highlight the obstacles researchers encounter when searching for and utilizing data.
 
 ## Finding data
 
-General search engines like Google and Bing have remarkable capabilities in locating and ranking relevant resources available on-line and in some cases returning instant answers to users' queries (a trend that will accelerate with the emergence of solutions like chatGPT). But these search engines are designed to answer relatively simple queries, and are not optimized to find or recommend data that can best help researchers answer complex research questions. Some of these data may be available from data libraries or repositories that implement advanced curation and search engine optimization. But others may be found in more hidden locations such as article supplements, available as "data services" and not as datasets, non-optimized data catalogs, and may have limited metadata that make them largely invisible or "unattractive" to web crawlers. Since data are scattered across many sources and locations, users without prior knowledge of what data they need and where to find them will often be poorly served. Google's *Dataset Search* is one attempt to implement a better search engine to a catalog of datasets. But its performance is hampered by the paucity of available metadata. Other data aggregators face the same issue.
+Researchers identify and acquire data in various ways. Some rely on personal networks to find and obtain the data they need, which can lead to the use of "convenient" data that may not be the most relevant. Others locate datasets of interest in academic publications, which can be challenging as datasets are often not cited in a consistent or standardized manner. But many researchers search specialized data catalogs or use general search engines to locate relevant datasets or catalogs.
 
-How do researchers find data? Tribal knowledge, cited datasets (not always easy), prior knowledge of where they may be located (ICPSR), or the web. Very specialized users probably have good knowledge of relevant repositories. But the user community is much broader. So there is a need to make data discoverable and accessible to all to democratize their access and use. And the research community should be considered in a broad sense.   
+General search engines such as Google and Bing have remarkable capabilities in locating and ranking relevant resources available online, and in some cases, returning instant answers to users' queries. However, these search engines are designed to answer relatively simple queries and may not be able to find or recommend the most relevant data to help researchers answer complex research questions. Additionally, relevant data may be "hidden" in locations such as article supplements, attachments to publications, or available as data services and not as datasets. Other datasets may be available from open data repositories, but published with limited metadata, making them largely invisible to web crawlers. Due to data being scattered across many sources and locations and published with metadata that is not optimized for search engines, users without prior knowledge of what data they need and where to find it may be poorly served. Google's Dataset Search is one attempt to implement a better search engine for a catalog of datasets, but its performance is hampered by the paucity of available metadata.
 
-Finding a specific dataset may be easy. For example, finding "LSMS Albania 2002". But finding datasets based on their content is much more difficult. For example, "pre-school attendance and child malnutrition". Would that query find the Albania 2012 dataset, which contains variables on age, school attendance, level attended, height, and weight? Note that many papers cite data improperly. It is sometimes difficult to identify and locate -then acquire- a dataset used by a researcher. "Planning to incorporate persistent identifiers into the research workflow is a straightforward way to design for findability." Finding a dataset requires first identifying it clearly, which is not always easy.
+While search engines like Google and Bing play a crucial role in bringing users to relevant catalogs and repositories, specialized online data catalogs and platforms maintained by national or international organizations, academic data centers, data archives, or data libraries are better suited for researchers seeking relevant data. These organizations provide a critical service of data curation. However, the search algorithms embedded in data catalogs can also provide unsatisfactory search results due to weaknesses in metadata associated with data resources and the lack of optimization of search indexes and algorithms. Administrators of these catalogs have a responsibility to ensure that their assets are visible in general search engines and that the search engines and other discovery tools implemented in their own catalogs provide an optimized user experience.
 
-When we search for data, we make the computer search metadata. Metadata is defined as "... structured information that describes, explains, locates, or otherwise makes it easier to retrieve, use or manage that resource" (Data thesaurus, NIH, https://nnlm/gov/data/thesaurus) Metadata must be findable by machines and usable by humans.
+The examples provided below illustrate some of the problems that researchers encounter when searching for data.[2] 
 
-While search engines like Google and Bing play a crucial role in bringing users to relevant catalogs and repositories, specialized online data catalogs and platforms maintained by national or international organizations, academic data centers, data archives, or data libraries are better suited for researchers seeking relevant data. These organizations povide a critical service of data curation. However, the search algorithms embedded in data catalogs can also provide unsatisfactory search results due to weaknesses in metadata associated with data resources and the lack of optimization of search indexes and algorithms. Administrators of these catalogs have a responsibility to ensure that their assets are visible in generic search engines and that their specific applications provide additional optimized search and discovery features. 
-
-The examples provided below illustrate some of the problems that researchers encounter when searching for data. It is worth noting that the results shown are as of 11 November 2022 and are subject to variation over time.
 
 **Example 1: Searching for data on education and poverty in Kenya using Google**
 
-Assume an analyst seeking to study the correlation between education and poverty levels in Kenya. A query for *data on poverty and education in Kenya* on Google will return useful results to an analyst looking for processed information, in the form of publications and blogs. An analyst looking for data as an input to her own analysis, not for the output of existing data analysis, will not find these results as relevant. A more specific query for *survey microdata on poverty and education in Kenya* will return more relevant results, but will miss many relevant datasets. Indeed, some datasets may contain variables on education levels and income with no mention of the keyword *poverty*). Also, the metadata associated with many survey datasets will not include a deteiled data dictionary (a comprehensive list of variables with their labels and description), which severely reduces the possibility for even the most advanced search algorithms to identify relevant resources.
+Suppose an analyst wants to study the correlation between education and poverty levels in Kenya. This requires microdata from household surveys. If the analyst queries "data on poverty and education in Kenya" on Google, the search results will provide useful links to publications with processed information. However, these results may not be as relevant for a researcher interested in conducting new analysis. A more specific query such as "survey microdata on poverty and education in Kenya" will return more relevant results, but may still miss some relevant datasets. Indeed, some datasets may contain variables on education levels and income without mentioning the keyword "poverty". Moreover, the metadata associated with many survey datasets may not include a detailed data dictionary, which significantly reduces the possibility for even the most advanced search algorithms to identify relevant resources.
 
 <br>
 <center>
@@ -32,9 +29,12 @@ Assume an analyst seeking to study the correlation between education and poverty
 </center>
 <br>
 
+What would be returned in an ideal world: publications with proper citations, documented derived variables in datasets, access to microdata, information on comparability, reproducible scripts, ...
+
+
 **Example 2: Searching for *child malnutrition* in the [US Open Data platform (data.gov)](https://catalog.data.gov)**
 
-The success of a search query depends to a large extent to the user's ability to formulate a clear query. But what may appear to be a clear query for a human may be seen as such by search algorithms. Many search algorithms are based on keyword serach, i.e. they look for an exact match between keywords in a query and keywords in the index (or a stemmed or lemmatized version of the keywords). But this has limitations as synonyms or related terms may not be found. Child malnutrition is typically measured by the indicators of percentage of *children stunted*, *children wasted*, and *children overweight*. In a survey micro-dataset, one would need to find variables *age in months*, *height*, and *weight* for the dataset to be relevant. A query for *child malnutrition* in the U.S. Government’s open data platform [data.gov](https://catalog.data.gov) returns the following results: 
+The success of a search query depends to a large extent to the user's ability to formulate a clear query. But what may appear to be a clear query for a human may be seen as such by search algorithms. Many search algorithms are based on keyword search, i.e. they look for an exact match between keywords in a query and keywords in the index (or a stemmed or lemmatized version of the keywords). But this has limitations as synonyms or related terms may not be found. Child malnutrition is typically measured by the indicators of percentage of *children stunted*, *children wasted*, and *children overweight*. In a survey micro-dataset, one would need to find variables *age in months*, *height*, and *weight* for the dataset to be relevant. A query for *child malnutrition* in the U.S. Government’s open data platform [data.gov](https://catalog.data.gov) returns the following results: 
 
 <br>
 <center>
@@ -64,6 +64,9 @@ Queries for *children stunted*, *children wasted*, and *children overweight* ret
 
 It is not clear whether the search algorithm has the capacity to identify relevant microdata based on variable names (it is unlikely that it does). But even an apparently less challenging task appears to be too complex for this (and for almost any other) data catalog. For more complex queries (for example, "impact of pre-school attendance on child malnutrition"), keywords-based search may not be the optimal solution. Semantic search and recommender systems would be more able to return useful results. 
 
+What would help: semantic search, or augmented metadata keywords/topics.
+
+
 **Example 3: Searching for *dutch disease* in the [World Bank's Development Data Hub](https://datacatalog.worldbank.org)**
 
 The World Bank Development Data Hub is also a specialized data catalog. The issue we illustrate here is the lack of semantic capability in a search engine. Most data catalogs rely on keyword-based (lexical) search, which may fail to understand the user's intent. In our example, the engine fails to recognize *dutch disease* as an economic concept, and returns non-relevant results related to health and disease prevention. 
@@ -74,9 +77,10 @@ The World Bank Development Data Hub is also a specialized data catalog. The issu
 </center>
 <br>
 
+
 **Example 4: Searching for *gdp per capita india 2020* in Google**
 
-Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information from the World Bank, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
+Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Bing chatGPT-enabled query... Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information from the World Bank, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
 
 <br>
 <center>
@@ -94,21 +98,32 @@ MOSPI's website only appears in the 7th page of results (with a link to a PDF do
 
 Data catalogs and generic search engines like Google and Bing both play an essential, but different, role in improving data accessibility and use. A large proportion of data users will likely start their search on these lead search engines. When relevant, the search engines will --or should-- bring them to specialized catalogs, where they will find options to run more specialized queries, browse metadata, and access the data. 
 
+chatGPT: information on the source is not optimal.
+![image](https://user-images.githubusercontent.com/35276300/229367133-ae5b1319-4682-46ef-8073-856f9e63149d.png)
+
 The main obstacles to data visibility and discoverability are that: 
 
    - **data often come with limited and sub-optimal metadata**. Search engines will index metadata. Many data custodians lack the expertise, the resources, or the incentives to optimally document their data assets.
    - **search engines embedded in specialized data catalogs have limited capabilities.** Most often, they rely on full-text search and do not provide semantic searchability. Ideally, data catalogs would even go beyond providing semantic searchability and be able to operate as *recommender systems*. To best satisfy the needs of data analysts, search tools embedded in data catalogs should also be able to **distinguish different types of data**, and be **optimized to rank results by relevancy**.
    - **specialized data catalogs lack visibility**, due to a lack of search engine optimization.
 
+Official sources compete with others. Important for official statistics to be prioritized. Necessary (not sufficient condition) is that they optimize their documentation and dissemination.
+
 
 ## Assessing data
 
 Are the data really relevant?
-Is the sample size large enough?
+
+Is the sample size large enough? Example: ...
+
 Does it cover the entire universe of interest? And the entire geography of interest?
+
 Is the source reliable
-Is the method satisfactory
+
+Is the methodology satisfactory
+
 Are data comparable (over time, across sources)
+
 Will the data remain available? Updated?
 
 
@@ -163,7 +178,9 @@ Inter-operable
 Reusable
 - Display of detailed metadata, with possibility to easyly assess fitness for purpose
 - Scripts, not only data
-
+- Permanent availability
+- DOI
 
 In chapter 2, we define the features of a modern catalog in more detail.
 
+[2] The results shown are as of November 11th, 2022, and are subject to variation over time.
