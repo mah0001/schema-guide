@@ -100,7 +100,7 @@ MOSPI's website only appears in the 7th page of results (with a link to a PDF do
 chatGPT returns the following information.
 ![image](https://user-images.githubusercontent.com/35276300/229367133-ae5b1319-4682-46ef-8073-856f9e63149d.png){width=90%}
 
-Both Google and chatGPT mention the WorldBank as source. Both provide results that differe from the information in the WB's website, and both fail to provide the basic necessary metadata on the indicator. GDP per capita in US$ corresponds to four different indicators.
+Both Google and chatGPT mention the WorldBank as source. chatGPT provide results that differ from the information in the WB's website. Both fail to provide the basic necessary metadata on the indicator. GDP per capita in US$ corresponds to four different indicators.
 ![image](https://user-images.githubusercontent.com/35276300/229374548-6036a86f-d8c4-49bd-a916-73d7ad35ee79.png){width=90%}
 ![image](https://user-images.githubusercontent.com/35276300/229374735-9b7909a6-c1c9-4bac-9f3e-09c39f09bdf2.png){width=90%}
 
@@ -109,7 +109,8 @@ The main obstacles to data visibility, discoverability, and usability are that:
    - **data often come with limited and sub-optimal metadata**. Search engines will index metadata. Many data custodians lack the expertise, the resources, or the incentives to optimally document their data assets.
    - **search engines embedded in specialized data catalogs have limited capabilities.** Most often, they rely on full-text search and do not provide semantic searchability. Ideally, data catalogs would even go beyond providing semantic searchability and be able to operate as *recommender systems*. To best satisfy the needs of data analysts, search tools embedded in data catalogs should also be able to **distinguish different types of data**, and be **optimized to rank results by relevancy**.
    - **specialized data catalogs lack visibility**, due to a lack of search engine optimization.
-   - **metadata is incomplete** and does not provide the full information that a user may need.
+   - **metadata may be incomplete** and does not provide the full information that a user may need.
+   - **data re-published may be outdated** if not synchronized in quasi-real time. Inter-operability of platforms must be improved; API-based solutions should be implemented, both for data and metadata. And traceability of harvested information should be guaranteed. 
 
 Official sources compete with others. Important for official statistics to be prioritized. Necessary (not sufficient condition) is that they optimize their documentation and dissemination.
 
