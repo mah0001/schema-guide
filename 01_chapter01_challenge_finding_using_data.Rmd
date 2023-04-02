@@ -78,13 +78,14 @@ The World Bank Development Data Hub is also a specialized data catalog. The issu
 <br>
 
 
-**Example 4: Searching for *gdp per capita india 2020* in Google**
+**Example 4: Searching for *GDP per capita India 2020* in Google**
 
-Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Bing chatGPT-enabled query... Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *gdp per capita india 2021* for example, Google provides an immediate answer by extracting information from the World Bank, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
+Search engine like Google are increasingly designed to return not just links, but **answers**. This is intended to provide improved user experience, and to service digital assistants (like Hey Google, Alexa, Siri, and others). Bing chatGPT-enabled query... Advanced machine learning and natural language processing (NLP) solutions are implemented to generate and rank results, and to provide the "best answer". By doing this, these search engines operate choices which are not always to the advantage of specialized audience and data producers. When searching for *GDP per capita India 2021* for example, Google provides an immediate answer by extracting information from the World Bank, not from the Ministry of Statistics (MOSPI) which is the official producer of GDP estimates for India. 
 
+Google returns the following (as of April 2nd, 2023):
 <br>
 <center>
-![](./images/gdp_india_2_1.JPG){width=90%}
+![image](https://user-images.githubusercontent.com/35276300/229374995-ed83ca65-964d-464c-8668-0f390563bef4.png){width=90%}
 </center>
 <br>
 
@@ -96,16 +97,19 @@ MOSPI's website only appears in the 7th page of results (with a link to a PDF do
 </center>
 <br>
 
-Data catalogs and generic search engines like Google and Bing both play an essential, but different, role in improving data accessibility and use. A large proportion of data users will likely start their search on these lead search engines. When relevant, the search engines will --or should-- bring them to specialized catalogs, where they will find options to run more specialized queries, browse metadata, and access the data. 
+chatGPT returns the following information.
+![image](https://user-images.githubusercontent.com/35276300/229367133-ae5b1319-4682-46ef-8073-856f9e63149d.png){width=90%}
 
-chatGPT: information on the source is not optimal.
-![image](https://user-images.githubusercontent.com/35276300/229367133-ae5b1319-4682-46ef-8073-856f9e63149d.png)
+Both Google and chatGPT mention the WorldBank as source. Both provide results that differe from the information in the WB's website, and both fail to provide the basic necessary metadata on the indicator. GDP per capita in US$ corresponds to four different indicators.
+![image](https://user-images.githubusercontent.com/35276300/229374548-6036a86f-d8c4-49bd-a916-73d7ad35ee79.png){width=90%}
+![image](https://user-images.githubusercontent.com/35276300/229374735-9b7909a6-c1c9-4bac-9f3e-09c39f09bdf2.png){width=90%}
 
-The main obstacles to data visibility and discoverability are that: 
+The main obstacles to data visibility, discoverability, and usability are that: 
 
    - **data often come with limited and sub-optimal metadata**. Search engines will index metadata. Many data custodians lack the expertise, the resources, or the incentives to optimally document their data assets.
    - **search engines embedded in specialized data catalogs have limited capabilities.** Most often, they rely on full-text search and do not provide semantic searchability. Ideally, data catalogs would even go beyond providing semantic searchability and be able to operate as *recommender systems*. To best satisfy the needs of data analysts, search tools embedded in data catalogs should also be able to **distinguish different types of data**, and be **optimized to rank results by relevancy**.
    - **specialized data catalogs lack visibility**, due to a lack of search engine optimization.
+   - **metadata is incomplete** and does not provide the full information that a user may need.
 
 Official sources compete with others. Important for official statistics to be prioritized. Necessary (not sufficient condition) is that they optimize their documentation and dissemination.
 
@@ -183,4 +187,4 @@ Reusable
 
 In chapter 2, we define the features of a modern catalog in more detail.
 
-[2] The results shown are as of November 11th, 2022, and are subject to variation over time.
+[2] The results shown are for a specific date, and are subject to variation over time.
