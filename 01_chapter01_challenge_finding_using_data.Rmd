@@ -66,6 +66,7 @@ Finding indicators appears to be challenging. Finding relevant microdata would b
 **Example 3: Searching for *GDP per capita India 2020* in Google**
 
 This third and last example illustrates the challenge of identifying the most relevant and accurate data. Search engine like Google and Bing are increasingly designed to return not just links, but **answers**. Advanced machine learning and natural language processing (NLP) solutions parse the queries and provide a direct answer when possible. ChatBoxes provide answers in conversation mode. Algorithms will make decisions on what data are most suitable. A search for *GDP per capita India 2021* on Google provides an immediate answer in the form of a graph by extracting information published by the World Bank (as of April 2nd, 2023):
+
 <br>
 <center>
 ![image](https://user-images.githubusercontent.com/35276300/229374995-ed83ca65-964d-464c-8668-0f390563bef4.png){width=90%}
@@ -81,11 +82,20 @@ The answer mentions "Sources include: World Bank". The World Bank is indeed prob
 <br>
 
 The same query on chatGPT returns the following information.
+
+<br>
+<center>
 ![image](https://user-images.githubusercontent.com/35276300/229367133-ae5b1319-4682-46ef-8073-856f9e63149d.png){width=90%}
+</center>
+<br>
 
-Both Google and chatGPT mention the WorldBank as the source. chatGPT provide results that differ from the information available in the World Bank website. And both make a choice on behalf of the user by providing a single indicator, while the World Bank database provides five different indicators that corresond to "GDP per capita".
+Both Google and chatGPT mention the WorldBank as the source. chatGPT provide results that differ from the information available in the World Bank website. And both make a choice on behalf of the user by providing a single indicator, while the World Bank database provides five different indicators that correspond to "GDP per capita".
+
+<br>
+<center>
 ![image](https://user-images.githubusercontent.com/35276300/229374548-6036a86f-d8c4-49bd-a916-73d7ad35ee79.png){width=90%}
-
+</center>
+<br>
 
 The main obstacles to data visibility, discoverability, and usability are that: 
 
