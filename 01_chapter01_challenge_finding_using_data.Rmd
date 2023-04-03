@@ -16,12 +16,12 @@ General search engines such as Google and Bing have remarkable capabilities in l
 
 While general search engines are crucial in directing users to relevant catalogs and repositories, specialized online data catalogs and platforms maintained by national or international organizations, academic data centers, data archives, or data libraries are better suited for researchers seeking relevant data. These organizations provide critical data curation services. However, the search algorithms integrated into their data catalogs can sometimes provide unsatisfactory search results due to weaknesses in metadata associated with data resources and the lack of optimization of search indexes and algorithms. Administrators of these catalogs have a responsibility to ensure that their assets are visible in general search engines, and that the search engines and other discovery tools implemented in their catalogs provide an optimized user experience.
 
-The examples provided below illustrate some of the problems that researchers encounter when searching for data.[2] 
+The few examples provided below illustrate some of the problems that researchers encounter when searching for data.[2] 
 
 
 **Example 1: Searching for data on education and income inequality in Kenya using Google**
 
-Suppose an analyst wants to study the correlation between education and inequality in Kenya. Such an analysis requires microdata from household surveys. A Google search for "data on inequality and education in Kenya" returns useful links, but mostly to publications and blogs. Among the top 40 results, none provides a link to a relevant dataset.  
+Suppose an analyst wants to study the correlation between education and inequality in Kenya. Such an analysis requires microdata from household surveys. The challenge here is to locate a certain type of data (microdata), covering not one but a combination of topics (education and income inequality). A Google search for "data on inequality and education in Kenya" returns useful links, but mostly to publications and blogs. Among the top 100 results, none provides a link to a relevant survey dataset.  
 
 <br>
 <center>
@@ -29,12 +29,12 @@ Suppose an analyst wants to study the correlation between education and inequali
 </center>
 <br>
 
-A more specific query for "survey microdata on income inequality and education in Kenya" returns more relevant results, including a link to the *Kenya Integrated Household Budget Survey 2015-2016* from the microdata catalog maintained by the Kenya Bureau of Statistics. But the 49 rhe results returned by Google do not include relevant survey datasets that contain variables on education and on household income or expenditures, such as the *kenya Integrated Household Budget Survey 2005-2006*, or the multiple other surveys that collected data on education and on proxies of household income such as household expenditure or assets ownership.
+A more specific query for "survey microdata on income inequality and education in Kenya" returns more relevant results, including a link to the *Kenya Integrated Household Budget Survey 2015-2016* from the microdata catalog maintained by the Kenya Bureau of Statistics. But the 49 results returned by Google do not include other existing relevant survey datasets that contain variables on education and on household income --such as the *kenya Integrated Household Budget Survey 2005-2006*-- or the other surveys that collected data on education and on proxies of household income such as household expenditure or assets ownership.
 
 
 **Example 2: Searching for *child malnutrition* in the [US Open Data platform (data.gov)](https://catalog.data.gov)**
 
-The success of a search query depends largely on the user's ability to formulate a clear query, but what may seem clear to a human may not be seen that way by search algorithms. Many search algorithms rely on keyword search, which means they look for an exact match between keywords in a query and keywords in the index (or a stemmed or lemmatized version of the keywords). However, this approach has limitations as synonyms or related terms may not be recognized. A search for data on "child malnutrition" illustrates this. Child malnutrition is typically measured by the percentage of children stunted, wasted, and overweight. Queries for "child malnutrition", "children stunted", "children wasted", and "children overweight" in the U.S. Government’s open data platform (data.gov) return different results, with little overlap between the results of the four queries. 
+This second example illustrates the challenge of finding data based on a query that is not optimized to match the (unknown) metadata indexed in a catalog. The success of a search query depends largely on the user's ability to formulate a clear query, but what may seem clear to a human may not be seen that way by search algorithms. Many search algorithms rely on keyword search, which means they look for an exact match between keywords in a query and keywords in the index (or a stemmed or lemmatized version of the keywords). However, this approach has limitations as synonyms or related terms may not be recognized. A search for data on "child malnutrition" illustrates this. Child malnutrition is typically measured by the percentage of children stunted, wasted, and overweight. Queries for "child malnutrition", "children stunted", "children wasted", and "children overweight" in the U.S. Government’s open data platform (data.gov) return different results, with little overlap between the results of the four queries. 
 
 <br>
 <center>
@@ -63,20 +63,9 @@ The success of a search query depends largely on the user's ability to formulate
 Finding indicators appears to be challenging. Finding relevant microdata would be even more problematic. Unless the data curator has included "child malnutrition" as a keyword in the metadata, the search algorithm would have to understand that datasets containing variables *age in months*, *height*, and *weight* are relevant. Metadata augmentation, and the implementation of smarter search algorithms (with semantic capability) are the solutions to this problem.
 
 
-**Example 3: Searching for *dutch disease* in the [World Bank's Development Data Hub](https://datacatalog.worldbank.org)**
+**Example 3: Searching for *GDP per capita India 2020* in Google**
 
-The World Bank Development Data Hub is also a specialized data catalog. The issue we illustrate here is the lack of semantic capability in a search engine. Most data catalogs rely on keyword-based (lexical) search, which may fail to understand the user's intent. In our example, the engine fails to recognize *dutch disease* as an economic concept, and returns non-relevant results related to health and disease prevention. 
-
-<br>
-<center>
-![](./images/search_issue_wb_ddh_dutch_disease2.JPG){width=90%}
-</center>
-<br>
-
-
-**Example 4: Searching for *GDP per capita India 2020* in Google**
-
-Search engine like Google and Bing are increasingly designed to return not just links, but **answers**. Advanced machine learning and natural language processing (NLP) solutions parse the queries and provide a direct answer when possible. ChatBoxes provide answers in conversation mode. Algorithms will make decisions on what data are most suitable. A search for *GDP per capita India 2021* on Google provides an immediate answer in the form of a graph by extracting information published by the World Bank (as of April 2nd, 2023):
+This third and last example illustrates the challenge of identifying the most relevant and accurate data. Search engine like Google and Bing are increasingly designed to return not just links, but **answers**. Advanced machine learning and natural language processing (NLP) solutions parse the queries and provide a direct answer when possible. ChatBoxes provide answers in conversation mode. Algorithms will make decisions on what data are most suitable. A search for *GDP per capita India 2021* on Google provides an immediate answer in the form of a graph by extracting information published by the World Bank (as of April 2nd, 2023):
 <br>
 <center>
 ![image](https://user-images.githubusercontent.com/35276300/229374995-ed83ca65-964d-464c-8668-0f390563bef4.png){width=90%}
@@ -96,6 +85,7 @@ The same query on chatGPT returns the following information.
 
 Both Google and chatGPT mention the WorldBank as the source. chatGPT provide results that differ from the information available in the World Bank website. And both make a choice on behalf of the user by providing a single indicator, while the World Bank database provides five different indicators that corresond to "GDP per capita".
 ![image](https://user-images.githubusercontent.com/35276300/229374548-6036a86f-d8c4-49bd-a916-73d7ad35ee79.png){width=90%}
+
 
 The main obstacles to data visibility, discoverability, and usability are that: 
 
