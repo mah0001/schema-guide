@@ -18,6 +18,15 @@ In this chapter, we describe the features that an online data catalog should hav
 
 In order to create a positive user experience, on-line data catalogs must provide an intuitive and efficient interface that allows users to easily access the most relevant datasets. This requires a combination of user-friendly search tools and filters, commonly known as facets. To meet users' expectations, we can look to the design of successful search engines such as Google or Bing, as well as e-commerce platforms like Amazon, which prioritize simplicity, predictability, relevance, speed, and reliability. Incorporating these principles into the design of data catalogs can provide users with a seamless and user-friendly experience that mirrors the ease and convenience of popular search engines and e-commerce sites, helping them to find and obtain the data they need quickly and effortlessly.
 
+#### A simple interface
+
+One search box, and options for more advanced search.
+The searh should be parsed and the most relevant must be returned and displayed in a convenient manner. Then only should the user take advantage of additionsl features: filters, sort, advanced search, keywords suggestions.
+
+#### Flexibility on the query
+
+Submit a document as a query; use syntax in the query.
+
 #### Filters / facets
 
 Facets or filters are useful for narrowing down datasets based on specific metadata categories. For instance, in a data catalog with datasets from different countries, a "country" facet can help users find relevant datasets quickly. To be effective, filters should be based on metadata elements that have a limited number of categories and a predictable set of options. Controlled vocabularies can be used to enable such filters. Furthermore, as some metadata elements are specific to particular data types, contextual facets should be integrated into the catalog's user interface to offer relevant filters based on the type of data being searched.
@@ -164,6 +173,12 @@ When the data (time series and tabular data, possibly also microdata) are made a
 <center>
 ![](./images/catalog_data_preview_01.JPG){width=80%}
 </center>
+
+#### Accessible to all
+
+Web Content Accessibility Guidelines (WCAG) international standard. WCAG documents explain how to make web content more accessible to people with disabilities.
+ADA provides people with disabilities the same opportunities, free of discrimination.
+WCAG is a compilation of accessibility guidelines for websites, whereas ADA is a civil rights law in the same ambit.
 
 
 ### What catalog administrators want
