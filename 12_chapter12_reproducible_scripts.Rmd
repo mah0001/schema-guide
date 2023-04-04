@@ -1555,6 +1555,14 @@ A service of the Inter-university Consortium for Political and Social Research (
 :::
 
 
+### Full example, using a metadata editor
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/229925181-c9ebbfb6-9934-4307-a8b5-b7903a6c8381.png)
+</center>
+<br>
+
 
 ### Full example, using R 
 
