@@ -205,23 +205,13 @@ When the data (time series and tabular data, possibly also microdata) are made a
 </center>
 
 
-#### Accessible to all
+#### Scripts and citations
 
-Web Content Accessibility Guidelines (WCAG) international standard. WCAG documents explain how to make web content more accessible to people with disabilities.
-ADA provides people with disabilities the same opportunities, free of discrimination.
-WCAG is a compilation of accessibility guidelines for websites, whereas ADA is a civil rights law in the same ambit.
+A data catalog should not be limited to data. Ideally, the scripts produced by researchers to analyze the data, and the output of their analysis, should also be available. An ideal data catalog will allow a user to:
 
-
-#### Reproducible and replicable scripts
-
-<br>
-<center>
-![image](https://user-images.githubusercontent.com/35276300/229810244-f68655ee-5173-444a-a4c6-5c2446a5361d.png)
-</center>
-</br>
-
-
-#### Citations
+- search for data, and find/access the related scripts and citations
+- search for a document (analytical output), and find/access the related data and scripts
+- search for a script, and find/access the data and analytical output
 
 Maintain a catalog of citations of datasets. 
 
@@ -230,6 +220,21 @@ Maintain a catalog of citations of datasets.
 ![image](https://user-images.githubusercontent.com/35276300/229811421-fbda05da-2390-42c5-815c-5fcbc90d9ee1.png)
 </center>
 </br>
+
+Document, catalog, and publish reproducible/replicable scripts.
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/229810244-f68655ee-5173-444a-a4c6-5c2446a5361d.png)
+</center>
+</br>
+
+
+#### Accessiblility to all
+
+Web Content Accessibility Guidelines (WCAG) international standard. WCAG documents explain how to make web content more accessible to people with disabilities.
+ADA provides people with disabilities the same opportunities, free of discrimination.
+WCAG is a compilation of accessibility guidelines for websites, whereas ADA is a civil rights law in the same ambit.
 
 
 
