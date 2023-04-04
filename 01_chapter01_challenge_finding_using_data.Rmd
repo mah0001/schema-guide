@@ -93,7 +93,7 @@ Both Google and chatGPT mention the WorldBank as the source. chatGPT provide res
 
 <br>
 <center>
-![image](https://user-images.githubusercontent.com/35276300/229374548-6036a86f-d8c4-49bd-a916-73d7ad35ee79.png){width=90%}
+![image](https://user-images.githubusercontent.com/35276300/229374548-6036a86f-d8c4-49bd-a916-73d7ad35ee79.png){width=60%}
 </center>
 <br>
 
