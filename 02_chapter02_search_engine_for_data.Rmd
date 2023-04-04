@@ -66,12 +66,11 @@ There are two types of search engines - lexical and semantic. The former matches
 In the absence of semantic search, keyword-based searches can still be optimized using tools like Solr or ElasticSearch. Out-of-the-box solutions, such as those provided by SQL databases, rarely deliver satisfactory results. Structured metadata can help optimize search engines by allowing for **boosting** of specific metadata elements. For instance, a query term found in the *title* of a dataset would carry more weight than if it were found in the *notes* element. Similarly, a country name found in the *nation* or *reference country* elements should be given more weight than if it were found in a variable description. Advanced indexing tools like Solr and ElasticSearch provide multiple functionalities to fine-tune search engines and enhance result relevancy. 
 
 
-#### Flexibility on the query
+#### Document as a query
 
 A search engine with semantic search capability should be able to process short or long queries, even accepting a document (a PDF or a TXT file) as a query. The search engine will then first analyze the semantic content of the document, convert it into an embedding vector, and identify the closest resources available in the catalog. 
 
 <center>
-![](./images/catalog_facets_01.JPG){width=100%}
 ![image](https://user-images.githubusercontent.com/35276300/229806674-941ac085-6f6f-45e8-bfa4-d0834cf73587.png)
 </center>
 <br>
