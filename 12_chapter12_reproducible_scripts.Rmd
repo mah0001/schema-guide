@@ -38,7 +38,7 @@ There are multiple reasons to make reproducibility, replicability, and auditabil
 
 ## Goal: discoverable code
 
-Search and filter by title, author, software, method, country, etc. Get links to analytical output and data. Example: search for a "project that implemented multiple imputation in R for a project related to poverty in Kenya": search for "poverty AND "multiple imputation" and filter results by software / country. 
+Search and filter by title, author, software, method, country, etc. Get links to analytical output and data. Example: search for a "project that implemented multiple imputation in R for a project related to poverty in Kenya": search for *poverty AND "multiple imputation"* and filter the results by software / country. 
 
 Note: the code will also be "attached" to the output page (paper) and to the dataset page of the catalog if they are available in the catalog. 
 
