@@ -47,7 +47,7 @@ It is useful also to provide users with an option for advanced search (targetted
 
 <br>
 <center>
-![image](https://user-images.githubusercontent.com/35276300/229806372-8c33d0ca-5d3e-48b1-af4f-5a0405c30c22.png)
+![image](https://user-images.githubusercontent.com/35276300/229806372-8c33d0ca-5d3e-48b1-af4f-5a0405c30c22.png){width=80%}
 </center>
 <br>
 
