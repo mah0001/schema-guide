@@ -48,6 +48,8 @@ Note: the code will also be "attached" to the output page (paper) and to the dat
 </center>
 <br>
 
+Provide access to scripts with detailed information, including software and libraries used, distribution license, IT requirements, datasets used, list of outputs, and more.
+
 <br>
 <center>
 ![image](https://user-images.githubusercontent.com/35276300/229813050-6ab8d762-7e09-40ca-83b3-877f64caa9e4.png)
