@@ -43,19 +43,21 @@ For keyword-based search engines, keyword suggestions based on a graph of relate
 
 The search engine must be able to tolerate spelling mistakes to provide a seamless user experience. Auto-completion and spell checkers of queries are independent of the metadata being searched and can be enabled using indexing tools like Solr or ElasticSearch. 
 
-Also: provide an options for advanced search (targetted search in specific metadata elements), with UI and using syntax in the search box.
+It is useful also to provide users with an option for advanced search (targetted search in specific metadata elements), providing both a user interface and a syntax option. The interface could be as follows:
 
-The UI could be as follows:
 <br>
 <center>
 ![image](https://user-images.githubusercontent.com/35276300/229806372-8c33d0ca-5d3e-48b1-af4f-5a0405c30c22.png)
 </center>
 <br>
 
-Which would correspond to the following syntax that a user could enter directly in the search box (and save and/or share with others):
+This would correspond to the following syntax that the user could enter directly in the search box (and save and/or share with others):
+<br>
 <center>
 **title:"demographic transition" AND country:(*Kenya*) AND body:(poverty)**
 </center>
+</br>
+
 
 #### Lexical and semantic search capability
 
@@ -66,7 +68,7 @@ In the absence of semantic search, keyword-based searches can still be optimized
 
 #### Flexibility on the query
 
-A search engine should be able to process short or long queries, even accepting a document as a query (when semantic search is implemented). The search engine will then first analyze the semantic content of the document, convert it into an embedding vector, and identify the closest resources available in the catalog. 
+A search engine with semantic search capability should be able to process short or long queries, even accepting a document (a PDF or a TXT file) as a query. The search engine will then first analyze the semantic content of the document, convert it into an embedding vector, and identify the closest resources available in the catalog. 
 
 <center>
 ![](./images/catalog_facets_01.JPG){width=100%}
