@@ -543,6 +543,32 @@ In most cases however, controlled vocabularies are not part of the metadata stan
 
 Metadata compliant with the standards and schemas described in this Guide can be generated in two different ways: **programmatically** using a programming language like R or Python, or by **using a specialized metadata editor** application. The first option provides a high degree of flexibility and efficiency. It offers multiple opportunities to automate part of the metadata generation process, and to exploit advanced machine learning solutions to enhance metadata. Also, metadata generated using R or Python can also be published in a NADA catalog using the NADA API and the R package NADAR or the Python library PyNADA. The programmatic option may thus be the preferred option for organizations that have strong expertise in R or Python. For other organizations, and for some types of data, the use of a specialized metadata editor may be a better option. Metadata editors are specialized software applications designed to offer a user-friendly alternative to the programmatic generation of metadata. We provide in this section a brief description of how structured metadata can be generated and published using respectively R, Python, and a metadata editor application. 
 
+### Generating compliant metadata using a metadata editor
+
+The easiest way to generate metadata compliant with the standards and schemas we describe in this Guide is to use a specialized Metadata Editor. A Metadata Editor provides a user-friendly and flexible interface to document data. Most metadata editors are specific to a certain standard. The IHSN / World Bank developed an open source multi-standard Metadata Editor. 
+
+This Metadata Editor contains all suggested standards. The full version of each standard is embedded in the application. But few users will ever make use of all elements contained in the standard. And some will want to customize the instructions, labels of the metadata elements, controlled vocabularies, and instructions to curators who will enter the metadata. 
+
+The Metadata Editor allows users to develop their own templates based on the full version of the standards. A template is a subset of the elements available in the standard/schema, where the elements can be renamed and other customization can be made (within limits, as the metadata generated must remain compliant with the standard independently of the template).  
+
+Template manager:
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230179149-87eb17ca-2a60-4ae6-a993-423a51880da8.png)
+</center>
+<br>
+
+Then UI with (for some types) import of data and automated generation of some metadata.
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230179493-6e945fed-3bcf-4ab6-9545-8a7e982d5c46.png)
+</center>
+<br>
+
+(describe / provide bettere example)
+
+
 ### Generating compliant metadata using R
 
 All schemas described in the [on-line documentation](https://ihsn.github.io/nada-api-redoc/catalog-admin/#) can be used to generate compliant metadata using R scripts. Generating metadata using R will consist of producing a *list* object (itself containing lists). In the documentation of the standards and schemas, curly brackets indicate to R users that a *list* must be created to store the metadata elements. Square brackets indicate that a block of elements is repeatable, which corresponds in R to a *list of lists*. For example (using the [DOCUMENT]((https://ihsn.github.io/nada-api-redoc/catalog-admin/#operation/createDocument)) metadata schema): 
@@ -702,20 +728,6 @@ nada.add_resource(
   overwrite = "yes")
 ```
 
-### Generating compliant metadata using a metadata editor
-
-R and Python are powerful tools to generate metadata in a flexible and efficient manner. They offer opportunities to automate tasks, to extract metadata from APIs or data files, to augment metadata, and to provide full transparency and replicability in the metadata production process. But this requires a level of expertise in R or Python that many organizations may not have. To support users who do not have such expertise, and to facilitate the use of complex metadata standards, specialized *metadata editors* have been developed to document certain types of data, in particular microdata (with the DDI metadata standard) and geospatial data (with the ISO 19139 metadata standard).
-
-The [Nesstar Publisher](http://www.nesstar.com/software/publisher.html) is a popular DDI metadata editor used to document microdata. The application, developed and published by the Norwegian Centre for Research Data, was built around the DDI Codebook 1.n version. It also makes use of Dublin Core elements to document external resources. The application, built on an outdated technology and DDI version, is however not maintained anymore. The World Bank has initiated the development of a more modern and open source version of this application, compatible with the most recent version of DDI Codebook (and other metadata standards). 
-
-Template for the selection of elements, default values, controlled vocabularies
-
-Then UI with (for some types) import of data and automated generation of some metadata.
-
-Example of microdata
-Example of document
-
-For documenting geographic datasets and services, the [GeoNetwork metadata editor](https://geonetwork-opensource.org/), an [OSGeo](https://www.osgeo.org/) project, supports ISO 19115/19119/19110 standards. Other tools like the open-source R package [geometa](https://cran.r-project.org/web/packages/geometa/index.html) (*Tools for Reading and Writing ISO/OGC Geographic Metadata*) can also help data curators in the production of structured metadata.
 
 
 [^1] See Omar Benjelloun, Shiyu Chen, Natasha Noy, 2020, *Google Dataset Search by the Numbers*, https://doi.org/10.48550/arXiv.2006.06894
