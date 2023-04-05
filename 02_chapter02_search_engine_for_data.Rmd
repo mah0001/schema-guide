@@ -79,6 +79,39 @@ A search engine with semantic search capability should be able to process short 
 <br>
 
 
+#### Geographic discoverability
+
+Many queries to data catalogs refer to a specific geography. An analysis of millions of queries from the WB and IMF data catalogs reveal that a large percentage of queries consist of a single country name. For multi-country data catalogs, providing a "Country page" that provides a quick overview of the most recent and popular datasets of different types may be a welcome option for many users.
+
+But geography is not limited to countries. Many users will have an interest in sub-national data, or in geographic areas that do correspond to an administrative area (e.g., a watershed, or an ocean). Especially when a data catalog contains geographic datasets, providing specialized search tools is recommended. Most metadata standards allow the use of bounding boxes to spefify a geographic coverage, which could be used to build a "search" tool that would allow a user to draw a box on a map. But this option is very imperfect (explain why).
+
+For geographic datasets, geographic indexing is recommended. The H3 index is a powerful option. (describe)
+
+Also, as many users will rely on a keywords search to identify data, a search engine for geographic data should be able to parse the query, detect if it contains the name of a geographic area, automatically identifies the area that corresponds to it (possibly using an API built around Nominatim), and retrieves resources in the catalog that cover the area. (describe how this works - illustrate from KCP project).
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230091095-d63c8b8f-7684-41db-b347-d75ded1dc95a.png)
+</center>
+<br>
+
+Example of use of Nominatim: The Nominatim application shows the polygon boundary for the search query “Iloilo City” automatically provided by the API.
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230091354-b44c38fa-f628-4693-97bb-f49fb4f23b3e.png)
+</center>
+<br>
+
+The search API endpoint of Nominatim returns this JSON data which can be processed to generate search cell(s).
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230091598-fee71949-29d2-4bac-b60f-dd8efb49278f.png)
+</center>
+<br>
+
+
 #### Results ranking
 
 A search engine not only needs to identify relevant datasets but also must return the results in a proper order of relevance, with the most relevant results at the top of the list. If users fail to find a relevant response among the top results, they may choose to search for data elsewhere. The ability of a search engine to return relevant results in the optimal rank depends on the metadata's content and structure. To optimize the ranking of results, a lot of relevance engineering is required, including tuning advanced search tools like Solr or ElasticSearch. Large data catalogs managed by well-resourced agencies can leverage data scientists to explore the possibility of using machine learning solutions such as "learn-to-rank" to improve result ranking. See section "Improving results ranking" below. For more detailed information, see D. Turnbull and J. Berryman's (2016) in-depth description of tools and methods.
