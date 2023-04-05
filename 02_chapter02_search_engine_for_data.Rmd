@@ -73,6 +73,7 @@ In the absence of semantic search, keyword-based searches can still be optimized
 
 A search engine with semantic search capability should be able to process short or long queries, even accepting a document (a PDF or a TXT file) as a query. The search engine will then first analyze the semantic content of the document, convert it into an embedding vector, and identify the closest resources available in the catalog. 
 
+<br>
 <center>
 ![image](https://user-images.githubusercontent.com/35276300/229806674-941ac085-6f6f-45e8-bfa4-d0834cf73587.png)
 </center>
@@ -84,6 +85,13 @@ A search engine with semantic search capability should be able to process short 
 Many queries to data catalogs refer to a specific geography. An analysis of millions of queries from the WB and IMF data catalogs reveal that a large percentage of queries consist of a single country name. For multi-country data catalogs, providing a "Country page" that provides a quick overview of the most recent and popular datasets of different types may be a welcome option for many users.
 
 But geography is not limited to countries. Many users will have an interest in sub-national data, or in geographic areas that do correspond to an administrative area (e.g., a watershed, or an ocean). Especially when a data catalog contains geographic datasets, providing specialized search tools is recommended. Most metadata standards allow the use of bounding boxes to spefify a geographic coverage, which could be used to build a "search" tool that would allow a user to draw a box on a map. But this option is very imperfect (explain why).
+
+Example from data.gov (https://catalog.data.gov/dataset/?metadata_type=geospatial)
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230094206-ff3bca7b-58ee-4061-ab0c-7777d9286813.png)
+</center>
+<br>
 
 For geographic datasets, geographic indexing is recommended. The H3 index is a powerful option. (describe)
 
