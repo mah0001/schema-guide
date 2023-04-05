@@ -292,11 +292,25 @@ ADA provides people with disabilities the same opportunities, free of discrimina
 WCAG is a compilation of accessibility guidelines for websites, whereas ADA is a civil rights law in the same ambit.
 
 
+#### Possibility to provide feedback
+
+Feedback on catalog certainly. In the form of a "Contact" email and possibly a "feedback form". Also, if the platform itself is open source, GitHub for issues and suggestions on the application itself.
+
+BUT: Users forum, "reviews" as in e-commerce platforms, is not recommended. Not all users are 'constructive" and qualified. Requires moderation, which can be costly and controversial. May create di-incentives for data producers to publish their data.
+
 
 ### What data contributors want
 
 Safety
 Visibility
+(including options to share/publicize on social media) - screenshot from data.gov
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230095637-85901bdc-857a-4d23-a55c-7f67ffbf7a4a.png)
+</center>
+</br>
+
 "do not disturb"
 Monitoring of usage (downloads and citations)
 
