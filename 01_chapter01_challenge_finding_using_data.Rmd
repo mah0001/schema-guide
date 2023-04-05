@@ -97,7 +97,7 @@ Both Google and chatGPT mention the WorldBank as the source. chatGPT provide res
 </center>
 <br>
 
-**Example 4: Searching for data on a specific geographic areas
+**Example 4: Searching for data on a specific geographic areas**
 
 Suppose a health official looks for data on measles immunization in Oromia, a state of Ethiopia. Searching for "subnational data on DTP vaccination coverage in the state of Oromia Ethiopia' on Google returns 39 results. Searching for "subnational data on DTP vaccination coverage in Oromia' returns 45 results. Not all results are relevant. And they do not include the dataset "Ethiopia - Measles Vaccination Coverage" from WorldPop, which provides estimates of measles coverage in the form of raster data covering the entire territory of Ethiopia, at a very disaggregated level (areas of approximately 100m by 100m). This is in part due to sub-optimal search engine optimization of the website, but even if its content had been properly indexed by Google, the term "Oromia" would not have been detected as it does not appear in the description of the dataset. Listing all geographic areas covered by a geographic (or other) dataset would in many cases be very impractical, so better options need to be offered to make datasets discoverable based on the sub-national areas they cover.  
 
