@@ -87,7 +87,9 @@ But geography is not limited to countries. Many users will have an interest in s
 
 For geographic datasets, geographic indexing is recommended. The H3 index is a powerful option. (describe)
 
-Also, as many users will rely on a keywords search to identify data, a search engine for geographic data should be able to parse the query, detect if it contains the name of a geographic area, automatically identifies the area that corresponds to it (possibly using an API built around Nominatim), and retrieves resources in the catalog that cover the area. (describe how this works - illustrate from KCP project).
+Also, one must take into account that many users will rely on a keywords search to identify data. For example, a raster image of the Philippines (e.g., dataset from a satellite imagery) will contain the country name in the metadata, but the metadata cannot contain the name of all geographic areas coveregd by the data. A user looking for "Iloilo" for example would not find this relevant dataset based on a simple keyword search. The solution would be for the search engine to parse the query, detect if it contains the name of a geographic area, automatically identify the area (polygon of geographic coordinates) that corresponds to it (possibly using an API built around Nominatim), and retrieve resources in the catalog that cover the area (which requires that the datasets in the catalog be indexed geographically).  
+
+(describe how this works - illustrate from our KCP project "Indexing the world").   
 
 <br>
 <center>
