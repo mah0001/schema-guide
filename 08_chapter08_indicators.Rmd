@@ -36,34 +36,14 @@ The (optional) **SOURCE DATABASE** tab will display the metadata related to the 
 
 - Indicators and time series often come with metadata limited to the indicators/series name and a brief definition. This significantly reduces the discoverability of the indicators, and the possibility to implement semantic searchability and recommender systems. It is therefore highly recommended to generate more detailed metadata for each time series, including information on the purpose and typical use of the indicators, of its relevancy to different audiences, of its limitations, and more.
 
-- When documenting an indicator or time series, attention should be paid to include keywords and phrases in the metadata that reflect how data users are likely to formulate their queries when searching data catalogs. Subject-matter expertise, combined with an analysis of queries submitted to data catalogs, can help to identify such keywords. For example, the metadata related to an indicator "Prevalence of stunting" should contain the keyword "malnutrition", and the metadata related to "GDP per capita" should include keywords like "economic growth" or "national income". By doing so, data curators will provide richer input to search engines and recommender systems, and will have a significant and direct impact on the discoverability of the data. 
+- When documenting an indicator or time series, attention should be paid to include keywords and phrases in the metadata that reflect how data users are likely to formulate their queries when searching data catalogs. Subject-matter expertise, combined with an analysis of queries submitted to data catalogs, can help to identify such keywords. For example, the metadata related to an indicator "Prevalence of stunting" should contain the keyword "malnutrition", and the metadata related to "GDP per capita" should include keywords like "economic growth" or "national income". By doing so, data curators will provide richer input to search engines and recommender systems, and will have a significant and direct impact on the discoverability of the data. The use of AI tools can considerabli facilitate the process of identifying related keywords. We provide in the chapter an example of use of chatGPT for such purpose. 
 :::
 
-
-
-
-
-
- <!--   _____      _                           -->
- <!--  / ____|    | |                          -->
- <!-- | (___   ___| |__   ___ _ __ ___   __ _  -->
- <!--  \___ \ / __| '_ \ / _ \ '_ ` _ \ / _` | -->
- <!--  ____) | (__| | | |  __/ | | | | | (_| | -->
- <!-- |_____/ \___|_| |_|\___|_| |_| |_|\__,_| -->
 
 ## Schema description
 
 An indicator or time series is documented using the **time series /indicators** schema. The **database** schema is optional, and used to document the database, if any, that the indicator belongs to. When multiple series of a same database are documented, the metadata related to the database only needs to be generated once, then applied to all series. One metadata element in the **time series /indicators** schema is used to link an indicator to the corresponding database.
 
-
-
-
- <!--  ___      _______ _                                _            -->
- <!-- |__ \    |__   __(_)                              (_)           -->
- <!--    ) |      | |   _ _ __ ___   ___   ___  ___ _ __ _  ___  ___  -->
- <!--   / /       | |  | | '_ ` _ \ / _ \ / __|/ _ \ '__| |/ _ \/ __| -->
- <!--  / /_ _     | |  | | | | | | |  __/ \__ \  __/ |  | |  __/\__ \ -->
- <!-- |____(_)    |_|  |_|_| |_| |_|\___| |___/\___|_|  |_|\___||___/ -->
 
 ### The time series (indicators) schema
 
@@ -71,18 +51,6 @@ The time series schema is used to document an indicator or a time series. In NAD
 
 ![](./images/ReDoc_ts_series_01.JPG){width=100%}
 
-
-
-
-
- <!--  ___   __                                          _                 -->
- <!-- |__ \ /_ |                                        | |                -->
- <!--    ) | | |    _ __   __ _ _ __ __ _ _ __ ___   ___| |_ ___ _ __ ___  -->
- <!--   / /  | |   | '_ \ / _` | '__/ _` | '_ ` _ \ / _ \ __/ _ \ '__/ __| -->
- <!--  / /_ _| |_  | |_) | (_| | | | (_| | | | | | |  __/ ||  __/ |  \__ \ -->
- <!-- |____(_)_(_) | .__/ \__,_|_|  \__,_|_| |_| |_|\___|\__\___|_|  |___/ -->
- <!--              | |                                                     -->
- <!--              |_|                                                     -->
 
 #### Cataloguing parameters
 
@@ -98,21 +66,6 @@ The first elements of the schema (`repositoryid`, `access_policy`, `data_remote_
 
 **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same series can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that a series will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element `series_description > idno` is the same.
 
-
-
-
-
-
-
-
- <!--  ___    ___                          _            _   _              -->
- <!-- |__ \  |__ \                        | |          | | (_)             -->
- <!--    ) |    ) |    _ __  _ __ ___   __| |_   _  ___| |_ _  ___  _ __   -->
- <!--   / /    / /    | '_ \| '__/ _ \ / _` | | | |/ __| __| |/ _ \| '_ \  -->
- <!--  / /_ _ / /_ _  | |_) | | | (_) | (_| | |_| | (__| |_| | (_) | | | | -->
- <!-- |____(_)____(_) | .__/|_|  \___/ \__,_|\__,_|\___|\__|_|\___/|_| |_| -->
- <!--                 | |                                                  -->
- <!--                 |_|                                                  -->
 
 #### Metadata information
 
@@ -160,26 +113,10 @@ metadata_creation = list(
 ```
 
 
-
- <!--  ___    ____                   _            -->
- <!-- |__ \  |___ \                 (_)           -->
- <!--    ) |   __) |   ___  ___ _ __ _  ___  ___  -->
- <!--   / /   |__ <   / __|/ _ \ '__| |/ _ \/ __| -->
- <!--  / /_ _ ___) |  \__ \  __/ |  | |  __/\__ \ -->
- <!-- |____(_)____(_) |___/\___|_|  |_|\___||___/ -->
-
 #### Series description
 
 **`series_description`** *[Required ; Repeatable]* <br>
 This section contains all elements used to describe a specific series or indicator.
-
-
- <!--  ___    ____  __     _     _              -->
- <!-- |__ \  |___ \/_ |   (_)   | |             -->
- <!--    ) |   __) || |    _  __| |_ __   ___   -->
- <!--   / /   |__ < | |   | |/ _` | '_ \ / _ \  -->
- <!--  / /_ _ ___) || |_  | | (_| | | | | (_) | -->
- <!-- |____(_)____(_)_(_) |_|\__,_|_| |_|\___/  -->
 
 - **`idno`** *[Required ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_03.JPG){width=100%}
@@ -192,54 +129,21 @@ This section contains all elements used to describe a specific series or indicat
   - Extensions (2 digits each) <br>
   
   For example, the series with identifier "DT.DIS.PRVT.CD" is the series containing data on "External debt disbursements by private creditors in current US dollars" (for more information, see [*How does the World Bank code its indicators?*]( https://datahelpdesk.worldbank.org/knowledgebase/articles/201175-how-does-the-world-bank-code-its-indicators).<br>
-
-
-
- <!--  ___    ____   ___          _       _  -->
- <!-- |__ \  |___ \ |__ \        | |     (_) -->
- <!--    ) |   __) |   ) |     __| | ___  _  -->
- <!--   / /   |__ <   / /     / _` |/ _ \| | -->
- <!--  / /_ _ ___) | / /_ _  | (_| | (_) | | -->
- <!-- |____(_)____(_)____(_)  \__,_|\___/|_| -->
                                      
 - **`doi`** *[Optional ; Not repeatable ; String]* <br>  
 ![](./images/ReDoc_ts_series_03b.JPG){width=100%}
 
   A Digital Object Identifier (DOI) for the the series. 
-
-
- <!--  ___    ____   ____                                 -->
- <!-- |__ \  |___ \ |___ \                                -->
- <!--    ) |   __) |  __) |   _ __   __ _ _ __ ___   ___  -->
- <!--   / /   |__ <  |__ <   | '_ \ / _` | '_ ` _ \ / _ \ -->
- <!--  / /_ _ ___) | ___) |  | | | | (_| | | | | | |  __/ -->
- <!-- |____(_)____(_)____(_) |_| |_|\__,_|_| |_| |_|\___| -->
                                                     
 - **`name`** *[Required ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_04.JPG){width=100%}
 
   The name (label) of the series. Note that a field `alias` is provided (see below) to capture alternative names for the series. 
-
-
- <!--  ___    ____  _  _         _ _       _     _  -->
- <!-- |__ \  |___ \| || |       | | |     (_)   | | -->
- <!--    ) |   __) | || |_    __| | |__    _  __| | -->
- <!--   / /   |__ <|__   _|  / _` | '_ \  | |/ _` | -->
- <!--  / /_ _ ___) |  | |_  | (_| | |_) | | | (_| | -->
- <!-- |____(_)____(_) |_(_)  \__,_|_.__/  |_|\__,_| -->
                                               
 - **`database_id`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_05.JPG){width=100%}
 
   The unique identifier of the database the series belongs to. This field must correspond to the element `database_description > title_statement > idno` of the database schema described above. This is the only field that is needed to establish the link between the database metadata and the indicator metadata. 
-
-
- <!--  ___    ____   _____          _ _                      -->
- <!-- |__ \  |___ \ | ____|        | (_)                     -->
- <!--    ) |   __) || |__      __ _| |_  __ _ ___  ___  ___  -->
- <!--   / /   |__ < |___ \    / _` | | |/ _` / __|/ _ \/ __| -->
- <!--  / /_ _ ___) | ___) |  | (_| | | | (_| \__ \  __/\__ \ -->
- <!-- |____(_)____(_)____(_)  \__,_|_|_|\__,_|___/\___||___/ -->
                                                        
 - **`aliases`** *[Optional ; Repeatable]* <br>
 A series or an indicator can be referred to using different names. The `aliases` element is provided to capture the multiple names and labels that may be associated with (i.e synomyms of) the documented series or indicator.
@@ -247,14 +151,6 @@ A series or an indicator can be referred to using different names. The `aliases`
   ![](./images/ReDoc_ts_series_06.JPG){width=100%}
   - **`alias`** *[Optional ; Not repeatable ; String]* <br>
   An alternative name for the indicator or series being documented. <br><br>
-
-
- <!--  ___    ____    __           _ _     _     _  -->
- <!-- |__ \  |___ \  / /          | | |   (_)   | | -->
- <!--    ) |   __) |/ /_      __ _| | |_   _  __| | -->
- <!--   / /   |__ <| '_ \    / _` | | __| | |/ _` | -->
- <!--  / /_ _ ___) | (_) |  | (_| | | |_  | | (_| | -->
- <!-- |____(_)____(_)___(_)  \__,_|_|\__| |_|\__,_| -->
                                               
 - **`alternate_identifiers`** *[Optional ; Not repeatable ; String]*<br>
 The element `idno` described above is the reference unique identifier for the catalog in which the metadata is intended to be published. But the same indicator/metadata may be published in other catalogs. For example, a data catalog may publish metadata for series extracted from the World Bank World Development Indicators (WDI) database. And the WDI itself contains series generated and published by other organizations, such as the World Health Organization or UNICEF. Catalog administrators may want to assign a unique identifier specific to their catalog (the `idno` element), but keep track of the identifier of the series or indicator in other catalogs or databases. The `alternate_identifiers` element serves that purpose. 
@@ -280,15 +176,6 @@ An indicator or time series can be made available at different levels of disaggr
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code of the language, preferably the ISO code.<br><br>
 
-
-
- <!--  ___    ____  ______               _ _    -->
- <!-- |__ \  |___ \|____  |             (_) |   -->
- <!--    ) |   __) |   / /   _   _ _ __  _| |_  -->
- <!--   / /   |__ <   / /   | | | | '_ \| | __| -->
- <!--  / /_ _ ___) | / /    | |_| | | | | | |_  -->
- <!-- |____(_)____(_)_(_)    \__,_|_| |_|_|\__| -->
-
 - **`measurement_unit`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_08.JPG){width=100%}
 
@@ -300,14 +187,6 @@ An indicator or time series can be made available at different levels of disaggr
    - Population density (people per sq. km of land area)
    
   In such case, the name of the series should not be changed, but the measurement unit may be extracted from it and stored in element `measurement_unit`. <br>
-  
-  
- <!--  ___    ____   ___         _ _                          _                  -->
- <!-- |__ \  |___ \ / _ \       | (_)                        (_)                 -->
- <!--    ) |   __) | (_) |    __| |_ _ __ ___   ___ _ __  ___ _  ___  _ __  ___  -->
- <!--   / /   |__ < > _ <    / _` | | '_ ` _ \ / _ \ '_ \/ __| |/ _ \| '_ \/ __| -->
- <!--  / /_ _ ___) | (_) |  | (_| | | | | | | |  __/ | | \__ \ | (_) | | | \__ \ -->
- <!-- |____(_)____(_)___(_)  \__,_|_|_| |_| |_|\___|_| |_|___/_|\___/|_| |_|___/ -->
  
 - **`dimensions`** *[Optional ; Repeatable]* <br>  
 An indicator or time series can be made available at different levels of disaggregation. For example, an indicator containing estimates of the "Population" of a country by year can be available by sex. The data curators in such case will have two options: (i) create and document three separate indicators, namely "Population, Total", "Population, Female", and "Population, Male"; or create a single indicator "Population" and attach a *dimension* "sex" to it, with values "Total", "Female", and "Male". The `dimensions` are features (or "variables") that define the different levels of disaggregation within an indicator/series. The element `dimensions` is used to provide an itemized list of disaggregations that correspond exactly to the published data. Note that when an indicator is available at two "non-overlapping" levels of disaggregation, it should be split into two indicators. For example, if the Population indicator is available by male/female and by urban/rural, but not by male/urban/male/rural/female urban/female rural, it should be treated as two separate indicators ("Population by sex" with dimension sex = "male / female" and "Population by area of residence" with dimension area = "urban / rural".) Note also that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented.<br>
@@ -320,69 +199,23 @@ An indicator or time series can be made available at different levels of disaggr
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
   A description of the dimension (for example, if the label was "age group", the description can provide detailed information on the age groups, e.g. "The age groups in the database are 0-14, 15-49, 50-64, and 65+ years old".)<br><br>
 
-
- <!--  ___    ____   ___                    _           _ _      _ _          -->
- <!-- |__ \  |___ \ / _ \                  (_)         | (_)    (_) |         -->
- <!--    ) |   __) | (_) |  _ __   ___ _ __ _  ___   __| |_  ___ _| |_ _   _  -->
- <!--   / /   |__ < \__, | | '_ \ / _ \ '__| |/ _ \ / _` | |/ __| | __| | | | -->
- <!--  / /_ _ ___) |  / /  | |_) |  __/ |  | | (_) | (_| | | (__| | |_| |_| | -->
- <!-- |____(_)____(_)/_(_) | .__/ \___|_|  |_|\___/ \__,_|_|\___|_|\__|\__, | -->
- <!--                      | |                                          __/ | -->
- <!--                      |_|                                         |___/  -->
-
 - **`periodicity`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_09.JPG){width=100%}
 
   The periodicity of the series. It is recommended to use a controlled vocabulary with values like *annual*, *quarterly*, *monthly*, *daily*, etc. 
-
-
- <!--  ___    ____  __  ___     _                                      _           _  -->
- <!-- |__ \  |___ \/_ |/ _ \   | |                                    (_)         | | -->
- <!--    ) |   __) || | | | |  | |__   __ _ ___  ___   _ __   ___ _ __ _  ___   __| | -->
- <!--   / /   |__ < | | | | |  | '_ \ / _` / __|/ _ \ | '_ \ / _ \ '__| |/ _ \ / _` | -->
- <!--  / /_ _ ___) || | |_| |  | |_) | (_| \__ \  __/ | |_) |  __/ |  | | (_) | (_| | -->
- <!-- |____(_)____(_)_|\___(_) |_.__/ \__,_|___/\___| | .__/ \___|_|  |_|\___/ \__,_| -->
- <!--                                                 | |                             -->
- <!--                                                 |_|                             -->
 
 - **`base_period`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_10.JPG){width=100%}
 
   The base period for the series. This field will only apply to series that require a base year (or other reference time) used as a benchmark, like a Consumer Price Index (CPI) which will have a value of 100 for a reference base year. 
 
-
- <!--  ___    ____  __ __         _       __       _                _    -->
- <!-- |__ \  |___ \/_ /_ |       | |     / _|     | |              | |   -->
- <!--    ) |   __) || || |     __| | ___| |_   ___| |__   ___  _ __| |_  -->
- <!--   / /   |__ < | || |    / _` |/ _ \  _| / __| '_ \ / _ \| '__| __| -->
- <!--  / /_ _ ___) || || |_  | (_| |  __/ |   \__ \ | | | (_) | |  | |_  -->
- <!-- |____(_)____(_)_||_(_)  \__,_|\___|_|   |___/_| |_|\___/|_|   \__| -->
-
 - **`definition_short`** *[Optional ; Not repeatable ; String]* <br>
 A short definition of the series. The short definition captures the essence of the series.<br>
 
   ![](./images/ReDoc_ts_series_11.JPG){width=100%}
-
-
- <!--  ___    ____  __ ___          _       __   _                    -->
- <!-- |__ \  |___ \/_ |__ \        | |     / _| | |                   -->
- <!--    ) |   __) || |  ) |     __| | ___| |_  | | ___  _ __   __ _  -->
- <!--   / /   |__ < | | / /     / _` |/ _ \  _| | |/ _ \| '_ \ / _` | -->
- <!--  / /_ _ ___) || |/ /_ _  | (_| |  __/ |   | | (_) | | | | (_| | -->
- <!-- |____(_)____(_)_|____(_)  \__,_|\___|_|   |_|\___/|_| |_|\__, | -->
- <!--                                                           __/ | -->
- <!--                                                          |___/  -->
                                                           
 - **`definition_long`** *[Optional ; Not repeatable ; String]* <br>
 A long(er) version of the definition of the series. If only one definition is available (not a short/long version), it is recommended to capture it in the `definition_short` element. ALternatively, the same definition can be stored in both `definition_short` and `definition_long`.
-
-
- <!--  ___    ____  __ ____         _       __             __  -->
- <!-- |__ \  |___ \/_ |___ \       | |     / _|           / _| -->
- <!--    ) |   __) || | __) |    __| | ___| |_   _ __ ___| |_  -->
- <!--   / /   |__ < | ||__ <    / _` |/ _ \  _| | '__/ _ \  _| -->
- <!--  / /_ _ ___) || |___) |  | (_| |  __/ |   | | |  __/ |   -->
- <!-- |____(_)____(_)_|____(_)  \__,_|\___|_|   |_|  \___|_|   -->
                                                          
 - **`definition_references`** *[Optional ; Repeatable]* <br>
 This element is provided to link to an external resources from which the definition was extracted. 
@@ -395,30 +228,10 @@ This element is provided to link to an external resources from which the definit
   - **`note`** *[Optional ; Not repeatable ; String]* <br>
   This element provides for annotating or explaining the reason the reference has been included as part of the metadata.<br><br>
 
-
- <!--  ___    ____  __ _  _         _        _                                    _    -->
- <!-- |__ \  |___ \/_ | || |       | |      | |                                  | |   -->
- <!--    ) |   __) || | || |_   ___| |_ __ _| |_    ___ ___  _ __   ___ ___ _ __ | |_  -->
- <!--   / /   |__ < | |__   _| / __| __/ _` | __|  / __/ _ \| '_ \ / __/ _ \ '_ \| __| -->
- <!--  / /_ _ ___) || |  | |_  \__ \ || (_| | |_  | (_| (_) | | | | (_|  __/ |_) | |_  -->
- <!-- |____(_)____(_)_|  |_(_) |___/\__\__,_|\__|  \___\___/|_| |_|\___\___| .__/ \__| -->
- <!--                                                                      | |         -->
- <!--                                                                      |_|         -->
-
 - **`statistical_concept`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_13.JPG){width=100%}
 
   This element allows to insert a reference of the series with content of a statistical character. This can include coding concepts or standards that are applied to render the data statistically relevant.
-
-
- <!--  ___    ____  __ _____                                   _        -->
- <!-- |__ \  |___ \/_ | ____|                                 | |       -->
- <!--    ) |   __) || | |__      ___ ___  _ __   ___ ___ _ __ | |_ ___  -->
- <!--   / /   |__ < | |___ \    / __/ _ \| '_ \ / __/ _ \ '_ \| __/ __| -->
- <!--  / /_ _ ___) || |___) |  | (_| (_) | | | | (_|  __/ |_) | |_\__ \ -->
- <!-- |____(_)____(_)_|____(_)  \___\___/|_| |_|\___\___| .__/ \__|___/ -->
- <!--                                                   | |             -->
- <!--                                                   |_|             -->
                                                    
 - **`concepts`** *[Optional ; Repeatable]* <br>
 This repeatable element can be used to document concepts related to the indicators or time series (other than the main statistical concept that may have been entered in `statisticsl_concept`). For example, the concept of *malnutrition* could be documented in relation to the indicators "Prevalence of stunting" and "Prevalence of wasting".
@@ -431,14 +244,6 @@ This repeatable element can be used to document concepts related to the indicato
   The definition of the concept. 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link (URL) to a resource providing more detailed information on the concept. <br><br>
-
-
- <!--  ___    ____  __   __                    _   _               _  -->
- <!-- |__ \  |___ \/_ | / /                   | | | |             | | -->
- <!--    ) |   __) || |/ /_     _ __ ___   ___| |_| |__   ___   __| | -->
- <!--   / /   |__ < | | '_ \   | '_ ` _ \ / _ \ __| '_ \ / _ \ / _` | -->
- <!--  / /_ _ ___) || | (_) |  | | | | | |  __/ |_| | | | (_) | (_| | -->
- <!-- |____(_)____(_)_|\___(_) |_| |_| |_|\___|\__|_| |_|\___/ \__,_| -->
                                                         
 - **`methodology`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_15.JPG){width=100%}
@@ -450,113 +255,40 @@ This repeatable element can be used to document concepts related to the indicato
 
 A description of the method and calculations used to derive the estimates for the indicator.
 
- <!--  ___    ____  __ ______   _                       _        _   _              -->
- <!-- |__ \  |___ \/_ |____  | (_)                     | |      | | (_)             -->
- <!--    ) |   __) || |   / /   _ _ __ ___  _ __  _   _| |_ __ _| |_ _  ___  _ __   -->
- <!--   / /   |__ < | |  / /   | | '_ ` _ \| '_ \| | | | __/ _` | __| |/ _ \| '_ \  -->
- <!--  / /_ _ ___) || | / /    | | | | | | | |_) | |_| | || (_| | |_| | (_) | | | | -->
- <!-- |____(_)____(_)_|/_(_)   |_|_| |_| |_| .__/ \__,_|\__\__,_|\__|_|\___/|_| |_| -->
- <!--                                      | |                                      -->
- <!--                                      |_|                                      -->
-
 - **`imputation`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_16.JPG){width=100%}
 
   Data may have been imputed to account for data gaps or for other reasons (harmonization/standardization, and others). If imputations have been made, this element provides the space for their description.
 
-
- <!--  ___    ____  __  ___               _         _              -->
- <!-- |__ \  |___ \/_ |/ _ \             (_)       (_)             -->
- <!--    ) |   __) || | (_) |   _ __ ___  _ ___ ___ _ _ __   __ _  -->
- <!--   / /   |__ < | |> _ <   | '_ ` _ \| / __/ __| | '_ \ / _` | -->
- <!--  / /_ _ ___) || | (_) |  | | | | | | \__ \__ \ | | | | (_| | -->
- <!-- |____(_)____(_)_|\___(_) |_| |_| |_|_|___/___/_|_| |_|\__, | -->
- <!--                                                        __/ | -->
- <!--                                                       |___/  -->
-
 - **`missing`** *[Optional ; Not repeatable ; String]*<br>
 ![](./images/ReDoc_ts_series_17.JPG){width=100%}
 
   Information on missing values in the series or indicator. This information can be related to treatment of missing values, to the cause(s) of missing values, and others.
-
-
- <!--  ___    ____  __  ___                 _               _         -->
- <!-- |__ \  |___ \/_ |/ _ \               | |             | |        -->
- <!--    ) |   __) || | (_) |   __ _    ___| |__   ___  ___| | _____  -->
- <!--   / /   |__ < | |\__, |  / _` |  / __| '_ \ / _ \/ __| |/ / __| -->
- <!--  / /_ _ ___) || |  / /  | (_| | | (__| | | |  __/ (__|   <\__ \ -->
- <!-- |____(_)____(_)_| /_(_)  \__, |  \___|_| |_|\___|\___|_|\_\___/ -->
- <!--                             | |                                 -->
- <!--                             |_|                                 -->
-
+  
 - **`quality_checks`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_18.JPG){width=100%}
 
   Data may have gone through data quality checks to assure that the values are reasonable and coherent, which can be described in this element. These quality checks may include checking for outlying values or other. A brief description of such quality control procedures will contribute to reinforcing the credibility of the data being disseminated. 
 
-
- <!--  ___    ____   ___   ___                         _        -->
- <!-- |__ \  |___ \ |__ \ / _ \                       | |       -->
- <!--    ) |   __) |   ) | | | |    __ _   _ __   ___ | |_ ___  -->
- <!--   / /   |__ <   / /| | | |   / _` | | '_ \ / _ \| __/ _ \ -->
- <!--  / /_ _ ___) | / /_| |_| |  | (_| | | | | | (_) | ||  __/ -->
- <!-- |____(_)____(_)____|\___(_)  \__, | |_| |_|\___/ \__\___| -->
- <!--                                 | |                       -->
- <!--                                 |_|                       -->
-
 - **`quality_note`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_19.JPG){width=100%}
 
   Additional notes or an overall statement on data quality. These could for example cover non-standard quality notes and/or information on independent reviews on the data quality.
-
-
- <!--  ___    ____   ___  __         _ _                          -->
- <!-- |__ \  |___ \ |__ \/_ |       | (_)                         -->
- <!--    ) |   __) |   ) || |     __| |_ ___  ___ _ __ ___ _ __   -->
- <!--   / /   |__ <   / / | |    / _` | / __|/ __| '__/ _ \ '_ \  -->
- <!--  / /_ _ ___) | / /_ | |_  | (_| | \__ \ (__| | |  __/ |_) | -->
- <!-- |____(_)____(_)____||_(_)  \__,_|_|___/\___|_|  \___| .__/  -->
- <!--                                                     | |     -->
- <!--                                                     |_|     -->
  
 - **`sources_discrepancies`** *[Optional ; Not repeatable ; String]*<br>
 ![](./images/ReDoc_ts_series_20.JPG){width=100%}
 
   This element is used to describe and explain why the data in the series may be different from the data for the same series published in other sources. International organizations, for example, may apply different techniques to make data obtained from national sources comparable across countries, in which cases the data published in international databases may differ from the data published in national, official databases.
-
-
- <!--  ___    ____   ___  ___      _                    _     -->
- <!-- |__ \  |___ \ |__ \|__ \    | |                  | |    -->
- <!--    ) |   __) |   ) |  ) |   | |__  _ __ ___  __ _| | __ -->
- <!--   / /   |__ <   / /  / /    | '_ \| '__/ _ \/ _` | |/ / -->
- <!--  / /_ _ ___) | / /_ / /_ _  | |_) | | |  __/ (_| |   <  -->
- <!-- |____(_)____(_)____|____(_) |_.__/|_|  \___|\__,_|_|\_\ -->
                                                         
 - **`series_break`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_21.JPG){width=100%}
 
   Breaks in statistical series occur when there is a change in the standards, sources of data, or reference year used in the compilation of a series. Breaks in series must be well documented. The documentation should include the reason(s) for the break, the time it occured, and information on the impact on comparability of data over time.
 
-
- <!--  ___    ____   ___  ____     _ _           _ _        _   _              -->
- <!-- |__ \  |___ \ |__ \|___ \   | (_)         (_) |      | | (_)             -->
- <!--    ) |   __) |   ) | __) |  | |_ _ __ ___  _| |_ __ _| |_ _  ___  _ __   -->
- <!--   / /   |__ <   / / |__ <   | | | '_ ` _ \| | __/ _` | __| |/ _ \| '_ \  -->
- <!--  / /_ _ ___) | / /_ ___) |  | | | | | | | | | || (_| | |_| | (_) | | | | -->
- <!-- |____(_)____(_)____|____(_) |_|_|_| |_| |_|_|\__\__,_|\__|_|\___/|_| |_| -->
-
 - **`limitation`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_22.JPG){width=100%}
 
   This element is used to communicate to the user any limitations or exceptions in using the data. The limitations may result from the methodology, from issues of quality or consistency in the data source, or other. 
-
-
- <!--  ___    ____   ___  _  _     _   _                               -->
- <!-- |__ \  |___ \ |__ \| || |   | | | |                              -->
- <!--    ) |   __) |   ) | || |_  | |_| |__   ___ _ __ ___   ___  ___  -->
- <!--   / /   |__ <   / /|__   _| | __| '_ \ / _ \ '_ ` _ \ / _ \/ __| -->
- <!--  / /_ _ ___) | / /_   | |_  | |_| | | |  __/ | | | | |  __/\__ \ -->
- <!-- |____(_)____(_)____|  |_(_)  \__|_| |_|\___|_| |_| |_|\___||___/ -->
                                                                  
 - **`themes`** *[Optional ; Repeatable]* <br>
 Themes provide a general idea of the research that might guide the creation and/or demand for the series. A theme is broad and is likely also subject to a community based definition or list. A controlled vocabulary should be used. This element will rarely be used (the element `topics` described below will be used more often).
@@ -573,15 +305,6 @@ Themes provide a general idea of the research that might guide the creation and/
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link to the controlled vocabulary mentioned in field `vocabulary'.
   
-  
- <!--  ___    ____   ___  _____    _              _           -->
- <!-- |__ \  |___ \ |__ \| ____|  | |            (_)          -->
- <!--    ) |   __) |   ) | |__    | |_ ___  _ __  _  ___ ___  -->
- <!--   / /   |__ <   / /|___ \   | __/ _ \| '_ \| |/ __/ __| -->
- <!--  / /_ _ ___) | / /_ ___) |  | || (_) | |_) | | (__\__ \ -->
- <!-- |____(_)____(_)____|____(_)  \__\___/| .__/|_|\___|___/ -->
- <!--                                      | |                -->
- <!--                                      |_|                -->
 - **`topics`** *[Optional ; Repeatable]*<br>
 The `topics` field indicates the broad substantive topic(s) that the indicator/series covers. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification). <br>
   ![](./images/ReDoc_ts_series_24.JPG){width=100%}
@@ -595,14 +318,6 @@ The `topics` field indicates the broad substantive topic(s) that the indicator/s
   The name of the controlled vocabulary used, if any. 
   - **`uri`** <br>
   A link to the controlled vocabulary mentioned in field `vocabulary`.<br><br>
- <!--  ___    ____   ___   __         _ _          _       _ _                  -->
- <!-- |__ \  |___ \ |__ \ / /        | (_)        (_)     | (_)                 -->
- <!--    ) |   __) |   ) / /_      __| |_ ___  ___ _ _ __ | |_ _ __   ___  ___  -->
- <!--   / /   |__ <   / / '_ \    / _` | / __|/ __| | '_ \| | | '_ \ / _ \/ __| -->
- <!--  / /_ _ ___) | / /| (_) |  | (_| | \__ \ (__| | |_) | | | | | |  __/\__ \ -->
- <!-- |____(_)____(_)____\___(_)  \__,_|_|___/\___|_| .__/|_|_|_| |_|\___||___/ -->
- <!--                                               | |                         -->
- <!--                                               |_|                         -->
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>
 Information on the academic disciplines related to the content of the document. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
@@ -621,29 +336,11 @@ Information on the academic disciplines related to the content of the document. 
   The name (including version number) of the controlled vocabulary used, if any.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL to the controlled vocabulary used, if any.<br><br>
-  
-  
- <!--   ___    ____   ___ ______            _                                 -->
- <!-- |__ \  |___ \ |__ \____  |          | |                                -->
- <!--    ) |   __) |   ) |  / /   _ __ ___| | _____   ____ _ _ __   ___ ___  -->
- <!--   / /   |__ <   / /  / /   | '__/ _ \ |/ _ \ \ / / _` | '_ \ / __/ _ \ -->
- <!--  / /_ _ ___) | / /_ / /    | | |  __/ |  __/\ V / (_| | | | | (_|  __/ -->
- <!-- |____(_)____(_)____/_(_)   |_|  \___|_|\___| \_/ \__,_|_| |_|\___\___| -->
-
+ 
 - **`relevance`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_26.JPG){width=100%}
 
   This field documents the relevance of an indicator or series in relation to a social imperative or policy objective.<br>
-
-
- <!--  ___    ____   ___   ___                     _           _      -->
- <!-- |__ \  |___ \ |__ \ / _ \                   (_)         | |     -->
- <!--    ) |   __) |   ) | (_) |   _ __   ___ _ __ _  ___   __| |___  -->
- <!--   / /   |__ <   / / > _ <   | '_ \ / _ \ '__| |/ _ \ / _` / __| -->
- <!--  / /_ _ ___) | / /_| (_) |  | |_) |  __/ |  | | (_) | (_| \__ \ -->
- <!-- |____(_)____(_)____|\___(_) | .__/ \___|_|  |_|\___/ \__,_|___/ -->
- <!--                             | |                                 -->
- <!--                             |_|                                 -->
 
 - **`time_periods`** *[Optional ; Repeatable]* <br>
 The time period covers the entire span of data available for the series. The time period has a start and an end and is reported according to the periodicity provided in a previous element. 
@@ -656,16 +353,6 @@ The time period covers the entire span of data available for the series. The tim
   - **`notes`** *[Optional ; Not repeatable ; String]* <br>
   Additional information on the time period.<br><br>
 
-
- <!--  ___    ____   ___   ___              __                         _               -->
- <!-- |__ \  |___ \ |__ \ / _ \            / _|                       | |              -->
- <!--    ) |   __) |   ) | (_) |  _ __ ___| |_    ___ ___  _   _ _ __ | |_ _ __ _   _  -->
- <!--   / /   |__ <   / / \__, | | '__/ _ \  _|  / __/ _ \| | | | '_ \| __| '__| | | | -->
- <!--  / /_ _ ___) | / /_   / /  | | |  __/ |   | (_| (_) | |_| | | | | |_| |  | |_| | -->
- <!-- |____(_)____(_)____| /_(_) |_|  \___|_|    \___\___/ \__,_|_| |_|\__|_|   \__, | -->
- <!--                                                                            __/ | -->
- <!--                                                                           |___/  -->
-
 - **`ref_country`** *[Optional ; Repeatable]* <br>   
 A list of countries for which data are available in the series. This element is somewhat redundant with the next element (`geographic_units`) which may also contain a list of countries. Identifying geographic areas of type "country" is important to enable filters and facets in data catalogs (country names are among the most frequent queries submitted to catalogs).
 
@@ -674,17 +361,7 @@ A list of countries for which data are available in the series. This element is 
   The name of the country.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code of the country. The use of the [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) codes is recommended. 
-    
-
- <!--  ___    ____   ____   ___                                    _ _        -->
- <!-- |__ \  |___ \ |___ \ / _ \                                  (_) |       -->
- <!--    ) |   __) |  __) | | | |    __ _  ___  ___    _   _ _ __  _| |_ ___  -->
- <!--   / /   |__ <  |__ <| | | |   / _` |/ _ \/ _ \  | | | | '_ \| | __/ __| -->
- <!--  / /_ _ ___) | ___) | |_| |  | (_| |  __/ (_) | | |_| | | | | | |_\__ \ -->
- <!-- |____(_)____(_)____/ \___(_)  \__, |\___|\___/   \__,_|_| |_|_|\__|___/ -->
- <!--                                __/ |                                    -->
- <!--                               |___/                                     -->
-                               
+                             
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
 List of geographic units (regions, countries, states, provinces, etc.) for which data are available for the series.
 
@@ -695,7 +372,6 @@ List of geographic units (regions, countries, states, provinces, etc.) for which
   Code of the geographic unit. The [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)  code is preferred when the unit is a country.
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   Type of geographic unit e.g. "country", "state", "region", "province", "city", etc. <br><br>
-
 
 - **`bbox`** *[Optional ; Repeatable]* <br>
 This element is used to define one or multiple bounding box(es), which are the rectangular fundamental geometric description of the geographic coverage of the data. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the dataset's geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. This element is optional, but if the `bound_poly` element (see below) is used, then the `bbox` element must be included.<br>
@@ -754,43 +430,16 @@ my_indicator <- list(
 
 ![](./images/ReDoc_ts_series_28a.JPG){width=100%}
 
-
- <!--  ___    ____   ____  __                                        _   _               _  -->
- <!-- |__ \  |___ \ |___ \/_ |                                      | | | |             | | -->
- <!--    ) |   __) |  __) || |     __ _  __ _  __ _   _ __ ___   ___| |_| |__   ___   __| | -->
- <!--   / /   |__ <  |__ < | |    / _` |/ _` |/ _` | | '_ ` _ \ / _ \ __| '_ \ / _ \ / _` | -->
- <!--  / /_ _ ___) | ___) || |_  | (_| | (_| | (_| | | | | | | |  __/ |_| | | | (_) | (_| | -->
- <!-- |____(_)____(_)____/ |_(_)  \__,_|\__, |\__, | |_| |_| |_|\___|\__|_| |_|\___/ \__,_| -->
- <!--                                    __/ | __/ |                                        -->
- <!--                                   |___/ |___/                                         -->
                                    
 - **`aggregation_method`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_29.JPG){width=100%}
 
   The `aggregation_method` element describes how values can be aggregated from one geographic level (for example, a country) to a higher-level geographic area (for example, a group of country defined based on a geographic criteria (region, world) or another criteria (low/medium/high-income countries, island countries, OECD countries, etc.). The aggregation method can be simple (like "sum" or "population-weighted average") or more complex, involving weighting of values.<br>
-
-
- <!--  ___    ____   ____ ___          _ _                                            _   _              -->
- <!-- |__ \  |___ \ |___ \__ \        | (_)                                          | | (_)             -->
- <!--    ) |   __) |  __) | ) |     __| |_ ___  __ _  __ _  __ _ _ __ ___  __ _  __ _| |_ _  ___  _ __   -->
- <!--   / /   |__ <  |__ < / /     / _` | / __|/ _` |/ _` |/ _` | '__/ _ \/ _` |/ _` | __| |/ _ \| '_ \  -->
- <!--  / /_ _ ___) | ___) / /_ _  | (_| | \__ \ (_| | (_| | (_| | | |  __/ (_| | (_| | |_| | (_) | | | | -->
- <!-- |____(_)____(_)____/____(_)  \__,_|_|___/\__,_|\__, |\__, |_|  \___|\__, |\__,_|\__|_|\___/|_| |_| -->
- <!--                                                 __/ | __/ |          __/ |                         -->
- <!--                                                |___/ |___/          |___/                          -->
                                                 
 - **`disaggregation`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_30.JPG){width=100%}
 
   This element is intended to inform users that an indicator or series is available at various levels of disaggregation. The related series should be listed (by andme and/or identifier). For indicator "Population, total" for example, one may inform the user that the indicator is also available (in other series) by sex, urban/rural, and age group (in series "Population, male" and "Population, female", etc.).
-
-
- <!--  ___    ____   ____ ____     _ _                          -->
- <!-- |__ \  |___ \ |___ \___ \   | (_)                         -->
- <!--    ) |   __) |  __) |__) |  | |_  ___ ___ _ __  ___  ___  -->
- <!--   / /   |__ <  |__ <|__ <   | | |/ __/ _ \ '_ \/ __|/ _ \ -->
- <!--  / /_ _ ___) | ___) |__) |  | | | (_|  __/ | | \__ \  __/ -->
- <!-- |____(_)____(_)____/____(_) |_|_|\___\___|_| |_|___/\___| -->
                                                           
 - **`license`** *[Optional ; Repeatable]* <br>
 The license refers to the accessibility and terms of use associated with the data. Providing a license and a link to the terms of the license allos data users to determine, with full clarity, what they can and cannot do with the data.
@@ -803,54 +452,20 @@ The license refers to the accessibility and terms of use associated with the dat
   - **`note`** *[Optional ; Not repeatable ; String]* <br>
   Any additional information on the license.<br><br>
 
-
- <!--  ___    ____   ____  _  _                      __ _     _            _   _       _ _ _          -->
- <!-- |__ \  |___ \ |___ \| || |                    / _(_)   | |          | | (_)     | (_) |         -->
- <!--    ) |   __) |  __) | || |_    ___ ___  _ __ | |_ _  __| | ___ _ __ | |_ _  __ _| |_| |_ _   _  -->
- <!--   / /   |__ <  |__ <|__   _|  / __/ _ \| '_ \|  _| |/ _` |/ _ \ '_ \| __| |/ _` | | | __| | | | -->
- <!--  / /_ _ ___) | ___) |  | |_  | (_| (_) | | | | | | | (_| |  __/ | | | |_| | (_| | | | |_| |_| | -->
- <!-- |____(_)____(_)____/   |_(_)  \___\___/|_| |_|_| |_|\__,_|\___|_| |_|\__|_|\__,_|_|_|\__|\__, | -->
- <!--                                                                                           __/ | -->
- <!--                                                                                          |___/  -->
-
 - **`confidentiality`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_32.JPG){width=100%}
 
   A statement of confidentiality for the series. 
-
-
- <!--  ___    ____   ____  _____                     __       _        _              -->
- <!-- |__ \  |___ \ |___ \| ____|                   / _|     | |      | |             -->
- <!--    ) |   __) |  __) | |__      ___ ___  _ __ | |_   ___| |_ __ _| |_ _   _ ___  -->
- <!--   / /   |__ <  |__ <|___ \    / __/ _ \| '_ \|  _| / __| __/ _` | __| | | / __| -->
- <!--  / /_ _ ___) | ___) |___) |  | (_| (_) | | | | |   \__ \ || (_| | |_| |_| \__ \ -->
- <!-- |____(_)____(_)____/|____(_)  \___\___/|_| |_|_|   |___/\__\__,_|\__|\__,_|___/ -->
                                                                                 
 - **`confidentiality_status`** *[Optional ; Not repeatable ; String]*  <br>
 ![](./images/ReDoc_ts_series_33.JPG){width=100%}
 
   This indicates a confidentiality status for the series. A controlled vocabulary should be used with possible options "public", "official use only", "confidential", "strictly confidential". When all series are made publicly available, and belong to a database that has an open or public access policy, this element can be ignored.
 
-
- <!--  ___    ____   ____    __                      __               _        -->
- <!-- |__ \  |___ \ |___ \  / /                     / _|             | |       -->
- <!--    ) |   __) |  __) |/ /_      ___ ___  _ __ | |_   _ __   ___ | |_ ___  -->
- <!--   / /   |__ <  |__ <| '_ \    / __/ _ \| '_ \|  _| | '_ \ / _ \| __/ _ \ -->
- <!--  / /_ _ ___) | ___) | (_) |  | (_| (_) | | | | |   | | | | (_) | ||  __/ -->
- <!-- |____(_)____(_)____/ \___(_)  \___\___/|_| |_|_|   |_| |_|\___/ \__\___| -->
-
 - **`confidentiality_note`** *[Optional ; Not repeatable ; String]* <br>
 ![](./images/ReDoc_ts_series_34.JPG){width=100%}
 
   This element is reserved for additional notes regarding confidentiality of the data. This could involve references to specific laws and circumstances regarding the use of data.<br>
-
-
- <!--  ___    ____   ____ ______   _ _       _         -->
- <!-- |__ \  |___ \ |___ \____  | | (_)     | |        -->
- <!--    ) |   __) |  __) |  / /  | |_ _ __ | | _____  -->
- <!--   / /   |__ <  |__ <  / /   | | | '_ \| |/ / __| -->
- <!--  / /_ _ ___) | ___) |/ /    | | | | | |   <\__ \ -->
- <!-- |____(_)____(_)____//_(_)   |_|_|_| |_|_|\_\___/ -->
                                                  
 - **`links`** *[Optional ; Repeatable]* <br>
 This element provides links to online resources of any type that could be useful to the data users. This can be links to description of methods and reference documents, analytics tools, visualizations, data sources, or other. 
@@ -862,16 +477,6 @@ This element provides links to online resources of any type that could be useful
   A description of the link that is provided. 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The uri (URL) to the described resource.<br><br>
-
-
- <!--  ___    ____   ____   ___                 _  -->
- <!-- |__ \  |___ \ |___ \ / _ \               (_) -->
- <!--    ) |   __) |  __) | (_) |    __ _ _ __  _  -->
- <!--   / /   |__ <  |__ < > _ <    / _` | '_ \| | -->
- <!--  / /_ _ ___) | ___) | (_) |  | (_| | |_) | | -->
- <!-- |____(_)____(_)____/ \___(_)  \__,_| .__/|_| -->
- <!--                                    | |       -->
- <!--                                    |_|       -->
  
 - **`api_documentation`** *[Optional ; Repeatable]* <br>
 Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. The documentation will usually not be specific to a series, but apply to all series in a same database.
@@ -881,16 +486,6 @@ Increasingly, data are made accessible via Application Programming Interfaces (A
   This element will not contain the API documentation itself, but information on what documentation is available.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL of the API documentation.<br><br>
-
-
- <!--  ___    ____   ____   ___                _   _                _              -->
- <!-- |__ \  |___ \ |___ \ / _ \              | | | |              (_)             -->
- <!--    ) |   __) |  __) | (_) |   __ _ _   _| |_| |__   ___  _ __ _ _ __   __ _  -->
- <!--   / /   |__ <  |__ < \__, |  / _` | | | | __| '_ \ / _ \| '__| | '_ \ / _` | -->
- <!--  / /_ _ ___) | ___) |  / /  | (_| | |_| | |_| | | | (_) | |  | | | | | (_| | -->
- <!-- |____(_)____(_)____/  /_(_)  \__,_|\__,_|\__|_| |_|\___/|_|  |_|_| |_|\__, | -->
- <!--                                                                        __/ | -->
- <!--                                                                       |___/  -->
  
 - **`authoring_entity`** *[Optional ; Repeatable]* <br>
 This set of five elements is used to identify the organization(s) or person(s) who are the main producers/curators of the indicator. Note that a similar element is provided at the database level. The authoring_entity for the indicator can be different from the authoring_entity of the database. For example, the World Bank is the authoring entity for the World Development Indicators database, which contains indicators obtained from the International Monetary Fund, World Health Organization, and other organizations that are thus the authoring entitis for specific indicators.  
@@ -906,14 +501,6 @@ This set of five elements is used to identify the organization(s) or person(s) w
   The public email contact of the person or organizations mentioned in `name`. It is good practice to provide a service account email address, not a personal one.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link (URL) to the website of the entity mentioned in `name`. <br><br>
-
-
- <!--  ___    ____  _  _    ___                                        -->
- <!-- |__ \  |___ \| || |  / _ \                                       -->
- <!--    ) |   __) | || |_| | | |   ___  ___  _   _ _ __ ___ ___  ___  -->
- <!--   / /   |__ <|__   _| | | |  / __|/ _ \| | | | '__/ __/ _ \/ __| -->
- <!--  / /_ _ ___) |  | | | |_| |  \__ \ (_) | |_| | | | (_|  __/\__ \ -->
- <!-- |____(_)____(_) |_|  \___(_) |___/\___/ \__,_|_|  \___\___||___/ -->
                                                                  
 - **`sources`** *[Optional ; Not repeatable ; String]* <br>
 This element provides information on the source(s) of data that were used to generate the indicator. A source can refer to an organization (e.g., "Source: World Health Organization"), or to a dataset (e.g., for a national poverty headcount indicator, the sources will likely be a list of sample household surveys). In `sources`, we are mainly interested in the latter. When a series in a database is a series extracted from another database (e.g., when the World Bank World Development Indicators include a series from the World Health Organization in its database), the source organization should be mentioned in the `authoring_entity` element of the schema. The `sources` element is a repeatable element. In international databases where series cover many countries, a series may have a large number of sources (for example, the World Bank poverty headcount data are extracted from hundreds of different national household surveys). The content of this element can thus be quite large. This information is however useful, as it contributes to establish the traceability and credibility of the data.  
@@ -930,28 +517,10 @@ This element provides information on the source(s) of data that were used to gen
   - **`note`** *[Optional ; String]* <br>
   This element can be used to provide additional information regarding the source data.<br><br>
 
-
- <!--  ___    ____  _  _  __                                _        -->
- <!-- |__ \  |___ \| || |/_ |                              | |       -->
- <!--    ) |   __) | || |_| |    ___ _ __ ___   _ __   ___ | |_ ___  -->
- <!--   / /   |__ <|__   _| |   / __| '__/ __| | '_ \ / _ \| __/ _ \ -->
- <!--  / /_ _ ___) |  | | | |_  \__ \ | | (__  | | | | (_) | ||  __/ -->
- <!-- |____(_)____(_) |_| |_(_) |___/_|  \___| |_| |_|\___/ \__\___| -->
-
 - **`sources_note`** *[Optional ; Not repeatable ; String]*<br>
 ![](./images/ReDoc_ts_series_38.JPG){width=100%}
 
   Additional information on the source(s) of data used to generate the series or indicator.
-
-
- <!--  ___    ____  _  _ ___      _                                    _      -->
- <!-- |__ \  |___ \| || |__ \    | |                                  | |     -->
- <!--    ) |   __) | || |_ ) |   | | _____ _   ___      _____  _ __ __| |___  -->
- <!--   / /   |__ <|__   _/ /    | |/ / _ \ | | \ \ /\ / / _ \| '__/ _` / __| -->
- <!--  / /_ _ ___) |  | |/ /_ _  |   <  __/ |_| |\ V  V / (_) | | | (_| \__ \ -->
- <!-- |____(_)____(_) |_|____(_) |_|\_\___|\__, | \_/\_/ \___/|_|  \__,_|___/ -->
- <!--                                       __/ |                             -->
- <!--                                      |___/                              -->
 
 - **`keywords`** *[Optional ; Repeatable]* <br>
 Words or phrases that describe salient aspects of a data collection's content. Can be used for building keyword indexes and for classification and retrieval purposes. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
@@ -964,16 +533,6 @@ Words or phrases that describe salient aspects of a data collection's content. C
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URI of the controlled vocabulary used, if any.
 
-
- <!--  ___    ____  _  _  ____                                                     -->
- <!-- |__ \  |___ \| || ||___ \                                                    -->
- <!--    ) |   __) | || |_ __) |    __ _  ___ _ __ ___  _ __  _   _ _ __ ___  ___  -->
- <!--   / /   |__ <|__   _|__ <    / _` |/ __| '__/ _ \| '_ \| | | | '_ ` _ \/ __| -->
- <!--  / /_ _ ___) |  | | ___) |  | (_| | (__| | | (_) | | | | |_| | | | | | \__ \ -->
- <!-- |____(_)____(_) |_||____(_)  \__,_|\___|_|  \___/|_| |_|\__, |_| |_| |_|___/ -->
- <!--                                                          __/ |               -->
- <!--                                                         |___/                -->
-
 - **`acronyms`** *[Optional ; Repeatable]* <br>
 The `acronyms` element is used to document the meaning of all acronyms used in the metadata of a series. If some acronyms are well known (like "GDP", or "IMF" for example), others may be less obvious or could be uncertain (does "PPP" mean "public-private partnership", or "purchasing power parity"?). In any case, providing a list of acronyms with their meaning will help users and make your metadata more discoverable. Note that acronyms should not include country codes used in the documentation of the geographic coverage of the data. 
 
@@ -985,7 +544,6 @@ The `acronyms` element is used to document the meaning of all acronyms used in t
   - **`occurrence`** *[Optional ; Not repeatable ; Numeric]* <br>
   This numeric element can be used to indicate the number of times the acronym is mentioned in the metadata. The element will rarely be used.<br><br>
 
-
 - **`errata`** *[Optional ; Repeatable]* <br>
 This element is used to provide information on detected errors in the data or metadata for the series, and on the measures taken to remedy them. 
 
@@ -994,14 +552,6 @@ This element is used to provide information on detected errors in the data or me
   The date the erratum was published.<br>
   - **`description`** *[Required ; Repeatable ; String]* <br>
   A description of the error and remedy measures.<br><br>
-  
-
- <!--  ___    ____  _  _   _  _                 _             -->
- <!-- |__ \  |___ \| || | | || |               | |            -->
- <!--    ) |   __) | || |_| || |_   _ __   ___ | |_ ___  ___  -->
- <!--   / /   |__ <|__   _|__   _| | '_ \ / _ \| __/ _ \/ __| -->
- <!--  / /_ _ ___) |  | |    | |_  | | | | (_) | ||  __/\__ \ -->
- <!-- |____(_)____(_) |_|    |_(_) |_| |_|\___/ \__\___||___/ -->
                                                         
 - **`notes`** *[Optional ; Repeatable]* <br>
 This element is open and reserved for explanatory notes deemed useful to the users of the data. Notes should account for additional information that might help: replicate the series; access the data and research area, or discoverability in general. 
@@ -1009,14 +559,6 @@ This element is open and reserved for explanatory notes deemed useful to the use
   ![](./images/ReDoc_ts_series_41.JPG){width=100%}
   - **`note`** *[Required ; Repeatable ; String]* <br>
   The note itself.<br><br>
-
-
-<!--   ___    ____  _  _   _____             _   _           _  -->
-<!--  |__ \  |___ \| || | | ____|           | | (_)         | | -->
-<!--     ) |   __) | || |_| |__     _ __ ___| |  _ _ __   __| | -->
-<!--    / /   |__ <|__   _|___ \   | '__/ _ \ | | | '_ \ / _` | -->
-<!--   / /_ _ ___) |  | |  ___) |  | | |  __/ | | | | | | (_| | -->
-<!--  |____(_)____(_) |_| |____(_) |_|  \___|_| |_|_| |_|\__,_| -->
 
 - **`related_indicators`** *[Optional ; Repeatable]* <br>
 This element allows to reference indicators that are often associated with the indicator being documented.
@@ -1028,16 +570,6 @@ This element allows to reference indicators that are often associated with the i
   The name or label of the indicator that is associated with the indicator being documented.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link to the related indicator.<br><br>
-
-
-<!--   ___    ____  _  _     __                               _ _                       -->
-<!--  |__ \  |___ \| || |   / /                              | (_)                      -->
-<!--     ) |   __) | || |_ / /_      ___ ___  _ __ ___  _ __ | |_  __ _ _ __   ___ ___  -->
-<!--    / /   |__ <|__   _| '_ \    / __/ _ \| '_ ` _ \| '_ \| | |/ _` | '_ \ / __/ _ \ -->
-<!--   / /_ _ ___) |  | | | (_) |  | (_| (_) | | | | | | |_) | | | (_| | | | | (_|  __/ -->
-<!--  |____(_)____(_) |_|  \___(_)  \___\___/|_| |_| |_| .__/|_|_|\__,_|_| |_|\___\___| -->
-<!--                                                   | |                              -->
-<!--                                                   |_|                              -->
 
 - **`compliance`** *[Optional ; Repeatable]* <br>  
 For some indicators, international standards have been established. This is for example the case of indicators like the unemployment or unemployment rate, for which the International Conference of Labour Statisticians defines the standards concepts and methods. The `compliance` element is used to document the compliance of a series with one or multiple national or international standards.  
@@ -1051,14 +583,6 @@ For some indicators, international standards have been established. This is for 
   The organization that maintains the standard that is being used for compliance. For example: "United Nations Statistics Division".
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link to a public website site where information on the compliance standard can be obtained. For example: "https://unstats.un.org/unsd/classifications/Family/Detail/27<br><br>
-
-
- <!--  ___    ____  _  _ ______    __                                             _     -->
- <!-- |__ \  |___ \| || |____  |  / _|                                           | |    -->
- <!--    ) |   __) | || |_  / /  | |_ _ __ __ _ _ __ ___   _____      _____  _ __| | __ -->
- <!--   / /   |__ <|__   _|/ /   |  _| '__/ _` | '_ ` _ \ / _ \ \ /\ / / _ \| '__| |/ / -->
- <!--  / /_ _ ___) |  | | / /    | | | | | (_| | | | | | |  __/\ V  V / (_) | |  |   <  -->
- <!-- |____(_)____(_) |_|/_(_)   |_| |_|  \__,_|_| |_| |_|\___| \_/\_/ \___/|_|  |_|\_\ -->
 
 - **`framework`** *[Optional ; Repeatable]* <br>   
 Some national, regional, and international agencies develop monitoring frameworks, with goals, targets, and indicators. Some well-known examples are the [Millennium Development Goals](https://www.un.org/millenniumgoals/) and the [Sustainable Development Goals](https://sdgs.un.org/goals) which establish international goals for human development, or the World Summit for Children (1990) which set international goals in the areas of child survival, development and protection, supporting sector goals such as women’s health and education, nutrition, child health, water and sanitation, basic education, and children in difficult circumstances. The `framework` element is used to link an indicator or series to the framework, goal, and target associated with it. 
@@ -1109,14 +633,6 @@ The group(s) the indicator belongs to. Groups can be create to organize indicato
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link to a public website site where information on the grouping can be obtained.<br><br>
 
-
- <!--  ____     _____                                                -->
- <!-- |___ \   |  __ \                                               -->
- <!--   __) |  | |__) | __ _____   _____ _ __   __ _ _ __   ___ ___  -->
- <!--  |__ <   |  ___/ '__/ _ \ \ / / _ \ '_ \ / _` | '_ \ / __/ _ \ -->
- <!--  ___) |  | |   | | | (_) \ V /  __/ | | | (_| | | | | (_|  __/ -->
- <!-- |____(_) |_|   |_|  \___/ \_/ \___|_| |_|\__,_|_| |_|\___\___| -->
-
 ### Provenance
 
 **`provenance`** *[Optional ; Repeatable]* <br>
@@ -1140,17 +656,6 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
     - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
     @@@@@@@ <br>
 
-
-
-<!--   _  _     _______               -->
-<!--  | || |   |__   __|              -->
-<!--  | || |_     | | __ _  __ _ ___  -->
-<!--  |__   _|    | |/ _` |/ _` / __| -->
-<!--     | |_     | | (_| | (_| \__ \ -->
-<!--     |_(_)    |_|\__,_|\__, |___/ -->
-<!--                        __/ |     -->
-<!--                       |___/      -->
-
 ### Tags
 
 **`tags`** *[Optional ; Repeatable]* <br>
@@ -1161,17 +666,6 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
 A user-defined tag.
 - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
 A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
-
-
-
- <!--  ___    ____  _  _   ___     _     _         _              _           -->
- <!-- |__ \  |___ \| || | / _ \   | |   | |       | |            (_)          -->
- <!--    ) |   __) | || || (_) |  | | __| | __ _  | |_ ___  _ __  _  ___ ___  -->
- <!--   / /   |__ <|__   _> _ <   | |/ _` |/ _` | | __/ _ \| '_ \| |/ __/ __| -->
- <!--  / /_ _ ___) |  | || (_) |  | | (_| | (_| | | || (_) | |_) | | (__\__ \ -->
- <!-- |____(_)____(_) |_| \___(_) |_|\__,_|\__,_|  \__\___/| .__/|_|\___|___/ -->
- <!--                                                      | |                -->
- <!--                                                      |_|                -->
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
 ![](./images/ReDoc_documents_17.JPG){width=100%}  
@@ -1280,16 +774,6 @@ lda_topics = list(
 )
 ```
 
-
- <!--  ___    ____  _  _   ___                   _              _     _ _                  -->
- <!-- |__ \  |___ \| || | / _ \                 | |            | |   | (_)                 -->
- <!--    ) |   __) | || || (_) |   ___ _ __ ___ | |__   ___  __| | __| |_ _ __   __ _ ___  -->
- <!--   / /   |__ <|__   _\__, |  / _ \ '_ ` _ \| '_ \ / _ \/ _` |/ _` | | '_ \ / _` / __| -->
- <!--  / /_ _ ___) |  | |   / /  |  __/ | | | | | |_) |  __/ (_| | (_| | | | | | (_| \__ \ -->
- <!-- |____(_)____(_) |_|  /_(_)  \___|_| |_| |_|_.__/ \___|\__,_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                                            __/ |     -->
- <!--                                                                           |___/      -->
-
 - **`embeddings`** *[Optional ; Repeatable]* <br>
 In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings and their use in implementation of semantic search tools. Word embedding models convert text (words, phrases, documents) into large-dimension numeric vectors (e.g., a vector of 100 or 200 numbers) that are representative of the semantic content of the text. The vectors are generated by submitting a text to a pre-trained word embedding model (possibly via an API). 
   
@@ -1307,15 +791,6 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
   The date the model was trained (or a version date for the model).
   - **`vector`** *[Required ; Not repeatable ; @@@@]* 
   The numeric vector representing the series metadata. <br><br>
-
-
-
- <!--  _____                _     _ _ _   _                   _  -->
- <!-- | ____|      /\      | |   | (_) | (_)                 | | -->
- <!-- | |__       /  \   __| | __| |_| |_ _  ___  _ __   __ _| | -->
- <!-- |___ \     / /\ \ / _` |/ _` | | __| |/ _ \| '_ \ / _` | | -->
- <!--  ___) |   / ____ \ (_| | (_| | | |_| | (_) | | | | (_| | | -->
- <!-- |____(_) /_/    \_\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| -->
                                                  
 ### Additional
 
@@ -1325,15 +800,66 @@ The `additional` element allows data curators to add their own metadata elements
 ![](./images/ReDoc_ts_series_49.JPG){width=100%}
 
 
-
 ## Generating and publishing compliant metadata - Complete example
 
 We use a series from the World Bank's World Development Indicators (WDI 2021) as an example: the series ["Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)"](https://databank.worldbank.org/source/millennium-development-goals/Series/SI.POV.DDAY)
 
-
 :::note
 Note that we only show how metadata are generated and published in a NADA catalog. We do not demonstrate the (optional) publishing of the underlying data in a MongoDB database, which makes the data accessible via API and allows activation of data visualizations in the NADA catalog. This is covered in the NADA documentation.
 :::
+
+
+### Use of AI for metadata augmentation
+
+The discoverability of indicators by keyword-based search engines can be significantly improved by the inclusion of a list of relevant keywords in the metadata. These keywords can be synonyms or terms and concepts that are closely associated with the indicator. Identifying the most relevant related keywords requires subject matter expertise. But this can be considerably facilitated by the use of AI tools. We provide below an example of a query submitted to chatGPT. The proposed terms returned by the application MUST be reviewed by a subject matter expert. But having the proposed list (which can be copy-pasted then edited in a Metadata Editor or in a script) will make the process very efficient.
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230427783-28276a6c-a284-423c-9205-3ab4ce2d465b.png)
+</center>
+<br>
+
+The returned list is as follows:
+Poverty
+Headcount ratio
+Income
+Consumption
+Living standards
+Basic needs
+Poverty line
+Purchasing power parity (PPP)
+International poverty line
+Economic development
+Social inequality
+Human development
+Poverty reduction
+Extreme poverty
+Global poverty
+Developing countries
+Wealth distribution
+Rural poverty
+Urban poverty
+Household income
+Inclusive growth
+Multidimensional poverty
+Income inequality
+Poverty gap
+Human capital
+Poverty trap
+Food security
+Employment
+Vulnerability
+Social protection
+Poverty measurement
+Poverty alleviation
+Social exclusion
+Targeted interventions
+Poverty incidence
+Poverty dynamics
+Poverty cycle
+Equity
+Income distribution
+Sustainable development
 
 
 ### Using R 
