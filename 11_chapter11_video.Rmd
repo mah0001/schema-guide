@@ -23,21 +23,13 @@ When published in a NADA catalog, the metadata related to video files will appea
 <br>
 ![](./images/Video_NADA_tabs.JPG){width=100%}
 <br>
-
- <!--                                           _   _              -->
- <!--     /\                                   | | (_)             -->
- <!--    /  \  _   _  __ _ _ __ ___   ___ _ __ | |_ _ _ __   __ _  -->
- <!--   / /\ \| | | |/ _` | '_ ` _ \ / _ \ '_ \| __| | '_ \ / _` | -->
- <!--  / ____ \ |_| | (_| | | | | | |  __/ | | | |_| | | | | (_| | -->
- <!-- /_/    \_\__,_|\__, |_| |_| |_|\___|_| |_|\__|_|_| |_|\__, | -->
- <!--                 __/ |                                  __/ | -->
- <!--                |___/                                  |___/  -->
+ 
  
 ## Augmenting video metadata
 
 Videos typically come with limited metadata. To make them more discoverable, a transcription of the video content can be generated, stored, and indexed in the catalog. The metadata schema we propose includes an element `transcription` that can store transcriptions (and possibly their automatically-generated translations) in the video metadata. Word embedding models and topic models can be applied to the transcriptions to further augment the metadata. This will significantly increase the discoverability of the resource, and offer the possibility to apply semantic searchability on video metadata. 
 
-Machine learning speech-to-text solutions are available (although not for all languages) to automatically generate transcriptions at a low cost. This includes commercial applications like [Microsoft Azure](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/)'s , [Google Cloud](https://cloud.google.com/speech-to-text), [Amazon Transcribe](https://aws.amazon.com/transcribe/pricing/), or [IBM Watson](https://www.ibm.com/cloud/watson-speech-to-text). Open source solutions in Python also exist. 
+Machine learning speech-to-text solutions are available (although not for all languages) to automatically generate transcriptions at a low cost. This includes commercial applications like [Whisper by openAI](https://openai.com/research/whisper), [Microsoft Azure](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/), or [Amazon Transcribe](https://aws.amazon.com/transcribe/pricing/). Open source solutions in Python also exist. 
 
 Transcriptions of videos published on Youtube are available on-line (the example below was extracted from https://www.youtube.com/watch?v=Axs8NPVYmms).
    
@@ -52,13 +44,6 @@ Note that some care must be taken when adding automatic speech transcriptions in
 <br>
 
 
- <!--   _____      _                           -->
- <!--  / ____|    | |                          -->
- <!-- | (___   ___| |__   ___ _ __ ___   __ _  -->
- <!--  \___ \ / __| '_ \ / _ \ '_ ` _ \ / _` | -->
- <!--  ____) | (__| | | |  __/ | | | | | (_| | -->
- <!-- |_____/ \___|_| |_|\___|_| |_| |_|\__,_| -->
- 
 ## Schema description 
 
 The first three elements of the schema (`repositoryid`, `published`, and `overwrite`) are not part of the video metadata. They are parameters used to indicate how the video metadata will be published in a NADA catalog. 
@@ -69,13 +54,6 @@ The first three elements of the schema (`repositoryid`, `published`, and `overwr
 
 - **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same video can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that a video will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element `video_description > idno` is the same.
 
-
- <!--  __  __      _            _       _         -->
- <!-- |  \/  |    | |          | |     | |        -->
- <!-- | \  / | ___| |_ __ _  __| | __ _| |_ __ _  -->
- <!-- | |\/| |/ _ \ __/ _` |/ _` |/ _` | __/ _` | -->
- <!-- | |  | |  __/ || (_| | (_| | (_| | || (_| | -->
- <!-- |_|  |_|\___|\__\__,_|\__,_|\__,_|\__\__,_| -->
 
 ### Metadata information
  
@@ -108,26 +86,13 @@ Date the metadata (not the table) was produced.<br>
 - **`version`** *[Optional ; Not repeatable ; String]* <br> 
 Version of the metadata (not version of the table).<br>
 
-
- <!-- __      ___     _                  _                 -->
- <!-- \ \    / (_)   | |                | |                -->
- <!--  \ \  / / _  __| | ___  ___     __| | ___  ___  ___  -->
- <!--   \ \/ / | |/ _` |/ _ \/ _ \   / _` |/ _ \/ __|/ __| -->
- <!--    \  /  | | (_| |  __/ (_) | | (_| |  __/\__ \ (__  -->
- <!--     \/   |_|\__,_|\___|\___/   \__,_|\___||___/\___| -->
-
+ 
 ### Video description                                                     
 
 **`video_description`** *[Required ; Not Repeatable]* <br>
 The `video_description` section contains all elements that will be used to describe the video and its content. These are the elements that will be indexed and made searchable when published in a data catalog.
 
- <!--  _     _              -->
- <!-- (_)   | |             -->
- <!--  _  __| |_ __   ___   -->
- <!-- | |/ _` | '_ \ / _ \  -->
- <!-- | | (_| | | | | (_) | -->
- <!-- |_|\__,_|_| |_|\___/  -->
-                      
+                       
 - **`idno`** *[Mandatory, Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_videos_02.JPG){width=100%}
@@ -136,14 +101,6 @@ The `video_description` section contains all elements that will be used to descr
   `idno` is an identification number that is used to uniquely identify a video in a catalog. It will also help users of the data cite the video properly. The best option is to obtain a [Digital Object Identifier (DOI)](https://www.doi.org/) for the video, as it will ensure that the ID is unique globally. Alternatively, it can be an identifier constructed by an organization using a consistent scheme. Note that the schema allows you to provide more than one identifier for a video (see `identifiers` below). This element maps to the “identifier” element in the Dublin Core. 
 
 
-
- <!--  _     _            _   _  __ _                -->
- <!-- (_)   | |          | | (_)/ _(_)               -->
- <!--  _  __| | ___ _ __ | |_ _| |_ _  ___ _ __ ___  -->
- <!-- | |/ _` |/ _ \ '_ \| __| |  _| |/ _ \ '__/ __| -->
- <!-- | | (_| |  __/ | | | |_| | | | |  __/ |  \__ \ -->
- <!-- |_|\__,_|\___|_| |_|\__|_|_| |_|\___|_|  |___/ -->
- 
 - **`identifiers`** *[Optional ; Repeatable]* <br>  
 <br>
 ![](./images/ReDoc_videos_03.JPG){width=100%}
@@ -155,13 +112,7 @@ The `video_description` section contains all elements that will be used to descr
   - **`value`** *[Required ; Not repeatable ; String]* <br>
   The identifier. <br><br>
 
- <!--  _   _ _   _       -->
- <!-- | | (_) | | |      -->
- <!-- | |_ _| |_| | ___  -->
- <!-- | __| | __| |/ _ \ -->
- <!-- | |_| | |_| |  __/ -->
- <!--  \__|_|\__|_|\___| -->
-
+ 
 - **`title`** *[Required ; Not repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_videos_04.JPG){width=100%}
@@ -169,13 +120,7 @@ The `video_description` section contains all elements that will be used to descr
 
   The title of the video. This element maps to the element *caption* in VideoObject. 
 
- <!--        _ _     _   _ _   _       -->
- <!--       | | |   | | (_) | | |      -->
- <!--   __ _| | |_  | |_ _| |_| | ___  -->
- <!--  / _` | | __| | __| | __| |/ _ \ -->
- <!-- | (_| | | |_  | |_| | |_| |  __/ -->
- <!--  \__,_|_|\__|  \__|_|\__|_|\___| -->
- 
+  
 - **`alt_title`** *[Optional ; Not repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_videos_05.JPG){width=100%}
@@ -183,14 +128,6 @@ The `video_description` section contains all elements that will be used to descr
 
   An alias for the video title. This element maps to the element *alternateName* in VideoObject.
 
- <!--      _                     _       _   _              -->
- <!--     | |                   (_)     | | (_)             -->
- <!--   __| | ___  ___  ___ _ __ _ _ __ | |_ _  ___  _ __   -->
- <!--  / _` |/ _ \/ __|/ __| '__| | '_ \| __| |/ _ \| '_ \  -->
- <!-- | (_| |  __/\__ \ (__| |  | | |_) | |_| | (_) | | | | -->
- <!--  \__,_|\___||___/\___|_|  |_| .__/ \__|_|\___/|_| |_| -->
- <!--                             | |                       -->
- <!--                             |_|                       -->
  
 - **`description`** *[Optional ; Not repeatable ; String]* <br>
 <br>
@@ -199,14 +136,6 @@ The `video_description` section contains all elements that will be used to descr
 
   A brief description of the video, typically about a paragraph long (around 150 to 250 words). This element maps to the element *abstract* in VideoObject.
 
-
-
- <!--   __ _  ___ _ __  _ __ ___  -->
- <!--  / _` |/ _ \ '_ \| '__/ _ \ -->
- <!-- | (_| |  __/ | | | | |  __/ -->
- <!--  \__, |\___|_| |_|_|  \___| -->
- <!--   __/ |                     -->
- <!--  |___/                      -->
  
 - **`genre`** *[Optional ; Repeatable ; String]* <br>
 <br>
@@ -215,16 +144,6 @@ The `video_description` section contains all elements that will be used to descr
 
   The genre of the video, broadcast channel or group. This is a VideoObject element. A controlled vocabulary can be used.
 
-
-
- <!--  _                                    _      -->
- <!-- | |                                  | |     -->
- <!-- | | _____ _   ___      _____  _ __ __| |___  -->
- <!-- | |/ / _ \ | | \ \ /\ / / _ \| '__/ _` / __| -->
- <!-- |   <  __/ |_| |\ V  V / (_) | | | (_| \__ \ -->
- <!-- |_|\_\___|\__, | \_/\_/ \___/|_|  \__,_|___/ -->
- <!--            __/ |                             -->
- <!--           |___/                              -->
  
 - **`keywords`** *[Optional ; Repeatable]* <br>  
 <br>
@@ -272,16 +191,6 @@ my_video <- list(
 )  
 ```  
 
-
-
- <!--  _              _           -->
- <!-- | |            (_)          -->
- <!-- | |_ ___  _ __  _  ___ ___  -->
- <!-- | __/ _ \| '_ \| |/ __/ __| -->
- <!-- | || (_) | |_) | | (__\__ \ -->
- <!--  \__\___/| .__/|_|\___|___/ -->
- <!--          | |                -->
- <!--          |_|                -->
  
 - **`topics`** *[Optional ; Repeatable]* <br>   
 <br>
@@ -349,15 +258,6 @@ my_video <- list(
 )  
 ```
 
-
-
-
- <!--  _ __   ___ _ __ ___  ___  _ __  ___  -->
- <!-- | '_ \ / _ \ '__/ __|/ _ \| '_ \/ __| -->
- <!-- | |_) |  __/ |  \__ \ (_) | | | \__ \ -->
- <!-- | .__/ \___|_|  |___/\___/|_| |_|___/ -->
- <!-- | |                                   -->
- <!-- |_|                                   -->
  
 - **`persons`** *[Optional ; Repeatable]* <br>
 <br>
@@ -392,17 +292,6 @@ video_description = list(
 ) 
 ```
 
-
-
-
- <!--                  _                    _   _ _          -->
- <!--                 (_)                  | | (_) |         -->
- <!--  _ __ ___   __ _ _ _ __     ___ _ __ | |_ _| |_ _   _  -->
- <!-- | '_ ` _ \ / _` | | '_ \   / _ \ '_ \| __| | __| | | | -->
- <!-- | | | | | | (_| | | | | | |  __/ | | | |_| | |_| |_| | -->
- <!-- |_| |_| |_|\__,_|_|_| |_|  \___|_| |_|\__|_|\__|\__, | -->
- <!--                                                  __/ | -->
- <!--                                                 |___/  -->
  
 - **`main_entity`** *[Optional ; Not repeatable ; String]* <br> 
 <br>
@@ -411,15 +300,6 @@ video_description = list(
 
   Indicates the primary entity described in the video. This element maps to the element `mainEntity` in VideoObject. 
 
-
-
-
- <!--      _       _                             _           _  -->
- <!--     | |     | |                           | |         | | -->
- <!--   __| | __ _| |_ ___    ___ _ __ ___  __ _| |_ ___  __| | -->
- <!--  / _` |/ _` | __/ _ \  / __| '__/ _ \/ _` | __/ _ \/ _` | -->
- <!-- | (_| | (_| | ||  __/ | (__| | |  __/ (_| | ||  __/ (_| | -->
- <!--  \__,_|\__,_|\__\___|  \___|_|  \___|\__,_|\__\___|\__,_| -->
  
 - **`date_created`** *[Optional, Not Repeatable ; String]* <br>
 <br>
@@ -428,16 +308,6 @@ video_description = list(
 
   The date the video was created. It is recommended to enter the date in the ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). The date the video is created refers to the date that the video was produced and considered ready for dissemination. 
 
-
-
- <!--      _       _                     _     _ _     _              _  -->
- <!--     | |     | |                   | |   | (_)   | |            | | -->
- <!--   __| | __ _| |_ ___   _ __  _   _| |__ | |_ ___| |__   ___  __| | -->
- <!--  / _` |/ _` | __/ _ \ | '_ \| | | | '_ \| | / __| '_ \ / _ \/ _` | -->
- <!-- | (_| | (_| | ||  __/ | |_) | |_| | |_) | | \__ \ | | |  __/ (_| | -->
- <!--  \__,_|\__,_|\__\___| | .__/ \__,_|_.__/|_|_|___/_| |_|\___|\__,_| -->
- <!--                       | |                                          -->
- <!--                       |_|                                          -->
  
 - **`date_published`** *[Optional, Not Repeatable ; String]* <br>
 <br>
@@ -447,14 +317,6 @@ video_description = list(
   The date the video was published. It is recommended to use the ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). 
 
 
-
- <!--                     _              -->
- <!--                    (_)             -->
- <!-- __   _____ _ __ ___ _  ___  _ __   -->
- <!-- \ \ / / _ \ '__/ __| |/ _ \| '_ \  -->
- <!--  \ V /  __/ |  \__ \ | (_) | | | | -->
- <!--   \_/ \___|_|  |___/_|\___/|_| |_| -->
-
 - **`version`** *[Optional, Not Repeatable ; String]* <br>
 <br>
 ![](./images/ReDoc_videos_14.JPG){width=100%}
@@ -462,14 +324,6 @@ video_description = list(
 
   The version of the video refers to the published version of the video.
 
-
-
- <!--      _        _              -->
- <!--     | |      | |             -->
- <!--  ___| |_ __ _| |_ _   _ ___  -->
- <!-- / __| __/ _` | __| | | / __| -->
- <!-- \__ \ || (_| | |_| |_| \__ \ -->
- <!-- |___/\__\__,_|\__|\__,_|___/ -->
  
 - **`status`** *[Optional ; Not repeatable, String]* <br> 
 <br>
@@ -478,16 +332,6 @@ video_description = list(
 
   The status of the video in terms of its stage in a lifecycle. A controlled vocabulary should be used. Example terms include {`Incomplete, Draft, Published, Obsolete`}. Some organizations define a set of terms for the stages of their publication lifecycle. This element maps to the element *creativeWorkStatus* in VideoObject. 
 
-
-
- <!--                        _               -->
- <!--                       | |              -->
- <!--   ___ ___  _   _ _ __ | |_ _ __ _   _  -->
- <!--  / __/ _ \| | | | '_ \| __| '__| | | | -->
- <!-- | (_| (_) | |_| | | | | |_| |  | |_| | -->
- <!--  \___\___/ \__,_|_| |_|\__|_|   \__, | -->
- <!--                                  __/ | -->
- <!--                                 |___/  -->
 
 - **`country`** *[Optional ; Repeatable]* <br>   
 <br>
@@ -500,16 +344,6 @@ video_description = list(
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The country/region code (entered as a string, even for numeric codes). It is recommended to use a standard list of countries and regions, such as the ISO country list ([ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)).
 
-
-
- <!--                  _   _       _                                            -->
- <!--                 | | (_)     | |                                           -->
- <!--  ___ _ __   __ _| |_ _  __ _| |   ___ _____   _____ _ __ __ _  __ _  ___  -->
- <!-- / __| '_ \ / _` | __| |/ _` | |  / __/ _ \ \ / / _ \ '__/ _` |/ _` |/ _ \ -->
- <!-- \__ \ |_) | (_| | |_| | (_| | | | (_| (_) \ V /  __/ | | (_| | (_| |  __/ -->
- <!-- |___/ .__/ \__,_|\__|_|\__,_|_|  \___\___/ \_/ \___|_|  \__,_|\__, |\___| -->
- <!--     | |                                                        __/ |      -->
- <!--     |_|                                                       |___/       -->
  
 - **`spatial_coverage`** *[Optional ; Not repeatable ; String]* <br> 
 <br>
@@ -518,15 +352,6 @@ video_description = list(
 
   Indicates the place(s) which are depicted or described in the video. This element maps to the element `contentLocation` in VideoObject. This element complements the `ref_country` element. It can be used to qualify the geographic coverage of the video, in the form of a free text. 
 
-
-  
-  
- <!--                  _             _               __   _   _                 -->
- <!--                 | |           | |             / _| | | (_)                -->
- <!--   ___ ___  _ __ | |_ ___ _ __ | |_   _ __ ___| |_  | |_ _ _ __ ___   ___  -->
- <!--  / __/ _ \| '_ \| __/ _ \ '_ \| __| | '__/ _ \  _| | __| | '_ ` _ \ / _ \ -->
- <!-- | (_| (_) | | | | ||  __/ | | | |_  | | |  __/ |   | |_| | | | | | |  __/ -->
- <!--  \___\___/|_| |_|\__\___|_| |_|\__| |_|  \___|_|    \__|_|_| |_| |_|\___| -->
  
 - **`content_reference_time`** *[Optional ; Not repeatable ; String]* <br>
 <br>
@@ -535,16 +360,6 @@ video_description = list(
 
   The specific time described by the video, for works that emphasize a particular moment within an event. This element maps to the element `contentReferenceTime` in VideoObject. 
 
-
-
- <!--  _                                       _  -->
- <!-- | |                                     | | -->
- <!-- | |_ ___ _ __ ___  _ __   ___  _ __ __ _| | -->
- <!-- | __/ _ \ '_ ` _ \| '_ \ / _ \| '__/ _` | | -->
- <!-- | ||  __/ | | | | | |_) | (_) | | | (_| | | -->
- <!--  \__\___|_| |_| |_| .__/ \___/|_|  \__,_|_| -->
- <!--                   | |                       -->
- <!--                   |_|                       -->
  
 - **`temporal_coverage`** *[Optional ; Not repeatable ; String]* <br>
 <br>
@@ -553,14 +368,6 @@ video_description = list(
 
   Indicates the period that the video applies to, i.e. that it describes, either as a DateTime or as a textual string indicating a time period in ISO 8601 time interval format. This element maps to the element `temporalCoverage` in VideoObject.
 
-
-
- <!--                             _          _         _    -->
- <!--                            | |        | |       | |   -->
- <!--  _ __ ___  ___ ___  _ __ __| | ___  __| |   __ _| |_  -->
- <!-- | '__/ _ \/ __/ _ \| '__/ _` |/ _ \/ _` |  / _` | __| -->
- <!-- | | |  __/ (_| (_) | | | (_| |  __/ (_| | | (_| | |_  -->
- <!-- |_|  \___|\___\___/|_|  \__,_|\___|\__,_|  \__,_|\__| -->
  
 - **`recorded_at`** *[Optional ; Not repeatable ; String]* <br>
 <br>
@@ -569,15 +376,6 @@ video_description = list(
 
   This element maps to the element `recordedAt` in VideoObject schema. It identifies the event where the video was recorded (e.g., a conference, or a demonstration). 
 
-
-
-
- <!--                  _ _                      -->
- <!--                 | (_)                     -->
- <!--   __ _ _   _  __| |_  ___ _ __   ___ ___  -->
- <!--  / _` | | | |/ _` | |/ _ \ '_ \ / __/ _ \ -->
- <!-- | (_| | |_| | (_| | |  __/ | | | (_|  __/ -->
- <!--  \__,_|\__,_|\__,_|_|\___|_| |_|\___\___| -->
  
 - **`audience`** *[Optional ; Not repeatable ; String]* <br>
 <br>
@@ -586,15 +384,6 @@ video_description = list(
 
   A brief description of the intended audience of the video, i.e. the group for whom it was created.
 
-
-
-
- <!--  _     _                -->
- <!-- | |   | |               -->
- <!-- | |__ | |__   _____  __ -->
- <!-- | '_ \| '_ \ / _ \ \/ / -->
- <!-- | |_) | |_) | (_) >  <  -->
- <!-- |_.__/|_.__/ \___/_/\_\ -->
  
 - **`bbox`** *[Optional ; Repeatable]* <br>   
 <br>
@@ -611,16 +400,6 @@ video_description = list(
   - **`north`** *[Required ; Not repeatable ; String]* <br>
   North latitude of the box
   
-
-
- <!--  _                                                -->
- <!-- | |                                               -->
- <!-- | | __ _ _ __   __ _ _   _  __ _  __ _  ___  ___  -->
- <!-- | |/ _` | '_ \ / _` | | | |/ _` |/ _` |/ _ \/ __| -->
- <!-- | | (_| | | | | (_| | |_| | (_| | (_| |  __/\__ \ -->
- <!-- |_|\__,_|_| |_|\__, |\__,_|\__,_|\__, |\___||___/ -->
- <!--                 __/ |             __/ |           -->
- <!--                |___/             |___/            -->
  
 - **`language`** *[Optional, Repeatable]* <br>   
 <br>
@@ -633,15 +412,6 @@ video_description = list(
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code of the language. The use of [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) (the alpha-3 code in Codes for the representation of names of languages) is recommended. Numeric codes must be entered as strings. <br><br>
 
-
-
-
- <!--                      _              -->
- <!--                     | |             -->
- <!--   ___ _ __ ___  __ _| |_ ___  _ __  -->
- <!--  / __| '__/ _ \/ _` | __/ _ \| '__| -->
- <!-- | (__| | |  __/ (_| | || (_) | |    -->
- <!--  \___|_|  \___|\__,_|\__\___/|_|    -->
  
 - **`creator`** *[Optional, Not repeatable ; String]* <br>	 
 <br>
@@ -649,17 +419,6 @@ video_description = list(
 <br>
 Organization or person who created/authored the video. 
 
-
-
-
- <!--                      _                                                -->
- <!--                     | |                                               -->
- <!--  _ __  _ __ ___   __| |   ___ ___  _ __ ___  _ __   __ _ _ __  _   _  -->
- <!-- | '_ \| '__/ _ \ / _` |  / __/ _ \| '_ ` _ \| '_ \ / _` | '_ \| | | | -->
- <!-- | |_) | | | (_) | (_| | | (_| (_) | | | | | | |_) | (_| | | | | |_| | -->
- <!-- | .__/|_|  \___/ \__,_|  \___\___/|_| |_| |_| .__/ \__,_|_| |_|\__, | -->
- <!-- | |                                         | |                 __/ | -->
- <!-- |_|                                         |_|                |___/  -->
  
 - **`production_company`** *[Optional, Not repeatable ; String]* <br>   
 <br>
@@ -668,17 +427,6 @@ Organization or person who created/authored the video.
 
   The production company or studio responsible for the item. This element maps to the element *productionCompany* in VideoObject.
 
-
-
-
- <!--              _     _ _     _                -->
- <!--             | |   | (_)   | |               -->
- <!--  _ __  _   _| |__ | |_ ___| |__   ___ _ __  -->
- <!-- | '_ \| | | | '_ \| | / __| '_ \ / _ \ '__| -->
- <!-- | |_) | |_| | |_) | | \__ \ | | |  __/ |    -->
- <!-- | .__/ \__,_|_.__/|_|_|___/_| |_|\___|_|    -->
- <!-- | |                                         -->
- <!-- |_|                                         -->
  
 - **`publisher`** *[Optional, Not repeatable ; String]* <br>   
 <br>
@@ -697,15 +445,6 @@ my_video = list(
 )
 ```
 
-
- <!--                           _ _                    -->
- <!--                          (_) |                   -->
- <!--  _ __ ___ _ __   ___  ___ _| |_ ___  _ __ _   _  -->
- <!-- | '__/ _ \ '_ \ / _ \/ __| | __/ _ \| '__| | | | -->
- <!-- | | |  __/ |_) | (_) \__ \ | || (_) | |  | |_| | -->
- <!-- |_|  \___| .__/ \___/|___/_|\__\___/|_|   \__, | -->
- <!--          | |                               __/ | -->
- <!--          |_|                              |___/  -->
  
 - **`repository`** *[Optional ; Not repeatable ; String]* <br>
 <br>
@@ -713,16 +452,7 @@ my_video = list(
 <br>
 
   The name of the repository (organization).
-
-
-
- <!--                  _             _        -->
- <!--                 | |           | |       -->
- <!--   ___ ___  _ __ | |_ __ _  ___| |_ ___  -->
- <!--  / __/ _ \| '_ \| __/ _` |/ __| __/ __| -->
- <!-- | (_| (_) | | | | || (_| | (__| |_\__ \ -->
- <!--  \___\___/|_| |_|\__\__,_|\___|\__|___/ -->
-                                 
+                               
 
 - **`contacts`** *[Optional, Repeatable]* <br>   
 Users of the video may need further clarification and information. This section may include the name-affiliation-email-URI of one or multiple contact persons. This block of elements will identify contact persons who can be used as resource persons regarding problems or questions raised by the user community. The URI attribute should be used to indicate a URN or URL for the homepage of the contact individual. The email attribute is used to indicate an email address for the contact individual. It is recommended to avoid putting the actual name of individuals. The information provided here should be valid for the long term. It is therefore preferable to identify contact persons by a title. The same applies for the email field. Ideally, a "generic" email address should be provided. It is easy to configure a mail server in such a way that all messages sent to the generic email address would be automatically forwarded to some staff members.
@@ -743,15 +473,7 @@ Users of the video may need further clarification and information. This section 
   - **`uri`** *[Optional, Not repeatable, String]* <br>
   A link to a website where contact information for `name` can be found.<br><br>
   
-  
-
- <!--                  _        _ _           _                  -->
- <!--                 | |      (_) |         | |                 -->
- <!--   ___ ___  _ __ | |_ _ __ _| |__  _   _| |_ ___  _ __ ___  -->
- <!--  / __/ _ \| '_ \| __| '__| | '_ \| | | | __/ _ \| '__/ __| -->
- <!-- | (_| (_) | | | | |_| |  | | |_) | |_| | || (_) | |  \__ \ -->
- <!--  \___\___/|_| |_|\__|_|  |_|_.__/ \__,_|\__\___/|_|  |___/ -->
- 
+   
 - **`contributors`** *[Optional, Repeatable]* <br> 
 <br>
 ![](./images/ReDoc_videos_26.JPG){width=100%}
@@ -789,13 +511,6 @@ my_video = list(
 ```
                                              
 
- <!--  ___ _ __   ___  _ __  ___  ___  _ __ ___  -->
- <!-- / __| '_ \ / _ \| '_ \/ __|/ _ \| '__/ __| -->
- <!-- \__ \ |_) | (_) | | | \__ \ (_) | |  \__ \ -->
- <!-- |___/ .__/ \___/|_| |_|___/\___/|_|  |___/ -->
- <!--     | |                                    -->
- <!--     |_|                                    -->
-
 - **`sponsors`** *[Optional ; Repeatable]* <br> 
 <br>
 ![](./images/ReDoc_videos_28.JPG){width=100%}
@@ -811,15 +526,7 @@ my_video = list(
   - **`role`** *[Optional ; Not repeatable ; String]* <br>
   The specific role of the sponsor. <br><br>
   
-  
-  
- <!--  _                       _       _                  -->
- <!-- | |                     | |     | |                 -->
- <!-- | |_ _ __ __ _ _ __  ___| | __ _| |_ ___  _ __ ___  -->
- <!-- | __| '__/ _` | '_ \/ __| |/ _` | __/ _ \| '__/ __| -->
- <!-- | |_| | | (_| | | | \__ \ | (_| | || (_) | |  \__ \ -->
- <!--  \__|_|  \__,_|_| |_|___/_|\__,_|\__\___/|_|  |___/ -->
-    
+      
 - **`translators`** *[Optional ; Repeatable]* <br>   
 <br>
 ![](./images/ReDoc_videos_29.JPG){width=100%}
@@ -835,15 +542,6 @@ my_video = list(
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
   The affiliation of the translator. <br><br>
 
-
-
-
- <!--  _       _                        _                -->
- <!-- (_)     | |                      | |               -->
- <!--  _ ___  | |__   __ _ ___  ___  __| |   ___  _ __   -->
- <!-- | / __| | '_ \ / _` / __|/ _ \/ _` |  / _ \| '_ \  -->
- <!-- | \__ \ | |_) | (_| \__ \  __/ (_| | | (_) | | | | -->
- <!-- |_|___/ |_.__/ \__,_|___/\___|\__,_|  \___/|_| |_| -->
  
 - **`is_based_on`** *[Optional ; Not repeatable, String]* <br>
 <br>
@@ -852,15 +550,6 @@ my_video = list(
 
   A resource from which this video is derived or from which it is a modification or adaption. This element maps to the element *isBasedOn* in VideoObject. 
 
-
- <!--  _                        _            __  -->
- <!-- (_)                      | |          / _| -->
- <!--  _ ___   _ __   __ _ _ __| |_    ___ | |_  -->
- <!-- | / __| | '_ \ / _` | '__| __|  / _ \|  _| -->
- <!-- | \__ \ | |_) | (_| | |  | |_  | (_) | |   -->
- <!-- |_|___/ | .__/ \__,_|_|   \__|  \___/|_|   -->
- <!--         | |                                -->
- <!--         |_|                                -->
  
 - **`is_part_of`** *[Optional ; Not repeatable, String]* <br>
 <br>
@@ -869,13 +558,6 @@ my_video = list(
 
   Indicates another video that this video is part of. This element maps to the element *isPartOf* in VideoObject. 
 
-
- <!--           _       _   _              -->
- <!--          | |     | | (_)             -->
- <!--  _ __ ___| | __ _| |_ _  ___  _ __   -->
- <!-- | '__/ _ \ |/ _` | __| |/ _ \| '_ \  -->
- <!-- | | |  __/ | (_| | |_| | (_) | | | | -->
- <!-- |_|  \___|_|\__,_|\__|_|\___/|_| |_| -->
  
 - **`relations`** *[Optional ; Repeatable, String]* <br>   
 <br>
@@ -885,15 +567,6 @@ my_video = list(
   Defines, as a free text field, the relation between the video being documented and other resources. This is a Dublin Core element.
 
 
- <!--        _     _                                   _     _            -->
- <!--       (_)   | |                                 (_)   | |           -->
- <!-- __   ___  __| | ___  ___    _ __  _ __ _____   ___  __| | ___ _ __  -->
- <!-- \ \ / / |/ _` |/ _ \/ _ \  | '_ \| '__/ _ \ \ / / |/ _` |/ _ \ '__| -->
- <!--  \ V /| | (_| |  __/ (_) | | |_) | | | (_) \ V /| | (_| |  __/ |    -->
- <!--   \_/ |_|\__,_|\___|\___/  | .__/|_|  \___/ \_/ |_|\__,_|\___|_|    -->
- <!--                            | |                                      -->
- <!--                            |_|                                      -->
-
 - **`video_provider`** *[Optional ; Not repeatable, String]* <br>
 <br>
 ![](./images/ReDoc_videos_34.JPG){width=100%}
@@ -901,14 +574,6 @@ my_video = list(
 
   The person or organization who provides the video. This element maps to the element *provider* in VideoObject. 
 
-
-
- <!--        _     _                         _  -->
- <!--       (_)   | |                       | | -->
- <!-- __   ___  __| | ___  ___    _   _ _ __| | -->
- <!-- \ \ / / |/ _` |/ _ \/ _ \  | | | | '__| | -->
- <!--  \ V /| | (_| |  __/ (_) | | |_| | |  | | -->
- <!--   \_/ |_|\__,_|\___|\___/   \__,_|_|  |_| -->
                                           
 - **`video_url`** *[Optional ; Not repeatable, String]* <br>
 <br>
@@ -917,14 +582,6 @@ my_video = list(
 
   URL of the video. This element maps to the element *url* in VideoObject.
 
-
-
- <!--                 _              _              _  -->
- <!--                | |            | |            | | -->
- <!--   ___ _ __ ___ | |__   ___  __| |  _   _ _ __| | -->
- <!--  / _ \ '_ ` _ \| '_ \ / _ \/ _` | | | | | '__| | -->
- <!-- |  __/ | | | | | |_) |  __/ (_| | | |_| | |  | | -->
- <!--  \___|_| |_| |_|_.__/ \___|\__,_|  \__,_|_|  |_| -->
  
 - **`embed_url`** *[Optional ; Not repeatable, String]* <br>  
 <br>
@@ -939,16 +596,6 @@ my_video = list(
   ![](./images/ReDoc_videos_46.JPG){width=100%}
   <br>
 
-
-
- <!--                           _ _              -->
- <!--                          | (_)             -->
- <!--   ___ _ __   ___ ___   __| |_ _ __   __ _  -->
- <!--  / _ \ '_ \ / __/ _ \ / _` | | '_ \ / _` | -->
- <!-- |  __/ | | | (_| (_) | (_| | | | | | (_| | -->
- <!--  \___|_| |_|\___\___/ \__,_|_|_| |_|\__, | -->
- <!--                                      __/ | -->
- <!--                                     |___/  -->
  
 - **`encoding_format`**  *[Optional ; Not repeatable, String]* <br> 
 <br>
@@ -957,14 +604,6 @@ my_video = list(
 
   The video file format, typically expressed using a MIME format. This element corresponds to the "encodingFormat" element of VideoObject and maps to the element *format* of the Dublin Core.
 
-
-
- <!--      _                 _   _              -->
- <!--     | |               | | (_)             -->
- <!--   __| |_   _ _ __ __ _| |_ _  ___  _ __   -->
- <!--  / _` | | | | '__/ _` | __| |/ _ \| '_ \  -->
- <!-- | (_| | |_| | | | (_| | |_| | (_) | | | | -->
- <!--  \__,_|\__,_|_|  \__,_|\__|_|\___/|_| |_| -->
  
 - **`duration`** *[Optional ; Not repeatable, String]* <br>
 <br>
@@ -1000,17 +639,6 @@ my_video = list(
   :::
   
   
-  
-  
- <!--       _       _     _        -->
- <!--      (_)     | |   | |       -->
- <!--  _ __ _  __ _| |__ | |_ ___  -->
- <!-- | '__| |/ _` | '_ \| __/ __| -->
- <!-- | |  | | (_| | | | | |_\__ \ -->
- <!-- |_|  |_|\__, |_| |_|\__|___/ -->
- <!--          __/ |               -->
- <!--         |___/                -->
-
 - **`rights`** *[Optional ; Not repeatable, String]* <br>
 <br>
 ![](./images/ReDoc_videos_39.JPG){width=100%}
@@ -1018,15 +646,6 @@ my_video = list(
 
   A textual description of the rights associated to the video. If a copyright is available, the three following elements will be used instead of this element. 
 
-
-
-
- <!--              _           _     _            -->
- <!--             | |         | |   | |           -->
- <!--   ___ _ __  | |__   ___ | | __| | ___ _ __  -->
- <!--  / __| '__| | '_ \ / _ \| |/ _` |/ _ \ '__| -->
- <!-- | (__| |    | | | | (_) | | (_| |  __/ |    -->
- <!--  \___|_|    |_| |_|\___/|_|\__,_|\___|_|    -->
  
 - **`copyright_holder`** *[Optional ; Not repeatable, String]* <br>
 <br>
@@ -1035,14 +654,6 @@ my_video = list(
 
   The party holding the legal copyright to the video. This element corresponds to the "copyrightHolder" element of VideoObject.
 
-
-
- <!--                          _   _           -->
- <!--                         | | (_)          -->
- <!--   ___ _ __   _ __   ___ | |_ _  ___ ___  -->
- <!--  / __| '__| | '_ \ / _ \| __| |/ __/ _ \ -->
- <!-- | (__| |    | | | | (_) | |_| | (_|  __/ -->
- <!--  \___|_|    |_| |_|\___/ \__|_|\___\___| -->
  
 - **`copyright_notice`** *[Optional ; Not repeatable, String]* <br>
 <br>
@@ -1051,14 +662,6 @@ my_video = list(
 
   Text of a notice appropriate for describing the copyright aspects of the video, ideally indicating the owner of the copyright. This element corresponds to the "copyrightNotice" element of VideoObject.
 
-
-
- <!--   ___ _ __   _   _  ___  __ _ _ __  -->
- <!--  / __| '__| | | | |/ _ \/ _` | '__| -->
- <!-- | (__| |    | |_| |  __/ (_| | |    -->
- <!--  \___|_|     \__, |\___|\__,_|_|    -->
- <!--               __/ |                 -->
- <!--              |___/                  -->
  
 - **`copyright_year`** *[Optional ; Not repeatable, String]* <br>
 <br>
@@ -1067,14 +670,6 @@ my_video = list(
 
   The year during which the claimed copyright for the video was first asserted. This element corresponds to the "copyrightYear" element of VideoObject.
 
-
-
- <!--                    _ _ _     _            _    -->
- <!--                   | (_) |   | |          | |   -->
- <!--   ___ _ __ ___  __| |_| |_  | |_ _____  _| |_  -->
- <!--  / __| '__/ _ \/ _` | | __| | __/ _ \ \/ / __| -->
- <!-- | (__| | |  __/ (_| | | |_  | ||  __/>  <| |_  -->
- <!--  \___|_|  \___|\__,_|_|\__|  \__\___/_/\_\\__| -->
  
 - **`credit_text`** *[Optional ; Not repeatable, String]* <br>   
 <br>
@@ -1083,15 +678,6 @@ my_video = list(
 
   This element can be used to credit the person(s) and/or organization(s) associated with a published video. This element corresponds to the "creditText" element of VideoObject.
 
-
-
-
- <!--       _ _        _   _              -->
- <!--      (_) |      | | (_)             -->
- <!--   ___ _| |_ __ _| |_ _  ___  _ __   -->
- <!--  / __| | __/ _` | __| |/ _ \| '_ \  -->
- <!-- | (__| | || (_| | |_| | (_) | | | | -->
- <!--  \___|_|\__\__,_|\__|_|\___/|_| |_| -->
  
 - **`citation`** *[Optional ; Not repeatable, String]* <br>   
 <br>
@@ -1100,17 +686,6 @@ my_video = list(
 
   This element provides a required or recommended citation of the audio file.
 
-
-
-
- <!--  _                                 _       _    -->
- <!-- | |                               (_)     | |   -->
- <!-- | |_ _ __ __ _ _ __  ___  ___ _ __ _ _ __ | |_  -->
- <!-- | __| '__/ _` | '_ \/ __|/ __| '__| | '_ \| __| -->
- <!-- | |_| | | (_| | | | \__ \ (__| |  | | |_) | |_  -->
- <!--  \__|_|  \__,_|_| |_|___/\___|_|  |_| .__/ \__| -->
- <!--                                     | |         -->
- <!--                                     |_|         -->
  
 - **`transcript`** *[Optional ; Repeatable, String]* <br>   
 <br>
@@ -1127,14 +702,6 @@ my_video = list(
   The transcript itself. Adding the transcript in the metadata will make the video much more discoverable, as the content of the transcription can be indexed in catalogs.
 
 
-
- <!--                     _ _        -->
- <!--                    | (_)       -->
- <!--  _ __ ___   ___  __| |_  __ _  -->
- <!-- | '_ ` _ \ / _ \/ _` | |/ _` | -->
- <!-- | | | | | |  __/ (_| | | (_| | -->
- <!-- |_| |_| |_|\___|\__,_|_|\__,_| -->
-
 - **`media`** *[Optional ; Repeatable ; String]* <br>        
 <br>
 ![](./images/ReDoc_videos_43d.JPG){width=100%}
@@ -1142,15 +709,6 @@ my_video = list(
 
   A description of the media on which the recording is stored (other than the online file format); e,g., "CD-ROM".    
 
-
-
-
- <!--        _ _                      -->
- <!--       | | |                     -->
- <!--   __ _| | |__  _   _ _ __ ___   -->
- <!--  / _` | | '_ \| | | | '_ ` _ \  -->
- <!-- | (_| | | |_) | |_| | | | | | | -->
- <!--  \__,_|_|_.__/ \__,_|_| |_| |_| -->
  
 - **`album`** *[Optional ; Repeatable]* <br>  
 <br>
@@ -1168,14 +726,6 @@ my_video = list(
   A link (URL) to the album.
 
 
-
- <!--  _ __  _ __ _____   _____ _ __   __ _ _ __   ___ ___  -->
- <!-- | '_ \| '__/ _ \ \ / / _ \ '_ \ / _` | '_ \ / __/ _ \ -->
- <!-- | |_) | | | (_) \ V /  __/ | | | (_| | | | | (_|  __/ -->
- <!-- | .__/|_|  \___/ \_/ \___|_| |_|\__,_|_| |_|\___\___| -->
- <!-- | |                                                   -->
- <!-- |_|                                                   -->
- 
 - **`provenance`** *[Optional ; Repeatable]* <br>  
 <br>
 ![](./images/ReDoc_videos_43.JPG){width=100%}  
@@ -1198,18 +748,7 @@ my_video = list(
     - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
     @@@@@@@ <br><br>
     
-    
-    
-
- <!--  _                   -->
- <!-- | |                  -->
- <!-- | |_ __ _  __ _ ___  -->
- <!-- | __/ _` |/ _` / __| -->
- <!-- | || (_| | (_| \__ \ -->
- <!--  \__\__,_|\__, |___/ -->
- <!--            __/ |     -->
- <!--           |___/      -->
-
+   
 - **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
 <br>
@@ -1221,16 +760,6 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
   - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
   A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
 
-
-
- <!--  ___    ____  _  _   ___     _     _         _              _           -->
- <!-- |__ \  |___ \| || | / _ \   | |   | |       | |            (_)          -->
- <!--    ) |   __) | || || (_) |  | | __| | __ _  | |_ ___  _ __  _  ___ ___  -->
- <!--   / /   |__ <|__   _> _ <   | |/ _` |/ _` | | __/ _ \| '_ \| |/ __/ __| -->
- <!--  / /_ _ ___) |  | || (_) |  | | (_| | (_| | | || (_) | |_) | | (__\__ \ -->
- <!-- |____(_)____(_) |_| \___(_) |_|\__,_|\__,_|  \__\___/| .__/|_|\___|___/ -->
- <!--                                                      | |                -->
- <!--                                                      |_|                -->
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
 ![](./images/ReDoc_documents_17.JPG){width=100%}  
@@ -1278,15 +807,6 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
       The weight of the word in the definition of the topic.<br><br>
 
 
- <!--  ___    ____  _  _   ___                   _              _     _ _                  -->
- <!-- |__ \  |___ \| || | / _ \                 | |            | |   | (_)                 -->
- <!--    ) |   __) | || || (_) |   ___ _ __ ___ | |__   ___  __| | __| |_ _ __   __ _ ___  -->
- <!--   / /   |__ <|__   _\__, |  / _ \ '_ ` _ \| '_ \ / _ \/ _` |/ _` | | '_ \ / _` / __| -->
- <!--  / /_ _ ___) |  | |   / /  |  __/ | | | | | |_) |  __/ (_| | (_| | | | | | (_| \__ \ -->
- <!-- |____(_)____(_) |_|  /_(_)  \___|_| |_| |_|_.__/ \___|\__,_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                                            __/ |     -->
- <!--                                                                           |___/      -->
-
 - **`embeddings`** *[Optional ; Repeatable]* <br>
 In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings and their use in implementation of semantic search tools. Word embedding models convert text (words, phrases, documents) into large-dimension numeric vectors (e.g., a vector of 100 or 200 numbers) that are representative of the semantic content of the text. The vectors are generated by submitting a text to a pre-trained word embedding model (possibly via an API). 
   
@@ -1305,15 +825,6 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
   - **`vector`** *[Required ; Not repeatable ; @@@@]* 
   The numeric vector representing the video metadata. <br><br>
 
-
-
-
- <!--            _     _ _ _   _                   _  -->
- <!--           | |   | (_) | (_)                 | | -->
- <!--   __ _  __| | __| |_| |_ _  ___  _ __   __ _| | -->
- <!--  / _` |/ _` |/ _` | | __| |/ _ \| '_ \ / _` | | -->
- <!-- | (_| | (_| | (_| | | |_| | (_) | | | | (_| | | -->
- <!--  \__,_|\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| -->
  
 - **`additional`** *[Optional ; Not repeatable]*<br>
 The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
