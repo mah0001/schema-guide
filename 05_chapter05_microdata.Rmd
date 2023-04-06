@@ -16,9 +16,6 @@ When surveys or censuses are conducted, or when administrative data are recorded
 
 For efficiency reasons, variables are often stored in numeric format (i.e. coded values), even when they contain qualitative information (coded values). For example, the sex of a respondent may be stored in a variable named ‘Q_01’, and include values 1, 2 and 9 where 1 represents "male", 2 represents "female", and 9 represents "unreported". Microdata must therefore be provided at a minimum with a data dictionary containing the variables and value labels and, for derived variables, information of the derivation process. But many other features of a micro-dataset should also be described such as the objectives and the methodology of data collection (including a description of the sampling design for sample surveys), the period of data collection, the identification of the primary investigator and other contributors, the scope and geographic coverage of the data, and much more. This information will make the data usable and discoverable.
 
-
-
-
                                                                 
 ## The Data Documentation Initiative (DDI) metadata standard
 
@@ -37,11 +34,10 @@ The DDI-Codebook is designed to encompass the kinds of data resulting from surve
 
 The DDI Alliance publishes the DDI-Codebook as an XML schema. We present in this Guide a JSON implementation of the schema, which is used in our R package *NADAR* and Python Library *PyNADA*. The [NADA cataloguing](https://nada.ihsn.org/) application works with both the XML and the JSON version. A DDI-compliant metadata file can be converted from the JSON schema to the XML or from XML to JSON. 
 
+
 ### DDI-Lifecycle
 
 As indicated by the [DDI Alliance website](https://ddialliance.org/Specification/DDI-Lifecycle/3.3/), **DDI-Lifecycle** is "designed to document and manage data across the entire life cycle, from conceptualization to data publication, analysis and beyond. It encompasses all of the DDI-Codebook specification and extends it. Based on XML Schemas, DDI-Lifecycle is modular and extensible." DDI-lifecycle can be used to "populate variable and question banks to explore available data and question structures for reuse in new surveys". As this is not our objective, and because using the DDI-Lifecycle adds significant complexity, we do not make use of it and this chapter only covers the DDI-Codebook.
-
-
 
                                                                      
 ## Some practical considerations
@@ -59,9 +55,8 @@ Documenting microdata is more complex than documenting publications or other typ
 - To make the data more discoverable, attention should be paid to provide a detailed description of the scope and objectives of the data collection. When a survey (or other microdataset) is used to generate statistical indicators, a list of these indicators should be provided in the metadata.<br>
 - The `keywords` metadata element provides a flexible solution to improve the discoverability of data. For example, a survey that collects data on children age, weight and height, will be relevant for measuring malnutrition and generating indicators like prevalence of stunting or wasting, overweight and underweight. The variable description alone would not make the data discoverable in keyword-based search engines, hence the importance of adding relevant terms and phrases in the `keyword` section.<br>
 - The DDI metadata will be saved as an XML or JSON file, i.e. as plain text. This means that the DDI metadata cannot include complex formulas. The description of some variables, as well as the description of a survey sample design, may require the use of formulas. In such case, the recommendation is to provide as much of the information as possible in the DDI, and to provide links to documents where the formulas can be found (these documents would be published with the metadata as *external resources*).  
+- Typically, the variables in the DDI are organized by data file. The DDI provides an option --the `variable groups`-- to organize variables differently, for example thematically. These variable groupings are virtual, in the sense that they do not impact the way variables are stored. Not all variables have to be mapped to such groups, and a same variable can belong to more than one group. This option provides the possibility to organize the variables based on a thematic or topical classification. Machine learning (AI) tools make it possible to automate the process of mapping variables to a pre-defined list of groups (each one of them described by a label and a short description). By doing this, and by generating embeddings at the group level, it becomes possible to add semantic search and to implement a recommender system that applies to microdata.   
 :::
-
-
 
                          
 ## Schema description: DDI-Codebook 2.5
@@ -92,7 +87,6 @@ The documentation of the schema starts with a few elements which are not metadat
 - **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same dataset can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. Note that a dataset will be considered as being the same as a previously uploaded one if the identifier provided in the metadata element  `study_desc > title_statement > idno` is the same.
 
 
-                                                 
 ### Document description  
 
 **`doc_desc`** *[Optional ; Not repeatable]* <br>
@@ -478,13 +472,6 @@ my_ddi <- list(
 ```
 
 
- <!--  ___     __                   _            -->
- <!-- |__ \   / /                  (_)           -->
- <!--    ) | / /_     ___  ___ _ __ _  ___  ___  -->
- <!--   / / | '_ \   / __|/ _ \ '__| |/ _ \/ __| -->
- <!--  / /_ | (_) |  \__ \  __/ |  | |  __/\__ \ -->
- <!-- |____(_)___(_) |___/\___|_|  |_|\___||___/ -->
-
 #### Series statement
 
 **`series_statement`** *[Optional; Not repeatable]* <br>
@@ -515,13 +502,6 @@ my_ddi <- list(
 )  
 ```
 
-
- <!--  ___   ______                      _              -->
- <!-- |__ \ |____  |                    (_)             -->
- <!--    ) |    / /  __   _____ _ __ ___ _  ___  _ __   -->
- <!--   / /    / /   \ \ / / _ \ '__/ __| |/ _ \| '_ \  -->
- <!--  / /_ _ / /     \ V /  __/ |  \__ \ | (_) | | | | -->
- <!-- |____(_)_(_)     \_/ \___|_|  |___/_|\___/|_| |_| -->
 
 #### Version statement
 
@@ -572,13 +552,6 @@ my_ddi <- list(
 )  
 ```
 
-
- <!--  ___    ___     _     _ _      -->
- <!-- |__ \  / _ \   | |   (_) |     -->
- <!--    ) || (_) |  | |__  _| |__   -->
- <!--   / /  > _ <   | '_ \| | '_ \  -->
- <!--  / /_ | (_) |  | |_) | | |_) | -->
- <!-- |____(_)___(_) |_.__/|_|_.__/  -->
                                
 #### Bibliographic citation
 
@@ -587,14 +560,6 @@ Complete bibliographic reference containing all of the standard elements of a ci
 
 ![](./images/ReDoc_Microdata_10a.JPG){width=100%}  
 
-
-
- <!--  ___   ___    _     _ _        __                           _    -->
- <!-- |__ \ / _ \  | |   (_) |      / _|                         | |   -->
- <!--    ) | (_) | | |__  _| |__   | |_ ___  _ __ _ __ ___   __ _| |_  -->
- <!--   / / \__, | | '_ \| | '_ \  |  _/ _ \| '__| '_ ` _ \ / _` | __| -->
- <!--  / /_ _ / /  | |_) | | |_) | | || (_) | |  | | | | | | (_| | |_  -->
- <!-- |____(_)_(_) |_.__/|_|_.__/  |_| \___/|_|  |_| |_| |_|\__,_|\__| -->
 
 #### Bibliographic citation format
 
@@ -616,15 +581,6 @@ This element is used to specify the particular citation style used in the field 
   )  
 ```
 
-
- <!--  ___   __  ___     _           _     _ _                  -->
- <!-- |__ \ /_ |/ _ \   | |         | |   | (_)                 -->
- <!--    ) | | | | | |  | |__   ___ | | __| |_ _ __   __ _ ___  -->
- <!--   / /  | | | | |  | '_ \ / _ \| |/ _` | | '_ \ / _` / __| -->
- <!--  / /_ _| | |_| |  | | | | (_) | | (_| | | | | | (_| \__ \ -->
- <!-- |____(_)_|\___(_) |_| |_|\___/|_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                 __/ |     -->
- <!--                                                |___/      -->
 
 #### Holdings
 
@@ -661,15 +617,6 @@ my_ddi <- list(
 ```
 
 
- <!--  ___   __ __         _             _                     _             -->
- <!-- |__ \ /_ /_ |       | |           | |                   | |            -->
- <!--    ) | | || |    ___| |_ _   _  __| |_   _   _ __   ___ | |_ ___  ___  -->
- <!--   / /  | || |   / __| __| | | |/ _` | | | | | '_ \ / _ \| __/ _ \/ __| -->
- <!--  / /_ _| || |_  \__ \ |_| |_| | (_| | |_| | | | | | (_) | ||  __/\__ \ -->
- <!-- |____(_)_||_(_) |___/\__|\__,_|\__,_|\__, | |_| |_|\___/ \__\___||___/ -->
- <!--                                       __/ |                            -->
- <!--                                      |___/                             -->
-
 #### Study notes
 
 **`study_notes`** *[Optional ; Not repeatable]* <br>
@@ -678,14 +625,7 @@ my_ddi <- list(
 
 This element can be used to provide additional information on the study which cannot be accommodated in the specific metadata elements of the schema, in the form of a free text field.
 
-
- <!--  ___   __ ___                  _   _                _          _   _              -->
- <!-- |__ \ /_ |__ \                | | | |              (_)        | | (_)             -->
- <!--    ) | | |  ) |     __ _ _   _| |_| |__   ___  _ __ _ ______ _| |_ _  ___  _ __   -->
- <!--   / /  | | / /     / _` | | | | __| '_ \ / _ \| '__| |_  / _` | __| |/ _ \| '_ \  -->
- <!--  / /_ _| |/ /_ _  | (_| | |_| | |_| | | | (_) | |  | |/ / (_| | |_| | (_) | | | | -->
- <!-- |____(_)_|____(_)  \__,_|\__,_|\__|_| |_|\___/|_|  |_/___\__,_|\__|_|\___/|_| |_| -->
-
+ 
 #### Study autorization
 
 **`study_authorization`** *[Optional ; Not repeatable]* <br>
@@ -728,13 +668,6 @@ my_ddi <- list(
 )  
 ```
 
-
- <!--  ___   __ ____     _        __       -->
- <!-- |__ \ /_ |___ \   (_)      / _|      -->
- <!--    ) | | | __) |   _ _ __ | |_ ___   -->
- <!--   / /  | ||__ <   | | '_ \|  _/ _ \  -->
- <!--  / /_ _| |___) |  | | | | | || (_) | -->
- <!-- |____(_)_|____(_) |_|_| |_|_| \___/  -->
 
 #### Study information
 
@@ -1313,15 +1246,6 @@ my_ddi <- list(
 ```
 
 
- <!--  ___   __ _  _         _                _                                  _    -->
- <!-- |__ \ /_ | || |       | |              | |                                | |   -->
- <!--    ) | | | || |_    __| | _____   _____| | ___  _ __  _ __ ___   ___ _ __ | |_  -->
- <!--   / /  | |__   _|  / _` |/ _ \ \ / / _ \ |/ _ \| '_ \| '_ ` _ \ / _ \ '_ \| __| -->
- <!--  / /_ _| |  | |_  | (_| |  __/\ V /  __/ | (_) | |_) | | | | | |  __/ | | | |_  -->
- <!-- |____(_)_|  |_(_)  \__,_|\___| \_/ \___|_|\___/| .__/|_| |_| |_|\___|_| |_|\__| -->
- <!--                                                | |                              -->
- <!--                                                |_|                              -->
-
 #### Study development
 
 **`study_development`** *[Optional ; Not repeatable]* <br>   
@@ -1425,13 +1349,6 @@ my_ddi <- list(
 )
 ```
 
-
- <!--  ___   __ _____                   _   _               _  -->
- <!-- |__ \ /_ | ____|                 | | | |             | | -->
- <!--    ) | | | |__     _ __ ___   ___| |_| |__   ___   __| | -->
- <!--   / /  | |___ \   | '_ ` _ \ / _ \ __| '_ \ / _ \ / _` | -->
- <!--  / /_ _| |___) |  | | | | | |  __/ |_| | | | (_) | (_| | -->
- <!-- |____(_)_|____(_) |_| |_| |_|\___|\__|_| |_|\___/ \__,_| -->
 
 #### Method
 
@@ -1813,13 +1730,6 @@ my_ddi <- list(
 ```
 
 
- <!--  ___   __   __         _       _                                       -->
- <!-- |__ \ /_ | / /        | |     | |                                      -->
- <!--    ) | | |/ /_      __| | __ _| |_ __ _    __ _  ___ ___ ___  ___ ___  -->
- <!--   / /  | | '_ \    / _` |/ _` | __/ _` |  / _` |/ __/ __/ _ \/ __/ __| -->
- <!--  / /_ _| | (_) |  | (_| | (_| | || (_| | | (_| | (_| (_|  __/\__ \__ \ -->
- <!-- |____(_)_|\___(_)  \__,_|\__,_|\__\__,_|  \__,_|\___\___\___||___/___/ -->
-
 #### Data access
 
 **`data_access`** *[Optional ; Not Repeatable]* <br> 
@@ -2003,20 +1913,6 @@ my_ddi <- list(
   Any additional information related to data access that is not contained in the specific metadata elements provided in the section `data_access`.<br>
 
 
-
-
-
-
-
-
- <!--  ____         _       _           __ _ _            -->
- <!-- |___ \       | |     | |         / _(_) |           -->
- <!--   __) |    __| | __ _| |_ __ _  | |_ _| | ___  ___  -->
- <!--  |__ <    / _` |/ _` | __/ _` | |  _| | |/ _ \/ __| -->
- <!--  ___) |  | (_| | (_| | || (_| | | | | | |  __/\__ \ -->
- <!-- |____(_)  \__,_|\__,_|\__\__,_| |_| |_|_|\___||___/ -->
-
-
 ### Description of data files
 
 **`data_files`** *[Optional ; Repeatable]* <br>   
@@ -2108,15 +2004,6 @@ my_ddi <- list(
 )       
 ```
 
-
-
-
- <!--  _  _                     _       _     _            -->
- <!-- | || |                   (_)     | |   | |           -->
- <!-- | || |_  __   ____ _ _ __ _  __ _| |__ | | ___  ___  -->
- <!-- |__   _| \ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __| -->
- <!--    | |_   \ V / (_| | |  | | (_| | |_) | |  __/\__ \ -->
- <!--    |_(_)   \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/ -->
 
 ### Variable description
 
@@ -2362,16 +2249,6 @@ my_ddi <- list(
 )
 ```
 
-
-
- <!--  _____                    _       _     _                                         -->
- <!-- | ____|                  (_)     | |   | |                                        -->
- <!-- | |__    __   ____ _ _ __ _  __ _| |__ | | ___    __ _ _ __ ___  _   _ _ __  ___  -->
- <!-- |___ \   \ \ / / _` | '__| |/ _` | '_ \| |/ _ \  / _` | '__/ _ \| | | | '_ \/ __| -->
- <!--  ___) |   \ V / (_| | |  | | (_| | |_) | |  __/ | (_| | | | (_) | |_| | |_) \__ \ -->
- <!-- |____(_)   \_/ \__,_|_|  |_|\__,_|_.__/|_|\___|  \__, |_|  \___/ \__,_| .__/|___/ -->
- <!--                                                   __/ |               | |         -->
- <!--                                                  |___/                |_|         -->
                                                                                                       
 ### Variable groups
 
@@ -2455,17 +2332,6 @@ my_ddi <- list(
 ```
 
 
-
-
-<!--     __                                                          -->
-<!--    / /                                                          -->
-<!--   / /_     _ __  _ __ _____   _____ _ __   __ _ _ __   ___ ___  -->
-<!--  | '_ \   | '_ \| '__/ _ \ \ / / _ \ '_ \ / _` | '_ \ / __/ _ \ -->
-<!--  | (_) |  | |_) | | | (_) \ V /  __/ | | | (_| | | | | (_|  __/ -->
-<!--   \___(_) | .__/|_|  \___/ \_/ \___|_| |_|\__,_|_| |_|\___\___| -->
-<!--           | |                                                   -->
-<!--           |_|                                                   -->
-
 ### Provenance
 
 ![](./images/ReDoc_Microdata_38.JPG){width=100%}
@@ -2489,16 +2355,6 @@ The `origin_description` elements are used to describe when and from where metad
   - **`metadata_namespace`** *[Optional ; Not repeatable ; String]* <br>
   @@@@@@@ <br>
 
-
-
- <!--  ______   _                   -->
- <!-- |____  | | |                  -->
- <!--     / /  | |_ __ _  __ _ ___  -->
- <!--    / /   | __/ _` |/ _` / __| -->
- <!--   / /    | || (_| | (_| \__ \ -->
- <!--  /_(_)    \__\__,_|\__, |___/ -->
- <!--                     __/ |     -->
- <!--                    |___/      -->
                              
 ### Tags
 
@@ -2511,17 +2367,6 @@ A user-defined tag.
 - **`tag_group`** *[Optional ; Not repeatable ; String]* <br>
 A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.<br>
 
-
-
-
- <!--   ___     _     _         _              _           -->
- <!--  / _ \   | |   | |       | |            (_)          -->
- <!-- | (_) |  | | __| | __ _  | |_ ___  _ __  _  ___ ___  -->
- <!--  > _ <   | |/ _` |/ _` | | __/ _ \| '_ \| |/ __/ __| -->
- <!-- | (_) |  | | (_| | (_| | | || (_) | |_) | | (__\__ \ -->
- <!--  \___(_) |_|\__,_|\__,_|  \__\___/| .__/|_|\___|___/ -->
- <!--                                   | |                -->
- <!--                                   |_|                -->
 
 ### LDA topics
 
@@ -2639,16 +2484,6 @@ lda_topics = list(
 ```
 
 
-
- <!--   ___                   _              _     _ _                  -->
- <!--  / _ \                 | |            | |   | (_)                 -->
- <!-- | (_) |   ___ _ __ ___ | |__   ___  __| | __| |_ _ __   __ _ ___  -->
- <!--  \__, |  / _ \ '_ ` _ \| '_ \ / _ \/ _` |/ _` | | '_ \ / _` / __| -->
- <!--    / /  |  __/ | | | | | |_) |  __/ (_| | (_| | | | | | (_| \__ \ -->
- <!--   /_(_)  \___|_| |_| |_|_.__/ \___|\__,_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                         __/ |     -->
- <!--                                                        |___/      -->
-
 ### Embeddings
  
 **`embeddings`** *[Optional ; Repeatable]* <br>
@@ -2669,14 +2504,6 @@ The `embeddings` element contains four metadata fields:
   The numeric vector representing the document, provided as an object (array or string). <br>
   [1,4,3,5,7,9]
 
-
-
- <!--  __  ___               _     _ _ _   _                   _  -->
- <!-- /_ |/ _ \             | |   | (_) | (_)                 | | -->
- <!--  | | | | |    __ _  __| | __| |_| |_ _  ___  _ __   __ _| | -->
- <!--  | | | | |   / _` |/ _` |/ _` | | __| |/ _ \| '_ \ / _` | | -->
- <!--  | | |_| |  | (_| | (_| | (_| | | |_| | (_) | | | | (_| | | -->
- <!--  |_|\___(_)  \__,_|\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| -->
           
 ### Additional 
 
