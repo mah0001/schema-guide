@@ -10,17 +10,6 @@ output: html_document
 </center>
 <br>
 
-
-
-
- <!--  ____             _                                   _  -->
- <!-- |  _ \           | |                                 | | -->
- <!-- | |_) | __ _  ___| | ____ _ _ __ ___  _   _ _ __   __| | -->
- <!-- |  _ < / _` |/ __| |/ / _` | '__/ _ \| | | | '_ \ / _` | -->
- <!-- | |_) | (_| | (__|   < (_| | | | (_) | |_| | | | | (_| | -->
- <!-- |____/ \__,_|\___|_|\_\__, |_|  \___/ \__,_|_| |_|\__,_| -->
- <!--                        __/ |                             -->
- <!--                       |___/                              -->
  
 ## Background 
 
@@ -28,17 +17,6 @@ To make geographic information discoverable and to facilitate their disseminatio
 
 The ISO 19100 standards have been designed to cover the large scope of geographic information. The level of detail they provide goes beyond the needs of most data curators. What we present in this Guide is a subset of the standards, which focuses on what we consider as the core requirements to describe and catalog geographic datasets and services. References and links to resources where more detailed information can be found are provided in appendix.
 
-
-
-
-
-
- <!--   _____ _                  _               _      -->
- <!--  / ____| |                | |             | |     -->
- <!-- | (___ | |_ __ _ _ __   __| | __ _ _ __ __| |___  -->
- <!--  \___ \| __/ _` | '_ \ / _` |/ _` | '__/ _` / __| -->
- <!--  ____) | || (_| | | | | (_| | (_| | | | (_| \__ \ -->
- <!-- |_____/ \__\__,_|_| |_|\__,_|\__,_|_|  \__,_|___/ -->
                                                   
 ## Geographic information metadata standards
 
@@ -366,31 +344,10 @@ ISO 19139-compliant metadata can be generated and edited using specialized metad
 
 The ISO 19139 specification is complex. To enable and simplify its use in our NADA cataloguing application, we produced a JSON version of (part of) the standard. We selected the elements we considered most relevant for our purpose, and organized them into the JSON schema described below. For data curators with limited expertise in XML and geographic data documentation, this JSON schema will make the production of metadata compliant with the ISO 19139 standard easier. 
 
-
-
-
-
-
- <!--   _____      _                           -->
- <!--  / ____|    | |                          -->
- <!-- | (___   ___| |__   ___ _ __ ___   __ _  -->
- <!--  \___ \ / __| '_ \ / _ \ '_ ` _ \ / _` | -->
- <!--  ____) | (__| | | |  __/ | | | | | (_| | -->
- <!-- |_____/ \___|_| |_|\___|_| |_| |_|\__,_| -->
-                                         
                                          
 ## Schema description
 
 
-
-
- <!--  __     _____       _                 _            _   _              -->
- <!-- /_ |   |_   _|     | |               | |          | | (_)             -->
- <!--  | |     | |  _ __ | |_ _ __ ___   __| |_   _  ___| |_ _  ___  _ __   -->
- <!--  | |     | | | '_ \| __| '__/ _ \ / _` | | | |/ __| __| |/ _ \| '_ \  -->
- <!--  | |_   _| |_| | | | |_| | | (_) | (_| | |_| | (__| |_| | (_) | | | | -->
- <!--  |_(_) |_____|_| |_|\__|_|  \___/ \__,_|\__,_|\___|\__|_|\___/|_| |_| -->
-                                                         
 ### Introduction
 
 Geographic metadata (for both *datasets* and *services*) should include **core metadata properties**, and metadata **sections** aiming to describe specific aspect of the resource (e.g., resource identification or resource distribution).
@@ -402,20 +359,10 @@ Some metadata elements (referred to as *common elements*) of the ISO 19139 can b
 In the following sections, we first present the **common elements**, then the elements that form the **core metadata properties** (information on the metadata themselves), followed by the elements from the main **metadata sections** used to describe the data, and finally the **features catalog** elements which are used to document attributes and variables related to vector data (ISO 19110).
 
 
-
-
-
-
- <!--  ___       _____                                                 _        -->
- <!-- |__ \     / ____|                                               | |       -->
- <!--    ) |   | |     ___  _ __ ___  _ __ ___   ___  _ __    ___  ___| |_ ___  -->
- <!--   / /    | |    / _ \| '_ ` _ \| '_ ` _ \ / _ \| '_ \  / __|/ _ \ __/ __| -->
- <!--  / /_ _  | |___| (_) | | | | | | | | | | | (_) | | | | \__ \  __/ |_\__ \ -->
- <!-- |____(_)  \_____\___/|_| |_| |_|_| |_| |_|\___/|_| |_| |___/\___|\__|___/ -->
-
 ### Common sets of elements
 
 Common elements are blocks of metadata fields that can appear in multiple locations of a metadata file. For example, information on `contact` person(s) or organization(s) may have to be provided in the section of the file where we document the production and maintenance of the data, where we document the production and maintenance of the metadata, where we document the distribution and terms of use of the data, etc. Other types of common elements include online and offline resources, file formats, citations, keywords, constraints, and extent. We describe these sets of elements below.  
+
 
 #### Contact / Responsible party
 
@@ -565,14 +512,6 @@ The **extent** defines the boundaries of the dataset in space (horizontally and 
 </center>
 
 
-
- <!--  ____      _____                                _            _       _         -->
- <!-- |___ \    / ____|                              | |          | |     | |        -->
- <!--   __) |  | |     ___  _ __ ___   _ __ ___   ___| |_ __ _  __| | __ _| |_ __ _  -->
- <!--  |__ <   | |    / _ \| '__/ _ \ | '_ ` _ \ / _ \ __/ _` |/ _` |/ _` | __/ _` | -->
- <!--  ___) |  | |___| (_) | | |  __/ | | | | | |  __/ || (_| | (_| | (_| | || (_| | -->
- <!-- |____(_)  \_____\___/|_|  \___| |_| |_| |_|\___|\__\__,_|\__,_|\__,_|\__\__,_| -->
-
 ### Core metadata properties
 
 A set of elements is provided in the ISO 19139 to document the core properties of the <u>metadata</u> (not the data). With a few exceptions, these elements apply to the metadata related to datasets and data services. The table below summarizes these elements and their applicability. A description of the elements follows.
@@ -672,18 +611,6 @@ The ISO standard allows the metadata to be provided in multiple languages in one
 ![](./images/ReDoc_geospatial_05.JPG){width=100%}
 </center>
 
-
-
-
-
-
-
- <!--  _  _     __  __       _                        _            _       _         -->
- <!-- | || |   |  \/  |     (_)                      | |          | |     | |        -->
- <!-- | || |_  | \  / | __ _ _ _ __    _ __ ___   ___| |_ __ _  __| | __ _| |_ __ _  -->
- <!-- |__   _| | |\/| |/ _` | | '_ \  | '_ ` _ \ / _ \ __/ _` |/ _` |/ _` | __/ _` | -->
- <!--    | |_  | |  | | (_| | | | | | | | | | | |  __/ || (_| | (_| | (_| | || (_| | -->
- <!--    |_(_) |_|  |_|\__,_|_|_| |_| |_| |_| |_|\___|\__\__,_|\__,_|\__,_|\__\__,_| -->
                                                                                
 ### Main metadata sections
 
@@ -1007,21 +934,6 @@ The `metadataMaintenanceInfo` and `maintenanceAndUpdateFrequency` elements provi
 </center>
 
 
-
-
-
-
-
-
- <!--  ______         _                     _____      _        _                         -->
- <!-- |  ____|       | |                   / ____|    | |      | |                        -->
- <!-- | |__ ___  __ _| |_ _   _ _ __ ___  | |     __ _| |_ __ _| | ___   __ _ _   _  ___  -->
- <!-- |  __/ _ \/ _` | __| | | | '__/ _ \ | |    / _` | __/ _` | |/ _ \ / _` | | | |/ _ \ -->
- <!-- | | |  __/ (_| | |_| |_| | | |  __/ | |___| (_| | || (_| | | (_) | (_| | |_| |  __/ -->
- <!-- |_|  \___|\__,_|\__|\__,_|_|  \___|  \_____\__,_|\__\__,_|_|\___/ \__, |\__,_|\___| -->
- <!--                                                                    __/ |            -->
- <!--                                                                   |___/             -->
-
 ## ISO 19110 Feature Catalogue (`feature_catalogue`)
 
 We describe below how the ISO 19110 feature catalogue is used to document the structure of a vector dataset (complementing the ISO 10119-1). This is equivalent to producing a "data dictionary" for the variables/features included in a vector dataset. An example of the implementation of such a feature catalogue using R is provided in the **Examples** section of this chapter (see Example 3 in section 5.5.3).
@@ -1069,18 +981,6 @@ Each feature attribute, i.e. column that is a member of the vector data structur
 | `listedValue`          | List of controlled value(s) used in the attribute member. Each value corresponds to an object compound by 1) a `label`, 2) a `code` (as contained in the dataset), 3) a `definition`. This element will be used when the feature member relates to reference datasets, such as code lists or registers. e.g., list of countries, land cover types, etc. |
 
 
-
-
-
-
-
- <!--  _____                                                -->
- <!-- |  __ \                                               -->
- <!-- | |__) | __ _____   _____ _ __   __ _ _ __   ___ ___  -->
- <!-- |  ___/ '__/ _ \ \ / / _ \ '_ \ / _` | '_ \ / __/ _ \ -->
- <!-- | |   | | | (_) \ V /  __/ | | | (_| | | | | (_|  __/ -->
- <!-- |_|   |_|  \___/ \_/ \___|_| |_|\__,_|_| |_|\___\___| -->
-
 ## Provenance
 
 ![](./images/ReDoc_geospatial_33.JPG){width=100%}
@@ -1104,20 +1004,6 @@ The `origin_description` elements are used to describe when and from where metad
   @@@@@@@ <br>
 
 
-
-
-
-
-
- <!--  _______               -->
- <!-- |__   __|              -->
- <!--    | | __ _  __ _ ___  -->
- <!--    | |/ _` |/ _` / __| -->
- <!--    | | (_| | (_| \__ \ -->
- <!--    |_|\__,_|\__, |___/ -->
- <!--              __/ |     -->
- <!--             |___/      -->
-
 ## Tags
 
 **`tags`** *[Optional ; Repeatable]* <br>
@@ -1130,20 +1016,6 @@ A user-defined tag.
 - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
 A user-defined group to which the tag belongs. Grouping tags allows implementation of controlled facets (filters) in data catalogs.
 
-
-
-
-
-
-
- <!--  _      _____            _              _           -->
- <!-- | |    |  __ \   /\     | |            (_)          -->
- <!-- | |    | |  | | /  \    | |_ ___  _ __  _  ___ ___  -->
- <!-- | |    | |  | |/ /\ \   | __/ _ \| '_ \| |/ __/ __| -->
- <!-- | |____| |__| / ____ \  | || (_) | |_) | | (__\__ \ -->
- <!-- |______|_____/_/    \_\  \__\___/| .__/|_|\___|___/ -->
- <!--                                  | |                -->
- <!--                                  |_|                -->
 
 ## LDA topics
 
@@ -1261,19 +1133,6 @@ lda_topics = list(
 ```
 
 
-
-
-
-
- <!--  ______           _              _     _ _                  -->
- <!-- |  ____|         | |            | |   | (_)                 -->
- <!-- | |__   _ __ ___ | |__   ___  __| | __| |_ _ __   __ _ ___  -->
- <!-- |  __| | '_ ` _ \| '_ \ / _ \/ _` |/ _` | | '_ \ / _` / __| -->
- <!-- | |____| | | | | | |_) |  __/ (_| | (_| | | | | | (_| \__ \ -->
- <!-- |______|_| |_| |_|_.__/ \___|\__,_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                   __/ |     -->
- <!--                                                  |___/      -->
-
 ## Embeddings
  
 **`embeddings`** *[Optional ; Repeatable]* <br>
@@ -1299,17 +1158,6 @@ The numeric vector representing the document, provided as an object (array or st
 [1,4,3,5,7,9]
 
 
-
-
-
-
- <!--              _     _ _ _   _                   _  -->
- <!--     /\      | |   | (_) | (_)                 | | -->
- <!--    /  \   __| | __| |_| |_ _  ___  _ __   __ _| | -->
- <!--   / /\ \ / _` |/ _` | | __| |/ _ \| '_ \ / _` | | -->
- <!--  / ____ \ (_| | (_| | | |_| | (_) | | | | (_| | | -->
- <!-- /_/    \_\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| -->
-
 ## Additional 
 
 **`additional`** *[Optional ; Not repeatable]*<br>   
@@ -1318,20 +1166,6 @@ The `additional` element allows data curators to add their own metadata elements
 ![](./images/ReDoc_geospatial_35.JPG){width=100%}
 <br>
 
-
-
-
-
-
-
- <!--  ______                           _            -->
- <!-- |  ____|                         | |           -->
- <!-- | |__  __  ____ _ _ __ ___  _ __ | | ___  ___  -->
- <!-- |  __| \ \/ / _` | '_ ` _ \| '_ \| |/ _ \/ __| -->
- <!-- | |____ >  < (_| | | | | | | |_) | |  __/\__ \ -->
- <!-- |______/_/\_\__,_|_| |_| |_| .__/|_|\___||___/ -->
- <!--                            | |                 -->
- <!--                            |_|                 -->
 
 ## Complete examples
 
