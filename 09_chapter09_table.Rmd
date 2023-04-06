@@ -9,13 +9,6 @@ output: html_document
 </center>
 
 
- <!--  _____       _                 _            _   _              -->
- <!-- |_   _|     | |               | |          | | (_)             -->
- <!--   | |  _ __ | |_ _ __ ___   __| |_   _  ___| |_ _  ___  _ __   -->
- <!--   | | | '_ \| __| '__/ _ \ / _` | | | |/ __| __| |/ _ \| '_ \  -->
- <!--  _| |_| | | | |_| | | (_) | (_| | |_| | (__| |_| | (_) | | | | -->
- <!-- |_____|_| |_|\__|_|  \___/ \__,_|\__,_|\___|\__|_|\___/|_| |_| -->
-                                                               
 ## Introduction
 
 A statistical table (*cross tabulation* or *contingency table*) is a summary presentation of data. The [OECD Glossary of Statistical Terms](https://stats.oecd.org/glossary/) defines it as “observation data gained by a purposeful aggregation of statistical microdata conforming to statistical methodology [organized in] groups or aggregates, such as counts, means, or frequencies.” 
@@ -26,23 +19,6 @@ Statistical tables can be understood by a broad audience. In some cases, they ma
 
 The schema description is available at http://dev.ihsn.org/nada/api-documentation/catalog-admin/index.html#tag/Tables
 
-
-
-
-
-
-
-
-
-
-<!--                        _                         -->
-<!--      /\               | |                        -->
-<!--     /  \   _ __   __ _| |_ ___  _ __ ___  _   _  -->
-<!--    / /\ \ | '_ \ / _` | __/ _ \| '_ ` _ \| | | | -->
-<!--   / ____ \| | | | (_| | || (_) | | | | | | |_| | -->
-<!--  /_/    \_\_| |_|\__,_|\__\___/|_| |_| |_|\__, | -->
-<!--                                            __/ | -->
-<!--                                           |___/  -->
 
 ## Anatomy of a table
 
@@ -66,19 +42,6 @@ The figure below, adapted from [LabWrite Resources](https://labwrite.ncsu.edu/re
 
 **Table source**: The source identifies the dataset(s) or database(s) that contain the data used to generate the table. This can for example be a survey or a census dataset.  
 
-
-
-
-
-
-
-
- <!--   _____      _                           -->
- <!--  / ____|    | |                          -->
- <!-- | (___   ___| |__   ___ _ __ ___   __ _  -->
- <!--  \___ \ / __| '_ \ / _ \ '_ ` _ \ / _` | -->
- <!--  ____) | (__| | | |  __/ | | | | | (_| | -->
- <!-- |_____/ \___|_| |_|\___|_| |_| |_|\__,_| -->
                                          
 ## Schema description
 
@@ -86,16 +49,6 @@ The table schema contains six blocks of elements. The first block of three eleme
 
 ![](./images/ReDoc_Table_00.JPG){width=100%}
 
-
-
- <!--  __                                          _                 -->
- <!-- /_ |                                        | |                -->
- <!--  | |    _ __   __ _ _ __ __ _ _ __ ___   ___| |_ ___ _ __ ___  -->
- <!--  | |   | '_ \ / _` | '__/ _` | '_ ` _ \ / _ \ __/ _ \ '__/ __| -->
- <!--  | |_  | |_) | (_| | | | (_| | | | | | |  __/ ||  __/ |  \__ \ -->
- <!--  |_(_) | .__/ \__,_|_|  \__,_|_| |_| |_|\___|\__\___|_|  |___/ -->
- <!--        | |                                                     -->
- <!--        |_|                                                     -->
         
 ### Cataloguing parameters
 
@@ -107,16 +60,6 @@ The following elements are used by the NADA application API (see the NADA docume
 
 - **`overwrite`**: This element defines what action will be taken when a command is issued to add the table to a catalog and a table with the same identifier (element *idno*) is already in the catalog. By default, the command will not overwrite the existing table (the default value of overwrite is "no"). Set this parameter to "yes" to allow the existing table to be overwritten in the catalog.
 
-
-
-
-
- <!--  ___                     _            _       _          _        __       -->
- <!-- |__ \                   | |          | |     | |        (_)      / _|      -->
- <!--    ) |    _ __ ___   ___| |_ __ _  __| | __ _| |_ __ _   _ _ __ | |_ ___   -->
- <!--   / /    | '_ ` _ \ / _ \ __/ _` |/ _` |/ _` | __/ _` | | | '_ \|  _/ _ \  -->
- <!--  / /_ _  | | | | | |  __/ || (_| | (_| | (_| | || (_| | | | | | | || (_) | -->
- <!-- |____(_) |_| |_| |_|\___|\__\__,_|\__,_|\__,_|\__\__,_| |_|_| |_|_| \___/  -->
 
 ### Metadata information 
 
@@ -168,16 +111,6 @@ my_table = list(
 ```
 
 
-
-
-
- <!--  ____     _        _     _            _                 -->
- <!-- |___ \   | |      | |   | |          | |                -->
- <!--   __) |  | |_ __ _| |__ | | ___    __| | ___  ___  ___  -->
- <!--  |__ <   | __/ _` | '_ \| |/ _ \  / _` |/ _ \/ __|/ __| -->
- <!--  ___) |  | || (_| | |_) | |  __/ | (_| |  __/\__ \ (__  -->
- <!-- |____(_)  \__\__,_|_.__/|_|\___|  \__,_|\___||___/\___| -->
-
 ### Table description
 
 **`table_description`** *[Required, Not Repeatable]* <br>
@@ -185,13 +118,6 @@ This section contains the metadata elements that describe the table itself. Not 
 
 ![](./images/ReDoc_Table_02.JPG){width=100%}
 
-
- <!--  ____  __     _   _ _   _            _             _    -->
- <!-- |___ \/_ |   | | (_) | | |          | |           | |   -->
- <!--   __) || |   | |_ _| |_| | ___   ___| |_ _ __ ___ | |_  -->
- <!--  |__ < | |   | __| | __| |/ _ \ / __| __| '_ ` _ \| __| -->
- <!--  ___) || |_  | |_| | |_| |  __/ \__ \ |_| | | | | | |_  -->
- <!-- |____(_)_(_)  \__|_|\__|_|\___| |___/\__|_| |_| |_|\__| -->
 
 - **`title_statement`** *[Required, Not Repeatable]* <br>
 
@@ -242,13 +168,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   ___      _     _            _   _  __ _                -->
- <!-- |___ \ |__ \    (_)   | |          | | (_)/ _(_)               -->
- <!--   __) |   ) |    _  __| | ___ _ __ | |_ _| |_ _  ___ _ __ ___  -->
- <!--  |__ <   / /    | |/ _` |/ _ \ '_ \| __| |  _| |/ _ \ '__/ __| -->
- <!--  ___) | / /_ _  | | (_| |  __/ | | | |_| | | | |  __/ |  \__ \ -->
- <!-- |____(_)____(_) |_|\__,_|\___|_| |_|\__|_|_| |_|\___|_|  |___/ -->
-
 - **`identifiers`** *[Optional ; Repeatable]* <br>
 This element is used to enter document identifiers other than the catalog identifier entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI). The identifier entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
 
@@ -274,16 +193,6 @@ my_table = list(
 ```
 <br>
 
-
-
- <!--  ____   ____                 _   _                _              -->
- <!-- |___ \ |___ \               | | | |              (_)             -->
- <!--   __) |  __) |    __ _ _   _| |_| |__   ___  _ __ _ _ __   __ _  -->
- <!--  |__ <  |__ <    / _` | | | | __| '_ \ / _ \| '__| | '_ \ / _` | -->
- <!--  ___) | ___) |  | (_| | |_| | |_| | | | (_) | |  | | | | | (_| | -->
- <!-- |____(_)____(_)  \__,_|\__,_|\__|_| |_|\___/|_|  |_|_| |_|\__, | -->
- <!--                                                            __/ | -->
- <!--                                                           |___/  -->
 
 - **`authoring_entity`** *[Optional, Not Repeatable]* <br>
 The authoring entity identifies the person(s) or organization(s) responsible for the production of the table. An authoring entity is identified by its name, affiliation, abbreviation, URI, and author's identifiers (if any).
@@ -326,14 +235,6 @@ my_table = list(
 <br>
 
 
-
- <!--  ____  _  _                     _        _ _           _                  -->
- <!-- |___ \| || |                   | |      (_) |         | |                 -->
- <!--   __) | || |_    ___ ___  _ __ | |_ _ __ _| |__  _   _| |_ ___  _ __ ___  -->
- <!--  |__ <|__   _|  / __/ _ \| '_ \| __| '__| | '_ \| | | | __/ _ \| '__/ __| -->
- <!--  ___) |  | |_  | (_| (_) | | | | |_| |  | | |_) | |_| | || (_) | |  \__ \ -->
- <!-- |____(_) |_(_)  \___\___/|_| |_|\__|_|  |_|_.__/ \__,_|\__\___/|_|  |___/ -->
-
 - **`contributors`** *[Optional, Repeatable]* <br>
 This set of elements identifies the person(s) and/or organization(s), other than the authoring entity, who contributed to the production of the table.<br>
 
@@ -369,15 +270,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   _____                _     _ _     _                -->
- <!-- |___ \ | ____|              | |   | (_)   | |               -->
- <!--   __) || |__     _ __  _   _| |__ | |_ ___| |__   ___ _ __  -->
- <!--  |__ < |___ \   | '_ \| | | | '_ \| | / __| '_ \ / _ \ '__| -->
- <!--  ___) | ___) |  | |_) | |_| | |_) | | \__ \ | | |  __/ |    -->
- <!-- |____(_)____(_) | .__/ \__,_|_.__/|_|_|___/_| |_|\___|_|    -->
- <!--                 | |                                         -->
- <!--                 |_|                                         -->
-
 - **`publisher`** *[Optional, Not repeatable]* <br>
 The entity responsible for publishing the table. 
 
@@ -411,12 +303,6 @@ my_table = list(
 ```
 <br>
 
- <!--  ____    __         _                       _           _  -->
- <!-- |___ \  / /        | |                     | |         | | -->
- <!--   __) |/ /_      __| |   ___ _ __ ___  __ _| |_ ___  __| | -->
- <!--  |__ <| '_ \    / _` |  / __| '__/ _ \/ _` | __/ _ \/ _` | -->
- <!--  ___) | (_) |  | (_| | | (__| | |  __/ (_| | ||  __/ (_| | -->
- <!-- |____(_)___(_)  \__,_|  \___|_|  \___|\__,_|\__\___|\__,_| -->
                                                            
 - **`date_created`** *[Optional, Not Repeatable, String]* <br>
 The date the table was created. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). The date the table is created refers to the date that the output was produced and considered ready for publication.
@@ -424,15 +310,6 @@ The date the table was created. It is recommended to enter the date in ISO 8601 
   ![](./images/ReDoc_Table_08.JPG){width=100%}
 <br>
 
-
- <!--  ____  ______       _               _     _ _     _              _  -->
- <!-- |___ \|____  |     | |             | |   | (_)   | |            | | -->
- <!--   __) |   / /    __| |  _ __  _   _| |__ | |_ ___| |__   ___  __| | -->
- <!--  |__ <   / /    / _` | | '_ \| | | | '_ \| | / __| '_ \ / _ \/ _` | -->
- <!--  ___) | / /    | (_| | | |_) | |_| | |_) | | \__ \ | | |  __/ (_| | -->
- <!-- |____(_)_(_)    \__,_| | .__/ \__,_|_.__/|_|_|___/_| |_|\___|\__,_| -->
- <!--                        | |                                          -->
- <!--                        |_|                                          -->
  
 - **`date_published`** *[Optional, Not Repeatable, String]* <br>
 The date the table was published. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). If the table is contained in a document (report, paper, book, etc.), the date the table is published is associated with the publication date of that document. If the table is found in a statistics yearbook for example, then the publication date will be the date the yearbook was published. 
@@ -441,13 +318,6 @@ The date the table was published. It is recommended to enter the date in ISO 860
 <br>
 
 
- <!--  ____   ___         _                       _ _  __ _          _  -->
- <!-- |___ \ / _ \       | |                     | (_)/ _(_)        | | -->
- <!--   __) | (_) |    __| |  _ __ ___   ___   __| |_| |_ _  ___  __| | -->
- <!--  |__ < > _ <    / _` | | '_ ` _ \ / _ \ / _` | |  _| |/ _ \/ _` | -->
- <!--  ___) | (_) |  | (_| | | | | | | | (_) | (_| | | | | |  __/ (_| | -->
- <!-- |____(_)___(_)  \__,_| |_| |_| |_|\___/ \__,_|_|_| |_|\___|\__,_| -->
-
 - **`date_modified`** *[Optional, Not Repeatable, String]* <br>
 The date the table was last modified. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). Modifications, revisions, or re-publications of the table are recorded in this element.
 
@@ -455,28 +325,12 @@ The date the table was last modified. It is recommended to enter the date in ISO
 <br>
 
 
- <!--  ____   ___                       _              -->
- <!-- |___ \ / _ \                     (_)             -->
- <!--   __) | (_) | __   _____ _ __ ___ _  ___  _ __   -->
- <!--  |__ < \__, | \ \ / / _ \ '__/ __| |/ _ \| '_ \  -->
- <!--  ___) |  / /   \ V /  __/ |  \__ \ | (_) | | | | -->
- <!-- |____(_)/_(_)   \_/ \___|_|  |___/_|\___/|_| |_| -->
-
 - **`version`** *[Optional, Not Repeatable, String]* <br>
 The version of the table refers to the published version of the table. If for some reason, data in a published table are revised, then the version of the table is captured in this element.
 
   ![](./images/ReDoc_Table_08c.JPG){width=100%}
 <br>
 
-
- <!--  ____  __  ___         _                     _       _   _              -->
- <!-- |___ \/_ |/ _ \       | |                   (_)     | | (_)             -->
- <!--   __) || | | | |    __| | ___  ___  ___ _ __ _ _ __ | |_ _  ___  _ __   -->
- <!--  |__ < | | | | |   / _` |/ _ \/ __|/ __| '__| | '_ \| __| |/ _ \| '_ \  -->
- <!--  ___) || | |_| |  | (_| |  __/\__ \ (__| |  | | |_) | |_| | (_) | | | | -->
- <!-- |____(_)_|\___(_)  \__,_|\___||___/\___|_|  |_| .__/ \__|_|\___/|_| |_| -->
- <!--                                               | |                       -->
- <!--                                               |_|                       -->
 
 - **`description`** *[Optional, Not Repeatable, String]* <br>
 A brief "narrative" description of the table. The description can contain information on the content, purpose, production process, or other relevant information.
@@ -499,13 +353,6 @@ my_table = list(
 ```
 <br>
 
-
- <!--  ____  __ __               _                            -->
- <!-- |___ \/_ /_ |             | |                           -->
- <!--   __) || || |     ___ ___ | |_   _ _ __ ___  _ __  ___  -->
- <!--  |__ < | || |    / __/ _ \| | | | | '_ ` _ \| '_ \/ __| -->
- <!--  ___) || || |_  | (_| (_) | | |_| | | | | | | | | \__ \ -->
- <!-- |____(_)_||_(_)  \___\___/|_|\__,_|_| |_| |_|_| |_|___/ -->
 
 - **`table_columns`** *[Optional, Repeatable]* <br>
 The columns description is composed of the column spanner and the column heads. Columns spanners group the column heads together in a logical fashion to present the data to the user. Not all columns presented in a table will have a column spanner. The column spanners can become quite complicated; when a table is documented, the information found in the column spanner and heads can be merged and edited. What matters is not to document the exact structure of the table, but to ensure that the text of the spanners and heads is included in the metadata as this text will be used by search engines to find tables in data catalogs.
@@ -577,13 +424,6 @@ my_table = list(
 <br>
 
 
- <!--  ____  __ ___                             -->
- <!-- |___ \/_ |__ \                            -->
- <!--   __) || |  ) |    _ __ _____      _____  -->
- <!--  |__ < | | / /    | '__/ _ \ \ /\ / / __| -->
- <!--  ___) || |/ /_ _  | | | (_) \ V  V /\__ \ -->
- <!-- |____(_)_|____(_) |_|  \___/ \_/\_/ |___/ -->
-
 - **`table_rows`** *[Required, Not Repeatable, String]* <br> 
 Like the column spanner and column heads, the `table_rows` section is composed of the stub head and stubs (*row captions*). The stubs are the captions of the rows of data and the stub head is the label that groups the rows together in a logical fashion. As for `table_columns`, the information found in the stubs can be merged and edited to be optimized for clarity and discoverability.
 
@@ -646,13 +486,6 @@ my_table = list(
 <br>
 
 
- <!--  ____  __ ____      __            _               _             -->
- <!-- |___ \/_ |___ \    / _|          | |             | |            -->
- <!--   __) || | __) |  | |_ ___   ___ | |_ _ __   ___ | |_ ___  ___  -->
- <!--  |__ < | ||__ <   |  _/ _ \ / _ \| __| '_ \ / _ \| __/ _ \/ __| -->
- <!--  ___) || |___) |  | || (_) | (_) | |_| | | | (_) | ||  __/\__ \ -->
- <!-- |____(_)_|____(_) |_| \___/ \___/ \__|_| |_|\___/ \__\___||___/ -->
-
 - **`table_footnotes`** *[Optional, Repeatable]* <br>
 Footnotes provide additional clarity. They may for example be used to assure that the user is aware of conditions and exceptions that may apply to a table. Footnotes may include statements of missing data, imputation of data, or other content that is not included in the body of the publication. 
 
@@ -685,13 +518,6 @@ my_table = list(
 ```
 <br>
 
-
- <!--  ____  __ _  _                   _            -->
- <!-- |___ \/_ | || |                 (_)           -->
- <!--   __) || | || |_   ___  ___ _ __ _  ___  ___  -->
- <!--  |__ < | |__   _| / __|/ _ \ '__| |/ _ \/ __| -->
- <!--  ___) || |  | |_  \__ \  __/ |  | |  __/\__ \ -->
- <!-- |____(_)_|  |_(_) |___/\___|_|  |_|\___||___/ -->
 
 - **`table_series`** *[Optional, Repeatable]* <br>
 Table series may be organized into series, typically by theme.
@@ -726,13 +552,6 @@ my_table = list(
 ```
 <br>
 
-
- <!--  ____  __ _____        _        _   _     _   _           -->
- <!-- |___ \/_ | ____|      | |      | | (_)   | | (_)          -->
- <!--   __) || | |__     ___| |_ __ _| |_ _ ___| |_ _  ___ ___  -->
- <!--  |__ < | |___ \   / __| __/ _` | __| / __| __| |/ __/ __| -->
- <!--  ___) || |___) |  \__ \ || (_| | |_| \__ \ |_| | (__\__ \ -->
- <!-- |____(_)_|____(_) |___/\__\__,_|\__|_|___/\__|_|\___|___/ -->
 
 - **`statistics`** *[Optional, Repeatable]* <br>
 The table metadata will not contain data. What the `statistics` element refers to is the <u>type of statistics</u> included in the table. Some tables may only contain counts, such as a table of population by age group and sex (which shows counts of persons; other tables could be counts of households, facilities, or any other observation unit). But statistical tables can contain many other types of summary statistics. This element is used to list these types of statistics. 
@@ -789,13 +608,6 @@ my_table = list(
 <br>
 
 
- <!--  ____  __   __                 _ _           _                          -->
- <!-- |___ \/_ | / /                (_) |         | |                         -->
- <!--   __) || |/ /_     _   _ _ __  _| |_    ___ | |__  ___  ___ _ ____   __ -->
- <!--  |__ < | | '_ \   | | | | '_ \| | __|  / _ \| '_ \/ __|/ _ \ '__\ \ / / -->
- <!--  ___) || | (_) |  | |_| | | | | | |_  | (_) | |_) \__ \  __/ |   \ V /  -->
- <!-- |____(_)_|\___(_)  \__,_|_| |_|_|\__|  \___/|_.__/|___/\___|_|    \_/   -->
-
 - **`unit_observation`** *[Optional, Repeatable]* <br>
 The element provides information on the unit(s) of observations that correspond to the values shown in the table.
 
@@ -818,13 +630,6 @@ my_table = list(
 ```
 <br>
 
-
- <!--  ____  __ ______                                      -->
- <!-- |___ \/_ |____  |                                     -->
- <!--   __) || |   / /   ___  ___  _   _ _ __ ___ ___  ___  -->
- <!--  |__ < | |  / /   / __|/ _ \| | | | '__/ __/ _ \/ __| -->
- <!--  ___) || | / /    \__ \ (_) | |_| | | | (_|  __/\__ \ -->
- <!-- |____(_)_|/_(_)   |___/\___/ \__,_|_|  \___\___||___/ -->
 
 - **`data_sources`** *[Optional, Repeatable]* <br>     
 The data sources are often cited in the footnote section of a table. The `name`, `source_id`, and `link` elements are optional, but at least one of them must be provided.
@@ -860,15 +665,7 @@ my_table = list(
 ```
 <br>
 
-
-    
- <!--  ____  __  ___    _   _                 -->
- <!-- |___ \/_ |/ _ \  | | (_)                -->
- <!--   __) || | (_) | | |_ _ _ __ ___   ___  -->
- <!--  |__ < | |\__, | | __| | '_ ` _ \ / _ \ -->
- <!--  ___) || |  / /  | |_| | | | | | |  __/ -->
- <!-- |____(_)_| /_(_)  \__|_|_| |_| |_|\___| -->
-
+  
 - **`time_periods`** *[Optional, Repeatable]* <br>
 The time periods consists of a list or periods (range of years / quarters / months / days) that the data relate to, preferably entered in ISO 8601 format (YYYY, or YYYY-MM, or YYYY-MM-DD). If the data are by quarter, convert them into ISO 8601 format (e.g., first quarter of 2020 would be "from 2020-01 to 2020-03). This is a repeatable field. If the time periods are for example 1990, 2000 to 2004, and 2014 to June 2019, do not enter the time period as a single range 1990-2019 as this would include irrelevant periods. It should be entered as three separate ranges as in the example below. For data that are related to a specific date (for example, the population of a country as of the census day), enter the date in both the `from` and `to` fields.
 
@@ -898,13 +695,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   ___   ___                 _                          -->
- <!-- |___ \ |__ \ / _ \               (_)                         -->
- <!--   __) |   ) | | | |   _   _ _ __  ___   _____ _ __ ___  ___  -->
- <!--  |__ <   / /| | | |  | | | | '_ \| \ \ / / _ \ '__/ __|/ _ \ -->
- <!--  ___) | / /_| |_| |  | |_| | | | | |\ V /  __/ |  \__ \  __/ -->
- <!-- |____(_)____|\___(_)  \__,_|_| |_|_| \_/ \___|_|  |___/\___| -->
-
 - **`universe`** *[Optional, Repeatable]* <br>
 The universe of a table refers to the population (or *respondents*) covered in the data. It does not have to be a population of individuals; it can for example be a population of households, facilities, firms, groups of persons, or even objects. The description of the universe should clearly inform the data users of inclusions and exclusions that they may not expect.
 
@@ -929,15 +719,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   ___  __               __                         _               -->
- <!-- |___ \ |__ \/_ |             / _|                       | |              -->
- <!--   __) |   ) || |    _ __ ___| |_    ___ ___  _   _ _ __ | |_ _ __ _   _  -->
- <!--  |__ <   / / | |   | '__/ _ \  _|  / __/ _ \| | | | '_ \| __| '__| | | | -->
- <!--  ___) | / /_ | |_  | | |  __/ |   | (_| (_) | |_| | | | | |_| |  | |_| | -->
- <!-- |____(_)____||_(_) |_|  \___|_|    \___\___/ \__,_|_| |_|\__|_|   \__, | -->
- <!--                                                                    __/ | -->
- <!--                                                                   |___/  -->
-
 - **`ref_country`** *[Optional, Repeatable]* <br>
 This element is used to document the list of countries for which data are in the table. This element serves to assure that the country name and code are easily discoverable and contribute to a virtual national catalog. If the table only refers to part of a country (for example a city), the `ref_country` field should still be filled. Another element called `geographic_units`is provided (see below) to capture more detailed information on the table's geographic coverage. 
 
@@ -947,16 +728,6 @@ This element is used to document the list of countries for which data are in the
   - **`code`** *[Required, Not repeatable, String]* <br>
   The code of the country mentioned in `name`, preferably an [ISO 3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1). <br><br> 
 
-
-
- <!--  ____   ___  ___                                     _ _        -->
- <!-- |___ \ |__ \|__ \                                   (_) |       -->
- <!--   __) |   ) |  ) |     __ _  ___  ___    _   _ _ __  _| |_ ___  -->
- <!--  |__ <   / /  / /     / _` |/ _ \/ _ \  | | | | '_ \| | __/ __| -->
- <!--  ___) | / /_ / /_ _  | (_| |  __/ (_) | | |_| | | | | | |_\__ \ -->
- <!-- |____(_)____|____(_)  \__, |\___|\___/   \__,_|_| |_|_|\__|___/ -->
- <!--                        __/ |                                    -->
- <!--                       |___/                                     -->
 
 - **`geographic_units`** *[Optional, Repeatable]* <br>
 An itemized list of geographic areas covered by the data in the table, other than the country/countries that must be entered in `ref_country`.
@@ -996,15 +767,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   ___  ____                                 _            _ _          -->
- <!-- |___ \ |__ \|___ \                               | |          (_) |         -->
- <!--   __) |   ) | __) |    __ _ _ __ __ _ _ __  _   _| | __ _ _ __ _| |_ _   _  -->
- <!--  |__ <   / / |__ <    / _` | '__/ _` | '_ \| | | | |/ _` | '__| | __| | | | -->
- <!--  ___) | / /_ ___) |  | (_| | | | (_| | | | | |_| | | (_| | |  | | |_| |_| | -->
- <!-- |____(_)____|____(_)  \__, |_|  \__,_|_| |_|\__,_|_|\__,_|_|  |_|\__|\__, | -->
- <!--                        __/ |                                          __/ | -->
- <!--                       |___/                                          |___/  -->
-
 - **`geographic_granularity`** *[Optional, Not repeatable, String]* <br>
 A description of the geographic levels for which data are presented in the table. This is not a list of specific geographic areas, but a list of the administrative <u>level(s)</u> that correspond to these geographic areas. <br>
 
@@ -1031,14 +793,6 @@ my_table = list(
 <br>
 
 
-
- <!--  ____   ___  _  _     _     _                -->
- <!-- |___ \ |__ \| || |   | |   | |               -->
- <!--   __) |   ) | || |_  | |__ | |__   _____  __ -->
- <!--  |__ <   / /|__   _| | '_ \| '_ \ / _ \ \/ / -->
- <!--  ___) | / /_   | |_  | |_) | |_) | (_) >  <  -->
- <!-- |____(_)____|  |_(_) |_.__/|_.__/ \___/_/\_\ -->
-
 - **`bbox`** *[Optional ; Repeatable]* <br>
 Bounding boxes are typically used for geographic datasets to indicate the geographic coverage of the data, but can be provided for tables as well, although this will rarely be done. A geographic bounding box defines a rectangular geographic area.
 
@@ -1052,16 +806,6 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
   - **`north`** *[Required ; Not repeatable ; String]* <br>
   Northern geographic parameter of the bounding box.<br><br>
   
-
-
- <!--  ____   ___  _____    _                                                -->
- <!-- |___ \ |__ \| ____|  | |                                               -->
- <!--   __) |   ) | |__    | | __ _ _ __   __ _ _   _  __ _  __ _  ___  ___  -->
- <!--  |__ <   / /|___ \   | |/ _` | '_ \ / _` | | | |/ _` |/ _` |/ _ \/ __| -->
- <!--  ___) | / /_ ___) |  | | (_| | | | | (_| | |_| | (_| | (_| |  __/\__ \ -->
- <!-- |____(_)____|____(_) |_|\__,_|_| |_|\__, |\__,_|\__,_|\__, |\___||___/ -->
- <!--                                      __/ |             __/ |           -->
- <!--                                     |___/             |___/            -->
 
 - **`languages`** *[Optional, Repeatable]* <br>
 Most tables will only be provided in one language. This is however a repeatable field, to allow for more than one language to be listed.
@@ -1090,13 +834,6 @@ my_table = list(
 ```
 <br>
 
-
- <!--  ____   ___   __     _ _       _         -->
- <!-- |___ \ |__ \ / /    | (_)     | |        -->
- <!--   __) |   ) / /_    | |_ _ __ | | _____  -->
- <!--  |__ <   / / '_ \   | | | '_ \| |/ / __| -->
- <!--  ___) | / /| (_) |  | | | | | |   <\__ \ -->
- <!-- |____(_)____\___(_) |_|_|_| |_|_|\_\___/ -->
 
 - **`links`** *[Optional, Repeatable]* <br>
 A list of associated links related to the table.
@@ -1132,15 +869,6 @@ my_table = list(
 <br>
 
 
- <!--  ____  __  ___                 _       _             -->
- <!-- |___ \/_ |/ _ \               (_)     | |            -->
- <!--   __) || | (_) |    __ _ _ __  _    __| | ___   ___  -->
- <!--  |__ < | |> _ <    / _` | '_ \| |  / _` |/ _ \ / __| -->
- <!--  ___) || | (_) |  | (_| | |_) | | | (_| | (_) | (__  -->
- <!-- |____(_)_|\___(_)  \__,_| .__/|_|  \__,_|\___/ \___| -->
- <!--                         | |                          -->
- <!--                         |_|                          -->
-
 - **`api_documentation`** *[Optional ; Repeatable]* <br>
 Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. 
     
@@ -1149,17 +877,7 @@ Increasingly, data are made accessible via Application Programming Interfaces (A
   This element will not contain the API documentation itself, but information on what documentation is available.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL of the API documentation.<br><br>
-  
     
-    
- <!--  ____   ___ ______               _     _ _           _   _                  -->
- <!-- |___ \ |__ \____  |             | |   | (_)         | | (_)                 -->
- <!--   __) |   ) |  / /   _ __  _   _| |__ | |_  ___ __ _| |_ _  ___  _ __  ___  -->
- <!--  |__ <   / /  / /   | '_ \| | | | '_ \| | |/ __/ _` | __| |/ _ \| '_ \/ __| -->
- <!--  ___) | / /_ / /    | |_) | |_| | |_) | | | (_| (_| | |_| | (_) | | | \__ \ -->
- <!-- |____(_)____/_(_)   | .__/ \__,_|_.__/|_|_|\___\__,_|\__|_|\___/|_| |_|___/ -->
- <!--                     | |                                                     -->
- <!--                     |_|                                                     -->
 
 - **`publications`** *[Optional, Repeatable]* <br>
 This element identifies the publication(s) where the table is published. This could for example be a Statistics Yearbook, a report, a paper, etc. <br>
@@ -1188,15 +906,6 @@ my_table = list(
 ```
 <br>
 
-
- <!--  ____   ___   ___     _                                    _      -->
- <!-- |___ \ |__ \ / _ \   | |                                  | |     -->
- <!--   __) |   ) | (_) |  | | _____ _   ___      _____  _ __ __| |___  -->
- <!--  |__ <   / / > _ <   | |/ / _ \ | | \ \ /\ / / _ \| '__/ _` / __| -->
- <!--  ___) | / /_| (_) |  |   <  __/ |_| |\ V  V / (_) | | | (_| \__ \ -->
- <!-- |____(_)____|\___(_) |_|\_\___|\__, | \_/\_/ \___/|_|  \__,_|___/ -->
- <!--                                 __/ |                             -->
- <!--                                |___/                              -->
 
 - **`keywords`** *[Optional ; Repeatable]* <br>
 
@@ -1237,13 +946,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   ___   ___    _   _                               -->
- <!-- |___ \ |__ \ / _ \  | | | |                              -->
- <!--   __) |   ) | (_) | | |_| |__   ___ _ __ ___   ___  ___  -->
- <!--  |__ <   / / \__, | | __| '_ \ / _ \ '_ ` _ \ / _ \/ __| -->
- <!--  ___) | / /_   / /  | |_| | | |  __/ | | | | |  __/\__ \ -->
- <!-- |____(_)____| /_(_)  \__|_| |_|\___|_| |_| |_|\___||___/ -->
-
 - **`themes`** *[Optional ; Repeatable]* <br>
 
   ![](./images/ReDoc_Table_24.JPG){width=100%}
@@ -1260,17 +962,7 @@ my_table = list(
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL to the controlled vocabulary used, if any. <br><br> 
   
-  
-  
- <!--  ____   ____   ___     _              _           -->
- <!-- |___ \ |___ \ / _ \   | |            (_)          -->
- <!--   __) |  __) | | | |  | |_ ___  _ __  _  ___ ___  -->
- <!--  |__ <  |__ <| | | |  | __/ _ \| '_ \| |/ __/ __| -->
- <!--  ___) | ___) | |_| |  | || (_) | |_) | | (__\__ \ -->
- <!-- |____(_)____/ \___(_)  \__\___/| .__/|_|\___|___/ -->
- <!--                                | |                -->
- <!--                                |_|                -->
-                               
+                                 
 - **`topics`** *[Optional ; Repeatable]* <br>
 
   ![](./images/ReDoc_Table_25.JPG){width=100%}
@@ -1325,15 +1017,6 @@ my_table = list(
 <br>
 
 
-<!--   ____   ____  __         _ _          _       _ _                  -->
-<!--  |___ \ |___ \/_ |       | (_)        (_)     | (_)                 -->
-<!--    __) |  __) || |     __| |_ ___  ___ _ _ __ | |_ _ __   ___  ___  -->
-<!--   |__ <  |__ < | |    / _` | / __|/ __| | '_ \| | | '_ \ / _ \/ __| -->
-<!--   ___) | ___) || |_  | (_| | \__ \ (__| | |_) | | | | | |  __/\__ \ -->
-<!--  |____(_)____/ |_(_)  \__,_|_|___/\___|_| .__/|_|_|_| |_|\___||___/ -->
-<!--                                         | |                         -->
-<!--                                         |_|                         -->
-
 - **`disciplines`** *[Optional ; Repeatable]* <br>   
 
   ![](./images/ReDoc_Table_26.JPG){width=100%}
@@ -1382,13 +1065,6 @@ This is a block of five elements:
 <br>
 
 
- <!--  ____   ____ ___          _       __ _       _ _   _                  -->
- <!-- |___ \ |___ \__ \        | |     / _(_)     (_) | (_)                 -->
- <!--   __) |  __) | ) |     __| | ___| |_ _ _ __  _| |_ _  ___  _ __  ___  -->
- <!--  |__ <  |__ < / /     / _` |/ _ \  _| | '_ \| | __| |/ _ \| '_ \/ __| -->
- <!--  ___) | ___) / /_ _  | (_| |  __/ | | | | | | | |_| | (_) | | | \__ \ -->
- <!-- |____(_)____/____(_)  \__,_|\___|_| |_|_| |_|_|\__|_|\___/|_| |_|___/ -->
-
 - **`definitions`** *[Optional, Repeatable]*  <br>
 Definitions or concepts covered by the table.
 
@@ -1426,13 +1102,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   ____ ____          _               _  __ _           _   _                  -->
- <!-- |___ \ |___ \___ \        | |             (_)/ _(_)         | | (_)                 -->
- <!--   __) |  __) |__) |    ___| | __ _ ___ ___ _| |_ _  ___ __ _| |_ _  ___  _ __  ___  -->
- <!--  |__ <  |__ <|__ <    / __| |/ _` / __/ __| |  _| |/ __/ _` | __| |/ _ \| '_ \/ __| -->
- <!--  ___) | ___) |__) |  | (__| | (_| \__ \__ \ | | | | (_| (_| | |_| | (_) | | | \__ \ -->
- <!-- |____(_)____/____(_)  \___|_|\__,_|___/___/_|_| |_|\___\__,_|\__|_|\___/|_| |_|___/ -->
-
 - **`classifications`** *[Optional, Repeatable]* <br>
 The element is used to document the use of standard classifications (or "ontologies", or "taxonomies") in the table.
 
@@ -1469,28 +1138,13 @@ my_table = list(
 ```
 <br>
 
- <!--  ____   ____  _  _          _       _     _        -->
- <!-- |___ \ |___ \| || |        (_)     | |   | |       -->
- <!--   __) |  __) | || |_   _ __ _  __ _| |__ | |_ ___  -->
- <!--  |__ <  |__ <|__   _| | '__| |/ _` | '_ \| __/ __| -->
- <!--  ___) | ___) |  | |_  | |  | | (_| | | | | |_\__ \ -->
- <!-- |____(_)____/   |_(_) |_|  |_|\__, |_| |_|\__|___/ -->
- <!--                                __/ |               -->
- <!--                               |___/                -->
-
+ 
 - **`rights`** *[Optional, Not repeatable, String]* <br>
 Information on the rights or copyright that applies to the table.
 
   ![](./images/ReDoc_Table_29.JPG){width=100%}
 <br>
 
-
- <!--  ____   ____  _____    _ _                          -->
- <!-- |___ \ |___ \| ____|  | (_)                         -->
- <!--   __) |  __) | |__    | |_  ___ ___ _ __  ___  ___  -->
- <!--  |__ <  |__ <|___ \   | | |/ __/ _ \ '_ \/ __|/ _ \ -->
- <!--  ___) | ___) |___) |  | | | (_|  __/ | | \__ \  __/ -->
- <!-- |____(_)____/|____(_) |_|_|\___\___|_| |_|___/\___| -->
          
 - **`license`** *[Optional, Repeatable]* <br>
 A table may require a license to use or reproduce. This is done to protect the intellectual content of the research product. The licensing entity may be different from the researcher or the publisher. It is the entity which has the intellectual rights to the table (s) and would grant rights or restrictions on the reuse of the table.
@@ -1521,13 +1175,6 @@ my_table = list(
 <br>
 
 
- <!--  ____   ____    __          _ _        _   _              -->
- <!-- |___ \ |___ \  / /         (_) |      | | (_)             -->
- <!--   __) |  __) |/ /_      ___ _| |_ __ _| |_ _  ___  _ __   -->
- <!--  |__ <  |__ <| '_ \    / __| | __/ _` | __| |/ _ \| '_ \  -->
- <!--  ___) | ___) | (_) |  | (__| | || (_| | |_| | (_) | | | | -->
- <!-- |____(_)____/ \___(_)  \___|_|\__\__,_|\__|_|\___/|_| |_| -->
-
 - **`citation`** *[Optional, Not repeatable, String]* <br>
 A citation requirement for the table (i.e. an indication of how the table should be cited in publications).
 
@@ -1535,29 +1182,12 @@ A citation requirement for the table (i.e. an indication of how the table should
 <br>
 
 
- <!--  ____   ____ ______                    __ _     _            _   _       _ _ _          -->
- <!-- |___ \ |___ \____  |                  / _(_)   | |          | | (_)     | (_) |         -->
- <!--   __) |  __) |  / /    ___ ___  _ __ | |_ _  __| | ___ _ __ | |_ _  __ _| |_| |_ _   _  -->
- <!--  |__ <  |__ <  / /    / __/ _ \| '_ \|  _| |/ _` |/ _ \ '_ \| __| |/ _` | | | __| | | | -->
- <!--  ___) | ___) |/ /    | (_| (_) | | | | | | | (_| |  __/ | | | |_| | (_| | | | |_| |_| | -->
- <!-- |____(_)____//_(_)    \___\___/|_| |_|_| |_|\__,_|\___|_| |_|\__|_|\__,_|_|_|\__|\__, | -->
- <!--                                                                                   __/ | -->
- <!--                                                                                  |___/  -->
-
 - **`confidentiality`** *[Optional, Not repeatable, String]* <br>
 A published table may be protected through a confidentiality agreement between the publisher and the researcher. It may also determine certain rights regarding the use of the research and the data presented to the table. The data may also present confidential information that is produced for selective audiences. This element is used to provide a statement on any limitations ore restrictions on use of the table based on confidential data or agreements.
 
   ![](./images/ReDoc_Table_29c.JPG){width=100%}
 <br>
 
-
-
- <!--  ____   ____   ___             _       -->
- <!-- |___ \ |___ \ / _ \           | |      -->
- <!--   __) |  __) | (_) |   ___  __| | ___  -->
- <!--  |__ <  |__ < > _ <   / __|/ _` |/ __| -->
- <!--  ___) | ___) | (_) |  \__ \ (_| | (__  -->
- <!-- |____(_)____/ \___(_) |___/\__,_|\___| -->
        
 - **`sdc`** *[Optional, Not repeatable, String]* <br>  
 Information on statistical disclosure control measures applied to the table. This can include cell suppression, or other techniques. Specialized packages have been developed for this purpose, like [*sdcTable: Methods for Statistical Disclosure Control in Tabular Data*](https://cran.r-project.org/web/packages/sdcTable/index.html) and https://cran.r-project.org/web/packages/sdcTable/sdcTable.pdf <br>
@@ -1566,14 +1196,6 @@ The information provided here should be such that it does not provide intruders 
   ![](./images/ReDoc_Table_29d.JPG){width=100%}
 <br>
 
-
-
- <!--  ____   ____   ___                    _             _        -->
- <!-- |___ \ |___ \ / _ \                  | |           | |       -->
- <!--   __) |  __) | (_) |   ___ ___  _ __ | |_ __ _  ___| |_ ___  -->
- <!--  |__ <  |__ < \__, |  / __/ _ \| '_ \| __/ _` |/ __| __/ __| -->
- <!--  ___) | ___) |  / /  | (_| (_) | | | | || (_| | (__| |_\__ \ -->
- <!-- |____(_)____/  /_(_)  \___\___/|_| |_|\__\__,_|\___|\__|___/ -->
 
 - **`contacts`** *[Optional, Repeatable]* <br>
 Users of the data may need further clarification and information. This section may include the name-affiliation-email-URI of one or multiple contact persons. This block of elements will identify contact persons who can be used as resource persons regarding problems or questions raised by the user community. The URI attribute should be used to indicate a URN or URL for the homepage of the contact individual. The email attribute is used to indicate an email address for the contact individual. It is recommended to avoid putting the actual name of individuals. The information provided here should be valid for the long term. It is therefore preferable to identify contact persons by a title. The same applies for the email field. Ideally, a "generic" email address should be provided. It is easy to configure a mail server in such a way that all messages sent to the generic email address would be automatically forwarded to some staff members.
@@ -1613,13 +1235,6 @@ my_table = list(
 <br>
 
 
- <!--  ____  _  _    ___                 _             -->
- <!-- |___ \| || |  / _ \               | |            -->
- <!--   __) | || |_| | | |   _ __   ___ | |_ ___  ___  -->
- <!--  |__ <|__   _| | | |  | '_ \ / _ \| __/ _ \/ __| -->
- <!--  ___) |  | | | |_| |  | | | | (_) | ||  __/\__ \ -->
- <!-- |____(_) |_|  \___(_) |_| |_|\___/ \__\___||___/ -->
-
 - **`notes`** *[Optional, Repeatable]* <br>
 The notes provide a space to include observations or open-ended content that may be material in understanding the table, which have not been captured in other elements of the schema.
 
@@ -1627,13 +1242,6 @@ The notes provide a space to include observations or open-ended content that may
   - **`note`** *[Required, Not repeatable, String]* <br>
   The note itself.<br><br>
 
-
- <!--  ____  _  _  __              _       _   _                  -->
- <!-- |___ \| || |/_ |            | |     | | (_)                 -->
- <!--   __) | || |_| |    _ __ ___| | __ _| |_ _  ___  _ __  ___  -->
- <!--  |__ <|__   _| |   | '__/ _ \ |/ _` | __| |/ _ \| '_ \/ __| -->
- <!--  ___) |  | | | |_  | | |  __/ | (_| | |_| | (_) | | | \__ \ -->
- <!-- |____(_) |_| |_(_) |_|  \___|_|\__,_|\__|_|\___/|_| |_|___/ -->
                                                             
 - **`relations`** *[Optional ; Repeatable]* <br>
 If the table has a relation to other resources (e.g., it is a subset of another resource, or a translation of another resource), the relation(s) and associated resources can be listed in this element.
@@ -1661,17 +1269,6 @@ If the table has a relation to other resources (e.g., it is a subset of another 
     <br>
 
 
-
-
- <!--  _  _                                                          -->
- <!-- | || |                                                         -->
- <!-- | || |_   _ __  _ __ _____   _____ _ __   __ _ _ __   ___ ___  -->
- <!-- |__   _| | '_ \| '__/ _ \ \ / / _ \ '_ \ / _` | '_ \ / __/ _ \ -->
- <!--    | |_  | |_) | | | (_) \ V /  __/ | | | (_| | | | | (_|  __/ -->
- <!--    |_(_) | .__/|_|  \___/ \_/ \___|_| |_|\__,_|_| |_|\___\___| -->
- <!--          | |                                                   -->
- <!--          |_|                                                   -->
-
 ### Provenance
 
 **`provenance`** *[Optional ; Repeatable]* <br>
@@ -1695,17 +1292,6 @@ The `origin_description` elements are used to describe when and from where metad
   @@@@@@@ <br>
 
 
-
-
- <!--  _____    _                   -->
- <!-- | ____|  | |                  -->
- <!-- | |__    | |_ __ _  __ _ ___  -->
- <!-- |___ \   | __/ _` |/ _` / __| -->
- <!--  ___) |  | || (_| | (_| \__ \ -->
- <!-- |____(_)  \__\__,_|\__, |___/ -->
- <!--                     __/ |     -->
- <!--                    |___/      -->
-
 ### Tags
 
 **`tags`** *[Optional ; Repeatable]* <br>
@@ -1718,17 +1304,6 @@ A user-defined tag.
 - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
 A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
 
-
-
-
- <!--  ___    ____  _  _   ___     _     _         _              _           -->
- <!-- |__ \  |___ \| || | / _ \   | |   | |       | |            (_)          -->
- <!--    ) |   __) | || || (_) |  | | __| | __ _  | |_ ___  _ __  _  ___ ___  -->
- <!--   / /   |__ <|__   _> _ <   | |/ _` |/ _` | | __/ _ \| '_ \| |/ __/ __| -->
- <!--  / /_ _ ___) |  | || (_) |  | | (_| | (_| | | || (_) | |_) | | (__\__ \ -->
- <!-- |____(_)____(_) |_| \___(_) |_|\__,_|\__,_|  \__\___/| .__/|_|\___|___/ -->
- <!--                                                      | |                -->
- <!--                                                      |_|                -->
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
 ![](./images/ReDoc_documents_17.JPG){width=100%}  
@@ -1776,15 +1351,6 @@ A user-defined group (optional) to which the tag belongs. Grouping tags allows i
       The weight of the word in the definition of the topic.<br><br>
 
 
- <!--  ___    ____  _  _   ___                   _              _     _ _                  -->
- <!-- |__ \  |___ \| || | / _ \                 | |            | |   | (_)                 -->
- <!--    ) |   __) | || || (_) |   ___ _ __ ___ | |__   ___  __| | __| |_ _ __   __ _ ___  -->
- <!--   / /   |__ <|__   _\__, |  / _ \ '_ ` _ \| '_ \ / _ \/ _` |/ _` | | '_ \ / _` / __| -->
- <!--  / /_ _ ___) |  | |   / /  |  __/ | | | | | |_) |  __/ (_| | (_| | | | | | (_| \__ \ -->
- <!-- |____(_)____(_) |_|  /_(_)  \___|_| |_| |_|_.__/ \___|\__,_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                                            __/ |     -->
- <!--                                                                           |___/      -->
-
 - **`embeddings`** *[Optional ; Repeatable]* <br>
 In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings and their use in implementation of semantic search tools. Word embedding models convert text (words, phrases, documents) into large-dimension numeric vectors (e.g., a vector of 100 or 200 numbers) that are representative of the semantic content of the text. The vectors are generated by submitting a text to a pre-trained word embedding model (possibly via an API). 
   
@@ -1804,17 +1370,6 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
   The numeric vector representing the series metadata. <br><br>
 
 
-
-
-
-
-<!--     __               _     _ _ _   _                   _  -->
-<!--    / /              | |   | (_) | (_)                 | | -->
-<!--   / /_      __ _  __| | __| |_| |_ _  ___  _ __   __ _| | -->
-<!--  | '_ \    / _` |/ _` |/ _` | | __| |/ _ \| '_ \ / _` | | -->
-<!--  | (_) |  | (_| | (_| | (_| | | |_| | (_) | | | | (_| | | -->
-<!--   \___(_)  \__,_|\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| -->
-
 ### Additional (custom) elements
 
 **`additional`** *[Optional ; Not repeatable]*<br>
@@ -1822,23 +1377,6 @@ The `additional` element allows data curators to add their own metadata elements
 
 ![](./images/ReDoc_ts_series_49.JPG){width=100%}
 
-
-
-
-
-
-
-
-
-
- <!--  ______                           _            -->
- <!-- |  ____|                         | |           -->
- <!-- | |__  __  ____ _ _ __ ___  _ __ | | ___  ___  -->
- <!-- |  __| \ \/ / _` | '_ ` _ \| '_ \| |/ _ \/ __| -->
- <!-- | |____ >  < (_| | | | | | | |_) | |  __/\__ \ -->
- <!-- |______/_/\_\__,_|_| |_| |_| .__/|_|\___||___/ -->
- <!--                            | |                 -->
- <!--                            |_|                 -->
 
 ## Complete examples
 
@@ -2596,8 +2134,3 @@ The table will now be available in the NADA catalog.
 #Python script
 
 ```
-
-
-
-
-
