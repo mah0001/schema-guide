@@ -12,12 +12,11 @@ Many national and international organizations have adopted data-sharing policies
 
 Researchers identify and acquire data in various ways. Some rely on personal networks to find and obtain the data they need, which can lead to the use of "convenient" data that may not be the most relevant. Others locate datasets of interest in academic publications, which can be challenging as datasets are often not cited in a consistent or standardized manner. But many researchers search specialized data catalogs or use general search engines to locate relevant datasets or catalogs.
 
-General search engines such as Google and Bing have remarkable capabilities in locating and ranking relevant resources available online, and in some cases, returning instant answers to users' queries. However, these search engines are designed to answer relatively simple queries and may not be able to find or recommend the most relevant data to help researchers answer complex research questions. Additionally, some relevant data may be hidden in locations such as article supplements, attachments to publications, or available as data services and not as datasets, making it challenging to locate them. Other datasets may be available in open data repositoriesbut published with limited metadata, making them mostly invisible to web crawlers. Due to data being scattered across many sources and locations and published with metadata that is not optimized for search engines, users without prior knowledge of the existence and possible location of the data may be poorly served. Google's Dataset Search is one attempt to implement a better search engine for a catalog of datasets, but its performance is also hampered by the paucity of available metadata.
+General search engines such as Google and Bing have remarkable capabilities in locating and ranking relevant resources available online, and in some cases, returning instant answers to users' queries. However, these search engines are designed to answer relatively simple queries and may not be able to find or recommend the most relevant data to help researchers answer complex research questions. Additionally, some relevant data may be hidden in locations such as article supplements, attachments to publications, or available as data services and not as datasets, making it challenging to locate them. Other datasets may be available in open data repositories but published with limited metadata, making them mostly invisible to web crawlers. Due to data being scattered across many sources and locations and published with metadata that is not optimized for search engines, users without prior knowledge of the existence and possible location of the data may be poorly served. Google's Dataset Search is one attempt to implement a better search engine for a catalog of datasets, but its performance is also hampered by the paucity of available metadata.
 
 While general search engines are crucial in directing users to relevant catalogs and repositories, specialized online data catalogs and platforms maintained by national or international organizations, academic data centers, data archives, or data libraries are better suited for researchers seeking relevant data. These organizations provide critical data curation services. However, the search algorithms integrated into their data catalogs can sometimes provide unsatisfactory search results due to weaknesses in metadata associated with data resources and the lack of optimization of search indexes and algorithms. Administrators of these catalogs have a responsibility to ensure that their assets are visible in general search engines, and that the search engines and other discovery tools implemented in their catalogs provide an optimized user experience.
 
 The few examples provided below illustrate some of the problems that researchers encounter when searching for data.[2] 
-
 
 **Example 1: Searching for data on education and income inequality in Kenya using Google**
 
@@ -30,7 +29,6 @@ Suppose an analyst wants to study the correlation between education and inequali
 <br>
 
 A more specific query for "survey microdata on income inequality and education in Kenya" returns more relevant results, including a link to the *Kenya Integrated Household Budget Survey 2015-2016* from the microdata catalog maintained by the Kenya Bureau of Statistics. But the 49 results returned by Google do not include other existing relevant survey datasets that contain variables on education and on household income --such as the *kenya Integrated Household Budget Survey 2005-2006*-- or the other surveys that collected data on education and on proxies of household income such as household expenditure or assets ownership.
-
 
 **Example 2: Searching for *child malnutrition* in the [US Open Data platform (data.gov)](https://catalog.data.gov)**
 
@@ -61,7 +59,6 @@ This second example illustrates the challenge of finding data based on a query t
 <br>
 
 Finding indicators appears to be challenging. Finding relevant microdata would be even more problematic. Unless the data curator has included "child malnutrition" as a keyword in the metadata, the search algorithm would have to understand that datasets containing variables *age in months*, *height*, and *weight* are relevant. Metadata augmentation, and the implementation of smarter search algorithms (with semantic capability) are the solutions to this problem.
-
 
 **Example 3: Searching for *GDP per capita India 2020* in Google**
 
@@ -131,40 +128,25 @@ The main obstacles to data visibility, discoverability, and usability are that:
 
 ## Assessing data
 
-Ideally, the researcher should not only be provided with links to relevant datasets but also with full documentation of all variables (collected and derived) included in the datasets. The linked resources should include information on the scope and coverage of the data, on the sample size and design, on the comparability of the data with data from other relevant sources, on previous analysis of the data (citations), and more. Reproducible scripts used by other researchers who conducted analysis of the dataset may also be useful.
+Ideally, the researcher should not only be provided with links to relevant datasets but also with easy access to the metadata they need to assess the relevance of the data for their specific purpose. Acquiring a dataset may be time consuming, and sometimes involve other costs. Users should only invest time and resources in the acquisition of data for which they have assurance of quality and relevancy.
 
-Are the data really relevant?
+Assessing the fitness for purpose of a dataset will require different metadata for different data types and uses. Some metadata elements are "obvious": data type, geographic coverage, temporal coverage, scope and universe, and access policy. But more detailed information may be needed. For example, a survey dataset (microdata) may only be relevant to a user if a specific modality of a specific variable had a sufficient number of respondents (e.g., a researcher interested in mental issues by age may find a study that contains a variable "type of disability" with a modality "mental disability", but if the sample size is such that the number of observations corresponding to this modality is very small, the dataset would not allow any valid statistical inference). Comparability across sources is also essential to many uses and users, so the metadata should provide detailed description of sampling, universe, variables, concepts, and methods as relevant to the data type. A data user may also be interested in information on the periodicity of updates of the data (for time series or panel surveys, for example), and on past uses of the dataset by the research community.
 
-Is the sample size large enough? Example: ...
-
-Does it cover the entire universe of interest? And the entire geography of interest?
-
-Is the source reliable
-
-Is the methodology satisfactory
-
-Are data comparable (over time, across sources)
-
-Will the data remain available? Updated?
+Even when access to the data is restricted, detailed metadata should thus be provided openly an in a user-friendly interface to the users. 
 
 
 ## Accessing data
 
-Terms of use
+Responsible users will want to know that their specific use of the data complies with the legal, ethical, and technical requirements imposed by the owner or distibutor of the dataset. All datasets should be provided with detailed information on the attached terms of use. A standard license may be used. The conditions 
 
-How to request access: register, form, ...
+For datasets that are not provided with an option for direct download, an easy-to-use procedure should be implemented by the data distributor. What information must be provided by the user, how long it takes to obtain a response to a request for access to data, what appeal options may be available in case of refusal, how personal information included in the access request forms will be processed and used, what registration process is required, etc.. must be very transparent and user-friendly.
 
-Mode of access
-- Bulk download
-- API
-- UI
-- Analytical platforms
+The modes of access to the data should also accommodate different users preferences. The modalities may include: 
+- Bulk download, in which case the data may be provided in multiple "recent" formats, at least one of them non-proprietary. 
+- API, in which case detailed documentation of the API must be provided (legal and technical). 
+- UI interface
 - Visualizations
-
-File formats
-- Proprietary
-- Outdated
-- Inconvenient (labels, etc)
+- Others
 
 
 ## Using data
