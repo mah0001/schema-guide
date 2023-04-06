@@ -10,14 +10,6 @@ output: html_document
 </center>
 <br>
 
-
-
- <!--  __  __      _            _       _         -->
- <!-- |  \/  |    | |          | |     | |        -->
- <!-- | \  / | ___| |_ __ _  __| | __ _| |_ __ _  -->
- <!-- | |\/| |/ _ \ __/ _` |/ _` |/ _` | __/ _` | -->
- <!-- | |  | |  __/ || (_| | (_| | (_| | || (_| | -->
- <!-- |_|  |_|\___|\__\__,_|\__,_|\__,_|\__\__,_| -->
                                             
 ## Image metadata 
 
@@ -34,7 +26,6 @@ Although photographs may be more explicit than a long discourse for humans, they
 We start with a brief presentation of the EXIF metadata, then describe the schema we propose for the documentation and cataloguing of images. 
 
 
-
 ### Embedded metadata: EXIF
 
 Modern digital cameras automatically generate metadata and embed it into the image file. This metadata is known as the Exchangeable Image File Format or EXIF. EXIF will record information on the date and time the image was taken, on the GPS location coordinates (latitude & longitude, possibly altitude) if the camera was equipped with a GPS and geolocation was enabled, information on the device including manufacturer and model, technical information (lens type, focal range, aperture, shutter speed, flash settings), the system-generated unique image identifier, and more.
@@ -46,7 +37,6 @@ There are several ways to extract or view an image's EXIF Data. For example, the
 <br>
 
 But with the exception of the date, location (if captured), and unique image identifier, the content of the EXIF does not provide information that users interested in identifying images based on their source and/or content will find useful. Metadata describing the content and source of an image will have to be obtained from another source or using other tools.
-
 
 
 ### IPTC and Dublin Core standards 
@@ -64,8 +54,6 @@ The metadata schema we propose for documenting images contains two mutually-excl
 - Last, a small number of additional metadata elements are provided, which are common to both options described above.
 
 Whether the IPTC or the simpler DCMI option is used, the metadata should be made as rich as possible. 
-
-
 
 
 ### Augmenting image metadata
@@ -141,19 +129,6 @@ The last tab, **Safe search**, could be used as warnings if you plan to make the
 This "Try it" tool demonstrates the capabilities of the application which, for automating the processing of a collection of images, would be accessed programmatically using R, Python or another programming language. Accessing the application's API requires a key. The cost of image labeling, face detection, and other image processing is low. For information on pricing, consult the website of the API providers.
 
 
-
-
-
-
-
-
- <!--   _____      _                           -->
- <!--  / ____|    | |                          -->
- <!-- | (___   ___| |__   ___ _ __ ___   __ _  -->
- <!--  \___ \ / __| '_ \ / _ \ '_ ` _ \ / _` | -->
- <!--  ____) | (__| | | |  __/ | | | | | (_| | -->
- <!-- |_____/ \___|_| |_|\___|_| |_| |_|\__,_| -->
-
 ## Schema description
 
 The schema contains two options to document images: the IPTC and the Dublin Core metadata standards. The schema contains four main groups of metadata elements: 
@@ -166,15 +141,6 @@ The description of IPTC metadata elements is largely taken from the Photo Metada
 
 ![](./images/ReDoc_image_01.JPG){width=100%}
 
-
-
-
- <!--  __      _____                                       -->
- <!-- /_ |    / ____|                                      -->
- <!--  | |   | |     ___  _ __ ___  _ __ ___   ___  _ __   -->
- <!--  | |   | |    / _ \| '_ ` _ \| '_ ` _ \ / _ \| '_ \  -->
- <!--  | |_  | |___| (_) | | | | | | | | | | | (_) | | | | -->
- <!--  |_(_)  \_____\___/|_| |_| |_|_| |_| |_|\___/|_| |_| -->
 
 ### Common elements
 
@@ -229,19 +195,6 @@ The `image_description` will contain the metadata related to one image.
     - **`identifier`** *[Required, Not Repeatable, String]*
     The identifier itself.
 
-
-
-
-
-
-
-
- <!--  ___      _____ _____ _______ _____  -->
- <!-- |__ \    |_   _|  __ \__   __/ ____| -->
- <!--    ) |     | | | |__) | | | | |      -->
- <!--   / /      | | |  ___/  | | | |      -->
- <!--  / /_ _   _| |_| |      | | | |____  -->
- <!-- |____(_) |_____|_|      |_|  \_____| -->
                                      
 ### IPTC option
 
@@ -253,8 +206,6 @@ The schema provides two options (standards) to document an image: the IPTC, and 
 
 **`photoVideoMetadataIPTC`** *[Required ; Not Repeatable ; String]* <br>
 Contains all elements used to describe the image using the IPTC standard.
-
-
                    
 - **`title`** *[Optional ; Not Repeatable ; String]* <br>
 <br>
@@ -922,14 +873,6 @@ One or more topics, themes or entities the content is about, each one expressed 
 The IPTC elements are followed by a small set of common elements: see `license`, `tags`, and `album` in section **`Additional elements`**.
 :::
 
-
-
- <!--  ____     _____        _     _ _          _____                -->
- <!-- |___ \   |  __ \      | |   | (_)        / ____|               -->
- <!--   __) |  | |  | |_   _| |__ | |_ _ __   | |     ___  _ __ ___  -->
- <!--  |__ <   | |  | | | | | '_ \| | | '_ \  | |    / _ \| '__/ _ \ -->
- <!--  ___) |  | |__| | |_| | |_) | | | | | | | |___| (_) | | |  __/ -->
- <!-- |____(_) |_____/ \__,_|_.__/|_|_|_| |_|  \_____\___/|_|  \___| -->
                                                                
 ### Dublin Core option
 
@@ -1114,18 +1057,6 @@ A related resource from which the described image is derived.
 - **`note`** *[Optional, Not Repeatable, String]* <br>
 Any additional information on the image, not captured in one of the other metadata elements.
     
-
-
-
-
-
-
- <!--  _  _                 _     _ _ _   _                   _  -->
- <!-- | || |       /\      | |   | (_) | (_)                 | | -->
- <!-- | || |_     /  \   __| | __| |_| |_ _  ___  _ __   __ _| | -->
- <!-- |__   _|   / /\ \ / _` |/ _` | | __| |/ _ \| '_ \ / _` | | -->
- <!--    | |_   / ____ \ (_| | (_| | | |_| | (_) | | | | (_| | | -->
- <!--    |_(_) /_/    \_\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| -->
                                                            
 ### Additional elements (IPTC and DCMI)
 
@@ -1191,17 +1122,6 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
   - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
   A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.<br><br>
 
-
-
-
- <!--  _____    _     _         _              _           -->
- <!-- | ____|  | |   | |       | |            (_)          -->
- <!-- | |__    | | __| | __ _  | |_ ___  _ __  _  ___ ___  -->
- <!-- |___ \   | |/ _` |/ _` | | __/ _ \| '_ \| |/ __/ __| -->
- <!--  ___) |  | | (_| | (_| | | || (_) | |_) | | (__\__ \ -->
- <!-- |____(_) |_|\__,_|\__,_|  \__\___/| .__/|_|\___|___/ -->
- <!--                                   | |                -->
- <!--                                   |_|                -->
     
 ### LDA topics
 
@@ -1324,16 +1244,6 @@ The information provided by LDA models can be used to build a "filter by topic c
 </center>
 
 
-
- <!--    __                    _              _     _ _                  -->
- <!--   / /                   | |            | |   | (_)                 -->
- <!--  / /_      ___ _ __ ___ | |__   ___  __| | __| |_ _ __   __ _ ___  -->
- <!-- | '_ \    / _ \ '_ ` _ \| '_ \ / _ \/ _` |/ _` | | '_ \ / _` / __| -->
- <!-- | (_) |  |  __/ | | | | | |_) |  __/ (_| | (_| | | | | | (_| \__ \ -->
- <!--  \___(_)  \___|_| |_| |_|_.__/ \___|\__,_|\__,_|_|_| |_|\__, |___/ -->
- <!--                                                          __/ |     -->
- <!--                                                         |___/      -->
-
 ### Embeddings
  
 **`embeddings`** *[Optional ; Repeatable]* <br>
@@ -1364,15 +1274,6 @@ The `additional` element allows data curators to add their own metadata elements
 ![](./images/ReDoc_image_62.JPG){width=100%}   
 <br>
 
-
- <!--  ______                           _            -->
- <!-- |  ____|                         | |           -->
- <!-- | |__  __  ____ _ _ __ ___  _ __ | | ___  ___  -->
- <!-- |  __| \ \/ / _` | '_ ` _ \| '_ \| |/ _ \/ __| -->
- <!-- | |____ >  < (_| | | | | | | |_) | |  __/\__ \ -->
- <!-- |______/_/\_\__,_|_| |_| |_| .__/|_|\___||___/ -->
- <!--                            | |                 -->
- <!--                            |_|                 -->
  
 ## Examples 
 
