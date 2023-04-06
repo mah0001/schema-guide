@@ -163,7 +163,6 @@ my_project = list(
 )
 ```
 
-
                                          
 - **`abstract`** *[Optional ; Non repeatable ; String]* <br>
 The abstract should provide a clear summary of the purposes, objectives and content of the project. An abstract can make reference to the various outputs associated with the research project. 
@@ -187,14 +186,11 @@ This data set includes food price estimates and is intended to help gain insight
 ```
 
 
-
-
 - **`review_board`** *[Optional ; Non repeatable ; String]* <br>
 Information on whether and when the project was submitted, reviewed, and approved by an institutional review board (or independent ethics committee, ethical review board (ERB), research ethics board, or equivalent).
 <br>
 ![](./images/ReDoc_scripts_05.JPG){width=100%}
 <br>
-
 
 
 - **`output`** *[Optional ; Repeatable]* <br>
@@ -250,7 +246,6 @@ This data set includes food price estimates and is intended to help gain insight
 ```
 
 
-
 - **`approval_process`** *[Optional ; Repeatable]* <br>
 The *`approval_process`* is a group of six elements used to describe the formal approval process(es) (if any) that the project had to go through. This may for example include an approval by an Ethics Board to collect new data, followed by an internal review process to endorse the results.
 <br>
@@ -299,14 +294,11 @@ my_project = list(
 ```
 
 
-
 - **`project_website`** *[Optional ; Repeatable ; String]*  <br>
 URL of the project website.
 <br>
 ![](./images/ReDoc_scripts_08.JPG){width=100%}
 <br>
-
-
 
  
 - **`language`** *[Optional ; Repeatable]* <br>
@@ -338,15 +330,12 @@ my_project = list(
 )
 ```
 
-
-
  
 - **`production_date`** <br> 
 The date in ISO 8601 format (YYYY-MM-DD) the project was completed (this refers to the version that is being documented and released.)
 <br>
 ![](./images/ReDoc_scripts_10.JPG){width=100%}
 <br>
-
 
 
 - **`version_statement`** *[Optional ; Repeatable]* <br>
@@ -385,8 +374,6 @@ my_project = list(
 ```
 
 
-
-
 - **`errata`** *[Optional ; Repeatable]* <br>   
 This field is used to list and describe errata.
 <br>
@@ -415,8 +402,6 @@ my_project = list(
   )
 )  
 ```
-
-
 
 
 - **`process`** *[Optional ; Repeatable]* <br>
@@ -486,7 +471,6 @@ my_project = list(
 )  
 ```
 
-
  
 - **`authoring_entity`** *[Optional ; Repeatable]* <br>
 This section will identify the person(s) and/or organization(s) in charge of the intellectual content of the research project, and specify their respective role.
@@ -512,7 +496,6 @@ This section will identify the person(s) and/or organization(s) in charge of the
     A unique identification number/code for the authoring entity, entered as a string variable.<br><br>
 
 
-
 ```{r, indent="  ", eval=F, echo=T}
 my_project = list(
   # ... ,
@@ -536,7 +519,6 @@ my_project = list(
   )
 )  
 ```
-
 
 
 - **`contributors`** *[Optional ; Repeatable]* This section is provided to record other contributors to the research project and provide recognition for the roles they provided. 
@@ -575,8 +557,6 @@ my_project = list(
   )
 )  
 ```
-
-
 
 
 - **`sponsors`** *[Optional ; Repeatable]* <br> The source(s) of funds for production of the work. If different funding agencies sponsored different stages of the production process, use the 'role' attribute to distinguish them.
@@ -620,8 +600,6 @@ my_project = list(
   )
 )  
 ```
-
-
 
                                
 - **`curators`** *[Optional ; Repeatable]* <br>
@@ -702,8 +680,6 @@ my_project = list(
 ```
 
 
-
-
 - **`acknowledgments`** *[Optional ; Repeatable]* <br>
 This repeatable block of elements is used to provide an itemized list of persons and organizations whose contribution to the project must be acknowledged. Note that specific metadata elements are available for listing financial sponsors and main contributors to the study.<br> 
 An alternative to this field is the `acknowledgment_statement` field (see below) which can be used to provide the acknowledgment in the form of an unstructured text.
@@ -740,20 +716,14 @@ my_project = list(
     ```
 
 
-
-
 - **`acknowledgement_statement`** *[Optional ; Not repeatable ; String]* <br> 
 This field is used to provide acknowledgments in the form of an unstructured text. An alternative to this field is the *acknowledgments* field which provides a solution to itemize the acknowledgments. 
 ![](./images/ReDoc_scripts_18b.JPG){width=100%}
 
 
-
-
 - **`disclaimer`** *[Optional ; Not repeatable ; String]* <br>  
 Disclaimers limit the responsibility or liability of the publishing organization or researchers associated with the research project. Disclaimers assure that any research in the public domain produced by an organization has limited repercussions to the publishing organization. A disclaimer is intended to prevent liability from any effects occurring as a result of the acts or omissions in the research. 
 ![](./images/ReDoc_scripts_36.JPG){width=100%} 
-
-
 
                                                              
 - **`confidentiality`** *[Optional ; Not repeatable ; String]* <br>  
@@ -761,13 +731,9 @@ A confidentiality statement binds the publisher to ethical considerations regard
 ![](./images/ReDoc_scripts_37.JPG){width=100%} 
 
 
-
-
 - **`citation_requirement`** *[Optional ; Not repeatable ; String]* <br>  
 The citation requirement is specific to the output and is a preferred shorthand or means to refer to the publication or published good.
 ![](./images/ReDoc_scripts_38.JPG){width=100%} 
-
-
 
 
 - **`related_projects`** *[Optional ; Repeatable]* <br>
@@ -798,7 +764,6 @@ my_project = list(
   )
 )  
 ```
-
 
  
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
@@ -835,7 +800,6 @@ my_project = list(
 ```
 
 
-
 - **`keywords`** *[Optional ; Repeatable]* <br>
 <br>
 ![](./images/ReDoc_scripts_21.JPG){width=100%}
@@ -849,7 +813,6 @@ my_project = list(
   The controlled vocabulary (including version number or date) from which the keyword is extracted, if any.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL of the controlled vocabulary from which the keyword is extracted, if any.<br><br>
-
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -887,9 +850,6 @@ my_project = list(
     # ... 
   )  
 ```  
-
-
-
                            
 
 - **`themes`** *[Optional ; Repeatable]* <br>
@@ -911,7 +871,6 @@ my_project = list(
   The URL to the controlled vocabulary used, if any. <br>
 
 
-
 - **`topics`** *[Optional ; Repeatable]* <br>
 <br>
 ![](./images/ReDoc_scripts_23.JPG){width=100%}
@@ -929,7 +888,6 @@ my_project = list(
   The name (including version number) of the controlled vocabulary used, if any.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URL to the controlled vocabulary used, if any. <br><br>
-
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -978,7 +936,6 @@ my_project = list(
   )
 )  
 ```
-
 
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>
@@ -1030,7 +987,6 @@ my_project = list(
 ```
 
 
-
 - **`repository_uri`** In the process of producing the outputs of the research project, a researcher may want to share their source code for transparency and replicability. This repository provides information for finding the repository where the source code is kept. 
 
   ![](./images/ReDoc_scripts_25.JPG){width=100%}
@@ -1041,7 +997,6 @@ my_project = list(
   Repository type e.g.GitHub, Bitbucket, etc.
   - **`uri`** *[Required ; Not repeatable ; String]* <br>
   URI of the project source code/script repository <br><br>
-
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1061,8 +1016,6 @@ my_project = list(
   )
 )  
 ```
-
-
 
 
 - **`license`** *[Optional ; Repeatable]* <br>
@@ -1104,12 +1057,10 @@ Information on the copyright, if any, that applies to the research project metad
 ![](./images/ReDoc_scripts_35.JPG){width=100%}
 
 
-
 - **`technology_environment`** *[Optional ; Not repeatable ; String]* <br>
 This field is used to provide a description (as detailed as possible) of the computational environment under which the scripts were implemented and are expected to be reproducible. A substantial challenge in reproducing analyses is installing and configuring the web of dependencies of specific versions of various analytical tools. Virtual machines (a computer inside a computer) enable you to efficiently share your entire computational environment with all the dependencies intact. (https://ropensci.github.io/reproducibility-guide/sections/introduction/) 
 
   ![](./images/ReDoc_scripts_27a.JPG){width=100%}
-
 
 
 - **`technology_requirements`** *[Optional ; Not repeatable ; String]* <br>
@@ -1117,14 +1068,11 @@ Software/hardware or other technology requirements needed to run the scripts and
 
 ![](./images/ReDoc_scripts_27b.JPG){width=100%}
 
-
  
 - **`reproduction_instructions`** *[Optional ; Not repeatable ; String]* <br>
 Instructions to secondary analysts who may want to reproduce the scripts.
 
 ![](./images/ReDoc_scripts_27c.JPG){width=100%}
-
-
 
 
 - **`methods`** *[Optional ; Repeatable]* <br>
@@ -1137,7 +1085,6 @@ A list of analytic, statistical, econometric, machine learning methods used in t
   - **`note`** *[Optional ; Not repeatable ; String]* <br>
   Any additional information on the method.
   <br><br>
-
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1170,7 +1117,6 @@ my_project = list(
   )
 )  
 ```
-
 
 
 - **`software`** *[Optional ; Repeatable]* <br>
@@ -1213,7 +1159,6 @@ my_project = list(
   )
 )  
 ```
-
 
 
 - **`scripts`** *[Optional ; Repeatable]* <br>
@@ -1337,8 +1282,6 @@ An overall statement on the data used in the project. A separate field is provid
   ![](./images/ReDoc_scripts_31.JPG){width=100%} 
 
 
-
-
 - **`datasets`** *[Optional ; Repeatable]* <br>
 This field is used to provide an itemized list of datasets used in the project. The data are not documented here (specific metadata are available for documenting data of different types, like the DDI for microdata, the ISO 19139 for geographic datasets, etc.)
   <br>
@@ -1359,7 +1302,6 @@ This field is used to provide an itemized list of datasets used in the project. 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URI where the dataset (or a detailed description of it) can be obtained.
   <br><br>
-
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1384,7 +1326,6 @@ my_project = list(
   )
 )  
 ```
-
 
 
 - **`contacts`** *[Optional ; Repeatable]* <br>
@@ -1450,7 +1391,6 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
     @@@@@@@ <br>
 
 
-
 ### Tags
 
 **`tags`** *[Optional ; Repeatable]* <br>
@@ -1462,7 +1402,6 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
   A user-defined tag.
   - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
   A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
-
 
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
@@ -1511,8 +1450,6 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
       The weight of the word in the definition of the topic.<br><br>
 
 
-                                                                |___/      -->
-
 - **`embeddings`** *[Optional ; Repeatable]* <br>
 In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings and their use in implementation of semantic search tools. Word embedding models convert text (words, phrases, documents) into large-dimension numeric vectors (e.g., a vector of 100 or 200 numbers) that are representative of the semantic content of the text. The vectors are generated by submitting a text to a pre-trained word embedding model (possibly via an API). 
   
@@ -1532,9 +1469,6 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
   The numeric vector representing the series metadata. <br><br>
 
 
-
-
-
 ### Additional
 
 **`additional`** *[Optional ; Not repeatable]*<br>   @@@@ add this to the schema and do screenshot
@@ -1542,8 +1476,6 @@ The `additional` element allows data curators to add their own metadata elements
   <br>
   ![](./images/ReDoc_scripts_34b.JPG){width=100%}
   <br>
-
-
 
 
 ## Generating compliant metadata
