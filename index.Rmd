@@ -39,7 +39,9 @@ The production of the Guide and related tools has been made possible by financia
    - The World Bank-UNHCR Joint Data Center Microdata Library project P174080, Grant No TF0B4772, administered by the World Bank Development Data Group.
    - The World Bank administrative budget.
 
-The Guide was created using [R Bookdown](https://bookdown.org/) and is licensed under a [Creative Commons Attribution- NonCommercial- NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/). We welcome feedback and suggestions. The Guide's source code is stored in GitHub (https://github.com/mah0001/schema-guide). Feedback and suggestions can be sent to [odupriez@worldbank.org]
+The Guide was created using [R Bookdown](https://bookdown.org/) and is licensed under a [Creative Commons Attribution- NonCommercial- NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/). chatGPT was used as a copy editor (not to write content, but to improve style and grammar).
+
+We welcome feedback and suggestions. The Guide's source code is stored in GitHub (https://github.com/mah0001/schema-guide). Feedback and suggestions can be sent to [odupriez@worldbank.org]
 
 ![](./images/index_ccby_logo.png){width=20%}
 </center>
