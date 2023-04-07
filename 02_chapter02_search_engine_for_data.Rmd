@@ -267,7 +267,7 @@ Maintain a catalog of citations of datasets.
 </br>
 
 
-### Reproducibla and replicable scripts
+### Reproducible and replicable scripts
 
 Document, catalog, and publish reproducible/replicable scripts.
 
