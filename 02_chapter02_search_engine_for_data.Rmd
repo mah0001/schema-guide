@@ -339,14 +339,17 @@ When the data catalog is not administered by the producer of the data but by an 
 </center>
 </br>
 
-- "do not disturb": low burden (minimum interaction with users; providing detailed metadata helps)
+- "do not disturb": low burden of deposit and no burden of serving users (minimum interaction with users; providing detailed metadata helps)
 - Monitoring of usage (downloads and citations) to assess demand; reports on this (automatically generated)
+- Feedback on quality issues
 
 
 ## Features for catalog administrators
 
-In addition to meeting the needs of its users, a modern data catalog should also offer features that a catalog administrator can appreciate or expect. These features may include:
+In addition to meeting the needs of its users, a modern data catalog should also offer features that a catalog administrator can appreciate or expect. The features listed below can serve as checklist for choice of an application or development of features. These features may include:
 
+- Data deposit
+- Tools for privacy protection control (e.g., tools to identify direct identifiers)
 - Availability of the application as an open-source software, accompanied by detailed technical documentation
 - Robust security measures, such as compatibility with advanced authentication systems, flexible role/profile definitions, regular upgrades and security patches, and accreditation by information security experts
 - Reasonable IT requirements, such as shared server operability and sufficient memory capacity
@@ -362,6 +365,7 @@ In addition to meeting the needs of its users, a modern data catalog should also
 - Embedded Search Engine Optimization (SEO) procedures
 - Ability to use widgets to embed custom charts, maps, and data grids in the catalog
 - Ability to provide feedback and suggestions to the application developers.
+- Easy automation of procedures (harvesting, migration of formats, editing, etc.) This means API-based system.
    
  
 ## Machine learning for a better user experience
@@ -384,6 +388,7 @@ Simple models created from open source tools and publicly-available documents ca
 ![](./images/word_graph_dutch_disease.JPG){width=100%}
 </center>
 </br>
+
 
 ### Improved results ranking
 
