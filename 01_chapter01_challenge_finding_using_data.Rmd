@@ -6,7 +6,17 @@ output: html_document
 
 # The challenge of finding, assessing, accessing, and using data {#chapter01}
 
-Many national and international organizations have adopted data-sharing policies to make their data more accessible to the research community. Sharing data is increasingly becoming a requirement imposed by laws --for data collected by public organizations-- or by the sponsors of data collection activities. However, a commitment to sharing data is not sufficient. If the data are difficult to find and use, data-sharing policies and regulations will not have the expected impact. Researchers often face challenges in finding, assessing, accessing, and using relevant data. Data are available from a large and growing number of sources, not all of which are easily visible and discoverable. The process of locating and accessing data can be time-consuming and complex, requiring significant effort to identify, locate, acquire, understand, and manage datasets. Improving the accessibility and usability of data will encourage the reuse and repurposing of existing data, leading to a greater return on investment in data collection and creation. In this chapter, we explore several examples that highlight the obstacles researchers encounter when searching for and utilizing data.
+Numerous national and international organizations have implemented data-sharing policies to increase access to their data within the research community. The need to share data has become more pressing, with laws requiring public organizations to share data and sponsors of data collection mandating data sharing. However, simply committing to data sharing is not enough. If data is challenging to locate and use, data-sharing policies and regulations will fail to achieve their intended impact. 
+
+Researchers frequently struggle with identifying, assessing, accessing, and utilizing relevant data. Data are obtainable from a wide and growing range of sources, not all of which are readily visible or discoverable. The process of discovering and accessing data can be complex and time-consuming, requiring considerable effort to identify, locate, acquire, comprehend, and manage datasets. The primary obstacles to data visibility, discoverability, and usability include:
+
+- Data often lack comprehensive and optimal metadata. As search engines index metadata, optimizing metadata for discoverability is essential. However, many data producers and custodians lack the expertise, resources, or incentives to document their data assets effectively.
+- General search engines like Google or Bing cater to a broad and diverse audience, not a specialized audience requiring assistance in locating, assessing, and acquiring data.
+- Search engines integrated into specialized data catalogs have limited capabilities, with most relying on full-text search algorithms often implemented in their default version. Ideally, data catalogs should provide semantic searchability and function as recommender systems.
+- Many data catalogs lack visibility due to insufficient proactive search engine optimization.
+- Incomplete metadata prevents users from easily evaluating data for their specific purposes.
+
+Enhancing data accessibility and usability will promote the reuse and repurposing of existing data, resulting in a greater return on investment in data collection and creation. In this chapter, we examine several examples that demonstrate the difficulties researchers face when searching for and utilizing data.
 
 ## Finding data
 
@@ -117,36 +127,20 @@ Suppose a health official looks for data on measles vaccination in Oromia, a sta
 <br>
 
 
-The main obstacles to data visibility, discoverability, and usability are that: 
-
-   - **data often come with limited and sub-optimal metadata**. Search engines will index metadata. Many data custodians lack the expertise, the resources, or the incentives to optimally document their data assets.
-   - **search engines embedded in specialized data catalogs have limited capabilities.** Most often, they rely on full-text search and do not provide semantic searchability. Ideally, data catalogs would even go beyond providing semantic searchability and be able to operate as *recommender systems*. To best satisfy the needs of data analysts, search tools embedded in data catalogs should also be able to **distinguish different types of data**, and be **optimized to rank results by relevancy**.
-   - **specialized data catalogs lack visibility**, due to a lack of search engine optimization.
-   - **metadata may be incomplete** and does not provide the full information that a user may need.
-   - **data re-published may be outdated** if not synchronized in quasi-real time. Inter-operability of platforms must be improved; API-based solutions should be implemented, both for data and metadata. And traceability of harvested information should be guaranteed. 
-
-
 ## Assessing data
 
-Ideally, the researcher should not only be provided with links to relevant datasets but also with easy access to the metadata they need to assess the relevance of the data for their specific purpose. Acquiring a dataset may be time consuming, and sometimes involve other costs. Users should only invest time and resources in the acquisition of data for which they have assurance of quality and relevancy.
+Ideally, researchers should have easy access to both relevant datasets and the metadata required to evaluate the data's suitability for their specific purposes. Obtaining a dataset may be time-consuming and sometimes costly. Therefore, users should only invest resources and time in acquiring data that they know is of high quality and relevance.
 
-Assessing the fitness for purpose of a dataset will require different metadata for different data types and uses. Some metadata elements are "obvious": data type, geographic coverage, temporal coverage, scope and universe, and access policy. But more detailed information may be needed. For example, a survey dataset (microdata) may only be relevant to a user if a specific modality of a specific variable had a sufficient number of respondents (e.g., a researcher interested in mental issues by age may find a study that contains a variable "type of disability" with a modality "mental disability", but if the sample size is such that the number of observations corresponding to this modality is very small, the dataset would not allow any valid statistical inference). Comparability across sources is also essential to many uses and users, so the metadata should provide detailed description of sampling, universe, variables, concepts, and methods as relevant to the data type. A data user may also be interested in information on the periodicity of updates of the data (for time series or panel surveys, for example), and on past uses of the dataset by the research community.
+Assessing a dataset's fitness for a specific purpose necessitates different metadata elements for varying data types and uses. Some metadata elements are straightforward, such as data type, temporal coverage, geographic coverage, scope and universe, and access policy. However, more detailed information may be required. For instance, a survey dataset (microdata) may only be relevant to a researcher if a specific modality of a specific variable has a sufficient number of respondents. If the sample size is minimal, the dataset would not allow for any valid statistical inference. Furthermore, comparability across sources is crucial to many users and uses, so the metadata should provide a detailed description of sampling, universe, variables, concepts, and methods relevant to the data type. A data user may also require information on the frequency of data updates (for time series or panel surveys, for example) and on previous uses of the dataset by the research community.
 
-Even when access to the data is restricted, detailed metadata should thus be provided openly an in a user-friendly interface to the users. 
+Even when data access is restricted, detailed metadata should be available openly and through a user-friendly interface.
 
 
 ## Accessing data
 
-Responsible users will want to know that their specific use of the data complies with the legal, ethical, and technical requirements imposed by the owner or distibutor of the dataset. All datasets should be provided with detailed information on the attached terms of use. A standard license may be used. The conditions 
+Responsible users need to ensure that their use of data conforms to legal, ethical, and technical requirements imposed by the dataset's owner or distributor. To facilitate this, all datasets should be accompanied by detailed information on the attached terms of use, which may be provided using a standard license. For datasets that don't have an option for direct download, the data distributor should implement an easy-to-use procedure. This should provide transparent and user-friendly information on what information the user needs to provide, how long it will take to obtain a response to a request for access to data, what appeal options may be available in case of refusal, how personal information included in the access request forms will be processed and used, what registration process is required, and more.
 
-For datasets that are not provided with an option for direct download, an easy-to-use procedure should be implemented by the data distributor. What information must be provided by the user, how long it takes to obtain a response to a request for access to data, what appeal options may be available in case of refusal, how personal information included in the access request forms will be processed and used, what registration process is required, etc.. must be very transparent and user-friendly.
-
-The modes of access to the data should also accommodate different users preferences. The modalities may include: 
-- Bulk download, in which case the data may be provided in multiple "recent" formats, at least one of them non-proprietary. 
-- API, in which case detailed documentation of the API must be provided (legal and technical). 
-- UI interface
-- Visualizations
-- Others
+The modes of access to the data should accommodate different user preferences. These may include bulk download, where the data is provided in multiple "recent" formats, at least one of which is non-proprietary. Alternatively, the data can be made accessible via API, for which detailed documentation (legal and technical) must be provided. A user interface or visualizations may be provided as a mode of access to some types of data, and other options may also be considered.
 
 
 ## Using data
@@ -162,30 +156,9 @@ Reproducibility: ...
 
 ## A FAIR solution
 
-"To solve the information retrieval problem, researchers must therefore think broadly about who needs that information and the context within which it is created, as well as its actual content." "Being mindful of all potential users and how they might need to interact with you and your work is the foundation." (https://doi.org/10.1371/journal.pcbi.1008469)
+o effectively address the information retrieval challenge, researchers should consider not only the content of the information but also the context within which it is created and the diverse range of potential users who may need it. A foundational element is being mindful of users and their potential interactions with the data and work. To improve search capabilities and increase the visibility of specialized data libraries, a combination of better data curation, search engines, and increased accessibility is necessary. Adhering to the FAIR principles (Findable, Accessible, Interoperable, and Reusable) is an effective approach to data management. (https://doi.org/10.1371/journal.pcbi.1008469)
 
-Combination of better data curation (packaging and documentation), better search engines, and increased visibility of the content of specialized data libraries in general search engines.
-
-The adoption of FAIR principles can help. Data must be Findable, Accessible, Interoperable, and Reusable. Google's Dataset Search is a noteworthy attempt to improve the search engine's performance in finding relevant datasets, but its efficacy is hindered by the paucity of available metadata.
-
-Data curation is essential, not only cataloguing. The whole process, from acquisition to dissemination is important. Objective is to let researcher focus on analysis, by making the process of finding, assessing, accessing, and preparing data as efficient as possible - anticipating theirneeds, and doing the work once to serve many. For sponsors of data collection: invest not only in data production, but also in the curation of data for re-use. 
-
-Findable:
-Data catalogs (libraries) with:
-- Advanced search algorithms and filters. This includes full text search, advanced search, semantic search, and recommender system. Possibility to enter simple queries, or complex, even a document as a query.
-- SEO, as many users will find the catalog via search engines
-
-Accessible:
-- Multiple modes of data access
-
-Inter-operable
-- Inter-operability
-
-Reusable
-- Display of detailed metadata, with possibility to easyly assess fitness for purpose
-- Scripts, not only data
-- Permanent availability
-- DOI
+It is essential to focus on the entire data curation process, from acquisition to dissemination, to optimize data analysis by streamlining the process of finding, assessing, accessing, and preparing data. This requires anticipating user needs and investing in the curation of data for reuse. To ensure data is **findable**, libraries should implement advanced search algorithms and filters, including full-text, advanced, semantic, and recommendation-based search options. Search engine optimization is also crucial for making catalogs more **accessible**. Additionally, multiple modes of data access should be available to improve accessibility, while data should be made **interoperable** to promote data sharing and reusability. Detailed metadata, including fitness for purpose assessments, should be displayed, alongside scripts and permanent availability options, such as a DOI, to promote **reuse**.
 
 In chapter 2, we define the features of a modern catalog in more detail.
 
