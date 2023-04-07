@@ -324,7 +324,7 @@ Visibility
 Monitoring of usage (downloads and citations)
 
 
-## Features for administrators
+## Features for catalog administrators
 
 In addition to meeting the needs of its users, a modern data catalog should also offer features that a catalog administrator can appreciate or expect. These features may include:
 
