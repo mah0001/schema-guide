@@ -37,6 +37,16 @@ A search interface could retrieve such information via API and display it as fol
 <br>
 
 
+### Browser
+
+
+### Latest additions and history
+
+The catalog must provide a list of the most recent additions, and a history of additions and updates.
+For each entry, information must be available on the date the entry was first added to the catalog, and when it was last updated.
+When a dataset is replaced with a new version, the versioning must be clear.
+
+
 ### Advanced search 
 
 It is useful also to provide users with an option to build a more advanced search, targetted to specific metadata elements and with boolean operators. Advanced search are enabled by structured metadata, i.e., by the use of metadata standards and schemas. The advanced search should be available as a user interface and using a syntax option. The interface could be as follows:
@@ -294,6 +304,11 @@ The NADA catalog allows catalog adinistrators to generate such visualizations us
 To ensure efficient management and organization of datasets within a data catalog, it is essential to assign a unique identifier to each dataset. This identifier should not only meet technical requirements but also serve other purposes such as facilitating dataset citation. To achieve maximum effectiveness, it is recommended that datasets have a globally unique identifier, which can be accomplished through the assignment of a Digital Object Identifier (DOI). DOIs can be generated in addition to a catalog-specific unique identifier and provide a permanent and persistent identifier for the dataset. For more information about the process of generating DOIs and the reasons to use them, visit the [DataCite website](https://datacite.org/).   
 
 Include a citation requirement in metadata.
+
+
+### Archive / tombstone
+
+When a dataset is removed or replaced, the reproducibility of some analysis may become impossible. This may be a problem for some users. Unless there is a reason for not making them accessible, old versions of datasets should be kept accessible. But they should not be the ones indexed and dislayed in the catalog, to avoid cnfusion or the risk that a user would exploit a version other than the latest. Moving datasts that are replaced to an archive section of the catalog (not indexed) is an option. Note that DOIs require a permanent web page.
 
 
 ### Catalog of citations
