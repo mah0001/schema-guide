@@ -336,11 +336,17 @@ Example of Google SCholar alerts:
 </center>
 <br>
 
-### Feedback
+### Providing feedback
 
 Feedback on catalog certainly. In the form of a "Contact" email and possibly a "feedback form". Also, if the platform itself is open source, GitHub for issues and suggestions on the application itself.
 
 BUT: Users forum, "reviews" as in e-commerce platforms, is not recommended. Not all users are 'constructive" and qualified. Requires moderation, which can be costly and controversial. May create di-incentives for data producers to publish their data.
+
+
+### Getting support
+
+Contact, responsive
+FAQs
 
 
 ### Web content accessibility
@@ -353,8 +359,15 @@ WCAG is a compilation of accessibility guidelines for websites, whereas ADA is a
 ## Features for data providers 
 
 When the data catalog is not administered by the producer of the data but by an entrusted repository, data providers want:
+
+
+### Safety
+
 - Safety, protection against reputation risk (responsible use of data)
 - Guarantee that regulations and terms of use will be strictly complied with; reputation of the organization that manages the catalog (Seal of Approval or other accreditation; properly staffed)
+
+### Visibility
+
 - Visibility to maximize the use of data (including options to share/publicize on social media) - screenshot from data.gov
 
 <br>
@@ -363,33 +376,99 @@ When the data catalog is not administered by the producer of the data but by an 
 </center>
 </br>
 
-- "do not disturb": low burden of deposit and no burden of serving users (minimum interaction with users; providing detailed metadata helps)
-- Monitoring of usage (downloads and citations) to assess demand; reports on this (automatically generated)
-- Feedback on quality issues
+### Low burden
+
+"do not disturb": low burden of deposit and no burden of serving users (minimum interaction with users; providing detailed metadata helps)
+
+
+### Real time information on usage
+
+Monitoring of usage (downloads and citations) to assess demand; reports on this (automatically generated)
+
+
+### Feedback from users
+
+Feedback on quality issues
 
 
 ## Features for catalog administrators
 
 In addition to meeting the needs of its users, a modern data catalog should also offer features that a catalog administrator can appreciate or expect. The features listed below can serve as checklist for choice of an application or development of features. These features may include:
 
-- Data deposit
-- Tools for privacy protection control (e.g., tools to identify direct identifiers)
-- Availability of the application as an open-source software, accompanied by detailed technical documentation
-- Robust security measures, such as compatibility with advanced authentication systems, flexible role/profile definitions, regular upgrades and security patches, and accreditation by information security experts
-- Reasonable IT requirements, such as shared server operability and sufficient memory capacity
-- Ease of upgrading to the latest version
-- Interoperability with other catalogs and applications, as well as compliance with metadata standards. By publishing metadata across multiple catalogs and hubs, data visibility can be increased, and the service provided to users can be maximized. This requires automation to ensure proper synchronization between catalogs (with only one catalog serving as the "owner" of a dataset), which necessitates interoperability between the catalogs, enabled by compliance with common formats and metadata standards and schemas.
-- Flexibility in implementing data access policies that conform to the specific procedures and protocols of the organization managing the catalog
-- Availability of APIs for catalog administration
-- Ability to feature datasets
-- Easy activation of usage analytics (using Google Analytics, Omniture, or other)
-- Multilingual capability, including internationalization of the code and the option for catalog administrators to translate or adapt software translations
-- Advanced search engine functionality
-- Ability to implement semantic search and recommender systems using external APIs
-- Embedded Search Engine Optimization (SEO) procedures
-- Ability to use widgets to embed custom charts, maps, and data grids in the catalog
-- Ability to provide feedback and suggestions to the application developers.
-- Easy automation of procedures (harvesting, migration of formats, editing, etc.) This means API-based system.
+
+### Data deposit
+
+User friendly interface for data deposit. Compliant with metadata stadards. With embedded quality gateways and clearance procedures.
+
+### Privacy protection
+
+Tools for privacy protection control (e.g., tools to identify direct identifiers)
+
+
+### Free software
+
+Availability of the application as an open-source software, accompanied by detailed technical documentation
+
+
+### Security
+
+Robust security measures, such as compatibility with advanced authentication systems, flexible role/profile definitions, regular upgrades and security patches, and accreditation by information security experts
+
+
+### IT affordability
+
+Reasonable IT requirements, such as shared server operability and sufficient memory capacity
+
+
+### Ease of maintenance
+
+Ease of upgrading to the latest version
+
+
+###  Interoperability 
+
+Interoperability with other catalogs and applications, as well as compliance with metadata standards. By publishing metadata across multiple catalogs and hubs, data visibility can be increased, and the service provided to users can be maximized. This requires automation to ensure proper synchronization between catalogs (with only one catalog serving as the "owner" of a dataset), which necessitates interoperability between the catalogs, enabled by compliance with common formats and metadata standards and schemas.
+
+
+### Flexibility on access policies
+
+Flexibility in implementing data access policies that conform to the specific procedures and protocols of the organization managing the catalog
+
+
+### API based system for automation and efficiency
+
+Availability of APIs for catalog administration
+Easy automation of procedures (harvesting, migration of formats, editing, etc.) This means API-based system.
+
+
+### Featuring tools
+
+Ability to feature datasets
+
+
+### Usage monitoring and analytics
+
+Easy activation of usage analytics (using Google Analytics, Omniture, or other)
+
+
+### Multilingual capability
+
+Multilingual capability, including internationalization of the code and the option for catalog administrators to translate or adapt software translations
+
+
+### Embedded SEO
+
+Embedded Search Engine Optimization (SEO) procedures
+
+
+### Widgets and plugins
+
+Ability to use widgets to embed custom charts, maps, and data grids in the catalog
+
+
+### Feedback to developers
+
+Ability to provide feedback and suggestions to the application developers.
    
  
 ## Machine learning for a better user experience
