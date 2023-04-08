@@ -39,6 +39,8 @@ A search interface could retrieve such information via API and display it as fol
 
 ### Browser
 
+Some users will just want to browse a catalog. This should be made easy. The use of cards is recommended. For images, a mosaic view can be provided. For microdata, a variable view.
+
 
 ### Latest additions and history
 
@@ -275,6 +277,14 @@ When the data (time series and tabular data, possibly also microdata) are made a
 <center>
 ![](./images/catalog_data_preview_01.JPG){width=80%}
 </center>
+
+For a document, the "data preview" would consist of a document viewer that would allow the user to view the document within the application (even when the document is not stored in the catalog itself but in an external website). When implementing such a feature, check that the terms of use of the origination source allows that.
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230733447-55c75dbb-5e5c-4788-9e58-ae4fca646a85.png)
+</center>
+<br>
 
 
 ### Data visualizations
