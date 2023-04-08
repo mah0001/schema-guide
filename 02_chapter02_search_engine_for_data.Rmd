@@ -161,7 +161,7 @@ These relationships can be documented in the metadata, such as identifying datas
 <br>
 
 
-#### Organizing results
+#### Organized results
 
 When a data catalog contains multiple types of data, it should offer an easy way for users to filter and display query results by data type. For example, when searching for "US population," one user may only be interested in knowing the total population of the USA, while another may need the public use census microdata sample, and a third may be searching for a publication. To cater to such needs, presenting query results in type-specific tabs (with an "All" option) and/or providing a filter (facet) by type will allow users to focus on the types of data relevant to them. This is similar to commercial platforms that offer search results organized by department, allowing users to search for "keyboard" in either the "music" or "electronics" department.
 
@@ -174,6 +174,11 @@ When a data catalog contains multiple types of data, it should offer an easy way
 #### Saving and sharing results
 
 URL / API query ; export list ; social networks, etc.
+
+
+#### Personalized results
+
+Option for user to set a profile with preferences that may be used to display results. 
 
 
 ### Metadata display
@@ -318,6 +323,18 @@ Web Content Accessibility Guidelines (WCAG) international standard. WCAG documen
 ADA provides people with disabilities the same opportunities, free of discrimination.
 WCAG is a compilation of accessibility guidelines for websites, whereas ADA is a civil rights law in the same ambit.
 
+
+#### Notifications or alerts
+
+Users may want to be automatically notified (by email) when new entries of interest are added, or when change are made to a specific resource. A system allowing users to set criteria for automatic notification can be developed.
+
+Example of Google SCholar alerts:
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/230730245-ea3702f6-b877-436a-9833-492afafa0270.png)
+</center>
+<br>
 
 #### Feedback
 
