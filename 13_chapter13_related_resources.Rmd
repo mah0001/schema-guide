@@ -32,60 +32,24 @@ In a NADA catalog, the external resources will not appear as catalog entries. Th
 
 The schema used to document external resources only contains 16 elements.
 
-tests
+test
 
 ```json
 "doc_desc": {
-"title": "string",
-"idno": "string",
-"producers": [
-{
-"name": "string",
-"abbr": "string",
-"affiliation": "string",
-"role": "string"
-}
-],
-"prod_date": "string",
-"version": "string"
-}
-```
-
-```Js
-"doc_desc": {
-"title": "string",
-"idno": "string",
-"producers": [
-{
-"name": "string",
-"abbr": "string",
-"affiliation": "string",
-"role": "string"
-}
-],
-"prod_date": "string",
-"version": "string"
+  "title": "string",
+  "idno": "string",
+  "producers": [
+    {
+      "name": "string",
+      "abbr": "string",
+      "affiliation": "string",
+      "role": "string"
+    }
+  ],
+  "prod_date": "string",
+  "version": "string"
 }
 ```
-
-```Perl
-"doc_desc": {
-"title": "string",
-"idno": "string",
-"producers": [
-{
-"name": "string",
-"abbr": "string",
-"affiliation": "string",
-"role": "string"
-}
-],
-"prod_date": "string",
-"version": "string"
-}
-```
-
-
 
 <br>
 ![](./images/ReDoc_external_resources_01.JPG){width=100%}
