@@ -62,6 +62,21 @@ The metadata schema we propose to document publications and reports is a combina
 
 The proposed schema comprises two main blocks of elements, **`metadata_information`** and **`document_description`**. It also contains the `tags` element common to all our schemas. The `repository_id`, `published` and `overwrite` items in the schema are not metadata elements *per se*, but parameters used when publishing the metadata in a NADA catalog. 
 
+```json
+{
+	"repositoryid": "string",
+	"published": 0,
+	"overwrite": "no",
+	"metadata_information": {},
+	"document_description": {},
+	"provenance": [],
+	"tags": [],
+	"lda_topics": [],
+	"embeddings": [],
+	"additional": { }
+}
+```
+
 <center>
 ![](./images/ReDoc_documents_01.JPG){width=100%}
 </center>
