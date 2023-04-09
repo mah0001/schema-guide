@@ -32,28 +32,25 @@ In a NADA catalog, the external resources will not appear as catalog entries. Th
 
 The schema used to document external resources only contains 16 elements.
 
-test
-
 ```json
-"doc_desc": {
+{
+  "dctype": "doc/adm",
+  "dcformat": "application/zip",
   "title": "string",
-  "idno": "string",
-  "producers": [
-    {
-      "name": "string",
-      "abbr": "string",
-      "affiliation": "string",
-      "role": "string"
-    }
-  ],
-  "prod_date": "string",
-  "version": "string"
-}
-```
-
-<br>
-![](./images/ReDoc_external_resources_01.JPG){width=100%}
-<br>  
+  "author": "string",
+  "dcdate": "string",
+  "country": "string",
+  "language": "string",
+  "contributor": "string",
+  "publisher": "string",
+  "rights": "string",
+  "description": "string",
+  "abstract": "string",
+  "toc": "string",
+  "filename": "string",
+  "created": "2023-04-09T19:23:22Z",
+  "changed": "2023-04-09T19:23:22Z"
+}```
 
 **`dctype`** *[Optional, Not Repeatable, String]* <br>
 This element defines the type of external resource being documented. This element plays an important role in the cataloguing system (NADA), as it is used to determine where and how the resource will be published. Particular attention must be paid to the type "Microdata File" (`dat/micro`) and to other data types, when the datasets will be published in a data catalog but with access restrictions). The NADA catalog allows data to be published under different levels of accessibility: open data, direct access, public use files, licensed data, access in data enclave, or no access. Most standards include an element **`access_policy`** which is used to determine the type of access to a resource, and will apply to data of type `dat/micro`. The resource type `dctype` must be selected from a controlled vocabulary:
