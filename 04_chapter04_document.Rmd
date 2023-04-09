@@ -342,7 +342,7 @@ If the source is a text within an edited volume, it should be listed under the n
 		"last_name": "string",
 		"affiliation": "string"
 	}
-	]
+   ]
    ```
 
    ![](./images/ReDoc_documents_11b.JPG){width=100%}
