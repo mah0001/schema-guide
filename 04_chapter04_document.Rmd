@@ -92,6 +92,22 @@ The **`metadata_information`** contains information not related to the document 
 
   ![](./images/ReDoc_documents_02.JPG){width=100%}
 
+```json
+"metadata_information": {
+	"title": "string",
+	"idno": "string",
+	"producers": [
+		{
+			"name": "string",
+			"abbr": "string",
+			"affiliation": "string",
+			"role": "string"
+		}
+	],
+	"production_date": "string",
+	"version": "string"
+}
+```
 
 The elements in the block are:
 
