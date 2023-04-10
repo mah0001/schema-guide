@@ -276,7 +276,7 @@ my_doc <- list(
 The authors should be listed in the same order as they appear in the source itself, which is not necessarily alphabetical.
 <br>
 
-   ```json{indent="  "}
+   ```json
 	"authors": [
 		{
 			"first_name": "string",
@@ -334,7 +334,7 @@ my_doc <- list(
 - **`editors`** *[Optional ; Repeatable]* <br>
 If the source is a text within an edited volume, it should be listed under the name of the author of the text used, not under the name of the editor. The name of the editor should however be provided in the bibliographic citation, in accordance with a [reference style](https://awelu.srv.lu.se/sources-and-referencing/using-a-reference-style/elements-of-the-reference-list/). 
 
-   ```json{indent = "   "}
+   ```json
    "editors": [
 	{
 		"first_name": "string",
@@ -344,8 +344,6 @@ If the source is a text within an edited volume, it should be listed under the n
 	}
    ]
    ```
-
-   ![](./images/ReDoc_documents_11b.JPG){width=100%}
 
   - **`first_name`** *[Optional ; Not repeatable ; String]* <br>
   The first name of the editor.
@@ -400,7 +398,14 @@ my_doc <- list(
 - **`identifiers`** *[Optional ; Repeatable]*   
 This element is used to enter document identifiers (IDs) other than the catalog ID entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI), an International Standard Book Number (ISBN), or an International Standard Serial Number (ISSN). The ID entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI, ISBN, ISSN, or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`). 
 
-  ![](./images/ReDoc_documents_07.JPG){width=100%}
+```json
+"identifiers": [
+	{
+		"type": "string",
+		"identifier": "string"
+	}
+]
+```
  
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   The type of identifier, for example "DOI", "ISBN", or "ISSN".
@@ -491,7 +496,15 @@ my_doc <- list(
 
 - **`toc_structured`** *[Optional ; Not repeatable]* <br>
 
-  ![](./images/ReDoc_documents_04b2.JPG){width=100%}
+```json
+"toc_structured": [
+	{
+		"id": "string",
+		"parent_id": "string",
+		"name": "string"
+	}
+]
+```
 
   This element is used as an alternative to `toc` to provide a <u>structured</u> table of content. The element contains a repeatable block of sub-elements which provides the possibility to define a hierarchical structure:
 
@@ -557,6 +570,14 @@ my_doc <- list(
 
   ![](./images/ReDoc_documents_05b.JPG){width=100%}
 
+```json
+notes": [
+	{
+		"note": "string"
+	}
+]
+```
+
   This field can be used to provide information on the document that does not belong to the other, more specific metadata elements provided in the schema. 
   - **`note`**  <br>
   A note, entered as free text.
@@ -597,6 +618,15 @@ This is a repeatable block of two elements:
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The country/region code. It is recommended to use a standard list of countries codes, such as the [ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes).
 
+```json
+"ref_country": [
+	{
+	"name": "string",
+	"code": "string"
+	}
+]
+```
+
   ![](./images/ReDoc_documents_05d.JPG){width=100%}
 
   The field `ref_country` will often be used as a filter (facet) in data catalogs. When a document is related to only part of a country, we still want to capture this information in the metadata. For example, the `ref_country` element for the document ["Sewerage and sanitation : Jakarta and Manila"](https://documents.worldbank.org/en/publication/documents-reports/documentdetail/880091468095971513/sewerage-and-sanitation-jakarta-and-manila) will list "Indonesia" (code IDN) and "Philippines" (code PHL). 
@@ -629,6 +659,16 @@ my_doc <- list(
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
 A list of geographic units covered in the document, other than the countries listed in `ref_country`.
 
+```json
+"geographic_units": [
+	{
+		"name": "string",
+		"code": "string",
+		"type": "string"
+	}
+]
+```
+
   ![](./images/ReDoc_documents_05e.JPG){width=100%}
 
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -642,6 +682,17 @@ A list of geographic units covered in the document, other than the countries lis
 
 - **`bbox`** *[Optional ; Repeatable]* <br>
 This element is used to define one or multiple geographic bounding box(es), which are the rectangular fundamental geometric description of the geographic coverage of the data. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the dataset’s geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. The valid range of latitude in degrees is -90 and +90 for the southern and northern hemisphere, respectively. Longitude is in the range -180 and +180 specifying coordinates west and east of the Prime Meridian, respectively. This element will rarely be used for documenting publications. Bounding boxes are an optional element, but when a bounding box is defined, all four coordinates are required. 
+
+```json
+"bbox": [
+	{
+		"west": "string",
+		"east": "string",
+		"south": "string",
+		"north": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_05f.JPG){width=100%}
 
@@ -741,6 +792,15 @@ Some documents are published regularly. The frequency of publications can be doc
 - **`languages`** *[Optional ; Repeatable]* <br>
 The language(s) in which the document is written. For the language codes and names, the use of the ISO 639-2 standard is recommended.
 
+```json
+"languages": [
+	{
+		"name": "string",
+		"code": "string"
+	}
+]
+```
+
   ![](./images/ReDoc_documents_08.JPG){width=100%}
   
   This is a block of two elements (at least one must be provided for each language):
@@ -771,6 +831,15 @@ The language(s) in which the document is written. For the language codes and nam
 - **`license`** *[Optional ; Repeatable]* <br>
 Information on the license(s) attached to the document, which defines the terms of use. 
 
+```json
+"license": [
+	{
+		"name": "string",
+		"uri": "string"
+	}
+]
+```
+
   ![](./images/ReDoc_documents_09.JPG){width=100%}    
 
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -800,6 +869,15 @@ Information on the license(s) attached to the document, which defines the terms 
 
 - **`bibliographic_citation`** *[Optional ; Repeatable]* <br> 
 The bibliographic citation provides relevant information about the author and the publication. When using the element `bibliographic_citation`, the citation is provided as a single item. It should be provided in a standard style: Modern Language Association ([MLA](https://www.mla.org/)), American Psychological Association ([APA](https://apastyle.apa.org/)), or [Chicago](https://owl.purdue.edu/owl/research_and_citation/chicago_manual_17th_edition/cmos_formatting_and_style_guide/chicago_manual_of_style_17th_edition.html). Note that the schema provides an itemized list of all elements (BibTex fields) required to build a citation in a format of their choice. 
+
+```json
+"bibliographic_citation": [
+	{
+		"style": "string",
+		"citation": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_09a.JPG){width=100%}
   
@@ -947,6 +1025,17 @@ The elements that are required to form a complete bibliographic citation depend 
 - **`translators`** *[Optional ; Repeatable]* <br>
 Information on translators, for publications that are translations of publication originally created in another language.
 
+```json
+"translators": [
+	{
+		"first_name": "string",
+		"initial": "string",
+		"last_name": "string",
+		"affiliation": "string"
+	}
+]
+```
+
   ![](./images/ReDoc_documents_12a.JPG){width=100%}
 
   - **`first_name`** *[Optional ; Not repeatable ; String]* <br>
@@ -962,6 +1051,18 @@ Information on translators, for publications that are translations of publicatio
 
 - **`contributors`** *[Optional ; Repeatable]* <br>
 These elements are used to acknowledge contributions to the production of the document, other than the ones for which specific metadata elements are provided (like `autors` or `translators`).
+
+```json
+"contributors": [
+	{
+		"first_name": "string",
+		"initial": "string",
+		"last_name": "string",
+		"affiliation": "string",
+		"contribution": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_12b.JPG){width=100%}
 
@@ -980,6 +1081,19 @@ These elements are used to acknowledge contributions to the production of the do
 
 - **`contacts`** *[Optional ; Repeatable]* <br>
 Contact information for a person or organization that can be contacted for inquiries related to the document.
+
+```json
+"contacts": [
+	{
+		"name": "string",
+		"role": "string",
+		"affiliation": "string",
+		"email": "string",
+		"telephone": "string",
+		"uri": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_12b.JPG){width=100%}
 
@@ -1075,6 +1189,16 @@ my_doc <- list(
 
 - **`sources`** *[Optional ; Repeatable]* <br> 
 
+```json
+"sources": [
+	{
+		"source_origin": "string",
+		"source_char": "string",
+		"source_doc": "string"
+	}
+]
+```
+
   ![](./images/ReDoc_documents_14.JPG){width=100%}
 
   This element is used to describe the sources of different types (except data sources, which must be listed in the next element `data_source`) that were used in the production of the document. 
@@ -1088,6 +1212,16 @@ my_doc <- list(
 <br>
 
 - **`data_sources`** *[Optional ; Repeatable]* <br>
+
+```json
+"data_sources": [
+	{
+		"name": "string",
+		"uri": "string",
+		"note": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_14b.JPG){width=100%}
 
@@ -1121,6 +1255,16 @@ my_doc <- list(
 <br>
 
 - **`keywords`** *[Optional ; Repeatable]* <br>
+
+```json
+"keywords": [
+	{
+		"name": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_15.JPG){width=100%}
   
@@ -1165,6 +1309,18 @@ my_doc <- list(
 
 - **`themes`** *[Optional ; Repeatable]* <br>
 
+```json
+"themes": [
+	{
+		"id": "string",
+		"name": "string",
+		"parent_id": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
+
   ![](./images/ReDoc_documents_15a.JPG){width=100%}
 
   A list of themes covered by the document. A controlled vocabulary will preferably be used. The list provided here can combine themes from multiple controlled vocabularies and user-defined themes. Note that `themes` will rarely be used as the elements `topics` and `disciplines` are more appropriate for most uses. This is a block of five fields:
@@ -1183,6 +1339,18 @@ my_doc <- list(
 <br>
 
 - **`topics`** *[Optional ; Repeatable]* <br>
+
+```json
+"topics": [
+	{
+		"id": "string",
+		"name": "string",
+		"parent_id": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_15b.JPG){width=100%}
  
@@ -1252,6 +1420,18 @@ my_doc <- list(
 <br>
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>
+
+```json
+"disciplines": [
+	{
+		"id": "string",
+		"name": "string",
+		"parent_id": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
 
   ![](./images/ReDoc_documents_15c.JPG){width=100%}
 
@@ -1325,7 +1505,16 @@ my_doc <- list(
 - **`relations`** *[Optional ; Repeatable]* <br>
 References to related resources with a specification of the type of relationship.
 
-  ![](./images/ReDoc_documents_16d.JPG){width=100%}
+```json
+"relations": [
+	{
+		"name": "string",
+		"type": "isPartOf"
+	}
+]
+```
+
+![](./images/ReDoc_documents_16d.JPG){width=100%}
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The related resource. Recommended practice is to identify the related resource by means of a URL. If this is not possible or feasible, a string conforming to a formal identification system may be provided.
@@ -1351,6 +1540,18 @@ References to related resources with a specification of the type of relationship
 <br>
 
 - **`reproducibility`** *[Optional ; Not repeatable]* <br>
+
+```json
+"reproducibility": {
+	"statement": "string",
+	"links": [
+		{
+			"uri": "string",
+			"description": "string"
+		}
+	]
+}
+```
 
   ![](./images/ReDoc_documents_16e.JPG){width=100%}
 
@@ -1393,6 +1594,21 @@ References to related resources with a specification of the type of relationship
 
 Metadata can be programmatically harvested from external catalogs. The **`provenance`** group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
 
+```json
+"provenance": [
+	{
+		"origin_description": {
+			"harvest_date": "string",
+			"altered": true,
+			"base_url": "string",
+			"identifier": "string",
+			"date_stamp": "string",
+			"metadata_namespace": "string"
+		}
+	}
+]
+```
+
 ![](./images/ReDoc_documents_18b.JPG){width=100%}
 
 - **`origin_description`** *[Required ; Not repeatable]* <br>
@@ -1418,6 +1634,15 @@ The `origin_description` elements are used to describe when and from where metad
 **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
 
+```json
+"tags": [
+	{
+		"tag": "string",
+		"tag_group": "string"
+	}
+]
+```
+
 ![](./images/ReDoc_documents_19.JPG){width=100%}  
 
   - **`tag`** *[Required ; Not repeatable ; String]* <br>
@@ -1425,11 +1650,42 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
   - **`tag_group`** *[Optional ; Not repeatable ; String]* <br>
   A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
 
-
     
 ### LDA topics
 
 **`lda_topics`** *[Optional ; Not repeatable]* <br>
+
+```json
+"lda_topics": [
+	{
+		"model_info": [
+			{
+				"source": "string",
+				"author": "string",
+				"version": "string",
+				"model_id": "string",
+				"nb_topics": 0,
+				"description": "string",
+				"corpus": "string",
+				"uri": "string"
+			}
+		],
+		"topic_description": [
+			{
+				"topic_id": null,
+				"topic_score": null,
+				"topic_label": "string",
+				"topic_words": [
+					{
+						"word": "string",
+						"word_weight": 0
+					}
+				]
+			}
+		]
+	}
+]
+```
 
 ![](./images/ReDoc_documents_17.JPG){width=100%}  
 
@@ -1564,6 +1820,17 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
 ![](./images/embedding_related_docs.JPG){width=100%}  
 
 The word vectors do not have to be stored in the document metadata to be exploited by search engines. When a semantic search tool is implemented in a catalog, the vectors will be stored in a database end processed by a tool like Milvus. A metadata element is however provided to store the vectors for preservation and sharing purposes. This block of metadata elements is repeatable, allowing multiple vectors to be stored. When using vectors in a search engine, it is critical to only use vectors generated by one same model. 
+
+```json
+"embeddings": [
+	{
+		"id": "string",
+		"description": "string",
+		"date": "string",
+		"vector": null
+	}
+]
+```
 
 ![](./images/ReDoc_documents_18.JPG){width=100%}  
 
