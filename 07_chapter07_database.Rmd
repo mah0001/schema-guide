@@ -20,6 +20,22 @@ The metadata related to a database can be published in a catalog as specific ent
 
 The **database** schema is used to document the database that contains the time series, not to document the indicators or /series. 
 
+<br>
+```json
+{
+  "published": 0,
+  "overwrite": "no",
+  "metadata_information": {},
+  "database_description": {},
+  "provenance": [],
+  "tags",
+  "lda_topics": {},
+  "embeddings": {},
+  "additional": {}
+}
+```
+<br>
+
 The schema includes two elements that are not metadata, but parameters used when publishing the metadata in a NADA catalog:
 
 - **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished), in which case it is only visible to catalog administrators. This value must be set to 1 (published) to make the metadata visible. Note that the database metadata will only be shown in NADA in association with the metadata of an indicator. 
@@ -33,7 +49,24 @@ The schema includes two elements that are not metadata, but parameters used when
 **`metadata_information`** *[Optional, Not Repeatable]* <br>
 The set of elements in `metadata_information` is used to provide information on the production of the database metadata. This information is used mostly for administrative purposes by data curators and catalog administrators.
 
-![](./images/ReDoc_ts_database_01.JPG){width=100%}
+<br>
+```json
+"metadata_information": {
+  "title": "string",
+  "idno": "string",
+  "producers": [
+    {
+      "name": "string",
+      "abbr": "string",
+      "affiliation": "string",
+      "role": "string"
+    }
+  ],
+  "prod_date": "string",
+  "version": "string"
+}
+```
+<br>
 
 - **`title`** *[Optional ; Not repeatable ; String]* <br>
 The title of the metadata document containing the database metadata.<br>
@@ -59,9 +92,69 @@ The version of the metadata (not the version of the database).<br>
     
 **`database_description`** *[Required, Not Repeatable]* <br>
 
+<br>
+```json
+"database_description": {
+  "title_statement": {},
+  "authoring_entity": [],
+  "abstract": "string",
+  "url": "string",
+  "type": "string",
+  "date_created": "string",
+  "date_published": "string",
+  "version": [],
+  "update_frequency": "string",
+  "update_schedule": [],
+  "time_coverage": [],
+  "time_coverage_note": "string",
+  "periodicity": [],
+  "themes": [],
+  "topics": [],
+  "keywords": [],
+  "dimensions": [],
+  "ref_country": [],
+  "geographic_units": [],
+  "geographic_coverage_note": "string",
+  "bbox": [],
+  "geographic_granularity": "string",
+  "geographic_area_count": "string",
+  "sponsors": [],
+  "acknowledgments": [],
+  "acknowledgment_statement": "string",
+  "contacts": [],
+  "links": [],
+  "languages": [],
+  "access_options": [],
+  "errata": [],
+  "license": [],
+  "citation": "string",
+  "notes": [],
+  "disclaimer": "string",
+  "copyright": "string"
+}
+```
+<br>
+
 - **`title_statement`** *[Required, Not Repeatable]* <br>
 
-  ![](./images/ReDoc_ts_database_03.JPG){width=100%}
+<br>
+```json
+"title_statement": {
+  "idno": "string",
+  "identifiers": [
+    {
+      "type": "string",
+      "identifier": "string"
+    }
+  ],
+  "title": "string",
+  "sub_title": "string",
+  "alternate_title": "string",
+  "translated_title": "string"
+}
+```
+<br>
+
   - **`idno`** *[Required ; Not repeatable ; String]* <br>
   A unique identifier of the database. For example, the World Bank's World Development Indicators database published in April 2020 could have `idno` = "WB_WDI_APR_2020".
   - **`identifiers`** *[Optional ; Repeatable]* <br>
@@ -83,7 +176,20 @@ The version of the metadata (not the version of the database).<br>
 - **`authoring_entity`** *[Optional ; Repeatable]* <br>
 This set of five elements is used to identify the organization(s) or person(s) who are the main producers/curators of the database. Note that a similar element is available at the indicator/series level.
 
-  ![](./images/ReDoc_ts_database_04.JPG){width=100%}
+<br>
+```json
+"authoring_entity": [
+  {
+    "name": "string",
+    "affiliation": "string",
+    "abbreviation": "string",
+    "email": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the person or organization who maintains the contents of the database (back-end). Write the name in full (use the element `abbreviation` to capture the acronym of the organization, if relevant). 
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
@@ -98,28 +204,23 @@ This set of five elements is used to identify the organization(s) or person(s) w
                                                               
 - **`abstract`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_ts_database_05.JPG){width=100%}
   The `abstract` is a brief description of the database. It can for example include a short statement on the database scope and coverage (not in detail, as other fields are available for that purpose), objectives, history, and expected audience.<br>
 
 
 - **`url`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_ts_database_06.JPG){width=100%}
   The link to the public interface of the database (home page). <br>
 
 
 - **`type`** *[Optional ; Not repeatable ; String]*<br>
 
-  ![](./images/ReDoc_ts_database_07.JPG){width=100%}
   The type of database. <br>
 
 
 - **`date_created`** *[Optional ; Not repeatable ; String]* <br>
 This is the date the database was created. The date should be entered in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY).
 
-  ![](./images/ReDoc_ts_database_09.JPG){width=100%}
 
- 
 - **`date_published`** <br>
 This is the date the database was made public. The date should be entered in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY). <br>
 
@@ -127,7 +228,19 @@ This is the date the database was made public. The date should be entered in ISO
 - **`version`** *[Optional ; Repeatable]* <br>
 A database rarely remains static; it will be regularly updated and upgraded. The `version` element is a compound element and contains important information regarding the updating of the database. This includes any extension of the database (adding new series data), appending existing data, correcting existing data, etc. 
 
-  ![](./images/ReDoc_ts_database_10.JPG){width=100%}
+<br>
+```json
+"version": [
+  {
+    "version": "string",
+    "date": "string",
+    "responsibility": "string",
+    "notes": "string"
+  }
+]
+```
+<br>
+
   - **`version`** *[Optional ; Not repeatable ; String]* <br>
   A label for the version. The version specification will be determined by a curator or a data manager under conventions determined by the authoring entity. 
   - **`date`** *[Optional ; Not repeatable ; String]* <br>
@@ -140,13 +253,22 @@ A database rarely remains static; it will be regularly updated and upgraded. The
                               
 - **`update_frequency`** *[Optional ; Not repeatable ; String]*<br>
 Indicates at which frequency the database is updated (for example, "annual" or "quarterly"). The use of a controlled vocabulary is recommended. If a database contains many indicators, the update frequency may vary by indicator (e.g., some may be updated on a monthly or quarterly basis while others are only updated annually). The information provided in the `update_frequency` will correspond to the frequency of update for the indicators that are most frequently updated. 
-
-  ![](./images/ReDoc_ts_database_11.JPG){width=100%}
 <br>
   
  
 - **`update_schedule`** *[Optional ; Repeatable]*<br>
 The update schedule is intended to provide users with information on scheduled updates. This is a repeatable field that allows for capturing specific dates, but this information would then have to be regularly updated. Often a single description will be used, which would avoid having to regularly update the metadata. For example, "The database is updated in January, April, July, October of each year."
+
+<br>
+```json
+"update_schedule": [
+  {
+    "update": "string"
+  }
+]
+```
+<br>
+
   - **`update`** *[Optional ; Not repeatable ; String]*<br>
   A description of the schedule of updates or a date entered in ISO 8601 format. <br><br>  
 
@@ -162,12 +284,28 @@ The time coverage is the time span of all the data contained in the database acr
 
 - **`time_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
 The element is used to annotate and/or describe auxiliary information related to the time coverage described in `time_coverage`.<br>
-
+<br>
+```json
+"time_coverage": [
+  {
+    "start": "string",
+    "end": "string"
+  }
+]
+```
+<br>
 
 - **`periodicity`** *[Optional ; Repeatable]* <br>
 The periodicity of the data describes the periodicity of the indicators contained in the database. A database can contain series covering different periods, in which case the information will be repeated for each type of periodicity. A controlled vocabulary should be used.
-
-  ![](./images/ReDoc_ts_database_13.JPG){width=100%}
+<br>
+```json
+"periodicity": [
+  {
+    "period": "string"
+  }
+]
+```
+<br>
   - **`period`** *[Optional ; Not repeatable ; String]* <br>
 Periodicity of the time series included in the database, for example, "annual", "quarterly", or "monthly". <br><br>
 
@@ -175,7 +313,19 @@ Periodicity of the time series included in the database, for example, "annual", 
 - **`themes`** *[Optional ; Repeatable]* <br>
 Themes provide a general idea of the research that might guide the creation and/or demand for the series. A theme is broad and is likely also subject to a community based definition or list. A controlled vocabulary should be used. This element will rarely be used (the element `topics` described below will be used more often).
 
-  ![](./images/ReDoc_ts_database_14.JPG){width=100%}
+<br>
+```json
+"themes": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`id`** *[Optional ; Not repeatable ; String]*<br>
   The unique identifier of the theme. It can be a sequential number, or the identifier of the theme in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -191,7 +341,20 @@ Themes provide a general idea of the research that might guide the creation and/
 - **`topics`** *[Optional ; Repeatable]*<br>
 The `topics` field indicates the broad substantive topic(s) that the indicator/series covers. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) topic classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification).<br>
 
-  ![](./images/ReDoc_ts_database_15.JPG){width=100%}
+<br>
+```json
+"topics": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
+
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The unique identifier of the topic. It can be a sequential number, or the identifier of the topic in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -207,7 +370,17 @@ The `topics` field indicates the broad substantive topic(s) that the indicator/s
 - **`keywords`** *[Optional ; Repeatable]* <br>
 Words or phrases that describe salient aspects of a data collection's content. This can be used for building keyword indexes and for classification and retrieval purposes. Keywords can be selected from a standard thesaurus, preferably an international, multilingual thesaurus. The list of keywords can include keywords extracted from one or more controlled vocabularies and user-defined keywords. 
 
-  ![](./images/ReDoc_ts_database_16.JPG){width=100%}
+<br>
+```json
+"keywords": [
+  {
+    "name": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; String ; Non repeatable]* <br>
   A keyword (or phrase).  
   - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
@@ -218,7 +391,16 @@ Words or phrases that describe salient aspects of a data collection's content. T
 - **`dimensions`** *[Optional ; Repeatable]* <br>
 The dimensions available for the series included in the database. For example, "country, year". 
 
-  ![](./images/ReDoc_ts_database_16.JPG){width=100%}
+<br>
+```json
+"dimensions": [
+  {
+    "name": "string",
+    "label": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; String ; Non repeatable]* <br>
   The name of the dimension.  
   - **`label`** *[Optional ; Not repeatable ; String]* <br>
@@ -228,7 +410,17 @@ The dimensions available for the series included in the database. For example, "
 - **`ref_country`** *[Optional ; Repeatable]* <br>   
 A list of countries for which data are available in the database. This element is somewhat redundant with the next element (`geographic_units`) which may also contain a list of countries. Identifying geographic areas of type "country" is important to enable filters and facets in data catalogs (country names are among the most frequent queries submitted to catalogs).
 
-  ![](./images/ReDoc_ts_database_17a.JPG){width=100%} 
+<br>
+```json
+"ref_country": [
+  {
+    "name": "string",
+    "code": "string"
+  }
+]
+```
+<br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the country.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -237,8 +429,17 @@ A list of countries for which data are available in the database. This element i
     
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
 A list of geographic units (regions, countries, states, provinces, etc.) for which data are available in the database. This list is not limited to countries; it can contain sub-national areas, supra-national regions, or non-administrative area names. The `type` element is used to indicate the type of geographic area. Countries may, but do not have to be repeated here if provided in the eleement `ref_country`.
-
-  ![](./images/ReDoc_ts_database_17.JPG){width=100%}
+<br>
+```json
+"geographic_units": [
+  {
+    "name": "string",
+    "code": "string",
+    "type": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the geographic unit e.g. 'World', 'Sub-Saharan Africa', 'Afghanistan', 'Low-income countries'.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -248,12 +449,21 @@ A list of geographic units (regions, countries, states, provinces, etc.) for whi
 
 - **`geographic_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
 The note can be used to capture additional information on the geographic coverage of the database.<br>
-![](./images/ReDoc_ts_database_18.JPG){width=100%}
 
 - **`bbox`** *[Optional ; Repeatable]* <br>
 Bounding boxes are typically used for geographic datasets to indicate the geographic coverage of the data, but can be provided for databases as well, although this will rarely be done. A geographic bounding box defines a rectangular geographic area.
-
-  ![](./images/ReDoc_ts_database_19.JPG){width=100%}
+<br>
+```json
+"bbox": [
+  {
+    "west": "string",
+    "east": "string",
+    "south": "string",
+    "north": "string"
+  }
+]
+```
+<br>
   - **`west`** *[Required ; Not repeatable ; String]* <br>
   Western geographic parameter of the bounding box.
   - **`east`** *[Required ; Not repeatable ; String]* <br>
@@ -265,13 +475,9 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
  
 - **`geographic_granularity`** *[Optional ; Not repeatable ; String]* <br>
 
-![](./images/ReDoc_ts_database_20.JPG){width=100%}
-
   Whereas the `geographic_units` element lists the various geographic levels for which there is data in the database, the `geographic_granularity` element will provide information on the geographic levels for which information is available in the database. For example: "The database contains data at the national, provincial (admin 1) and district (admin 2) levels."<br>
                                                                              
 - **`geographic_area_count`** *[Optional ; Not repeatable ; String]*<br>
-
-![](./images/ReDoc_ts_database_21.JPG){width=100%}
   
   The number of geographic areas for which data are provided in the database. The World Bank World Development Indicators for example provides data for 262 different areas (which includes countries and territories, geographic regions, and other country groupings).<br>
 
@@ -279,7 +485,19 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
 - **`sponsors`** *[Optional ; Repeatable]* <br>
 The source(s) of funds for the production and maintenance of the database. If different funding agencies sponsored different stages of the database development, use the `role` attribute to distinguish their respective contributions.
 
-  ![](./images/ReDoc_ts_database_22.JPG){width=100%}
+<br>
+```json
+"sponsors": [
+  {
+    "name": "string",
+    "abbreviation": "string",
+    "role": "string",
+    "grant": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   Name of the funding agency/sponsor 
   - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
@@ -295,7 +513,18 @@ The source(s) of funds for the production and maintenance of the database. If di
 - **`acknowledgments`** *[Optional ; Repeatable]* <br>
 An itemized list of person(s) and/or organization(s) other than sponsors and contributors already mentioned in metadata elements `contributors` and `sponsors` whose contribution to the database must be acknowledged.
 
-  ![](./images/ReDoc_ts_database_23.JPG){width=100%}
+<br>
+```json
+"acknowledgments": [
+  {
+    "name": "string",
+    "affiliation": "string",
+    "role": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the person or agency being recognized for supporting the database. 
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
@@ -304,10 +533,9 @@ An itemized list of person(s) and/or organization(s) other than sponsors and con
   Role of the person or agency that is being recognized or acknowledged for supporting the database.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   Website URL or email of the person or organization being recognized or acknowledged for supporting the database.
-   
-- **`acknowledgment_statement`** *[Optional ; Not repeatable ; String]*<br>
 
-![](./images/ReDoc_ts_database_24.JPG){width=100%}
+
+- **`acknowledgment_statement`** *[Optional ; Not repeatable ; String]*<br>
 
   An overall statement of acknowledgment, which can be used as an alternative (or supplement) to the itemized list provided in `acknowledgments`.<br><br>
 
@@ -315,7 +543,20 @@ An itemized list of person(s) and/or organization(s) other than sponsors and con
 - **`contacts`** *[Optional ; Repeatable]* <br>
 The `contacts` element provides the public interface for questions associated with the development and maintenance of the database. There could be various contacts provided depending upon the organization.  
 
-  ![](./images/ReDoc_ts_database_25.JPG){width=100%}
+<br>
+```json
+"contacts": [
+  {
+    "name": "string",
+    "role": "string",
+    "affiliation": "string",
+    "email": "string",
+    "telephone": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the contact person that should be contacted. Instead of the name of an individual (which would be subject to change and require frequent update of the metadata), a title can be provided here (e.g. "data helpdesk"). 
   - **`role`** *[Optional ; Not repeatable ; String]* <br>
@@ -333,7 +574,16 @@ The `contacts` element provides the public interface for questions associated wi
 - **`links`** *[Optional ; Repeatable]* <br>
 This field allows for the association of auxiliary links referring to the database.
 
-  ![](./images/ReDoc_ts_database_26.JPG){width=100%}
+<br>
+```json
+"links": [
+  {
+    "uri": "string",
+    "description": "string"
+  }
+]
+```
+<br>
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URI for the associated link.
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
@@ -344,7 +594,16 @@ This field allows for the association of auxiliary links referring to the databa
 - **`languages`** *[Optional ; Repeatable]* <br>
 This set of elements is provided to list the languages that are supported in the database.
 
-  ![](./images/ReDoc_ts_database_27.JPG){width=100%}
+<br>
+```json
+"languages": [
+  {
+    "name": "string",
+    "code": "string"
+  }
+]
+'''
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The official name of the language being supported; it is recommended to use a name from the [ISO 639-1 language name list](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -354,7 +613,17 @@ This set of elements is provided to list the languages that are supported in the
 - **`access_options`** *[Optional ; Repeatable]* <br>
 This repeatable set of elements describes the different modes and formats in which the database is made accessible. When more than one mode of access is provided, describe them separately.
 
-  ![](./images/ReDoc_ts_database_28.JPG){width=100%}
+<br>
+```json
+"access_options": [
+  {
+    "type": "string",
+    "uri": "string",
+    "note": "string"
+  }
+]
+```
+<br>
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   The access type, e.g. "Application Programming Interface (API)", "Bulk download in CSV format", "On-line query interface", etc.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -366,7 +635,16 @@ This repeatable set of elements describes the different modes and formats in whi
 - **`errata`** *[Optional ; Repeatable]* <br>
 A list of errata at the database level. Note that an `errata` element is also available in the schema used for the description of indicators/series.
 
-  ![](./images/ReDoc_ts_database_28.JPG){width=100%}
+<br>
+```json
+"errata": [
+  {
+    "date": "string",
+    "description": "string"
+  }
+]
+```
+<br>
   - **`date`** *[Optional ; Not repeatable ; String]* <br>
   The date the erratum was published, preferably entered in ISO format.
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
@@ -376,7 +654,17 @@ A list of errata at the database level. Note that an `errata` element is also av
 - **`license`** *[Optional ; Repeatable]* <br>
 This set of elements is used to describe the access license(s) attached to the database.
 
-  ![](./images/ReDoc_ts_database_29.JPG){width=100%}
+<br>
+```json
+"license": [
+  {
+    "name": "string",
+    "uri": "string",
+    "note": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the license, for example "Creative Commons Attribution 4.0 International license (CC-BY 4.0)". 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -387,30 +675,33 @@ This set of elements is used to describe the access license(s) attached to the d
 
 - **`citation`** *[Optional ; Not repeatable ; String]* <br>
 
-![](./images/ReDoc_ts_database_30.JPG){width=100%}
-
   The citation requirement for the database (i.e. how users should cite the database in publications and reports).  
 
 
 - **`notes`** *[Optional ; Repeatable]* <br>
 This element is provided to add notes that are relevant for describing the database, that cannot be provided in other metadata elements. 
 
-  ![](./images/ReDoc_ts_database_31.JPG){width=100%}
-  - **`note`** *[Optional ; Not repeatable ; String]* <br>
+<br>
+```json
+"notes": [
+  {
+    "note": "string"
+  }
+]
+```
+<br>
+
+- **`note`** *[Optional ; Not repeatable ; String]* <br>
   A free-text note.
 
 
 - **`disclaimer`** *[Optional ; Not repeatable ; String]* <br>
-
-![](./images/ReDoc_ts_database_32.JPG){width=100%}
 
 If the agency responsible for managing the database has determined that there may be some liability as a result of the data, the element may be used to provide a disclaimer statement.<br><br>
 
 
 - **`copyright`** *[Optional ; Not repeatable ; String]* <br>
 The copyright attached to the database, if any.
-
-  ![](./images/ReDoc_ts_database_33.JPG){width=100%}
 
 
 ### Provenance
