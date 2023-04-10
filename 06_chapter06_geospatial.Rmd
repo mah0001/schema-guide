@@ -494,7 +494,7 @@ The table below lists the ISO 19139 elements used to document a **file format**.
    "positionName": "string",
    "contactInfo": {},
    "role": "string"
-   }
+  }
  }
 ]
 ```
@@ -688,15 +688,32 @@ A set of elements is provided in the ISO 19139 to document the core properties o
 | `metadataStandardName`    | Reference or name of the metadata standard used.             | Yes                             | Yes                             |
 | `metadataStandardVersion` | Version of the metadata standard. For the ISO/TC211, the version corresponds to the creation/revision year. | Yes                             | Yes                             |
 | `dataSetURI`              | Unique persistent link to reference the database             | Yes                             | -                               |
-| `locale`                  | Local language definition(s). To use for multilingual descriptions. **Currently not supported by our JSON schema** | Yes                             | Yes                             |
 
-<center>
-![](./images/ReDoc_geospatial_01.JPG){width=100%}
-</center>
+<br>
+```json
+"description": {
+ "idno": "string",
+ "language": "string",
+ "characterSet": {
+  "codeListValue": "string",
+  "codeList": "string"
+ },
+ "parentIdentifier": "string",
+ "hierarchyLevel": [],
+ "hierarchyLevelName": [],
+ "contact": [],
+ "dateStamp": "string",
+ "metadataStandardName": "string",
+ "metadataStandardVersion": "string",
+ "dataSetURI": "string"
+}
+```
+<br>
 
-#### File identifier (`fileIdentifier`)
 
-The `fileIdentifier` only applies to **dataset** resources (not to services). The `fileIdentifier` must provide a unique and persistent identifier for the dataset. A common approach consists in building a _semantic identifier_, constructed by concatenating some owner and data characteristics. Although this approach offers the advantages of readability of the identifier, it may not guarantee its global uniqueness and its persistence in time. The use of time periods and/or geographic extents as components of a file identifier is not recommended, as these elements may evolve over time. The use of random identifiers such as the Universally Unique Identifiers (UUID) is sometimes suggested as an alternative, but this approach is also not recommended. The use of [Digital Object Identifiers](https://www.doi.org/) (DOI) as global and unique file identifiers is recommended. 
+#### Resource identifier (`idno`)
+
+The `idno` must provide a unique and persistent identifier for the resource (dataset or service). A common approach consists in building a _semantic identifier_, constructed by concatenating some owner and data characteristics. Although this approach offers the advantages of readability of the identifier, it may not guarantee its global uniqueness and its persistence in time. The use of time periods and/or geographic extents as components of a file identifier is not recommended, as these elements may evolve over time. The use of random identifiers such as the Universally Unique Identifiers (UUID) is sometimes suggested as an alternative, but this approach is also not recommended. The use of [Digital Object Identifiers](https://www.doi.org/) (DOI) as global and unique file identifiers is recommended. 
 
 #### Language (`language`)
 
@@ -770,18 +787,24 @@ The recommended values are:
 
 A unique resource identifier for the dataset, such as a web link that uniquely identifies the dataset. The use of a [Digital Object Identifier (DOI)](https://www.doi.org/) is recommended.
 
-#### Locale(s) (`locale`)
-
-The ISO standard allows the metadata to be provided in multiple languages in one same XML file. The (simplified) JSON schema we developed to document geographic data does not allow multilingual metadata files. We will therefore ignore this element (at least for now).
-
-<center>
-![](./images/ReDoc_geospatial_05.JPG){width=100%}
-</center>
-
                                                                                
 ### Main metadata sections
 
 Geographic data can be diverse and complex. Users need detailed information to discover data and to use them in an informed and responsible manner. The core of the information on data will be provided in various *sections* of the metadata file. This will include information on the type of data, on the coordinate system being used, on the scope and coverage of the data, on the format and location of the data, on possible quality issues that users need to be aware of, and more. The table below summarizes the main metadata *sections*, by order of appearance in the ISO 19139 specification. 
+
+<br>
+```json
+"description": {
+ "spatialRepresentationInfo": [],
+ "referenceSystemInfo": [],
+ "identificationInfo": [],
+ "contentInfo": [],
+ "distributionInfo": {},
+ "dataQualityInfo": [],
+ "metadataMaintenance": {} 
+}
+```
+<br>
 
 | Section                     | Description                                                  | Usability in *dataset metadata* | Usability in *service metadata* |
 | --------------------------- | ------------------------------------------------------------ | ------------------------------- | ------------------------------- |
