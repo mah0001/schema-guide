@@ -907,7 +907,27 @@ The bibliographic citation provides relevant information about the author and th
 
 The elements that follow are bibliographic elements that correspond to BibTex fields. Note that some of the BibTex elements are found elsewhere in the schema (namely `type`, `authors`, `editors`, `year` and `month`, `isbn`, `issn` and `doi`); when constructing a bibliographic citation, these external elements will have to be included as relevant. The description of the bibliographic fields listed below was adapted from [Wikipedia's description of BibTex](https://en.wikipedia.org/wiki/BibTeX). 
 
-![](./images/ReDoc_documents_10.JPG){width=100%}  
+```json
+{
+	"chapter": "string",
+	"edition": "string",
+	"institution": "string",
+	"journal": "string",
+	"volume": "string",
+	"number": "string",
+	"pages": "string",
+	"series": "string",
+	"publisher": "string",
+	"publisher_address": "string",
+	"annote": "string",
+	"booktitle": "string",
+	"crossref": "string",
+	"howpublished": "string",
+	"key": "string",
+	"organization": "string",
+	"url": null
+}
+```
 
 The elements that are required to form a complete bibliographic citation depend on the type of document. The table below, adapted from the [BibTex templates](https://www.bibtex.com/format/), provides a list of required and optional fields by type of document:
 
