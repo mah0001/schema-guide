@@ -96,7 +96,6 @@ Other sections are provided to allow additional metadata to be collected and sto
   "additional": { }
 }
 ```
-
 <br>
 
 The DDI-Codebook also provides a solution to describe OLAP cubes, which we do not make use of as our purpose is to use the standard to document and catalog datasets, not to manage data.
@@ -194,7 +193,7 @@ my_ddi <- list(
   
 )  
 ```
-
+<br>
 
 ### Study description
 
@@ -252,7 +251,6 @@ The title statement for the study.
 - **`identifiers`** *[Optional ; Repeatable]*  <br>
 This repeatable element is used to enter identifiers (IDs) other than the `idno` entered in the Title statement. It can for example be a Digital Object Identifier (DOI). The `idno` can be repeated here (the `idno` element does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`). 
 
-  ![](./images/ReDoc_documents_07.JPG){width=100%}
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   The type of unique ID, e.g. "DOI".
   - **`identifier`** *[Required ; Not repeatable ; String]* <br>
@@ -290,7 +288,7 @@ my_ddi <- list(
   # ...
 )  
 ```
-
+<br>
 
 #### Authoring entity
 
@@ -336,6 +334,7 @@ my_ddi <- list(
   
 )  
 ```
+<br>
 
 
 #### Other entity
@@ -381,6 +380,7 @@ my_ddi <- list(
   
 )  
 ```
+<br>
 
 
 #### Production statement
@@ -495,6 +495,7 @@ my_ddi <- list(
   
 )
 ```
+<br>
 
 
 #### Distribution statement
@@ -533,6 +534,7 @@ A distribution statement for the study.
 }
 ```
 <br>
+
 
 - **`distributors`** *[Optional ; Repeatable]* <br>
 The organization(s) designated by the author or producer to generate copies of the study output including any necessary editions or revisions.
@@ -616,6 +618,7 @@ my_ddi <- list(
   # ...
 )      
 ```
+<br>
 
 
 #### Series statement
@@ -653,6 +656,7 @@ my_ddi <- list(
   # ...
 )  
 ```
+<br>
 
 
 #### Version statement
@@ -711,14 +715,14 @@ my_ddi <- list(
   
 )  
 ```
+<br>
 
                                
 #### Bibliographic citation
 
+
 **`bib_citation`** *[Optional ; Not repeatable ; String]* <br>
 Complete bibliographic reference containing all of the standard elements of a citation that can be used to cite the study. The `bib_citation_format` (see below) is provided to enable specification of the particular citation style used, e.g., APA, MLA, or Chicago. 
-
-![](./images/ReDoc_Microdata_10a.JPG){width=100%}  
 
 
 #### Bibliographic citation format
@@ -740,6 +744,7 @@ This element is used to specify the particular citation style used in the field 
     # ...
   )  
 ```
+<br>
 
 
 #### Holdings
@@ -785,13 +790,12 @@ my_ddi <- list(
   # ...
 )  
 ```
+<br>
 
 
 #### Study notes
 
 **`study_notes`** *[Optional ; Not repeatable]* <br>
-
-![](./images/ReDoc_Microdata_10c.JPG){width=100%}  
 
 This element can be used to provide additional information on the study which cannot be accommodated in the specific metadata elements of the schema, in the form of a free text field.
 
@@ -850,6 +854,7 @@ my_ddi <- list(
   # ...
 )  
 ```
+<br>
 
 
 #### Study information
@@ -883,7 +888,6 @@ This section contains the metadata elements needed to describe the core elements
 
 - **`study_budget`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_11a.JPG){width=100%}
   This is a free-text field, not a structured element. The budget of a study will ideally be described by budget line. The currency used to describe the budget should be specified. This element can also be used to document issues related to the budget (e.g., documenting possible under-run and over-run).<br>
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1055,6 +1059,8 @@ This refers to the time period (also known as span) covered by the data, not the
   }
 ]
 ```
+<br>
+
   - **`start`** *[Required ; Not repeatable ; String]* <br>
   The start date for the cycle being described. Enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).<br>
   - **`end`** *[Required ; Not repeatable ; String]* <br>
@@ -1075,6 +1081,7 @@ Contains the date(s) when the data were collected, which may be different from t
   }
 ]
 ```
+<br>
 
   - **`start`** *[Required ; Not repeatable ; String]* <br>
   Date the data collection started (for the specified cycle, if any). Enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).<br>
@@ -1164,6 +1171,7 @@ This element is used to define one or multiple bounding box(es), which are the r
   }
 ]
 ```
+<br>
 
   - **`west`** *[Required ; Not repeatable ; String]* <br>
   West longitude of the bounding box. <br>
@@ -1227,6 +1235,7 @@ The `bbox` metadata element (see above) describes a rectangular area representin
   }
 ]
 ```
+<br>
 
   - **`lat`** *[Required ; Not repeatable ; String]* <br>
   The latitude of the coordinate. <br>
@@ -1266,17 +1275,14 @@ my_ddi <- list(
 
 - **`geog_coverage`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_16c.JPG){width=100%}
   Information on the geographic coverage of the study. This includes the total geographic scope of the data, and any additional levels of geographic coding provided in the variables. Typical entries will be "National coverage", "Urban areas", "Rural areas", "State of ...", "Capital city", etc. This does not describe where the data were collected; it describes which area the data are representative of. This means for example that a sample survey could be declared as having a national coverage even if some districts of the country where not included in the sample, as long as the sample is nationally representative.<br>
   
 - **`geog_coverage_notes`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_16d.JPG){width=100%}
   Additional information on the geographic coverage of the study entered as a free text field.<br>
   
 - **`geog_unit`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_16e.JPG){width=100%}
   Describes the levels of geographic aggregation covered by the data. Particular attention must be paid to include information on the lowest geographic area for which data are representative.<br>
     
 ```{r, indent="  ", eval=F, echo=T}
@@ -1304,7 +1310,6 @@ my_ddi <- list(
 
 - **`analysis_unit`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_16f.JPG){width=100%}
   A study can have multiple units of analysis. This field will list the various units that can be analyzed. For example, a Living Standard Measurement Study (LSMS) may have collected data on households and their members (individuals), on dwelling characteristics, on prices in local markets, on household enterprises, on agricultural plots, and on characteristics of health and education facilities in the sample areas.
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1328,7 +1333,6 @@ my_ddi <- list(
 
 - **`universe`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_16g.JPG){width=100%}
   The universe is the group of persons (or other units of observations, like dwellings, facilities, or other) that are the object of the study and to which any analytic results refer. The universe will rarely cover the entire population of the country. Sample household surveys, for example, may not cover homeless, nomads, diplomats, community households. Population censuses do not cover diplomats. Facility surveys may be limited to facilities of a certain type (e.g., public schools). Try to provide the most detailed information possible on the population covered by the survey/census, focusing on excluded categories of the population. For household surveys, age, nationality, and residence commonly help to delineate a given universe, but any of a number of factors may be involved, such as sex, race, income, veteran status, criminal convictions, etc. In general, it should be possible to tell from the description of the universe whether a given individual or element (hypothetical or real) is a member of the population under study.<br>
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1352,7 +1356,6 @@ my_ddi <- list(
 
 - **`data_kind`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_16h.JPG){width=100%}
   This field describes the main type of microdata generated by the study: survey data, census/enumeration data, aggregate data, clinical data, event/transaction data, program source code, machine-readable text, administrative records data, experimental data, psychological test, textual data, coded textual, coded documents, time budget diaries, observation data/ratings, process-produced data, etc. A controlled vocabulary should be used as this information may be used to build facets (filters) in a catalog user interface.<br>
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1376,7 +1379,6 @@ my_ddi <- list(
 
 - **`notes`** *[Optional ; Not repeatable ; String]* <br>
 
-  ![](./images/ReDoc_Microdata_16i.JPG){width=100%}
   This element is provided to document any specific situations, observations, or events that occurred during data collection. Consider stating such items like: <br>         
     - Was a training of enumerators held? (elaborate) <br>
     - Was a pilot survey conducted? <br>
@@ -1405,7 +1407,6 @@ Six staff members of the Statistics Office provided overall fieldwork coordinati
     ),
   # ...
 )    
-
 ```
 <br>
 
@@ -1424,6 +1425,7 @@ This section lists the specific standards complied with during the execution of 
   "other_quality_statement": "string"
 }
 ```
+<br>
 
   - **`compliance_description`** *[Optional ; Not repeatable ; String]* <br>
   A statement on compliance with standard quality assessment procedures. The list of these standards can be documented in the next element, `standards`.
@@ -1487,6 +1489,7 @@ Ex-post evaluations are frequently done within large statistical or research org
   "outcomes": "string"
 }
 ```
+<br>
 
   - **`completion_date`** *[Optional ; Not repeatable ; String]* <br>
   The date the ex-post evaluation was completed. <br>
@@ -1543,6 +1546,7 @@ my_ddi <- list(
   # ...
 ) 
 ```
+<br>
 
 
 #### Study development
@@ -1603,7 +1607,6 @@ Each activity will be documented separately. The [Generic Statistical Business P
     The characteristics of the resource mentioned in `name`.<br><br>
   - **`outcome`** *[Optional ; Not repeatable ; String]*  <br>
   Description of the main outcome of the activity.<br>
-
 
 ```{r, indent="", eval=F, echo=T}
 my_ddi <- list(
@@ -1671,6 +1674,7 @@ my_ddi <- list(
   
 )
 ```
+<br>
 
 
 #### Method
@@ -1714,6 +1718,7 @@ A block of metadata elements used to describe the methodology employed in a data
   "cleaning_operations": "string"
 }
 ```
+<br>
 
   - **`time_method`** *[Optional ; Not repeatable ; String]* <br>
   The time method or time dimension of the data collection. A controlled vocabulary can be used. The entries for this element may include "panel survey", "cross-section", "trend study", or "time-series".
@@ -1731,6 +1736,7 @@ A block of metadata elements used to describe the methodology employed in a data
   }
 ]
 ```
+<br>
 
     - **`name`** *[Optional ; Not repeatable ; String]* <br>
     In most cases, we will record here the name of the agency, not the name of interviewers. Only in the case of very small-scale surveys, with a very limited number of interviewers, the name of persons will be included as well.
@@ -1752,6 +1758,7 @@ A block of metadata elements used to describe the methodology employed in a data
   }
 ]
 ```
+<br>
 
     - **`type`** *[Optional ; Not repeatable ; String]* <br>
     The type of training being described. For example, "Training of interviewers", "Training of controllers", "Training of cartographers", "Training on the use of tablets for data collection", etc.<br>
@@ -1793,6 +1800,7 @@ A block of metadata elements used to describe the methodology employed in a data
   "update_procedure": "string"
 }
 ```
+<br>
 
     - **`name`** *[Optional ; Not Repeatable]* <br>
     The name (title) of the sample frame. <br>
@@ -1827,27 +1835,27 @@ A block of metadata elements used to describe the methodology employed in a data
     This element is used to describe how and with what frequency the sample frame is updated. For example: "The lists and boundaries of enumeration areas are updated every ten years at the occasion of the population census cartography work. Listing of households in enumeration areas are updated as and when needed, based on their selection in survey samples." <br><br>
 
   - **`sampling_deviation`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_23b.JPG){width=100%}
+
   Sometimes the reality of the field requires a deviation from the sampling design (for example due to difficulty to access to zones due to weather problems, political instability, etc). If for any reason, the sample design has deviated, this can be reported here. This element will provide information indicating the correspondence as well as the possible discrepancies between the sampled units (obtained) and available statistics for the population (age, sex-ratio, marital status, etc.) as a whole.<br>
 
   - **`coll_mode`** *[Optional ; Repeatable ; String]* <br>   
-  ![](./images/ReDoc_Microdata_23c.JPG){width=100%}
+
   The mode of data collection is the manner in which the interview was conducted or information was gathered. Ideally, a controlled vocabulary will be used to constrain the entries in this field (which could include items like "telephone interview", "face-to-face paper and pen interview", "face-to-face computer-assisted interviews (CAPI)", "mail questionnaire", "computer-aided telephone interviews (CATI)", "self-administered web forms", "measurement by sensor", and others. <br>
   This is a <u>repeatable</u> field, as some data collection activities implement multi-mode data collection (for example, a population census can offer respondents the options to submit information via web forms, telephone interviews, mailed forms, or face-to-face interviews. Note that in the API description (see screenshot above), the element is described as having type "null", not {}. This is due to the fact that the element can be entered either as a list (repeatable element) or as a string.<br>
 
   - **`research_instrument`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_23d.JPG){width=100%}
+
   The research instrument refers to the questionnaire or form used for collecting data. The following should be mentioned: <br>
     - List of questionnaires and short description of each (all questionnaires must be provided as External Resources) <br>
     - In what language(s) was/were the questionnaire(s) available? <br>
     - Information on the questionnaire design process (based on a previous questionnaire, based on a standard model questionnaire, review by stakeholders). If a document was compiled that contains the comments provided by the stakeholders on the draft questionnaire, or a report prepared on the questionnaire testing, a reference to these documents can be provided here. 
 
   - **`instru_development`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_23f.JPG){width=100%}
+
   Describe any development work on the data collection instrument. This may include a description of the review process, standards followed, and a list of agencies/people consulted.<br>
       
   - **`instru_development_type`** *[Optional ; Repeatable ; String]* <br>   
-  ![](./images/ReDoc_Microdata_23g.JPG){width=100%}
+
   The instrument development type. This element will be used when a pre-defined list of options (controlled vocabulary) is available.
 
   - **`sources`** *[Optional ; Repeatable]* <br>   
@@ -1862,6 +1870,8 @@ A block of metadata elements used to describe the methodology employed in a data
   }
 ]
 ```
+<br>
+
     - **`name`** *[Optional ; Not repeatable ; String]* <br> 
     The name and other information on the source. For example, "United States Internal Revenue Service Quarterly Payroll File"<br>
     - **`origin`** *[Optional ; Not repeatable ; String]* <br>
@@ -1870,23 +1880,23 @@ A block of metadata elements used to describe the methodology employed in a data
     Assessment of characteristics and quality of source material. This may not be relevant to survey data.<br><br> 
 
   - **`coll_situation`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_24a.JPG){width=100%}
+
   A description of noteworthy aspects of the data collection situation. Includes information on factors such as cooperativeness of respondents, duration of interviews, number of call-backs, etc. 
   
   - **`act_min`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_24b.JPG){width=100%}
+
   A summary of actions taken to minimize data loss. This includes information on actions such as follow-up visits, supervisory checks, historical matching, estimation, etc. Note that this element does not have to include detailed information on response rates, as a specific metadata element is provided for that purpose in section `analysis_info / response_rate` (see below).<br>
 
   - **`control_operations`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_24c.JPG){width=100%}
+
   This element will provide information on the oversight of the data collection, i.e. on methods implemented to facilitate data control performed by the primary investigator or by the data archive.<br>
 
   - **`weight`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_24d.JPG){width=100%}
+
   This field only applies to sample surveys. The use of sampling procedures may make it necessary to apply weights to produce accurate statistical results. Describe here the criteria for using weights in analysis of a collection, and provide a list of variables used as weighting coefficient. If more than one variable is a weighting variable, describe how these variables differ from each other and what the purpose of each one of them is.<br>
 
   - **`cleaning_operations`** *[Optional ; Not repeatable ; String]* <br>
-  ![](./images/ReDoc_Microdata_24e.JPG){width=100%}
+
   A description of the methods used to clean or edit the data, e.g., consistency checking, wild code checking, etc. The data editing should contain information on how the data was treated or controlled for in terms of consistency and coherence. This item does not concern the data entry phase but only the editing of data whether manual or automatic. It should provide answers to questions like: Was a hot deck or a cold deck technique used to edit the data? Were corrections made automatically (by program), or by visual control of the questionnaire? What software was used? If materials are available (specifications for data editing, report on data editing, programs used for data editing), they should be listed here and provided as external resources in data catalogs (the best documentation of data editing consists of well-documented reproducible scripts). <br>
 
   Example for the `data_collection` section:
@@ -1990,11 +2000,10 @@ Sample weights for the children's data followed the same approach as the women's
 )
 
 ```
-
 <br>
 
 - **`method_notes`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_Microdata_24f.JPG){width=100%}
+
 This element is provided to capture any additional relevant information on the data collection methodology, which could not fit in the previous metadata elements.
 
 - **`analysis_info`** *[Optional ; Not Repeatable]* <br>
@@ -2007,6 +2016,7 @@ This block of elements is used to organize information related to data quality a
   "data_appraisal": "string"
 }
 ```
+<br>
 
   - **`response_rate`** *[Optional ; Not repeatable ; String]* <br>
   The response rate is the percentage of sample units that participated in the survey based on the original sample size. Omissions may occur due to refusal to participate, impossibility to locate the respondent, or other reason. This element is used to provide a narrative description of the response rate, possibly by stratum or other criteria, and if possible with an identification of possible causes. If information is available on the causes of non-response (refusal/not found/other), it can be reported here. This field can also be used to describe non-responses in population censuses.<br>
@@ -2060,14 +2070,14 @@ Sampling errors have been calculated for a select set of statistics (all of whic
   # ...
 )  
 ```
-
 <br>
 
 - **`study_class`** *[Optional ; Repeatable ; String]* <br>  
-![](./images/ReDoc_Microdata_25a.JPG){width=100%}
+
 This element can be used to give the data archive's class or study status number, which indicates the processing status of the study. But it can also be used as an element to indicate the type of study, based on a controlled vocabulary. The element is repeatable, allowing one study to belong to more than one class. Note that in the API description (see screenshot above), the element is described as having type "null", not {}. This is due to the fact that the element can be entered either as a list (repeatable element) or as a string.<br>
 
 - **`data_processing`** *[Optional ; Repeatable]* <br>   @@@@ Improve definition of elements
+<br>
 ```json
 "data_processing": [
   {
@@ -2076,6 +2086,8 @@ This element can be used to give the data archive's class or study status number
   }
 ]
 ```
+<br>
+
 This element is used to describe how data were electronically captured (e.g., entered in the field, in a centralized manner by data entry clerks, captured electronically using tablets and a CAPI application, via web forms, etc.). Information on devices and software used for data capture can also be provided here. Other data processing procedures not captured elsewhere in the documentation can be described here (tabulation, etc.) <br>
   - **`type`** *[Optional ; Not repeatable ; String]* <br> 
   The type attribute supports better classification of this activity, including the optional use of a controlled vocabulary. The vocabulary could include options like “data capture”, “data validation”, “variable derivation”, “tabulation”, “data visualizations”, anonymization“, ”documentation", etc.<br>
@@ -2097,6 +2109,7 @@ The `coding_instructions` elements can be used to describe specific coding instr
   }
 ]
 ```
+<br>
 
   - **`related_processes`**  *[Optional ; Not repeatable ; String]* <br>
   The `related_processes` links a coding instruction to one or more processes such as "data editing", "recoding", "imputations and derivations", "tabulation", etc.<br>
@@ -2159,6 +2172,7 @@ my_ddi <- list(
   # ...
 )  
 ```
+<br>
 
 
 #### Data access
@@ -2181,11 +2195,11 @@ This section describes the access conditions and terms of use for the dataset. T
   "dataset_use": {}
 }
 ```
+<br>
 
 - **`dataset_availability`** *[Optional ; Not Repeatable]* <br> 
 Information on the availability and storage of the dataset.
    
-  ![](./images/ReDoc_Microdata_28.JPG){width=100%}
   - **`access_place`** *[Optional ; Not repeatable ; String]* <br>
   Name of the location where the data collection is currently stored.<br>
   - **`access_place_url`** *[Optional ; Not repeatable ; String]* <br>
@@ -2235,7 +2249,6 @@ my_ddi <- list(
   # ...
 )  
 ```
- 
 <br>
 
 - **`dataset_use`** *[Optional ; Not Repeatable]* <br>
@@ -2274,6 +2287,7 @@ Information on the terms of use for the study dataset.
   "disclaimer": "string"
 }
 ```
+<br>
 
   - **`conf_dec`** *[Optional ; Repeatable]* <br>
   This element is used to determine if signing of a confidentiality declaration is needed to access a resource. We may indicate here what *Affidavit of Confidentiality* must be signed before the data can be accessed. Another option is to include this information in the next element (Access conditions). If there is no confidentiality issue, this field can be left blank.
@@ -2413,6 +2427,7 @@ The `data_files` section is the DDI section that contains the elements needed to
   }
 ]
 ```
+<br>
 
 - **`file_id`** *[Optional ; Not repeatable ; String]* <br>
 A unique file identifier (within the metadata document, not necessarily within a catalog). This will typically be the electronic file name.
@@ -2497,6 +2512,7 @@ my_ddi <- list(
   # ...
 )       
 ```
+<br>
 
 
 ### Variable description
@@ -2550,6 +2566,7 @@ The metadata elements we describe below apply independently to each variable in 
   }
 ]
 ```
+<br>
 
 - **`file_id`** *[Required ; Not repeatable ; String]*<br>
 A dataset can be composed of multiple data files. The `file_id` is the name of the data file that contains the variable being documented. This file name should correspond to a `file_id` listed in the `data_file` section of the DDI.<br> 
@@ -2640,6 +2657,7 @@ The DDI metadata standard provides multiple elements to capture various summary 
   }
 ]
 ```
+<br>
 
   - **`type`** *[Required ; Not repeatable ; String]* <br>
   The type of statistics being shown: mean, median, mode, valid cases, invalid cases, minimum, maximum, or standard deviation.<br>
@@ -2669,6 +2687,7 @@ Variable categories are the lists of codes (and their meaning) that apply to a c
   }
 ]
 ```
+<br>
 
   - **`value`** *[Required ; Not repeatable ; String]* <br>
   The value here is the code assigned to a variable category. For example, a variable "Sex" could have value 1 for "Male" and value 2 for "Female".<br>   
@@ -2694,6 +2713,7 @@ This element is used to indicate that the codes used for a categorical variable 
   "uri": "string"
 }
 ```
+<br>
 
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the classification, e.g. "International Standard Industrial Classification of All Economic Activities (ISIC), Revision 4"<br>
@@ -2719,6 +2739,7 @@ The general subject to which the parent element may be seen as pertaining. This 
   }
 ]
 ```
+<br>
 
   - **`title`** *[Optional ; Not repeatable ; String]* <br>
   The name (label) of the concept.     
@@ -2737,6 +2758,7 @@ The technical format of the variable in question.
   "note": "string"
 }
 ```
+<br>
 
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   Indicates if the variable is numeric, fixed string, dynamic string, or date. Numeric variables are used to store any number, integer or floating point (decimals). A fixed string variable has a predefined length which enables the publisher to handle this data type more efficiently. Dynamic string variables can be used to store open-ended questions.<br>
@@ -2825,6 +2847,7 @@ my_ddi <- list(
   # ...
 )
 ```
+<br>
 
                                                                                                       
 ### Variable groups
@@ -2848,6 +2871,7 @@ In a dataset, variables are grouped by data file. For the convenience of users, 
   }
 ]
 ```
+<br>
 
 - **`vgid`** *[Optional ; Not repeatable ; String]* <br>
 A unique identifier (within the DDI metadata file) for the variable group.<br>
@@ -2875,7 +2899,6 @@ A more detailed description of variable group than the one provided in `label`.<
 
 - **`definition`** *[Optional ; Not repeatable ; String]* <br>
 A brief rationale for the variable grouping.<br>
-
 
 ```{r, indent="", eval=F, echo=T}
 my_ddi <- list(
@@ -2921,6 +2944,7 @@ my_ddi <- list(
   # ...
 )
 ```
+<br>
 
 
 ### Provenance
@@ -2942,6 +2966,7 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
   }
 ]
 ```
+<br>
 
 - **`origin_description`** *[Required ; Not repeatable]* <br>
 The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested. <br> 
@@ -2973,6 +2998,7 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
   }
 ]
 ```
+<br>
 
 - **`tag`** *[Required ; Not repeatable ; String]* <br>
 A user-defined tag.
@@ -3015,6 +3041,7 @@ A user-defined group (optional) to which the tag belongs. Grouping tags allows i
   }
 ]
 ```
+<br>
 
 We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document (in this case, the "document" is a compilation of elements from the dataset metadata) can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 <br>
@@ -3124,6 +3151,7 @@ lda_topics = list(
    
 )
 ```
+<br>
 
 
 ### Embeddings
@@ -3143,6 +3171,7 @@ The word vectors do not have to be stored in the document metadata to be exploit
   }
 ]
 ```
+<br>
 
 The `embeddings` element contains four metadata fields:
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
