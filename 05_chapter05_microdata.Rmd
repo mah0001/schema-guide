@@ -95,6 +95,7 @@ Other sections are provided to allow additional metadata to be collected and sto
   "embeddings": [],
   "additional": { }
 }
+```
 
 <br>
 
