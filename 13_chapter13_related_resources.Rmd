@@ -50,7 +50,8 @@ The schema used to document external resources only contains 16 elements.
   "filename": "string",
   "created": "2023-04-09T19:23:22Z",
   "changed": "2023-04-09T19:23:22Z"
-}```
+}
+```
 
 **`dctype`** *[Optional, Not Repeatable, String]* <br>
 This element defines the type of external resource being documented. This element plays an important role in the cataloguing system (NADA), as it is used to determine where and how the resource will be published. Particular attention must be paid to the type "Microdata File" (`dat/micro`) and to other data types, when the datasets will be published in a data catalog but with access restrictions). The NADA catalog allows data to be published under different levels of accessibility: open data, direct access, public use files, licensed data, access in data enclave, or no access. Most standards include an element **`access_policy`** which is used to determine the type of access to a resource, and will apply to data of type `dat/micro`. The resource type `dctype` must be selected from a controlled vocabulary:
