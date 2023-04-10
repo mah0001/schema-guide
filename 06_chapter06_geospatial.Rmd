@@ -322,7 +322,7 @@ save_object(bucket = 'globalnightlight',
 # Read it with raster package
 rs <- raster(filename)
 ```
-
+<br>
 
 ### Describing data structures - The ISO 19115-2 and ISO 19110 standards
 
@@ -347,8 +347,26 @@ The ISO 19139 specification is complex. To enable and simplify its use in our NA
                                          
 ## Schema description
 
+Main structure (describe) @@@@
 
-### Introduction
+<br>
+```json
+{
+ "repositoryid": "string",
+ "published": 0,
+ "overwrite": "no",
+ "metadata_information": {},
+ "description": {},
+ "provenance": [],
+ "tags": [],
+ "lda_topics": [],
+ "embeddings": [],
+ "additional": { }
+}
+```
+<br>
+
+### Introduction to ISO19139
 
 Geographic metadata (for both *datasets* and *services*) should include **core metadata properties**, and metadata **sections** aiming to describe specific aspect of the resource (e.g., resource identification or resource distribution).
 
@@ -376,9 +394,38 @@ The ISO 19139 specification provides a structured set of metadata elements to de
 | `contactInfo`      | Contact information. The contact information is divided into 3 sections: `phone`(including either `voice` or `facsimile` numbers; `address`, handling the physical address elements (`deliveryPoint`, `city`, `postalCode`, `country`), contact e-mail (`electronicEmailAddress`), and `onlineResource`, e.g., the URL of the organization website (which includes `linkage`, `name`, `description`, `protocol`, and `function` ; see below) |
 | `role`             | Role of the person/organization. A recommended controlled vocabulary is provided by ISO 19139, with the following options: `{resourceProvider, custodian, owner, sponsor, user, distributor, originator, pointOfContact, principalInvestigator, processor, publisher, author, coAuthor, collaborator, editor, mediator, rightsHolder, contributor, funder, stakeholder}` |
 
-<center>
-![](./images/ReDoc_geospatial_03.JPG){width=100%}
-</center>
+<br>
+```json
+"contact": [
+ {
+  "individualName": "string",
+  "organisationName": "string",
+  "positionName": "string",
+  "contactInfo": {
+   "phone": {
+    "voice": "string",
+    "facsimile": "string"
+   },
+   "address": {
+    "deliveryPoint": "string",
+    "city": "string",
+    "postalCode": "string",
+    "country": "string",
+    "electronicMailAddress": "string"
+   },
+   "onlineResource": {
+    "linkage": "string",
+    "name": "string",
+    "description": "string",
+    "protocol": "string",
+    "function": "string"
+   }
+  },
+  "role": "string"
+ }
+]
+```
+<br>
 
 
 #### Online resource 
@@ -393,9 +440,17 @@ An **online resource** is a common set of elements frequently used in the geogra
 | `protocol`    | Web protocol used to get the resource, e.g., FTP, HTTP. In case of a basic HTTP, the ISO 19139 suggests the value 'WWW:LINK-1.0-http--link'. For geographic standard data services, it is recommended to fill this element with the appropriate protocol identifier. For an OGC Web Map Service (WMS) link for example, use 'OGC:WMS-1.1.0-http-get-map' |
 | `function`    | Function (purpose) of the online resource.                 |
 
-<center>
-![](./images/ReDoc_geospatial_03b.JPG){width=100%}
-</center>
+<br>
+```json
+"onlineResource": {
+ "linkage": "string",
+ "name": "string",
+ "description": "string",
+ "protocol": "string",
+ "function": "string"
+}
+```
+<br>
 
 #### Offline resource (Medium)
 
@@ -424,9 +479,26 @@ The table below lists the ISO 19139 elements used to document a **file format**.
 | `fileDecompressionTechnique` | Technique for file decompression (if applicable)  |
 | `FormatDistributor`          | <u>Contact</u>(s) responsible of the distribution |
 
-<center>
-![](./images/ReDoc_geospatial_03d.JPG){width=100%}
-</center>
+<br>
+```json
+"resourceFormat": [
+ {
+  "name": "string",
+  "version": "string",
+  "amendmentNumber": "string",
+  "specification": "string",
+  "fileDecompressionTechnique": "string",
+  "FormatDistributor": {
+   "individualName": "string",
+   "organisationName": "string",
+   "positionName": "string",
+   "contactInfo": {},
+   "role": "string"
+   }
+ }
+]
+```
+<br>
 
 #### Citation
 
@@ -448,14 +520,39 @@ The **citation** is another common element that can be used in various parts of 
 | `ISBN`                  | International Standard Book Number (ISBN); an international standard identification number for uniquely identifying publications that are not intended to continue indefinitely.                                                         |
 | `ISSN`                  | International Standard Serial Number (ISSN); an international standard for serial publications.                                                         |
 
-<center>
-![](./images/ReDoc_geospatial_08.JPG){width=100%}
-</center>
-
-<center>
-![](./images/ReDoc_geospatial_09.JPG){width=100%}
-</center>
-
+<br>
+```json
+"citation": {
+ "title": "string",
+ "alternateTitle": "string",
+ "date": [
+  {
+   "date": "string",
+   "type": "string"
+  }
+ ],
+ "edition": "string",
+ "editionDate": "string",
+ "identifier": {
+  "authority": "string",
+  "code": null
+ },
+ "citedResponsibleParty": [],
+ "presentationForm": [
+  "string"
+ ],
+ "series": {
+  "name": "string",
+  "issueIdentification": "string",
+  "page": "string"
+ },
+ "otherCitationDetails": "string",
+ "collectiveTitle": "string",
+ "ISBN": "string",
+ "ISSN": "string"
+}
+```
+<br>
 
 #### Keywords
 
@@ -467,13 +564,53 @@ The **citation** is another common element that can be used in various parts of 
 | `keyword`       | The keyword itself. When possible, existing vocabularies should be preferred to writing free-text keywords. An example of global vocabulary is the [*Global Change Master Directory*](http://vocab.nerc.ac.uk/collection/P04/current/) that could be a valuable source to reference data domains / disciplines, or the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/).
 | `thesaurusName` | A reference to a thesaurus (if applicable) from which the keywords are extracted. The thesaurus itself should then be documented as a <u>citation</u>. |
 
-<center>
-![](./images/ReDoc_geospatial_03c.JPG){width=100%}
-</center>
+<br>
+```json
+"keywords": [
+ {
+  "type": "string",
+  "keyword": "string",
+  "thesaurusName": "string"
+ }
+]
+```
+<br>
 
 #### Constraints   @@@@ not clear. where is the element useLimitations? ... what are the elements used in the schema?
 
 The **constraints** common set of elements will be used to document *legal* and *security* constraints associated with the documented dataset or data service. Both types of constraints have one property in common, `useLimitation`, used to describe the use limitation(s) as free text. 
+
+<br>
+```json
+"resourceConstraints": [
+ {
+  "legalConstraints": {
+   "useLimitation": [
+    "string"
+   ],
+   "accessConstraints": [
+    "string"
+   ],
+   "useConstraints": [
+    "string"
+   ],
+   "otherConstraints": [
+    "string"
+   ]
+  },
+  "securityConstraints": {
+  "useLimitation": [
+   "string"
+  ],
+  "classification": "string",
+  "userNote": "string",
+  "classificationSystem": "string",
+  "handlingDescription": "string"
+  }
+ }
+]
+```
+<br>
 
 In addition to the `useLimitation` element, **legal constraints** (`legalConstraints`) can be described using the following three metadata elements:
 
@@ -482,10 +619,6 @@ In addition to the `useLimitation` element, **legal constraints** (`legalConstra
 | `accessConstraints` | Access constraints. The ISO 19139 provides a controlled vocabulary with the following options: `{copyright, patent, patentPending, trademark, license, intellectualPropertyRights, restricted, otherRestrictions, unrestricted, licenceUnrestricted, licenceEndUser, licenceDistributor, private, statutory, confidential, SBU, in-confidence}` |
 | `useConstraints`    | Use constraints. To be entered as free text. Filling this element will depend on the resource that is described. As best practice recommended to fill this element, this is where *terms of use*, *disclaimers*, *preferred citation* or* even *data limitations* can be captured |
 | `otherConstraints`  | Any other constraints related to the resource.    |
-
-<center>
-![](./images/ReDoc_geospatial_24.JPG){width=100%}
-</center>
 
 In addition to the `useLimitation` element, **security constraints** (`securityConstraints`) - which applies essentially to *classified* resources - can be described using the following four metadata elements:
 
@@ -507,9 +640,35 @@ The **extent** defines the boundaries of the dataset in space (horizontally and 
 | `verticalElement`        | Spatial (vertical) extent element, providing two properties: `minimumValue`, `maximumValue` and `verticalCRS` (reference to the vertical coordinate reference system)  |
 | `temporalElement`   | Temporal extent element. Depending on the temporal characteristics of the dataset, this will consist in a `TimePeriod` (made of a `beginPosition` and `endPosition`) or a `TimeInstant` (made of a single `timePosition`) referencing date/time information according to [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)                |
 
-<center>
-![](./images/ReDoc_geospatial_32.JPG){width=100%}
-</center>
+<br>
+```json
+"extent": {
+ "geographicElement": [
+  {
+   "geographicBoundingBox": {
+    "westBoundLongitude": -180,
+    "eastBoundLongitude": -180,
+    "southBoundLatitude": -180,
+    "northBoundLatitude": -180
+   },
+   "geographicDescription": "string"
+  }
+ ],
+ "temporalElement": [
+  {
+   "extent": null
+  }
+ ],
+ "verticalElement": [
+  {
+   "minimumValue": 0,
+   "maximumValue": 0,
+   "verticalCRS": null
+  }
+ ]
+}
+```
+<br>
 
 
 ### Core metadata properties
