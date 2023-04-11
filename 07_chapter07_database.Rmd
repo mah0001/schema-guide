@@ -39,9 +39,6 @@ The **database** schema is used to document the database that contains the time 
 The schema includes two elements that are not metadata, but parameters used when publishing the metadata in a NADA catalog:
 
 - **`published`**: Indicates whether the metadata must be made visible to visitors of the catalog. By default, the value is 0 (unpublished), in which case it is only visible to catalog administrators. This value must be set to 1 (published) to make the metadata visible. Note that the database metadata will only be shown in NADA in association with the metadata of an indicator. 
-<br>
-![](./images/ReDoc_ts_database_02.JPG){width=100%}
-<br>
 - **`overwrite`**: Indicates whether metadata that may have been previously uploaded for the same database can be overwritten. By default, the value is "no". It must be set to "yes" to overwrite existing information. A database will be considered as being the same as a previously uploaded one if they have the same identifier (provided in the metadata element `database_description > title_statement > idno`).
   
 #### Metadata information
@@ -275,15 +272,6 @@ The update schedule is intended to provide users with information on scheduled u
  
 - **`time_coverage`** *[Optional ; Repeatable]* <br>
 The time coverage is the time span of all the data contained in the database across all series. 
-
-  ![](./images/ReDoc_ts_database_12.JPG){width=100%}
-  - **`start`** *[Optional ; Not repeatable ; String]* <br>
-  Indicates the start date of the period covered by the data (across all series) in the database. The date should be provided in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY).
-  - **`end`** *[Optional ; Not repeatable ; String]* <br>
-  Indicates the end date of the period covered by the data (across all series) in the database. The date should be provided in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY).<br><br>
-
-- **`time_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
-The element is used to annotate and/or describe auxiliary information related to the time coverage described in `time_coverage`.<br>
 <br>
 ```json
 "time_coverage": [
@@ -294,6 +282,14 @@ The element is used to annotate and/or describe auxiliary information related to
 ]
 ```
 <br>
+  - **`start`** *[Optional ; Not repeatable ; String]* <br>
+  Indicates the start date of the period covered by the data (across all series) in the database. The date should be provided in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY).
+  - **`end`** *[Optional ; Not repeatable ; String]* <br>
+  Indicates the end date of the period covered by the data (across all series) in the database. The date should be provided in ISO 8601 format (YYY-MM-DD, or YYYY-MM, or YYYY).<br><br>
+
+- **`time_coverage_note`** *[Optional ; Not repeatable ; String]* <br>
+The element is used to annotate and/or describe auxiliary information related to the time coverage described in `time_coverage`.<br>
+
 
 - **`periodicity`** *[Optional ; Repeatable]* <br>
 The periodicity of the data describes the periodicity of the indicators contained in the database. A database can contain series covering different periods, in which case the information will be repeated for each type of periodicity. A controlled vocabulary should be used.
@@ -593,17 +589,16 @@ This field allows for the association of auxiliary links referring to the databa
 
 - **`languages`** *[Optional ; Repeatable]* <br>
 This set of elements is provided to list the languages that are supported in the database.
-
-<br>
-```json
-"languages": [
-  {
-    "name": "string",
-    "code": "string"
-  }
-]
-'''
-<br>
+  <br>
+  ```json
+  "languages": [
+    {
+      "name": "string",
+      "code": "string"
+    }
+  ]
+  ```
+  <br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The official name of the language being supported; it is recommended to use a name from the [ISO 639-1 language name list](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -708,9 +703,22 @@ The copyright attached to the database, if any.
 
 **`provenance`** *[Optional ; Repeatable]* <br>
 Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata.<br>
-
-![](./images/ReDoc_ts_series_55.JPG){width=100%}
-
+<br>
+```json
+"provenance": [
+  {
+    "origin_description": {
+      "harvest_date": "string",
+      "altered": true,
+      "base_url": "string",
+      "identifier": "string",
+      "date_stamp": "string",
+      "metadata_namespace": "string"
+    }
+  }
+]
+```
+<br>
   - **`origin_description`** *[Required ; Not repeatable]* <br>
   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  <br>
   
@@ -732,7 +740,16 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
 
 **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs.
-![](./images/ReDoc_ts_series_48.JPG){width=100%}  
+<br>
+```json
+"tags": [
+  {
+    "tag": "string",
+    "tag_group": "string"
+  }
+]
+```
+<br>
 
 - **`tag`** *[Required ; Not repeatable ; String]* <br>
 A user-defined tag.
@@ -743,9 +760,39 @@ A user-defined group (optional) to which the tag belongs. Grouping tags allows i
 ### LDA topics
 
 **`lda_topics`** *[Optional ; Not repeatable]* <br>
-
-![](./images/ReDoc_documents_17.JPG){width=100%}  
-
+<br>
+```json
+"lda_topics": [
+	{
+		"model_info": [
+			{
+				"source": "string",
+				"author": "string",
+				"version": "string",
+				"model_id": "string",
+				"nb_topics": 0,
+				"description": "string",
+				"corpus": "string",
+				"uri": "string"
+			}
+		],
+		"topic_description": [
+			{
+				"topic_id": null,
+				"topic_score": null,
+				"topic_label": "string",
+				"topic_words": [
+					{
+						"word": "string",
+						"word_weight": 0
+					}
+				]
+			}
+		]
+	}
+]
+```
+<br>
 We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 <br>
 Once an LDA topic model has been trained, it can be used to infer the topic composition of any document. This inference will then provide the share that each topic represents in the document. The sum of all represented topics is 1 (100%).<br> 
