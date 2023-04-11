@@ -61,7 +61,22 @@ Provide access to scripts with detailed information, including software and libr
 
 To make data processing and analysis scripts more discoverable and usable, we propose a metadata schema inspired by the schemas available to document datasets. The proposed schema contains two main blocks of metadata elements: the *document description* intended to document the metadata themselves (the term *document* refers to the file that will contain the metadata), and the *project description* used to document the research or analytical work and the related scripts. We also include in the schema the `tags`, `provenance`, and `additional` elements common to all schemas.  
 
-![](./images/ReDoc_scripts_01.JPG){width=100%}
+<br>
+```json
+{
+	"repositoryid": "string",
+	"published": 0,
+	"overwrite": "no",
+	"doc_desc": {},
+	"project_desc": {},
+	"provenance": [],
+	"tags": [],
+	"lda_topics": [],
+	"embeddings": [],
+	"additional": { }
+}
+```
+<br>
 
 
 ### Document description
@@ -69,7 +84,24 @@ To make data processing and analysis scripts more discoverable and usable, we pr
 **`doc_desc`** *[Optional ; Not repeatable]* <br>
 The document description is a description of the metadata file being generated. It provides metadata about the metadata. This block is optional. It is used to document the research project metadata (not the project itself). This information is not needed to document the project; it only provides information, useful for archiving purposes, on the process of generating the project metadata. The information it contains are typically useful to a catalog administrator; they are not useful to the public and do not need to be displayed in the publicly-available catalog interface. This block is optional. It is recommended to enter at least the identification of the metadata producer, her/his affiliation, and the date the metadata were created. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so the metadata produced by one organization can be found in other data centers (complying with standards and schema is precisely intended to facilitate inter-operability of catalogs and automated information sharing). Keeping track of who documented a resource is thus useful.
 
-![](./images/ReDoc_scripts_02.JPG){width=100%}
+<br>
+```json
+"doc_desc": {
+	"title": "string",
+	"idno": "string",
+	"producers": [
+		{
+			"name": "string",
+			"abbr": "string",
+			"affiliation": "string",
+			"role": "string"
+		}
+	],
+	"prod_date": "string",
+	"version": "string"
+}
+```
+<br>
 
 - **`title`** *[Optional ; Not Repeatable ; String]* <br>
 The title of the project. This will usually be the same as the element `title` in the project description section. 
@@ -94,8 +126,7 @@ The date the metadata on this project was produced (not distributed or archived)
 
 - **`version`** *[Optional ; Not Repeatable ; String]* <br>
 Documenting a research project is not a trivial exercise. It may happen that, having identified errors or omissions in the metadata or having received suggestions for improvement, a new version of the metadata is produced. This element is used to identify and describe the current version of the metadata. It is good practice to provide a version number, and information on what distinguishes this version from the previous one(s) if relevant. 
-
-
+<br>
 
 ```{r, indent="  ", eval=F, echo=T}
 my_project = list(
@@ -117,11 +148,70 @@ my_project = list(
 **`project_desc`** *[Required ; Not repeatable]* <br>
 The project description contains the metadata related to the project itself. All efforts should be made to provide as much and as detailed information as possible.
 
+<br>
+```json
+"project_desc": {
+	"title_statement": {},
+	"abstract": "string",
+	"review_board": "string",
+	"output": [],
+	"approval_process": [],
+	"project_website": [],
+	"language": [],
+	"production_date": "string",
+	"version_statement": {},
+	"errata": [],
+	"process": [],
+	"authoring_entity": [],
+	"contributors": [],
+	"sponsors": [],
+	"curators": [],
+	"reviews_comments": [],
+	"acknowledgments": [],
+	"acknowledgment_statement": "string",
+	"disclaimer": "string",
+	"confidentiality": "string",
+	"citation_requirement": "string",
+	"related_projects": [],
+	"geographic_units": [],
+	"keywords": [],
+	"themes": [],
+	"topics": [],
+	"disciplines": [],
+	"repository_uri": [],
+	"license": [],
+	"copyright": "string",
+	"technology_environment": "string",
+	"technology_requirements": "string",
+	"reproduction_instructions": "string",
+	"methods": [],
+	"software": [],
+	"scripts": [],
+	"data_statement": "string",
+	"datasets": [],
+	"contacts": []
+}
+```
+<br>
 
 - **`title_statement`** *[Required ; Non repeatable]* <br>
 The *title_statement* is a group of five elements, two of them mandatory. 
 <br>
-![](./images/ReDoc_Scripts_03.JPG){width=100%}
+```json
+"title_statement": {
+	"idno": "string",
+	"identifiers": [
+		{
+			"type": "string",
+			"identifier": "string"
+		}
+	],
+	"title": "string",
+	"sub_title": "string",
+	"alternate_title": "string",
+	"translated_title": "string"
+}
+```
 <br>
 
   - **`idno`** *[Required ; Not Repeatable ; String]* <br>
@@ -162,11 +252,11 @@ my_project = list(
   # ...
 )
 ```
+<br>
 
                                          
 - **`abstract`** *[Optional ; Non repeatable ; String]* <br>
 The abstract should provide a clear summary of the purposes, objectives and content of the project. An abstract can make reference to the various outputs associated with the research project. 
-![](./images/ReDoc_scripts_04.JPG){width=100%}
 
   Example extracted from https://microdata.worldbank.org/index.php/catalog/4218:
 
@@ -184,20 +274,30 @@ This data set includes food price estimates and is intended to help gain insight
   # ...
 )
 ```
-
+<br>
 
 - **`review_board`** *[Optional ; Non repeatable ; String]* <br>
 Information on whether and when the project was submitted, reviewed, and approved by an institutional review board (or independent ethics committee, ethical review board (ERB), research ethics board, or equivalent).
 <br>
-![](./images/ReDoc_scripts_05.JPG){width=100%}
-<br>
-
 
 - **`output`** *[Optional ; Repeatable]* <br>
 This element will describe and reference all substantial/intended products of the research project, which may include publications, reports, websites, datasets, interactive applications, presentations, visualizations, and others. An output may also be referred to as a "deliverable". 
 <br>
-![](./images/ReDoc_scripts_06.JPG){width=100%}
+```json
+"output": [
+	{
+		"type": "string",
+		"title": "string",
+		"authors": "string",
+		"description": "string",
+		"abstract": "string",
+		"uri": "string",
+		"doi": "string"
+	}
+]
+```
 <br>
+
 The `output` is a repeatable block of seven elements, used to document all output of the research project:
   - **`type`** *[Optional ; Non repeatable]* <br>
   Type of output. The type of output relates to the media which is used to convey or communicate the intended results, findings or conclusions of the research project. This field may be controlled by a controlled vocabulary. The kind on content could be "Working paper", "Database", etc. 
@@ -213,7 +313,6 @@ The `output` is a repeatable block of seven elements, used to document all outpu
   A link where the output or information on the output can be found. 
   - **`doi`** *[Optional ; Non repeatable]*v
   Digital Object Identifier (DOI) of the output, if available. <br><br>
-
 
 ```{r, indent="  ", eval=F, echo=T}
 my_project = list(
@@ -244,12 +343,23 @@ This data set includes food price estimates and is intended to help gain insight
 		# ...
 )
 ```
-
+<br>
 
 - **`approval_process`** *[Optional ; Repeatable]* <br>
 The *`approval_process`* is a group of six elements used to describe the formal approval process(es) (if any) that the project had to go through. This may for example include an approval by an Ethics Board to collect new data, followed by an internal review process to endorse the results.
 <br>
-![](./images/ReDoc_scripts_07.JPG){width=100%}
+```json
+"approval_process": [
+	{
+		"approval_phase": "string",
+		"approval_authority": "string",
+		"submission_date": "string",
+		"reviewer": "string",
+		"review_status": "string",
+		"approval_date": "string"
+	}
+]
+```
 <br>
 
    - **`approval_phase`** *[Optional ; Non repeatable]* <br>
@@ -292,19 +402,30 @@ my_project = list(
   # ...
 )  
 ```
-
+<br>
 
 - **`project_website`** *[Optional ; Repeatable ; String]*  <br>
 URL of the project website.
 <br>
-![](./images/ReDoc_scripts_08.JPG){width=100%}
+```json
+"project_website": [
+	"string"
+]
+```
 <br>
 
  
 - **`language`** *[Optional ; Repeatable]* <br>
 A block of two elements describing the language(s) of the project. At least one of the two elements must be provided for each listed language. The use of [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php) (the alpha-3 code in Codes for the representation of names of languages) is recommended.
 <br>
-![](./images/ReDoc_scripts_09.JPG){width=100%}
+```json
+"language": [
+	{
+		"name": "string",
+		"code": "string"
+	}
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -329,19 +450,23 @@ my_project = list(
   # ...
 )
 ```
-
+<br>
  
 - **`production_date`** <br> 
 The date in ISO 8601 format (YYYY-MM-DD) the project was completed (this refers to the version that is being documented and released.)
 <br>
-![](./images/ReDoc_scripts_10.JPG){width=100%}
-<br>
-
 
 - **`version_statement`** *[Optional ; Repeatable]* <br>
 This repeatable block of four elements is used to list and describe the successive versions of the project.
 <br>
-![](./images/ReDoc_scripts_11.JPG){width=100%}
+```json
+"version_statement": {
+	"version": "string",
+	"version_date": "string",
+	"version_resp": "string",
+	"version_notes": "string"
+}
+```
 <br>
 
   - **`version`** *[Optional ; Not repeatable ; String]* <br>
@@ -372,12 +497,20 @@ my_project = list(
   # ...
 )  
 ```
+<br>
 
 
 - **`errata`** *[Optional ; Repeatable]* <br>   
 This field is used to list and describe errata.
 <br>
-![](./images/ReDoc_scripts_12.JPG){width=100%}
+```json
+"errata": [
+	{
+		"date": "string",
+		"description": "string"
+	}
+]
+```
 <br>
 
   - **`date`** *[Optional ; Not repeatable ; String]* <br>
@@ -402,12 +535,21 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`process`** *[Optional ; Repeatable]* <br>
 This element is used to document the life cycle of the research project, from its design and inception to its conclusion. This can include phases of fundraising, IRB, concept note review, data acquisition, analysis, publishing of a working paper, peer review, publishing in journal, presentation to conferences, publishing, evaluation, reporting to sponsors, etc. It is recommended to provide these steps in a chronological order. 
 <br>
-![](./images/ReDoc_scripts_13.JPG){width=100%}
+```json
+"process": [
+	{
+		"name": "string",
+		"date_start": "string",
+		"date_end": "string",
+		"description": "string"
+	}
+]
+```
 <br>
 
   - **`name`**: *[Optional ; Not repeatable ; String]* <br>
@@ -470,12 +612,23 @@ my_project = list(
   )
 )  
 ```
-
+<br>
  
 - **`authoring_entity`** *[Optional ; Repeatable]* <br>
 This section will identify the person(s) and/or organization(s) in charge of the intellectual content of the research project, and specify their respective role.
 <br>
-![](./images/ReDoc_scripts_13b.JPG){width=100%}
+```json
+"authoring_entity": [
+	{
+		"name": "string",
+		"role": "string",
+		"affiliation": "string",
+		"abbreviation": "string",
+		"email": "string",
+		"author_id": []
+	}
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -519,11 +672,23 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`contributors`** *[Optional ; Repeatable]* This section is provided to record other contributors to the research project and provide recognition for the roles they provided. 
-
-  ![](./images/ReDoc_scripts_14.JPG){width=100%}
+<br>
+```json
+"contributors": [
+	{
+		"name": "string",
+		"role": "string",
+		"affiliation": "string",
+		"abbreviation": "string",
+		"email": "string",
+		"url": "string"
+	}
+]
+```
+<br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   Name of the person, corporate body, or agency contributing to the intellectual content of the project (other than the PI). If a person, invert first and last name and use commas.
@@ -557,11 +722,20 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`sponsors`** *[Optional ; Repeatable]* <br> The source(s) of funds for production of the work. If different funding agencies sponsored different stages of the production process, use the 'role' attribute to distinguish them.
 <br>
-![](./images/ReDoc_scripts_15.JPG){width=100%}
+```json
+"sponsors": [
+	{
+		"name": "string",
+		"abbreviation": "string",
+		"role": "string",
+		"grant_no": "string"
+	}
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -600,12 +774,23 @@ my_project = list(
   )
 )  
 ```
-
+<br>
                                
 - **`curators`** *[Optional ; Repeatable]* <br>
 A list of persons and/or organizations in charge of curating the resources associated with the project.
 <br>
-![](./images/ReDoc_scripts_16.JPG){width=100%}
+```json
+"curators": [
+	{
+		"name": "string",
+		"role": "string",
+		"affiliation": "string",
+		"abbreviation": "string",
+		"email": "string",
+		"url": "string"
+	}
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -643,12 +828,21 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`reviews_comments`** *[Optional ; Repeatable]* <br>   
 Many research projects will be subject to a review process, which may happen at different stages of the project implementation (from design to review of the final output). This block is intended to document the comments received by reviewers during this process. It is a repeatable block of metadata elements, which can be used to document comments with a fine granularity. 
 <br>
-![](./images/ReDoc_scripts_17.JPG){width=100%}
+```json
+"reviews_comments": [
+	{
+		"comment_date": "string",
+		"comment_by": "string",
+		"comment_description": "string",
+		"comment_response": "string"
+	}
+]
+```
 <br>
 
   - **`comment_date`** *[Optional ; Not repeatable ; String]* <br>
@@ -678,13 +872,21 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`acknowledgments`** *[Optional ; Repeatable]* <br>
 This repeatable block of elements is used to provide an itemized list of persons and organizations whose contribution to the project must be acknowledged. Note that specific metadata elements are available for listing financial sponsors and main contributors to the study.<br> 
 An alternative to this field is the `acknowledgment_statement` field (see below) which can be used to provide the acknowledgment in the form of an unstructured text.
 <br>
-![](./images/ReDoc_scripts_18.JPG){width=100%}
+```json
+"acknowledgments": [
+	{
+		"name": "string",
+		"affiliation": "string",
+		"role": "string"
+	}
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -713,33 +915,37 @@ my_project = list(
     # ...
   )
 )  
-    ```
-
+```
+<br>
 
 - **`acknowledgement_statement`** *[Optional ; Not repeatable ; String]* <br> 
 This field is used to provide acknowledgments in the form of an unstructured text. An alternative to this field is the *acknowledgments* field which provides a solution to itemize the acknowledgments. 
-![](./images/ReDoc_scripts_18b.JPG){width=100%}
 
 
 - **`disclaimer`** *[Optional ; Not repeatable ; String]* <br>  
 Disclaimers limit the responsibility or liability of the publishing organization or researchers associated with the research project. Disclaimers assure that any research in the public domain produced by an organization has limited repercussions to the publishing organization. A disclaimer is intended to prevent liability from any effects occurring as a result of the acts or omissions in the research. 
-![](./images/ReDoc_scripts_36.JPG){width=100%} 
 
                                                              
 - **`confidentiality`** *[Optional ; Not repeatable ; String]* <br>  
 A confidentiality statement binds the publisher to ethical considerations regarding the subjects of the research. In most cases, the individual identity of an individual that is the subject of research can not be released and special effort is required to assure the preservation of privacy.
-![](./images/ReDoc_scripts_37.JPG){width=100%} 
 
 
 - **`citation_requirement`** *[Optional ; Not repeatable ; String]* <br>  
 The citation requirement is specific to the output and is a preferred shorthand or means to refer to the publication or published good.
-![](./images/ReDoc_scripts_38.JPG){width=100%} 
 
 
 - **`related_projects`** *[Optional ; Repeatable]* <br>
 The objective of this block is to provide links (URLs) to other, related projects which can be documented and disseminated in the same catalog or any other location on the internet.
 <br>
-![](./images/ReDoc_scripts_19.JPG){width=100%}
+```json
+"related_projects": [
+	{
+		"name": "string",
+		"uri": "string",
+		"note": "string"
+	}
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -764,12 +970,20 @@ my_project = list(
   )
 )  
 ```
-
+<br>
  
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
 The geographic areas covered by the project. When the project relates to one or more countries, or part of one or more countries, it is important to provide the country name. This means that for a project related to a specific province or town of a country, the country name will be entered in addition to the province or town (as separate entries in this repeatable block of elements). Note that the area does not have to be an administrative area; it can for example be an ocean.
 <br>
-![](./images/ReDoc_scripts_20.JPG){width=100%}
+```json
+"geographic_units": [
+	{
+		"name": "string",
+		"code": "string",
+		"type": "string"
+	}
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -798,11 +1012,19 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`keywords`** *[Optional ; Repeatable]* <br>
 <br>
-![](./images/ReDoc_scripts_21.JPG){width=100%}
+```json
+"keywords": [
+	{
+		"name": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
 <br> 
 
   A list of keywords that provide information on the core scope and objectives of the research project. Keywords provide a convenient solution to improve the discoverability of the research, as it allows terms and phrases not found elsewhere in the metadata to be indexed and to make a project discoverable by text-based search engines. A controlled vocabulary will preferably be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list provided here can combine keywords from multiple controlled vocabularies, and user-defined keywords.  
@@ -850,11 +1072,22 @@ my_project = list(
     # ... 
   )  
 ```  
-                           
+<br>
+
 
 - **`themes`** *[Optional ; Repeatable]* <br>
 <br>
-![](./images/ReDoc_scripts_22.JPG){width=100%}
+```json
+"themes": [
+	{
+		"id": "string",
+		"name": "string",
+		"parent_id": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
 <br> 
 
   A list of themes covered by the research project. A controlled vocabulary will preferably be used. Note that `themes` will rarely be used as the elements `topics` and `disciplines` are more appropriate for most uses. This is a block of five fields:
@@ -873,7 +1106,17 @@ my_project = list(
 
 - **`topics`** *[Optional ; Repeatable]* <br>
 <br>
-![](./images/ReDoc_scripts_23.JPG){width=100%}
+```json
+"topics": [
+	{
+		"id": "string",
+		"name": "string",
+		"parent_id": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
 <br> 
 
   Information on the topics covered in the research project. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary. 
@@ -936,11 +1179,21 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>
 <br>
-![](./images/ReDoc_scripts_24.JPG){width=100%}
+```json
+"disciplines": [
+	{
+		"id": "string",
+		"name": "string",
+		"parent_id": "string",
+		"vocabulary": "string",
+		"uri": "string"
+	}
+]
+```
 <br> 
   Information on the academic disciplines related to the content of the research project. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
   This is a block of five elements: 
@@ -985,11 +1238,21 @@ my_project = list(
     # ... 
   )  
 ```
-
+<br>
 
 - **`repository_uri`** In the process of producing the outputs of the research project, a researcher may want to share their source code for transparency and replicability. This repository provides information for finding the repository where the source code is kept. 
 
-  ![](./images/ReDoc_scripts_25.JPG){width=100%}
+<br>
+```json
+"repository_uri": [
+	{
+		"name": "string",
+		"type": "string",
+		"uri": null
+	}
+]
+```
+<br>
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   Name of the repository where code is hosted. 
@@ -1016,10 +1279,20 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`license`** *[Optional ; Repeatable]* <br>
 Information on the license(s) attached to the research project resources, which defines their terms of use.
+<br>
+```json
+"license": [
+	{
+		"name": "string",
+		"uri": "string"
+	}
+]
+```
+<br>
 
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the license.
@@ -1027,10 +1300,7 @@ Information on the license(s) attached to the research project resources, which 
   The URL of the license, where detailed information on the license can be obtained.
   - **`note`** *[Optional ; Not repeatable ; String]* <br>
   Additional information on the license.
-  <br>
-  ![](./images/ReDoc_scripts_26.JPG){width=100%}
-  <br>
-
+<br>
 
 ```{r, indent="  ", eval=F, echo=T}
 my_project <- list(
@@ -1050,36 +1320,37 @@ my_project <- list(
   # ... 
 )  
 ```
-
+<br>
 
 - **`copyright`** *[Optional ; Not repeatable ; String]* <br>   
 Information on the copyright, if any, that applies to the research project metadata.
-![](./images/ReDoc_scripts_35.JPG){width=100%}
 
 
 - **`technology_environment`** *[Optional ; Not repeatable ; String]* <br>
 This field is used to provide a description (as detailed as possible) of the computational environment under which the scripts were implemented and are expected to be reproducible. A substantial challenge in reproducing analyses is installing and configuring the web of dependencies of specific versions of various analytical tools. Virtual machines (a computer inside a computer) enable you to efficiently share your entire computational environment with all the dependencies intact. (https://ropensci.github.io/reproducibility-guide/sections/introduction/) 
 
-  ![](./images/ReDoc_scripts_27a.JPG){width=100%}
-
 
 - **`technology_requirements`** *[Optional ; Not repeatable ; String]* <br>
 Software/hardware or other technology requirements needed to run the scripts and replicate the outputs
-
-![](./images/ReDoc_scripts_27b.JPG){width=100%}
 
  
 - **`reproduction_instructions`** *[Optional ; Not repeatable ; String]* <br>
 Instructions to secondary analysts who may want to reproduce the scripts.
 
-![](./images/ReDoc_scripts_27c.JPG){width=100%}
-
 
 - **`methods`** *[Optional ; Repeatable]* <br>
 A list of analytic, statistical, econometric, machine learning methods used in the project. The objective is to allow users to find projects based on a search on methods applied, e.g. answer a query like *"poverty prediction using random forest"*.
-  <br>
-  ![](./images/ReDoc_scripts_28.JPG){width=100%}
-  <br>
+<br>
+```json
+"methods": [
+	{
+		"name": "string",
+		"note": "string"
+	}
+]
+```
+<br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   A short name for the method being described.
   - **`note`** *[Optional ; Not repeatable ; String]* <br>
@@ -1117,13 +1388,23 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`software`** *[Optional ; Repeatable]* <br>
 This field is used to list the software and the specialized packages and libraries/packages that were used to implement the project and that are required to reproduce the scripts. The libraries that are loaded by the scripts (e.g., by the R *require* or *library* command) are included (not all their own dependencies, which will be assumed to be installed automatically).
-  <br>
-  ![](./images/ReDoc_scripts_29.JPG){width=100%} 
-  <br>
+<br>
+```json
+"software": [
+	{
+		"name": "string",
+		"version": "string",
+		"library": [
+			"string"
+		]
+	}
+]
+```
+<br>
   
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the software. 
@@ -1131,7 +1412,6 @@ This field is used to list the software and the specialized packages and librari
   The version of the software. 
   - **`library`** *[Optional ; Repeatable]* <br>  
   A list of libraries/packages required to run the scripts. Note that the specific version of each package is not documented here; it is expected to be found in the script or in the reproduction instructions. 
-   
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -1159,14 +1439,44 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`scripts`** *[Optional ; Repeatable]* <br>
 This field is used to describe the scripts written by the project authors. All scripts are expected to have been written using software listed in the field *software*.
-  <br>
-  ![](./images/ReDoc_scripts_30.JPG){width=100%} 
-  <br>
-  @@@@@@@@@@ redo screenshot; authors section has changed
+<br>
+```json
+"scripts": [
+	{
+		"file_name": "string",
+		"zip_package": "string",
+		"title": "string",
+		"authors": [
+			{
+				"name": "string",
+				"affiliation": "string",
+				"role": "string"
+			}
+		],
+		"date": "string",
+		"format": "string",
+		"software": "string",
+		"description": "string",
+		"methods": "string",
+		"dependencies": "string",
+		"instructions": "string",
+		"source_code_repo": "string",
+		"notes": "string",
+		"license": [
+			{
+				"name": "string",
+				"uri": "string",
+				"note": "string"
+			}
+		]
+	}
+]
+```
+<br>
   
   - **`file_name`** *[Optional ; Not repeatable ; String]* <br> 
   Name of the script file (for R users, this will typically include files with extension [.R], for Stata users it will be files with extension [.do], for Python users ...). But this can also include other files related and required to run the scripts (for example lookup CSV files, etc.) This does not include the data files, which are described ina  specific field. 
@@ -1274,19 +1584,30 @@ my_project = list(
   )
 )  
 ```
-
+<br>
                        
 - **`data_statement`** *[Optional ; Not repeatable ; String]* <br>
 An overall statement on the data used in the project. A separate field is provided to list and document the origin and key characteristics of the datasets.
 
-  ![](./images/ReDoc_scripts_31.JPG){width=100%} 
-
 
 - **`datasets`** *[Optional ; Repeatable]* <br>
 This field is used to provide an itemized list of datasets used in the project. The data are not documented here (specific metadata are available for documenting data of different types, like the DDI for microdata, the ISO 19139 for geographic datasets, etc.)
-  <br>
-  ![](./images/ReDoc_scripts_31a.JPG){width=100%} 
-  <br>
+<br>
+```json
+"datasets": [
+	{
+		"name": "string",
+		"idno": "string",
+		"note": "string",
+		"access_type": "string",
+		"license": "string",
+		"license_uri": "string",
+		"uri": "string"
+	}
+]
+```
+<br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The dataset name (title) 
   - **`idno`** *[Optional ; Not repeatable ; String]* <br>
@@ -1326,13 +1647,25 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 - **`contacts`** *[Optional ; Repeatable]* <br>
 The contacts element provides the public interface for questions associated with the research project. There could be various contacts provided depending upon the organization. It is important to assure that the proper contacts are provided to channel public inquiry. 
-  <br>
-  ![](./images/ReDoc_scripts_32.JPG){width=100%} 
-  <br>
+<br>
+```json
+"contacts": [
+	{
+		"name": "string",
+		"role": "string",
+		"affiliation": "string",
+		"email": "string",
+		"telephone": "string",
+		"uri": "string"
+	}
+]
+```
+<br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the contact person that should be contacted depending on the role defined below. 
   - **`role`** *[Optional ; Not repeatable ; String]* <br>
@@ -1365,15 +1698,28 @@ my_project = list(
   )
 )  
 ```
-
+<br>
 
 ### Provenance
 
 **`provenance`** *[Optional ; Repeatable]* <br>
 Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. 
-  <br>
-  ![](./images/ReDoc_scripts_33.JPG){width=100%} 
-  <br>
+<br>
+```json
+"provenance": [
+	{
+		"origin_description": {
+			"harvest_date": "string",
+			"altered": true,
+			"base_url": "string",
+			"identifier": "string",
+			"date_stamp": "string",
+			"metadata_namespace": "string"
+		}
+	}
+]
+```
+<br>
   
   - **`origin_description`** *[Required ; Not repeatable]* <br>
   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  <br>
@@ -1395,9 +1741,17 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
 
 **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
-  <br>
-  ![](./images/ReDoc_scripts_34.JPG){width=100%}  
-  <br>
+<br>
+```json
+"tags": [
+	{
+		"tag": "string",
+		"tag_group": "string"
+	}
+]
+```
+<br>
+
   - **`tag`** *[Required ; Not repeatable ; String]* <br>
   A user-defined tag.
   - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
@@ -1405,7 +1759,39 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
 
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
-![](./images/ReDoc_documents_17.JPG){width=100%}  
+<br>
+```json
+"lda_topics": [
+	{
+		"model_info": [
+			{
+				"source": "string",
+				"author": "string",
+				"version": "string",
+				"model_id": "string",
+				"nb_topics": 0,
+				"description": "string",
+				"corpus": "string",
+				"uri": "string"
+			}
+		],
+		"topic_description": [
+			{
+				"topic_id": null,
+				"topic_score": null,
+				"topic_label": "string",
+				"topic_words": [
+					{
+						"word": "string",
+						"word_weight": 0
+					}
+				]
+			}
+		]
+	}
+]
+```
+<br>
 
   We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 
@@ -1455,7 +1841,18 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
   
   The word vectors do not have to be stored in the series/indicator metadata to be exploited by search engines. When a semantic search tool is implemented in a catalog, the vectors will be stored in a database end processed by a tool like Milvus. A metadata element is however provided to store the vectors for preservation and sharing purposes. This block of metadata elements is repeatable, allowing multiple vectors to be stored. When using vectors in a search engine, it is critical to only use vectors generated by one same model. 
   
-  ![](./images/ReDoc_ts_series_46.JPG){width=100%}
+<br>
+```json
+"embeddings": [
+	{
+		"id": "string",
+		"description": "string",
+		"date": "string",
+		"vector": null
+	}
+]
+```
+<br>
   
   The `embeddings` element contains four metadata fields:
   
@@ -1473,9 +1870,6 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
 
 **`additional`** *[Optional ; Not repeatable]*<br>   @@@@ add this to the schema and do screenshot
 The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
-  <br>
-  ![](./images/ReDoc_scripts_34b.JPG){width=100%}
-  <br>
 
 
 ## Generating compliant metadata
