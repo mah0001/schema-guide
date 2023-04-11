@@ -257,6 +257,7 @@ The element `idno` described above is the reference unique identifier for the ca
 ]
 ```
 <br>
+
   - **`identifier`** *[Required ; Not repeatable ; String]* <br>
   An identifier for the series other than the identifier entered in `idno` (note that the identifier entered in `idno` can be included in this list, if it is useful to provide it with a type identifier (see `name` element below) which is not provided in `idno`. This can be the identifier of the indicator in another database/catalog, or a global unique identifier.
   - **`name`** <br>  
@@ -283,6 +284,7 @@ An indicator or time series can be made available at different levels of disaggr
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the language.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -312,6 +314,7 @@ An indicator or time series can be made available at different levels of disaggr
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the dimension.
   - **`label`** *[Required ; Not repeatable ; String]* <br>
@@ -346,6 +349,7 @@ This element is provided to link to an external resources from which the definit
 ]
 ```
 <br>
+
   - **`source`** *[Optional ; Not repeatable ; String]* <br>
   The source of the definition (title, or label).
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -370,6 +374,7 @@ This repeatable element can be used to document concepts related to the indicato
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   A concise and standardized name (label) for the concept.
   - **`definition`** *[Required ; Not repeatable ; String]* <br>
@@ -428,6 +433,7 @@ Themes provide a general idea of the research that might guide the creation and/
 ]
 ```
 <br>
+
   - **`id`** *[Optional ; Not repeatable ; String]*<br>
   The unique identifier of the theme. It can be a sequential number, or the ID of the theme in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -441,6 +447,8 @@ Themes provide a general idea of the research that might guide the creation and/
   
 - **`topics`** *[Optional ; Repeatable]*<br>
 The `topics` field indicates the broad substantive topic(s) that the indicator/series covers. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification). <br>
+<br>
+```json
 "topics": [
   {
     "id": "string",
@@ -452,6 +460,7 @@ The `topics` field indicates the broad substantive topic(s) that the indicator/s
 ]
 ```
 <br>
+
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The unique identifier of the topic. It can be a sequential number, or the ID of the topic in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -509,6 +518,7 @@ The time period covers the entire span of data available for the series. The tim
 ]
 ```
 <br>
+
   - **`start`** *[Required ; Not repeatable ; String]* <br>
   The initial date of the series in the dataset. The start date should be entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).
   - **`end`** *[Required ; Not repeatable ; String]* <br>
@@ -528,6 +538,7 @@ A list of countries for which data are available in the series. This element is 
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the country.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -546,6 +557,7 @@ List of geographic units (regions, countries, states, provinces, etc.) for which
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   Name of the geographic unit e.g. "World, "Africa", "Afghanistan", "OECD countries", "Bangkok".
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -567,6 +579,7 @@ This element is used to define one or multiple bounding box(es), which are the r
 ]
 ```
 <br>
+
   - **`west`** *[Required ; Not repeatable ; String]* <br>
   West longitude of the bounding box. <br>
   - **`east`** *[Required ; Not repeatable ; String]* <br>
@@ -639,6 +652,7 @@ The license refers to the accessibility and terms of use associated with the dat
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]*<br>
   The name of the license, e.g. "Creative Commons Attribution 4.0 International license (CC-BY 4.0)".
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -671,6 +685,7 @@ This element provides links to online resources of any type that could be useful
 ]
 ```
 <br>
+
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   This element allows to classify the link that is provided. 
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
@@ -690,6 +705,7 @@ Increasingly, data are made accessible via Application Programming Interfaces (A
 ]
 ```
 <br>
+
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
   This element will not contain the API documentation itself, but information on what documentation is available.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -710,6 +726,7 @@ This set of five elements is used to identify the organization(s) or person(s) w
 ]
 ```
 <br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the person or organization who is responsible for the production of the indicator or series. Write the name in full (use the element `abbreviation` to capture the acronym of the organization, if relevant). 
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
@@ -736,6 +753,7 @@ This element provides information on the source(s) of data that were used to gen
 ]
 ```
 <br>
+
   - **`id`** *[Required ; String]* <br>
   This element records the unique identifier of a source. It is a required element. If the source does not have a specific unique identifier, a sequential number can be used. If the source is a dataset or database that has its own unique identifier (possibly a DOI), this identifier should be used. 
   - **`name`** *[Optional ; String]* <br>
@@ -764,6 +782,7 @@ Words or phrases that describe salient aspects of a data collection's content. C
 ]
 ```
 <br>
+
   - **`name`** *[Required ; String ; Non repeatable]* <br>
   Keyword (or phrase). Keywords summarize the content or subject matter of the study. 
   - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
@@ -784,6 +803,7 @@ The `acronyms` element is used to document the meaning of all acronyms used in t
 ]
 ```
 <br>
+
   - **`acronym`** *[Required ; Not repeatable ; String]* <br>
   An acronym referenced in the series metadata (e.g. "GDP").
   - **`expansion`** *[Required ; Not repeatable ; String]* <br>
@@ -803,6 +823,7 @@ This element is used to provide information on detected errors in the data or me
 ]
 ```
 <br>
+
   - **`date`** *[Required ; Repeatable ; String]* <br>
   The date the erratum was published.<br>
   - **`description`** *[Required ; Repeatable ; String]* <br>
@@ -819,6 +840,7 @@ This element is open and reserved for explanatory notes deemed useful to the use
 ]
 ```
 <br>
+
   - **`note`** *[Required ; Repeatable ; String]* <br>
   The note itself.<br><br>
 
@@ -835,6 +857,7 @@ This element allows to reference indicators that are often associated with the i
 ]
 ```
 <br>
+
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code for the indicator that is referenced in the document. It will likely be an ID that is used by that indicator.
   - **`label`** *[Optional ; Not repeatable ; String]* <br>
@@ -856,6 +879,7 @@ For some indicators, international standards have been established. This is for 
 ]
 ```
 <br>
+
   - **`standard`** *[Optional ; Not repeatable ; String]* <br>
   The name of the standard that the series complies with. This name will ideally include a label and a version or a date. For example: "International Standard Industrial Classification of All Economic Activities (ISIC) Revision 4, published in 2007"
   - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
@@ -890,6 +914,7 @@ Some national, regional, and international agencies develop monitoring framework
 ]
 ```
 <br>
+
   - **`name`** *[Optional ; Not repeatable ; String]*<br>
   The name of the framework. 
   - **`abbreviation`** *[Optional ; Not repeatable ; String]*<br>
@@ -936,6 +961,7 @@ The group(s) the indicator belongs to. Groups can be create to organize indicato
 ]
 ```
 <br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the group.
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
