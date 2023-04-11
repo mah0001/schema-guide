@@ -316,7 +316,8 @@ The authors should be listed in the same order as they appear in the source itse
      The ID of the author in the registry mentioned in `type`.<br><br>
   - **`full_name`** *[Optional ; Not repeatable ; String]* <br>
   The full name of the author. This element should only be used when the first and last name of an author cannot be distinguished, i.e. when elements `first_name` and `last_name` cannot be filled out. This element can also be used when the author of a document is an organization or other type of entity.<br>
-  
+
+<br>
 ```{r, indent="  ", eval=F, echo=T}
 my_doc <- list(
   # ... ,
@@ -333,12 +334,10 @@ my_doc <- list(
     # ...
   ) 
 ```
-
 <br>
 
 - **`editors`** *[Optional ; Repeatable]* <br>
 If the source is a text within an edited volume, it should be listed under the name of the author of the text used, not under the name of the editor. The name of the editor should however be provided in the bibliographic citation, in accordance with a [reference style](https://awelu.srv.lu.se/sources-and-referencing/using-a-reference-style/elements-of-the-reference-list/). 
-
 <br>
 ```json
 "editors": [
@@ -380,7 +379,6 @@ The date, preferably entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY),
   </center>
 
   In R, this will be captured as follows:
-
 <br>
 ```{r, indent="  ", eval=F, echo=T}
 my_doc <- list(
