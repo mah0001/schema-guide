@@ -296,14 +296,15 @@ The authoring entity identifies the person(s) or organization(s) responsible for
   "uri": "string",
     "author_id": [
       {
-        "type": null,
-        "id": null
+	"type": null,
+	"id": null
       }
     ]
   }
 ]
 ```
 <br>
+
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name of person(s) or organization responsible for the production and content of the table.
   - **`affiliation`** *[Optional, Not Repeatable, String]* <br>
@@ -356,6 +357,7 @@ This set of elements identifies the person(s) and/or organization(s), other than
 ]
 ```
 <br>
+
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name of the contributor (person or organization). 
   - **`affiliation`** *[Optional, Not Repeatable, String]* <br>
@@ -402,6 +404,7 @@ The entity responsible for publishing the table.
 ]
 ```
 <br>
+
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name of the publisher (person or organization). 
   - **`affiliation`** *[Optional, Not Repeatable, String]* <br>
@@ -481,13 +484,13 @@ The columns description is composed of the column spanner and the column heads. 
 ]
 ```
 <br>
+
   - **`label`** *[Required, Not Repeatable, String]* <br>
   The labels of the table columns (or *column captions*) are vital for discoverability. The column labels will include both column spanners and column headers. Columns spanners are captions that join various column headers together. 
   - **`var_name`** *[Optional, Not Repeatable, String*] <br>
   This refers to the name of the variables found in the dataset (typically microdata) used to produce the table. The objective of this optional field is to help establish a link between the source dataset and the table, to foster reproducibility.    
   - **`dataset`** *[Optional, Not Repeatable, String]* <br>
   This refers to the dataset (typically microdata) used to produce the table. If the dataset is available in a catalog and has a unique identifier (DOI or other), this identifier can be entered here. Alternatively, the title of the dataset or a permanent URI can be provided.<br><br>
-
 
   The column captions of the following table can be documented in the following manner: 
 
@@ -562,6 +565,7 @@ Like the column spanner and column heads, the `table_rows` section is composed o
 ]
 ```
 <br>
+
   - **`label`** *[Required, Not Repeatable, String]* <br>
   As with the column labels, the content in this `row_label` is designed to include the stub head, stubs and any captions included. 
   - **`var_name`** *[Optional, Not Repeatable, String]* <br>
@@ -631,6 +635,7 @@ Footnotes provide additional clarity. They may for example be used to assure tha
 ]
 ```
 <br>
+
   - **`number`** *[Optional, Not Repeatable, String]* <br>
   A sequential number is usually given to the footnotes, which starts with 1 for each table.
   - **`text`** *[Required, Not Repeatable, String]* <br>
@@ -674,6 +679,7 @@ Table series may be organized into series, typically by theme.
 ]
 ```
 <br>
+
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name (label) of the series.
   - **`maintainer`** *[Optional, Not Repeatable, String]* <br>
@@ -715,6 +721,7 @@ The table metadata will not contain data. What the `statistics` element refers t
 ]
 ```
 <br>
+
   - **`value`** *[Required, Not Repeatable, String]* <br>
   
   The use of a controlled vocabulary is recommended. This list could contain (but does not have to be limited to):
@@ -779,6 +786,7 @@ The element provides information on the unit(s) of observations that correspond 
 ]
 ```
 <br>
+
   - **`value`** *[Required, Not repeatable, String]*
   The `value` is not a numeric value; it is the label (description) of the observation unit, e.g, "individual" or "person", "household", "dwelling", enterprise, "country", etc. <br>
 
@@ -813,6 +821,7 @@ The data sources are often cited in the footnote section of a table. The `name`,
 ]
 ```
 <br>
+
   - **`name`** *[Optional, Not repeatable, String]* <br>
   The name (title) of the data source. For example, a table data may be extracted from the "Population Census 2020".  
   - **`abbreviation`** *[Optional, Not repeatable, String]* <br>
@@ -856,6 +865,7 @@ The time periods consists of a list or periods (range of years / quarters / mont
 ]
 ```
 <br>
+
   - **`from`** *[Required, Not repeatable, String]* <br>
   The start date of the time period covered by the table, preferably entered in ISO 8601 format (YYYY, or YYYY-MM, or YYYY-MM-DD).   
   - **`to`** *[Required, Not repeatable, String]* <br>
@@ -892,6 +902,7 @@ The universe of a table refers to the population (or *respondents*) covered in t
 ]
 ```
 <br>
+
   - **`value`** *[Required, Not repeatable, String]* <br>
   A textual description of the universe covered by the data.
 
@@ -978,7 +989,6 @@ my_table = list(
 ```
 <br>
 
-
 - **`geographic_granularity`** *[Optional, Not repeatable, String]* <br>
 A description of the geographic levels for which data are presented in the table. This is not a list of specific geographic areas, but a list of the administrative <u>level(s)</u> that correspond to these geographic areas. <br>
 
@@ -1017,6 +1027,7 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
 ]
 ```
 <br>
+
   - **`west`** *[Required ; Not repeatable ; String]* <br>
   Western geographic parameter of the bounding box.
   - **`east`** *[Required ; Not repeatable ; String]* <br>
@@ -1039,6 +1050,7 @@ Most tables will only be provided in one language. This is however a repeatable 
 ]
 ```
 <br>
+
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of the language(s) in which the table is published, preferably extracted from the [ISO 639 standardized nomenclature of languages](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).  
   - **`code`** *[Optional, Not repeatable, String]* <br>
@@ -1075,6 +1087,7 @@ A list of associated links related to the table.
 ]
 ```
 <br>
+
   - **`uri`** *[Required, Not repeatable, String]* <br>
   The URI to an external resource.
   - **`description`** *[Optional, Not repeatable, String]* <br>
@@ -1428,6 +1441,7 @@ The element is used to document the use of standard classifications (or "ontolog
 ]
 ```
 <br>
+
   - **`name`** *[Required, Not repeatable, String]* <br>
   Name (label) of the classification, ontology, or taxonomy.
   - **`version`** *[Optional, Not repeatable, String]* <br>
@@ -1463,11 +1477,9 @@ my_table = list(
  
 - **`rights`** *[Optional, Not repeatable, String]* <br>
 Information on the rights or copyright that applies to the table.
-
-  ![](./images/ReDoc_Table_29.JPG){width=100%}
 <br>
 
-         
+
 - **`license`** *[Optional, Repeatable]* <br>
 A table may require a license to use or reproduce. This is done to protect the intellectual content of the research product. The licensing entity may be different from the researcher or the publisher. It is the entity which has the intellectual rights to the table (s) and would grant rights or restrictions on the reuse of the table.
 <br>
@@ -1480,6 +1492,7 @@ A table may require a license to use or reproduce. This is done to protect the i
 ]
 ```
 <br>
+
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of the license".
   - **`uri`** *[Optional, Not repeatable, String]* <br>
@@ -1507,42 +1520,37 @@ my_table = list(
 
 - **`citation`** *[Optional, Not repeatable, String]* <br>
 A citation requirement for the table (i.e. an indication of how the table should be cited in publications).
-
-  ![](./images/ReDoc_Table_29b.JPG){width=100%}
 <br>
 
 
 - **`confidentiality`** *[Optional, Not repeatable, String]* <br>
 A published table may be protected through a confidentiality agreement between the publisher and the researcher. It may also determine certain rights regarding the use of the research and the data presented to the table. The data may also present confidential information that is produced for selective audiences. This element is used to provide a statement on any limitations ore restrictions on use of the table based on confidential data or agreements.
-
-  ![](./images/ReDoc_Table_29c.JPG){width=100%}
 <br>
 
        
 - **`sdc`** *[Optional, Not repeatable, String]* <br>  
 Information on statistical disclosure control measures applied to the table. This can include cell suppression, or other techniques. Specialized packages have been developed for this purpose, like [*sdcTable: Methods for Statistical Disclosure Control in Tabular Data*](https://cran.r-project.org/web/packages/sdcTable/index.html) and https://cran.r-project.org/web/packages/sdcTable/sdcTable.pdf <br>
 The information provided here should be such that it does not provide intruders with useful information for reverse-engineering the protection measures applied to the table.
-
-  ![](./images/ReDoc_Table_29d.JPG){width=100%}
 <br>
 
 
 - **`contacts`** *[Optional, Repeatable]* <br>
 Users of the data may need further clarification and information. This section may include the name-affiliation-email-URI of one or multiple contact persons. This block of elements will identify contact persons who can be used as resource persons regarding problems or questions raised by the user community. The URI attribute should be used to indicate a URN or URL for the homepage of the contact individual. The email attribute is used to indicate an email address for the contact individual. It is recommended to avoid putting the actual name of individuals. The information provided here should be valid for the long term. It is therefore preferable to identify contact persons by a title. The same applies for the email field. Ideally, a "generic" email address should be provided. It is easy to configure a mail server in such a way that all messages sent to the generic email address would be automatically forwarded to some staff members.
-<br>
-```json
-"contacts": [
-  {
-    "name": "string",
-    "role": "string",
-    "affiliation": "string",
-    "email": "string",
-    "telephone": "string",
-    "uri": "string"
-  }
-]
-```
-<br>
+	<br>
+	```json
+	"contacts": [
+	  {
+	    "name": "string",
+	    "role": "string",
+	    "affiliation": "string",
+	    "email": "string",
+	    "telephone": "string",
+	    "uri": "string"
+	  }
+	]
+	```
+	<br>
+	
   - **`name`** *[Required, Not repeatable, String]* <br>
   Name of a person or unit (such as a data help desk). It will usually be better to provide a title/function than the actual name of the person. Keep in mind that people do not stay forever in their position.
   - **`role`** *[Optional, Not repeatable, String]* <br>
@@ -1588,6 +1596,7 @@ The notes provide a space to include observations or open-ended content that may
 ]
 ```
 <br>
+
   - **`note`** *[Required, Not repeatable, String]* <br>
   The note itself.<br><br>
 
@@ -1604,6 +1613,7 @@ If the table has a relation to other resources (e.g., it is a subset of another 
 ]
 ```
 <br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The related resource. Recommended practice is to identify the related resource by means of a URI. If this is not possible or feasible, a string conforming to a formal identification system may be provided.
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
@@ -1678,6 +1688,7 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
 ]
 ```
 <br>
+
    - **`tag`** *[Required ; Not repeatable ; String]* <br>
    A user-defined tag.
    - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
