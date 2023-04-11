@@ -1194,7 +1194,29 @@ We describe below how DCMI elements are used to document images.
 **`dcmi`** *[Optional, Not repeatable]* <br>
 Users of the schema will chose either IPTC or Dublin Core (DCMI), <u>not both</u>, to document their images. If the choice is DCMI, the elements under `dcmi` will be used. 
 <br>
-![](./images/ReDoc_image_51.JPG){width=100%}
+```json
+"dcmi": {
+  "type": "image",
+  "title": "string",
+  "caption": "string",
+  "description": "string",
+  "topics": [],
+  "keywords": [],
+  "creator": "string",
+  "contributor": "string",
+  "publisher": "string",
+  "date": "string",
+  "country": [],
+  "coverage": "string",
+  "gps": {},
+  "format": "string",
+  "languages": [],
+  "relations": [],
+  "rights": "string",
+  "source": "string",
+  "note": "string"
+}
+```
 <br>  
 
 
@@ -1217,7 +1239,17 @@ A brief description of the content depicted in the image. This element will typi
 - **`topics`** *[Optional ; Repeatable]*<br>
 The `topics` field indicates the broad substantive topic(s) that the image represents. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) thesaurus](https://vocabularies.cessda.eu/vocabulary/TopicClassification).<br>
 <br>
-![](./images/ReDoc_image_53.JPG){width=100%}
+```json
+"topics": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
 <br> 
 
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
@@ -1235,7 +1267,15 @@ The `topics` field indicates the broad substantive topic(s) that the image repre
 - **`keywords`** *[Optional ; Repeatable]* <br>
 Words or phrases that describe salient aspects of an image content. Can be used for building keyword indexes and for classification and retrieval purposes. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
 <br>
-![](./images/ReDoc_image_54.JPG){width=100%}
+```json
+"keywords": [
+  {
+    "name": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
 <br>
 
   - **`name`** *[Required ; String ; Non repeatable]* <br>
@@ -1264,8 +1304,16 @@ The date when the photo was taken / the image was created, preferably entered in
 
 - **`country`** *[Optional, Repeatable]* <br>
 <br>
-![](./images/ReDoc_image_55.JPG){width=100%}
+```json
+"country": [
+  {
+    "name": "string",
+    "code": "string"
+  }
+]
+```
 <br>
+
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name of the country/economy where the photo was taken.
   - **`code`** *[Optional, Not Repeatable, String]* <br>
@@ -1279,7 +1327,13 @@ In the Dublin Core, the coverage can be either temporal or geographic. In the us
 - **`gps`** *[Optional, Not Repeatable]* <br>
 The geographic location where the photo was taken. Some digital cameras equipped with GPS can, when the option is activated, capture and store in the EXIF metadata the exact geographic location where the photo was taken. 
 <br>
-![](./images/ReDoc_image_56.JPG){width=100%}
+```json
+"gps": {
+  "latitude": -90,
+  "longitude": -180,
+  "altitude": 0
+}
+```
 <br>      
 
   - **`latitude`** *[Optional, Not Repeatable, String]* <br>
@@ -1297,7 +1351,14 @@ This refers to the image file format. It is typically expressed using a MIME for
 - **`languages`** *[Optional, Not repeatable, String]* <br> 
 The language(s) in which the image metadata (caption, title) is provided. This is a block of two elements (at least one must be provided for each language).
 <br>
-![](./images/ReDoc_image_57.JPG){width=100%}
+```json
+"languages": [
+  {
+    "name": "string",
+    "code": "string"
+  }
+]
+```
 <br>  
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -1309,7 +1370,15 @@ The language(s) in which the image metadata (caption, title) is provided. This i
 - **`relations`** *[Optional, Repeatable, String]* <br> 
 A list of related resources (images or of other type)
 <br>
-![](./images/ReDoc_image_58.JPG){width=100%}
+```json
+"relations": [
+  {
+    "name": "string",
+    "type": "isPartOf",
+    "uri": "string"
+  }
+]
+```
 <br>     
 
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -1339,7 +1408,14 @@ Two elements are added to the list of `image_description` section of the schema.
 - **`license`** *[Optional ; Repeatable]* <br>
 The license under which the image is published.
 <br>
-![](./images/ReDoc_image_59.JPG){width=100%}
+```json
+"license": [
+  {
+    "name": "string",
+    "uri": "string"
+  }
+]
+```
 <br>
 
   - **`name`** *[Optional ; Not Repeatable ; String]* <br>
@@ -1351,8 +1427,18 @@ The license under which the image is published.
 - **`album`** *[Optional ; Repeatable]* <br>
 If your catalog contains many images, you will likely want to group them by album. Albums are collections of images organized by theme, period, location, photographer, or other criteria. One image can belong to more than one album. Albums are thus "virtual collections". 
 <br>
-![](./images/ReDoc_image_60.JPG){width=100%}
-<br> 
+```json
+"album": [
+  {
+    "name": "string",
+    "description": "string",
+    "owner": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
+
   - **`name`** *[Optional ; Not Repeatable ; String]* <br>
   A short name (label) given to the album.
   - **`description`** *[Optional ; Not Repeatable ; String]* <br>
@@ -1366,7 +1452,20 @@ If your catalog contains many images, you will likely want to group them by albu
 - **`provenance`** *[Optional ; Repeatable]* 
 Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata.<br>
 <br>
-![](./images/ReDoc_image_60a.JPG){width=100%}  
+```json
+"provenance": [
+	{
+		"origin_description": {
+			"harvest_date": "string",
+			"altered": true,
+			"base_url": "string",
+			"identifier": "string",
+			"date_stamp": "string",
+			"metadata_namespace": "string"
+		}
+	}
+]
+```
 <br>
 
   - **`origin_description`** *[Required ; Not repeatable]* <br>
@@ -1388,7 +1487,14 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
 - **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
 <br>
-![](./images/ReDoc_image_61.JPG){width=100%}  
+```json
+"tags": [
+	{
+		"tag": "string",
+		"tag_group": "string"
+	}
+]
+```
 <br>
 
   - **`tag`** *[Required ; Not repeatable ; String]* <br>
@@ -1401,7 +1507,39 @@ As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, p
 
 **`lda_topics`** *[Optional ; Not repeatable]* <br>
 
-![](./images/ReDoc_documents_17.JPG){width=100%}  
+<br>
+```json
+"lda_topics": [
+	{
+		"model_info": [
+			{
+				"source": "string",
+				"author": "string",
+				"version": "string",
+				"model_id": "string",
+				"nb_topics": 0,
+				"description": "string",
+				"corpus": "string",
+				"uri": "string"
+			}
+		],
+		"topic_description": [
+			{
+				"topic_id": null,
+				"topic_score": null,
+				"topic_label": "string",
+				"topic_words": [
+					{
+						"word": "string",
+						"word_weight": 0
+					}
+				]
+			}
+		]
+	}
+]
+```
+<br>
 
 We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 <br>
@@ -1527,7 +1665,18 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
 
 The word vectors do not have to be stored in the document metadata to be exploited by search engines. When a semantic search tool is implemented in a catalog, the vectors will be stored in a database end processed by a tool like Milvus. A metadata element is however provided to store the vectors for preservation and sharing purposes. This block of metadata elements is repeatable, allowing multiple vectors to be stored. When using vectors in a search engine, it is critical to only use vectors generated by one same model. 
 
-![](./images/ReDoc_documents_18.JPG){width=100%}  
+<br>
+```json
+"embeddings": [
+	{
+		"id": "string",
+		"description": "string",
+		"date": "string",
+		"vector": null
+	}
+]
+```
+<br>
 
 The `embeddings` element contains four metadata fields:
 
@@ -1544,9 +1693,6 @@ The `embeddings` element contains four metadata fields:
 
 - **`additional`** *[Optional ; Not repeatable]*<br>
 The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
-<br>
-![](./images/ReDoc_image_62.JPG){width=100%}   
-<br>
 
  
 ## Examples 
