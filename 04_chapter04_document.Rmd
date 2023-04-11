@@ -337,12 +337,12 @@ If the source is a text within an edited volume, it should be listed under the n
 <br>
 ```json
 "editors": [
-{
-	"first_name": "string",
-	"initial": "string",
-	"last_name": "string",
-	"affiliation": "string"
-}
+	{
+		"first_name": "string",
+		"initial": "string",
+		"last_name": "string",
+		"affiliation": "string"
+	}
 ]
 ```
 <br>
@@ -1014,7 +1014,6 @@ The elements that are required to form a complete bibliographic citation depend 
     ),
     # ... 
   )  
-
 ```
 
 -------
@@ -1166,11 +1165,12 @@ my_doc <- list(
 
 <br>
 
+
 - **`access_restrictions`** *[Optional ; Not repeatable ; String]* <br>
 
   A textual description of access restrictions that apply to the document.
-
 <br>
+
 
 - **`sources`** *[Optional ; Repeatable]* <br> 
 
