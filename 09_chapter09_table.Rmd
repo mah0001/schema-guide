@@ -47,15 +47,28 @@ The figure below, adapted from [LabWrite Resources](https://labwrite.ncsu.edu/re
 
 The table schema contains six blocks of elements. The first block of three elements (`repository_id`, `published`, and `overwrite`) do not describe the table, but are used by the NADA cataloguing application to determine where and how the table metadata is published in the catalog. The second block, `metadata_information`, contains "metadata on the metadata" and is used mainly for archiving purpose. The third block, `table_description`, contains the elements used to describe the table and its production process. A fourth block `provenance`, is used to document the origin of metadata that may be harvested from other catalogs. The block `tags` is used to add information (in the form of words or short phrases) that will be useful to create *facets* in the a catalog user interface. Last, an empty block `additional` is provided as a container for additional metadata elements that users may want to create. 
 
-![](./images/ReDoc_Table_00.JPG){width=100%}
-
+<br>
+```json
+{
+  "repositoryid": "string",
+  "published": 0,
+  "overwrite": "no",
+  "metadata_information": {},
+  "table_description": {},
+  "provenance": [],
+  "tags": [],
+  "lda_topics": [],
+  "embeddings": [],
+  "additional": { }
+}
+```
+<br>
         
 ### Cataloguing parameters
 
 The following elements are used by the NADA application API (see the NADA documentation for more information):
 
 - **`repositoryid`**: A NADA catalog can be composed of multiple *collections*. The *repositoryid* element identifies in which collection the table will be published. This collection must have been previously created in the catalog. By default, the table will be published in the `central` catalog (i.e. in no particular collection).  
-
 - **`published`**: The NADA catalog allows tables to be published (in which case they will be visible to users of the catalog) or unpublished (in which case they will only be visible by administrators). The default value is 0 (unpublished). Code 1 is used to set the status to "published".  
 
 - **`overwrite`**: This element defines what action will be taken when a command is issued to add the table to a catalog and a table with the same identifier (element *idno*) is already in the catalog. By default, the command will not overwrite the existing table (the default value of overwrite is "no"). Set this parameter to "yes" to allow the existing table to be overwritten in the catalog.
@@ -66,7 +79,22 @@ The following elements are used by the NADA application API (see the NADA docume
 **`metadata_information`** *[Optional, Not Repeatable]* <br>
 The `metadata_information` block is used to document the table metadata (not the table itself). It provides information on the process of generating the table metadata. This block is optional. The information it contains is useful to catalog administrators, not to the public. It is however recommended to enter at least the identification of the metadata producer, her/his affiliation, and the date the metadata were created. One reason for this is that metadata can be shared and harvested across catalogs/organizations, so the metadata produced by one organization can be found in other data centers (complying with standards and schema is precisely intended to facilitate inter-operability of catalogs and automated information sharing).
 <br>
-![](./images/ReDoc_Table_01.JPG){width=100%}
+```json
+"metadata_information": {
+  "idno": "string",
+  "title": "string",
+  "producers": [
+    {
+      "name": "string",
+      "abbr": "string",
+      "affiliation": "string",
+      "role": "string"
+    }
+  ],
+  "production_date": "string",
+  "version": "string"
+}
+```
 <br>
 
 - **`idno`** *[Optional, Not Repeatable, String]* <br> 
@@ -115,13 +143,66 @@ my_table = list(
 
 **`table_description`** *[Required, Not Repeatable]* <br>
 This section contains the metadata elements that describe the table itself. Not all elements will be required to fully document a table, but efforts should be made to provide as much and as detailed information as possible, as richer metadata will make the table more discoverable. 
-
-![](./images/ReDoc_Table_02.JPG){width=100%}
-
+<br>```json
+"table_description": {
+  "title_statement": {},
+  "identifiers": [],
+  "authoring_entity": [],
+  "contributors": [],
+  "publisher": [],
+  "date_created": "string",
+  "date_published": "string",
+  "date_modified": "string",
+  "version": "string",
+  "description": "string",
+  "table_columns": [],
+  "table_rows": [],
+  "table_footnotes": [],
+  "table_series": [],
+  "statistics": [],
+  "unit_observation": [],
+  "data_sources": [],
+  "time_periods": [],
+  "universe": [],
+  "ref_country": [],
+  "geographic_units": [],
+  "geographic_granularity": "string",
+  "bbox": [],
+  "languages": [],
+  "links": [],
+  "api_documentation": [],
+  "publications": [],
+  "keywords": [],
+  "themes": [],
+  "topics": [],
+  "disciplines": [],
+  "definitions": [],
+  "classifications": [],
+  "rights": "string",
+  "license": [],
+  "citation": "string",
+  "confidentiality": "string",
+  "sdc": "string",
+  "contacts": [],
+  "notes": [],
+  "relations": []
+  }
+```
+<br>
 
 - **`title_statement`** *[Required, Not Repeatable]* <br>
-
-  ![](./images/ReDoc_Table_03.JPG){width=100%}
+<br>
+```json
+"title_statement": {
+  "idno": "string",
+  "table_number": "string",
+  "title": "string",
+  "sub_title": "string",
+  "alternate_title": "string",
+  "translated_title": "string"
+}
+```
+<br>
 
   - **`idno`** *[Required, Not Repeatable, String]* <br>
   A unique identifier to the table. Do not include spaces in the `idno`. This identifier must be unique to the catalog in which the table will be published. Some organizations have their own system to assign unique identifiers to tables. Ideally, an identifier that guarantees uniqueness globally will be used, such as a Digital Object Identifier (DOI) or an ISBN number. Note that a table may have more than one identifier. In such case, the element `idno` (as a non-repeatable element) will contain the main identifier (as selected as the "reference" one by the catalog administrator). The other identifiers will be provided in the element `identifiers` (see below).<br>
@@ -170,8 +251,16 @@ my_table = list(
 
 - **`identifiers`** *[Optional ; Repeatable]* <br>
 This element is used to enter document identifiers other than the catalog identifier entered in the `title_statement` (`idno`). It can for example be a Digital Object Identifier (DOI). The identifier entered in the `title_statement` can be repeated here (the `title_statement` does not provide a `type` parameter; if a DOI or other standard reference ID is used as `idno`, it is recommended to repeat it here with the identification of its `type`).
-
-  ![](./images/ReDoc_Table_04.JPG){width=100%}
+<br>
+```json
+"identifiers": [
+  {
+    "type": "string",
+    "identifier": "string"
+  }
+]
+```
+<br>
   - **`type`** *[Optional, Not Repeatable, String]* <br>
   The type of unique ID, e.g. "DOI".
   - **`identifier`** *[Required, Not Repeatable, String]* <br>
@@ -196,8 +285,24 @@ my_table = list(
 
 - **`authoring_entity`** *[Optional, Not Repeatable]* <br>
 The authoring entity identifies the person(s) or organization(s) responsible for the production of the table. An authoring entity is identified by its name, affiliation, abbreviation, URI, and author's identifiers (if any).
-
-  ![](./images/ReDoc_Table_05.JPG){width=100%}
+<br>
+```json
+"authoring_entity": [
+  {
+  "name": "string",
+  "affiliation": "string",
+  "abbreviation": "string",
+  "uri": "string",
+    "author_id": [
+      {
+        "type": null,
+        "id": null
+      }
+    ]
+  }
+]
+```
+<br>
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name of person(s) or organization responsible for the production and content of the table.
   - **`affiliation`** *[Optional, Not Repeatable, String]* <br>
@@ -237,8 +342,19 @@ my_table = list(
 
 - **`contributors`** *[Optional, Repeatable]* <br>
 This set of elements identifies the person(s) and/or organization(s), other than the authoring entity, who contributed to the production of the table.<br>
-
-  ![](./images/ReDoc_Table_06.JPG){width=100%}
+<br>
+```json
+"contributors": [
+  {
+    "name": "string",
+    "affiliation": "string",
+    "abbreviation": "string",
+    "role": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name of the contributor (person or organization). 
   - **`affiliation`** *[Optional, Not Repeatable, String]* <br>
@@ -272,8 +388,19 @@ my_table = list(
 
 - **`publisher`** *[Optional, Not repeatable]* <br>
 The entity responsible for publishing the table. 
-
-  ![](./images/ReDoc_Table_07.JPG){width=100%}
+<br>
+```json
+"publisher": [
+  {
+    "name": "string",
+    "affiliation": "string",
+    "abbreviation": "string",
+    "role": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name of the publisher (person or organization). 
   - **`affiliation`** *[Optional, Not Repeatable, String]* <br>
@@ -307,35 +434,21 @@ my_table = list(
 - **`date_created`** *[Optional, Not Repeatable, String]* <br>
 The date the table was created. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). The date the table is created refers to the date that the output was produced and considered ready for publication.
 
-  ![](./images/ReDoc_Table_08.JPG){width=100%}
-<br>
 
- 
 - **`date_published`** *[Optional, Not Repeatable, String]* <br>
 The date the table was published. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). If the table is contained in a document (report, paper, book, etc.), the date the table is published is associated with the publication date of that document. If the table is found in a statistics yearbook for example, then the publication date will be the date the yearbook was published. 
-
-  ![](./images/ReDoc_Table_08a.JPG){width=100%}
-<br>
 
 
 - **`date_modified`** *[Optional, Not Repeatable, String]* <br>
 The date the table was last modified. It is recommended to enter the date in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY). Modifications, revisions, or re-publications of the table are recorded in this element.
 
-  ![](./images/ReDoc_Table_08b.JPG){width=100%}
-<br>
-
 
 - **`version`** *[Optional, Not Repeatable, String]* <br>
 The version of the table refers to the published version of the table. If for some reason, data in a published table are revised, then the version of the table is captured in this element.
 
-  ![](./images/ReDoc_Table_08c.JPG){width=100%}
-<br>
-
 
 - **`description`** *[Optional, Not Repeatable, String]* <br>
 A brief "narrative" description of the table. The description can contain information on the content, purpose, production process, or other relevant information.
-
-  ![](./images/ReDoc_Table_08d.JPG){width=100%}
 
 
 ```{r, indent="  ", eval=F, echo=T}
@@ -356,8 +469,17 @@ my_table = list(
 
 - **`table_columns`** *[Optional, Repeatable]* <br>
 The columns description is composed of the column spanner and the column heads. Columns spanners group the column heads together in a logical fashion to present the data to the user. Not all columns presented in a table will have a column spanner. The column spanners can become quite complicated; when a table is documented, the information found in the column spanner and heads can be merged and edited. What matters is not to document the exact structure of the table, but to ensure that the text of the spanners and heads is included in the metadata as this text will be used by search engines to find tables in data catalogs.
-
-  ![](./images/ReDoc_Table_09.JPG){width=100%}  
+<br>
+```json
+"table_columns": [
+  {
+    "label": "string",
+    "var_name": "string",
+    "dataset": "string"
+  }
+]
+```
+<br>
   - **`label`** *[Required, Not Repeatable, String]* <br>
   The labels of the table columns (or *column captions*) are vital for discoverability. The column labels will include both column spanners and column headers. Columns spanners are captions that join various column headers together. 
   - **`var_name`** *[Optional, Not Repeatable, String*] <br>
@@ -369,6 +491,7 @@ The columns description is composed of the column spanner and the column heads. 
   The column captions of the following table can be documented in the following manner: 
 
   ![](./images/table_example_05.JPG){width=100%}
+  <br>
 
 ```{r, indent="  ", eval=F, echo=T}
 my_table = list(
@@ -400,6 +523,7 @@ my_table = list(
   )
 )
 ```
+<br>
 
   Or, in a more concise but also valid version:
 
@@ -426,8 +550,17 @@ my_table = list(
 
 - **`table_rows`** *[Required, Not Repeatable, String]* <br> 
 Like the column spanner and column heads, the `table_rows` section is composed of the stub head and stubs (*row captions*). The stubs are the captions of the rows of data and the stub head is the label that groups the rows together in a logical fashion. As for `table_columns`, the information found in the stubs can be merged and edited to be optimized for clarity and discoverability.
-
-  ![](./images/ReDoc_Table_10.JPG){width=100%}  
+<br>
+```json
+"table_rows": [
+  {
+    "label": "string",
+    "var_name": "string",
+    "dataset": "string"
+  }
+]
+```
+<br>
   - **`label`** *[Required, Not Repeatable, String]* <br>
   As with the column labels, the content in this `row_label` is designed to include the stub head, stubs and any captions included. 
   - **`var_name`** *[Optional, Not Repeatable, String]* <br>
@@ -485,11 +618,18 @@ my_table = list(
 ```
 <br>
 
-
 - **`table_footnotes`** *[Optional, Repeatable]* <br>
 Footnotes provide additional clarity. They may for example be used to assure that the user is aware of conditions and exceptions that may apply to a table. Footnotes may include statements of missing data, imputation of data, or other content that is not included in the body of the publication. 
-
-  ![](./images/ReDoc_Table_11.JPG){width=100%}
+<br>
+```json
+"table_footnotes": [
+  {
+    "number": "string",
+    "text": "string"
+  }
+]
+```
+<br>
   - **`number`** *[Optional, Not Repeatable, String]* <br>
   A sequential number is usually given to the footnotes, which starts with 1 for each table.
   - **`text`** *[Required, Not Repeatable, String]* <br>
@@ -521,8 +661,18 @@ my_table = list(
 
 - **`table_series`** *[Optional, Repeatable]* <br>
 Table series may be organized into series, typically by theme.
-
-  ![](./images/ReDoc_Table_12.JPG){width=100%}
+<br>
+```json
+"table_series": [
+  {
+    "name": "string",
+    "maintainer": "string",
+    "uri": "string",
+    "description": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional, Not Repeatable, String]* <br>
   The name (label) of the series.
   - **`maintainer`** *[Optional, Not Repeatable, String]* <br>
@@ -555,8 +705,15 @@ my_table = list(
 
 - **`statistics`** *[Optional, Repeatable]* <br>
 The table metadata will not contain data. What the `statistics` element refers to is the <u>type of statistics</u> included in the table. Some tables may only contain counts, such as a table of population by age group and sex (which shows counts of persons; other tables could be counts of households, facilities, or any other observation unit). But statistical tables can contain many other types of summary statistics. This element is used to list these types of statistics. 
-
-  ![](./images/ReDoc_Table_13.JPG){width=100%}
+<br>
+```json
+"statistics": [
+  {
+    "value": "string"
+  }
+]
+```
+<br>
   - **`value`** *[Required, Not Repeatable, String]* <br>
   The use of a controlled vocabulary is recommended. This list could contain (but does not have to be limited to):
     - Count (frequencies)
@@ -610,8 +767,15 @@ my_table = list(
 
 - **`unit_observation`** *[Optional, Repeatable]* <br>
 The element provides information on the unit(s) of observations that correspond to the values shown in the table.
-
-  ![](./images/ReDoc_Table_14.JPG){width=100%}
+<br>
+```json
+"unit_observation": [
+  {
+    "value": "string"
+  }
+]
+```
+<br>
   - **`value`** *[Required, Not repeatable, String]*
   The `value` is not a numeric value; it is the label (description) of the observation unit, e.g, "individual" or "person", "household", "dwelling", enterprise, "country", etc. <br>
 
@@ -633,8 +797,19 @@ my_table = list(
 
 - **`data_sources`** *[Optional, Repeatable]* <br>     
 The data sources are often cited in the footnote section of a table. The `name`, `source_id`, and `link` elements are optional, but at least one of them must be provided.
-
-  ![](./images/ReDoc_Table_15.JPG){width=100%}
+<br>
+```json
+"data_sources": [
+  {
+    "name": "string",
+    "abbreviation": "string",
+    "source_id": "string",
+    "note": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional, Not repeatable, String]* <br>
   The name (title) of the data source. For example, a table data may be extracted from the "Population Census 2020".  
   - **`abbreviation`** *[Optional, Not repeatable, String]* <br>
@@ -668,8 +843,16 @@ my_table = list(
   
 - **`time_periods`** *[Optional, Repeatable]* <br>
 The time periods consists of a list or periods (range of years / quarters / months / days) that the data relate to, preferably entered in ISO 8601 format (YYYY, or YYYY-MM, or YYYY-MM-DD). If the data are by quarter, convert them into ISO 8601 format (e.g., first quarter of 2020 would be "from 2020-01 to 2020-03). This is a repeatable field. If the time periods are for example 1990, 2000 to 2004, and 2014 to June 2019, do not enter the time period as a single range 1990-2019 as this would include irrelevant periods. It should be entered as three separate ranges as in the example below. For data that are related to a specific date (for example, the population of a country as of the census day), enter the date in both the `from` and `to` fields.
-
-  ![](./images/ReDoc_Table_16.JPG){width=100%}
+<br>
+```json
+"time_periods": [
+  {
+    "from": "string",
+    "to": "string"
+  }
+]
+```
+<br>
   - **`from`** *[Required, Not repeatable, String]* <br>
   The start date of the time period covered by the table, preferably entered in ISO 8601 format (YYYY, or YYYY-MM, or YYYY-MM-DD).   
   - **`to`** *[Required, Not repeatable, String]* <br>
@@ -697,8 +880,15 @@ my_table = list(
 
 - **`universe`** *[Optional, Repeatable]* <br>
 The universe of a table refers to the population (or *respondents*) covered in the data. It does not have to be a population of individuals; it can for example be a population of households, facilities, firms, groups of persons, or even objects. The description of the universe should clearly inform the data users of inclusions and exclusions that they may not expect.
-
-  ![](./images/ReDoc_Table_17.JPG){width=100%}
+<br>
+```jon
+"universe": [
+  {
+    "value": "string"
+  }
+]
+```
+<br>
   - **`value`** *[Required, Not repeatable, String]* <br>
   A textual description of the universe covered by the data.
 
@@ -721,8 +911,16 @@ my_table = list(
 
 - **`ref_country`** *[Optional, Repeatable]* <br>
 This element is used to document the list of countries for which data are in the table. This element serves to assure that the country name and code are easily discoverable and contribute to a virtual national catalog. If the table only refers to part of a country (for example a city), the `ref_country` field should still be filled. Another element called `geographic_units`is provided (see below) to capture more detailed information on the table's geographic coverage. 
-
-  ![](./images/ReDoc_Table_18.JPG){width=100%}
+<br>
+```json
+"ref_country": [
+  {
+    "name": "string",
+    "code": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of a country for which data are in the table. 
   - **`code`** *[Required, Not repeatable, String]* <br>
@@ -731,8 +929,17 @@ This element is used to document the list of countries for which data are in the
 
 - **`geographic_units`** *[Optional, Repeatable]* <br>
 An itemized list of geographic areas covered by the data in the table, other than the country/countries that must be entered in `ref_country`.
-
-  ![](./images/ReDoc_Table_19.JPG){width=100%}
+<br>
+```json
+"geographic_units": [
+  {
+    "name": "string",
+    "code": "string",
+    "type": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of the geographic unit.
   - **`code`** *[Optional, Not repeatable, String]* <br>
@@ -795,8 +1002,18 @@ my_table = list(
 
 - **`bbox`** *[Optional ; Repeatable]* <br>
 Bounding boxes are typically used for geographic datasets to indicate the geographic coverage of the data, but can be provided for tables as well, although this will rarely be done. A geographic bounding box defines a rectangular geographic area.
-
-  ![](./images/ReDoc_Table_19b.JPG){width=100%}
+<br>
+```json
+"bbox": [
+  {
+    "west": "string",
+    "east": "string",
+    "south": "string",
+    "north": "string"
+  }
+]
+```
+<br>
   - **`west`** *[Required ; Not repeatable ; String]* <br>
   Western geographic parameter of the bounding box.
   - **`east`** *[Required ; Not repeatable ; String]* <br>
@@ -809,8 +1026,16 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
 
 - **`languages`** *[Optional, Repeatable]* <br>
 Most tables will only be provided in one language. This is however a repeatable field, to allow for more than one language to be listed.
-
-  ![](./images/ReDoc_Table_20.JPG){width=100%}
+<br>
+```json
+"languages": [
+  {
+    "name": "string",
+    "code": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of the language(s) in which the table is published, preferably extracted from the [ISO 639 standardized nomenclature of languages](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).  
   - **`code`** *[Optional, Not repeatable, String]* <br>
@@ -837,8 +1062,16 @@ my_table = list(
 
 - **`links`** *[Optional, Repeatable]* <br>
 A list of associated links related to the table.
-
-  ![](./images/ReDoc_Table_21.JPG){width=100%}
+<br>
+```json
+"links": [
+  {
+    "uri": "string",
+    "description": "string"
+  }
+]
+```
+<br>
   - **`uri`** *[Required, Not repeatable, String]* <br>
   The URI to an external resource.
   - **`description`** *[Optional, Not repeatable, String]* <br>
@@ -871,8 +1104,16 @@ my_table = list(
 
 - **`api_documentation`** *[Optional ; Repeatable]* <br>
 Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. 
-    
-  ![](./images/ReDoc_Table_36.JPG){width=100%}
+<br>
+```json
+"api_documentation": [
+  {
+    "description": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
   This element will not contain the API documentation itself, but information on what documentation is available.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -881,8 +1122,16 @@ Increasingly, data are made accessible via Application Programming Interfaces (A
 
 - **`publications`** *[Optional, Repeatable]* <br>
 This element identifies the publication(s) where the table is published. This could for example be a Statistics Yearbook, a report, a paper, etc. <br>
-
-  ![](./images/ReDoc_Table_22.JPG){width=100%}
+<br>
+```json
+"publications": [
+  {
+    "title": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`title`** *[Required, Not repeatable, String]* <br>
   The title of the publication (including the producer and the year).
   - **`uri`** *[Optional, Not repeatable, String]* <br>
@@ -909,7 +1158,17 @@ my_table = list(
 
 - **`keywords`** *[Optional ; Repeatable]* <br>
 
-  ![](./images/ReDoc_Table_23.JPG){width=100%}
+<br>
+```json
+"keywords": [
+  {
+    "name": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
 
   A list of keywords that provide information on the core content of the table. Keywords provide a convenient solution to improve the discoverability of the table, as it allows terms and phrases not found in the table itself to be indexed and to make a table discoverable by text-based search engines. A controlled vocabulary will preferably be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list provided here can combine keywords from multiple controlled vocabularies, and user-defined keywords.
   
@@ -948,7 +1207,19 @@ my_table = list(
 
 - **`themes`** *[Optional ; Repeatable]* <br>
 
-  ![](./images/ReDoc_Table_24.JPG){width=100%}
+<br>
+```json
+"themes": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
 
   A list of themes covered by the table. A controlled vocabulary will preferably be used. Note that `themes` will rarely be used as the elements `topics` and `disciplines` are more appropriate for most uses. This is a block of five fields:
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
@@ -965,7 +1236,19 @@ my_table = list(
                                  
 - **`topics`** *[Optional ; Repeatable]* <br>
 
-  ![](./images/ReDoc_Table_25.JPG){width=100%}
+<br>
+```json
+"topics": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
 
   Information on the topics covered in the table. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary.
   
@@ -1019,7 +1302,19 @@ my_table = list(
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>   
 
-  ![](./images/ReDoc_Table_26.JPG){width=100%}
+<br>
+```json
+"disciplines": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
 
   Information on the academic disciplines related to the content of the table. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
 This is a block of five elements: 
@@ -1067,8 +1362,17 @@ This is a block of five elements:
 
 - **`definitions`** *[Optional, Repeatable]*  <br>
 Definitions or concepts covered by the table.
-
-  ![](./images/ReDoc_Table_27.JPG){width=100%}
+<br>
+```json
+"definitions": [
+  {
+    "name": "string",
+    "definition": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required, Not repeatable, String]*  <br>
   The name (or label) of the term, indicator, or concept being defined.
   - **`definition`** *[Required, Not repeatable, String]*  <br>
@@ -1104,8 +1408,18 @@ my_table = list(
 
 - **`classifications`** *[Optional, Repeatable]* <br>
 The element is used to document the use of standard classifications (or "ontologies", or "taxonomies") in the table.
-
-  ![](./images/ReDoc_Table_28.JPG){width=100%}
+<br>
+```json
+"classifications": [
+  {
+    "name": "string",
+    "version": "string",
+    "organization": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required, Not repeatable, String]* <br>
   Name (label) of the classification, ontology, or taxonomy.
   - **`version`** *[Optional, Not repeatable, String]* <br>
@@ -1148,8 +1462,16 @@ Information on the rights or copyright that applies to the table.
          
 - **`license`** *[Optional, Repeatable]* <br>
 A table may require a license to use or reproduce. This is done to protect the intellectual content of the research product. The licensing entity may be different from the researcher or the publisher. It is the entity which has the intellectual rights to the table (s) and would grant rights or restrictions on the reuse of the table.
-
-  ![](./images/ReDoc_Table_29a.JPG){width=100%}
+<br>
+```json
+"license": [
+  {
+    "name": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of the license".
   - **`uri`** *[Optional, Not repeatable, String]* <br>
@@ -1199,8 +1521,20 @@ The information provided here should be such that it does not provide intruders 
 
 - **`contacts`** *[Optional, Repeatable]* <br>
 Users of the data may need further clarification and information. This section may include the name-affiliation-email-URI of one or multiple contact persons. This block of elements will identify contact persons who can be used as resource persons regarding problems or questions raised by the user community. The URI attribute should be used to indicate a URN or URL for the homepage of the contact individual. The email attribute is used to indicate an email address for the contact individual. It is recommended to avoid putting the actual name of individuals. The information provided here should be valid for the long term. It is therefore preferable to identify contact persons by a title. The same applies for the email field. Ideally, a "generic" email address should be provided. It is easy to configure a mail server in such a way that all messages sent to the generic email address would be automatically forwarded to some staff members.
-
-  ![](./images/ReDoc_Table_30.JPG){width=100%}
+<br>
+```json
+"contacts": [
+  {
+    "name": "string",
+    "role": "string",
+    "affiliation": "string",
+    "email": "string",
+    "telephone": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required, Not repeatable, String]* <br>
   Name of a person or unit (such as a data help desk). It will usually be better to provide a title/function than the actual name of the person. Keep in mind that people do not stay forever in their position.
   - **`role`** *[Optional, Not repeatable, String]* <br>
@@ -1237,16 +1571,31 @@ my_table = list(
 
 - **`notes`** *[Optional, Repeatable]* <br>
 The notes provide a space to include observations or open-ended content that may be material in understanding the table, which have not been captured in other elements of the schema.
-
-  ![](./images/ReDoc_Table_31.JPG){width=100%}
+<br>
+```json
+"notes": [
+  {
+    "note": "string"
+  }
+]
+```
+<br>
   - **`note`** *[Required, Not repeatable, String]* <br>
   The note itself.<br><br>
 
                                                             
 - **`relations`** *[Optional ; Repeatable]* <br>
 If the table has a relation to other resources (e.g., it is a subset of another resource, or a translation of another resource), the relation(s) and associated resources can be listed in this element.
-
-  ![](./images/ReDoc_Table_32.JPG){width=100%}
+<br>
+```json
+"relations": [
+  {
+    "name": "string",
+    "type": "isPartOf"
+  }
+]
+```
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The related resource. Recommended practice is to identify the related resource by means of a URI. If this is not possible or feasible, a string conforming to a formal identification system may be provided.
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
@@ -1272,7 +1621,22 @@ If the table has a relation to other resources (e.g., it is a subset of another 
 ### Provenance
 
 **`provenance`** *[Optional ; Repeatable]* <br>
-![](./images/ReDoc_Table_35.JPG){width=100%}
+<br>
+```json
+"provenance": [
+	{
+		"origin_description": {
+			"harvest_date": "string",
+			"altered": true,
+			"base_url": "string",
+			"identifier": "string",
+			"date_stamp": "string",
+			"metadata_namespace": "string"
+		}
+	}
+]
+```
+<br>
 
   Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata. <br>
   
@@ -1296,17 +1660,56 @@ The `origin_description` elements are used to describe when and from where metad
 
 **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs. See section 1.7 for an example in R.
-
-![](./images/ReDoc_Table_34.JPG){width=100%}
-
-- **`tag`** *[Required ; Not repeatable ; String]* <br>
-A user-defined tag.
-- **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
-A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
+<br>
+```json
+"tags": [
+	{
+		"tag": "string",
+		"tag_group": "string"
+	}
+]
+```
+<br>
+   - **`tag`** *[Required ; Not repeatable ; String]* <br>
+   A user-defined tag.
+   - **`tag_group`** *[Optional ; Not repeatable ; String]* <br><br>
+   A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
 
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
-![](./images/ReDoc_documents_17.JPG){width=100%}  
+<br>
+```json
+"lda_topics": [
+	{
+		"model_info": [
+			{
+				"source": "string",
+				"author": "string",
+				"version": "string",
+				"model_id": "string",
+				"nb_topics": 0,
+				"description": "string",
+				"corpus": "string",
+				"uri": "string"
+			}
+		],
+		"topic_description": [
+			{
+				"topic_id": null,
+				"topic_score": null,
+				"topic_label": "string",
+				"topic_words": [
+					{
+						"word": "string",
+						"word_weight": 0
+					}
+				]
+			}
+		]
+	}
+]
+```
+<br>
 
   We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 
@@ -1356,7 +1759,18 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
   
   The word vectors do not have to be stored in the series/indicator metadata to be exploited by search engines. When a semantic search tool is implemented in a catalog, the vectors will be stored in a database end processed by a tool like Milvus. A metadata element is however provided to store the vectors for preservation and sharing purposes. This block of metadata elements is repeatable, allowing multiple vectors to be stored. When using vectors in a search engine, it is critical to only use vectors generated by one same model. 
   
-  ![](./images/ReDoc_ts_series_46.JPG){width=100%}
+<br>
+```json
+"embeddings": [
+	{
+		"id": "string",
+		"description": "string",
+		"date": "string",
+		"vector": null
+	}
+]
+```
+<br>
   
   The `embeddings` element contains four metadata fields:
   
@@ -1374,8 +1788,6 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
 
 **`additional`** *[Optional ; Not repeatable]*<br>
 The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
-
-![](./images/ReDoc_ts_series_49.JPG){width=100%}
 
 
 ## Complete examples
