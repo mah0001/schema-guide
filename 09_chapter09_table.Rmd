@@ -143,7 +143,8 @@ my_table = list(
 
 **`table_description`** *[Required, Not Repeatable]* <br>
 This section contains the metadata elements that describe the table itself. Not all elements will be required to fully document a table, but efforts should be made to provide as much and as detailed information as possible, as richer metadata will make the table more discoverable. 
-<br>```json
+<br>
+```json
 "table_description": {
   "title_statement": {},
   "identifiers": [],
@@ -715,7 +716,9 @@ The table metadata will not contain data. What the `statistics` element refers t
 ```
 <br>
   - **`value`** *[Required, Not Repeatable, String]* <br>
+  
   The use of a controlled vocabulary is recommended. This list could contain (but does not have to be limited to):
+  
     - Count (frequencies)
     - Number of missing values
     - Mean (average)
@@ -881,7 +884,7 @@ my_table = list(
 - **`universe`** *[Optional, Repeatable]* <br>
 The universe of a table refers to the population (or *respondents*) covered in the data. It does not have to be a population of individuals; it can for example be a population of households, facilities, firms, groups of persons, or even objects. The description of the universe should clearly inform the data users of inclusions and exclusions that they may not expect.
 <br>
-```jon
+```json
 "universe": [
   {
     "value": "string"
@@ -921,6 +924,7 @@ This element is used to document the list of countries for which data are in the
 ]
 ```
 <br>
+
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of a country for which data are in the table. 
   - **`code`** *[Required, Not repeatable, String]* <br>
@@ -940,6 +944,7 @@ An itemized list of geographic areas covered by the data in the table, other tha
 ]
 ```
 <br>
+
   - **`name`** *[Required, Not repeatable, String]* <br>
   The name of the geographic unit.
   - **`code`** *[Optional, Not repeatable, String]* <br>
@@ -976,8 +981,6 @@ my_table = list(
 
 - **`geographic_granularity`** *[Optional, Not repeatable, String]* <br>
 A description of the geographic levels for which data are presented in the table. This is not a list of specific geographic areas, but a list of the administrative <u>level(s)</u> that correspond to these geographic areas. <br>
-
-  ![](./images/ReDoc_Table_19a.JPG){width=100%}
 
   Example for a table showing the population of a country by State, district, and sub-district (+ total)
 
@@ -1114,6 +1117,7 @@ Increasingly, data are made accessible via Application Programming Interfaces (A
 ]
 ```
 <br>
+
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
   This element will not contain the API documentation itself, but information on what documentation is available.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -1132,6 +1136,7 @@ This element identifies the publication(s) where the table is published. This co
 ]
 ```
 <br>
+
   - **`title`** *[Required, Not repeatable, String]* <br>
   The title of the publication (including the producer and the year).
   - **`uri`** *[Optional, Not repeatable, String]* <br>
@@ -1253,6 +1258,7 @@ my_table = list(
   Information on the topics covered in the table. A controlled vocabulary will preferably be used, for example the [CESSDA Topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification), a typology of topics available in 11 languages; or the [Journal of Economic Literature (JEL) Classification System](https://en.wikipedia.org/wiki/JEL_classification_codes), or the [World Bank topics classification](https://documents.worldbank.org/en/publication/documents-reports/docadvancesearch). Note that you may use more than one controlled vocabulary.
   
   This element is a block of five fields: 
+  
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The identifier of the topic, taken from a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -1318,6 +1324,7 @@ my_table = list(
 
   Information on the academic disciplines related to the content of the table. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
 This is a block of five elements: 
+
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The identifier of the discipline, taken from a controlled vocabulary.
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
@@ -1373,6 +1380,7 @@ Definitions or concepts covered by the table.
 ]
 ```
 <br>
+
   - **`name`** *[Required, Not repeatable, String]*  <br>
   The name (or label) of the term, indicator, or concept being defined.
   - **`definition`** *[Required, Not repeatable, String]*  <br>
