@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# A search engine and recommender system for data {#chapter02}
+# The features of a modern data dissemination platform {#chapter02}
 
 In this chapter, we delineate the essential features that a contemporary online data catalog should possess to effectively serve the diverse needs and expectations of its users. Our goal is to offer suggestions for developing data catalogs that incorporate advanced search capabilities, such as lexical search, semantic search utilizing natural language processing (NLP), filtering, targeted search, and a recommender system. In defining these features, we adopt three perspectives: the perspective of data users, who represent a highly diverse community with varying needs, preferences, expectations, and capacities; the perspective of data suppliers, who publish their data or entrust a data library to do so; and the perspective of catalog administrators, who are responsible for curating and disseminating data in a responsible, effective, and efficient manner while optimizing user and supplier satisfaction. 
 
