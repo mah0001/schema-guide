@@ -1261,6 +1261,7 @@ my_doc <- list(
 <br>
   
   A list of keywords that provide information on the core content of the document. Keywords provide a convenient solution to improve the discoverability of the document, as it allows terms and phrases not found in the document itself to be indexed and to make a document discoverable by text-based search engines. A controlled vocabulary can be used (although not required), such as the [UNESCO Thesaurus](http://vocabularies.unesco.org/browser/thesaurus/en/). The list provided here can combine keywords from multiple controlled vocabularies and user-defined keywords.  
+  
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The keyword itself.
   - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
@@ -1405,10 +1406,9 @@ my_doc <- list(
       # ...
     ),
   )  
-
 ```
-
 <br>
+
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>
 
@@ -1727,7 +1727,6 @@ The topic composition of the document.
 
   
 ```{r, indent="", eval=F, echo=T}
-
 lda_topics = list(
   
    list(
@@ -1787,9 +1786,10 @@ lda_topics = list(
    
 )
 ```
+<br>
 
 The information provided by LDA models can be used to build a "filter by topic composition" tool in a catalog, to help identify documents based on a combination of topics, allowing users to set minimum thresholds on the share of each selected topic.
-
+<br>
 <center>
 ![](./images/filter_by_topic_share_1.JPG){width=85%}  
 </center>
