@@ -302,6 +302,7 @@ The periodicity of the data describes the periodicity of the indicators containe
 ]
 ```
 <br>
+
   - **`period`** *[Optional ; Not repeatable ; String]* <br>
 Periodicity of the time series included in the database, for example, "annual", "quarterly", or "monthly". <br><br>
 
@@ -322,6 +323,7 @@ Themes provide a general idea of the research that might guide the creation and/
 ]
 ```
 <br>
+
   - **`id`** *[Optional ; Not repeatable ; String]*<br>
   The unique identifier of the theme. It can be a sequential number, or the identifier of the theme in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -377,6 +379,7 @@ Words or phrases that describe salient aspects of a data collection's content. T
 ]
 ```
 <br>
+
   - **`name`** *[Required ; String ; Non repeatable]* <br>
   A keyword (or phrase).  
   - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
@@ -397,6 +400,7 @@ The dimensions available for the series included in the database. For example, "
 ]
 ```
 <br>
+
   - **`name`** *[Required ; String ; Non repeatable]* <br>
   The name of the dimension.  
   - **`label`** *[Optional ; Not repeatable ; String]* <br>
@@ -436,6 +440,7 @@ A list of geographic units (regions, countries, states, provinces, etc.) for whi
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the geographic unit e.g. 'World', 'Sub-Saharan Africa', 'Afghanistan', 'Low-income countries'.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -460,6 +465,7 @@ Bounding boxes are typically used for geographic datasets to indicate the geogra
 ]
 ```
 <br>
+
   - **`west`** *[Required ; Not repeatable ; String]* <br>
   Western geographic parameter of the bounding box.
   - **`east`** *[Required ; Not repeatable ; String]* <br>
@@ -494,6 +500,7 @@ The source(s) of funds for the production and maintenance of the database. If di
 ]
 ```
 <br>
+
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   Name of the funding agency/sponsor 
   - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
@@ -521,6 +528,7 @@ An itemized list of person(s) and/or organization(s) other than sponsors and con
 ]
 ```
 <br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the person or agency being recognized for supporting the database. 
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
@@ -553,6 +561,7 @@ The `contacts` element provides the public interface for questions associated wi
 ]
 ```
 <br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the contact person that should be contacted. Instead of the name of an individual (which would be subject to change and require frequent update of the metadata), a title can be provided here (e.g. "data helpdesk"). 
   - **`role`** *[Optional ; Not repeatable ; String]* <br>
@@ -580,6 +589,7 @@ This field allows for the association of auxiliary links referring to the databa
 ]
 ```
 <br>
+
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   The URI for the associated link.
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
@@ -599,6 +609,7 @@ This set of elements is provided to list the languages that are supported in the
   ]
   ```
   <br>
+  
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The official name of the language being supported; it is recommended to use a name from the [ISO 639-1 language name list](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -619,6 +630,7 @@ This repeatable set of elements describes the different modes and formats in whi
 ]
 ```
 <br>
+
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   The access type, e.g. "Application Programming Interface (API)", "Bulk download in CSV format", "On-line query interface", etc.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -640,6 +652,7 @@ A list of errata at the database level. Note that an `errata` element is also av
 ]
 ```
 <br>
+
   - **`date`** *[Optional ; Not repeatable ; String]* <br>
   The date the erratum was published, preferably entered in ISO format.
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
@@ -660,6 +673,7 @@ This set of elements is used to describe the access license(s) attached to the d
 ]
 ```
 <br>
+
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the license, for example "Creative Commons Attribution 4.0 International license (CC-BY 4.0)". 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -719,8 +733,9 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
 ]
 ```
 <br>
+
   - **`origin_description`** *[Required ; Not repeatable]* <br>
-  The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  <br>
+  The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.<br>
   
     - **`harvest_date`** *[Required ; Not repeatable ; String]* <br>
     The date and time the metadata were harvested, entered in ISO 8601 format.<br>
@@ -793,6 +808,7 @@ A user-defined group (optional) to which the tag belongs. Grouping tags allows i
 ]
 ```
 <br>
+
 We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 <br>
 Once an LDA topic model has been trained, it can be used to infer the topic composition of any document. This inference will then provide the share that each topic represents in the document. The sum of all represented topics is 1 (100%).<br> 
