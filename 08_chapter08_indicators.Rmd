@@ -48,9 +48,24 @@ An indicator or time series is documented using the **time series /indicators** 
 ### The time series (indicators) schema
 
 The time series schema is used to document an indicator or a time series. In NADA, the data and metadata of an indicator can (but does not have to) be published with information on the database it belongs to (if any). A metadata element is provided to indicate the identifier of that database (if any), and to establish the link between the indicator metadata and the database metadata generated using the schema described above.
-
-![](./images/ReDoc_ts_series_01.JPG){width=100%}
-
+<br>
+```json
+{
+  "repositoryid": "string",
+  "access_policy": "na",
+  "data_remote_url": "string",
+  "published": 0,
+  "overwrite": "no",
+  "metadata_information": {},
+  "series_description": {},
+  "provenance": [],
+  "tags": [],
+  "lda_topics": [],
+  "embeddings": [],
+  "additional": { }
+}
+```
+<br>
 
 #### Cataloguing parameters
 
@@ -71,8 +86,24 @@ The first elements of the schema (`repositoryid`, `access_policy`, `data_remote_
 
 **`metadata_information`** *[Optional, Not Repeatable]* <br>
 The set of elements in `metadata_information` is used to provide information on the production of the indicator metadata. This information is used mostly for administrative purposes by data curators and catalog administrators.
-
-![](./images/ReDoc_ts_database_01.JPG){width=100%}
+<br>
+```json
+"metadata_information": {
+  "title": "string",
+  "idno": "string",
+  "producers": [
+    {
+      "name": "string",
+      "abbr": "string",
+      "affiliation": "string",
+      "role": "string"
+    }
+  ],
+  "prod_date": "string",
+  "version": "string"
+}
+```
+<br>
 
 - **`title`** *[Optional ; Not repeatable ; String]* <br>
 The title of the metadata document containing the indicator metadata.<br>
@@ -96,9 +127,6 @@ The date the metadata was generated. The date should be entered in ISO 8601 form
 - **`version`** *[Optional ; Not repeatable, String]* <br>
 The version of the metadata on this series. This element will rarely be used.
 
-![](./images/ReDoc_ts_series_02.JPG){width=100%}
-
-
 
 ```{r, indent="  ", eval=F, echo=T}
 metadata_creation = list(
@@ -117,9 +145,67 @@ metadata_creation = list(
 
 **`series_description`** *[Required ; Repeatable]* <br>
 This section contains all elements used to describe a specific series or indicator.
+<br>
+```json
+"series_description": {
+  "idno": "string",
+  "doi": "string",
+  "name": "string",
+  "database_id": "string",
+  "aliases": [],
+  "alternate_identifiers": [],
+  "languages": [],
+  "measurement_unit": "string",
+  "dimensions": [],
+  "periodicity": "string",
+  "base_period": "string",
+  "definition_short": "string",
+  "definition_long": "string",
+  "definition_references": [],
+  "statistical_concept": "string",
+  "concepts": [],
+  "methodology": "string",
+  "derivation": "string",
+  "imputation": "string",
+  "missing": "string",
+  "quality_checks": "string",
+  "quality_note": "string",
+  "sources_discrepancies": "string",
+  "series_break": "string",
+  "limitation": "string",
+  "themes": [],
+  "topics": [],
+  "disciplines": [],
+  "relevance": "string",
+  "time_periods": [],
+  "ref_country": [],
+  "geographic_units": [],
+  "bbox": [],
+  "aggregation_method": "string",
+  "disaggregation": "string",
+  "license": [],
+  "confidentiality": "string",
+  "confidentiality_status": "string",
+  "confidentiality_note": "string",
+  "links": [],
+  "api_documentation": [],
+  "authoring_entity": [],
+  "sources": [],
+  "sources_note": "string",
+  "keywords": [],
+  "acronyms": [],
+  "errata": [],
+  "notes": [],
+  "related_indicators": [],
+  "compliance": [],
+  "framework": [],
+  "series_groups": []
+}
+```
+<br>
+
 
 - **`idno`** *[Required ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_03.JPG){width=100%}
 
   A unique identifier (ID) for the series. Most agencies and databases will have a coherent coding convention to generate their series IDs. For example, the name of the series in the World Bank's World Development Indicators series are composed of the following elements, separated by a dot:
   
@@ -131,31 +217,46 @@ This section contains all elements used to describe a specific series or indicat
   For example, the series with identifier "DT.DIS.PRVT.CD" is the series containing data on "External debt disbursements by private creditors in current US dollars" (for more information, see [*How does the World Bank code its indicators?*]( https://datahelpdesk.worldbank.org/knowledgebase/articles/201175-how-does-the-world-bank-code-its-indicators).<br>
                                      
 - **`doi`** *[Optional ; Not repeatable ; String]* <br>  
-![](./images/ReDoc_ts_series_03b.JPG){width=100%}
 
   A Digital Object Identifier (DOI) for the the series. 
                                                     
 - **`name`** *[Required ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_04.JPG){width=100%}
 
   The name (label) of the series. Note that a field `alias` is provided (see below) to capture alternative names for the series. 
                                               
 - **`database_id`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_05.JPG){width=100%}
 
   The unique identifier of the database the series belongs to. This field must correspond to the element `database_description > title_statement > idno` of the database schema described above. This is the only field that is needed to establish the link between the database metadata and the indicator metadata. 
                                                        
 - **`aliases`** *[Optional ; Repeatable]* <br>
 A series or an indicator can be referred to using different names. The `aliases` element is provided to capture the multiple names and labels that may be associated with (i.e synomyms of) the documented series or indicator.
-  
-  ![](./images/ReDoc_ts_series_06.JPG){width=100%}
+<br>
+```json
+"aliases": [
+  {
+    "alias": "string"
+  }
+]
+```
+<br>
   - **`alias`** *[Optional ; Not repeatable ; String]* <br>
   An alternative name for the indicator or series being documented. <br><br>
                                               
 - **`alternate_identifiers`** *[Optional ; Not repeatable ; String]*<br>
 The element `idno` described above is the reference unique identifier for the catalog in which the metadata is intended to be published. But the same indicator/metadata may be published in other catalogs. For example, a data catalog may publish metadata for series extracted from the World Bank World Development Indicators (WDI) database. And the WDI itself contains series generated and published by other organizations, such as the World Health Organization or UNICEF. Catalog administrators may want to assign a unique identifier specific to their catalog (the `idno` element), but keep track of the identifier of the series or indicator in other catalogs or databases. The `alternate_identifiers` element serves that purpose. 
-
-  ![](./images/ReDoc_ts_series_07.JPG){width=100%}
+<br>
+```json
+"alternate_identifiers": [
+  {
+    "identifier": "string",
+    "name": "string",
+    "database": "string",
+    "uri": "string",
+    "notes": "string"
+  }
+]
+```
+<br>
   - **`identifier`** *[Required ; Not repeatable ; String]* <br>
   An identifier for the series other than the identifier entered in `idno` (note that the identifier entered in `idno` can be included in this list, if it is useful to provide it with a type identifier (see `name` element below) which is not provided in `idno`. This can be the identifier of the indicator in another database/catalog, or a global unique identifier.
   - **`name`** <br>  
@@ -169,15 +270,25 @@ The element `idno` described above is the reference unique identifier for the ca
 
 - **`languages`** *[Optional ; Repeatable]* <br>  
 An indicator or time series can be made available at different levels of disaggregation. For example, an indicator containing estimates of the "Population" of a country by year can be available by sex. The data curators in such case will have two options: (i) create and document three separate indicators, namely "Population, Total", "Population, Female", and "Population, Male"; or create a single indicator "Population" and attach a *dimension* "sex" to it, with values "Total", "Female", and "Male". The `dimensions` are features (or "variables") that define the different levels of disaggregation within an indicator/series. The element `dimensions` is used to provide an itemized list of disaggregations that correspond exactly to the published data. Note that when an indicator is available at two "non-overlapping" levels of disaggregation, it should be split into two indicators. For example, if the Population indicator is available by male/female and by urban/rural, but not by male/urban/male/rural/female urban/female rural, it should be treated as two separate indicators ("Population by sex" with dimension sex = "male / female" and "Population by area of residence" with dimension area = "urban / rural".) Note also that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented.<br>
-
-  ![](./images/ReDoc_ts_series_08b.JPG){width=100%}
+<br>
+```json
+"alternate_identifiers": [
+  {
+    "identifier": "string",
+    "name": "string",
+    "database": "string",
+    "uri": "string",
+    "notes": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the language.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code of the language, preferably the ISO code.<br><br>
 
 - **`measurement_unit`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_08.JPG){width=100%}
 
   The unit of measurement. Note that in many databases the measurement unit will be included in the series name/label. In the World Bank's World Development Indicators for example, series are named as follows: 
   
@@ -190,8 +301,17 @@ An indicator or time series can be made available at different levels of disaggr
  
 - **`dimensions`** *[Optional ; Repeatable]* <br>  
 An indicator or time series can be made available at different levels of disaggregation. For example, an indicator containing estimates of the "Population" of a country by year can be available by sex. The data curators in such case will have two options: (i) create and document three separate indicators, namely "Population, Total", "Population, Female", and "Population, Male"; or create a single indicator "Population" and attach a *dimension* "sex" to it, with values "Total", "Female", and "Male". The `dimensions` are features (or "variables") that define the different levels of disaggregation within an indicator/series. The element `dimensions` is used to provide an itemized list of disaggregations that correspond exactly to the published data. Note that when an indicator is available at two "non-overlapping" levels of disaggregation, it should be split into two indicators. For example, if the Population indicator is available by male/female and by urban/rural, but not by male/urban/male/rural/female urban/female rural, it should be treated as two separate indicators ("Population by sex" with dimension sex = "male / female" and "Population by area of residence" with dimension area = "urban / rural".) Note also that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented.<br>
-
-  ![](./images/ReDoc_ts_series_08b.JPG){width=100%}
+<br>
+```json
+"dimensions": [
+  {
+    "name": "string",
+    "label": "string",
+    "description": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the dimension.
   - **`label`** *[Required ; Not repeatable ; String]* <br>
@@ -200,27 +320,32 @@ An indicator or time series can be made available at different levels of disaggr
   A description of the dimension (for example, if the label was "age group", the description can provide detailed information on the age groups, e.g. "The age groups in the database are 0-14, 15-49, 50-64, and 65+ years old".)<br><br>
 
 - **`periodicity`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_09.JPG){width=100%}
 
   The periodicity of the series. It is recommended to use a controlled vocabulary with values like *annual*, *quarterly*, *monthly*, *daily*, etc. 
 
 - **`base_period`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_10.JPG){width=100%}
 
   The base period for the series. This field will only apply to series that require a base year (or other reference time) used as a benchmark, like a Consumer Price Index (CPI) which will have a value of 100 for a reference base year. 
 
 - **`definition_short`** *[Optional ; Not repeatable ; String]* <br>
 A short definition of the series. The short definition captures the essence of the series.<br>
-
-  ![](./images/ReDoc_ts_series_11.JPG){width=100%}
                                                           
 - **`definition_long`** *[Optional ; Not repeatable ; String]* <br>
 A long(er) version of the definition of the series. If only one definition is available (not a short/long version), it is recommended to capture it in the `definition_short` element. ALternatively, the same definition can be stored in both `definition_short` and `definition_long`.
                                                          
 - **`definition_references`** *[Optional ; Repeatable]* <br>
 This element is provided to link to an external resources from which the definition was extracted. 
-    
-  ![](./images/ReDoc_ts_series_12.JPG){width=100%}
+<br>
+```json
+"definition_references": [
+  {
+    "source": "string",
+    "uri": "string",
+    "note": "string"
+  }
+]
+```
+<br>
   - **`source`** *[Optional ; Not repeatable ; String]* <br>
   The source of the definition (title, or label).
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -229,15 +354,22 @@ This element is provided to link to an external resources from which the definit
   This element provides for annotating or explaining the reason the reference has been included as part of the metadata.<br><br>
 
 - **`statistical_concept`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_13.JPG){width=100%}
 
   This element allows to insert a reference of the series with content of a statistical character. This can include coding concepts or standards that are applied to render the data statistically relevant.
                                                    
 - **`concepts`** *[Optional ; Repeatable]* <br>
 This repeatable element can be used to document concepts related to the indicators or time series (other than the main statistical concept that may have been entered in `statisticsl_concept`). For example, the concept of *malnutrition* could be documented in relation to the indicators "Prevalence of stunting" and "Prevalence of wasting".
-
-  ![](./images/ReDoc_ts_series_14.JPG){width=100%}
-  
+<br>
+```json
+"concepts": [
+  {
+    "name": "string",
+    "definition": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   A concise and standardized name (label) for the concept.
   - **`definition`** *[Required ; Not repeatable ; String]* <br>
@@ -246,54 +378,56 @@ This repeatable element can be used to document concepts related to the indicato
   A link (URL) to a resource providing more detailed information on the concept. <br><br>
                                                         
 - **`methodology`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_15.JPG){width=100%}
 
   This element documents methodological details on the production of the series or indicator. 
 
 - **`derivation`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_15a.JPG){width=100%}
 
 A description of the method and calculations used to derive the estimates for the indicator.
 
 - **`imputation`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_16.JPG){width=100%}
 
   Data may have been imputed to account for data gaps or for other reasons (harmonization/standardization, and others). If imputations have been made, this element provides the space for their description.
 
 - **`missing`** *[Optional ; Not repeatable ; String]*<br>
-![](./images/ReDoc_ts_series_17.JPG){width=100%}
 
   Information on missing values in the series or indicator. This information can be related to treatment of missing values, to the cause(s) of missing values, and others.
   
 - **`quality_checks`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_18.JPG){width=100%}
 
   Data may have gone through data quality checks to assure that the values are reasonable and coherent, which can be described in this element. These quality checks may include checking for outlying values or other. A brief description of such quality control procedures will contribute to reinforcing the credibility of the data being disseminated. 
 
 - **`quality_note`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_19.JPG){width=100%}
 
   Additional notes or an overall statement on data quality. These could for example cover non-standard quality notes and/or information on independent reviews on the data quality.
  
 - **`sources_discrepancies`** *[Optional ; Not repeatable ; String]*<br>
-![](./images/ReDoc_ts_series_20.JPG){width=100%}
 
   This element is used to describe and explain why the data in the series may be different from the data for the same series published in other sources. International organizations, for example, may apply different techniques to make data obtained from national sources comparable across countries, in which cases the data published in international databases may differ from the data published in national, official databases.
                                                         
 - **`series_break`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_21.JPG){width=100%}
 
   Breaks in statistical series occur when there is a change in the standards, sources of data, or reference year used in the compilation of a series. Breaks in series must be well documented. The documentation should include the reason(s) for the break, the time it occured, and information on the impact on comparability of data over time.
 
 - **`limitation`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_22.JPG){width=100%}
 
   This element is used to communicate to the user any limitations or exceptions in using the data. The limitations may result from the methodology, from issues of quality or consistency in the data source, or other. 
                                                                  
 - **`themes`** *[Optional ; Repeatable]* <br>
 Themes provide a general idea of the research that might guide the creation and/or demand for the series. A theme is broad and is likely also subject to a community based definition or list. A controlled vocabulary should be used. This element will rarely be used (the element `topics` described below will be used more often).
-
-  ![](./images/ReDoc_ts_series_23.JPG){width=100%}
+<br>
+```json
+"themes": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`id`** *[Optional ; Not repeatable ; String]*<br>
   The unique identifier of the theme. It can be a sequential number, or the ID of the theme in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -307,7 +441,17 @@ Themes provide a general idea of the research that might guide the creation and/
   
 - **`topics`** *[Optional ; Repeatable]*<br>
 The `topics` field indicates the broad substantive topic(s) that the indicator/series covers. A topic classification facilitates referencing and searches in electronic survey catalogs. Topics should be selected from a standard controlled vocabulary such as the [Council of European Social Science Data Archives (CESSDA) topics classification](https://vocabularies.cessda.eu/vocabulary/TopicClassification). <br>
-  ![](./images/ReDoc_ts_series_24.JPG){width=100%}
+"topics": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`id`** *[Optional ; Not repeatable ; String]* <br>
   The unique identifier of the topic. It can be a sequential number, or the ID of the topic in a controlled vocabulary.
   - **`name`** *[Required ; Not repeatable ; String]* <br>
@@ -321,8 +465,19 @@ The `topics` field indicates the broad substantive topic(s) that the indicator/s
 
 - **`disciplines`** *[Optional ; Repeatable]* <br>
 Information on the academic disciplines related to the content of the document. A controlled vocabulary will preferably be used, for example the one provided by the list of academic fields in [Wikipedia](https://en.wikipedia.org/wiki/List_of_academic_fields). 
-
-  ![](./images/ReDoc_ts_series_25.JPG){width=100%}
+<br>
+```json
+"disciplines": [
+  {
+    "id": "string",
+    "name": "string",
+    "parent_id": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
 
   This is a block of five elements:
   
@@ -338,14 +493,22 @@ Information on the academic disciplines related to the content of the document. 
   The URL to the controlled vocabulary used, if any.<br><br>
  
 - **`relevance`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_26.JPG){width=100%}
 
   This field documents the relevance of an indicator or series in relation to a social imperative or policy objective.<br>
 
 - **`time_periods`** *[Optional ; Repeatable]* <br>
 The time period covers the entire span of data available for the series. The time period has a start and an end and is reported according to the periodicity provided in a previous element. 
-
-  ![](./images/ReDoc_ts_series_27.JPG){width=100%}
+<br>
+```json
+"time_periods": [
+  {
+    "start": "string",
+    "end": "string",
+    "notes": "string"
+  }
+]
+```
+<br>
   - **`start`** *[Required ; Not repeatable ; String]* <br>
   The initial date of the series in the dataset. The start date should be entered in ISO 8601 format (YYYY-MM-DD or YYYY-MM or YYYY).
   - **`end`** *[Required ; Not repeatable ; String]* <br>
@@ -355,8 +518,16 @@ The time period covers the entire span of data available for the series. The tim
 
 - **`ref_country`** *[Optional ; Repeatable]* <br>   
 A list of countries for which data are available in the series. This element is somewhat redundant with the next element (`geographic_units`) which may also contain a list of countries. Identifying geographic areas of type "country" is important to enable filters and facets in data catalogs (country names are among the most frequent queries submitted to catalogs).
-
-  ![](./images/ReDoc_ts_series_27a.JPG){width=100%} 
+<br>
+```json
+"ref_country": [
+  {
+    "name": "string",
+    "code": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   The name of the country.
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -364,8 +535,17 @@ A list of countries for which data are available in the series. This element is 
                              
 - **`geographic_units`** *[Optional ; Repeatable]* <br>
 List of geographic units (regions, countries, states, provinces, etc.) for which data are available for the series.
-
-  ![](./images/ReDoc_ts_series_28.JPG){width=100%}
+<br>
+```json
+"geographic_units": [
+  {
+    "name": "string",
+    "code": "string",
+    "type": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]* <br>
   Name of the geographic unit e.g. "World, "Africa", "Afghanistan", "OECD countries", "Bangkok".
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
@@ -375,8 +555,18 @@ List of geographic units (regions, countries, states, provinces, etc.) for which
 
 - **`bbox`** *[Optional ; Repeatable]* <br>
 This element is used to define one or multiple bounding box(es), which are the rectangular fundamental geometric description of the geographic coverage of the data. A bounding box is defined by west and east longitudes and north and south latitudes, and includes the largest geographic extent of the dataset's geographic coverage. The bounding box provides the geographic coordinates of the top left (north/west) and bottom-right (south/east) corners of a rectangular area. This element can be used in catalogs as the first pass of a coordinate-based search. This element is optional, but if the `bound_poly` element (see below) is used, then the `bbox` element must be included.<br>
-
-  ![](./images/ReDoc_Microdata_16.JPG){width=100%}
+<br>
+```json
+"bbox": [
+  {
+    "west": "string",
+    "east": "string",
+    "south": "string",
+    "north": "string"
+  }
+]
+```
+<br>
   - **`west`** *[Required ; Not repeatable ; String]* <br>
   West longitude of the bounding box. <br>
   - **`east`** *[Required ; Not repeatable ; String]* <br>
@@ -427,24 +617,28 @@ my_indicator <- list(
 )    
 ```
 <br>
-
-![](./images/ReDoc_ts_series_28a.JPG){width=100%}
-
                                    
 - **`aggregation_method`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_29.JPG){width=100%}
 
   The `aggregation_method` element describes how values can be aggregated from one geographic level (for example, a country) to a higher-level geographic area (for example, a group of country defined based on a geographic criteria (region, world) or another criteria (low/medium/high-income countries, island countries, OECD countries, etc.). The aggregation method can be simple (like "sum" or "population-weighted average") or more complex, involving weighting of values.<br>
                                                 
 - **`disaggregation`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_30.JPG){width=100%}
 
   This element is intended to inform users that an indicator or series is available at various levels of disaggregation. The related series should be listed (by andme and/or identifier). For indicator "Population, total" for example, one may inform the user that the indicator is also available (in other series) by sex, urban/rural, and age group (in series "Population, male" and "Population, female", etc.).
                                                           
 - **`license`** *[Optional ; Repeatable]* <br>
 The license refers to the accessibility and terms of use associated with the data. Providing a license and a link to the terms of the license allos data users to determine, with full clarity, what they can and cannot do with the data.
-
-  ![](./images/ReDoc_ts_series_31.JPG){width=100%}
+<br>
+```json
+"license": [
+  {
+    "name": "string",
+    "uri": "string",
+    "note": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; Not repeatable ; String]*<br>
   The name of the license, e.g. "Creative Commons Attribution 4.0 International license (CC-BY 4.0)".
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -453,24 +647,30 @@ The license refers to the accessibility and terms of use associated with the dat
   Any additional information on the license.<br><br>
 
 - **`confidentiality`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_32.JPG){width=100%}
 
   A statement of confidentiality for the series. 
                                                                                 
 - **`confidentiality_status`** *[Optional ; Not repeatable ; String]*  <br>
-![](./images/ReDoc_ts_series_33.JPG){width=100%}
 
   This indicates a confidentiality status for the series. A controlled vocabulary should be used with possible options "public", "official use only", "confidential", "strictly confidential". When all series are made publicly available, and belong to a database that has an open or public access policy, this element can be ignored.
 
 - **`confidentiality_note`** *[Optional ; Not repeatable ; String]* <br>
-![](./images/ReDoc_ts_series_34.JPG){width=100%}
 
   This element is reserved for additional notes regarding confidentiality of the data. This could involve references to specific laws and circumstances regarding the use of data.<br>
                                                  
 - **`links`** *[Optional ; Repeatable]* <br>
 This element provides links to online resources of any type that could be useful to the data users. This can be links to description of methods and reference documents, analytics tools, visualizations, data sources, or other. 
-
-  ![](./images/ReDoc_ts_series_35.JPG){width=100%}
+<br>
+```json
+"links": [
+  {
+    "type": "string",
+    "description": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`type`** *[Optional ; Not repeatable ; String]* <br>
   This element allows to classify the link that is provided. 
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
@@ -480,8 +680,16 @@ This element provides links to online resources of any type that could be useful
  
 - **`api_documentation`** *[Optional ; Repeatable]* <br>
 Increasingly, data are made accessible via Application Programming Interfaces (APIs). The API associated with a series must be documented. The documentation will usually not be specific to a series, but apply to all series in a same database.
- 
-  ![](./images/ReDoc_ts_series_36.JPG){width=100%}
+<br>
+```json
+"api_documentation": [
+  {
+    "description": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
   This element will not contain the API documentation itself, but information on what documentation is available.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
@@ -489,8 +697,19 @@ Increasingly, data are made accessible via Application Programming Interfaces (A
  
 - **`authoring_entity`** *[Optional ; Repeatable]* <br>
 This set of five elements is used to identify the organization(s) or person(s) who are the main producers/curators of the indicator. Note that a similar element is provided at the database level. The authoring_entity for the indicator can be different from the authoring_entity of the database. For example, the World Bank is the authoring entity for the World Development Indicators database, which contains indicators obtained from the International Monetary Fund, World Health Organization, and other organizations that are thus the authoring entitis for specific indicators.  
-
-  ![](./images/ReDoc_ts_database_36b.JPG){width=100%}
+<br>
+```json
+"authoring_entity": [
+  {
+    "name": "string",
+    "affiliation": "string",
+    "abbreviation": null,
+    "email": null,
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the person or organization who is responsible for the production of the indicator or series. Write the name in full (use the element `abbreviation` to capture the acronym of the organization, if relevant). 
   - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
@@ -504,8 +723,19 @@ This set of five elements is used to identify the organization(s) or person(s) w
                                                                  
 - **`sources`** *[Optional ; Not repeatable ; String]* <br>
 This element provides information on the source(s) of data that were used to generate the indicator. A source can refer to an organization (e.g., "Source: World Health Organization"), or to a dataset (e.g., for a national poverty headcount indicator, the sources will likely be a list of sample household surveys). In `sources`, we are mainly interested in the latter. When a series in a database is a series extracted from another database (e.g., when the World Bank World Development Indicators include a series from the World Health Organization in its database), the source organization should be mentioned in the `authoring_entity` element of the schema. The `sources` element is a repeatable element. In international databases where series cover many countries, a series may have a large number of sources (for example, the World Bank poverty headcount data are extracted from hundreds of different national household surveys). The content of this element can thus be quite large. This information is however useful, as it contributes to establish the traceability and credibility of the data.  
-
-  ![](./images/ReDoc_ts_series_37.JPG){width=100%}
+<br>
+```json
+"sources": [
+  {
+    "id": "string",
+    "name": "string",
+    "organization": "string",
+    "type": "string",
+    "note": "string"
+  }
+]
+```
+<br>
   - **`id`** *[Required ; String]* <br>
   This element records the unique identifier of a source. It is a required element. If the source does not have a specific unique identifier, a sequential number can be used. If the source is a dataset or database that has its own unique identifier (possibly a DOI), this identifier should be used. 
   - **`name`** *[Optional ; String]* <br>
@@ -518,14 +748,22 @@ This element provides information on the source(s) of data that were used to gen
   This element can be used to provide additional information regarding the source data.<br><br>
 
 - **`sources_note`** *[Optional ; Not repeatable ; String]*<br>
-![](./images/ReDoc_ts_series_38.JPG){width=100%}
 
   Additional information on the source(s) of data used to generate the series or indicator.
 
 - **`keywords`** *[Optional ; Repeatable]* <br>
 Words or phrases that describe salient aspects of a data collection's content. Can be used for building keyword indexes and for classification and retrieval purposes. A controlled vocabulary can be employed. Keywords should be selected from a standard thesaurus, preferably an international, multilingual thesaurus. <br>
-
-  ![](./images/ReDoc_ts_series_39.JPG){width=100%}
+<br>
+```json
+"keywords": [
+  {
+    "name": "string",
+    "vocabulary": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Required ; String ; Non repeatable]* <br>
   Keyword (or phrase). Keywords summarize the content or subject matter of the study. 
   - **`vocabulary`** *[Optional ; Not repeatable ; String]* <br>
@@ -535,8 +773,17 @@ Words or phrases that describe salient aspects of a data collection's content. C
 
 - **`acronyms`** *[Optional ; Repeatable]* <br>
 The `acronyms` element is used to document the meaning of all acronyms used in the metadata of a series. If some acronyms are well known (like "GDP", or "IMF" for example), others may be less obvious or could be uncertain (does "PPP" mean "public-private partnership", or "purchasing power parity"?). In any case, providing a list of acronyms with their meaning will help users and make your metadata more discoverable. Note that acronyms should not include country codes used in the documentation of the geographic coverage of the data. 
-
-  ![](./images/ReDoc_ts_series_40.JPG){width=100%}
+<br>
+```json
+"acronyms": [
+  {
+    "acronym": "string",
+    "expansion": "string",
+    "occurrence": 0
+  }
+]
+```
+<br>
   - **`acronym`** *[Required ; Not repeatable ; String]* <br>
   An acronym referenced in the series metadata (e.g. "GDP").
   - **`expansion`** *[Required ; Not repeatable ; String]* <br>
@@ -546,8 +793,16 @@ The `acronyms` element is used to document the meaning of all acronyms used in t
 
 - **`errata`** *[Optional ; Repeatable]* <br>
 This element is used to provide information on detected errors in the data or metadata for the series, and on the measures taken to remedy them. 
-
-  ![](./images/ReDoc_ts_series_40b.JPG){width=100%}
+<br>
+```json
+"errata": [
+  {
+    "date": "string",
+    "description": "string"
+  }
+]
+```
+<br>
   - **`date`** *[Required ; Repeatable ; String]* <br>
   The date the erratum was published.<br>
   - **`description`** *[Required ; Repeatable ; String]* <br>
@@ -555,15 +810,31 @@ This element is used to provide information on detected errors in the data or me
                                                         
 - **`notes`** *[Optional ; Repeatable]* <br>
 This element is open and reserved for explanatory notes deemed useful to the users of the data. Notes should account for additional information that might help: replicate the series; access the data and research area, or discoverability in general. 
-
-  ![](./images/ReDoc_ts_series_41.JPG){width=100%}
+<br>
+```json
+"notes": [
+  {
+    "note": "string"
+  }
+]
+```
+<br>
   - **`note`** *[Required ; Repeatable ; String]* <br>
   The note itself.<br><br>
 
 - **`related_indicators`** *[Optional ; Repeatable]* <br>
 This element allows to reference indicators that are often associated with the indicator being documented.
-
-  ![](./images/ReDoc_ts_series_42.JPG){width=100%}
+<br>
+```json
+"related_indicators": [
+  {
+    "code": "string",
+    "label": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`code`** *[Optional ; Not repeatable ; String]* <br>
   The code for the indicator that is referenced in the document. It will likely be an ID that is used by that indicator.
   - **`label`** *[Optional ; Not repeatable ; String]* <br>
@@ -573,8 +844,18 @@ This element allows to reference indicators that are often associated with the i
 
 - **`compliance`** *[Optional ; Repeatable]* <br>  
 For some indicators, international standards have been established. This is for example the case of indicators like the unemployment or unemployment rate, for which the International Conference of Labour Statisticians defines the standards concepts and methods. The `compliance` element is used to document the compliance of a series with one or multiple national or international standards.  
-
-  ![](./images/ReDoc_ts_series_43.JPG){width=100%}
+<br>
+```json
+"compliance": [
+  {
+    "standard": "string",
+    "abbreviation": "string",
+    "custodian": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`standard`** *[Optional ; Not repeatable ; String]* <br>
   The name of the standard that the series complies with. This name will ideally include a label and a version or a date. For example: "International Standard Industrial Classification of All Economic Activities (ISIC) Revision 4, published in 2007"
   - **`abbreviation`** *[Optional ; Not repeatable ; String]* <br>
@@ -586,8 +867,29 @@ For some indicators, international standards have been established. This is for 
 
 - **`framework`** *[Optional ; Repeatable]* <br>   
 Some national, regional, and international agencies develop monitoring frameworks, with goals, targets, and indicators. Some well-known examples are the [Millennium Development Goals](https://www.un.org/millenniumgoals/) and the [Sustainable Development Goals](https://sdgs.un.org/goals) which establish international goals for human development, or the World Summit for Children (1990) which set international goals in the areas of child survival, development and protection, supporting sector goals such as women’s health and education, nutrition, child health, water and sanitation, basic education, and children in difficult circumstances. The `framework` element is used to link an indicator or series to the framework, goal, and target associated with it. 
-
-  ![](./images/ReDoc_ts_series_44.JPG){width=100%}
+<br>
+```json
+"framework": [
+  {
+    "name": "string",
+    "abbreviation": "string",
+    "custodian": "string",
+    "description": "string",
+    "goal_id": "string",
+    "goal_name": "string",
+    "goal_description": "string",
+    "target_id": "string",
+    "target_name": "string",
+    "target_description": "string",
+    "indicator_id": "string",
+    "indicator_name": "string",
+    "indicator_description": "string",
+    "uri": "string",
+    "notes": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]*<br>
   The name of the framework. 
   - **`abbreviation`** *[Optional ; Not repeatable ; String]*<br>
@@ -622,8 +924,18 @@ Some national, regional, and international agencies develop monitoring framework
 
 - **`series_group`** *[Optional ; Repeatable]* <br>  
 The group(s) the indicator belongs to. Groups can be create to organize indicators/series by theme, producer, or other.  
-
-  ![](./images/ReDoc_ts_series_44b.JPG){width=100%}
+<br>
+```json'
+"series_groups": [
+  {
+    "name": "string",
+    "description": "string",
+    "version": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
   - **`name`** *[Optional ; Not repeatable ; String]* <br>
   The name of the group.
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
@@ -637,8 +949,22 @@ The group(s) the indicator belongs to. Groups can be create to organize indicato
 
 **`provenance`** *[Optional ; Repeatable]* <br>
 Metadata can be programmatically harvested from external catalogs. The `provenance` group of elements is used to store information on the provenance of harvested metadata, and on alterations that may have been made to the harvested metadata.<br>
-
-![](./images/ReDoc_ts_series_55.JPG){width=100%}
+<br>
+```json
+"provenance": [
+	{
+		"origin_description": {
+			"harvest_date": "string",
+			"altered": true,
+			"base_url": "string",
+			"identifier": "string",
+			"date_stamp": "string",
+			"metadata_namespace": "string"
+		}
+	}
+]
+```
+<br>
 
   - **`origin_description`** *[Required ; Not repeatable]* <br>
   The `origin_description` elements are used to describe when and from where metadata have been extracted or harvested.  <br>
@@ -660,7 +986,16 @@ Metadata can be programmatically harvested from external catalogs. The `provenan
 
 **`tags`** *[Optional ; Repeatable]* <br>
 As shown in section 1.7 of the Guide, tags, when associated with `tag_groups`, provide a powerful and flexible solution to enable custom facets (filters) in data catalogs.
-![](./images/ReDoc_ts_series_48.JPG){width=100%}  
+<br>
+```json
+"tags": [
+	{
+		"tag": "string",
+		"tag_group": "string"
+	}
+]
+```
+<br>
 
 - **`tag`** *[Required ; Not repeatable ; String]* <br>
 A user-defined tag.
@@ -668,7 +1003,39 @@ A user-defined tag.
 A user-defined group (optional) to which the tag belongs. Grouping tags allows implementation of controlled facets in data catalogs.
 
 - **`lda_topics`** *[Optional ; Not repeatable]* <br>
-![](./images/ReDoc_documents_17.JPG){width=100%}  
+<br>
+```json
+"lda_topics": [
+	{
+		"model_info": [
+			{
+				"source": "string",
+				"author": "string",
+				"version": "string",
+				"model_id": "string",
+				"nb_topics": 0,
+				"description": "string",
+				"corpus": "string",
+				"uri": "string"
+			}
+		],
+		"topic_description": [
+			{
+				"topic_id": null,
+				"topic_score": null,
+				"topic_label": "string",
+				"topic_words": [
+					{
+						"word": "string",
+						"word_weight": 0
+					}
+				]
+			}
+		]
+	}
+]
+```
+<br>
 
    We mentioned in Chapter 1 the importance of producing rich metadata, and the opportunities that machine learning offers to enrich (or "augment") metadata in a largely automated manner. One application of machine learning, more specifically of natural language processing, to enrich metadata related to publications is the topic extraction using Latent Dirichlet Allocation (LDA) models. LDA models must be trained on large corpora of documents. They do not require any pre-defined taxonomy of topics. The approach consists of "clustering" words that are likely to appear in similar contexts (the number of "clusters" or "topics" is a parameter provided when training a model). Clusters of related words form "topics". A topic is thus defined by a list of keywords, each one of them provided with a score indicating its importance in the topic. Typically, the top 10 words that represent a topic will be used to describe it. The description of the topics covered by a document can be indexed to improve searchability (possibly in a selective manner, by setting thresholds on the topic shares and word weights).  
 
@@ -779,7 +1146,18 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
   
   The word vectors do not have to be stored in the series/indicator metadata to be exploited by search engines. When a semantic search tool is implemented in a catalog, the vectors will be stored in a database end processed by a tool like Milvus. A metadata element is however provided to store the vectors for preservation and sharing purposes. This block of metadata elements is repeatable, allowing multiple vectors to be stored. When using vectors in a search engine, it is critical to only use vectors generated by one same model. 
   
-  ![](./images/ReDoc_ts_series_46.JPG){width=100%}
+<br>
+```json
+"embeddings": [
+	{
+		"id": "string",
+		"description": "string",
+		"date": "string",
+		"vector": null
+	}
+]
+```
+<br>
   
   The `embeddings` element contains four metadata fields:
   
@@ -796,8 +1174,6 @@ In Chapter 1 (section 1.n), we briefly introduced the concept of word embeddings
 
 **`additional`** *[Optional ; Not repeatable]*<br>
 The `additional` element allows data curators to add their own metadata elements to the schema. All custom elements must be added within the `additional` block; embedding them elsewhere in the schema would cause schema validation to fail.
-
-![](./images/ReDoc_ts_series_49.JPG){width=100%}
 
 
 ## Generating and publishing compliant metadata - Complete example
