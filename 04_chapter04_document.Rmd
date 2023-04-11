@@ -340,16 +340,16 @@ my_doc <- list(
 If the source is a text within an edited volume, it should be listed under the name of the author of the text used, not under the name of the editor. The name of the editor should however be provided in the bibliographic citation, in accordance with a [reference style](https://awelu.srv.lu.se/sources-and-referencing/using-a-reference-style/elements-of-the-reference-list/). 
 
 <br>
-   ```json
-   "editors": [
-	{
-		"first_name": "string",
-		"initial": "string",
-		"last_name": "string",
-		"affiliation": "string"
-	}
-   ]
-   ```
+```json
+"editors": [
+{
+	"first_name": "string",
+	"initial": "string",
+	"last_name": "string",
+	"affiliation": "string"
+}
+]
+```
 <br>
 
   - **`first_name`** *[Optional ; Not repeatable ; String]* <br>
