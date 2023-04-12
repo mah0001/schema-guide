@@ -134,11 +134,18 @@ For microdata: embeddings based on thematic variable groupings - an option to im
 Discovery of microdata poses specific challenges. Typically, a data dictionary will be available, with variables organized by data file. A "virtual" organization of variables by thematic group, with a pre-defined ontology, can significantly improve data discoverability. AI solutions can be used to generate such groupings and map variables to them. The DDI metadata standard provides the metadata elements needed to store information on variable groups.
 
 
-### Customized views and dashboards
+### Customized views 
 
 Build your own dashboards
 - Allo users to set preferences: thematic, data type, geographies, search query
 - Have a page where pre-designed dashboards (country/thematic pages) and custom dashboard are accessible
+- Allow sharing of dashboards
+- Core idea: all data and metadata accessible via API; platform operates as a service to feed dashboards (within the platform or external) 
+
+
+### Data and metadata as a service
+
+- Maintain a data service: let external users build dashboards/poaltorms dynamically connected via API; one organization cannot customize to all communities of users.
 
 
 ### Query user interface
