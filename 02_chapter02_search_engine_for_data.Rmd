@@ -48,6 +48,10 @@ The catalog must provide a list of the most recent additions, and a history of a
 For each entry, information must be available on the date the entry was first added to the catalog, and when it was last updated.
 When a dataset is replaced with a new version, the versioning must be clear.
 
+<br>
+![image](https://user-images.githubusercontent.com/35276300/231492091-a96d4c5c-c461-4b5f-88c1-f8db26daa98d.png)
+<br>
+
 
 ### Advanced search 
 
@@ -130,6 +134,13 @@ For microdata: embeddings based on thematic variable groupings - an option to im
 Discovery of microdata poses specific challenges. Typically, a data dictionary will be available, with variables organized by data file. A "virtual" organization of variables by thematic group, with a pre-defined ontology, can significantly improve data discoverability. AI solutions can be used to generate such groupings and map variables to them. The DDI metadata standard provides the metadata elements needed to store information on variable groups.
 
 
+### Customized views and dashboards
+
+Build your own dashboard
+- Set preferences: thematic, data type, geographies, search
+- Have a page where pre-designed dashboards (country/thematic pages) and cisrtom dashboard are accessible
+
+
 ### Query user interface
 
 For time series only
@@ -171,6 +182,11 @@ Tags and tag groups (which are available in all schemas we recommend) provide mu
 ### Sorting results
 
 Sorting results
+
+
+### Collections
+
+Organize entries by collections
 
 
 ### Linking results 
