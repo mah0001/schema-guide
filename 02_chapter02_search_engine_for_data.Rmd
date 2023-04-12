@@ -136,9 +136,9 @@ Discovery of microdata poses specific challenges. Typically, a data dictionary w
 
 ### Customized views and dashboards
 
-Build your own dashboard
-- Set preferences: thematic, data type, geographies, search
-- Have a page where pre-designed dashboards (country/thematic pages) and cisrtom dashboard are accessible
+Build your own dashboards
+- Allo users to set preferences: thematic, data type, geographies, search query
+- Have a page where pre-designed dashboards (country/thematic pages) and custom dashboard are accessible
 
 
 ### Query user interface
