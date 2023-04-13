@@ -70,6 +70,7 @@ The DDI-Codebook is a comprehensive, structured list of elements to be used to d
 - **Variable groups** (`variable_groups`), an optional section that allows organizing variables by thematic or other groups, independently from the data file they belong to. Variable groups are "virtual"; the grouping of variables does not affect the data files.
 
 The other sections in the schema are not part of the DDI Codebook itself. Some are used for catalog administration purposes when the NADA cataloguing application is used (`repositoryid`, `access_policy`, `published`, `overwrite`, and `provenance`). 
+
 - **`repositoryid`** identifies the data catalog/collection in which the metadata will be published. 
 - **`access_policy`** indicates the access policy to be applied to the microdata (open access, public use files, licensed access, no access, etc.)
 - **`published`**: Indicates whether the metadata will be made visible to visitors of the catalog. By default, the value is 0 (unpublished). This value must be set to 1 (published) to make the metadata visible.
