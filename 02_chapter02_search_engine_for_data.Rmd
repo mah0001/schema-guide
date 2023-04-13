@@ -153,18 +153,6 @@ Build your own dashboards
 For time series only
 
 
-### API access documentation
-
-Metadata (and data) should be accessible via API
-The API should be well documented with examples.
-
-
-### API query builder
-
-Applies only when catalog provides access to data via API
-UI for building an API query
-
-
 ### Ranking results 
 
 A search engine not only needs to identify relevant datasets but also must return the results in a proper order of relevance, with the most relevant results at the top of the list. If users fail to find a relevant response among the top results, they may choose to search for data elsewhere. The ability of a search engine to return relevant results in the optimal rank depends on the metadata's content and structure. To optimize the ranking of results, a lot of relevance engineering is required, including tuning advanced search tools like Solr or ElasticSearch. Large data catalogs managed by well-resourced agencies can leverage data scientists to explore the possibility of using machine learning solutions such as "learn-to-rank" to improve result ranking. See section "Improving results ranking" below. For more detailed information, see D. Turnbull and J. Berryman's (2016) in-depth description of tools and methods.
@@ -281,15 +269,19 @@ The terms of use (ideally provided in the form of a standard license) and the co
 
 To keep up with modern data management needs, a comprehensive data catalog must provide users with convenient access to both data and metadata through an application programming interface (API). The structured metadata in a catalog allows users to extract specific components of the metadata they need, such as the identifier and title of all microdata and geographic datasets conducted after a certain year. With an API, users can easily and automatically access datasets or subsets of datasets they require. This enables internal features of the catalog such as dynamic visualizations and data previews, making data management more efficient. It is crucial that detailed documentation and guidelines on the use of the data and metadata API are provided to users to maximize the benefits of this feature.
 
+Metadata (and data) should be accessible via API
+The API should be well documented with examples.
+API query builder: UI for building an API query
 
-#### Data access forms
 
-Make process of registration/acquisition easy
+### Online data access forms 
+
+Make the process of registration, requests fully digital, easy, and fully traceable.
 
 
 #### Bulk download option
 
-Even when UI or visualizations etc are shown, many users just want to downlaowd the data and metadata.
+Even when UI or visualizations etc are shown, many users just want to downlaod the data and metadata.
 (...)
 
 
@@ -308,6 +300,11 @@ For a document, the "data preview" would consist of a document viewer that would
 ![image](https://user-images.githubusercontent.com/35276300/230733447-55c75dbb-5e5c-4788-9e58-ae4fca646a85.png)
 </center>
 <br>
+
+
+### Data extraction
+
+For some data (microdata / time series), provide a simple way for users to extract specific variables / observations.
 
 
 ### Data visualizations
@@ -388,7 +385,7 @@ Example of Google SCholar alerts:
 
 Feedback on catalog certainly. In the form of a "Contact" email and possibly a "feedback form". Also, if the platform itself is open source, GitHub for issues and suggestions on the application itself.
 
-BUT: Users forum, "reviews" as in e-commerce platforms, is not recommended. Not all users are 'constructive" and qualified. Requires moderation, which can be costly and controversial. May create di-incentives for data producers to publish their data.
+BUT: Users forum, "reviews" as in e-commerce platforms, is not always recommended. Not all users are 'constructive" and qualified. Requires moderation, which can be costly and controversial. May create dis-incentives for data producers to publish their data. Could be a good option for data platforms that are internal to an organization (where comments are attributed, and an authentication system controls who can provide feedback), but not for public data platforms.
 
 
 ### Getting support
