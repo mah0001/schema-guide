@@ -1737,16 +1737,15 @@ A block of metadata elements used to describe the methodology employed in a data
   }
 ]
 ```
-<br>
 
-    - **`name`** *[Optional ; Not repeatable ; String]* <br>
-    In most cases, we will record here the name of the agency, not the name of interviewers. Only in the case of very small-scale surveys, with a very limited number of interviewers, the name of persons will be included as well.
-    - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
-    The affiliation of the data collector mentioned in `name`. 
-    - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
-    The abbreviation given to the agency mentioned in `name`. 
-    - **`role`** *[Optional ; Not repeatable ; String]* <br>
-    The specific role of the person or agency mentioned in `name`.<br><br>
+  - **`name`** *[Optional ; Not repeatable ; String]* <br>
+  In most cases, we will record here the name of the agency, not the name of interviewers. Only in the case of very small-scale surveys, with a very limited number of interviewers, the name of persons will be included as well.
+  - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
+  The affiliation of the data collector mentioned in `name`. 
+  - **`abbr`** *[Optional ; Not repeatable ; String]* <br>
+  The abbreviation given to the agency mentioned in `name`. 
+  - **`role`** *[Optional ; Not repeatable ; String]* <br>
+  The specific role of the person or agency mentioned in `name`.<br><br>
 
   - **`collector_training`** *[Optional ; Repeatable]* <br>  
   Describes the training provided to data collectors including interviewer training, process testing, compliance with standards etc. This set of elements is repeatable, to capture different aspects of the training process. 
@@ -1761,10 +1760,10 @@ A block of metadata elements used to describe the methodology employed in a data
 ```
 <br>
 
-    - **`type`** *[Optional ; Not repeatable ; String]* <br>
-    The type of training being described. For example, "Training of interviewers", "Training of controllers", "Training of cartographers", "Training on the use of tablets for data collection", etc.<br>
-    - **`training`** *[Optional ; Not repeatable ; String]* <br>
-    A brief description of the training. This may include information on the dates and duration, audience, location, content, trainers, issues, etc.<br>
+  - **`type`** *[Optional ; Not repeatable ; String]* <br>
+  The type of training being described. For example, "Training of interviewers", "Training of controllers", "Training of cartographers", "Training on the use of tablets for data collection", etc.<br>
+  - **`training`** *[Optional ; Not repeatable ; String]* <br>
+  A brief description of the training. This may include information on the dates and duration, audience, location, content, trainers, issues, etc.<br>
           
   - **`frequency`** *[Optional ; Not repeatable ; String]* <br>
   For data collected at more than one point in time, the frequency with which the data were collected.<br>
@@ -1803,37 +1802,37 @@ A block of metadata elements used to describe the methodology employed in a data
 ```
 <br>
 
-    - **`name`** *[Optional ; Not Repeatable]* <br>
-    The name (title) of the sample frame. <br>
-    - **`valid_period`** *[Optional ; Repeatable]* <br>
-    Defines a time period for the validity of the sampling frame, using a list of events and dates. <br>
-      - **`event`** *[Optional ; Not repeatable ; String]* <br>
-      The event can for example be `start` or `end`.
-      - **`date`** *[Optional ; Not repeatable ; String]* <br>
-      The date corresponding to the event, entered in ISO 8601 format: YYYY-MM-DD.<br><br>
-      
-    - **`custodian`** *[ Optional ; Not Repeatable]* <br>
-      Custodian identifies the agency or individual responsible for creating and/or maintaining the sample frame.
-    - **`universe`** *[Optional ; Not Repeatable]* <br>
-    A description of the universe of population covered by the sample frame. Age,nationality, and residence commonly help to delineate a given universe, but any of a number of factors may be involved, such as sex, race, income, etc. The universe may consist of elements other than persons, such as housing units, court cases, deaths, countries, etc. In general, it should be possible to tell from the description of the universe whether a given individual or element (hypothetical or real) is included in the sample frame.
-    - **`frame_unit`** *[Optional ; Not Repeatable]* <br>
-    Provides information about the sampling frame unit. 
-      - **`is_primary`** *[Optional ; Boolean ; Not Repeatable]* <br>
-      This boolean attribute (true/false) indicates whether the unit is primary or not.
-      - **`unit_type`** *[Optional ; Not repeatable ; String]* <br>
-      The type of the sampling frame unit (for example "household", or "dwelling").
-      - **`num_of_units`** *[Optional ; Not Repeatable ; String]*<br>   
-      The number of units in the sample frame, possibly with information on its distribution (e.g. by urban/rural, province, or other).<br><br>
-      
-    - **`reference_period`** *[Optional ; Not Repeatable]* <br>
-    Indicates the period of time in which the sampling frame was actually used for the study in question. Use ISO 8601 date format to enter the relevant date(s). 
-      - **`event`** *[Optional ; Not repeatable ; String]* <br>
-      Indicates the type of event that the date corresponds to, e.g., "start", "end", "single".
-      - **`date`** *[Optional ; Not repeatable ; String]* <br>
-      The relevant date in ISO 8601 date/time format.<br><br>
-      
-    - **`update_procedure`** *[Optional ; Not repeatable ; String]* <br>
-    This element is used to describe how and with what frequency the sample frame is updated. For example: "The lists and boundaries of enumeration areas are updated every ten years at the occasion of the population census cartography work. Listing of households in enumeration areas are updated as and when needed, based on their selection in survey samples." <br><br>
+  - **`name`** *[Optional ; Not Repeatable]* <br>
+  The name (title) of the sample frame. <br>
+  - **`valid_period`** *[Optional ; Repeatable]* <br>
+  Defines a time period for the validity of the sampling frame, using a list of events and dates. <br>
+    - **`event`** *[Optional ; Not repeatable ; String]* <br>
+    The event can for example be `start` or `end`.
+    - **`date`** *[Optional ; Not repeatable ; String]* <br>
+    The date corresponding to the event, entered in ISO 8601 format: YYYY-MM-DD.<br><br>
+
+  - **`custodian`** *[ Optional ; Not Repeatable]* <br>
+    Custodian identifies the agency or individual responsible for creating and/or maintaining the sample frame.
+  - **`universe`** *[Optional ; Not Repeatable]* <br>
+  A description of the universe of population covered by the sample frame. Age,nationality, and residence commonly help to delineate a given universe, but any of a number of factors may be involved, such as sex, race, income, etc. The universe may consist of elements other than persons, such as housing units, court cases, deaths, countries, etc. In general, it should be possible to tell from the description of the universe whether a given individual or element (hypothetical or real) is included in the sample frame.
+  - **`frame_unit`** *[Optional ; Not Repeatable]* <br>
+  Provides information about the sampling frame unit. 
+    - **`is_primary`** *[Optional ; Boolean ; Not Repeatable]* <br>
+    This boolean attribute (true/false) indicates whether the unit is primary or not.
+    - **`unit_type`** *[Optional ; Not repeatable ; String]* <br>
+    The type of the sampling frame unit (for example "household", or "dwelling").
+    - **`num_of_units`** *[Optional ; Not Repeatable ; String]*<br>   
+    The number of units in the sample frame, possibly with information on its distribution (e.g. by urban/rural, province, or other).<br><br>
+
+  - **`reference_period`** *[Optional ; Not Repeatable]* <br>
+  Indicates the period of time in which the sampling frame was actually used for the study in question. Use ISO 8601 date format to enter the relevant date(s). 
+    - **`event`** *[Optional ; Not repeatable ; String]* <br>
+    Indicates the type of event that the date corresponds to, e.g., "start", "end", "single".
+    - **`date`** *[Optional ; Not repeatable ; String]* <br>
+    The relevant date in ISO 8601 date/time format.<br><br>
+
+  - **`update_procedure`** *[Optional ; Not repeatable ; String]* <br>
+  This element is used to describe how and with what frequency the sample frame is updated. For example: "The lists and boundaries of enumeration areas are updated every ten years at the occasion of the population census cartography work. Listing of households in enumeration areas are updated as and when needed, based on their selection in survey samples." <br><br>
 
   - **`sampling_deviation`** *[Optional ; Not repeatable ; String]* <br>
 
@@ -1873,12 +1872,12 @@ A block of metadata elements used to describe the methodology employed in a data
 ```
 <br>
 
-    - **`name`** *[Optional ; Not repeatable ; String]* <br> 
-    The name and other information on the source. For example, "United States Internal Revenue Service Quarterly Payroll File"<br>
-    - **`origin`** *[Optional ; Not repeatable ; String]* <br>
-    For historical materials, information about the origin(s) of the sources and the rules followed in establishing the sources should be specified. This may not be relevant to survey data.
-    - **`characteristics`** *[Optional ; Not repeatable ; String]* <br>
-    Assessment of characteristics and quality of source material. This may not be relevant to survey data.<br><br> 
+  - **`name`** *[Optional ; Not repeatable ; String]* <br> 
+  The name and other information on the source. For example, "United States Internal Revenue Service Quarterly Payroll File"<br>
+  - **`origin`** *[Optional ; Not repeatable ; String]* <br>
+  For historical materials, information about the origin(s) of the sources and the rules followed in establishing the sources should be specified. This may not be relevant to survey data.
+  - **`characteristics`** *[Optional ; Not repeatable ; String]* <br>
+  Assessment of characteristics and quality of source material. This may not be relevant to survey data.<br><br> 
 
   - **`coll_situation`** *[Optional ; Not repeatable ; String]* <br>
 
