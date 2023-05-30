@@ -114,7 +114,7 @@ Metadata should not only be comprehensive and detailed, they should also be orga
 
 Some metadata standards have originated from academic data centers, like the [Data Documentation Initiative (DDI)](https://ddialliance.org/), maintained by the [Inter-University Consortium for Political and Social Research](https://www.icpsr.umich.edu/web/pages/) (ICPSR) at the University of Michigan. Other found their origins in specialized communities of practice (like the [ISO 19139](https://www.iso.org/standard/67253.html?browse=tc) for geospatial resources). The private sector also contributes to the development of standards, like the [International Press Telecommunications Council (IPTC)](https://iptc.org/) standard developed by and for news media.
 
-Metadata compliant with standards and schemas will typically be stored as JSON or XML files (described in Chapter 2), which are plain text files. The example below show how a simple free-text content would be structured and stored in JSON format, using metadata elements from the [DDI Codebook](https://ddialliance.org/Specification/DDI-Codebook/2.5/) metadata standard: 
+Metadata compliant with standards and schemas will typically be stored as JSON or XML files (described in Chapter 2), which are plain text files. The example below show how a simple free-text content would be structured and stored in JSON and XML formats, using metadata elements from the [DDI Codebook](https://ddialliance.org/Specification/DDI-Codebook/2.5/) metadata standard: 
 
 **Free text version**: 
 
@@ -130,6 +130,17 @@ Metadata compliant with standards and schemas will typically be stored as JSON o
   "coll_dates"      : [{"start":"2010-07", "end":"2011-06"}],
   "nation"          : [{"name":"Popstan", "abbreviation":"POP"}] 
 }  
+```
+
+In XML format:
+```{xml}
+<titl>Child Mortality Survey 2010-2011</titl>
+<altTitl>CMS 2010-2011</altTitl>
+<rspStmt><AuthEnty>National Statistics Office</AuthEnty></rspStmt>
+<fundAg abbr=CHTF>Child Health Trust Fund</fundAg>
+<collDate date="2010-07" event="start"/>
+<collDate date="2011-06" event="end"/>
+<nation abbr="POP">Popstan</nation>
 ```
 
 Both versions contain (almost) the same information. In the structured version, we have added acronyms and the ISO country code. This does not create new information but will help make the existing information more discoverable and inter-operable. The structured version is clearly more suitable for publishing in a meta-database (or catalog). Organizing and storing metadata in such a structured manner will enable all kinds of applications. For example, when metadata for a collection of surveys are stored in a database, it becomes straightforward to apply filters (for example, a filter by country using the nation/name element) and targeted searches to answer questions like "What data are available that cover the month of December 2010?" or "What surveys did the CHTF sponsor?". 
