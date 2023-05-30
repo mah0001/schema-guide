@@ -132,7 +132,7 @@ Metadata compliant with standards and schemas will typically be stored as JSON o
 }  
 ```
 
-In XML format:
+In XML format: 
 ```{xml}
 <titl>Child Mortality Survey 2010-2011</titl>
 <altTitl>CMS 2010-2011</altTitl>
@@ -143,7 +143,7 @@ In XML format:
 <nation abbr="POP">Popstan</nation>
 ```
 
-Both versions contain (almost) the same information. In the structured version, we have added acronyms and the ISO country code. This does not create new information but will help make the existing information more discoverable and inter-operable. The structured version is clearly more suitable for publishing in a meta-database (or catalog). Organizing and storing metadata in such a structured manner will enable all kinds of applications. For example, when metadata for a collection of surveys are stored in a database, it becomes straightforward to apply filters (for example, a filter by country using the nation/name element) and targeted searches to answer questions like "What data are available that cover the month of December 2010?" or "What surveys did the CHTF sponsor?". 
+All three versions contain (almost) the same information. In the structured version, we have added acronyms and the ISO country code. This does not create new information but will help make the existing information more discoverable and inter-operable. The structured version is clearly more suitable for publishing in a meta-database (or catalog). Organizing and storing metadata in such a structured manner will enable all kinds of applications. For example, when metadata for a collection of surveys are stored in a database, it becomes straightforward to apply filters (for example, a filter by country using the nation/name element) and targeted searches to answer questions like "What data are available that cover the month of December 2010?" or "What surveys did the CHTF sponsor?". 
                                                    
 ### Formats for structured metadata: JSON and XML 
 
