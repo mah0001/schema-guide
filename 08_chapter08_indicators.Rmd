@@ -385,14 +385,34 @@ This repeatable element can be used to document concepts related to the indicato
   The definition of the concept. 
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link (URL) to a resource providing more detailed information on the concept. <br><br>
-                                                        
-- **`methodology`** *[Optional ; Not repeatable ; String]* <br>
 
-  This element documents methodological details on the production of the series or indicator. 
+- **`data_collection`** *[Optional ; Not repeatable]* <br>
+This group of elements can be used to document data collection activities that led to or allowed the production of the indicator. This element will typically be used for the description of surveys or censuses. 
+Note: the schema also contains an element "sources". That element will be used to document the organization and/or main data production program from which the indicator is derived. 
+<br>
+```json
+"data_collection": [
+  {
+    "data_source": "string",
+    "method": "string",
+    "period": "string",
+    "note": "string"
+    "uri": "string"
+  }
+]
+```
+<br>
 
-- **`derivation`** *[Optional ; Not repeatable ; String]* <br>
-
-A description of the method and calculations used to derive the estimates for the indicator.
+  - **`data_source`** *[Required ; Not repeatable ; String]* <br>
+  A concise and standardized name (label) for the data source, e.g. "National Labor Force Survey, 1st quarter 2022". If multiple data sources were used, they can all be listed here. Note that is a time series has values obtained from many different sources, the source for each value (or group of values) will not be part of the indicator/series metadata, but will be stored as an attribute in the data file where the information can be associated with a specific observation ("cell note" or group of observation (e.g. attached to an indicator for avv values for a same year or for a same area).
+  - **`method`** *[Required ; Not repeatable ; String]* <br>
+  Brief information on the data collection method, e.g. :Sample household survey". 
+- **`period`** *[Optional ; Not repeatable ; String]* <br>
+Information on the period of the data collection, e.g. "January to March 2022". <br>
+- **`note`** *[Optional ; Not repeatable ; String]* <br>
+Additional information on the data collection.
+- **`uri`** *[Optional ; Not repeatable ; String]* <br>
+A link to a resource (website, document) where more information on the data collection can be found.
 
 - **`imputation`** *[Optional ; Not repeatable ; String]* <br>
 
@@ -758,7 +778,9 @@ This set of five elements is used to identify the organization(s) or person(s) w
   A link (URL) to the website of the entity mentioned in `name`. <br><br>
                                                                  
 - **`sources`** *[Optional ; Not repeatable ; String]* <br>
-This element provides information on the source(s) of data that were used to generate the indicator. A source can refer to an organization (e.g., "Source: World Health Organization"), or to a dataset (e.g., for a national poverty headcount indicator, the sources will likely be a list of sample household surveys). In `sources`, we are mainly interested in the latter. When a series in a database is a series extracted from another database (e.g., when the World Bank World Development Indicators include a series from the World Health Organization in its database), the source organization should be mentioned in the `authoring_entity` element of the schema. The `sources` element is a repeatable element. In international databases where series cover many countries, a series may have a large number of sources (for example, the World Bank poverty headcount data are extracted from hundreds of different national household surveys). The content of this element can thus be quite large. This information is however useful, as it contributes to establish the traceability and credibility of the data.  
+This element provides information on the source(s) of data that were used to generate the indicator. A source can refer to an organization (e.g., "Source: World Health Organization"), or to a dataset (e.g., for a national poverty headcount indicator, the sources will likely be a list of sample household surveys). In `sources`, we are mainly interested in the latter. When a series in a database is a series extracted from another database (e.g., when the World Bank World Development Indicators include a series from the World Health Organization in its database), the source organization should be mentioned in the `authoring_entity` element of the schema. The `sources` element is a repeatable element. 
+Note 1: In some cases, the source of a specific value in a database will be stored as an attribute of the data file (e.g., as a "footnote" attached to a specific cell. If the sources are listed in the data file, they may but do not need to be stored in the metadata. 
+Note 2: the schema also contains an element "data_collection" that would be used to describe a specific data collection activity from which an indicator is derived. 
 <br>
 ```json
 "sources": [
@@ -990,7 +1012,36 @@ The group(s) the indicator belongs to. Groups can be create to organize indicato
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link to a public website site where information on the grouping can be obtained.<br><br>
 
+- **`contacts`** *[Optional ; Repeatable]* <br>
+The `contacts` element provides the public interface for questions associated with the production of the indicator or time series.  
 
+<br>
+```json
+"contacts": [
+  {
+    "name": "string",
+    "role": "string",
+    "affiliation": "string",
+    "email": "string",
+    "telephone": "string",
+    "uri": "string"
+  }
+]
+```
+<br>
+
+  - **`name`** *[Optional ; Not repeatable ; String]* <br>
+  The name of the contact person that should be contacted. Instead of the name of an individual (which would be subject to change and require frequent update of the metadata), a title can be provided here (e.g. "data helpdesk"). 
+  - **`role`** *[Optional ; Not repeatable ; String]* <br>
+  The specific role of the contact person mentioned in `name`. This will be used when multiple contacts are listed, and is intended to help users direct their questions and requests to the right contact person.      
+  - **`affiliation`** *[Optional ; Not repeatable ; String]* <br>
+  The organization or affiliation of the contact person mentioned in `name`. 
+  - **`email`** *[Optional ; Not repeatable ; String]* <br>
+  The email address of the person or organization mentioned in `name`. Avoid using personal email accounts; the use of an anonymous email is recommended (e.g, "helpdesk@....org")
+  - **`telephone`** *[Optional ; Not repeatable ; String]* <br>
+  The phone number of the person or organization mentioned in `name`.
+  - **`uri`** *[Optional ; Not repeatable ; String]* <br>
+  The URI of the agency (typically, a URL to a "contact us" web page). <br><br>
 
 
 ### Provenance
