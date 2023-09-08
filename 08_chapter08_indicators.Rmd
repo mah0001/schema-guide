@@ -302,7 +302,7 @@ An indicator or time series can be made available at different levels of disaggr
   In such case, the name of the series should not be changed, but the measurement unit may be extracted from it and stored in element `measurement_unit`. <br>
  
 - **`dimensions`** *[Optional ; Repeatable]* <br>  
-An indicator or time series can be made available at different levels of disaggregation. For example, an indicator containing estimates of the "Population" of a country by year can be available by sex. The data curators in such case will have two options: (i) create and document three separate indicators, namely "Population, Total", "Population, Female", and "Population, Male"; or create a single indicator "Population" and attach a *dimension* "sex" to it, with values "Total", "Female", and "Male". The `dimensions` are features (or "variables") that define the different levels of disaggregation within an indicator/series. The element `dimensions` is used to provide an itemized list of disaggregations that correspond exactly to the published data. Note that when an indicator is available at two "non-overlapping" levels of disaggregation, it should be split into two indicators. For example, if the Population indicator is available by male/female and by urban/rural, but not by male/urban/male/rural/female urban/female rural, it should be treated as two separate indicators ("Population by sex" with dimension sex = "male / female" and "Population by area of residence" with dimension area = "urban / rural".) Note also that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented.<br>
+An indicator or time series can be made available at different levels of disaggregation. For example, a time series containing annual estimates of the indicator "Resident population (mid-year)" can be provided by country, by urban/rural area of residence, by sex, by age group. The data curator has to make a decision on how to organize such data. One option is to create an indicator "Resident population (mid-year)" and to define a set of "dimensions" for the breakdowns. The dimensions would in such case be the year, the country, the area of residence, the sex, and the age group. Some of the dimensions would have to be provided with a code list (or 'controlled vocabulary", for example stating that F means "Female", M" means male, and T means "Total" for the dimension *sex*). Another option would be to create multiple indicators (e.g., creating three distinct indicators "Resident population, male (mid-year)", "Resident population, female (mid-year)", "Resident population, total (mid-year)" and using year, country, area of residence, and age group as dimensions). The element `dimensions` is used to provide an itemized list of disaggregations that correspond to the published data. Note that another element in the schema, `disaggregation`, is also provided, in which a narrative description of the actual or recommended disaggregations can be documented. Note also that in the SDMX standard, dimensions are listed in the *Data Structure Definition" and are complemented by *code lists* that provide the related controlled vocabularies.<br>
 <br>
 ```json
 "dimensions": [
@@ -321,6 +321,10 @@ An indicator or time series can be made available at different levels of disaggr
   The label of the dimension, for example "sex", or "urban/rural".
   - **`description`** *[Optional ; Not repeatable ; String]* <br>
   A description of the dimension (for example, if the label was "age group", the description can provide detailed information on the age groups, e.g. "The age groups in the database are 0-14, 15-49, 50-64, and 65+ years old".)<br><br>
+
+- **`release_calendar`** *[Optional ; Not repeatable ; String]* <br>
+
+  Information on when updates for the indicators can be expected. This will usually not consist of exact dates (which would have to be updated regularly), but of more general information like "Every first Monday of the Month", or "Every year on June 30", or "The last week of each quarter". 
 
 - **`periodicity`** *[Optional ; Not repeatable ; String]* <br>
 
@@ -394,10 +398,18 @@ A description of the method and calculations used to derive the estimates for th
 
   Data may have been imputed to account for data gaps or for other reasons (harmonization/standardization, and others). If imputations have been made, this element provides the space for their description.
 
+- **`adjustments`** *[Optional ; Repeatable ; String]* <br>
+
+  Description of any adjustments with respect to use of standard classifications and harmonization of breakdowns for age group and other dimensions, or adjustments made for compliance with specific international or national definitions.
+
 - **`missing`** *[Optional ; Not repeatable ; String]*<br>
 
   Information on missing values in the series or indicator. This information can be related to treatment of missing values, to the cause(s) of missing values, and others.
-  
+
+- **`validation_rules`** *[Optional ; Repeatable ; String]*<br>
+
+  Description of the set of rules (itemized) used to validate values for the indicator, e.g. "Is within range 0-100", or "Is the sum of indicatorX + indicator Y".
+
 - **`quality_checks`** *[Optional ; Not repeatable ; String]* <br>
 
   Data may have gone through data quality checks to assure that the values are reasonable and coherent, which can be described in this element. These quality checks may include checking for outlying values or other. A brief description of such quality control procedures will contribute to reinforcing the credibility of the data being disseminated. 
@@ -504,6 +516,13 @@ Information on the academic disciplines related to the content of the document. 
 - **`relevance`** *[Optional ; Not repeatable ; String]* <br>
 
   This field documents the relevance of an indicator or series in relation to a social imperative or policy objective.<br>
+
+- **`mandate`** *[Optional ; Not repeatable ; String]* <br>
+
+	- **`mandate`** *[Optional ; Not repeatable ; String]* <br>
+	Description of the institutional mandate or of a set of rules or other formal set of instructions assigning responsibility as well as the authority to an organization for the collection, processing, and dissemination of statistics for this indicator.<br>
+	- **`URI`** *[Optional ; Not repeatable ; String]* <br>
+	A link to a resource (document, website) describing the mandate.<br>
 
 - **`time_periods`** *[Optional ; Repeatable]* <br>
 The time period covers the entire span of data available for the series. The time period has a start and an end and is reported according to the periodicity provided in a previous element. 
@@ -970,6 +989,9 @@ The group(s) the indicator belongs to. Groups can be create to organize indicato
   The version of the grouping.
   - **`uri`** *[Optional ; Not repeatable ; String]* <br>
   A link to a public website site where information on the grouping can be obtained.<br><br>
+
+
+
 
 ### Provenance
 
