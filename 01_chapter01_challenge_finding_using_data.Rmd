@@ -4,19 +4,9 @@ output: html_document
 
 # (PART) RATIONALE AND OBJECTIVES  {-}
 
-# The challenge of finding, assessing, accessing, and using data {#chapter01}
+# The challenge of finding, accessing, and using data {#chapter01}
 
-Numerous national and international organizations have implemented data-sharing policies to increase access to their data within the research community. The need to share data has become more pressing, with laws requiring public organizations to share data and sponsors of data collection mandating data sharing. However, simply committing to data sharing is not enough. If data is challenging to locate and use, data-sharing policies and regulations will fail to achieve their intended impact. 
-
-Researchers frequently struggle with identifying, assessing, accessing, and utilizing relevant data. Data are obtainable from a wide and growing range of sources, not all of which are readily visible or discoverable. The process of discovering and accessing data can be complex and time-consuming, requiring considerable effort to identify, locate, acquire, comprehend, and manage datasets. The primary obstacles to data visibility, discoverability, and usability include:
-
-- Data often lack comprehensive and optimal metadata. As search engines index metadata, optimizing metadata for discoverability is essential. However, many data producers and custodians lack the expertise, resources, or incentives to document their data assets effectively.
-- General search engines like Google or Bing cater to a broad and diverse audience, not a specialized audience requiring assistance in locating, assessing, and acquiring data.
-- Search engines integrated into specialized data catalogs have limited capabilities, with most relying on full-text search algorithms often implemented in their default version. Ideally, data catalogs should provide semantic searchability and function as recommender systems.
-- Many data catalogs lack visibility due to insufficient proactive search engine optimization.
-- Incomplete metadata prevents users from easily evaluating data for their specific purposes.
-
-Enhancing data accessibility and usability will promote the reuse and repurposing of existing data, resulting in a greater return on investment in data collection and creation. In this chapter, we examine several examples that demonstrate the difficulties researchers face when searching for and utilizing data.
+In the landscape of data sharing policies adopted by numerous national and international organizations, a common obstacle emerges for researchers and other data users. The challenge they face centers on the practicality of finding, accessing, and using data in an efficient manner. Navigating through a vast and ever-growing pool of data sources and types can be a complex, time-consuming endeavor. It involves identifying pertinent sources, acquiring and comprehending relevant datasets, and efficiently analyzing them. This challenge is marked by issues such as inadequate metadata, limitations of data discovery systems, and low visibility of valuable data reopsitories and cataloguing systems. The technical hurdles to data discoverability, accessibility, and usability must be addressed to enhance the effectiveness of data sharing policies and maximize the utility of collected data. In the upcoming sections, we will delve into these challenges.
 
 ## Finding data
 
@@ -127,7 +117,7 @@ Suppose a health official looks for data on measles vaccination in Oromia, a sta
 <br>
 
 
-## Assessing data
+Finding data includes assessing data
 
 Ideally, researchers should have easy access to both relevant datasets and the metadata required to evaluate the data's suitability for their specific purposes. Obtaining a dataset may be time-consuming and sometimes costly. Therefore, users should only invest resources and time in acquiring data that they know is of high quality and relevance.
 
@@ -135,13 +125,18 @@ Assessing a dataset's fitness for a specific purpose necessitates different meta
 
 Even when data access is restricted, detailed metadata should be available openly and through a user-friendly interface.
 
-
 ## Accessing data
 
-Responsible users need to ensure that their use of data conforms to legal, ethical, and technical requirements imposed by the dataset's owner or distributor. To facilitate this, all datasets should be accompanied by detailed information on the attached terms of use, which may be provided using a standard license. For datasets that don't have an option for direct download, the data distributor should implement an easy-to-use procedure. This should provide transparent and user-friendly information on what information the user needs to provide, how long it will take to obtain a response to a request for access to data, what appeal options may be available in case of refusal, how personal information included in the access request forms will be processed and used, what registration process is required, and more.
+Accessing development data is a multifaceted challenge that involves legal, ethical, and practical considerations. To ensure that data access is legal, ethical and enables relevant and responsible use of the data, data providers and users must adhere to certain principles and practices:
 
-The modes of access to the data should accommodate different user preferences. These may include bulk download, where the data is provided in multiple "recent" formats, at least one of which is non-proprietary. Alternatively, the data can be made accessible via API, for which detailed documentation (legal and technical) must be provided. A user interface or visualizations may be provided as a mode of access to some types of data, and other options may also be considered.
-
+- Data ownership and usage rights: Data providers must ensure that they have the legal rights to share the data and that they define clear usage rights for data users. Data users need to know how they can use the data, whether it's for research, commercial purposes, or other applications, and they must strictly comply with the terms of use.
+- Data privacy and protection: Data access should comply with data privacy laws and ethical standards. Sensitive or personally identifiable information must be handled with care to protect individuals' privacy.
+- Metadata provision: Data providers must offer comprehensive metadata that provides context and full understanding of the data. Metadata should include details about the data's provenance, including its history, transformations, and processing steps. Understanding how the data was created and modified is essential for accurate and responsible analysis. 
+- Efficient data formats and modes of access: Data should be available in formats that are user-friendly and compatible with common data analysis tools. Common formats like CSV, JSON, or Excel can be practical choices. Data should be made accessible through various means, considering users' preferences and capacities. This might involve offering downloadable files, providing access through web-based tools, and supporting data streaming. APIs are crucial for enabling programmable access to data. They allow researchers to retrieve and manipulate data programmatically, integrating it into their research workflows and applications.
+- Challenges specific to researchers in developing countries: Researchers in developing countries often face additional challenges in accessing data. These challenges include:
+   - Lack of resources: Researchers in developing countries may not have the financial resources to purchase data or to access data that is stored in expensive cloud-based repositories.
+   - Lack of infrastructure: Researchers in developing countries may not have access to the high-speed internet and computing resources that are needed to work with large datasets.
+   - Lack of expertise: Researchers in developing countries may not have the expertise to work with complex data formats and to use data analysis tools.
 
 ## Using data
 
