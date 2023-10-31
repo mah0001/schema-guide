@@ -26,16 +26,19 @@ Assessing a dataset's fitness for a specific purpose necessitates different meta
 
 ## Accessing data
 
-Accessing development data is a multifaceted challenge that involves legal, ethical, and practical considerations. To ensure that data access is legal, ethical and enables relevant and responsible use of the data, data providers and users must adhere to certain principles and practices:
+Accessing data is a multifaceted challenge that involves legal, ethical, and practical considerations. To ensure that data access is legal, ethical and enables relevant and responsible use of the data, data providers and users must adhere to certain principles and practices:
 
-- Data ownership and usage rights: Data providers must ensure that they have the legal rights to share the data and that they define clear usage rights for data users. Data users need to know how they can use the data, whether it's for research, commercial purposes, or other applications, and they must strictly comply with the terms of use.
-- Data privacy and protection: Data access should comply with data privacy laws and ethical standards. Sensitive or personally identifiable information must be handled with care to protect individuals' privacy.
-- Metadata provision: Data providers must offer comprehensive metadata that provides context and full understanding of the data. Metadata should include details about the data's provenance, including its history, transformations, and processing steps. Understanding how the data was created and modified is essential for accurate and responsible analysis. 
-- Efficient data formats and modes of access: Data should be available in formats that are user-friendly and compatible with common data analysis tools. Common formats like CSV, JSON, or Excel can be practical choices. Data should be made accessible through various means, considering users' preferences and capacities. This might involve offering downloadable files, providing access through web-based tools, and supporting data streaming. APIs are crucial for enabling programmable access to data. They allow researchers to retrieve and manipulate data programmatically, integrating it into their research workflows and applications.
-- Challenges specific to researchers in developing countries: Researchers in developing countries often face additional challenges in accessing data. These challenges include:
+- Data providers must ensure that they have the legal rights to share the data and that they define clear usage rights for data users. Data users need to know how they can use the data, whether it's for research, commercial purposes, or other applications, and they must strictly comply with the terms of use.
+- Data access must comply with data privacy laws and ethical standards. Sensitive or personally identifiable information must be handled with care to protect individuals' privacy.
+- Data providers must offer comprehensive metadata that provides context and full understanding of the data. Metadata should include details about the data's provenance, including its history, transformations, and processing steps. Understanding how the data was created and modified is essential for accurate and responsible analysis. 
+- Data should be available in formats that are user-friendly and compatible with common data analysis tools. Common formats like CSV, JSON, or Excel can be practical choices. 
+- Data should be made accessible through various means, considering users' preferences and capacities. This might involve offering downloadable files, providing access through web-based tools, and supporting data streaming. APIs are crucial for enabling programmable access to data. They allow researchers to retrieve and manipulate data programmatically, integrating it into their research workflows and applications.
+
+Data users in developing countries often face additional challenges in accessing data. These challenges include:
    - Lack of resources: Researchers in developing countries may not have the financial resources to purchase data or to access data that is stored in expensive cloud-based repositories.
    - Lack of infrastructure: Researchers in developing countries may not have access to the high-speed internet and computing resources that are needed to work with large datasets.
    - Lack of expertise: Researchers in developing countries may not have the expertise to work with complex data formats and to use data analysis tools.
+These specific challenges should be taken into consideration when developming data dissemination systems.
 
 ## Using data
 
@@ -46,7 +49,6 @@ The scope and meaning of labour statistics in general are determined by their so
 :::
 
 When possible, reproducible or replicable scripts that made use of the data, and the analytical output of these scripts, should be published with the data. These scripts may be highly valuable to researchers who may want to expand the scope of previous data analysis or re-purpose part of the code, and to students who may learn from reading and replicating the work of experienced analysts. To foster the usability of data, we developed a specific metadata schema for the documentation of research projects and scripts.  
-
 
 ## A FAIR solution
 
