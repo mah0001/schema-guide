@@ -4,19 +4,26 @@ output: html_document
 
 # The features of a modern data dissemination platform {#chapter02}
 
-In the introductory section of this Guide, we proposed that a data dissemination platform should be modeled after highly successful e-commerce platforms. These platforms are designed to optimally satisfy the requirements and expectations of both buyers (in our context, the data users) and sellers (in our context, the data providers who make their datasets accessible through a data catalog). In this chapter, we outline the crucial features that a modern online data catalog should incorporate to adhere to this model and effectively cater to the diverse needs and expectations of its users.
+In the introductory section of this Guide, we proposed that modern data dissemination platforms should be modeled after the most successful e-commerce platforms. These platforms are optimized to serve both buyers (in our context, the data users) and sellers (in our context, the data providers) in the most efficient manner. In this chapter, we outline features that a modern online data catalog should incorporate to adhere to this model.
 
-Our objective is to provide recommendations for developing data catalogs that encompass lexical search and semantic search, filtering, advanced search functionality, interactive user interfaces, and the capability to operate as a data recommender system. To define these features, we approach the topic from three distinct perspectives: the viewpoint of data users, who represent a highly diverse community with varying needs, preferences, expectations, and capabilities; the standpoint of data suppliers, who either publish their data or delegate the task to a data library; and the perspective of catalog administrators, responsible for curating and disseminating data in a responsible, effective, and efficient manner while optimizing both user and supplier satisfaction.
+We provide recommendations for developing data catalogs that encompass lexical search and semantic search, filtering, advanced search functionality, interactive user interfaces, and the capability to operate as recommender systems. We approach the topic from three distinct perspectives: the viewpoint of **data users**, who represent a highly diverse community with varying needs, preferences, expectations, and capabilities; the standpoint of **data suppliers**, who either publish their data or delegate the task to a data library; and the perspective of **catalog administrators**, responsible for curating and disseminating data in a responsible, effective, and efficient manner while optimizing both user and supplier satisfaction.
 
-The creation of a contemporary data dissemination platform is a collaborative endeavor, engaging data curators, user experience (UX) experts, designers, search engineers, and subject matter specialists with a profound understanding of both the data and the users' requirements and preferences. Inclusive in this development process should be the active participation of the users themselves, allowing them to provide feedback that directly influences the system's design.
+The creation of a contemporary data dissemination platform is a collaborative endeavor, engaging data curators, user experience (UX) experts, designers, search engineers, and subject matter specialists with a profound understanding of both the data and the users' requirements and preferences. Inclusive in this development process should be the active participation of the users, allowing them to provide feedback that directly influences the system's design.
+
+The examples we provided in this chapter are taken from our NADA cataloguing application. Other open-source cataloguing applications are available. 
 
 ## Features for data users 
 
-In order to cultivate a favorable user experience, online data catalogs must offer an intuitive and efficient interface, allowing users to effortlessly access the most pertinent datasets. To meet user expectations effectively, one should emphasize simplicity, predictability, relevance, speed, and reliability. Integrating these principles into the design of data catalogs can deliver a seamless and user-friendly experience, akin to the convenience and ease provided by well-known internet search engines and e-commerce platforms. This, in turn, streamlines the process of discovering and obtaining the necessary data, making it quick and hassle-free for users.
+In order to cultivate a favorable user experience, online data catalogs must offer an intuitive and efficient interface, allowing users to effortlessly access the most pertinent datasets. To meet user expectations effectively, one should emphasize simplicity, predictability, relevance, speed, and reliability. Integrating these principles into the design of data catalogs can deliver a seamless and user-friendly experience, akin to the convenience and ease provided by internet search engines and e-commerce platforms. This, in turn, streamlines the process of discovering and obtaining the necessary data, making it quick and hassle-free for users.
+
+### Browser
+
+Some users will just want to browse a catalog. This should be made easy. The use of cards is recommended. For images, a mosaic view can be provided. For microdata, a variable view.
+
 
 ### Simple search interface
 
-The default option to search for data in a specialized catalog should be a single search box, following the model of general search engines. The objective of the search algorithm should then be to "understand" the user's query as accurately as possible, potentially by parsing and enhancing the query, and returning the most relevant results ranked in order of importance.
+The default option to search for data in a specialized data catalog must be a single search box. Not all users can be expected to provide ideal queries. The search engine must be able to tolerate spelling mistakes. Auto-completion and spell checkers of queries can be enabled using indexing tools such as Solr or ElasticSearch. The query can be entered using the keyboard or audio.
 
 <br>
 <center>
@@ -24,7 +31,29 @@ The default option to search for data in a specialized catalog should be a singl
 </center>
 <br>
 
-However, not all users can be expected to provide ideal queries. The search engine must be able to tolerate spelling mistakes to provide a seamless user experience. Auto-completion and spell checkers of queries are independent of the metadata being searched and can be enabled using indexing tools such as Solr or ElasticSearch. Additionally, after processing a user query, the application can provide suggestions for related keywords. This can be implemented using a graph of related words generated by natural language processing (NLP) models. Access to an API is necessary to implement keyword suggestions based on such graphs. The example below shows a related words graph for the terms "climate change" as returned by an NLP model.
+The search engine must be able to "understand" the user's query and to return the most relevant results ranked in order of importance. This may require an automated process of query parsing and enhancement. AMong other things, the query parsing may derive information on: 
+- the type of data that are of interest
+- whether the query is related to one or a few specific indicators available in the catalog assets
+- whether a geographic location is mentioned
+- whether a time is mentioned
+- whether a keyword search or a semantic search is most appropriate
+- detect the language of the query, and translate if appropriate
+
+Based on this information, the application should be able to determine whether an immediate answer could be provided, and whether the answer should be textual, a data grid, or a visualization.
+
+### Document as a query
+
+A search engine with semantic search capability should be able to process short or long queries, even accepting a document (a PDF or a TXT file) as a query. The search engine will then first analyze the semantic content of the document, convert it into an embedding vector, and identify the closest resources available in the catalog. 
+
+<br>
+<center>
+![image](https://user-images.githubusercontent.com/35276300/229806674-941ac085-6f6f-45e8-bfa4-d0834cf73587.png)
+</center>
+<br>
+
+### Suggested queries
+
+After processing a user query, the application can provide suggestions for related keywords. This can be implemented using a graph of related words generated by natural language processing (NLP) models. Access to an API is necessary to implement keyword suggestions based on such graphs. The example below shows a related words graph for the terms "climate change" as returned by an NLP model.
 
 <br>
 <center>
@@ -39,23 +68,6 @@ A search interface could retrieve such information via API and display it as fol
 ![](./images/catalog_search_01.JPG){width=100%}
 </center>
 <br>
-
-
-### Browser
-
-Some users will just want to browse a catalog. This should be made easy. The use of cards is recommended. For images, a mosaic view can be provided. For microdata, a variable view.
-
-
-### Latest additions and history
-
-The catalog must provide a list of the most recent additions, and a history of additions and updates.
-For each entry, information must be available on the date the entry was first added to the catalog, and when it was last updated.
-When a dataset is replaced with a new version, the versioning must be clear.
-
-<br>
-![image](https://user-images.githubusercontent.com/35276300/231492091-a96d4c5c-c461-4b5f-88c1-f8db26daa98d.png)
-<br>
-
 
 ### Advanced search 
 
@@ -73,18 +85,6 @@ This would correspond to the following syntax that the user could enter directly
 **title:"demographic transition" AND country:(*Kenya*) AND body:(poverty)**
 </center>
 <br>
-
-
-### Document as a query
-
-A search engine with semantic search capability should be able to process short or long queries, even accepting a document (a PDF or a TXT file) as a query. The search engine will then first analyze the semantic content of the document, convert it into an embedding vector, and identify the closest resources available in the catalog. 
-
-<br>
-<center>
-![image](https://user-images.githubusercontent.com/35276300/229806674-941ac085-6f6f-45e8-bfa4-d0834cf73587.png)
-</center>
-<br>
-
 
 ### Geographic search
 
@@ -127,6 +127,9 @@ The search API endpoint of Nominatim returns this JSON data which can be process
 </center>
 <br>
 
+### Query user interface
+
+For time series only
 
 ### Semantic search and recommendations
 
@@ -136,6 +139,19 @@ There are two types of search engines: lexical and semantic. The former matches 
 
 For microdata: embeddings based on thematic variable groupings - an option to implement semantic search and recommendations
 Discovery of microdata poses specific challenges. Typically, a data dictionary will be available, with variables organized by data file. A "virtual" organization of variables by thematic group, with a pre-defined ontology, can significantly improve data discoverability. AI solutions can be used to generate such groupings and map variables to them. The DDI metadata standard provides the metadata elements needed to store information on variable groups.
+
+
+### Latest additions and history
+
+The catalog must provide a list of the most recent additions, and a history of additions and updates.
+For each entry, information must be available on the date the entry was first added to the catalog, and when it was last updated.
+When a dataset is replaced with a new version, the versioning must be clear.
+
+<br>
+![image](https://user-images.githubusercontent.com/35276300/231492091-a96d4c5c-c461-4b5f-88c1-f8db26daa98d.png)
+<br>
+
+
 
 
 ### Customized views 
@@ -151,10 +167,6 @@ Build your own dashboards
 
 - Maintain a data service: let external users build dashboards/poaltorms dynamically connected via API; one organization cannot customize to all communities of users.
 
-
-### Query user interface
-
-For time series only
 
 
 ### Ranking results 
@@ -186,6 +198,7 @@ Sorting results
 ### Collections
 
 Organize entries by collections
+Thematic or other
 
 
 ### Linking results 
@@ -558,35 +571,3 @@ Implementing Learn to Rank models can be challenging for data catalog administra
 </center>
 </br>
 
-
-## Cataloguing tools
-
-The examples we provided in this chapter are taken from our NADA cataloguing application. Other open-source cataloguing applications are available, including CKAN, GeoNetworks, and Dataverse. 
-
-**CKAN**
-
-[CKAN](https://ckan.org/) is a data management system that provides a platform for cataloging, storing and accessing datasets with a rich front-end, full API (for both data and catalog), visualization tools and more. CKAN is an open source software held in trust by Open Knowledge Foundation. It is open and licensed under the GNU Affero General Public License (AGPL) v3.0. CKAN is used by some of the lead open data platforms, such as the [US data.gov](https://www.data.gov/) or the [OCHA Humanitarian Data Exchange](https://data.humdata.org/). CKAN does not require that the metadata comply with any metadata standard (which brings flexibility, but at a cost in terms of discoverability and quality control), but organizes the metadata in the following elements (information extracted from [CKAN on-line documentation](https://docs.ckan.org/en/2.9/)): 
-
-   - *Title*: allows intuitive labeling of the dataset for search, sharing and linking.
-   - *Unique identifier*: dataset has a unique URL which is customizable by the publisher.
-   - *Groups*: display of which groups the dataset belongs to if applicable. Groups (such as science data) allow easier data linking, finding and sharing among interested publishers and users.
-   - *Description*: additional information describing or analyzing the data. This can either be static or an editable wiki which anyone can contribute to instantly or via admin moderation.
-   - *Data preview*: preview [.csv] data quickly and easily in browser to see if this is the dataset you want.
-   - *Revision history*: CKAN allows you to display a revision history for datasets which are freely editable by users 
-   - *Extra fields*: these hold any additional information, such as location data (see geospatial feature) or types relevant to the publisher or dataset. How and where extra fields display is customizable.
-   - *Licence*: instant view of whether the data is available under an open license or not. This makes it clear to users whether they have the rights to use, change and re-distribute the data.
-   - *Tags*: see what labels the dataset in question belongs to. Tags also allow for browsing between similarly tagged datasets in addition to enabling better discoverability through tag search and faceting by tags.
-   - *Multiple formats* (if provided): see the different formats the data has been made available in quickly in a table, with any further information relating to specific files provided inline.
-   - *API key*: allows access every metadata field of the dataset and ability to change the data if you have the relevant permissions via API.
-
-The *extra fields* section allows ingestion of structured metadata, which makes it relatively easy to exporting data and metadata from NADA to CKAN. Importing data and metadata from CKAN to NADA is also possible (using the catalog's respective APIs), but with a reduced metadata structure.
-
-**GeoNetworks**
-
-[GeoNetworks](https://geonetwork-opensource.org/) is a cataloguing tool for geographic data and services (not for other types of data), which includes a specialized metadata editor. According to its website, "It provides powerful metadata editing and search functions as well as an interactive web map viewer. It is currently used in numerous Spatial Data Infrastructure initiatives across the world. (...) The metadata editor support ISO19115/119/110 standards used for spatial resources and also Dublin Core format usually used for opendata portals." 
-
-**DataVerse**
-
-The [Dataverse Project](https://dataverse.org/about) is led by the Institute for Quantitative Social Science (IQSS). Dataverse makes use of the DDI Codebook and Dublin Core metadata standards. According to its website, Dataverse "is an open source web application to share, preserve, cite, explore, and analyze research data. (...) The central insight behind the Dataverse Project is to automate much of the job of the professional archivist, and to provide services for and to distribute credit to the data creator." 
-
-"The Institute for Quantitative Social Science (IQSS) collaborates with the Harvard University Library and Harvard University Information Technology organization to make the installation of the Harvard Dataverse Repository openly available to researchers and data collectors worldwide from all disciplines, to deposit data. IQSS leads the development of the open source Dataverse Project software and, with the Open Data Assistance Program at Harvard (a collaboration with Harvard Library, the Office for Scholarly Communication and IQSS), provides user support." 
