@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 The features of a modern data dissemination platform | [DRAFT - WORK IN PROGRESS] Metadata Standards and Schemas for Improved Data Discoverability and Usability</title>
+  <meta name="description" content="Chapter 2 The features of a modern data dissemination platform | [DRAFT - WORK IN PROGRESS] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 The features of a modern data dissemination platform | [DRAFT - WORK IN PROGRESS] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/./images/cover2.jpg" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 The features of a modern data dissemination platform | [DRAFT - WORK IN PROGRESS] Metadata Standards and Schemas for Improved Data Discoverability and Usability" />
+  
+  
+  <meta name="twitter:image" content="/./images/cover2.jpg" />
+
+<meta name="author" content="Olivier Dupriez and Mehmood Asghar" />
+
+
+<meta name="date" content="2023-11-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chapter01.html"/>
+<link rel="next" href="chapter03.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metadata Schema Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="part"><span><b>I RATIONALE AND OBJECTIVES</b></span></li>
+<li class="chapter" data-level="1" data-path="chapter01.html"><a href="chapter01.html"><i class="fa fa-check"></i><b>1</b> The challenge of finding, accessing, and using data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chapter01.html"><a href="chapter01.html#finding-data"><i class="fa fa-check"></i><b>1.1</b> Finding data</a></li>
+<li class="chapter" data-level="1.2" data-path="chapter01.html"><a href="chapter01.html#accessing-data"><i class="fa fa-check"></i><b>1.2</b> Accessing data</a></li>
+<li class="chapter" data-level="1.3" data-path="chapter01.html"><a href="chapter01.html#using-data"><i class="fa fa-check"></i><b>1.3</b> Using data</a></li>
+<li class="chapter" data-level="1.4" data-path="chapter01.html"><a href="chapter01.html#a-fair-solution"><i class="fa fa-check"></i><b>1.4</b> A FAIR solution</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter02.html"><a href="chapter02.html"><i class="fa fa-check"></i><b>2</b> The features of a modern data dissemination platform</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chapter02.html"><a href="chapter02.html#features-for-data-users"><i class="fa fa-check"></i><b>2.1</b> Features for data users</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="chapter02.html"><a href="chapter02.html#browser"><i class="fa fa-check"></i><b>2.1.1</b> Browser</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapter02.html"><a href="chapter02.html#simple-search-interface"><i class="fa fa-check"></i><b>2.1.2</b> Simple search interface</a></li>
+<li class="chapter" data-level="2.1.3" data-path="chapter02.html"><a href="chapter02.html#document-as-a-query"><i class="fa fa-check"></i><b>2.1.3</b> Document as a query</a></li>
+<li class="chapter" data-level="2.1.4" data-path="chapter02.html"><a href="chapter02.html#suggested-queries"><i class="fa fa-check"></i><b>2.1.4</b> Suggested queries</a></li>
+<li class="chapter" data-level="2.1.5" data-path="chapter02.html"><a href="chapter02.html#advanced-search"><i class="fa fa-check"></i><b>2.1.5</b> Advanced search</a></li>
+<li class="chapter" data-level="2.1.6" data-path="chapter02.html"><a href="chapter02.html#geographic-search"><i class="fa fa-check"></i><b>2.1.6</b> Geographic search</a></li>
+<li class="chapter" data-level="2.1.7" data-path="chapter02.html"><a href="chapter02.html#query-user-interface"><i class="fa fa-check"></i><b>2.1.7</b> Query user interface</a></li>
+<li class="chapter" data-level="2.1.8" data-path="chapter02.html"><a href="chapter02.html#semantic-search-and-recommendations"><i class="fa fa-check"></i><b>2.1.8</b> Semantic search and recommendations</a></li>
+<li class="chapter" data-level="2.1.9" data-path="chapter02.html"><a href="chapter02.html#latest-additions-and-history"><i class="fa fa-check"></i><b>2.1.9</b> Latest additions and history</a></li>
+<li class="chapter" data-level="2.1.10" data-path="chapter02.html"><a href="chapter02.html#customized-views"><i class="fa fa-check"></i><b>2.1.10</b> Customized views</a></li>
+<li class="chapter" data-level="2.1.11" data-path="chapter02.html"><a href="chapter02.html#data-and-metadata-as-a-service"><i class="fa fa-check"></i><b>2.1.11</b> Data and metadata as a service</a></li>
+<li class="chapter" data-level="2.1.12" data-path="chapter02.html"><a href="chapter02.html#ranking-results"><i class="fa fa-check"></i><b>2.1.12</b> Ranking results</a></li>
+<li class="chapter" data-level="2.1.13" data-path="chapter02.html"><a href="chapter02.html#filtering-results"><i class="fa fa-check"></i><b>2.1.13</b> Filtering results</a></li>
+<li class="chapter" data-level="2.1.14" data-path="chapter02.html"><a href="chapter02.html#sorting-results"><i class="fa fa-check"></i><b>2.1.14</b> Sorting results</a></li>
+<li class="chapter" data-level="2.1.15" data-path="chapter02.html"><a href="chapter02.html#collections"><i class="fa fa-check"></i><b>2.1.15</b> Collections</a></li>
+<li class="chapter" data-level="2.1.16" data-path="chapter02.html"><a href="chapter02.html#linking-results"><i class="fa fa-check"></i><b>2.1.16</b> Linking results</a></li>
+<li class="chapter" data-level="2.1.17" data-path="chapter02.html"><a href="chapter02.html#organized-results"><i class="fa fa-check"></i><b>2.1.17</b> Organized results</a></li>
+<li class="chapter" data-level="2.1.18" data-path="chapter02.html"><a href="chapter02.html#saving-and-sharing-results"><i class="fa fa-check"></i><b>2.1.18</b> Saving and sharing results</a></li>
+<li class="chapter" data-level="2.1.19" data-path="chapter02.html"><a href="chapter02.html#personalized-results"><i class="fa fa-check"></i><b>2.1.19</b> Personalized results</a></li>
+<li class="chapter" data-level="2.1.20" data-path="chapter02.html"><a href="chapter02.html#metadata-display-and-formats"><i class="fa fa-check"></i><b>2.1.20</b> Metadata display and formats</a></li>
+<li class="chapter" data-level="2.1.21" data-path="chapter02.html"><a href="chapter02.html#variable-level-comparison"><i class="fa fa-check"></i><b>2.1.21</b> Variable-level comparison</a></li>
+<li class="chapter" data-level="2.1.22" data-path="chapter02.html"><a href="chapter02.html#transparency-in-access-policies"><i class="fa fa-check"></i><b>2.1.22</b> Transparency in access policies</a></li>
+<li class="chapter" data-level="2.1.23" data-path="chapter02.html"><a href="chapter02.html#data-and-metadata-api"><i class="fa fa-check"></i><b>2.1.23</b> Data and metadata API</a></li>
+<li class="chapter" data-level="2.1.24" data-path="chapter02.html"><a href="chapter02.html#online-data-access-forms"><i class="fa fa-check"></i><b>2.1.24</b> Online data access forms</a></li>
+<li class="chapter" data-level="2.1.25" data-path="chapter02.html"><a href="chapter02.html#data-preview"><i class="fa fa-check"></i><b>2.1.25</b> Data preview</a></li>
+<li class="chapter" data-level="2.1.26" data-path="chapter02.html"><a href="chapter02.html#data-extraction"><i class="fa fa-check"></i><b>2.1.26</b> Data extraction</a></li>
+<li class="chapter" data-level="2.1.27" data-path="chapter02.html"><a href="chapter02.html#data-visualizations"><i class="fa fa-check"></i><b>2.1.27</b> Data visualizations</a></li>
+<li class="chapter" data-level="2.1.28" data-path="chapter02.html"><a href="chapter02.html#permanent-urls"><i class="fa fa-check"></i><b>2.1.28</b> Permanent URLs</a></li>
+<li class="chapter" data-level="2.1.29" data-path="chapter02.html"><a href="chapter02.html#archive-tombstone"><i class="fa fa-check"></i><b>2.1.29</b> Archive / tombstone</a></li>
+<li class="chapter" data-level="2.1.30" data-path="chapter02.html"><a href="chapter02.html#catalog-of-citations"><i class="fa fa-check"></i><b>2.1.30</b> Catalog of citations</a></li>
+<li class="chapter" data-level="2.1.31" data-path="chapter02.html"><a href="chapter02.html#reproducible-and-replicable-scripts"><i class="fa fa-check"></i><b>2.1.31</b> Reproducible and replicable scripts</a></li>
+<li class="chapter" data-level="2.1.32" data-path="chapter02.html"><a href="chapter02.html#notifications-or-alerts"><i class="fa fa-check"></i><b>2.1.32</b> Notifications or alerts</a></li>
+<li class="chapter" data-level="2.1.33" data-path="chapter02.html"><a href="chapter02.html#providing-feedback"><i class="fa fa-check"></i><b>2.1.33</b> Providing feedback</a></li>
+<li class="chapter" data-level="2.1.34" data-path="chapter02.html"><a href="chapter02.html#getting-support"><i class="fa fa-check"></i><b>2.1.34</b> Getting support</a></li>
+<li class="chapter" data-level="2.1.35" data-path="chapter02.html"><a href="chapter02.html#web-content-accessibility"><i class="fa fa-check"></i><b>2.1.35</b> Web content accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chapter02.html"><a href="chapter02.html#features-for-data-providers"><i class="fa fa-check"></i><b>2.2</b> Features for data providers</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chapter02.html"><a href="chapter02.html#safety"><i class="fa fa-check"></i><b>2.2.1</b> Safety</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chapter02.html"><a href="chapter02.html#visibility"><i class="fa fa-check"></i><b>2.2.2</b> Visibility</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chapter02.html"><a href="chapter02.html#low-burden"><i class="fa fa-check"></i><b>2.2.3</b> Low burden</a></li>
+<li class="chapter" data-level="2.2.4" data-path="chapter02.html"><a href="chapter02.html#real-time-information-on-usage"><i class="fa fa-check"></i><b>2.2.4</b> Real time information on usage</a></li>
+<li class="chapter" data-level="2.2.5" data-path="chapter02.html"><a href="chapter02.html#feedback-from-users"><i class="fa fa-check"></i><b>2.2.5</b> Feedback from users</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chapter02.html"><a href="chapter02.html#features-for-catalog-administrators"><i class="fa fa-check"></i><b>2.3</b> Features for catalog administrators</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="chapter02.html"><a href="chapter02.html#data-deposit"><i class="fa fa-check"></i><b>2.3.1</b> Data deposit</a></li>
+<li class="chapter" data-level="2.3.2" data-path="chapter02.html"><a href="chapter02.html#privacy-protection"><i class="fa fa-check"></i><b>2.3.2</b> Privacy protection</a></li>
+<li class="chapter" data-level="2.3.3" data-path="chapter02.html"><a href="chapter02.html#free-software"><i class="fa fa-check"></i><b>2.3.3</b> Free software</a></li>
+<li class="chapter" data-level="2.3.4" data-path="chapter02.html"><a href="chapter02.html#security"><i class="fa fa-check"></i><b>2.3.4</b> Security</a></li>
+<li class="chapter" data-level="2.3.5" data-path="chapter02.html"><a href="chapter02.html#it-affordability"><i class="fa fa-check"></i><b>2.3.5</b> IT affordability</a></li>
+<li class="chapter" data-level="2.3.6" data-path="chapter02.html"><a href="chapter02.html#ease-of-maintenance"><i class="fa fa-check"></i><b>2.3.6</b> Ease of maintenance</a></li>
+<li class="chapter" data-level="2.3.7" data-path="chapter02.html"><a href="chapter02.html#interoperability"><i class="fa fa-check"></i><b>2.3.7</b> Interoperability</a></li>
+<li class="chapter" data-level="2.3.8" data-path="chapter02.html"><a href="chapter02.html#flexibility-on-access-policies"><i class="fa fa-check"></i><b>2.3.8</b> Flexibility on access policies</a></li>
+<li class="chapter" data-level="2.3.9" data-path="chapter02.html"><a href="chapter02.html#api-based-system-for-automation-and-efficiency"><i class="fa fa-check"></i><b>2.3.9</b> API based system for automation and efficiency</a></li>
+<li class="chapter" data-level="2.3.10" data-path="chapter02.html"><a href="chapter02.html#featuring-tools"><i class="fa fa-check"></i><b>2.3.10</b> Featuring tools</a></li>
+<li class="chapter" data-level="2.3.11" data-path="chapter02.html"><a href="chapter02.html#usage-monitoring-and-analytics"><i class="fa fa-check"></i><b>2.3.11</b> Usage monitoring and analytics</a></li>
+<li class="chapter" data-level="2.3.12" data-path="chapter02.html"><a href="chapter02.html#multilingual-capability"><i class="fa fa-check"></i><b>2.3.12</b> Multilingual capability</a></li>
+<li class="chapter" data-level="2.3.13" data-path="chapter02.html"><a href="chapter02.html#embedded-seo"><i class="fa fa-check"></i><b>2.3.13</b> Embedded SEO</a></li>
+<li class="chapter" data-level="2.3.14" data-path="chapter02.html"><a href="chapter02.html#widgets-and-plugins"><i class="fa fa-check"></i><b>2.3.14</b> Widgets and plugins</a></li>
+<li class="chapter" data-level="2.3.15" data-path="chapter02.html"><a href="chapter02.html#feedback-to-developers"><i class="fa fa-check"></i><b>2.3.15</b> Feedback to developers</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="chapter02.html"><a href="chapter02.html#machine-learning-for-a-better-user-experience"><i class="fa fa-check"></i><b>2.4</b> Machine learning for a better user experience</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="chapter02.html"><a href="chapter02.html#improved-discoverability"><i class="fa fa-check"></i><b>2.4.1</b> Improved discoverability</a></li>
+<li class="chapter" data-level="2.4.2" data-path="chapter02.html"><a href="chapter02.html#improved-results-ranking"><i class="fa fa-check"></i><b>2.4.2</b> Improved results ranking</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter03.html"><a href="chapter03.html"><i class="fa fa-check"></i><b>3</b> The power of rich, structured metadata</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chapter03.html"><a href="chapter03.html#rich-metadata"><i class="fa fa-check"></i><b>3.1</b> Rich metadata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="chapter03.html"><a href="chapter03.html#benefits-for-data-users"><i class="fa fa-check"></i><b>3.1.1</b> Benefits for data users</a></li>
+<li class="chapter" data-level="3.1.2" data-path="chapter03.html"><a href="chapter03.html#benefits-for-data-producers"><i class="fa fa-check"></i><b>3.1.2</b> Benefits for data producers</a></li>
+<li class="chapter" data-level="3.1.3" data-path="chapter03.html"><a href="chapter03.html#scope-of-the-metadata"><i class="fa fa-check"></i><b>3.1.3</b> Scope of the metadata</a></li>
+<li class="chapter" data-level="3.1.4" data-path="chapter03.html"><a href="chapter03.html#controlled-vocabularies"><i class="fa fa-check"></i><b>3.1.4</b> Controlled vocabularies</a></li>
+<li class="chapter" data-level="3.1.5" data-path="chapter03.html"><a href="chapter03.html#tags"><i class="fa fa-check"></i><b>3.1.5</b> Tags</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="chapter03.html"><a href="chapter03.html#structured-metadata"><i class="fa fa-check"></i><b>3.2</b> Structured metadata</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="chapter03.html"><a href="chapter03.html#what-structure"><i class="fa fa-check"></i><b>3.2.1</b> What structure?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chapter03.html"><a href="chapter03.html#formats-for-structured-metadata-json-and-xml"><i class="fa fa-check"></i><b>3.2.2</b> Formats for structured metadata: JSON and XML</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chapter03.html"><a href="chapter03.html#benefits-of-structured-metadata"><i class="fa fa-check"></i><b>3.2.3</b> Benefits of structured metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chapter03.html"><a href="chapter03.html#augmenting-metadata"><i class="fa fa-check"></i><b>3.3</b> Augmenting metadata</a></li>
+<li class="chapter" data-level="3.4" data-path="chapter03.html"><a href="chapter03.html#recommended-standards-and-schemas"><i class="fa fa-check"></i><b>3.4</b> Recommended standards and schemas</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chapter03.html"><a href="chapter03.html#documents"><i class="fa fa-check"></i><b>3.4.1</b> Documents</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chapter03.html"><a href="chapter03.html#microdata"><i class="fa fa-check"></i><b>3.4.2</b> Microdata</a></li>
+<li class="chapter" data-level="3.4.3" data-path="chapter03.html"><a href="chapter03.html#geographic-datasets-data-structures-and-data-services"><i class="fa fa-check"></i><b>3.4.3</b> Geographic datasets, data structures, and data services</a></li>
+<li class="chapter" data-level="3.4.4" data-path="chapter03.html"><a href="chapter03.html#time-series-indicators"><i class="fa fa-check"></i><b>3.4.4</b> Time series, indicators</a></li>
+<li class="chapter" data-level="3.4.5" data-path="chapter03.html"><a href="chapter03.html#statistical-tables"><i class="fa fa-check"></i><b>3.4.5</b> Statistical tables</a></li>
+<li class="chapter" data-level="3.4.6" data-path="chapter03.html"><a href="chapter03.html#images"><i class="fa fa-check"></i><b>3.4.6</b> Images</a></li>
+<li class="chapter" data-level="3.4.7" data-path="chapter03.html"><a href="chapter03.html#audio"><i class="fa fa-check"></i><b>3.4.7</b> Audio</a></li>
+<li class="chapter" data-level="3.4.8" data-path="chapter03.html"><a href="chapter03.html#videos"><i class="fa fa-check"></i><b>3.4.8</b> Videos</a></li>
+<li class="chapter" data-level="3.4.9" data-path="chapter03.html"><a href="chapter03.html#programs-and-scripts"><i class="fa fa-check"></i><b>3.4.9</b> Programs and scripts</a></li>
+<li class="chapter" data-level="3.4.10" data-path="chapter03.html"><a href="chapter03.html#external-resources"><i class="fa fa-check"></i><b>3.4.10</b> External resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chapter03.html"><a href="chapter03.html#search-engine-optimization-schema.org"><i class="fa fa-check"></i><b>3.5</b> Search engine optimization: schema.org</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="chapter03.html"><a href="chapter03.html#the-basics-of-search-engine-optimization"><i class="fa fa-check"></i><b>3.5.1</b> The basics of search engine optimization</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="chapter03.html"><a href="chapter03.html#where-to-find-the-schemas-documentation"><i class="fa fa-check"></i><b>3.6</b> Where to find the schemas’ documentation</a></li>
+<li class="chapter" data-level="3.7" data-path="chapter03.html"><a href="chapter03.html#generating-structured-metadata"><i class="fa fa-check"></i><b>3.7</b> Generating structured metadata</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="chapter03.html"><a href="chapter03.html#generating-compliant-metadata-using-a-metadata-editor"><i class="fa fa-check"></i><b>3.7.1</b> Generating compliant metadata using a metadata editor</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chapter03.html"><a href="chapter03.html#generating-compliant-metadata-using-r"><i class="fa fa-check"></i><b>3.7.2</b> Generating compliant metadata using R</a></li>
+<li class="chapter" data-level="3.7.3" data-path="chapter03.html"><a href="chapter03.html#generating-compliant-metadata-using-python"><i class="fa fa-check"></i><b>3.7.3</b> Generating compliant metadata using Python</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II STANDARDS AND SCHEMAS</b></span></li>
+<li class="chapter" data-level="4" data-path="chapter04.html"><a href="chapter04.html"><i class="fa fa-check"></i><b>4</b> Documents</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter04.html"><a href="chapter04.html#marc-21-dublin-core-and-bibtex"><i class="fa fa-check"></i><b>4.1</b> MARC 21, Dublin Core, and BibTex</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter04.html"><a href="chapter04.html#schema-description"><i class="fa fa-check"></i><b>4.2</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chapter04.html"><a href="chapter04.html#metadata-information"><i class="fa fa-check"></i><b>4.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chapter04.html"><a href="chapter04.html#document-description"><i class="fa fa-check"></i><b>4.2.2</b> Document description</a></li>
+<li class="chapter" data-level="4.2.3" data-path="chapter04.html"><a href="chapter04.html#provenance"><i class="fa fa-check"></i><b>4.2.3</b> Provenance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chapter04.html"><a href="chapter04.html#tags-1"><i class="fa fa-check"></i><b>4.2.4</b> Tags</a></li>
+<li class="chapter" data-level="4.2.5" data-path="chapter04.html"><a href="chapter04.html#lda-topics"><i class="fa fa-check"></i><b>4.2.5</b> LDA topics</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chapter04.html"><a href="chapter04.html#embeddings"><i class="fa fa-check"></i><b>4.2.6</b> Embeddings</a></li>
+<li class="chapter" data-level="4.2.7" data-path="chapter04.html"><a href="chapter04.html#additional-fields"><i class="fa fa-check"></i><b>4.2.7</b> Additional fields</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chapter04.html"><a href="chapter04.html#complete-examples"><i class="fa fa-check"></i><b>4.3</b> Complete examples</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="chapter04.html"><a href="chapter04.html#example-1-working-paper"><i class="fa fa-check"></i><b>4.3.1</b> Example 1: Working Paper</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chapter04.html"><a href="chapter04.html#example-2-book"><i class="fa fa-check"></i><b>4.3.2</b> Example 2: Book</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chapter04.html"><a href="chapter04.html#example-3-importing-from-a-list-of-documents"><i class="fa fa-check"></i><b>4.3.3</b> Example 3: Importing from a list of documents</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter05.html"><a href="chapter05.html"><i class="fa fa-check"></i><b>5</b> Microdata</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chapter05.html"><a href="chapter05.html#definition-of-microdata"><i class="fa fa-check"></i><b>5.1</b> Definition of microdata</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter05.html"><a href="chapter05.html#the-data-documentation-initiative-ddi-metadata-standard"><i class="fa fa-check"></i><b>5.2</b> The Data Documentation Initiative (DDI) metadata standard</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="chapter05.html"><a href="chapter05.html#ddi-codebook"><i class="fa fa-check"></i><b>5.2.1</b> DDI-Codebook</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chapter05.html"><a href="chapter05.html#ddi-lifecycle"><i class="fa fa-check"></i><b>5.2.2</b> DDI-Lifecycle</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chapter05.html"><a href="chapter05.html#some-practical-considerations"><i class="fa fa-check"></i><b>5.3</b> Some practical considerations</a></li>
+<li class="chapter" data-level="5.4" data-path="chapter05.html"><a href="chapter05.html#schema-description-ddi-codebook-2.5"><i class="fa fa-check"></i><b>5.4</b> Schema description: DDI-Codebook 2.5</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="chapter05.html"><a href="chapter05.html#document-description-1"><i class="fa fa-check"></i><b>5.4.1</b> Document description</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chapter05.html"><a href="chapter05.html#study-description"><i class="fa fa-check"></i><b>5.4.2</b> Study description</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chapter05.html"><a href="chapter05.html#description-of-data-files"><i class="fa fa-check"></i><b>5.4.3</b> Description of data files</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chapter05.html"><a href="chapter05.html#variable-description"><i class="fa fa-check"></i><b>5.4.4</b> Variable description</a></li>
+<li class="chapter" data-level="5.4.5" data-path="chapter05.html"><a href="chapter05.html#variable-groups"><i class="fa fa-check"></i><b>5.4.5</b> Variable groups</a></li>
+<li class="chapter" data-level="5.4.6" data-path="chapter05.html"><a href="chapter05.html#provenance-1"><i class="fa fa-check"></i><b>5.4.6</b> Provenance</a></li>
+<li class="chapter" data-level="5.4.7" data-path="chapter05.html"><a href="chapter05.html#tags-2"><i class="fa fa-check"></i><b>5.4.7</b> Tags</a></li>
+<li class="chapter" data-level="5.4.8" data-path="chapter05.html"><a href="chapter05.html#lda-topics-1"><i class="fa fa-check"></i><b>5.4.8</b> LDA topics</a></li>
+<li class="chapter" data-level="5.4.9" data-path="chapter05.html"><a href="chapter05.html#embeddings-1"><i class="fa fa-check"></i><b>5.4.9</b> Embeddings</a></li>
+<li class="chapter" data-level="5.4.10" data-path="chapter05.html"><a href="chapter05.html#additional"><i class="fa fa-check"></i><b>5.4.10</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chapter05.html"><a href="chapter05.html#generating-and-publishing-ddi-metadata"><i class="fa fa-check"></i><b>5.5</b> Generating and publishing DDI metadata</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chapter05.html"><a href="chapter05.html#using-the-world-bank-metadata-editor"><i class="fa fa-check"></i><b>5.5.1</b> Using the World Bank Metadata Editor</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chapter05.html"><a href="chapter05.html#using-r-or-python"><i class="fa fa-check"></i><b>5.5.2</b> Using R or Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter06.html"><a href="chapter06.html"><i class="fa fa-check"></i><b>6</b> Geographic data and services</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chapter06.html"><a href="chapter06.html#background"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter06.html"><a href="chapter06.html#geographic-information-metadata-standards"><i class="fa fa-check"></i><b>6.2</b> Geographic information metadata standards</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="chapter06.html"><a href="chapter06.html#documenting-geographic-datasets---the-iso-19115-standard"><i class="fa fa-check"></i><b>6.2.1</b> Documenting geographic datasets - The ISO 19115 standard</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chapter06.html"><a href="chapter06.html#describing-data-structures---the-iso-19115-2-and-iso-19110-standards"><i class="fa fa-check"></i><b>6.2.2</b> Describing data structures - The ISO 19115-2 and ISO 19110 standards</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chapter06.html"><a href="chapter06.html#describing-data-services---the-iso-19119-standard"><i class="fa fa-check"></i><b>6.2.3</b> Describing data services - The ISO 19119 standard</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chapter06.html"><a href="chapter06.html#unified-metadata-specification---the-isots-19139-standard"><i class="fa fa-check"></i><b>6.2.4</b> Unified metadata specification - The ISO/TS 19139 standard</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chapter06.html"><a href="chapter06.html#schema-description-1"><i class="fa fa-check"></i><b>6.3</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chapter06.html"><a href="chapter06.html#introduction-to-iso19139"><i class="fa fa-check"></i><b>6.3.1</b> Introduction to ISO19139</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chapter06.html"><a href="chapter06.html#common-sets-of-elements"><i class="fa fa-check"></i><b>6.3.2</b> Common sets of elements</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chapter06.html"><a href="chapter06.html#core-metadata-properties"><i class="fa fa-check"></i><b>6.3.3</b> Core metadata properties</a></li>
+<li class="chapter" data-level="6.3.4" data-path="chapter06.html"><a href="chapter06.html#main-metadata-sections"><i class="fa fa-check"></i><b>6.3.4</b> Main metadata sections</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chapter06.html"><a href="chapter06.html#iso-19110-feature-catalogue-feature_catalogue"><i class="fa fa-check"></i><b>6.4</b> ISO 19110 Feature Catalogue (<code>feature_catalogue</code>)</a></li>
+<li class="chapter" data-level="6.5" data-path="chapter06.html"><a href="chapter06.html#provenance-2"><i class="fa fa-check"></i><b>6.5</b> Provenance</a></li>
+<li class="chapter" data-level="6.6" data-path="chapter06.html"><a href="chapter06.html#tags-3"><i class="fa fa-check"></i><b>6.6</b> Tags</a></li>
+<li class="chapter" data-level="6.7" data-path="chapter06.html"><a href="chapter06.html#lda-topics-2"><i class="fa fa-check"></i><b>6.7</b> LDA topics</a></li>
+<li class="chapter" data-level="6.8" data-path="chapter06.html"><a href="chapter06.html#embeddings-2"><i class="fa fa-check"></i><b>6.8</b> Embeddings</a></li>
+<li class="chapter" data-level="6.9" data-path="chapter06.html"><a href="chapter06.html#additional-1"><i class="fa fa-check"></i><b>6.9</b> Additional</a></li>
+<li class="chapter" data-level="6.10" data-path="chapter06.html"><a href="chapter06.html#complete-examples-1"><i class="fa fa-check"></i><b>6.10</b> Complete examples</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="chapter06.html"><a href="chapter06.html#example-1-vector---shape-files-bangladesh-outline-of-camps-of-rohingya-refugees-in-coxs-bazar-january-2021"><i class="fa fa-check"></i><b>6.10.1</b> Example 1 (vector - shape files): Bangladesh, Outline of camps of Rohingya refugees in Cox’s Bazar, January 2021</a></li>
+<li class="chapter" data-level="6.10.2" data-path="chapter06.html"><a href="chapter06.html#example-2-vector-csv-data-syria-refugee-sites-ocha"><i class="fa fa-check"></i><b>6.10.2</b> Example 2 (vector, CSV data): Syria Refugee Sites (OCHA)</a></li>
+<li class="chapter" data-level="6.10.3" data-path="chapter06.html"><a href="chapter06.html#example-3-vector-with-feature-catalogue---the-gdis-beta-dataset"><i class="fa fa-check"></i><b>6.10.3</b> Example 3 (vector, with Feature Catalogue) - The GDIS (beta) dataset</a></li>
+<li class="chapter" data-level="6.10.4" data-path="chapter06.html"><a href="chapter06.html#example-4-raster-spatial-distribution-of-the-ethiopian-population-in-2020"><i class="fa fa-check"></i><b>6.10.4</b> Example 4 (raster): Spatial distribution of the Ethiopian population in 2020</a></li>
+<li class="chapter" data-level="6.10.5" data-path="chapter06.html"><a href="chapter06.html#example-5-service-the-united-nations-geospatial-website"><i class="fa fa-check"></i><b>6.10.5</b> Example 5 (service): The United Nations Geospatial website</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="chapter06.html"><a href="chapter06.html#useful-tools"><i class="fa fa-check"></i><b>6.11</b> Useful tools</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter07.html"><a href="chapter07.html"><i class="fa fa-check"></i><b>7</b> Databases of indicators</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chapter07.html"><a href="chapter07.html#database-vs-indicators"><i class="fa fa-check"></i><b>7.1</b> Database vs indicators</a></li>
+<li class="chapter" data-level="7.2" data-path="chapter07.html"><a href="chapter07.html#schema-description-2"><i class="fa fa-check"></i><b>7.2</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="chapter07.html"><a href="chapter07.html#provenance-3"><i class="fa fa-check"></i><b>7.2.1</b> Provenance</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chapter07.html"><a href="chapter07.html#tags-4"><i class="fa fa-check"></i><b>7.2.2</b> Tags</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chapter07.html"><a href="chapter07.html#lda-topics-3"><i class="fa fa-check"></i><b>7.2.3</b> LDA topics</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chapter07.html"><a href="chapter07.html#embeddings-3"><i class="fa fa-check"></i><b>7.2.4</b> Embeddings</a></li>
+<li class="chapter" data-level="7.2.5" data-path="chapter07.html"><a href="chapter07.html#additional-2"><i class="fa fa-check"></i><b>7.2.5</b> Additional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chapter08.html"><a href="chapter08.html"><i class="fa fa-check"></i><b>8</b> Indicators and time series</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="chapter08.html"><a href="chapter08.html#indicators-time-series-database-and-scope-of-the-schema"><i class="fa fa-check"></i><b>8.1</b> Indicators, time series, database, and scope of the schema</a></li>
+<li class="chapter" data-level="8.2" data-path="chapter08.html"><a href="chapter08.html#schema-description-3"><i class="fa fa-check"></i><b>8.2</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="chapter08.html"><a href="chapter08.html#the-time-series-indicators-schema"><i class="fa fa-check"></i><b>8.2.1</b> The time series (indicators) schema</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chapter08.html"><a href="chapter08.html#provenance-4"><i class="fa fa-check"></i><b>8.2.2</b> Provenance</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chapter08.html"><a href="chapter08.html#tags-5"><i class="fa fa-check"></i><b>8.2.3</b> Tags</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chapter08.html"><a href="chapter08.html#additional-3"><i class="fa fa-check"></i><b>8.2.4</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chapter08.html"><a href="chapter08.html#generating-and-publishing-compliant-metadata---complete-example"><i class="fa fa-check"></i><b>8.3</b> Generating and publishing compliant metadata - Complete example</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="chapter08.html"><a href="chapter08.html#use-of-ai-for-metadata-augmentation"><i class="fa fa-check"></i><b>8.3.1</b> Use of AI for metadata augmentation</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chapter08.html"><a href="chapter08.html#using-r-3"><i class="fa fa-check"></i><b>8.3.2</b> Using R</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chapter08.html"><a href="chapter08.html#using-python-3"><i class="fa fa-check"></i><b>8.3.3</b> Using Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter09.html"><a href="chapter09.html"><i class="fa fa-check"></i><b>9</b> Statistical tables</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="chapter09.html"><a href="chapter09.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chapter09.html"><a href="chapter09.html#anatomy-of-a-table"><i class="fa fa-check"></i><b>9.2</b> Anatomy of a table</a></li>
+<li class="chapter" data-level="9.3" data-path="chapter09.html"><a href="chapter09.html#schema-description-4"><i class="fa fa-check"></i><b>9.3</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="chapter09.html"><a href="chapter09.html#cataloguing-parameters-1"><i class="fa fa-check"></i><b>9.3.1</b> Cataloguing parameters</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chapter09.html"><a href="chapter09.html#metadata-information-3"><i class="fa fa-check"></i><b>9.3.2</b> Metadata information</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chapter09.html"><a href="chapter09.html#table-description"><i class="fa fa-check"></i><b>9.3.3</b> Table description</a></li>
+<li class="chapter" data-level="9.3.4" data-path="chapter09.html"><a href="chapter09.html#provenance-5"><i class="fa fa-check"></i><b>9.3.4</b> Provenance</a></li>
+<li class="chapter" data-level="9.3.5" data-path="chapter09.html"><a href="chapter09.html#tags-6"><i class="fa fa-check"></i><b>9.3.5</b> Tags</a></li>
+<li class="chapter" data-level="9.3.6" data-path="chapter09.html"><a href="chapter09.html#additional-custom-elements"><i class="fa fa-check"></i><b>9.3.6</b> Additional (custom) elements</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chapter09.html"><a href="chapter09.html#complete-examples-2"><i class="fa fa-check"></i><b>9.4</b> Complete examples</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="chapter09.html"><a href="chapter09.html#example-1"><i class="fa fa-check"></i><b>9.4.1</b> Example 1</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chapter09.html"><a href="chapter09.html#example-2"><i class="fa fa-check"></i><b>9.4.2</b> Example 2</a></li>
+<li class="chapter" data-level="9.4.3" data-path="chapter09.html"><a href="chapter09.html#example-3"><i class="fa fa-check"></i><b>9.4.3</b> Example 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter10.html"><a href="chapter10.html"><i class="fa fa-check"></i><b>10</b> Images</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="chapter10.html"><a href="chapter10.html#image-metadata"><i class="fa fa-check"></i><b>10.1</b> Image metadata</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="chapter10.html"><a href="chapter10.html#embedded-metadata-exif"><i class="fa fa-check"></i><b>10.1.1</b> Embedded metadata: EXIF</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chapter10.html"><a href="chapter10.html#iptc-and-dublin-core-standards"><i class="fa fa-check"></i><b>10.1.2</b> IPTC and Dublin Core standards</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chapter10.html"><a href="chapter10.html#augmenting-image-metadata"><i class="fa fa-check"></i><b>10.1.3</b> Augmenting image metadata</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chapter10.html"><a href="chapter10.html#schema-description-5"><i class="fa fa-check"></i><b>10.2</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="chapter10.html"><a href="chapter10.html#common-elements"><i class="fa fa-check"></i><b>10.2.1</b> Common elements</a></li>
+<li class="chapter" data-level="10.2.2" data-path="chapter10.html"><a href="chapter10.html#iptc-option"><i class="fa fa-check"></i><b>10.2.2</b> IPTC option</a></li>
+<li class="chapter" data-level="10.2.3" data-path="chapter10.html"><a href="chapter10.html#dublin-core-option"><i class="fa fa-check"></i><b>10.2.3</b> Dublin Core option</a></li>
+<li class="chapter" data-level="10.2.4" data-path="chapter10.html"><a href="chapter10.html#additional-elements-iptc-and-dcmi"><i class="fa fa-check"></i><b>10.2.4</b> Additional elements (IPTC and DCMI)</a></li>
+<li class="chapter" data-level="10.2.5" data-path="chapter10.html"><a href="chapter10.html#lda-topics-4"><i class="fa fa-check"></i><b>10.2.5</b> LDA topics</a></li>
+<li class="chapter" data-level="10.2.6" data-path="chapter10.html"><a href="chapter10.html#embeddings-4"><i class="fa fa-check"></i><b>10.2.6</b> Embeddings</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chapter10.html"><a href="chapter10.html#examples"><i class="fa fa-check"></i><b>10.3</b> Examples</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="chapter10.html"><a href="chapter10.html#example-1---using-the-iptc-option"><i class="fa fa-check"></i><b>10.3.1</b> Example 1 - Using the IPTC option</a></li>
+<li class="chapter" data-level="10.3.2" data-path="chapter10.html"><a href="chapter10.html#example-2---using-the-dcmi-option"><i class="fa fa-check"></i><b>10.3.2</b> Example 2 - Using the DCMI option</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chapter11.html"><a href="chapter11.html"><i class="fa fa-check"></i><b>11</b> Videos</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chapter11.html"><a href="chapter11.html#augmenting-video-metadata"><i class="fa fa-check"></i><b>11.1</b> Augmenting video metadata</a></li>
+<li class="chapter" data-level="11.2" data-path="chapter11.html"><a href="chapter11.html#schema-description-6"><i class="fa fa-check"></i><b>11.2</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="chapter11.html"><a href="chapter11.html#metadata-information-4"><i class="fa fa-check"></i><b>11.2.1</b> Metadata information</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chapter11.html"><a href="chapter11.html#video-description"><i class="fa fa-check"></i><b>11.2.2</b> Video description</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chapter11.html"><a href="chapter11.html#complete-example-1"><i class="fa fa-check"></i><b>11.3</b> Complete example</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="chapter11.html"><a href="chapter11.html#in-r"><i class="fa fa-check"></i><b>11.3.1</b> In R</a></li>
+<li class="chapter" data-level="11.3.2" data-path="chapter11.html"><a href="chapter11.html#in-python"><i class="fa fa-check"></i><b>11.3.2</b> In Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="chapter12.html"><a href="chapter12.html"><i class="fa fa-check"></i><b>12</b> Research projects and scripts</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="chapter12.html"><a href="chapter12.html#rationale"><i class="fa fa-check"></i><b>12.1</b> Rationale</a></li>
+<li class="chapter" data-level="12.2" data-path="chapter12.html"><a href="chapter12.html#motivation-for-open-analytics"><i class="fa fa-check"></i><b>12.2</b> Motivation for open analytics</a></li>
+<li class="chapter" data-level="12.3" data-path="chapter12.html"><a href="chapter12.html#goal-discoverable-code"><i class="fa fa-check"></i><b>12.3</b> Goal: discoverable code</a></li>
+<li class="chapter" data-level="12.4" data-path="chapter12.html"><a href="chapter12.html#schema-description-7"><i class="fa fa-check"></i><b>12.4</b> Schema description</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="chapter12.html"><a href="chapter12.html#document-description-2"><i class="fa fa-check"></i><b>12.4.1</b> Document description</a></li>
+<li class="chapter" data-level="12.4.2" data-path="chapter12.html"><a href="chapter12.html#project-description"><i class="fa fa-check"></i><b>12.4.2</b> Project description</a></li>
+<li class="chapter" data-level="12.4.3" data-path="chapter12.html"><a href="chapter12.html#provenance-6"><i class="fa fa-check"></i><b>12.4.3</b> Provenance</a></li>
+<li class="chapter" data-level="12.4.4" data-path="chapter12.html"><a href="chapter12.html#tags-7"><i class="fa fa-check"></i><b>12.4.4</b> Tags</a></li>
+<li class="chapter" data-level="12.4.5" data-path="chapter12.html"><a href="chapter12.html#additional-4"><i class="fa fa-check"></i><b>12.4.5</b> Additional</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="chapter12.html"><a href="chapter12.html#generating-compliant-metadata"><i class="fa fa-check"></i><b>12.5</b> Generating compliant metadata</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="chapter12.html"><a href="chapter12.html#full-example-using-a-metadata-editor"><i class="fa fa-check"></i><b>12.5.1</b> Full example, using a metadata editor</a></li>
+<li class="chapter" data-level="12.5.2" data-path="chapter12.html"><a href="chapter12.html#full-example-using-r"><i class="fa fa-check"></i><b>12.5.2</b> Full example, using R</a></li>
+<li class="chapter" data-level="12.5.3" data-path="chapter12.html"><a href="chapter12.html#full-example-using-python"><i class="fa fa-check"></i><b>12.5.3</b> Full example, using Python</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chapter13.html"><a href="chapter13.html"><i class="fa fa-check"></i><b>13</b> External resources</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chapter13.html"><a href="chapter13.html#example-of-use-of-external-resources"><i class="fa fa-check"></i><b>13.1</b> Example of use of external resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>ANNEXES</b></span></li>
+<li class="chapter" data-level="" data-path="annex-1-references-and-links.html"><a href="annex-1-references-and-links.html"><i class="fa fa-check"></i>Annex 1: References and links</a></li>
+<li class="chapter" data-level="" data-path="annex-2-mapping-standards-and-schemas-to-schema.html"><a href="annex-2-mapping-standards-and-schemas-to-schema.html"><i class="fa fa-check"></i>Annex 2: Mapping standards and schemas to schema.org</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="annex-2-mapping-standards-and-schemas-to-schema.html"><a href="annex-2-mapping-standards-and-schemas-to-schema.html#microdata-1"><i class="fa fa-check"></i><b>1.1</b> Microdata</a></li>
+<li class="chapter" data-level="1.2" data-path="annex-2-mapping-standards-and-schemas-to-schema.html"><a href="annex-2-mapping-standards-and-schemas-to-schema.html#geographic-data"><i class="fa fa-check"></i><b>1.2</b> Geographic data</a></li>
+<li class="chapter" data-level="1.3" data-path="annex-2-mapping-standards-and-schemas-to-schema.html"><a href="annex-2-mapping-standards-and-schemas-to-schema.html#indicators-and-database"><i class="fa fa-check"></i><b>1.3</b> Indicators (and database)</a></li>
+<li class="chapter" data-level="1.4" data-path="annex-2-mapping-standards-and-schemas-to-schema.html"><a href="annex-2-mapping-standards-and-schemas-to-schema.html#tables"><i class="fa fa-check"></i><b>1.4</b> Tables</a></li>
+<li class="chapter" data-level="1.5" data-path="annex-2-mapping-standards-and-schemas-to-schema.html"><a href="annex-2-mapping-standards-and-schemas-to-schema.html#images-1"><i class="fa fa-check"></i><b>1.5</b> Images</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="annex-3-mapping-the-microdata-schema-to-the-ddi-codebook-2.html"><a href="annex-3-mapping-the-microdata-schema-to-the-ddi-codebook-2.html"><i class="fa fa-check"></i>Annex 3: Mapping the microdata schema to the DDI Codebook 2.5</a></li>
+<li class="chapter" data-level="" data-path="annex-4-mapping-the-geographic-schema-to-dcatschema.html"><a href="annex-4-mapping-the-geographic-schema-to-dcatschema.html"><i class="fa fa-check"></i>Annex 4: Mapping the geographic schema to DCAT/schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-5-mapping-the-indicatortime-series-schema-to-schema.html"><a href="annex-5-mapping-the-indicatortime-series-schema-to-schema.html"><i class="fa fa-check"></i>Annex 5: Mapping the indicator/time series schema to schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-6-mapping-the-table-schema-to-schema.html"><a href="annex-6-mapping-the-table-schema-to-schema.html"><i class="fa fa-check"></i>Annex 6: Mapping the table schema to schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-7-mapping-the-image-schema-to-dublin-core-iptc-and-schema.html"><a href="annex-7-mapping-the-image-schema-to-dublin-core-iptc-and-schema.html"><i class="fa fa-check"></i>Annex 7: Mapping the image schema to Dublin Core, IPTC, and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-8-mapping-the-audio-schema-to-dublin-core-and-schema.html"><a href="annex-8-mapping-the-audio-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 8: Mapping the audio schema to Dublin Core and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-9-mapping-the-video-schema-to-dublin-core-and-schema.html"><a href="annex-9-mapping-the-video-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 9: Mapping the video schema to Dublin Core and schema.org</a></li>
+<li class="chapter" data-level="" data-path="annex-10-mapping-the-researchscript-schema-to-dublin-core-and-schema.html"><a href="annex-10-mapping-the-researchscript-schema-to-dublin-core-and-schema.html"><i class="fa fa-check"></i>Annex 10: Mapping the research/script schema to Dublin Core and schema.org</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">[DRAFT - WORK IN PROGRESS] Metadata Standards and Schemas for Improved Data Discoverability and Usability</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter02" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> The features of a modern data dissemination platform<a href="chapter02.html#chapter02" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the introductory section of this Guide, we proposed that modern data dissemination platforms should be modeled after the most successful e-commerce platforms. These platforms are optimized to serve both buyers (in our context, the data users) and sellers (in our context, the data providers) in the most efficient manner. In this chapter, we outline features that a modern online data catalog should incorporate to adhere to this model.</p>
+<p>We provide recommendations for developing data catalogs that encompass lexical search and semantic search, filtering, advanced search functionality, interactive user interfaces, and the capability to operate as recommender systems. We approach the topic from three distinct perspectives: the viewpoint of <strong>data users</strong>, who represent a highly diverse community with varying needs, preferences, expectations, and capabilities; the standpoint of <strong>data suppliers</strong>, who either publish their data or delegate the task to a data library; and the perspective of <strong>catalog administrators</strong>, responsible for curating and disseminating data in a responsible, effective, and efficient manner while optimizing both user and supplier satisfaction.</p>
+<p>The creation of a contemporary data dissemination platform is a collaborative endeavor, engaging data curators, user experience (UX) experts, designers, search engineers, and subject matter specialists with a profound understanding of both the data and the users’ requirements and preferences. Inclusive in this development process should be the active participation of the users, allowing them to provide feedback that directly influences the system’s design.</p>
+<p>The examples we provided in this chapter are taken from our NADA cataloguing application. Other open-source cataloguing applications are available.</p>
+<div id="features-for-data-users" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Features for data users<a href="chapter02.html#features-for-data-users" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In order to cultivate a favorable user experience, online data catalogs must offer an intuitive and efficient interface, allowing users to effortlessly access the most pertinent datasets. To meet user expectations effectively, one should emphasize simplicity, predictability, relevance, speed, and reliability. Integrating these principles into the design of data catalogs can deliver a seamless and user-friendly experience, akin to the convenience and ease provided by internet search engines and e-commerce platforms. This, in turn, streamlines the process of discovering and obtaining the necessary data, making it quick and hassle-free for users.</p>
+<div id="browser" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Browser<a href="chapter02.html#browser" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Some users will just want to browse a catalog. This should be made easy. The use of cards is recommended. For images, a mosaic view can be provided. For microdata, a variable view.</p>
+</div>
+<div id="simple-search-interface" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Simple search interface<a href="chapter02.html#simple-search-interface" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The default option to search for data in a specialized data catalog must be a single search box. Not all users can be expected to provide ideal queries. The search engine must be able to tolerate spelling mistakes. Auto-completion and spell checkers of queries can be enabled using indexing tools such as Solr or ElasticSearch. The query can be entered using the keyboard or audio.</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/229823626-311376be-f75f-4e0b-9e6b-767fa307246b.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+<p>The search engine must be able to “understand” the user’s query and to return the most relevant results ranked in order of importance. This may require an automated process of query parsing and enhancement. AMong other things, the query parsing may derive information on:
+- the type of data that are of interest
+- whether the query is related to one or a few specific indicators available in the catalog assets
+- whether a geographic location is mentioned
+- whether a time is mentioned
+- whether a keyword search or a semantic search is most appropriate
+- detect the language of the query, and translate if appropriate</p>
+<p>Based on this information, the application should be able to determine whether an immediate answer could be provided, and whether the answer should be textual, a data grid, or a visualization.</p>
+</div>
+<div id="document-as-a-query" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Document as a query<a href="chapter02.html#document-as-a-query" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A search engine with semantic search capability should be able to process short or long queries, even accepting a document (a PDF or a TXT file) as a query. The search engine will then first analyze the semantic content of the document, convert it into an embedding vector, and identify the closest resources available in the catalog.</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/229806674-941ac085-6f6f-45e8-bfa4-d0834cf73587.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+</div>
+<div id="suggested-queries" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Suggested queries<a href="chapter02.html#suggested-queries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After processing a user query, the application can provide suggestions for related keywords. This can be implemented using a graph of related words generated by natural language processing (NLP) models. Access to an API is necessary to implement keyword suggestions based on such graphs. The example below shows a related words graph for the terms “climate change” as returned by an NLP model.</p>
+<br>
+<center>
+<img src="images/related_words_graph.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<p>A search interface could retrieve such information via API and display it as follows:</p>
+<br>
+<center>
+<img src="images/catalog_search_01.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+</div>
+<div id="advanced-search" class="section level3 hasAnchor" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Advanced search<a href="chapter02.html#advanced-search" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is useful also to provide users with an option to build a more advanced search, targetted to specific metadata elements and with boolean operators. Advanced search are enabled by structured metadata, i.e., by the use of metadata standards and schemas. The advanced search should be available as a user interface and using a syntax option. The interface could be as follows:</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/229806372-8c33d0ca-5d3e-48b1-af4f-5a0405c30c22.png" style="width:85.0%" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+This would correspond to the following syntax that the user could enter directly in the search box (and save and/or share with others):
+<br>
+<center>
+<strong>title:“demographic transition” AND country:(<em>Kenya</em>) AND body:(poverty)</strong>
+</center>
+<p><br></p>
+</div>
+<div id="geographic-search" class="section level3 hasAnchor" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> Geographic search<a href="chapter02.html#geographic-search" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data catalogs receive numerous queries that are related to a particular geography. Analysis of millions of queries from the World Bank (WB) and International Monetary Fund (IMF) data catalogs revealed that a significant percentage of queries consist of a single country name. For data catalogs that cover multiple countries, creating a “Country page” can provide a quick overview of the most recent and popular datasets of different types, which many users may find helpful.</p>
+<p>However, geography is not limited to countries alone. Many users may be interested in sub-national data or geographic areas that do not correspond to administrative areas, such as a watershed or an ocean. Especially when a data catalog contains geographic datasets, it is recommended to provide specialized search tools. Most metadata standards allow the use of bounding boxes to specify geographic coverage, which could be used to develop a “search” tool that enables a user to draw a box on a map. But this option is very imperfect (explain why).</p>
+Example from data.gov (<a href="https://catalog.data.gov/dataset/?metadata_type=geospatial" class="uri">https://catalog.data.gov/dataset/?metadata_type=geospatial</a>)
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/230094206-ff3bca7b-58ee-4061-ab0c-7777d9286813.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+<p>For geographic datasets, geographic indexing is recommended. The H3 index is a powerful option. (describe)</p>
+<p>Also, one must take into account that many users will rely on a keywords search to identify data. For example, a raster image of the Philippines (e.g., dataset from a satellite imagery) will contain the country name in the metadata, but the metadata cannot contain the name of all geographic areas coveregd by the data. A user looking for “Iloilo” for example would not find this relevant dataset based on a simple keyword search. The solution would be for the search engine to parse the query, detect if it contains the name of a geographic area, automatically identify the area (polygon of geographic coordinates) that corresponds to it (possibly using an API built around Nominatim), and retrieve resources in the catalog that cover the area (which requires that the datasets in the catalog be indexed geographically).</p>
+<p>(describe how this works - illustrate from our KCP project “Indexing the world”).</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/230091095-d63c8b8f-7684-41db-b347-d75ded1dc95a.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+<p>Example of use of Nominatim: The Nominatim application shows the polygon boundary for the search query “Iloilo City” automatically provided by the API.</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/230091354-b44c38fa-f628-4693-97bb-f49fb4f23b3e.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+<p>The search API endpoint of Nominatim returns this JSON data which can be processed to generate search cell(s).</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/230091598-fee71949-29d2-4bac-b60f-dd8efb49278f.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+</div>
+<div id="query-user-interface" class="section level3 hasAnchor" number="2.1.7">
+<h3><span class="header-section-number">2.1.7</span> Query user interface<a href="chapter02.html#query-user-interface" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For time series only</p>
+</div>
+<div id="semantic-search-and-recommendations" class="section level3 hasAnchor" number="2.1.8">
+<h3><span class="header-section-number">2.1.8</span> Semantic search and recommendations<a href="chapter02.html#semantic-search-and-recommendations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are two types of search engines: lexical and semantic. The former matches literal terms in the query to the search engine’s index, while the latter aims to identify datasets that have semantically similar metadata to the query. While an ideal data catalog would offer both types of search engines, implementing semantic searchability can be complex.</p>
+<p>(explain how semantic search workd for different data types - with embeddings and vector indexing and cosine similarity - use of API)</p>
+<p>For microdata: embeddings based on thematic variable groupings - an option to implement semantic search and recommendations
+Discovery of microdata poses specific challenges. Typically, a data dictionary will be available, with variables organized by data file. A “virtual” organization of variables by thematic group, with a pre-defined ontology, can significantly improve data discoverability. AI solutions can be used to generate such groupings and map variables to them. The DDI metadata standard provides the metadata elements needed to store information on variable groups.</p>
+</div>
+<div id="latest-additions-and-history" class="section level3 hasAnchor" number="2.1.9">
+<h3><span class="header-section-number">2.1.9</span> Latest additions and history<a href="chapter02.html#latest-additions-and-history" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The catalog must provide a list of the most recent additions, and a history of additions and updates.
+For each entry, information must be available on the date the entry was first added to the catalog, and when it was last updated.
+When a dataset is replaced with a new version, the versioning must be clear.</p>
+<p><br>
+<img src="https://user-images.githubusercontent.com/35276300/231492091-a96d4c5c-c461-4b5f-88c1-f8db26daa98d.png" alt="image" />
+<br></p>
+</div>
+<div id="customized-views" class="section level3 hasAnchor" number="2.1.10">
+<h3><span class="header-section-number">2.1.10</span> Customized views<a href="chapter02.html#customized-views" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Build your own dashboards
+- Allo users to set preferences: thematic, data type, geographies, search query
+- Have a page where pre-designed dashboards (country/thematic pages) and custom dashboard are accessible
+- Allow sharing of dashboards
+- Core idea: all data and metadata accessible via API; platform operates as a service to feed dashboards (within the platform or external)</p>
+</div>
+<div id="data-and-metadata-as-a-service" class="section level3 hasAnchor" number="2.1.11">
+<h3><span class="header-section-number">2.1.11</span> Data and metadata as a service<a href="chapter02.html#data-and-metadata-as-a-service" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Maintain a data service: let external users build dashboards/poaltorms dynamically connected via API; one organization cannot customize to all communities of users.</li>
+</ul>
+</div>
+<div id="ranking-results" class="section level3 hasAnchor" number="2.1.12">
+<h3><span class="header-section-number">2.1.12</span> Ranking results<a href="chapter02.html#ranking-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A search engine not only needs to identify relevant datasets but also must return the results in a proper order of relevance, with the most relevant results at the top of the list. If users fail to find a relevant response among the top results, they may choose to search for data elsewhere. The ability of a search engine to return relevant results in the optimal rank depends on the metadata’s content and structure. To optimize the ranking of results, a lot of relevance engineering is required, including tuning advanced search tools like Solr or ElasticSearch. Large data catalogs managed by well-resourced agencies can leverage data scientists to explore the possibility of using machine learning solutions such as “learn-to-rank” to improve result ranking. See section “Improving results ranking” below. For more detailed information, see D. Turnbull and J. Berryman’s (2016) in-depth description of tools and methods.</p>
+<p>Keyword-based searches can be optimized using tools like Solr or ElasticSearch. Out-of-the-box solutions, such as those provided by SQL databases, rarely deliver satisfactory results. Structured metadata can help optimize search engines and the ranking of results by allowing for the boosting of specific metadata elements. For instance, a query term found in the <em>title</em> of a dataset would carry more weight than if it were found in the <em>notes</em> element, and the results would be ranked accordingly. Similarly, a country name found in the <em>nation</em> or <em>reference country</em> metadata elements should be given more weight than if it were found in a variable description. Advanced indexing tools like Solr and ElasticSearch provide boosting functionalities to fine-tune search engines and enhance result relevancy.</p>
+</div>
+<div id="filtering-results" class="section level3 hasAnchor" number="2.1.13">
+<h3><span class="header-section-number">2.1.13</span> Filtering results<a href="chapter02.html#filtering-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Facets or filters are useful for narrowing down datasets based on specific metadata categories. For instance, in a data catalog with datasets from different countries, a “country” facet can help users find relevant datasets quickly. To be effective, filters should be based on metadata elements that have a limited number of categories and a predictable set of options. Controlled vocabularies can be used to enable such filters. Furthermore, as some metadata elements are specific to particular data types, contextual facets should be integrated into the catalog’s user interface to offer relevant filters based on the type of data being searched.</p>
+<center>
+<img src="images/catalog_facets_01.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<p>Tags and tag groups (which are available in all schemas we recommend) provide much flexibility to implement facets, as we showed in section 1.7.</p>
+<p>(use pills / …)</p>
+</div>
+<div id="sorting-results" class="section level3 hasAnchor" number="2.1.14">
+<h3><span class="header-section-number">2.1.14</span> Sorting results<a href="chapter02.html#sorting-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sorting results</p>
+</div>
+<div id="collections" class="section level3 hasAnchor" number="2.1.15">
+<h3><span class="header-section-number">2.1.15</span> Collections<a href="chapter02.html#collections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Organize entries by collections
+Thematic or other</p>
+</div>
+<div id="linking-results" class="section level3 hasAnchor" number="2.1.16">
+<h3><span class="header-section-number">2.1.16</span> Linking results<a href="chapter02.html#linking-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Not all data catalog users know exactly what they are looking for and may need to explore the catalog to find relevant resources. E-commerce platforms use recommender systems to suggest products to customers, and data catalogs should have a similar commitment to bringing relevant resources to users’ attention. To achieve this, modern data catalogs display relationships between entries, which may involve data of different types, such as microdata files, analytical scripts, and working papers.</p>
+<p>These relationships can be documented in the metadata, such as identifying datasets as part of a series or new versions of a previous dataset. When relationships are not known or documented, machine learning tools such as topic models and word embedding models can be used to establish the topical or semantic closeness between resources of different types. This can be used to implement a recommender system in data catalogs, which automatically identifies and displays related documents and data for a given resource. The image below shows how “related documents” and “related data” can be automatically identified and displayed for a resource (in this case a document).</p>
+<center>
+<img src="images/catalog_related_01.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+</div>
+<div id="organized-results" class="section level3 hasAnchor" number="2.1.17">
+<h3><span class="header-section-number">2.1.17</span> Organized results<a href="chapter02.html#organized-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When a data catalog contains multiple types of data, it should offer an easy way for users to filter and display query results by data type. For example, when searching for “US population,” one user may only be interested in knowing the total population of the USA, while another may need the public use census microdata sample, and a third may be searching for a publication. To cater to such needs, presenting query results in type-specific tabs (with an “All” option) and/or providing a filter (facet) by type will allow users to focus on the types of data relevant to them. This is similar to commercial platforms that offer search results organized by department, allowing users to search for “keyboard” in either the “music” or “electronics” department.</p>
+<center>
+<img src="images/catalog_tabs_01.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+</div>
+<div id="saving-and-sharing-results" class="section level3 hasAnchor" number="2.1.18">
+<h3><span class="header-section-number">2.1.18</span> Saving and sharing results<a href="chapter02.html#saving-and-sharing-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>URL / API query ; export list ; social networks, etc.</p>
+</div>
+<div id="personalized-results" class="section level3 hasAnchor" number="2.1.19">
+<h3><span class="header-section-number">2.1.19</span> Personalized results<a href="chapter02.html#personalized-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Option for user to set a profile with preferences that may be used to display results.</p>
+</div>
+<div id="metadata-display-and-formats" class="section level3 hasAnchor" number="2.1.20">
+<h3><span class="header-section-number">2.1.20</span> Metadata display and formats<a href="chapter02.html#metadata-display-and-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To make metadata easily accessible to users, it’s important to display it in a convenient way. The display of metadata will vary depending on the data type being used, as each type uses a specific metadata schema. For online catalogs, style sheets can be utilized to control the appearance of the HTML pages.</p>
+<p>In addition to being displayed in HTML format, metadata should be available as electronic files in JSON, XML, and potentially PDF format. Structured metadata provides greater control and flexibility to automatically generate JSON and XML files, as well as format and create PDF outputs. It’s important that the JSON and XML files generated by the data catalog comply with the underlying metadata schema and are properly validated. This ensures that the metadata files can be easily and reliably reused and repurposed.</p>
+<center>
+<img src="images/catalog_display_01.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+</div>
+<div id="variable-level-comparison" class="section level3 hasAnchor" number="2.1.21">
+<h3><span class="header-section-number">2.1.21</span> Variable-level comparison<a href="chapter02.html#variable-level-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>E-commerce platforms commonly allow customers to compare products by displaying their pictures and descriptions (i.e., metadata) side-by-side. Similarly, for data users, the ability to compare datasets can be valuable to evaluate the consistency or comparability of a variable or an indicator over time or across sources and countries. However, to implement this functionality, detailed and structured metadata at the variable level are necessary. These metadata standards, such as DDI and ISO 19110/19139, enable the implementation of this feature.</p>
+<p>In the example below, we show how a query for <em>water</em> returns not only a list of seven datasets, but also a list of variables in each dataset that match the query.</p>
+<center>
+<img src="images/catalog_variable_view_01.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<p>The <em>variable view</em> shows that a total of 90 variables match the searched keyword.</p>
+<center>
+<img src="images/catalog_variable_view_02.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+<p>After selecting the variables of interest, users should be able to display their metadata in a format that facilitates comparison. The availability of detailed metadata is crucial to ensure the quality and usefulness of these comparisons. For example, when working with a survey dataset, capturing information on the variable universe, categories, questions, interviewer instructions, and summary statistics would be ideal. This comprehensive metadata will enable users to make informed decisions about which variables to use and how to analyze them.</p>
+<center>
+<img src="images/catalog_variable_view_03.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+</div>
+<div id="transparency-in-access-policies" class="section level3 hasAnchor" number="2.1.22">
+<h3><span class="header-section-number">2.1.22</span> Transparency in access policies<a href="chapter02.html#transparency-in-access-policies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The terms of use (ideally provided in the form of a standard license) and the conditions of access to data should be made transparent and visible in the data catalog. The access policy will preferably be provided using a controlled vocabulary, which can be used to enable a facet (filter) as shown in the screenshot below.</p>
+<center>
+<img src="images/catalog_access_policy_01.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+</div>
+<div id="data-and-metadata-api" class="section level3 hasAnchor" number="2.1.23">
+<h3><span class="header-section-number">2.1.23</span> Data and metadata API<a href="chapter02.html#data-and-metadata-api" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To keep up with modern data management needs, a comprehensive data catalog must provide users with convenient access to both data and metadata through an application programming interface (API). The structured metadata in a catalog allows users to extract specific components of the metadata they need, such as the identifier and title of all microdata and geographic datasets conducted after a certain year. With an API, users can easily and automatically access datasets or subsets of datasets they require. This enables internal features of the catalog such as dynamic visualizations and data previews, making data management more efficient. It is crucial that detailed documentation and guidelines on the use of the data and metadata API are provided to users to maximize the benefits of this feature.</p>
+<p>Metadata (and data) should be accessible via API
+The API should be well documented with examples.
+API query builder: UI for building an API query</p>
+</div>
+<div id="online-data-access-forms" class="section level3 hasAnchor" number="2.1.24">
+<h3><span class="header-section-number">2.1.24</span> Online data access forms<a href="chapter02.html#online-data-access-forms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Make the process of registration, requests fully digital, easy, and fully traceable.</p>
+<div id="bulk-download-option" class="section level4 hasAnchor" number="2.1.24.1">
+<h4><span class="header-section-number">2.1.24.1</span> Bulk download option<a href="chapter02.html#bulk-download-option" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Even when UI or visualizations etc are shown, many users just want to downlaod the data and metadata.
+(…)</p>
+</div>
+</div>
+<div id="data-preview" class="section level3 hasAnchor" number="2.1.25">
+<h3><span class="header-section-number">2.1.25</span> Data preview<a href="chapter02.html#data-preview" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the data (time series and tabular data, possibly also microdata) are made available via API, the data catalog can also provide a data preview option, and possibly a data extraction option, to the users. Multiple JavaScript tools, some of them open-source, are available to easily embed data grids in catalog pages.</p>
+<center>
+<img src="images/catalog_data_preview_01.JPG" style="width:80.0%" />
+</center>
+<p>For a document, the “data preview” would consist of a document viewer that would allow the user to view the document within the application (even when the document is not stored in the catalog itself but in an external website). When implementing such a feature, check that the terms of use of the origination source allows that.</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/230733447-55c75dbb-5e5c-4788-9e58-ae4fca646a85.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+</div>
+<div id="data-extraction" class="section level3 hasAnchor" number="2.1.26">
+<h3><span class="header-section-number">2.1.26</span> Data extraction<a href="chapter02.html#data-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For some data (microdata / time series), provide a simple way for users to extract specific variables / observations.</p>
+</div>
+<div id="data-visualizations" class="section level3 hasAnchor" number="2.1.27">
+<h3><span class="header-section-number">2.1.27</span> Data visualizations<a href="chapter02.html#data-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Embedding visualizations in a data catalog can greatly enhance its usefulness. Different types of data require different types of visualizations. For instance, time series data can be effectively displayed using a line chart, while images with geographic information can be displayed on a map that shows the location of the image capture. For more complex data, other types of charts can be created as well. However, in order to embed dynamic charts in a catalog page, the data needs to be available via API. A good data catalog should offer flexibility in the types of charts and maps that can be embedded in a metadata page. For instance, the NADA catalog provides catalog administrators with the ability to create visualizations using various tools. By including visualizations in a data catalog, users are able to quickly and easily understand the data and gain insights from it.</p>
+<p>The NADA catalog allows catalog adinistrators to generate such visualizations using different tools of their choice. The example below were generated using the open-source <a href="https://echarts.apache.org/en/index.html">Apache eCharts</a> library.</p>
+<p><br>
+<em>Example: Line chart for a time series</em></p>
+<center>
+<img src="images/catalog_visualization_03.JPG" style="width:100.0%" />
+</center>
+<p><br>
+<em>Example: Geo-location of an image</em></p>
+<center>
+<img src="images/catalog_visualization_05.JPG" style="width:100.0%" />
+</center>
+<p><br></p>
+</div>
+<div id="permanent-urls" class="section level3 hasAnchor" number="2.1.28">
+<h3><span class="header-section-number">2.1.28</span> Permanent URLs<a href="chapter02.html#permanent-urls" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To ensure efficient management and organization of datasets within a data catalog, it is essential to assign a unique identifier to each dataset. This identifier should not only meet technical requirements but also serve other purposes such as facilitating dataset citation. To achieve maximum effectiveness, it is recommended that datasets have a globally unique identifier, which can be accomplished through the assignment of a Digital Object Identifier (DOI). DOIs can be generated in addition to a catalog-specific unique identifier and provide a permanent and persistent identifier for the dataset. For more information about the process of generating DOIs and the reasons to use them, visit the <a href="https://datacite.org/">DataCite website</a>.</p>
+<p>Include a citation requirement in metadata.</p>
+</div>
+<div id="archive-tombstone" class="section level3 hasAnchor" number="2.1.29">
+<h3><span class="header-section-number">2.1.29</span> Archive / tombstone<a href="chapter02.html#archive-tombstone" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When a dataset is removed or replaced, the reproducibility of some analysis may become impossible. This may be a problem for some users. Unless there is a reason for not making them accessible, old versions of datasets should be kept accessible. But they should not be the ones indexed and dislayed in the catalog, to avoid cnfusion or the risk that a user would exploit a version other than the latest. Moving datasts that are replaced to an archive section of the catalog (not indexed) is an option. Note that DOIs require a permanent web page.</p>
+</div>
+<div id="catalog-of-citations" class="section level3 hasAnchor" number="2.1.30">
+<h3><span class="header-section-number">2.1.30</span> Catalog of citations<a href="chapter02.html#catalog-of-citations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A data catalog should not be limited to data. Ideally, the scripts produced by researchers to analyze the data, and the output of their analysis, should also be available. An ideal data catalog will allow a user to:</p>
+<ul>
+<li>search for data, and find/access the related scripts and citations</li>
+<li>search for a document (analytical output), and find/access the related data and scripts</li>
+<li>search for a script, and find/access the data and analytical output</li>
+</ul>
+<p>Maintain a catalog of citations of datasets.</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/229811421-fbda05da-2390-42c5-815c-5fcbc90d9ee1.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p></br></p>
+</div>
+<div id="reproducible-and-replicable-scripts" class="section level3 hasAnchor" number="2.1.31">
+<h3><span class="header-section-number">2.1.31</span> Reproducible and replicable scripts<a href="chapter02.html#reproducible-and-replicable-scripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Document, catalog, and publish reproducible/replicable scripts.</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/229810244-f68655ee-5173-444a-a4c6-5c2446a5361d.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p></br></p>
+</div>
+<div id="notifications-or-alerts" class="section level3 hasAnchor" number="2.1.32">
+<h3><span class="header-section-number">2.1.32</span> Notifications or alerts<a href="chapter02.html#notifications-or-alerts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Users may want to be automatically notified (by email) when new entries of interest are added, or when change are made to a specific resource. A system allowing users to set criteria for automatic notification can be developed.</p>
+<p>Example of Google SCholar alerts:</p>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/230730245-ea3702f6-b877-436a-9833-492afafa0270.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p><br></p>
+</div>
+<div id="providing-feedback" class="section level3 hasAnchor" number="2.1.33">
+<h3><span class="header-section-number">2.1.33</span> Providing feedback<a href="chapter02.html#providing-feedback" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Feedback on catalog certainly. In the form of a “Contact” email and possibly a “feedback form”. Also, if the platform itself is open source, GitHub for issues and suggestions on the application itself.</p>
+<p>BUT: Users forum, “reviews” as in e-commerce platforms, is not always recommended. Not all users are ’constructive” and qualified. Requires moderation, which can be costly and controversial. May create dis-incentives for data producers to publish their data. Could be a good option for data platforms that are internal to an organization (where comments are attributed, and an authentication system controls who can provide feedback), but not for public data platforms.</p>
+</div>
+<div id="getting-support" class="section level3 hasAnchor" number="2.1.34">
+<h3><span class="header-section-number">2.1.34</span> Getting support<a href="chapter02.html#getting-support" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Contact, responsive
+FAQs</p>
+</div>
+<div id="web-content-accessibility" class="section level3 hasAnchor" number="2.1.35">
+<h3><span class="header-section-number">2.1.35</span> Web content accessibility<a href="chapter02.html#web-content-accessibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Web Content Accessibility Guidelines (WCAG) international standard. WCAG documents explain how to make web content more accessible to people with disabilities.
+ADA provides people with disabilities the same opportunities, free of discrimination.
+WCAG is a compilation of accessibility guidelines for websites, whereas ADA is a civil rights law in the same ambit.</p>
+</div>
+</div>
+<div id="features-for-data-providers" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Features for data providers<a href="chapter02.html#features-for-data-providers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When the data catalog is not administered by the producer of the data but by an entrusted repository, data providers want:</p>
+<div id="safety" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Safety<a href="chapter02.html#safety" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Safety, protection against reputation risk (responsible use of data)</li>
+<li>Guarantee that regulations and terms of use will be strictly complied with; reputation of the organization that manages the catalog (Seal of Approval or other accreditation; properly staffed)</li>
+</ul>
+</div>
+<div id="visibility" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Visibility<a href="chapter02.html#visibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Visibility to maximize the use of data (including options to share/publicize on social media) - screenshot from data.gov</li>
+</ul>
+<br>
+<center>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/35276300/230095637-85901bdc-857a-4d23-a55c-7f67ffbf7a4a.png" alt="" />
+<p class="caption">image</p>
+</div>
+</center>
+<p></br></p>
+</div>
+<div id="low-burden" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Low burden<a href="chapter02.html#low-burden" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>“do not disturb”: low burden of deposit and no burden of serving users (minimum interaction with users; providing detailed metadata helps)</p>
+</div>
+<div id="real-time-information-on-usage" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Real time information on usage<a href="chapter02.html#real-time-information-on-usage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Monitoring of usage (downloads and citations) to assess demand; reports on this (automatically generated)</p>
+</div>
+<div id="feedback-from-users" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Feedback from users<a href="chapter02.html#feedback-from-users" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Feedback on quality issues</p>
+</div>
+</div>
+<div id="features-for-catalog-administrators" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Features for catalog administrators<a href="chapter02.html#features-for-catalog-administrators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In addition to meeting the needs of its users, a modern data catalog should also offer features that a catalog administrator can appreciate or expect. The features listed below can serve as checklist for choice of an application or development of features. These features may include:</p>
+<div id="data-deposit" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Data deposit<a href="chapter02.html#data-deposit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>User friendly interface for data deposit. Compliant with metadata stadards. With embedded quality gateways and clearance procedures.</p>
+</div>
+<div id="privacy-protection" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Privacy protection<a href="chapter02.html#privacy-protection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tools for privacy protection control (e.g., tools to identify direct identifiers)</p>
+</div>
+<div id="free-software" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Free software<a href="chapter02.html#free-software" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Availability of the application as an open-source software, accompanied by detailed technical documentation</p>
+</div>
+<div id="security" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Security<a href="chapter02.html#security" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Robust security measures, such as compatibility with advanced authentication systems, flexible role/profile definitions, regular upgrades and security patches, and accreditation by information security experts</p>
+</div>
+<div id="it-affordability" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> IT affordability<a href="chapter02.html#it-affordability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Reasonable IT requirements, such as shared server operability and sufficient memory capacity</p>
+</div>
+<div id="ease-of-maintenance" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Ease of maintenance<a href="chapter02.html#ease-of-maintenance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ease of upgrading to the latest version</p>
+</div>
+<div id="interoperability" class="section level3 hasAnchor" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> Interoperability<a href="chapter02.html#interoperability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Interoperability with other catalogs and applications, as well as compliance with metadata standards. By publishing metadata across multiple catalogs and hubs, data visibility can be increased, and the service provided to users can be maximized. This requires automation to ensure proper synchronization between catalogs (with only one catalog serving as the “owner” of a dataset), which necessitates interoperability between the catalogs, enabled by compliance with common formats and metadata standards and schemas.</p>
+</div>
+<div id="flexibility-on-access-policies" class="section level3 hasAnchor" number="2.3.8">
+<h3><span class="header-section-number">2.3.8</span> Flexibility on access policies<a href="chapter02.html#flexibility-on-access-policies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Flexibility in implementing data access policies that conform to the specific procedures and protocols of the organization managing the catalog</p>
+</div>
+<div id="api-based-system-for-automation-and-efficiency" class="section level3 hasAnchor" number="2.3.9">
+<h3><span class="header-section-number">2.3.9</span> API based system for automation and efficiency<a href="chapter02.html#api-based-system-for-automation-and-efficiency" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Availability of APIs for catalog administration
+Easy automation of procedures (harvesting, migration of formats, editing, etc.) This means API-based system.</p>
+</div>
+<div id="featuring-tools" class="section level3 hasAnchor" number="2.3.10">
+<h3><span class="header-section-number">2.3.10</span> Featuring tools<a href="chapter02.html#featuring-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ability to feature datasets</p>
+</div>
+<div id="usage-monitoring-and-analytics" class="section level3 hasAnchor" number="2.3.11">
+<h3><span class="header-section-number">2.3.11</span> Usage monitoring and analytics<a href="chapter02.html#usage-monitoring-and-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Easy activation of usage analytics (using Google Analytics, Omniture, or other)</p>
+</div>
+<div id="multilingual-capability" class="section level3 hasAnchor" number="2.3.12">
+<h3><span class="header-section-number">2.3.12</span> Multilingual capability<a href="chapter02.html#multilingual-capability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Multilingual capability, including internationalization of the code and the option for catalog administrators to translate or adapt software translations</p>
+</div>
+<div id="embedded-seo" class="section level3 hasAnchor" number="2.3.13">
+<h3><span class="header-section-number">2.3.13</span> Embedded SEO<a href="chapter02.html#embedded-seo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Embedded Search Engine Optimization (SEO) procedures</p>
+</div>
+<div id="widgets-and-plugins" class="section level3 hasAnchor" number="2.3.14">
+<h3><span class="header-section-number">2.3.14</span> Widgets and plugins<a href="chapter02.html#widgets-and-plugins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ability to use widgets to embed custom charts, maps, and data grids in the catalog</p>
+</div>
+<div id="feedback-to-developers" class="section level3 hasAnchor" number="2.3.15">
+<h3><span class="header-section-number">2.3.15</span> Feedback to developers<a href="chapter02.html#feedback-to-developers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ability to provide feedback and suggestions to the application developers.</p>
+</div>
+</div>
+<div id="machine-learning-for-a-better-user-experience" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Machine learning for a better user experience<a href="chapter02.html#machine-learning-for-a-better-user-experience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In Chapter 1, we emphasized the importance of generating comprehensive metadata and how machine learning can be leveraged to enrich it. Natural language processing (NLP) tools and models, in particular, have been employed to enhance the performance of search engines. By utilizing machine learning models, semantic search engines and recommender systems can be developed to aid users in locating relevant data. Moreover, machine learning can improve the ranking of search results to ensure that the most pertinent results are brought to users’ attention. Google, Bing, and other leading search engines have employed machine learning for years. While specialized data catalogs may not have the resources to implement such advanced systems, catalog administrators should explore opportunities to utilize machine learning to enhance their users’ experience. Catalogs can make use of external APIs to exploit machine learning solutions without requiring administrators to develop machine learning expertise or train their own models. For instance, APIs can be used to automatically and instantly translate queries or convert queries into embeddings. Ideally, a global community of practice will develop such APIs, including training NLP models, and provide them as a global public good.</p>
+<div id="improved-discoverability" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Improved discoverability<a href="chapter02.html#improved-discoverability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In 2019, Google introduced their NLP model, BERT (Biderectional Encoder Representations from Transformers), as a component of their search engine. Other major companies, such as Amazon, Apple, and Microsoft, are also developing similar models to enhance their search engines. One of the objectives of these companies is to create search engines that can support digital assistants like Siri, Alexa, Cortana, and Hey Google, which operate on a conversational mode and provide answers to users rather than just links to resources. Improving NLP models is a continuous and strategic priority for these companies, as not all answers can be found in textual resources. Google is also conducting research to develop solutions for extracting answers from tabular data.</p>
+<p>Specialized data catalogs maintained by data centers, statistical agencies, and other data producers still rely almost exclusively on full-text search engines. The search engine within these catalogs looks for matches between keywords submitted by the user and keywords found in an index, without attempting to understand or improve the user’s query. This can result in issues such as misinterpretation of the query, as discussed in Chapter 1, where a search for “dutch disease” may be mistakenly interpreted as a health-related query rather than an economic concept.</p>
+<p>The administrators of these specialized data catalogs often lack the resources to develop and implement the most advanced NLP solutions, and should not be required to do so. To assist them in transitioning from keyword-based search systems to semantic search and recommender systems, open solutions should be developed and published, such as pre-trained NLP models, open source tools, and open APIs. This would necessitate the creation and publishing of global public goods, including specialized corpora and the training of embedding models on these corpora, open NLP models and APIs that data catalogs can utilize to generate embeddings for their metadata, query parsers that can automatically improve/optimize queries and convert them into numeric vectors, and guidelines for implementing semantic search and recommender systems using tools like Solr, ElasticSearch, and Milvus.</p>
+<p>Simple models created from open source tools and publicly-available documents can provide straightforward solutions. In the example below, we demonstrate how these models can “understand” the concept of “dutch disease” and correctly associate it with relevant economic concepts.</p>
+<br>
+<center>
+<img src="images/word_graph_dutch_disease.JPG" style="width:100.0%" />
+</center>
+<p></br></p>
+</div>
+<div id="improved-results-ranking" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Improved results ranking<a href="chapter02.html#improved-results-ranking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Effective search engines not only identify relevant resources, but also rank and present them to users in an optimal order of relevance. As highlighted in Chapter 1, <a href="https://www.webfx.com/internet-marketing/seo-statistics.html">research</a> shows that 75% of search engine users do not click past the first page, emphasizing the importance of ranking and presenting results effectively.</p>
+<p>Data catalog administrators face two challenges in improving their search engine performance. Firstly, they need to improve their ranking in search engines such as Google by enriching metadata and embedding metadata compliant with DCAT or schema.org standards on catalog pages. Secondly, they need to improve the ranking of results returned by their own search engines in response to user queries.</p>
+<p>Google’s success in 1996 was largely attributed to their revolutionary approach to ranking search results called <em>PageRank</em>. Since then, they and other leading search engines have invested heavily in improving ranking methodologies with advanced techniques like <em>RankBrain</em> (introduced in 2015). These approaches include primary, contextual, and user-specific ranking, which utilize machine learning models referred to as Learn to Rank models. <a href="https://lucidworks.com/post/abcs-learning-to-rank/">Lucidworks</a> provides a clear description of this approach, noting that “Learning to rank (LTR) is a class of algorithmic techniques that apply supervised machine learning to solve ranking problems in search relevancy. In other words, it’s what orders query results. Done well, you have happy employees and customers; done poorly, at best you have frustrations, and worse, they will never return. To perform learning to rank you need access to training data, user behaviors, user profiles, and a powerful search engine such as SOLR. The training data for a learning to rank model consists of a list of results for a query and a relevance rating for each of those results with respect to the query. Data scientists create this training data by examining results and deciding to include or exclude each result from the data set.”</p>
+<p>Implementing Learn to Rank models can be challenging for data catalog administrators due to the resource-intensive nature of building the training dataset, fitting models, and implementing them. An alternative solution is to optimize the implementation of Solr or ElasticSearch, which can often contribute significantly to improving the ranking of search results. For more information on the challenge and available tools and methods for relevancy engineering, refer to D. Turnbull and J. Berryman’s 2016 publication.</p>
+<br>
+<center>
+<img src="images/schema_search_ranking.JPG" style="width:100.0%" />
+</center>
+<p></br></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter01.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter03.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SCHEMA_GUIDE.pdf", "SCHEMA_GUIDE.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

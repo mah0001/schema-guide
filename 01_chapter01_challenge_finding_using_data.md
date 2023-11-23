@@ -1,0 +1,58 @@
+---
+output: html_document
+---
+
+# (PART) RATIONALE AND OBJECTIVES  {-}
+
+# The challenge of finding, accessing, and using data {#chapter01}
+
+In the realm of data sharing policies adopted by numerous national and international organizations, a common challenge arises for researchers and other data users: the practicality of finding, accessing, and using data. Navigating through an extensive and continually expanding pool of data sources and types can be a complex, time-consuming, and occasionally frustrating undertaking. It entails identifying relevant sources, acquiring and comprehending pertinent datasets, and effectively analyzing them. This challenge is characterized by issues such as insufficient metadata, limitations of data discovery algorithms and systems, and the limited visibility of valuable data repositories and cataloging systems. Addressing the technical hurdles to data discoverability, accessibility, and usability is vital to enhance the effectiveness of data sharing policies and maximize the utility of collected data. In the following sections, we will delve into these challenges.
+
+## Finding data
+
+Researchers and data users employ various methods to identify and acquire data. Some rely on personal networks or *tribal knowledge* to locate and obtain the data they require, or identify datasets of interest in academic publications. This may lead to the use of data that may not be the most relevant for the researcher's specific purpose. Many other data users rely on general search engines or turn to specialized data catalogs to discover relevant data resources.
+
+Prominent internet search engines possess notable capabilities in locating and ranking pertinent resources available online. The algorithms powering these search engines incorporate lexical and semantic capabilities. Straightforward data queries, for example a search for *population of India in 2023*, will yield an instant answer to the prompt (though not always from the most authoritative source). Less specific queries, for example a search for *malnutrition indicators for Yemen*, will not return a direct answer, but will provide adequate information and links to useful resources, as the search engine has  semantic capability and can associate anthropometric indicators like *percentage of stunting, wasting, and underweight population* to the concept of malnutrition. Generative artificial intelligence has added the capability of these search engines to engage with data users using natural language, which may be suitable for addressing simple queries, although not without risk of errors and inaccuracies. But internet search engines are not be optimized to identify the most relevant data when the user's requirements cannot be expressed in the form of a straightforward query. And the answers they return to users' queries is constrained by the quality of metadata attached to data available online. 
+
+Specialized online data catalogs and platforms managed by national or international organizations, academic data centers, data archives, or data libraries may be better suited for researchers seeking data. Unfortunately, the search algorithms integrated into these specialized data catalogs are often limited to simple, poorly optimized keyword-based systems, and many rely on sub-optimal metadata. They have lexical search capability -- although not always adequately optmized -- but often lack advanced semantic search capability and fail to operate as recommender systems. With the rapid advancements of technology and the availability of powerful open-source solutions, the search performance of specialized data catalogs can be significantly enhanced, transforming data  catalogs into effective data recommender systems. The solution necessitates not only the adoption of better technology, but also high-quality, comprehensive, and structured metadata. Metadata, which offers a detailed description of datasets, is what search engines rely upon to identify and locate data of interest. 
+
+:::quote
+“Metadata is structured information that describes, explains, locates, or otherwise makes it easier to retrieve, use, or manage an information resource. Metadata is often called data about data or information about information.” 
+National Information Standards Organization, 2004
+:::
+
+:::quote
+"Good metadata enables you to understand, use, and share your own data now and in the future and helps other researchers discover, access, use, repurpose, and cite your data in the long term. It also facilitates long-term archival preservation of the data."
+Harvard Medical SChool. https://datamanagement.hms.harvard.edu/collect-analyze/documentation-metadata
+:::
+
+Metadata are not only needed to enable the data discovery systems. They are also required to allow users to assess the relevance, or fitness-for-purpose, of a dataset. Metadata is the first element that data users examine to assess whether the data align with their requirements. Acquiring a dataset can be time-consuming and occasionally costly activity. Users should be provided with the necessary information to assess the relevance of a dataset prior to acquiring it. 
+
+
+## Accessing data
+
+Accessing data is a multifaceted challenge that encompasses legal, ethical, and practical considerations. To ensure that data access is lawful, ethical, efficient, and enables relevant and responsible use of the data, data providers and users must adhere to specific principles and practices:
+
+- Data providers must ensure that they possess the legal rights to share the data and define clear usage rights for data users. 
+- Data users must understand how they can use the data, whether for research, commercial purposes, or other applications, and they must strictly adhere to the terms of use.
+- Data access must comply with data privacy laws and ethical standards. Sensitive or personally identifiable information must be handled with care to protect individuals' privacy.
+- Data providers must furnish comprehensive metadata that provides context and a full understanding of the data. Metadata should include details about the data's provenance, encompassing its history, transformations, and processing steps. Understanding how the data was created and modified is essential for accurate and responsible analysis.
+- Data should be available in user-friendly formats compatible with common data analysis tools, such as CSV, JSON, or Excel.
+- Data should be accessible through various means, accommodating users' preferences and capacities. This may involve offering downloadable files, providing access through web-based tools, and supporting data streaming. - APIs are essential for enabling programmable data access, allowing researchers to retrieve and manipulate data programmatically for integration into their research workflows and applications.
+
+
+## Using data
+
+The challenge for data users extends beyond discovering data to obtaining all the necessary information for a comprehensive understanding of the data and for responsible and appropriate use. For example, a single indicator label such as "unemployment rate (%)" can obscure significant variations by country, source, and time. The international recommendations for the definition and calculation of the "unemployment rate" have evolved over time, and not all countries employ the same data collection instrument (e.g., labor force surveys) to gather the underlying data. Detailed metadata should always accompany data on online data dissemination platforms. This association should be close; relevant metadata should ideally be no more than one click away from the data. This is particularly crucial when a platform publishes data from multiple sources that are not fully harmonized.
+
+:::quote
+The scope and meaning of labor statistics, in general, are determined by their source and methodology, which holds true for the unemployment rate. To interpret the data accurately, it is crucial to understand what the data convey, how they were collected and constructed, and to have information on the relevant metadata. The design and characteristics of the data source, typically a labor force survey or a similar household survey for the unemployment rate, especially in terms of definitions and concepts used, geographical and age coverage, and reference periods, have significant implications for the resulting data. Taking these aspects into account is essential when analyzing the statistics. Additionally, it is crucial to seek information on any methodological changes and breaks in series to assess their impact on trend analysis and to keep in mind methodological differences across countries when conducting cross-country studies. (From Quick guide on interpreting the unemployment rate, International Labour Office – Geneva: ILO, 2019, ISBN: 978-92-2-133323-4 (web pdf)).
+:::
+
+Whenever possible, reproducible or replicable scripts used with the data, along with the analytical output of these scripts, should be published alongside the data. These scripts can be highly valuable to researchers who wish to expand the scope of previous data analysis or reuse parts of the code, and to students who can learn from reading and replicating the work of experienced analysts. To enhance data usability, we have developed a specific metadata schema for documenting research projects and scripts.
+
+## A FAIR solution
+
+Improving search capabilities and increasing the accessibility of data requires a combination of enhanced data curation, search engines, and increased accessibility. Adhering to the FAIR principles (Findable, Accessible, Interoperable, and Reusable) is an effective approach to data management (https://doi.org/10.1371/journal.pcbi.1008469).
+
+It is essential to focus on the entire data curation process, from acquisition to dissemination, to optimize data analysis by streamlining the process of finding, assessing, accessing, and preparing data. This involves anticipating user needs and investing in data curation for reuse. To ensure data is findable, libraries should implement advanced search algorithms and filters, including full-text, advanced, semantic, and recommendation-based search options. Search engine optimization is also crucial for making catalogs more accessible. Moreover, multiple modes of data access should be available to enhance accessibility, while data should be made interoperable to promote data sharing and reusability. Detailed metadata, including fitness-for-purpose assessments, should be displayed alongside scripts and permanent availability options, such as a DOI, to encourage reuse.
